@@ -13,6 +13,9 @@
 </script>
 
 <style>
+	/* uni.css - 通用组件、模板样式库，可以当作一套ui库应用 */
+	@import './common/uni.css';
+	
     /*每个页面公共css */
     /* uni-app默认全局使用flex布局。因为flex布局有利于跨更多平台，尤其是采用原生渲染的平台。如不了解flex布局，请参考http://www.w3.org/TR/css3-flexbox/。如不使用flex布局，请删除或注释掉本行。*/
     body,
@@ -40,8 +43,7 @@
         display: flex;
         flex: 1;
         flex-direction: column;
-        background-color: #efeff4;
-        padding: 20upx;
+        background-color: #ffffff;
     }
 
     .input-group {
@@ -109,4 +111,11 @@
     button.primary {
         background-color: #0faeff;
     }
+	
+	.input_place_holder{
+		font-size: 28upx;
+		color: rgba(0,0,0,0.1);
+	}
+	
+	.button-hover{background-color: rgba(0, 0, 0, 0.1)!important; opacity: 0.7!important;}
 </style>

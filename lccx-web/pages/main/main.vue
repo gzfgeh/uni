@@ -1,83 +1,234 @@
 <template>
-    <view class="content">
-        <view v-if="hasLogin" class="hello">
-            <view class="title">
-                您好 {{userName}}，您已成功登录。
-            </view>
-            <view class="ul">
-                <view>这是 uni-app 带登录模板的示例App首页。</view>
-                <view>在 “我的” 中点击 “退出” 可以 “注销当前账户”</view>
-            </view>
-        </view>
-        <view v-if="!hasLogin" class="hello">
-            <view class="title">
-                您好 游客。
-            </view>
-            <view class="ul">
-                <view>这是 uni-app 带登录模板的示例App首页。</view>
-                <view>在 “我的” 中点击 “登录” 可以 “登录您的账户”</view>
-            </view>
-        </view>
-    </view>
+	<view class="uni-tab-bar">
+		<!-- <scroll-view id="tab-bar" class="uni-swiper-tab uni-center-item" >
+			<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
+			 :data-current="index" @click="tapTab(index)">{{tab.name}}</view>
+		</scroll-view> -->
+		
+		<div class="uni-center-item tab_bar">
+			<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
+			 :data-current="index" @click="tapTab(index)">
+				<span>{{tab.name}}</span> 
+				<span class="line"></span>
+			 </view>
+		</div>
+		
+		<swiper :current="tabIndex" class="swiper-box" duration="300" @change="changeTab">
+			<swiper-item v-for="(tab,index1) in newsitems" :key="index1">
+				<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
+					<block v-for="(newsitem,index2) in tab.data" :key="index2">
+						<view @click="goDetail(newsitem)">
+							<span>{{index2}}</span>
+						</view>
+						<!-- <media-list :data="newsitem" @close="close(index1,index2)" @click="goDetail(newsitem)"></media-list> -->
+					</block>
+					<view class="uni-tab-bar-loading">
+						<uni-load-more :loadingType="tab.loadingType" :contentText="loadingText"></uni-load-more>
+					</view>
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>
 </template>
-
 <script>
-    import {
-        mapState
-    } from 'vuex'
+	import uniLoadMore from '@/components/uni-load-more.vue';
+	export default {
+		components: {
+			uniLoadMore
+		},
+		data() {
+			return {
+				loadingText: {
+					contentdown: "上拉显示更多",
+					contentrefresh: "正在加载...",
+					contentnomore: "没有更多数据了"
+				},
+				scrollLeft: 0,
+				isClickChange: false,
+				tabIndex: 0,
+				newsitems: [],
+				data0: {
+					"datetime": "40分钟前",
+					"article_type": 0,
+					"title": "uni-app行业峰会频频亮相，开发者反响热烈!",
+					"source": "DCloud",
+					"comment_count": 639
+				},
+				data1: {
+					"datetime": "一天前",
+					"article_type": 1,
+					"title": "DCloud完成B2轮融资，uni-app震撼发布!",
+					"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
+					"source": "DCloud",
+					"comment_count": 11395
+				},
+				data2: {
+					"datetime": "一天前",
+					"article_type": 2,
+					"title": "中国技术界小奇迹：HBuilder开发者突破200万",
+					"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
+					"source": "DCloud",
+					"comment_count": 11395
+				},
+				data4: {
+					"datetime": "2小时前",
+					"article_type": 4,
+					"title": "uni-app 支持原生小程序自定义组件，更开放、更自由",
+					"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
+					"source": "DCloud",
+					"comment_count": 69
+				},
+				data3: {
+					"article_type": 3,
+					"image_list": [{
+						"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
+						"width": 563,
+						"height": 316
+					}, {
+						"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
+						"width": 641,
+						"height": 360
+					}, {
+						"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
+						"width": 640,
+						"height": 360
+					}],
+					"datetime": "5分钟前",
+					"title": "uni-app 支持使用 npm 安装第三方包，生态更趋丰富",
+					"source": "DCloud",
+					"comment_count": 11
+				},
+				tabBars: [{
+					name: '全部',
+					id: 'quanbu'
+				}, {
+					name: '未付款',
+					id: 'weifukuan'
+				}, {
+					name: '已完成',
+					id: 'yiwancheng'
+				}]
+			}
+		},
+		onLoad: function() {
+			this.newsitems = this.randomfn()
+		},
+		methods: {
+			goDetail(e) {
+				uni.navigateTo({
+					url: '/pages/template/tabbar/detail/detail?data=' + e.title
+				})
+			},
+			close(index1, index2) {
+				uni.showModal({
+					content: '是否删除本条信息？',
+					success: (res) => {
+						if (res.confirm) {
+							this.newsitems[index1].data.splice(index2, 1);
+						}
+					}
+				})
+			},
+			loadMore(e) {
+				this.newsitems[e].loadingType = 1;
+				setTimeout(() => {
+					this.addData(e);
+				}, 1200);
+			},
+			addData(e) {
+				if (this.newsitems[e].data.length > 30) {
+					this.newsitems[e].loadingType = 2;
+					return;
+				}
+				for (let i = 1; i <= 10; i++) {
+					this.newsitems[e].data.push(this['data' + Math.floor(Math.random() * 5)]);
+				}
+				this.newsitems[e].loadingType = 1;
+			},
+			async changeTab(e) {
+				let index = e.detail.current;
+				if (this.isClickChange) {
+					this.tabIndex = index;
+					this.isClickChange = false;
+					return;
+				}
+				let tabBar = await this.getElSize("tab-bar"),
+					tabBarScrollLeft = tabBar.scrollLeft;
+				let width = 0;
 
-    export default {
-        computed: mapState(['forcedLogin', 'hasLogin', 'userName']),
-        onLoad() {
-            if (!this.hasLogin) {
-                uni.showModal({
-                    title: '未登录',
-                    content: '您未登录，需要登录后才能继续',
-                    /**
-                     * 如果需要强制登录，不显示取消按钮
-                     */
-                    showCancel: !this.forcedLogin,
-                    success: (res) => {
-                        if (res.confirm) {
-							/**
-							 * 如果需要强制登录，使用reLaunch方式
-							 */
-                            if (this.forcedLogin) {
-                                uni.reLaunch({
-                                    url: '../login/login'
-                                });
-                            } else {
-                                uni.navigateTo({
-                                    url: '../login/login'
-                                });
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
+				this.isClickChange = false;
+				this.tabIndex = index; //一旦访问data就会出问题
+			},
+			getElSize(id) { //得到元素的size
+				return new Promise((res, rej) => {
+					uni.createSelectorQuery().select('#' + id).fields({
+						size: true,
+						scrollOffset: true
+					}, (data) => {
+						res(data);
+					}).exec();
+				});
+			},
+			async tapTab(index) { //点击tab-bar
+				if (this.tabIndex === index) {
+					return false;
+				} else {
+					let tabBar = await this.getElSize("tab-bar"),
+						tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
+					this.scrollLeft = tabBarScrollLeft;
+					this.isClickChange = true;
+					this.tabIndex = index;
+				}
+			},
+			randomfn() {
+				let ary = [];
+				for (let i = 0, length = this.tabBars.length; i < length; i++) {
+					let aryItem = {
+						loadingType: 0,
+						data: []
+					};
+					for (let j = 1; j <= 10; j++) {
+						aryItem.data.push(this['data' + Math.floor(Math.random() * 5)]);
+					}
+					ary.push(aryItem);
+				}
+				return ary;
+			}
+		}
+	}
 </script>
 
-<style>
-    .hello {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-    }
-
-    .title {
-        color: #8f8f94;
-        margin-top: 50upx;
-    }
-
-    .ul {
-        font-size: 30upx;
-        color: #8f8f94;
-        margin-top: 50upx;
-    }
-
-    .ul>view {
-        line-height: 50upx;
-    }
+<style scoped>
+	/* #ifdef MP-ALIPAY */
+	.swiper-tab-list {
+		display: inline-block;
+	}
+	/* #endif */
+	
+	uni-page-body{
+		height: 100%;
+		background-color: #F6F6F8!important;
+	}
+	
+	.tab_bar{
+		height: 100upx;
+		line-height: 100upx;
+		background-color: #ffffff;
+		position: relative;
+	}
+	
+	.swiper-tab-list{
+		position: relative;
+	}
+	
+	.line{
+		height: 6upx;
+		width: 34upx;
+		position: absolute;
+		bottom: -24upx;
+		z-index: 1;
+		background-color: #427DFF;
+		left: 60upx;
+	}
+	
 </style>

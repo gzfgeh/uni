@@ -1,27 +1,19 @@
 <template>
     <view class="content">
-        <view class="input-group">
-            <view class="input-row border">
-                <text class="title">账号：</text>
-                <m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
-            </view>
-            <view class="input-row">
-                <text class="title">密码：</text>
-                <m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
-            </view>
-        </view>
-        <view class="btn-row">
-            <button type="primary" class="primary" @tap="bindLogin">登录</button>
-        </view>
-        <view class="action-row">
-            <navigator url="../reg/reg">注册账号</navigator>
-            <text>|</text>
-            <navigator url="../pwd/pwd">忘记密码</navigator>
-        </view>
-        <view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
-            <view class="oauth-image" v-for="provider in providerList" :key="provider.value">
-                <image :src="provider.image" @tap="oauth(provider.value)"></image>
-            </view>
+		<view class="uni-center-item title">
+			快捷登录注册
+		</view>
+		<view class="input-row border">
+			<m-input class="m-input" type="text"  placeholder-class="input_place_holder" focus v-model="account" placeholder="请输入手机号"></m-input>
+			<utext>|</utext>
+			<text class="get_code">发送验证码</text>
+		</view>
+		<view class="input-row">
+			<m-input type="password" v-model="password" placeholder="请输入验证码"></m-input>
+		</view>
+        
+        <view>
+            <button type="primary" class="primary" hover-class="button-hover" @tap="bindLogin">登录</button>
         </view>
     </view>
 </template>
@@ -84,6 +76,7 @@
                  * 客户端对账号信息进行一些必要的校验。
                  * 实际开发中，根据业务需要进行处理，这里仅做示例。
                  */
+				return;
                 if (this.account.length < 5) {
                     uni.showToast({
                         icon: 'none',
@@ -163,6 +156,43 @@
 </script>
 
 <style>
+	.content{
+		padding-left: 80upx;
+		padding-right: 80upx;
+	}
+	.title{
+		color: rgba(0,0,0,0.7);
+		font-size: 48upx;
+		margin-top: 80upx;
+		margin-bottom: 108upx;
+	}
+	
+	.input-row{
+		border: 2upx solid rgba(0,0,0,0.1);
+		border-radius: 12upx;
+		height: 90upx;
+		margin-bottom: 40upx;
+		padding-left: 40upx;
+		padding-right: 34upx;
+		font-size: 26upx;
+		color: rgba(0,0,0,0.7);
+		align-items: center;
+	}
+	
+	.get_code{
+		color: rgba(0,0,0,0.7);
+		margin-left: 28upx;
+		font-size: 28upx;
+	}
+	
+	.primary{
+		background-color: #427DFF;
+		border-radius: 12upx;
+		color: #ffffff;
+		font-size: 28upx;
+		height: 94upx;
+		line-height: 94upx;
+	}
     .action-row {
         display: flex;
         flex-direction: row;

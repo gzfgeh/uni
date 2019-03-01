@@ -1,11 +1,12 @@
 {
     "pages": [ //pages数组中第一项表示应用启动页,
-        {
-            "path": "pages/main/main",
-            "style": {
-                "navigationBarTitleText": "登录模板"
-            }
-        }, {
+		{
+			"path": "pages/main/main",
+			"style": {
+			    "navigationBarTitleText": "登录模板"
+			}
+			
+		}, {
             "path": "pages/login/login",
             "style": {
                 "navigationBarTitleText": "登录"
@@ -31,21 +32,24 @@
         "color": "#7a7e83",
         "selectedColor": "#0faeff",
         "backgroundColor": "#ffffff",
-        "list": [{
-            "pagePath": "pages/main/main",
-            "text": "首页",
-            "iconPath": "static/img/home.png",
-            "selectedIconPath": "static/img/homeHL.png"
-        }, {
-            "pagePath": "pages/user/user",
-            "text": "我的",
-            "iconPath": "static/img/user.png",
-            "selectedIconPath": "static/img/userHL.png"
-        }]
+        "list": [
+// 			{
+//             "pagePath": "pages/main/main",
+//             "text": "首页",
+//             "iconPath": "static/img/home.png",
+//             "selectedIconPath": "static/img/homeHL.png"
+//         }, {
+//             "pagePath": "pages/user/user",
+//             "text": "我的",
+//             "iconPath": "static/img/user.png",
+//             "selectedIconPath": "static/img/userHL.png"
+//         },
+		]
     },
     "globalStyle": {
         "navigationBarTextStyle": "white",
         "navigationBarBackgroundColor": "#0faeff",
-        "backgroundColor": "#fbf9fe"
+        "backgroundColor": "#fbf9fe",
+		"navigationStyle" : "custom"
     }
 }

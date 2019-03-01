@@ -29,5 +29,8 @@
 		"setting" : {
 			"urlCheck" : true
 		}
-    }
+    },
+	"browsers.config": {
+		"Chrome.path": "/Applications/Chrome.app"
+	}
 }
