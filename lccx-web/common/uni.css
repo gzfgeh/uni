@@ -48,6 +48,13 @@ form {
 	justify-content: center;
 }
 
+.uni-between-item{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .uni-inline-item text{
 	margin-right: 20upx;
 }

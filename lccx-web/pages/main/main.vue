@@ -8,26 +8,49 @@
 		<div class="uni-center-item tab_bar">
 			<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
 			 :data-current="index" @click="tapTab(index)">
-				<span>{{tab.name}}</span> 
-				<span class="line"></span>
+				<span :class="[tabIndex==index ? 'tab_text' : '']" >{{tab.name}}</span> 
+				<span :class="[tabIndex==index ? 'line' : '']" ></span>
 			 </view>
 		</div>
 		
-		<swiper :current="tabIndex" class="swiper-box" duration="300" @change="changeTab">
-			<swiper-item v-for="(tab,index1) in newsitems" :key="index1">
+		<swiper :current="tabIndex" class="swiper-box" duration="300" @change="changeTab" >
+			<swiper-item v-for="(tab,index1) in listData" :key="index1">
 				<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
-					<block v-for="(newsitem,index2) in tab.data" :key="index2">
-						<view @click="goDetail(newsitem)">
-							<span>{{index2}}</span>
+					<block v-for="(newsitem,index2) in tab.data" :key="index2" >
+						
+						<view @click="goDetail(newsitem)" class="item_wrap">
+							
+							<div class="item_content_wrap">
+								<div class="item_title">里程车险</div>
+								<div class="item_no">车牌号：沪A42320</div>
+								<div class="item_name">姓名：张无双</div>
+							</div>
+							
+							<div class="bottom_wrap">
+								<span class="bottom_action" v-if="index2%2 != 0">立即付款</span>
+								<span v-if="index2%2 == 0">查看详情</span>
+							</div>
+							
+							<img src="../../static/img/read_pay.png" v-if="index2%2 != 0">
+							<img src="../../static/img/finish_pay.png" v-if="index2%2 == 0">
+							
 						</view>
 						<!-- <media-list :data="newsitem" @close="close(index1,index2)" @click="goDetail(newsitem)"></media-list> -->
 					</block>
-					<view class="uni-tab-bar-loading">
-						<uni-load-more :loadingType="tab.loadingType" :contentText="loadingText"></uni-load-more>
+					
+					<div v-if="tab.data.length == 0" class="uni-center-item no_data_wrap">
+						<img src="../../static/img/no_data.png" class="no_data">
+						<span>暂无订单信息</span>
+					</div>
+					
+					<view class="uni-tab-bar-loading" v-if="tab.data.length != 0">
+						<uni-load-more :loadingType="tab.loadingType" :contentText="loadingText"  ></uni-load-more>
 					</view>
+					
 				</scroll-view>
 			</swiper-item>
 		</swiper>
+		
 	</view>
 </template>
 <script>
@@ -46,7 +69,7 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				tabIndex: 0,
-				newsitems: [],
+				listData: [],
 				data0: {
 					"datetime": "40分钟前",
 					"article_type": 0,
@@ -111,7 +134,7 @@
 			}
 		},
 		onLoad: function() {
-			this.newsitems = this.randomfn()
+			this.listData = this.randomfn()
 		},
 		methods: {
 			goDetail(e) {
@@ -124,26 +147,26 @@
 					content: '是否删除本条信息？',
 					success: (res) => {
 						if (res.confirm) {
-							this.newsitems[index1].data.splice(index2, 1);
+							this.listData[index1].data.splice(index2, 1);
 						}
 					}
 				})
 			},
 			loadMore(e) {
-				this.newsitems[e].loadingType = 1;
+				this.listData[e].loadingType = 1;
 				setTimeout(() => {
 					this.addData(e);
 				}, 1200);
 			},
 			addData(e) {
-				if (this.newsitems[e].data.length > 30) {
-					this.newsitems[e].loadingType = 2;
+				if (this.listData[e].data.length > 30) {
+					this.listData[e].loadingType = 2;
 					return;
 				}
 				for (let i = 1; i <= 10; i++) {
-					this.newsitems[e].data.push(this['data' + Math.floor(Math.random() * 5)]);
+					this.listData[e].data.push(this['data' + Math.floor(Math.random() * 5)]);
 				}
-				this.newsitems[e].loadingType = 1;
+				this.listData[e].loadingType = 1;
 			},
 			async changeTab(e) {
 				let index = e.detail.current;
@@ -152,30 +175,14 @@
 					this.isClickChange = false;
 					return;
 				}
-				let tabBar = await this.getElSize("tab-bar"),
-					tabBarScrollLeft = tabBar.scrollLeft;
-				let width = 0;
 
 				this.isClickChange = false;
 				this.tabIndex = index; //一旦访问data就会出问题
-			},
-			getElSize(id) { //得到元素的size
-				return new Promise((res, rej) => {
-					uni.createSelectorQuery().select('#' + id).fields({
-						size: true,
-						scrollOffset: true
-					}, (data) => {
-						res(data);
-					}).exec();
-				});
 			},
 			async tapTab(index) { //点击tab-bar
 				if (this.tabIndex === index) {
 					return false;
 				} else {
-					let tabBar = await this.getElSize("tab-bar"),
-						tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
-					this.scrollLeft = tabBarScrollLeft;
 					this.isClickChange = true;
 					this.tabIndex = index;
 				}
@@ -215,10 +222,17 @@
 		line-height: 100upx;
 		background-color: #ffffff;
 		position: relative;
+		font-size: 28upx;
+		color: rgba(0,0,0,0.4)
+	}
+	
+	.tab_text{
+		color: #427DFF;
 	}
 	
 	.swiper-tab-list{
 		position: relative;
+		color: rgba(0,0,0,0.4)
 	}
 	
 	.line{
@@ -229,6 +243,59 @@
 		z-index: 1;
 		background-color: #427DFF;
 		left: 60upx;
+	}
+	
+	.item_wrap{
+		box-sizing: border-box;
+		margin: 30upx;
+		border-radius: 12upx;
+		box-shadow:0px 0px 14upx 0px rgba(222,222,222,0.5);
+		background-color: #FFFFFF;
+		padding-top: 36upx;
+		padding-left: 34upx;
+		padding-right: 34upx;
+		color: #9F9F9F;
+		font-size: 26upx;
+		position: relative;
+	}
+	
+	.item_content_wrap{
+		border-bottom: 4upx solid #F1F1F1;
+	}
+	
+	.item_title{
+		color: #4D4D4D;
+		font-size: 34upx;
+		margin-bottom: 16upx;
+	}
+	
+	.item_name{
+		margin-bottom: 24upx;
+	}
+	
+	.bottom_wrap{
+		text-align: center;
+		padding-top: 16upx;
+		box-sizing: border-box;
+		height: 80upx;
+		color: #3A7FF7;
+		font-size: 26upx;
+	}
+	
+	.bottom_action{
+		padding: 8upx 24upx;
+		background-color: #E9F3FB;
+		border-radius: 26upx;
+	}
+	
+	.item_wrap img{
+		width: 188upx;
+		height: 164upx;
+		position: absolute;
+		top: 22upx;
+		right: 20upx;
+		padding: 16upx 10upx;
+		box-sizing: border-box;
 	}
 	
 </style>

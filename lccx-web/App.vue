@@ -118,4 +118,8 @@
 	}
 	
 	.button-hover{background-color: rgba(0, 0, 0, 0.1)!important; opacity: 0.7!important;}
+	.no_data_wrap{height: 100%; width: 100%; position: absolute; z-index: 1; 
+		display: flex; flex-direction: column; align-items: center; justify-content: center;}
+	.no_data_wrap img{width: 288upx; height: 270upx;}
+	.no_data_wrap span{color: #9F9F9F; font-size: 28upx; margin-top: 40upx;}
 </style>

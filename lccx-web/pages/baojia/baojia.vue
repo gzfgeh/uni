@@ -1,0 +1,296 @@
+<template>
+    <div class="container_wrap container-fill">
+  
+    
+	  <image src="../../static/img/baojia.png" class="head_img" />
+
+	  <div class="content_wrap">
+		<div class="content_item" style="border-bottom: 2upx solid #f3f3f3;">
+		  <span class="text">投保地区</span>
+		  <div class="row_item" @click="showMulLinkageTwoPicker">
+			<span>{{pickerText}}</span>
+			<span class="arraw"></span>
+		  </div>
+		</div>
+
+		<div class="content_item">
+		  <span class="text">车牌号</span>
+		  <div class="uni-inline-item">
+			  <span @tap="showKeyBoard">{{activeText}}</span>
+			  <image :src="activeImg" @tap="showKeyBoard"></image>
+			  <input type="text" placeholder="请输入车牌号" placeholder-class="place-holder">
+		  </div>
+		  
+		</div>
+
+	  </div>
+
+	  <button class="button btn-primary abs" hover-class="button-hover">
+		  下一步
+	  </button>
+	  
+	  <button class="button_contact btn-primary abs" hover-class="button-hover">
+	  		  客服热线：400-088-0329
+	  </button>
+	  
+	  <mpvue-picker :themeColor="themeColor" ref="mpvuePicker" :mode="mode" :deepLength="deepLength" :pickerValueDefault="pickerValueDefault"
+	   @onConfirm="onConfirm" @onCancel="onCancel" :pickerValueArray="pickerValueArray"></mpvue-picker>
+	  
+	  
+	  <div class="mask_dialog" @tap="hideKeyBoard" v-if="isShowKeyBoard"></div>
+	  <div class="bottom_keyboard" v-if="isShowKeyBoard">
+		  <div class="keyboard_one_wrap">
+			  <span v-for="(item, index) in keyboardOne" :key="index" @tap="selectItem(item)"
+			  :class="{active: (item == activeText)}">
+				  {{item}}
+			  </span>
+		  </div>
+		  <div class="keyboard_one_wrap" style="padding-left: 66upx;">
+			  <span v-for="(item, index) in keyboardTwo" :key="index" @tap="selectItem(item)"
+			  :class="{active: (item == activeText)}">
+			  				  {{item}}
+			  </span>
+		  </div>
+		  <div class="keyboard_one_wrap" style="padding-left: 100upx;">
+			  <span v-for="(item, index) in keyboardThree" :key="index" @tap="selectItem(item)"
+			  :class="{active: (item == activeText)}">
+			  				  {{item}}
+			  </span>
+		  </div>
+		  <div class="keyboard_one_wrap" style="padding-left: 136upx;">
+			  <span v-for="(item, index) in keyboardFour" :key="index" @tap="selectItem(item)"
+			  :class="{active: (item == activeText)}">
+			  				  {{item}}
+			  </span>
+		  </div>
+	  </div>
+
+	</div>
+</template>
+
+<script>
+    import service from '../../service.js';
+    import mInput from '../../components/m-input.vue';
+	import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
+	import cityData from '../../common/city.data.js';
+
+    export default {
+        components: {
+            mInput,
+			mpvuePicker
+        },
+        data() {
+            return {
+                keyboardOne: ['京','沪','苏','浙','皖','辽','赣','鲁','豫','鄂'],
+                keyboardTwo: ['湘','粤','贵','津','冀','晋','蒙','闽','吉'],
+                keyboardThree: ['琼','渝','川','桂','云','藏','陕','甘'],
+                keyboardFour: ['青','黑','宁','新','港','澳','台'],
+				isShowKeyBoard: false,
+				activeText: "豫",
+				activeImg: "../../static/img/arrow_down_icon.png",
+				pickerValueDefault:[0],
+				mode: '',
+				deepLength: 1,
+				themeColor: '#007AFF',
+				pickerValueArray:[],
+				mulLinkageTwoPicker: cityData,
+				pickerText: "上海"
+            }
+        },
+		watch: {
+			isShowKeyBoard(curVal, oldVal){
+				this.activeImg = oldVal ? "../../static/img/arrow_down_icon.png"
+					: "../../static/img/arrow_up_icon.png";
+			}
+		},
+        methods: {
+			showKeyBoard(){
+				this.isShowKeyBoard = true;
+			},
+			hideKeyBoard(){
+				this.isShowKeyBoard = false;
+			},
+			selectItem(item){
+				this.activeText = item;
+				this.isShowKeyBoard = false;
+			},
+			// 二级联动选择
+			showMulLinkageTwoPicker() {
+				this.pickerValueArray = this.mulLinkageTwoPicker
+				this.mode = 'multiLinkageSelector'
+				this.deepLength = 2
+				this.pickerValueDefault = [0, 0]
+				this.$refs.mpvuePicker.show()
+			},
+			onConfirm(e) {
+				this.pickerText = e.label;
+			},
+			
+            findPassword() {
+                /**
+                 * 仅做示例
+                 */
+                if (this.email.length < 3 || !~this.email.indexOf('@')) {
+                    uni.showToast({
+                        icon: 'none',
+                        title: '邮箱地址不合法',
+                    });
+                    return;
+                }
+                uni.showToast({
+                    icon: 'none',
+                    title: '已发送重置邮件至注册邮箱，请注意查收。',
+                    duration: 3000
+                });
+            }
+        }
+    }
+</script>
+
+<style>
+	.container_wrap {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+.head_img{
+  width: 100%;
+  height: 626upx;
+}
+
+.content_wrap{
+  width: 90%;
+  margin: -180upx 5% 0upx;
+  height: 332upx;
+  background-color: #FFFFFF;
+  border-radius: 20upx;
+  box-shadow: 0upx 0upx 20upx 0upx #EAEAEA;
+  padding: 0upx 16upx;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.content_item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #000000;
+  font-size: 34upx;
+  height: 166upx;
+  padding: 0upx 24upx;
+}
+
+.content_item .text{
+    color: #427DFF;
+    font-size: 24upx;
+	margin-bottom: 10upx;
+  }
+  
+  .content_item image{
+	  width: 16upx;
+	  height: 12upx;
+	  margin-left: 10upx;
+	  margin-right: 10upx;
+  }
+
+.row_item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arraw{
+    width: 18upx;
+    height: 18upx;
+    border-top: 6upx solid #D9D9D9;
+    border-right: 6upx solid #D9D9D9;
+    transform: rotate(45deg);
+    margin-left: 10upx;
+  }
+
+  .place-holder{
+  font-size: 28upx;
+  color: #b2b2b2;
+}
+
+.button{
+  margin: 40upx 5%;
+  width: 90%;
+  height: 94upx;
+	line-height: 94upx;
+	color: #ffffff;
+	background-color: #427DFF;
+	border-radius: 10upx;
+	text-align: center;
+	position: absolute;
+	bottom: 108upx;
+	font-size: 32upx;
+}
+
+.button_contact{
+  margin: 40upx 5%;
+  width: 90%;
+  height: 94upx;
+	line-height: 94upx;
+	color: #427DFF;
+	background-color: rgba(0,0,0,0);
+	border-radius: 10upx;
+	text-align: center;
+	position: absolute;
+	bottom: 0upx;
+	border: 2upx solid #427DFF;
+	font-size: 32upx;
+}
+
+.bottom_keyboard{
+	position: fixed;
+	bottom: 0upx;
+	width: 100%;
+	height: 394upx;
+	background-color: #E5E5E7;
+	color: #0A0A0A;
+	font-size: 34upx;
+	z-index: 100;
+	padding-top: 22upx;
+	box-sizing: border-box;
+}
+
+.bottom_keyboard span{
+	width: 60upx;
+	height: 80upx;
+	line-height: 80upx;
+	text-align: center;
+	border-radius: 8upx;
+	background-color: #FFFFFF;
+	margin-right: 10upx;
+	display: inline-block;
+	
+}
+
+.bottom_keyboard span:nth-last-child(1){
+	margin-right: 0upx;
+}
+
+.keyboard_one_wrap{
+	padding: 0upx 30upx;
+	margin-bottom: 10upx;
+}
+
+.active{
+	color: #FFFFFF;
+	background-color: #427DFF!important;
+}
+
+	
+.mask_dialog{
+	position: fixed;
+	top: 0upx;
+	left: 0upx;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: rgba(0,0,0,0);
+}
+
+</style>
