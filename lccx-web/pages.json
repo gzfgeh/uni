@@ -2,6 +2,30 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/baojia/baojia",
+		    "style" : {
+		        "navigationBarTitleText" : "快速报价"
+		    }
+		},
+		{
+		    "path" : "pages/pay_success/pay_success",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		{
+		    "path" : "pages/pay_address/pay_address",
+		    "style" : {
+		        "navigationBarTitleText" : "配送地址"
+		    }
+		},
+		{
+		    "path" : "pages/service_confirm/service_confirm",
+		    "style" : {
+		        "navigationBarTitleText" : "确认信息"
+		    }
+		},
+		{
 		    "path" : "pages/service_month_fee/service_month_fee",
 		    "style" : {
 		        "navigationBarTitleText" : "每月服务费"
@@ -25,12 +49,7 @@
                 "navigationBarTitleText" : "用户信息"
             }
         },
-        {
-            "path" : "pages/baojia/baojia",
-            "style" : {
-                "navigationBarTitleText" : "快速报价"
-            }
-        },
+        
         {
             "path" : "pages/reg/reg",
             "style" : {

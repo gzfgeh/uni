@@ -65,6 +65,25 @@
 		  </div>
 	  </div>
 
+		<!--弹窗-->
+		<div class="modal-mask" @tap="hideModal" v-if="showModal"></div>
+		  <div class="modal-dialog" v-if="showModal">
+		  <div class="modal-title">您有1条未完成的报价</div>
+		  <div class="modal-content">
+		    是否查看未完成报价订单？
+		  </div>
+		  <div class="modal-footer" >
+		    <div class="btn_wrap" @click="closeModal">
+		      <span>是</span>
+		    </div>
+			
+			<div class="no_btn_wrap" @click="closeModal">
+			  <span>否</span>
+			</div>
+			
+		  </div>
+		</div>
+		
 	</div>
 </template>
 
@@ -94,7 +113,8 @@
 				themeColor: '#007AFF',
 				pickerValueArray:[],
 				mulLinkageTwoPicker: cityData,
-				pickerText: "上海"
+				pickerText: "上海",
+				showModal: true
             }
         },
 		watch: {
@@ -291,6 +311,81 @@
 	height: 100%;
 	z-index: 10;
 	background-color: rgba(0,0,0,0);
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 20%;
+  left: 0;
+  z-index: 9999;
+  background: #ffffff;
+  margin: 10%;
+  border-radius: 12upx;
+}
+
+.modal-title {
+  padding-top: 50upx;
+  font-size: 36upx;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 40upx 52upx;
+  font-size: 28upx;
+  color: rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 34upx;
+  padding: 0upx 50upx;
+}
+
+.btn_wrap{
+	flex: 1;
+  height: 94upx;
+  margin: 20upx 5%;
+  background: #427DFF;
+  border-radius: 12upx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 34upx;
+}
+
+.no_btn_wrap{
+	flex: 1;
+	height: 94upx;
+	margin: 20upx 5%;
+	background: rgba(0,0,0,0.15);
+	border-radius: 12upx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-size: 34upx;
 }
 
 </style>
