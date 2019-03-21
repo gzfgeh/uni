@@ -7,13 +7,13 @@
 		
 		<div class="content_wrap">
 			<radio-group @change="radioChange">
-                <label class="uni-center-item " v-for="(item, index) in items" :key="item.value">
+                <label class="uni-center-item " v-for="(item, index) in items" :value="index" :key="index">
                     <view class="radio_wrap">
 						<span>{{item.name}}</span>
 						<span class="price">{{item.price}}</span>
 					</view>
 					<view>
-                        <radio :value="item.value" :checked="index === current" />
+                        <radio :value="currentIndex" :checked="index === currentIndex" />
                     </view>
                     
                 </label>
@@ -22,7 +22,7 @@
 		
 		<view class="btn_wrap">
 		    <button  type="primary" class="primary" hover-class="button-hover"
-			@tap="bindLogin">下一步</button>
+			@tap="next">下一步</button>
 		    
 		</view>
 		
@@ -35,15 +35,25 @@
 		data(){
 			return {
 				items: [
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'},
-					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", value: 1, price: '新车参考价：258700元'}
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座", price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'},
+					{name: "双离合变速器2015款Sportback 300万纪念乐享型5座",  price: '新车参考价：258700元'}
 				],
-				current: 1
+				currentIndex: 1
+			}
+		},
+		
+		methods: {
+			radioChange(e){
+				console.log(e.mp.detail.value);
+				this.currentIndex = e.mp.detail.value;
+			},
+			next(){
+				
 			}
 		}
 	}
