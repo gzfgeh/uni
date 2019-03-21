@@ -25,11 +25,11 @@
 
 	  </div>
 
-	  <button class="button btn-primary abs" hover-class="button-hover">
+	  <button class="button btn-primary abs" hover-class="button-hover" @tap="next">
 		  下一步
 	  </button>
 	  
-	  <button class="button_contact btn-primary abs" hover-class="button-hover">
+	  <button class="button_contact btn-primary abs" hover-class="button-hover" @tap="callPhone">
 	  		  客服热线：400-088-0329
 	  </button>
 	  
@@ -105,16 +105,62 @@
                 keyboardThree: ['琼','渝','川','桂','云','藏','陕','甘'],
                 keyboardFour: ['青','黑','宁','新','港','澳','台'],
 				isShowKeyBoard: false,
-				activeText: "豫",
+				activeText: "陕",
 				activeImg: "../../static/img/arrow_down_icon.png",
 				pickerValueDefault:[0],
 				mode: '',
 				deepLength: 1,
 				themeColor: '#007AFF',
-				pickerValueArray:[],
 				mulLinkageTwoPicker: cityData,
-				pickerText: "上海",
-				showModal: true
+				pickerData: [
+						  {code: 610100, value:'西安市'},
+						  {code: 610200, value:'铜川市'},
+						  {code: 610300, value:'宝鸡市'},
+						  {code: 610400, value:'咸阳市'},
+						  {code: 610500, value:'渭南市'},
+						  {code: 610600, value:'延安市'},
+						  {code: 610700, value:'汉中市'},
+						  {code: 610800, value:'榆林市'},
+						  {code: 610900, value:'安康市'},
+						  {code: 611000, value:'商洛市'},
+
+						  {code: 450100, value:'南宁市'},
+						  {code: 450200, value:'柳州市'},
+						  {code: 450300, value:'桂林市'},
+						  {code: 450400, value:'梧州市'},
+						  {code: 450500, value:'北海市'},
+						  {code: 450600, value:'防城港市'},
+						  {code: 450700, value:'钦州市'},
+						  {code: 450800, value:'贵港市'},
+						  {code: 450900, value:'玉林市'},
+						  {code: 451000, value:'百色市'},
+						  {code: 451100, value:'贺州市'},
+						  {code: 451200, value:'河池市'},
+						  {code: 451300, value:'来宾市'},
+						  {code: 451400, value:'崇左市'}
+				  ],
+				  pickerValueArray: [['陕西', '广西'],
+						[
+						  '西安市',
+						  '铜川市',
+						  '宝鸡市',
+						  '咸阳市',
+						  '渭南市',
+						  '延安市',
+						  '汉中市',
+						  '榆林市',
+						  '安康市',
+						  '商洛市'
+						]
+					  
+					],
+				  pickerValueIndex: [0, 0],
+				  pickerText: '',
+				  pickerCode: 610100,
+				  showModal: false,
+				  license_no: '',
+				  city_name: '西安'
+	  
             }
         },
 		watch: {
@@ -143,27 +189,32 @@
 				this.$refs.mpvuePicker.show()
 			},
 			onConfirm(e) {
+				console.log(e);
 				this.pickerText = e.label;
+				this.pickerCode = e.value[1];
+				this.city_name = e.label.split("-")[1];
+			},
+			onCancle(e){
+				
 			},
 			
-            findPassword() {
-                /**
-                 * 仅做示例
-                 */
-                if (this.email.length < 3 || !~this.email.indexOf('@')) {
-                    uni.showToast({
-                        icon: 'none',
-                        title: '邮箱地址不合法',
-                    });
-                    return;
-                }
-                uni.showToast({
-                    icon: 'none',
-                    title: '已发送重置邮件至注册邮箱，请注意查收。',
-                    duration: 3000
-                });
-            }
-        }
+			callPhone(){
+				window.location.href = "tel:4000880329";
+			},
+			next(){
+				uni.navigateTo({
+				  url: "../user/user"
+				})
+			}
+			
+            
+        },
+		
+		onLoad () {
+			this.pickerText = this.pickerValueArray[0][this.pickerValueIndex[0]]+"-"
+						+this.pickerValueArray[1][this.pickerValueIndex[1]];
+		  },
+  
     }
 </script>
 

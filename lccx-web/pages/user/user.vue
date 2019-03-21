@@ -2,7 +2,7 @@
     <view class="content">
 		<div class="title_wrap uni-between-item">
 			<span>填写信息</span>
-			<span class="info">在哪儿查看?</span>
+			<span class="info" @tap="lookEx">在哪儿查看?</span>
 		</div>
 		
 		<div class="uni-inline-item">
@@ -51,7 +51,7 @@
 		
         <view class="btn_wrap">
             <button  type="primary" class="primary" hover-class="button-hover"
-			@tap="bindLogin">下一步</button>
+			@tap="next">下一步</button>
             
         </view>
 		
@@ -59,11 +59,12 @@
 		<div class="modal-mask" v-if="isShowModal"></div>
 		<div class="modal-dialog" v-if="isShowModal">
 			<div class="modal-title">行驶证识别</div>
-			<img :src="imageSrc" class="info_img">
-			<div class="info">请将手机横向拍摄，保证照片清晰无反光</div>
-			<button type="primary" class="take_photo_btn" @click="showBottomPopup">拍摄或选择照片</button>
+			<img :src="file_url" class="info_img">
+			<div class="info" v-if="isShowBtn">请将手机横向拍摄，保证照片清晰无反光</div>
+			<button type="primary" class="take_photo_btn" @click="showBottomPopup" v-if="isShowBtn">拍摄或选择照片</button>
 		</div>
-		<img src="../../static/img/close.png" class="close_icon" @tap="closeModal">
+		<img src="../../static/img/close.png" class="close_icon" v-if="isShowModal"
+				:class="{'close_show_icon':!isShowBtn}" @tap="closeModal">
 		
 		
 		
@@ -71,6 +72,8 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL } from "@/utils/api";
+	
     import {
         mapState,
         mapMutations
@@ -81,6 +84,7 @@
 			return {
 				car_num: "LFVGAYH*****123817",
 				isShowModal: false,
+				isShowBtn: true,
 				name: '',
 				card_num: '',
 				phone: '',
@@ -88,7 +92,8 @@
 				title: 'popup',
 				showPopupBottom: false,
 				msg: '',
-				imageSrc: '../../static/img/take_photo_ex.png'
+				imageSrc: '../../static/img/take_photo_ex.png',
+				file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 			}
 		},
         computed: {
@@ -98,6 +103,8 @@
             ...mapMutations(['logout']),
 			showModal(){
 				this.isShowModal = true;
+				this.isShowBtn = true;
+				this.file_url = BASE_IMAGE_URL+'take_photo_ex.png';
 			},
 			closeModal(){
 				this.isShowModal = false;
@@ -112,21 +119,16 @@
 				})
 			},
 			
-            bindLogin() {
+			lookEx: function(){
+				this.isShowModal = true;
+				this.isShowBtn = false;
+				this.file_url = BASE_IMAGE_URL+'take_photo_exg.png'
+			},
+			
+            next() {
                 uni.navigateTo({
-                    url: '../login/login',
+                    url: '../carmodal/carmodal',
                 });
-            },
-            bindLogout() {
-                this.logout();
-                /**
-                 * 如果需要强制登录跳转回登录页面
-                 */
-                if (this.forcedLogin) {
-                    uni.reLaunch({
-                        url: '../login/login',
-                    });
-                }
             }
         }
     }
@@ -269,6 +271,16 @@
 	.input-placeholder{
 		color: rgba(0,0,0,0.3);
 		font-size: 28upx;
+	}
+	
+	.close_show_icon{
+		width: 48upx;
+		height: 48upx;
+		position: fixed;
+		bottom: 400upx;
+		left: 50%;
+		margin-left: -24upx;
+		z-index: 1000;
 	}
 
 </style>

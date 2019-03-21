@@ -1,0 +1,1 @@
+export const BASE_IMAGE_URL = 'https://api.kaikaibao.com.cn/lccx/images/'
