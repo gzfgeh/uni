@@ -12,18 +12,18 @@ request.config.baseURL = 'https://api.kaikaibao.com.cn'
 tokenFly.config = request.config
 
 request.interceptors.request.use((request) => {
-    if (wx.getApp().globalData.showLoading) {
-        wx.showLoading({ title: '加载中...' })
+    if (getApp().globalData.showLoading) {
+        uni.showLoading({ title: '加载中...' })
     }
 
     console.log('----------------')
-    let token = wx.getStorageSync('token')
+    let token = uni.getStorageSync('token')
     if (token) {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
 
-    if (wx.getStorageSync('device_id')) {
-        request.headers["x-lccx-did"] = wx.getStorageSync('device_id')
+    if (uni.getStorageSync('device_id')) {
+        request.headers["x-lccx-did"] = uni.getStorageSync('device_id')
     }
     return request
 })
@@ -31,27 +31,27 @@ request.interceptors.request.use((request) => {
 request.interceptors.response.use(
     function(response, promise) { // 不要使用箭头函数，否则调用this.lock()时，this指向不对
         console.log('interceptors.response', response)
-        wx.hideLoading()
+        uni.hideLoading()
         return promise.resolve(response.data)
     },
     function(err, promise) {
         console.log('error-interceptor')
 
-        wx.hideLoading()
+        uni.hideLoading()
         let errorMsg = ''
         if (err.status == 401) {
             console.log('token失效，重新请求token...')
                 // this.lock() // 锁定响应拦截器，
-            wx.login({
+            uni.login({
                 success: function(res) {
                     if (res.code) {
-                        wx.setStorageSync('code', res.code);
+                        uni.setStorageSync('code', res.code);
                         loginAgain(res.code)
                             .then((d) => {
                                 let token = d.data.data.token;
                                 console.log('token已更新，值为: ' + token);
-                                wx.setStorageSync('token', token);
-                                wx.setStorageSync('session_key', d.data.data.session_key);
+                                uni.setStorageSync('token', token);
+                                uni.setStorageSync('session_key', d.data.data.session_key);
                             })
                     } else {
                         console.log('获取用户登录态失败！' + res.errMsg)
@@ -76,7 +76,7 @@ request.interceptors.response.use(
             }
         }
         if (errorMsg) {
-            wx.showToast({
+            uni.showToast({
                 title: errorMsg,
                 icon: 'none',
                 duration: 2000

@@ -18,14 +18,15 @@
 		  <div class="uni-inline-item">
 			  <span @tap="showKeyBoard">{{activeText}}</span>
 			  <image :src="activeImg" @tap="showKeyBoard"></image>
-			  <input type="text" placeholder="请输入车牌号" placeholder-class="place-holder">
+			  <input type="text" placeholder="请输入车牌号" v-model="license_no"
+				placeholder-class="place-holder">
 		  </div>
 		  
 		</div>
 
 	  </div>
 
-	  <button class="button btn-primary abs" hover-class="button-hover" @tap="next">
+	  <button class="button btn-primary abs" hover-class="button-hover" @tap="quotation">
 		  下一步
 	  </button>
 	  
@@ -92,6 +93,8 @@
     import mInput from '../../components/m-input.vue';
 	import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 	import cityData from '../../common/city.data.js';
+	
+	import { BASE_IMAGE_URL,quotations} from "@/utils/api";
 
     export default {
         components: {
@@ -139,7 +142,7 @@
 						  {code: 451300, value:'来宾市'},
 						  {code: 451400, value:'崇左市'}
 				  ],
-				  pickerValueArray: [['陕西', '广西'],
+				  pickerValueArray: [['陕西省', '广西省'],
 						[
 						  '西安市',
 						  '铜川市',
@@ -205,7 +208,39 @@
 				uni.navigateTo({
 				  url: "../user/user"
 				})
-			}
+			},
+			async quotation(){
+				let that = this;
+				if(!this.license_no){
+					uni.showToast({
+					icon: 'none',
+					title: '请输入车牌号',
+					duration: 1000
+				  });
+				  return;
+				};
+
+				let params = {
+				  city: that.pickerCode,
+				  license_no: this.activeText+this.license_no,
+				  city_name: this.city_name
+				};
+				
+
+				let res = await quotations(params);
+				if(res.code == 200){
+				  console.log(res);
+				  params.quotation_id = res.data.id;
+				  uni.setStorageSync("global", params);
+				  that.next();
+				}else{
+				  uni.showToast({
+					icon: 'none',
+					title: res.msg,
+					duration: 1000
+				  });
+				}
+			  },
 			
             
         },
