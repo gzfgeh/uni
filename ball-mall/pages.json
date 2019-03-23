@@ -1,0 +1,60 @@
+{
+    "pages" : [
+		{
+		    "path" : "pages/main/main",
+		    "style" : {
+		        "navigationBarTitleText" : "我的订单"
+		    }
+		},
+        {
+            "path" : "pages/user/user",
+            "style" : {
+                "navigationBarTitleText" : "用户信息"
+            }
+        },
+        {
+            "path" : "pages/mall_list/mall_list",
+            "style" : {
+                "navigationBarTitleText" : "水果"
+            }
+        },
+		{
+		    "path" : "pages/list_detail/list_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "修改价格"
+		    }
+		},
+		{
+		    "path" : "pages/shopping_card/shopping_card",
+		    "style" : {
+		        "navigationBarTitleText" : "购物车"
+		    }
+		}
+        
+    ],
+    "tabBar" : {
+        "color" : "#7a7e83",
+        "selectedColor" : "#0faeff",
+        "backgroundColor" : "#ffffff",
+        "list" : [
+            			{
+                        "pagePath": "pages/main/main",
+                        "text": "首页",
+                        "iconPath": "static/img/home.png",
+                        "selectedIconPath": "static/img/homeHL.png"
+                    }, {
+                        "pagePath": "pages/user/user",
+                        "text": "我的",
+                        "iconPath": "static/img/user.png",
+                        "selectedIconPath": "static/img/userHL.png"
+                    }
+        ]
+    },
+	"globalStyle": { 
+		"navigationBarTextStyle": "black", 
+		"navigationBarBackgroundColor": "#fff", 
+		"backgroundColor": "#fbf9fe", 
+		"navigationStyle": "default", 
+		"enablePullDownRefresh": true 
+	} 
+}

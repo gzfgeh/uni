@@ -1,64 +1,43 @@
 <template>
     <view class="content">
 		<div class="title_wrap uni-between-item">
-			<span>填写信息</span>
-			<span class="info" @tap="lookEx">在哪儿查看?</span>
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>车架号</span>
-			<input type="text"  class="item_input" v-model="frameNo" @blur="watchInput"
-          placeholder-class="place-holder" placeholder="请输入车架号">
+			<span>品类</span>
+			<span>广西甜橘</span>
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>发动机号</span>
-			<input type="text"  class="item_input" v-model="engineNo" @blur="watchEngineInput"
-          placeholder-class="place-holder" placeholder="请输入证件号码">
+			<span>特色</span>
+			<span>饱满果肉 甜蜜多汁</span>
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>初登日期</span>
-			<picker mode="date" @change="dateChange" :value="firstRegisterDate">
-				<div class="item_input">
-				  {{firstRegisterDate}}
-				</div>
-			  </picker>
+			<span>优惠</span>
+			<span>限量抢购</span>
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>品牌型号</span>
-			<input type="text"  class="item_input" v-model="brandCode" 
-          placeholder-class="place-holder" placeholder="请输入品牌型号">
+			<span>原价</span>
+			<input type="text">
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>车主姓名</span>
-			<input type="text" v-model="name" placeholder="请输入车主姓名"
-				placeholder-class="input-placeholder" class="item_input">
+			<span>现价</span>
+			<input type="text">
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>身份证号</span>
-			<input type="text" v-model="idcard" placeholder="请输入证件号码"
-				placeholder-class="input-placeholder" class="item_input">
+			<span>类型</span>
+			<span>1.5袋/个</span>
 		</div>
 		
-		<div class="uni-inline-item">
-			<span>手机号码</span>
-			<input type="tel" v-model="mobile" placeholder="请输入手机号码"
-				placeholder-class="input-placeholder" class="item_input">
-		</div>
-		
-		<div class="take_photo_wrap uni-center-item" @tap="showModal">
-			<img src="../../static/img/take_photo.png" alt="">
-			<span>识别行驶证，自动填信息</span>
-		</div>
 		
 		
         <view class="btn_wrap">
             <button  type="primary" class="primary" hover-class="button-hover"
-			@tap="next">下一步</button>
+			@tap="next">发布</button>
             
         </view>
 		
@@ -80,7 +59,6 @@
 
 <script>
 	import { BASE_IMAGE_URL,basic,getVechileData } from "@/utils/api";
-	import {isChinese} from '../../utils'
 	
 
     export default {
@@ -118,13 +96,8 @@
 			}
 		},
 		onLoad () {
-			  this.license_no = this.$root.$mp.query.license_no?this.$root.$mp.query.license_no:'陕AL800U';
-			  this.id = this.$root.$mp.query.id?this.$root.$mp.query.id:'9';
-			  this.getVechileData();
-			  this.isShowBtn = true;
-			  console.log('this.globalData.billInfo');
-			  console.log(this.globalData);
-		  },
+			
+		},
         methods: {
 			dateChange: function(e){
 			  console.log(e.mp.detail.value);
@@ -150,59 +123,6 @@
 			  this.trueEngineNo= value.toLocaleUpperCase();
 			  this.engineNo = this.trueEngineNo;
 			},
-	
-			//展示底部 popup
-			showBottomPopup: function() {
-				var _this = this
-				uni.chooseImage({
-					success: function (res) {
-						uni.showLoading({ title: "上传中..." });
-						  uni.uploadFile({
-							url:"https://api.kaikaibao.com.cn/3.1/ocr",
-							filePath: res.tempFilePaths[0],
-							name: "file",
-							header: { 
-							  "Content-Type": "application/json",
-							  "Authorization": "Bearer "+uni.getStorageSync('token'),
-							  "x-lccx-did":uni.getStorageSync('device_id') },
-							formData: {"file":res.tempFilePaths[0]},
-							success: function(data) {
-							  console.log(JSON.parse(data.data).data.words_result);
-							  that.isShowModal = false;
-							  uni.hideLoading();
-							  // that.file_url = JSON.parse(data.data).data.url;
-							  uni.showToast({
-								icon: 'none',
-								title: '上传成功',
-								duration: 1000
-							  });
-							  let result = JSON.parse(data.data).data.words_result;
-							  Object.keys(result).forEach(function(key){
-								  if(key == "发动机号码"){
-									  that.engineNo = result[key].words;
-									  that.trueEngineNo = that.engineNo;
-								  }else if(key == '注册日期'){
-									  that.firstRegisterDate = result[key].words.substring(0, 4)+"-"
-											+ result[key].words.substring(4, 6) +"-"
-											+ result[key].words.substring(6, 8);
-								  }else if(key == '品牌型号'){
-									that.brandCode = result[key].words;
-								  }else if(key == '车辆识别代号'){
-									that.frameNo = result[key].words;
-									that.trueFrameNo = that.frameNo;
-								  }else if(key == '所有人'){
-									that.name = result[key].words;
-								  }else if(key == '号牌号码'){
-									that.license_no = result[key].words;
-								  }
-							  });
-							  
-							}
-						  });
-		  
-					},
-				})
-			},
 			
 			lookEx: function(){
 				this.isShowModal = true;
@@ -211,9 +131,9 @@
 			},
 			
             next() {
-                uni.navigateTo({
-                    url: '../carmodal/carmodal',
-                });
+//                 uni.navigateTo({
+//                     url: '../carmodal/carmodal',
+//                 });
             },
 			
 			async getVechileData(){
@@ -319,10 +239,6 @@
 	}
 	
 	.title_wrap{
-		padding: 18upx 32upx 14upx;
-		color: #989898;
-		font-size: 26upx;
-		border-top: 2upx solid rgba(0,0,0,0.1);
 		border-bottom: 2upx solid rgba(0,0,0,0.1);
 	}
 	

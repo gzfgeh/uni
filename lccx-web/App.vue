@@ -122,4 +122,8 @@
 		display: flex; flex-direction: column; align-items: center; justify-content: center;}
 	.no_data_wrap img{width: 288upx; height: 270upx;}
 	.no_data_wrap span{color: #9F9F9F; font-size: 28upx; margin-top: 40upx;}
+	.place-holder{
+	  font-size: 28upx;
+	  color: rgba(0,0,0,0.3);
+	}
 </style>
