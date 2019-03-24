@@ -29,6 +29,24 @@
 		    "style" : {
 		        "navigationBarTitleText" : "购物车"
 		    }
+		},
+		{
+		    "path" : "pages/bind_phone/bind_phone",
+		    "style" : {
+		        "navigationBarTitleText" : "登录"
+		    }
+		},
+		{
+		    "path" : "pages/reg/reg",
+		    "style" : {
+		        "navigationBarTitleText" : "审核资质"
+		    }
+		},
+		{
+		    "path" : "pages/order_list/order_list",
+		    "style" : {
+		        "navigationBarTitleText" : "订单列表"
+		    }
 		}
         
     ],

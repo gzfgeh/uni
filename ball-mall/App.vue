@@ -138,5 +138,5 @@
 	.col_around{display: flex;flex-direction: column;justify-content: space-around;align-items: center;}
 	
 	.col_between{display: flex;flex-direction: column;justify-content: space-between;align-items: center;}
-	.flex_one{flex: 1}
+	.flex_one{flex: 1; display: flex;}
 </style>

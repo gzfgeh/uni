@@ -1,15 +1,16 @@
 <template>
     <view class="content">
 		<view class="uni-center-item title">
-			快捷登录注册
+			快捷登录
 		</view>
 		<view class="input-row border">
-			<m-input class="m-input" type="text"  placeholder-class="input_place_holder" focus v-model="account" placeholder="请输入手机号"></m-input>
-			<utext>|</utext>
-			<text class="get_code">发送验证码</text>
+			<m-input class="m-input" type="tel"  placeholder-class="input_place_holder" 
+				focus v-model="account" placeholder="请输入手机号" maxLength="11"></m-input>
+			
+			<text class="get_code" @click="getCodeAction">{{count_text}}</text>
 		</view>
 		<view class="input-row">
-			<m-input type="password" v-model="password" placeholder="请输入验证码"></m-input>
+			<m-input type="tel" v-model="password" placeholder="请输入验证码"></m-input>
 		</view>
         
         <view>
@@ -36,7 +37,11 @@
                 hasProvider: false,
                 account: '',
                 password: '',
-                positionTop: 0
+                positionTop: 0,
+				isSending: false,
+				intervalObj: {}, 
+				time: 60,
+				count_text: '发送验证码'
             }
         },
         computed: mapState(['forcedLogin']),
@@ -64,6 +69,46 @@
                     }
                 });
             },
+			getCodeAction(){
+				if(!this.isSending){
+					this.getCode();
+				}
+			},
+			getCode(){
+				console.log(this.account);
+				if((!this.account) || (this.account.length != 11)){
+					uni.showToast({
+					  icon: 'none',
+					  title: '手机号输入错误',
+					  duration: 1000
+					});
+					return;
+				}
+				
+				uni.showToast({
+				  icon: 'none',
+				  title: '发送成功',
+				  duration: 1000
+				});
+				this.isSending = true;
+				this.countDown();
+			},
+			
+			countDown() {
+				let that = this;
+			    this.intervalObj = setInterval(function() {
+			        that.time--;
+			        if (that.time <= 0) {
+			            that.time = 60;
+			            clearInterval(that.intervalObj);
+						that.count_text = "重新获取";
+			        } else {
+						that.count_text = "重新获取("+that.time+"s)";
+			        }
+			
+			    }, 1000);
+			},
+			
             initPosition() {
                 /**
                  * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。

@@ -434,12 +434,13 @@ page{
 .list_wrap{
   border-top: 1px solid #dddddd;
 	width: 100%;
+	margin-bottom: 100upx;
 }
 .item_wrap{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20upx;
+  margin-bottom: 10upx;
   align-items: center;
   background: #ffffff;
   padding: 0upx 40upx 0upx 20upx;

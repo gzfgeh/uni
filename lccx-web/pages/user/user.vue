@@ -58,7 +58,7 @@
 		
         <view class="btn_wrap">
             <button  type="primary" class="primary" hover-class="button-hover"
-			@tap="next">下一步</button>
+			@tap="basic">下一步</button>
             
         </view>
 		
