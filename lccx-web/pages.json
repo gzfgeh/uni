@@ -2,6 +2,12 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/carmodal/carmodal",
+		    "style" : {
+		        "navigationBarTitleText" : "车型"
+		    }
+		},
+		{
 		    "path" : "pages/baojia/baojia",
 		    "style" : {
 		        "navigationBarTitleText" : "快速报价"
@@ -37,12 +43,7 @@
                 "navigationBarTitleText" : "商业险"
             }
         },
-        {
-            "path" : "pages/carmodal/carmodal",
-            "style" : {
-                "navigationBarTitleText" : "车型"
-            }
-        },
+        
         {
             "path" : "pages/user/user",
             "style" : {

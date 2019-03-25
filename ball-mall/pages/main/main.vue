@@ -1,6 +1,6 @@
 <template>
     <div class="app">
-        <img :src="home_pic" mode="widthFix" class="head_img">
+        <img src="../../static/img/home_top.png" mode="widthFix" class="head_img">
 
         <div class="row_around content_wrap">
 			<view class="col_center item_wrap" hover-class="uni-list-cell-hover" @tap="goDetail(0)">

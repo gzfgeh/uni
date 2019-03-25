@@ -9,49 +9,49 @@
 			</div>
 			
 			<div class="price">
-				<span>40元/月+0.07元/公里</span>
-				<span class="name">交强险 650元+车船税 320元</span>
+				<span>{{item.monthly_expense}}元/月+{{item.mileage_expense}}元/公里</span>
+				<span class="name">交强险 {{item.compulsory}}元+车船税 {{item.tax}}元</span>
 			</div>
 			
 		</div>
 		
 		<div class="address_wrap uni-between-item">
 			<span>投保地区</span>
-			<span>上海市静安区</span>
+			<span>{{item.city_name}}</span>
 		</div>
 		
 		<div class="title uni-between-item">
 			<span>商业险</span>
-			<span class="change">调整</span>
+			<span class="change" @tap="changeBill">调整</span>
 		</div>
 		
 		<div class="content_wrap">
 			<div class="content_item uni-between-item">
 				<div>
 					<span>机动车损失险</span>
-					<span class="tag">不计免赔</span>
+					<span class="tag" v-if="item.quote_details.excluding">不计免赔</span>
 				</div>
 				
-				<div>投保</div>
+				<div>{{item.quote_details.destroy?'投保':'不投保'}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<div>
 					<span>第三者责任险</span>
-					<span class="tag">不计免赔</span>
+					<span class="tag" v-if="item.quote_details.excluding" >不计免赔</span>
 				</div>
 				
-				<div>150万</div>
+				<div>{{item.quote_details.liability}}万</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>司机责任险</span>
-				<div>150万</div>
+				<div>{{item.quote_details.driver_seat}}万</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>乘客责任险</span>
-				<div>150万</div>
+				<div>{{item.quote_details.passenger_seat}}万</div>
 			</div>
 			
 			
@@ -66,18 +66,18 @@
 			<div class="content_item uni-between-item">
 				<span>姓名</span>
 				
-				<div>投保</div>
+				<div>{{item.name}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>手机号</span>
 				
-				<div>150万</div>
+				<div>{{item.trueMobile}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>身份证号</span>
-				<div>150万</div>
+				<div>{{item.trueIdcard}}</div>
 			</div>
 		</div>
 		
@@ -89,29 +89,29 @@
 			<div class="content_item uni-between-item">
 				<span>车牌号码</span>
 				
-				<div>投保</div>
+				<div>{{item.license_no}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>品牌型号</span>
 				
-				<div>150万</div>
+				<div>{{item.brand}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>车辆识别代码</span>
-				<div>150万</div>
+				<div>{{item.trueVin}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>发动机号码</span>
 				
-				<div>150万</div>
+				<div>{{item.trueEngineNo}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>注册日期</span>
-				<div>150万</div>
+				<div>{{item.first_reg_date}}</div>
 			</div>
 			
 		</div>
@@ -123,13 +123,108 @@
 		  </div>
 
 
-		  <div class=" button" >我要投保</div>
+		  <div class=" button" @click="applyUnderwrite">我要投保</div>
   
 		
 	</div>
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getQuotations,applyUnderwrite } from "@/utils/api";
+	
+	export default {
+	  data () {
+		return {
+		  global: {},
+		  item: {
+			  quote_details: {}
+		  },
+		  quote_result: {}
+		}
+	  },
+
+	  methods: {
+		next: function(){
+		  const url = '../pay_address/main';
+		  uni.navigateTo({ url })
+		},
+
+		async applyUnderwrite(){
+		  let params = {
+			"insurer": this.item.quote_result.data[0].insurerCode,
+			"biz_id": this.item.biz_id,
+			"channel_code": "QUANLIAN_PROXY_INSURE",
+			"address_name": this.global.name,
+			"address_mobile": this.global.mobile,
+			"address_details": "路",
+			"address_county": "110112",
+			"address_city": "110100",
+			"address_province": "110000",
+			"policy_email": "caingougou@qq.com"
+		  };
+
+		  let res = await applyUnderwrite(params);
+		  if(res.code == 200){
+			this.global.monthly_expense = this.item.monthly_expense;
+			this.global.mileage_expense = this.item.mileage_expense;
+			this.global.compulsory = this.item.compulsory;
+			this.global.tax = this.item.tax;
+			uni.setStorageSync('global', this.global);
+			this.next();
+		  }
+		},
+
+		async getQuotations(){
+		  let res = await getQuotations(this.global.quotation_id);
+		  if(res.code == 200){
+			  console.log(res.data);
+			this.item = res.data;
+			this.item.quote_details = JSON.parse(this.item.quote_details);
+			if(parseInt(this.item.quote_details.liability) > 1000){
+			  this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000);
+			}
+
+			if(parseInt(this.item.quote_details.driver_seat) > 1000){
+			  this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000);
+			}
+
+			if(parseInt(this.item.quote_details.passenger_seat) > 1000){
+			  this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000);
+			}
+
+			if(this.item.mobile){
+			  this.item.trueMobile = this.item.mobile.substring(0,3)+"****"+this.item.mobile.substring(7,11);
+			}
+
+			if(this.item.idcard){
+			  this.item.trueIdcard = this.item.idcard.substring(0,3)+"***********"+this.item.idcard.substring(14,18);
+			}
+
+			if(this.item.vin){
+			  this.item.trueVin = this.item.vin.substring(0,3)+"***********"+this.item.vin.substring(this.item.vin.length-3,this.item.vin.length);
+			}
+
+			if(this.item.engine_no){
+			  this.item.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
+			}
+
+			this.item.quote_details.excluding = this.item.quote_details.excluding == "true";
+
+			console.log(this.item);
+			this.global.biz_id = this.item.biz_id;
+			this.item.quote_result = JSON.parse(this.item.quote_result);
+			this.$forceUpdate();
+		  }
+		}
+
+	  },
+
+	  onLoad(){
+		this.global = uni.getStorageSync("global");
+		this.getQuotations();
+	  }
+
+	}
 </script>
 
 <style>

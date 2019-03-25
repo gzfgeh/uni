@@ -153,9 +153,10 @@
 	
 			//展示底部 popup
 			showBottomPopup: function() {
-				var _this = this
+				var that = this
 				uni.chooseImage({
 					success: function (res) {
+						console.log(res.tempFilePaths[0]);
 						uni.showLoading({ title: "上传中..." });
 						  uni.uploadFile({
 							url:"https://api.kaikaibao.com.cn/3.1/ocr",
@@ -165,12 +166,12 @@
 							  "Content-Type": "application/json",
 							  "Authorization": "Bearer "+uni.getStorageSync('token'),
 							  "x-lccx-did":uni.getStorageSync('device_id') },
-							formData: {"file":res.tempFilePaths[0]},
+							// formData: {"file":res.tempFilePaths[0]},
 							success: function(data) {
 							  console.log(JSON.parse(data.data).data.words_result);
 							  that.isShowModal = false;
 							  uni.hideLoading();
-							  // that.file_url = JSON.parse(data.data).data.url;
+							  that.file_url = JSON.parse(data.data).data.url;
 							  uni.showToast({
 								icon: 'none',
 								title: '上传成功',
@@ -197,6 +198,13 @@
 								  }
 							  });
 							  
+							},
+							fail: function(){
+								uni.showToast({
+									icon: 'none',
+									title: '上传失败',
+									duration: 1000
+								});
 							}
 						  });
 		  

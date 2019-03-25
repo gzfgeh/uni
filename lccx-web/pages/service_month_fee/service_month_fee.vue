@@ -3,7 +3,7 @@
   <div class="head_wrap">
     <div>每月服务费</div>
     <div>本服务包不包含交强险与车船税价格</div>
-    <div>（交强险 650元+车船税320元）</div>
+    <div>（交强险 {{item.ci_prenium}}元+车船税{{item.tax}}元）</div>
   </div>
 
   <div class="price_wrap">
@@ -11,7 +11,7 @@
       <span class="price_text">基础服务费</span>
       <div class="item">
         <span>¥</span>
-        <span class="num">40.00</span>
+        <span class="num">{{item.monthly_expense}}</span>
         <span>/月</span>
       </div>
     </div>
@@ -20,7 +20,7 @@
       <span class="price_text">基础服务费</span>
       <div class="item">
         <span>¥</span>
-        <span class="num">40.00</span>
+        <span class="num">{{item.mileage_expense}}</span>
         <span>/月</span>
       </div>
     </div>
@@ -39,25 +39,61 @@
 	    <span style="color: #427DFF;">《服务条款》</span>
 	  </div>
 	  
-	  <div class=" button" >下一步</div>
+	  <div class=" button" @tap="next">下一步</div>
 	  
   </div>
+	
+	<div class="modal-mask" @tap="hideModal" v-if="showModal"></div>
+      <div class="modal-dialog" v-if="showModal">
+      <div class="modal-title">报价失败</div>
+      <div class="modal-content">
+        请确认您的爱车是否已进入投保期。若仍报价请确认您的爱车是否已进入投保期。若仍报价失败，请稍后重试。
+      </div>
+      <div class="modal-footer" >
+        <div class="btn_wrap" hover-class="btn_hover" @click="closeModal">
+          
+          <span>返回</span>
+        </div>
+      </div>
+    </div>
+		
 
 </div>
 </template>
 <script>
 
+import { BASE_IMAGE_URL,result } from "@/utils/api";
+
 export default {
   data () {
     return {
-      userInfo: {}
+      global: '',
+      item: '',
+      showModal: false,
     }
   },
 
   methods: {
+    next () {
+      const url = '../service_confirm/service_confirm';
+      uni.navigateTo({ url })
+    },
+    async result(){
+      let res = await result(this.global.quotation_id);
+      if(res.code == 200){
+        this.item = res.data;
+        this.item.monthly_expense = this.item.monthly_expense.toFixed(2);
+        this.item.mileage_expense = this.item.mileage_expense.toFixed(2);
+      }
+    },
+    closeModal: function(){
+      this.showModal = false;
+    }
   },
 
-  created () {
+  onLoad () {
+    this.global = uni.getStorageSync("global");
+    this.result();
   },
 
 }
@@ -65,7 +101,7 @@ export default {
 
 <style >
   .head_wrap{
-    padding: 60rpx 0rpx 40rpx;
+    padding: 60upx 0upx 40upx;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -78,23 +114,23 @@ export default {
   .head_wrap>div:nth-child(1){
     font-weight: bold;
     color: #000000;
-    font-size: 50rpx;
+    font-size: 50upx;
   }
 
   .head_wrap>div:nth-child(2){
-    font-size: 28rpx;
+    font-size: 28upx;
     color: #717171;
   }
 
   .head_wrap>div:nth-child(3){
-    font-size: 24rpx;
+    font-size: 24upx;
     color: #BBBBBB;
   }
 
   .price_wrap{
     width: 92%;
     margin-left: 4%;
-    height: 252rpx;
+    height: 252upx;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -102,28 +138,28 @@ export default {
   }
 
   .price_item{
-    width: 316rpx;
-    height: 232rpx;
+    width: 316upx;
+    height: 232upx;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border-radius: 20rpx;
-    box-shadow: 0rpx 0rpx 20rpx 0rpx #EAEAEA;
-    padding: 30rpx 0rpx;
+    border-radius: 20upx;
+    box-shadow: 0upx 0upx 20upx 0upx #EAEAEA;
+    padding: 30upx 0upx;
     box-sizing: border-box;
     
   }
   
   .price_item .item{
-      font-size: 24rpx;
+      font-size: 24upx;
       
     }
 	
 	.price_item .item .num{
-        font-size: 60rpx;
+        font-size: 60upx;
         color: #E30000;
-        margin: 0rpx 5rpx;
+        margin: 0upx 5upx;
       }
 
   .add_icon{
@@ -131,7 +167,7 @@ export default {
   }
 
   .price_text{
-    font-size: 28rpx;
+    font-size: 28upx;
     color: #BBBBBB;
   }
 
@@ -139,8 +175,8 @@ export default {
     color: #000000;
     font-weight: bold;
     margin-left: 5%;
-    padding: 0rpx 14rpx;
-    margin-top: 40rpx;
+    padding: 0upx 14upx;
+    margin-top: 40upx;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -149,11 +185,11 @@ export default {
   
   .content_wrap .line{
       display: inline-block;
-      width: 10rpx;
+      width: 10upx;
       height: 100%;
       background-color: #427DFF;
-      height: 30rpx;
-      margin-right: 20rpx;
+      height: 30upx;
+      margin-right: 20upx;
     }
 
   .service_wrap{
@@ -168,7 +204,7 @@ export default {
       flex-direction: row;
       align-items: center;
       background-color: #FFB876;
-      margin-bottom: 4rpx;
+      margin-bottom: 4upx;
       
     }
 	
@@ -181,27 +217,98 @@ export default {
         flex: 2;
         background-color: #FFFFFF;
         color: #424242;
-        padding: 26rpx 34rpx;
-        font-size: 24rpx;
+        padding: 26upx 34upx;
+        font-size: 24upx;
       }
 
   .service_look{
-    font-size: 30rpx;
-    margin-top: 20rpx;
+    font-size: 30upx;
+    margin-top: 20upx;
     color: #676767;
   }
 
 .button{
-  margin: 40rpx 0;
+  margin: 40upx 0;
   width: 100%;
-  height: 94rpx;
-  line-height: 94rpx;
+  height: 94upx;
+  line-height: 94upx;
   color: #ffffff;
   background-color: #427DFF;
-  border-radius: 10rpx;
+  border-radius: 10upx;
   text-align: center;
   box-sizing: border-box;
     
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 15%;
+  left: 0;
+  z-index: 9999;
+  background: #ffffff;
+  margin: 10%;
+  border-radius: 12upx;
+}
+
+.modal-title {
+  padding-top: 50upx;
+  font-size: 36upx;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 40upx 52upx;
+  font-size: 28upx;
+  color: rgba(0,0,0,0.6)
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 34upx;
+}
+
+.btn_wrap{
+  width: 80%;
+  height: 94upx;
+  margin: 20upx 10%;
+  background: #427DFF;
+  border-radius: 12upx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.btn_wrap img{
+  width: 44upx;
+  height: 44upx;
+  margin-right: 12upx;
+}
+
+.btn_wrap span{
+  font-size: 34upx;
+}
+.btn_hover{
+  background: #0000FF;
 }
 
 
