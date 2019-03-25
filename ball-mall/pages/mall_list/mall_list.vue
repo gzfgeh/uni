@@ -26,7 +26,7 @@
 							<div class="item_content_wrap">
 								<div class="item_title">广西柑橘</div>
 								<div class="sub_title">饱满果肉 甜蜜多汁</div>
-								<span class="item_tag">限量抢购</span>
+								<!-- <span class="item_tag">限量抢购</span> -->
 								<div class="bottom_wrap">
 									<span class="price">￥26</span>
 									<span class="old_price">￥38</span>
@@ -58,7 +58,7 @@
 		</swiper>
 		
 		<div class="gou_wu_che" @click="goToShopping">
-			<img src="../../static/img/no_data.png" >
+			<img src="../../static/img/shopping_card_icon.jpg" >
 			<span>4</span>
 		</div>
 		

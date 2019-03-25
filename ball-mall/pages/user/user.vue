@@ -10,7 +10,7 @@
 
         <hr>
 		
-		<div class="item_wrap" @click="register">
+		<!-- <div class="item_wrap" @click="register">
 		    <div class="row_center left_wrap">
 		        <img :src="share" >
 		        <span>资质审核</span>
@@ -28,7 +28,7 @@
             <img :src="right">
         </div>
 		
-		<hr>
+		<hr> -->
 
         <!-- <div class="item_wrap" @click="apply">
             <div class="row_center left_wrap" >

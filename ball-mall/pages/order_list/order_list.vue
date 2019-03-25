@@ -57,7 +57,7 @@
 		</swiper>
 		
 		<div class="gou_wu_che" @click="goToShopping">
-			<img src="../../static/img/no_data.png" >
+			<img src="../../static/img/shopping_card_icon.jpg" >
 			<span>4</span>
 		</div>
 		
