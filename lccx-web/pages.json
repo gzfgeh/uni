@@ -2,6 +2,31 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/pay_two/pay_two",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		{
+		    "path" : "pages/pay_one/pay_one",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		
+		{
+		    "path" : "pages/order_one_detail/order_one_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "详情"
+		    }
+		},
+		{
+		    "path" : "pages/order_two_detail/order_two_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "详情"
+		    }
+		},
+		{
 		    "path" : "pages/carmodal/carmodal",
 		    "style" : {
 		        "navigationBarTitleText" : "车型"
