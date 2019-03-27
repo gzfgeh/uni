@@ -123,8 +123,8 @@
 				})
 			},
 			contactUs: function(){
-				wx.openDocument({
-				    filePath: '../../static/img/contact.doc',
+				uni.openDocument({
+				    filePath: BASE_IMAGE_URL+'contact.doc',
 				    fileType:'doc',
 				    success: function (res) {
 				        console.log(res);
@@ -132,6 +132,17 @@
 				    }
 				})
 			},
+			aboutUs: function(){
+				uni.openDocument({
+				    filePath: BASE_IMAGE_URL+'about.doc',
+				    fileType:'doc',
+				    success: function (res) {
+				        console.log(res);
+				        console.log('打开文档成功'+res)
+				    }
+				})
+			},
+			
         }
     }
 </script>

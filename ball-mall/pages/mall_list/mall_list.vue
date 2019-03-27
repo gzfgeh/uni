@@ -1,79 +1,55 @@
 <template>
-	<view class="uni-tab-bar">
-		<!-- <scroll-view id="tab-bar" class="uni-swiper-tab uni-center-item" >
-			<view v-for="(tab,index) in tabBars" :key="tab.id" :class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
-			 :data-current="index" @click="tapTab(index)">{{tab.name}}</view>
-		</scroll-view> -->
+	<view style="width: 100%;">
 		
-		<!-- <div class="uni-center-item tab_bar">
-			<view v-for="(tab,index) in tabBars" :key="tab.id" class="uni-flex-item"
-			:class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
-			 :data-current="index" @click="tapTab(index)">
-				<span :class="[tabIndex==index ? 'tab_text' : '']" >{{tab.name}}</span> 
-				<span :class="[tabIndex==index ? 'line' : '']" ></span>
-			 </view>
-		</div> -->
-		
-		<swiper :current="tabIndex" class="swiper-box" duration="300" @change="changeTab" >
-			<swiper-item v-for="(tab,index1) in listData" :key="index1">
-				<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
-					<block v-for="(newsitem,index2) in tab.data" :key="index2" >
-						
-						<view  class="row item_wrap">
-							
-							<img src="../../static/img/home_top.png">
-							
-							<div class="item_content_wrap">
-								<div class="item_title">广西柑橘</div>
-								<div class="sub_title">饱满果肉 甜蜜多汁</div>
-								<span class="item_tag">第二个半价</span>
-								<div class="bottom_wrap">
-									<span class="price">￥26</span>
-									<!-- <span class="old_price">￥38</span> -->
-									<span class="num">1.5Kg/份</span>
-								</div>
-							</div>
-							
-							<div class="item_right_wrap">
-								<span>深圳市平岗区</span>
-								<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
-								<span @click="goDetail(newsitem)" >编辑</span>
-								<img src="../../static/img/add_card.png" @click="addCard(newsitem)">
-							</div>
-							
-						</view>
-						<!-- <media-list :data="newsitem" @close="close(index1,index2)" @click="goDetail(newsitem)"></media-list> -->
-					</block>
-					
-					<div v-if="tab.data.length == 0" class="uni-center-item no_data_wrap">
-						<img src="../../static/img/no_data.png" class="no_data">
-						<span>暂无订单信息</span>
+		<div v-for="(tab,index) in listData" :key="index" @click="goDetail(index)">
+			<view  class="row item_wrap">
+				
+				<img src="../../static/img/home_top.png">
+				
+				<div class="item_content_wrap">
+					<div class="item_title">广西柑橘</div>
+					<div class="sub_title">饱满果肉 甜蜜多汁</div>
+					<span class="item_tag">第二个半价</span>
+					<div class="bottom_wrap">
+						<span class="price">￥26</span>
+						<!-- <span class="old_price">￥38</span> -->
+						<!-- <span class="num">1.5Kg/份</span> -->
 					</div>
-					
-					<view class="uni-tab-bar-loading" v-if="tab.data.length != 0">
-						<uni-load-more :loadingType="tab.loadingType" :contentText="loadingText"  ></uni-load-more>
-					</view>
-					
-				</scroll-view>
-			</swiper-item>
-		</swiper>
+				</div>
+				
+				<div class="item_right_wrap">
+					<span>深圳市平岗区</span>
+					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
+					<span @click="goDetail(newsitem)" >编辑</span>
+					<img src="../../static/img/add_card.png" @click="addCard(newsitem)">
+				</div>
+				
+			</view>
+			
+		</div>
+		
+		<div v-if="listData.length == 0" class="uni-center-item no_data_wrap">
+			<img src="../../static/img/no_data.png" class="no_data">
+			<span>暂无订单信息</span>
+		</div>
+		
+		<view class="uni-tab-bar-loading" v-if="listData.length != 0">
+			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
+		</view>
 		
 		<div class="gou_wu_che" @click="goToShopping">
 			<img src="../../static/img/shopping_card_icon.jpg" >
 			<span>4</span>
 		</div>
 		
-		
 	</view>
 </template>
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
-	import uniNumberBox from '@/components/uni-number-box.vue'
 	
 	export default {
 		components: {
-			uniLoadMore,
-			uniNumberBox
+			uniLoadMore
 		},
 		data() {
 			return {
@@ -85,21 +61,15 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				tabIndex: 0,
-				listData: [],
-				tabBars: [{
-					name: '销量',
-					id: 'quanbu'
-				}, {
-					name: '新品',
-					id: 'weifukuan'
-				}, {
-					name: '价格',
-					id: 'yiwancheng'
-				}]
+				listData: [1,2,3,4,5,6],
+				loadingType: 0
 			}
 		},
 		onLoad: function() {
-			this.listData = this.randomfn()
+			// this.listData = this.randomfn()
+		},
+		onReachBottom() {
+			this.loadMore();
 		},
 		onPullDownRefresh() {
 			console.log("dddddd");
@@ -111,75 +81,28 @@
 					url: '../shopping_card/shopping_card'
 				})
 			},
-			onNumberChange: function(e){
-				console.log(e);
-			},
-			goDetail(e) {
+			goDetail() {
 				uni.navigateTo({
 					url: '../list_detail/list_detail'
 				})
 			},
-			
-			close(index1, index2) {
-				uni.showModal({
-					content: '是否删除本条信息？',
-					success: (res) => {
-						if (res.confirm) {
-							this.listData[index1].data.splice(index2, 1);
-						}
-					}
-				})
-			},
-			loadMore(e) {
-				this.listData[e].loadingType = 1;
+			loadMore() {
+				this.loadingType = 1;
 				setTimeout(() => {
-					this.addData(e);
+					this.addData();
 				}, 1200);
 			},
-			addData(e) {
-				this.listData[e].loadingType = 2;
+			addData() {
+				this.loadingType = 2;
 				return;
-				if (this.listData[e].data.length > 30) {
-					this.listData[e].loadingType = 2;
+				if (this.listData.length > 30) {
+					this.loadingType = 2;
 					return;
 				}
 				for (let i = 1; i <= 10; i++) {
-					this.listData[e].data.push(this['data' + Math.floor(Math.random() * 5)]);
+					this.listData.push(this['data' + Math.floor(Math.random() * 5)]);
 				}
-				this.listData[e].loadingType = 1;
-			},
-			async changeTab(e) {
-				let index = e.detail.current;
-				if (this.isClickChange) {
-					this.tabIndex = index;
-					this.isClickChange = false;
-					return;
-				}
-
-				this.isClickChange = false;
-				this.tabIndex = index; //一旦访问data就会出问题
-			},
-			async tapTab(index) { //点击tab-bar
-				if (this.tabIndex === index) {
-					return false;
-				} else {
-					this.isClickChange = true;
-					this.tabIndex = index;
-				}
-			},
-			randomfn() {
-				let ary = [];
-				for (let i = 0, length = this.tabBars.length; i < length; i++) {
-					let aryItem = {
-						loadingType: 0,
-						data: []
-					};
-					for (let j = 1; j <= 10; j++) {
-						aryItem.data.push(this['data' + Math.floor(Math.random() * 5)]);
-					}
-					ary.push(aryItem);
-				}
-				return ary;
+				this.loadingType = 1;
 			}
 		}
 	}
@@ -314,8 +237,8 @@
 		position: fixed;
 		bottom: 100upx;
 		right: 100upx;
-		height: 100upx;
-		width: 100upx;
+		height: 90upx;
+		width: 90upx;
 		img{
 			width: 90upx;
 			height: 90upx;

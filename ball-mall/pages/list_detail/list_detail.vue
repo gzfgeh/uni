@@ -3,6 +3,7 @@
 		<div class="title_wrap uni-between-item">
 		</div>
 		
+		
 		<div class="uni-inline-item">
 			<span>品类</span>
 			<span>广西甜橘</span>
@@ -19,18 +20,13 @@
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>原价</span>
-			<input type="text">
+			<span>地区</span>
+			<span>深圳市平岗区</span>
 		</div>
 		
 		<div class="uni-inline-item">
-			<span>现价</span>
+			<span>价格</span>
 			<input type="text">
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>类型</span>
-			<span>1.5袋/个</span>
 		</div>
 		
 		
@@ -296,7 +292,7 @@
 	}
 	
 	.primary{
-		background-color: #427DFF;
+		background-color: #35B583;
 		color: #FFFFFF;
 		border-radius: 10upx;
 		font-size: 32upx;
