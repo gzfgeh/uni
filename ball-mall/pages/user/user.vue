@@ -121,7 +121,17 @@
 				uni.navigateTo({
 					url: '../order_list/order_list'
 				})
-			}
+			},
+			contactUs: function(){
+				wx.openDocument({
+				    filePath: '../../static/img/contact.doc',
+				    fileType:'doc',
+				    success: function (res) {
+				        console.log(res);
+				        console.log('打开文档成功'+res)
+				    }
+				})
+			},
         }
     }
 </script>

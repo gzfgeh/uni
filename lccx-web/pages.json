@@ -2,6 +2,12 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/pay_address/pay_address",
+		    "style" : {
+		        "navigationBarTitleText" : "配送地址"
+		    }
+		},
+		{
 		    "path" : "pages/pay_two/pay_two",
 		    "style" : {
 		        "navigationBarTitleText" : "支付成功"
@@ -44,12 +50,7 @@
 		        "navigationBarTitleText" : "支付成功"
 		    }
 		},
-		{
-		    "path" : "pages/pay_address/pay_address",
-		    "style" : {
-		        "navigationBarTitleText" : "配送地址"
-		    }
-		},
+		
 		{
 		    "path" : "pages/service_confirm/service_confirm",
 		    "style" : {

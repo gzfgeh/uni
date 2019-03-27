@@ -5,39 +5,40 @@
 			 :data-current="index" @click="tapTab(index)">{{tab.name}}</view>
 		</scroll-view> -->
 		
-		<div class="uni-center-item tab_bar">
+		<!-- <div class="uni-center-item tab_bar">
 			<view v-for="(tab,index) in tabBars" :key="tab.id" class="uni-flex-item"
 			:class="['swiper-tab-list',tabIndex==index ? 'active' : '']" :id="tab.id"
 			 :data-current="index" @click="tapTab(index)">
 				<span :class="[tabIndex==index ? 'tab_text' : '']" >{{tab.name}}</span> 
 				<span :class="[tabIndex==index ? 'line' : '']" ></span>
 			 </view>
-		</div>
+		</div> -->
 		
 		<swiper :current="tabIndex" class="swiper-box" duration="300" @change="changeTab" >
 			<swiper-item v-for="(tab,index1) in listData" :key="index1">
 				<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
 					<block v-for="(newsitem,index2) in tab.data" :key="index2" >
 						
-						<view @click="goDetail(newsitem)" class="row item_wrap">
+						<view  class="row item_wrap">
 							
 							<img src="../../static/img/home_top.png">
 							
 							<div class="item_content_wrap">
 								<div class="item_title">广西柑橘</div>
 								<div class="sub_title">饱满果肉 甜蜜多汁</div>
-								<!-- <span class="item_tag">限量抢购</span> -->
+								<span class="item_tag">第二个半价</span>
 								<div class="bottom_wrap">
 									<span class="price">￥26</span>
-									<span class="old_price">￥38</span>
+									<!-- <span class="old_price">￥38</span> -->
 									<span class="num">1.5Kg/份</span>
 								</div>
 							</div>
 							
-							<div class="item_right_wrap col_between">
-								<span>编辑</span>
+							<div class="item_right_wrap">
+								<span>深圳市平岗区</span>
 								<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
-								<img src="../../static/img/home_top.png" alt="">
+								<span @click="goDetail(newsitem)" >编辑</span>
+								<img src="../../static/img/add_card.png" @click="addCard(newsitem)">
 							</div>
 							
 						</view>
@@ -276,6 +277,7 @@
 		.price{
 			color: red;
 			font-size: 28upx;
+			margin-right: 20upx;
 		}
 		.old_price{
 			margin: 0upx 20upx;
@@ -296,7 +298,11 @@
 	
 	.item_right_wrap{
 		color: @color;
-		font-size: 34upx;
+		font-size: 24upx;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-end;
 		img{
 			width: 30upx;
 			height: 30upx;
@@ -318,7 +324,7 @@
 			border-radius: 50%;
 			font-size: 24upx;
 			color: #FFFFFF;
-			background-color: firebrick;
+			background-color: @color;
 			position: absolute;
 			top: 0upx;
 			right: 0upx;

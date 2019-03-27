@@ -231,7 +231,7 @@
 	}
 	
 	.primary{
-		background-color: #427DFF;
+		background-color: #35B583;;
 		border-radius: 12upx;
 		color: #ffffff;
 		font-size: 28upx;
