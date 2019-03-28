@@ -1,38 +1,42 @@
 <template>
-    <view class="content">
-		<div class="title_wrap uni-between-item">
+    <view class="content" :style="'height:'+(winHeight-168) + 'px'">
+		
+		<div>
+			<div class="title_wrap uni-between-item">
+			</div>
+			
+			
+			<div class="uni-inline-item">
+				<span>品类</span>
+				<span>广西甜橘</span>
+			</div>
+			
+			<div class="uni-inline-item">
+				<span>特色</span>
+				<span>饱满果肉 甜蜜多汁</span>
+			</div>
+			
+			<div class="uni-inline-item">
+				<span>优惠</span>
+				<span>限量抢购</span>
+			</div>
+			
+			<div class="uni-inline-item">
+				<span>地区</span>
+				<span>深圳市平岗区</span>
+			</div>
+			
+			<div class="uni-inline-item">
+				<span>单位</span>
+				<span>1.5Kg/个</span>
+			</div>
+			
+			<div class="uni-inline-item">
+				<span>价格</span>
+				<input type="text">
+			</div>
 		</div>
 		
-		
-		<div class="uni-inline-item">
-			<span>品类</span>
-			<span>广西甜橘</span>
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>特色</span>
-			<span>饱满果肉 甜蜜多汁</span>
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>优惠</span>
-			<span>限量抢购</span>
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>地区</span>
-			<span>深圳市平岗区</span>
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>单位</span>
-			<span>1.5Kg/个</span>
-		</div>
-		
-		<div class="uni-inline-item">
-			<span>价格</span>
-			<input type="text">
-		</div>
 		
 		
 		
@@ -43,15 +47,6 @@
         </view>
 		
 		
-		<div class="modal-mask" v-if="isShowModal"></div>
-		<div class="modal-dialog" v-if="isShowModal">
-			<div class="modal-title">行驶证识别</div>
-			<img :src="file_url" class="info_img">
-			<div class="info" v-if="isShowBtn">请将手机横向拍摄，保证照片清晰无反光</div>
-			<button type="primary" class="take_photo_btn" @click="showBottomPopup" v-if="isShowBtn">拍摄或选择照片</button>
-		</div>
-		<img src="../../static/img/close.png" class="close_icon" v-if="isShowModal"
-				:class="{'close_show_icon':!isShowBtn}" @tap="closeModal">
 		
 		
 		
@@ -83,6 +78,7 @@
 				  brandCode: '',
 				  responseNo: '',
 				  id: 9,
+				  winHeight: 0,
 				  globalData: {
 					name:'',
 					mobile:'',
@@ -97,7 +93,7 @@
 			}
 		},
 		onLoad () {
-			
+			this.winHeight= uni.getSystemInfoSync().screenHeight;
 		},
         methods: {
 			dateChange: function(e){
@@ -237,6 +233,11 @@
 <style>
 	.content{
 		background-color: #F9F9F9;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		justify-content: space-between;
+		box-sizing: border-box;
 	}
 	
 	.title_wrap{
@@ -287,8 +288,6 @@
 	}
 	
 	.btn_wrap{
-		position: fixed;
-		bottom: 0upx;
 		width: 100%;
 		height: 160upx;
 		background-color: #FFFFFF;
