@@ -24,8 +24,8 @@
                   <span class="actionClass" @click="addAction(index)">+</span>
               </div>
             </div>
-            <div class="head_wrap" style="font-size: 35upx;">
-              <span>总计：￥{{item.sp_lingshoujia*item.ct_count}}</span>
+            <div class="head_wrap" style="font-size: 24upx;">
+              <span>小计：￥{{item.sp_lingshoujia*item.ct_count}}</span>
               <span style="flex: 1;"></span>
               
             </div>
@@ -498,13 +498,14 @@ button{
 }
 
 .add_btn_wrap span{
-  font-size: 20upx;
+  font-size: 34upx;
 }
 
 .price_wrap{
   display: flex;
   flex-direction: row;
   align-items: center;
+	font-size: 34upx;
 }
 
 .search_wrap{
@@ -564,7 +565,6 @@ button{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 1upx solid #dddddd;
   height: 80upx;
   font-size: 25upx;
 }

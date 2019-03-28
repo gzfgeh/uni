@@ -3,19 +3,21 @@
 		{
 		    "path" : "pages/main/main",
 		    "style" : {
-		        "navigationBarTitleText" : "我的订单"
+		        "navigationBarTitleText" : "我的订单",
+				"navigationStyle": "custom"
 		    }
 		},
         {
             "path" : "pages/user/user",
             "style" : {
-                "navigationBarTitleText" : "用户信息"
+                "navigationBarTitleText" : "用户信息",
+				"navigationStyle": "custom"
             }
         },
         {
             "path" : "pages/mall_list/mall_list",
             "style" : {
-                "navigationBarTitleText" : "水果"
+                "navigationBarTitleText" : "商品列表"
             }
         },
 		{
@@ -72,7 +74,7 @@
 		"navigationBarTextStyle": "black", 
 		"navigationBarBackgroundColor": "#fff", 
 		"backgroundColor": "#fbf9fe", 
-		"navigationStyle": "custom", 
+		"navigationStyle": "default", 
 		"enablePullDownRefresh": true 
 	} 
 }

@@ -16,13 +16,16 @@
 							
 							
 							<div class="item_content_wrap">
-								<div class="item_title">广西柑橘</div>
+								<div class="item_title row_between">
+									<span>广西柑橘</span>
+									<span>订单号：12345</span>
+								</div>
 								<div class="sub_title">收货地址：深圳市平岗区中华美路60号22懂402室</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between">
-									<span class="num">￥26</span>
-									<span class="num">x 3</span>
-									<span class="money_text">总价：￥80</span>
+									<span class="num">￥26 x3</span>
+									<span class="num">1.5Kg/份</span>
+									<span class="num">总价:￥80</span>
 								</div>
 							</div>
 							
@@ -187,10 +190,11 @@
 	
 	.item_title{
 		color: #464646;
-		font-size: 34upx;
+		font-size: 28upx;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
+		width: 100%;
 	}
 	.sub_title{
 		color: @gray_color;

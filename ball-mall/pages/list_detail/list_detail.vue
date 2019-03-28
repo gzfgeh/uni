@@ -25,6 +25,11 @@
 		</div>
 		
 		<div class="uni-inline-item">
+			<span>单位</span>
+			<span>1.5Kg/个</span>
+		</div>
+		
+		<div class="uni-inline-item">
 			<span>价格</span>
 			<input type="text">
 		</div>

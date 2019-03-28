@@ -1,7 +1,7 @@
 <template>
 	<view style="width: 100%;">
 		
-		<div v-for="(tab,index) in listData" :key="index" @click="goDetail(index)">
+		<div v-for="(tab,index) in listData" :key="index" >
 			<view  class="row item_wrap">
 				
 				<img src="../../static/img/home_top.png">
@@ -13,7 +13,7 @@
 					<div class="bottom_wrap">
 						<span class="price">￥26</span>
 						<!-- <span class="old_price">￥38</span> -->
-						<!-- <span class="num">1.5Kg/份</span> -->
+						<span class="num">1.5Kg/份</span>
 					</div>
 				</div>
 				
