@@ -165,10 +165,10 @@
 							header: { 
 							  "Content-Type": "application/json",
 							  "Authorization": "Bearer "+uni.getStorageSync('token'),
-							  "x-lccx-did":uni.getStorageSync('device_id') },
-							// formData: {"file":res.tempFilePaths[0]},
+							  "x-lccx-did":2 },
+							formData: {"file":res.tempFilePaths[0]},
 							success: function(data) {
-							  console.log(JSON.parse(data.data).data.words_result);
+							  console.log(JSON.parse(data.data));
 							  that.isShowModal = false;
 							  uni.hideLoading();
 							  that.file_url = JSON.parse(data.data).data.url;

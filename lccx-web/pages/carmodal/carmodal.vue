@@ -7,13 +7,13 @@
 		
 		<div class="content_wrap">
 			<radio-group @change="radioChange">
-                <label class="uni-between-item " v-for="(item, index) in items" :value="index" :key="index">
+                <label class="uni-between-item " v-for="(item, index) in items" :key="index">
                     <view class="radio_wrap">
 						<span>{{item.parentVehName}}{{item.engineDesc}}{{item.gearboxType}}{{item.seat}}</span>
 						<span class="price">新车参考价：{{item.newCarPrice}}元</span>
 					</view>
 					<view>
-                        <radio :value="currentIndex" :checked="index === currentIndex" />
+                        <radio :checked="index === currentIndex" />
                     </view>
                     
                 </label>

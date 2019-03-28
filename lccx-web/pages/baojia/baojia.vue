@@ -94,7 +94,7 @@
 	import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 	import cityData from '../../common/city.data.js';
 	
-	import { BASE_IMAGE_URL,quotations} from "@/utils/api";
+	import { BASE_IMAGE_URL,quotations,H5login} from "@/utils/api";
 
     export default {
         components: {
@@ -201,6 +201,18 @@
 				
 			},
 			
+			async H5login(){
+				let res = await H5login();
+				if(res.code == 200){
+					let token = res.data.token;
+					console.log(token);
+					if(token){
+						uni.setStorageSync('token', token);
+					}
+					
+				}
+			},
+			
 			callPhone(){
 				window.location.href = "tel:4000880329";
 			},
@@ -248,6 +260,7 @@
 		onLoad () {
 			this.pickerText = this.pickerValueArray[0][this.pickerValueIndex[0]]+"-"
 						+this.pickerValueArray[1][this.pickerValueIndex[1]];
+			this.H5login();
 		  },
   
     }
