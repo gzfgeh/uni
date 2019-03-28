@@ -84,7 +84,7 @@
 </template>
 <script>
 
-import { BASE_IMAGE_URL,pay} from "@/utils/api";
+import { BASE_IMAGE_URL,pay,H5login} from "@/utils/api";
 import weixin_sdk from '@/utils/weixin-jsapi.js';
 
 export default {
@@ -111,6 +111,18 @@ export default {
       console.log(e.mp.detail.value);
     },
 		
+		async H5login(){
+			let res = await H5login();
+			if(res.code == 200){
+				let token = res.data.token;
+				console.log(token);
+				if(token){
+					uni.setStorageSync('token', token);
+				}
+				
+			}
+		},
+		
 		async pay(){
 			let that = this;
       if(!this.address){
@@ -126,8 +138,7 @@ export default {
         name: this.global.name,
         mobile: this.global.mobile,
         address: this.address,
-        paytype: 2,
-        openid: 'o2GL94yINZGhrswgyR0zPA7rUvnc'
+        paytype: 1,
       };
 
       let res = await pay(24, params);
@@ -138,49 +149,62 @@ export default {
         console.log(result.timestamp);
 				// #ifdef H5
 				
-				weixin_sdk.ready(function(){
-					
-				})
-				
 				weixin_sdk.config({
 						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-						appId: '', // 必填，企业号的唯一标识，此处填写企业号corpid
+						appId: result.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
 						timestamp: result.timestamp, // 必填，生成签名的时间戳
 						nonceStr: result.nonceStr, // 必填，生成签名的随机串
 						signature: result.paySign,// 必填，签名，见附录1
-						jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						jsApiList: ["chooseWXPay"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
+				
+				weixin_sdk.ready(function(){
+					weixin_sdk.checkJsApi({
+						jsApiList: ["chooseWXPay"],
+						success: res => {
+							weixin_sdk.chooseWXPay({
+									'timestamp': result.timestamp,
+									'nonceStr': result.nonceStr,
+									'package': result.package,
+									'signType': result.signType,
+									'paySign': result.paySign,
+									'success':function(ress){
+											console.log(ress);
+											if (ress.errMsg === 'chooseWXPay:ok'){
+												wx.showToast({
+														title: '支付成功',
+														icon: 'none',
+														duration: 1000
+												});
+											}
+											
+	// 										that.next();
+										},
+										'fail':function(res){
+												console.log(res);
+												wx.showToast({
+														title: '支付失败',
+														icon: 'none',
+														duration: 1000
+												});
+										},
+										'complete': function(res){
+											console.log(res);
+										}
+								})
+											
+							}
+						})
+					})
+						
+				weixin_sdk.error(function(err){
+					console.log(err);
+				})
 
 				
 				// #endif
 
-        wx.chooseWXPay({
-            'timestamp': result.timestamp,
-            'nonceStr': result.nonceStr,
-            'package': result.package,
-            'signType': result.signType,
-            'paySign': result.paySign,
-            'success':function(res){
-                console.log(res);
-                wx.showToast({
-                    title: '支付成功',
-                    icon: 'none',
-                    duration: 1000
-                });
-								that.next();
-              },
-              'fail':function(res){
-                  console.log(res);
-                  wx.showToast({
-                      title: '支付失败',
-                      icon: 'none',
-                      duration: 1000
-                  });
-              },
-              'complete': function(res){
-                console.log(res);
-              }
-          })
+        
       }
     },
 		
@@ -190,6 +214,7 @@ export default {
     this.global = wx.getStorageSync("global");
     // this.getOpenid();
 		console.log(weixin_sdk);
+		this.H5login();
   },
 
 }

@@ -19,7 +19,8 @@
               <div class="actionWrap" >
                  
                   <span class="actionClass" @click="reduceAction(index)">-</span>
-                  <span class="item_num">{{item.ct_count}}</span>
+                  <!-- <span class="item_num">{{item.ct_count}}</span> -->
+									<input type="number" class="item_num" v-model="item.ct_count" maxlength="4">
                   <span class="actionClass" @click="addAction(index)">+</span>
               </div>
             </div>
@@ -454,8 +455,10 @@ page{
 
 .item_num{
   display: inline-block;
-  margin: 5upx;
 	color: #000;
+	width: 60upx;
+	text-align: center;
+	font-size: 24upx;
 }
 
 .content_price_wrap{

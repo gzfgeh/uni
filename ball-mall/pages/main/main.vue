@@ -91,13 +91,14 @@
 }
 
 .item_wrap{
-	color: #000000;
+	color: #35B583;
 	font-size: 40upx;
 	margin-top: 20upx;
 	img{
-		width: 200upx;
-		height: 200upx;
+		width: 120upx;
+		height: 120upx;
 		margin-top: 10upx;
+		padding: 0upx 40upx;
 	}
 }
 	

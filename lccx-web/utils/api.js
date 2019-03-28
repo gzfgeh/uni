@@ -18,6 +18,13 @@ export function login(params) {
 }
 
 /**
+ * H5登录
+ */
+export function H5login(params) {
+    return request.post('3.1/login', qs.stringify(params))
+}
+
+/**
  * 手机号获取验证码
  */
 export function activation(params) {
