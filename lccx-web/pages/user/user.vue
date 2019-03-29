@@ -155,6 +155,8 @@
 			showBottomPopup: function() {
 				var that = this
 				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'],
 					success: function (res) {
 						console.log(res.tempFilePaths[0]);
 						uni.showLoading({ title: "上传中..." });
@@ -165,8 +167,8 @@
 							header: { 
 							  "Content-Type": "application/json",
 							  "Authorization": "Bearer "+uni.getStorageSync('token'),
-							  "x-lccx-did":uni.getStorageSync('device_id') },
-							// formData: {"file":res.tempFilePaths[0]},
+							  "x-lccx-did":2 },
+							formData: {"file":res.tempFilePaths[0]},
 							success: function(data) {
 							  console.log(JSON.parse(data.data).data.words_result);
 							  that.isShowModal = false;
