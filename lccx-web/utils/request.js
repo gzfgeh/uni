@@ -22,9 +22,10 @@ request.interceptors.request.use((request) => {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
 
-    if (uni.getStorageSync('device_id')) {
-        request.headers["x-lccx-did"] = uni.getStorageSync('device_id')
-    }
+	request.headers["x-lccx-did"] = 2
+//     if (uni.getStorageSync('device_id')) {
+//         request.headers["x-lccx-did"] = uni.getStorageSync('device_id')
+//     }
     return request
 })
 
