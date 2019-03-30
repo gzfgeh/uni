@@ -1,27 +1,27 @@
 <template>
 	<view style="width: 100%;">
 		
-		<div v-for="(tab,index) in listData" :key="index" >
+		<div v-for="(item,index) in listData" :key="index" >
 			<view  class="row item_wrap">
 				
-				<img src="../../static/img/home_top.png">
+				<img :src="item.g_img">
 				
 				<div class="item_content_wrap">
-					<div class="item_title">广西柑橘</div>
-					<div class="sub_title">饱满果肉 甜蜜多汁</div>
-					<span class="item_tag">第二个半价</span>
+					<div class="item_title">{{item.g_name}}</div>
+					<div class="sub_title">{{item.g_type}}</div>
+					<span class="item_tag">{{item.g_tag}}</span>
 					<div class="bottom_wrap">
-						<span class="price">￥26</span>
+						<span class="price">￥{{item.g_price}}</span>
 						<!-- <span class="old_price">￥38</span> -->
-						<span class="num">1.5Kg/份</span>
+						<span class="num">{{item.g_danwei}}</span>
 					</div>
 				</div>
 				
 				<div class="item_right_wrap">
-					<span>深圳市平岗区</span>
+					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
-					<span @click="goDetail(newsitem)" >编辑</span>
-					<img src="../../static/img/add_card.png" @click="addCard(newsitem)">
+					<span @click="goDetail(item)" >编辑</span>
+					<img src="../../static/img/add_card.png" @click="addCard(item)">
 				</div>
 				
 			</view>
@@ -46,6 +46,7 @@
 </template>
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
+	import { BASE_IMAGE_URL,goodsList} from "@/utils/api";
 	
 	export default {
 		components: {
@@ -60,13 +61,15 @@
 				},
 				scrollLeft: 0,
 				isClickChange: false,
-				tabIndex: 0,
+				page: 1,
 				listData: [1,2,3,4,5,6],
-				loadingType: 0
+				loadingType: 0,
+				typeList:['新鲜蔬菜','肉禽产品','米面粮油','海鲜水产','蛋品豆类','调料干货']
 			}
 		},
-		onLoad: function() {
+		onLoad: function(e) {
 			// this.listData = this.randomfn()
+			this.goodsList(e.id);
 		},
 		onReachBottom() {
 			this.loadMore();
@@ -76,14 +79,21 @@
 			uni.stopPullDownRefresh();
 		},
 		methods: {
+			async goodsList(index){
+				let res = await goodsList(this.page, this.typeList[index]);
+				if(res.code == 1000){
+					this.listData = res.data;
+				}
+				console.log(res);
+			},
 			goToShopping: function(){
 				uni.navigateTo({
 					url: '../shopping_card/shopping_card'
 				})
 			},
-			goDetail() {
+			goDetail(item) {
 				uni.navigateTo({
-					url: '../list_detail/list_detail'
+					url: '../list_detail/list_detail?id='+item.g_id
 				})
 			},
 			loadMore() {
@@ -236,7 +246,7 @@
 	.gou_wu_che{
 		position: fixed;
 		bottom: 100upx;
-		right: 100upx;
+		right: 60upx;
 		height: 90upx;
 		width: 90upx;
 		img{

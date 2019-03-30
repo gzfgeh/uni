@@ -8,32 +8,33 @@
 			
 			<div class="uni-inline-item">
 				<span>品类</span>
-				<span>广西甜橘</span>
+				<span>{{item.g_name}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
 				<span>特色</span>
-				<span>饱满果肉 甜蜜多汁</span>
+				<span>{{item.g_type}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
 				<span>优惠</span>
-				<span>限量抢购</span>
+				<span>{{item.g_tag}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
 				<span>地区</span>
-				<span>深圳市平岗区</span>
+				<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
 				<span>单位</span>
-				<span>1.5Kg/个</span>
+				<span>{{item.g_danwei}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
 				<span>价格</span>
-				<input type="text">
+				<input type="text" v-model="item.g_price">
+				<span style="flex: 1; text-align: right; padding-right: 40upx">元</span>
 			</div>
 		</div>
 		
@@ -54,7 +55,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,basic,getVechileData } from "@/utils/api";
+	import { BASE_IMAGE_URL,goodsDetail } from "@/utils/api";
 	
 
     export default {
@@ -92,139 +93,20 @@
 				  }
 			}
 		},
-		onLoad () {
-			this.winHeight= uni.getSystemInfoSync().screenHeight;
+		onLoad (e) {
+			this.goodsDetail(e.id)
 		},
         methods: {
-			dateChange: function(e){
-			  console.log(e.mp.detail.value);
-			  this.firstRegisterDate = e.mp.detail.value;
-			},
-			showModal(){
-				this.isShowModal = true;
-				this.isShowBtn = true;
-				this.file_url = BASE_IMAGE_URL+'take_photo_ex.png';
-			},
-			closeModal(){
-				this.isShowModal = false;
-			},
-			watchInput(e){
-			  console.log(e.mp.detail.value);
-			  let value = e.mp.detail.value;
-			  this.trueFrameNo= value.toLocaleUpperCase();
-			  this.frameNo = this.trueFrameNo;
-			},
-			watchEngineInput(e){
-			  console.log(e.mp.detail.value);
-			  let value = e.mp.detail.value;
-			  this.trueEngineNo= value.toLocaleUpperCase();
-			  this.engineNo = this.trueEngineNo;
-			},
 			
-			lookEx: function(){
-				this.isShowModal = true;
-				this.isShowBtn = false;
-				this.file_url = BASE_IMAGE_URL+'take_photo_exg.png'
-			},
-			
-            next() {
-//                 uni.navigateTo({
-//                     url: '../carmodal/carmodal',
-//                 });
-            },
-			
-			async getVechileData(){
+			async goodsDetail(id){
 			  let that = this;
-			  let res = await getVechileData({license_no: that.license_no});
-			  if(res.code == 200){
+			  let res = await goodsDetail(id);
+			  if(res.code == 1000){
 				console.log(res.data);
-				this.item = res.data.data;
-				this.frameNo = this.item.frameNo;
-				this.trueFrameNo = this.frameNo;
-				this.frameNo = this.frameNo.substring(0,7)+"*****"+this.frameNo.substring(12);
-				this.trueEngineNo = this.item.engineNo;
-				this.engineNo = this.item.engineNo.substring(0,2)+"****"+this.item.engineNo.substring(6,8);
-				this.firstRegisterDate = this.item.firstRegisterDate;
-				this.brandCode = this.item.brandCode;
-				this.responseNo = this.item.responseNo;
+				this.item = res.data;
 			  }
 			},
-	
 			
-			async basic(){
-			  if (this.mobile == null || this.mobile.length != 11){
-				uni.showToast({
-				  icon: 'none',
-				  title: '手机号输入错误',
-				  duration: 1000
-				});
-				return;
-			  }
-
-			  if (!this.name){
-				uni.showToast({
-				  icon: 'none',
-				  title: '请输入姓名',
-				  duration: 1000
-				});
-				return;
-			  }
-
-			  if (!this.idcard){
-				uni.showToast({
-				  icon: 'none',
-				  title: '请输入身份证号',
-				  duration: 1000
-				});
-				return;
-			  }
-
-			  if (!this.frameNo && (this.frameNo.length == 17)){
-				uni.showToast({
-				  icon: 'none',
-				  title: '请输入正确的车架号',
-				  duration: 1000
-				});
-				return;
-			  }
-
-			  this.trueEngineNo = this.trueEngineNo.toLocaleUpperCase();
-			  this.trueFrameNo = this.trueFrameNo.toLocaleUpperCase();
-
-			  let params = {
-				"name": this.name,
-				"mobile": this.mobile,
-				"idcard": this.idcard,
-				"brand": this.brandCode,
-				"first_reg_date": this.firstRegisterDate,
-				"engine_no": this.trueEngineNo,
-				"vin": this.trueFrameNo
-			  };
-
-			  let res = await basic(this.id, params);
-			  if(res.code == 200){
-				uni.showToast({
-				  icon: 'none',
-				  title: '提交成功',
-				  duration: 1000
-				});
-
-				console.log(this.globalData);
-				this.globalData = uni.getStorageSync("global");
-				this.globalData.name = this.name;
-				this.globalData.mobile = this.mobile;
-				this.globalData.idcard = this.idcard;
-				this.globalData.brand = this.brandCode;
-				this.globalData.firstRegisterDate = this.firstRegisterDate;
-				this.globalData.engineNo = this.trueEngineNo;
-				this.globalData.frameNo = this.trueFrameNo;
-				this.globalData.responseNo = this.responseNo;
-				this.globalData.license_no = this.license_no;
-				uni.setStorageSync("global", this.globalData);
-
-				this.next();
-			  }
-			},
 	
         }
     }

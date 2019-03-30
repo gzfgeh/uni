@@ -1,6 +1,14 @@
 <template>
     <div class="app">
-        <img src="../../static/img/home_top.png" mode="widthFix" class="head_img">
+        
+		
+		<swiper :indicator-dots="true" :autoplay="true"
+					:interval="5000" :duration="1000" :style="{'height': scrollHeight+'px'}">            
+				<swiper-item v-for="(item, index) in itemList" :key="index" :style="{'height': scrollHeight+'px'}">  
+					<image :src="item.t_url" mode="widthFix" class="head_img" @load="imageLoad" />           
+				</swiper-item>        
+		</swiper>
+
 
         <div class="row_around content_wrap">
 			<view class="col_center item_wrap" hover-class="uni-list-cell-hover" @tap="goDetail(0)">
@@ -39,7 +47,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList } from '@/utils/api'
 	
 	export default {
 		
@@ -52,15 +60,32 @@
 				youxi_btn: BASE_IMAGE_URL+'youxi_btn.png',
 				shipin_btn: BASE_IMAGE_URL+'zhishixiuqiu.png',
 				toutiao_btn: BASE_IMAGE_URL+'toutiao_btn.png',
+				itemList: [],
+				scrollHeight: 0
 			}
 		},
 		onLoad: function() {
-			
+			this.getImgList();
 		},
 		methods: {
-			goDetail() {
+			imageLoad: function(e){
+				let imgWidth = e.mp.detail.width;
+				let imgHeight = e.mp.detail.height;
+				let winWidth = uni.getSystemInfoSync().screenWidth;
+				let scale = winWidth / imgWidth;
+				this.scrollHeight = imgHeight * scale;
+				console.log(this.scrollHeight)
+			},
+			async getImgList(){
+				let res = await getImgList();
+				if(res.code == 1000){
+					console.log(res.data);
+					this.itemList = res.data;
+				}
+			},
+			goDetail(index) {
 				uni.navigateTo({
-					url: '../mall_list/mall_list'
+					url: '../mall_list/mall_list?id='+index
 				})
 			},
 			close(index1, index2) {
@@ -101,5 +126,13 @@
 		padding: 0upx 40upx;
 	}
 }
+
+swiper{
+	width: 100%;
+}
+swiper-item{
+	width: 100%;
+}
+
 	
 </style>
