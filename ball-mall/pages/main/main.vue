@@ -65,6 +65,12 @@
 			}
 		},
 		onLoad: function() {
+			let openid = uni.getStorageInfoSync("openid");
+			if(!openid){
+				uni.navigateTo({
+					url: '../bind_phone/bind_phone'
+				})
+			}
 			this.getImgList();
 		},
 		methods: {
