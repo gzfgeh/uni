@@ -155,6 +155,8 @@
 			showBottomPopup: function() {
 				var that = this
 				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'],
 					success: function (res) {
 						console.log(res.tempFilePaths[0]);
 						uni.showLoading({ title: "上传中..." });
