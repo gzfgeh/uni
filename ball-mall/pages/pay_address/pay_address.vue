@@ -1,276 +1,359 @@
 <template>
-<div class="container_wrap container-fill">
-  
-  <div class="wrap">
-    <div class="info_title">付款信息</div>
-    <div class="item_wrap">
-      <div>
-        <span class="item_text">设备押金：</span>
-        <span class="item_info">（可退还）</span>
+  <div  class="contain" >
+
+    <div class="head_wrap">实付金额：
+      <span>￥{{params.o_money}}</span>
+    </div>
+
+    <div>
+      <div class="goodsItemWrap" v-for="(item,index) in selectItems" :key="index">
+        <img :src="item.g_img" >
+				<div class="col">
+					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
+					<span style="width: 260rpx;">{{item.g_name}}</span>
+				</div>
+        <span style="flex: 1;"></span>
+        <div class="info_wrap">
+          <span>￥{{item.g_price}}x{{item.ct_count}}</span>
+        </div>  
+        
       </div>
-      <span class="item_right">200元</span>
-    </div>
 
-    <div class="item_wrap">
-      <div class="item_title">
-        <span class="item_text">账户预存：</span>
-        <div class="item_service">
-          <img src="../../static/img/about.png" mode="widthFix">
-          <span>服务费：40元/月+0.07元/公里</span>
-        </div>
+      <div class="item-wrap col" >
+        <span class="text-size">收货地址</span>
+        <input type="text" v-model="address" placeholder="请输入地址">
       </div>
-      <span class="item_right">200元</span>
+
     </div>
 
-    <div class="item_wrap">
-      <span class="item_text">交强险：</span>
-      <span class="item_right">200元</span>
-    </div>
-
-    <div class="item_wrap">
-      <span class="item_text">车船税：</span>
-      <span class="item_right">200元</span>
-    </div>
     
-  </div>
 
-  <div class="info">收件信息</div>
+    <!-- <div style="text-align: center; margin-top: 20rpx;" @click="openWord">《支付协议》</div> -->
 
-  <div class="wrap" style="margin-bottom: 184upx;">
-    <div class="item_wrap">
-      <span class="item_text">姓名：</span>
-      <span class="item_right">张三</span>
-    </div>
-    <div class="item_wrap">
-      <span class="item_text">手机号码：</span>
-      <span class="item_right">13671780212</span>
-    </div>
-
-    <div class="input_wrap">
-      <div class="input_info">
-        <span class="item_text">设备安装/保单寄送地址：</span>
-        <span class="item_right">请输入详细地址</span>
-      </div>
-      <input type="text">
-    </div>
+    <button @click="payNow" :disabled='buyDisabled'>确认付款</button>
 
   </div>
-  
-  <div class="bottom_wrap">
-    <div class="bottom_left">
-      <span>实付</span>
-      <span class="bottom_money">¥1370</span>
-    </div>
-    <span class="bottom_right">立即支付</span>
-  </div>
-  
-
-</div>
 </template>
+
 <script>
+import { BASE_IMAGE_URL,weixinPay } from "@/utils/api";
+import weixin_sdk from '@/utils/weixin-jsapi.js';
 
 export default {
-  data () {
-    return {
-      step: 1,
-      device_id: 0
-    }
+  data() {
+		return {
+			wxicon: BASE_IMAGE_URL + "wx.png",
+			right_icon: BASE_IMAGE_URL + "right_icon.png",
+			isChecked: true,  
+			buyDisabled: false,
+			goodsId: 3,
+			price: 0.1,
+			address: '',
+			selectItems: '',
+			params: '',
+			buy_icon: BASE_IMAGE_URL + "buy_icon.jpg",
+		}
+    
   },
 
   methods: {
-    next () {
-      wx.navigateTo({
-        url: "../device_success/main?device_id="+this.device_id
+    goToAddress: function(){
+      const url = "../editAddress/main";
+      wx.navigateTo({ url });
+    },
+
+    checkedClick: function() {
+      this.isChecked = !this.isChecked;
+      console.log(this.isChecked);
+    },
+    openWord: function(){
+      wx.downloadFile({
+          url: BASE_IMAGE_URL+'pay.docx',
+          success: function (res) {
+              var filePath = res.tempFilePath
+              wx.openDocument({
+                  filePath: filePath,
+                  fileType:'docx',
+                  success: function (res) {
+                      console.log(res);
+                      console.log('打开文档成功'+res)
+                  }
+              })
+          }
       })
     },
+    async payNow(){
+      if(!this.address){
+        wx.showToast({
+            title: '请填写收货地址',
+            icon: 'none',
+            duration: 1000
+        });
+        return;
+      }
+      let that = this;
+			this.params.address = this.address;
+			
+			uni.request({
+				url: 'http://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=addOrder',
+				header: {'content-type':'application/x-www-form-urlencoded'},
+				method: 'POST',
+				dataType: 'json',
+				data: this.params,
+				success: (res) => {
+						
+						let result = res.data.data;
+						console.log('result');
+						console.log(result);
+						if(result.code == 1000){
+						  that.buyDisabled = true;
+							
+							weixin_sdk.config({
+									debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+									appId: 'wx83b3874e61dc8353', // 必填，公众号的唯一标识
+									timestamp: result.timeStamp, // 必填，生成签名的时间戳
+									nonceStr: result.nonceStr, // 必填，生成签名的随机串
+									signature: result.paySign,// 必填，签名，见附录1
+									jsApiList: ['getBrandWCPayRequest'] // 必填，需要使用的JS接口列表，这里只写支付的
+							});
+							
+							weixin_sdk.ready(function(){
+											weixin_sdk.checkJsApi({
+												jsApiList: ["getBrandWCPayRequest"],
+												success: res => {
+													
+														weixin_sdk.invoke(
+															 'getBrandWCPayRequest', {
+																	 "appId" : 'wx83b3874e61dc8353',       //公众号名称，由商户传入
+																	 "timeStamp":result.timeStamp, //时间戳，自1970年以来的秒数     
+																	 "nonceStr" : result.nonceStr, //随机串     
+																	 "package" : result.package,     
+																	 "signType" :'MD5',  //微信签名方式：     
+																	 "paySign" : result.paySign     //微信签名 
+
+															 },
+															 function(res){ 
+																	 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+																			 wx.showToast({
+																			 		title: '支付成功',
+																			 		icon: 'none',
+																			 		duration: 1000
+																			 });
+																			 wx.navigateBack({
+																				 delta: 10,
+																				});
+																	 }
+															 }
+														)
+																	
+													},
+													'fail':function(res){
+															console.log(res);
+															wx.showToast({
+																	title: '支付失败',
+																	icon: 'none',
+																	duration: 1000
+															});
+															that.buyDisabled = false;
+													},
+													
+												})
+											})
+							
+						  
+						}
+				}
+			})
+			
+      
+    }
+
+
   },
 
-  mounted () {
+  onLoad(){
+    let that = this;
+    
   },
 
-}
+  onShow(){
+    this.selectItems = wx.getStorageSync("selectItems");
+    this.params = wx.getStorageSync('params');
+    this.buyDisabled = false;
+  }
+
+};
 </script>
 
 <style >
-.container_wrap {
-  background-color: #F9F9F9;
-  padding-top: 20upx;
-  width: 100%;
-  box-sizing: border-box;
+
+page {
+  background: #dddddd;
+  height: 100%;
 }
-.input_wrap{
+
+.contain{width: 100%;}
+
+.info_wrap{
   display: flex;
   flex-direction: column;
-  
-}
-.input_wrap .input_info{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 28upx;
-  }
-  
-.input_wrap .input_info  .item_text{
-	font-size: 28upx;
-	color: #070707;
+  align-items: center;
+  justify-content: space-around;
+	font-size: 34upx;
 }
 
-.input_wrap  input{
-	margin: 20upx 0upx;
-}
-.info{
-  font-size: 28upx;
-  color: #b8b8b8;
-  padding: 30upx 40upx 10upx;
-}
-.wrap{
-  background-color: #FFFFFF;
-  padding: 34upx 40upx 0upx;
-}
-.item_wrap{
+.color_wrap{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 30upx 0upx;
-  border-bottom: 1px solid #f2f2f2;
-  
+  justify-content: center;
 }
 
-.item_wrap .item_text{
-    font-size: 28upx;
-    color: #000;
-  }
-.item_wrap  .item_info{
-    font-size: 28upx;
-    color: #6E6E6E;
-  }
-  
-.item_wrap  .item_title{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-.item_wrap  .item_service{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 24upx;
-    color: #6E6E6E;
-  }
-
-.item_wrap  .item_service img{
-	width: 26upx;
-	height: 26upx;
+.itemColor{
+  width: 40rpx;
+  height: 40rpx;
 }
 
+.goodsItemWrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #ffffff;
+  padding: 20rpx 40rpx;
+  border-bottom: 1rpx solid #DDDDDD;
+  font-size: 25rpx;
+}
 
-.item_right{
-    font-size: 28upx;
-    color: #6E6E6E;
-  }
+.goodsItemWrap img{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
 
-.info_title{
-  color: #000;
-  font-size: 52upx;
-  background-color: #FFFFFF;
-  padding-bottom: 40upx;
-  border-bottom: 1px solid #f2f2f2;
+.head_wrap{
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 40rpx;
+  color: #999999;
+  background: #ffffff;
+  margin-bottom: 20rpx;
+  padding-left: 40rpx;
+}
+
+.head_wrap span{
+  color: #ff5445;
 }
 
 .content_wrap{
-  width: 90%;
-  margin: -180upx 5% 0upx;
-  height: 332upx;
-  background-color: #FFFFFF;
-  border-radius: 20upx;
-  box-shadow: 0upx 0upx 20upx 0upx #EAEAEA;
-  padding: 0upx 16upx;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 40rpx;
+  align-items: center;
+  justify-content: space-between;
+  height: 160rpx;
+  width: 100%;
   box-sizing: border-box;
-  position: relative;
-  z-index: 1;
+  background: #ffffff;
 }
 
-.content_item{
+.content_wrap img{
+  width: 100rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.text_wrap{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #000000;
-  font-size: 34upx;
-  height: 166upx;
-  padding: 0upx 24upx;
-  
-  .text{
-    color: #427DFF;
-    font-size: 24upx;
-  }
+  font-size: 30rpx;
+  color: #999999;
 }
 
-.row_item{
+.item-wrap {
+  padding: 30rpx 40rpx ;
+  border-bottom: 1rpx solid #dddddd;
+  background: #ffffff;
+  font-size: 30rpx;
+}
+
+.text-img {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+  display: inline-block;
+}
+
+.text-size {
+  font-size: 35rpx;
+  color: #767676;
+}
+.right {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.right_text{
+  font-size: 30rpx;
+  color: #cdcdcd;
+}
+
+.address_span{
+  flex: 1;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+button {
+  width: 60%;
+  margin: 20rpx 20%;
+  color: #ffffff;
+  background: #35B583;
+  border-radius: 20rpx;
+}
+
+.buy_text_wrap{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 30rpx;
+  margin-top: 20rpx;
 }
 
-.arraw{
-    width: 18upx;
-    height: 18upx;
-    border-top: 6upx solid #D9D9D9;
-    border-right: 6upx solid #D9D9D9;
-    transform: rotate(45deg);
-    margin-left: 10upx;
-  }
-
-  .place-holder{
-  font-size: 28upx;
-  color: #b2b2b2;
+.buy_text_wrap img{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
 }
 
-.button{
-  margin: 40upx 5%;
-  width: 90%;
-  height: 94upx;
-    line-height: 94upx;
-    color: #ffffff;
-    background-color: #427DFF;
-    border-radius: 10upx;
-    text-align: center;
-    position: absolute;
-    bottom: 0upx;
+
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 50rpx; /* 背景的宽 */
+   height: 50rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #E2723B;
+   padding: 3rpx;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 50rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 50rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 50rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
 }
 
-.bottom_wrap{
-  width: 100%;
-  position: fixed;
-  bottom: 0upx;
-  left: 0upx;
-  border-top: 1px solid #CCCCCC;
-  height: 120upx;
-  line-height: 120upx;
-  color: #000000;
-  font-size: 32upx;
-  background-color: #FFFFFF;
-  display: flex;
-  flex-direction: row;
-  
-}
-
-.bottom_wrap .bottom_left{
-    padding-left: 44upx;
-    flex: 2;
-  }
- .bottom_wrap .bottom_right{
-    flex: 1;
-    background-color: #427DFF;
-    color: #FFFFFF;
-    font-size: 30upx;
-    text-align: center;
-  }
- .bottom_wrap .bottom_money{
-    color: #f00;
-	margin-left: 10upx;
-  }
-  
 </style>

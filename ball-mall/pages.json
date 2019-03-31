@@ -1,5 +1,6 @@
 {
     "pages" : [
+		
 		{
 		    "path" : "pages/main/main",
 		    "style" : {
@@ -48,6 +49,12 @@
 		    "path" : "pages/order_list/order_list",
 		    "style" : {
 		        "navigationBarTitleText" : "订单列表"
+		    }
+		},
+		{
+		    "path" : "pages/pay_address/pay_address",
+		    "style" : {
+		        "navigationBarTitleText" : "下单"
 		    }
 		}
         

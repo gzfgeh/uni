@@ -21,7 +21,7 @@
 					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
 					<span @click="goDetail(item)" >编辑</span>
-					<img src="../../static/img/add_card.png" @click="addCard(item)">
+					<img src="../../static/img/add_card.png" @click="jiaruCart(item)">
 				</div>
 				
 			</view>
@@ -39,14 +39,15 @@
 		
 		<div class="gou_wu_che" @click="goToShopping">
 			<img src="../../static/img/shopping_card_icon.jpg" >
-			<span>4</span>
+			<span>{{goods_num}}</span>
 		</div>
+		
 		
 	</view>
 </template>
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
-	import { BASE_IMAGE_URL,goodsList} from "@/utils/api";
+	import { BASE_IMAGE_URL,goodsList, jiaruCart, getCart} from "@/utils/api";
 	
 	export default {
 		components: {
@@ -59,17 +60,20 @@
 					contentrefresh: "正在加载...",
 					contentnomore: "没有更多数据了"
 				},
+				goods_num: 0,
 				scrollLeft: 0,
 				isClickChange: false,
 				page: 1,
 				listData: [1,2,3,4,5,6],
 				loadingType: 0,
-				typeList:['新鲜蔬菜','肉禽产品','米面粮油','海鲜水产','蛋品豆类','调料干货']
+				typeList:['新鲜蔬菜','肉禽产品','米面粮油','海鲜水产','蛋品豆类','调料干货'],
+				ids: []
 			}
 		},
-		onLoad: function(e) {
+		onShow: function(e) {
 			// this.listData = this.randomfn()
-			this.goodsList(e.id);
+			this.goodsList(e?e.id:0);
+			this.getCart();
 		},
 		onReachBottom() {
 			this.loadMore();
@@ -79,6 +83,34 @@
 			uni.stopPullDownRefresh();
 		},
 		methods: {
+			async getCart(){
+				let res = await getCart(uni.getStorageSync("openid"));
+				if(res.code == 1000){
+					console.log(res.data.length)
+					this.goods_num = res.data.length;
+				}
+			},
+			async jiaruCart(item){
+				let params = {
+					ct_openid: uni.getStorageSync("openid"),
+					ct_g_id: item.g_id,
+				};
+				let res = await jiaruCart(params);
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '添加成功',
+					  duration: 1000
+					});
+					this.ids.map(ite => {
+						if(ite == item.g_id){
+							return;
+						}
+					})
+					this.ids.push(item.g_id);
+					this.goods_num ++;
+				}
+			},
 			async goodsList(index){
 				let res = await goodsList(this.page, this.typeList[index]);
 				if(res.code == 1000){
@@ -113,7 +145,13 @@
 					this.listData.push(this['data' + Math.floor(Math.random() * 5)]);
 				}
 				this.loadingType = 1;
-			}
+			},
+			
+			
+	  
+			
+			
+			
 		}
 	}
 </script>
@@ -270,5 +308,20 @@
 		
 	}
 	
-	
+	.ball-container{
+      .ball{
+        position:fixed;
+        left: 64upx;
+        bottom: 44upx;
+        z-index:200;
+        transition: all .6s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+        .inner{
+          width:32upx;
+          height:32upx;
+          border-radius:50%;
+          background: rgb(0,160,220);
+          transition: all .6s linear;
+		  }
+		}
+	}
 </style>

@@ -4,13 +4,13 @@
 			快捷登录
 		</view>
 		<view class="input-row border">
-			<m-input class="m-input" type="tel"  placeholder-class="input_place_holder" 
+			<m-input class="m-input" type="number"  placeholder-class="input_place_holder" 
 				focus v-model="account" placeholder="请输入手机号" maxLength="11"></m-input>
 			
 			<text class="get_code" @click="getCodeAction">{{count_text}}</text>
 		</view>
 		<view class="input-row">
-			<m-input type="tel" v-model="password" placeholder="请输入验证码"></m-input>
+			<m-input type="number" v-model="password" placeholder="请输入验证码"></m-input>
 		</view>
         
         <view>
@@ -20,11 +20,7 @@
 </template>
 
 <script>
-    import service from '../../service.js';
-    import {
-        mapState,
-        mapMutations
-    } from 'vuex'
+    import { BASE_IMAGE_URL,sendCode,bindPost } from '@/utils/api'
     import mInput from '../../components/m-input.vue'
 
     export default {
@@ -44,37 +40,13 @@
 				count_text: '发送验证码'
             }
         },
-        computed: mapState(['forcedLogin']),
         methods: {
-            ...mapMutations(['login']),
-            initProvider() {
-                const filters = ['weixin', 'qq', 'sinaweibo'];
-                uni.getProvider({
-                    service: 'oauth',
-                    success: (res) => {
-                        if (res.provider && res.provider.length) {
-                            for (let i = 0; i < res.provider.length; i++) {
-                                if (~filters.indexOf(res.provider[i])) {
-                                    this.providerList.push({
-                                        value: res.provider[i],
-                                        image: '../../static/img/' + res.provider[i] + '.png'
-                                    });
-                                }
-                            }
-                            this.hasProvider = true;
-                        }
-                    },
-                    fail: (err) => {
-                        console.error('获取服务供应商失败：' + JSON.stringify(err));
-                    }
-                });
-            },
 			getCodeAction(){
 				if(!this.isSending){
 					this.getCode();
 				}
 			},
-			getCode(){
+			async getCode(){
 				console.log(this.account);
 				if((!this.account) || (this.account.length != 11)){
 					uni.showToast({
@@ -85,13 +57,22 @@
 					return;
 				}
 				
-				uni.showToast({
-				  icon: 'none',
-				  title: '发送成功',
-				  duration: 1000
-				});
-				this.isSending = true;
-				this.countDown();
+				let res = await sendCode({phone: this.account});
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '发送成功',
+					  duration: 1000
+					});
+					this.isSending = true;
+					this.countDown();
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: '发送失败',
+					  duration: 1000
+					});
+				}
 			},
 			
 			countDown() {
@@ -116,86 +97,53 @@
                  */
                 this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
             },
-            bindLogin() {
-                /**
-                 * 客户端对账号信息进行一些必要的校验。
-                 * 实际开发中，根据业务需要进行处理，这里仅做示例。
-                 */
-				return;
-                if (this.account.length < 5) {
+            async bindLogin() {
+                if((!this.account) || (this.account.length != 11)){
+                	uni.showToast({
+                	  icon: 'none',
+                	  title: '手机号输入错误',
+                	  duration: 1000
+                	});
+                	return;
+                }
+                if (!this.password) {
                     uni.showToast({
                         icon: 'none',
-                        title: '账号最短为 5 个字符'
+                        title: '密码输入错误'
                     });
                     return;
                 }
-                if (this.password.length < 6) {
-                    uni.showToast({
-                        icon: 'none',
-                        title: '密码最短为 6 个字符'
-                    });
-                    return;
-                }
-                /**
-                 * 下面简单模拟下服务端的处理
-                 * 检测用户账号密码是否在已注册的用户列表中
-                 * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
-                 */
-                const data = {
-                    account: this.account,
-                    password: this.password
-                };
-                const validUser = service.getUsers().some(function (user) {
-                    return data.account === user.account && data.password === user.password;
-                });
-                if (validUser) {
-                    this.toMain(this.account);
-                } else {
-                    uni.showToast({
-                        icon: 'none',
-                        title: '用户账号或密码不正确',
-                    });
-                }
+				let params = {
+					openid: uni.getStorageSync("openid"),
+					phone: this.account,
+					code: this.password
+				};
+				let res = await bindPost(params);
+				if(res.code == 1000){
+					uni.showToast({
+					    icon: 'none',
+					    title: '登录成功'
+					});
+					uni.setStorageSync("bindPhone", this.account);
+					this.toMain();
+				}else{
+					uni.showToast({
+					    icon: 'none',
+					    title: '登录失败'
+					});
+				}
+                
             },
-            oauth(value) {
-                uni.login({
-                    provider: value,
-                    success: (res) => {
-                        uni.getUserInfo({
-                            provider: value,
-                            success: (infoRes) => {
-                                /**
-                                 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-                                 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-                                 */
-                                this.toMain(infoRes.userInfo.nickName);
-                            }
-                        });
-                    },
-                    fail: (err) => {
-                        console.error('授权登录失败：' + JSON.stringify(err));
-                    }
+            toMain() {
+                uni.reLaunch({
+                    url: '../main/main',
                 });
-            },
-            toMain(userName) {
-                this.login(userName);
-                /**
-                 * 强制登录时使用reLaunch方式跳转过来
-                 * 返回首页也使用reLaunch方式
-                 */
-                if (this.forcedLogin) {
-                    uni.reLaunch({
-                        url: '../main/main',
-                    });
-                } else {
-                    uni.navigateBack();
-                }
 
             }
         },
-        onLoad() {
+        onLoad(e) {
+			console.log(e.openid);
             this.initPosition();
-            this.initProvider();
         }
     }
 </script>
@@ -273,4 +221,8 @@
         height: 60upx;
         margin: 20upx;
     }
+	.input-row.border::after{
+		background-color: transparent!important;
+	}
+	
 </style>

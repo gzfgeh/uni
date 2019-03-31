@@ -6,14 +6,17 @@
           <radio :checked="item.checked" @click="changeChecked(item)"></radio>
           <div class="wrap">
             <div class="head_wrap">
-              <span>编号：123</span>
-              <span>2019-08-09</span>
+              <span>编号：{{item.ct_g_id}}</span>
+              <span>{{item.ct_create_time}}</span>
             </div>
             <div class="content_wrap" >
-              <img src="../../static/img/home_top.png" >
+              <img :src="item.g_img" >
               <div class="content_price_wrap" @click="goToDetail(index, 0)">
-                <span class="item_name">胡萝卜</span>
-                <span style="color: #E2723B; font-size:30upx;">￥{{item.sp_lingshoujia}}</span>
+                <span class="item_name" style="font-size:24upx;">
+									{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}
+								</span>
+                <span class="item_name">{{item.g_name}}</span>
+                <span style="color: #E2723B; font-size:30upx;">￥{{item.g_price}}</span>
               </div>
               <span style="flex: 1;"></span>
               <div class="actionWrap" >
@@ -25,7 +28,7 @@
               </div>
             </div>
             <div class="head_wrap" style="font-size: 24upx;">
-              <span>小计：￥{{item.sp_lingshoujia*item.ct_count}}</span>
+              <span>小计：￥{{item.g_price*item.ct_count}}</span>
               <span style="flex: 1;"></span>
               
             </div>
@@ -47,7 +50,7 @@
 </template>
 
 <script>
-import { BASE_IMAGE_URL,getOrder, getCart, saveCart, deleteCart, weixinPay,shouhuo,deleteMallOrder} from '@/utils/api'
+import { BASE_IMAGE_URL,getCart,saveCar} from '@/utils/api'
 
 
 export default {
@@ -60,15 +63,7 @@ export default {
 			daipingjia: BASE_IMAGE_URL+"daipingjia.png",
 			quanbudingdan: BASE_IMAGE_URL+"quanbudingdan.png",
 			mall_img: BASE_IMAGE_URL+"mall_img.png",
-			list: [
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10},
-				{checked:false,ct_count: 1, sp_lingshoujia: 10}
-			],
+			list: [],
 			isEmpty: false,
 			allStatus: false,
 			page: 1,
@@ -78,7 +73,6 @@ export default {
 			allPrice: 0,
 			allNum: 0,
 			indexList: [],
-			allJf: 0,
 			paramsType: 1
 		}
     
@@ -126,22 +120,6 @@ export default {
       }
       
     },
-    async getGoods(index){
-      let params = {
-        mo_id: this.list[index].mo_id
-      };
-      let res = await shouhuo(params);
-      if(res.code == 1000){
-        wx.showToast({
-            title: '收货成功',
-            icon: 'none',
-            duration: 1000
-        });
-        this.page = 1;
-        this.list = [];
-        this.getOrder();
-      }
-    },
     changeChecked: function(item){
       console.log(item);
       item.checked = !item.checked;
@@ -151,12 +129,11 @@ export default {
       let that = this;
       this.allNum = 0;
       this.allPrice = 0;
-      this.allJf = 0;
       this.indexList = [];
       this.list.map(function(item, index){
         if(item.checked){
           that.allNum++;
-          that.allPrice += item.sp_lingshoujia*item.ct_count;
+          that.allPrice += item.g_price*item.ct_count;
           that.indexList.push(index);
         }
         if(that.allNum == that.list.length){
@@ -216,15 +193,13 @@ export default {
           this.list[index].ct_count --;
         }
       };
-			this.calcStatus();
-			return;
+			
       let params = {
         ct_openid: wx.getStorageSync("openid"),
         ct_g_id: this.list[index].ct_g_id,
-        ct_count: this.list[index].ct_count,
-        ct_id: this.list[index].ct_id
+        ct_count: this.list[index].ct_count
       };
-      let result = await saveCart(params);
+      let result = await saveCar(params);
       if(result.code == 1000){
         this.calcStatus();
       }
@@ -233,19 +208,16 @@ export default {
       let that = this;
       this.allStatus = !this.allStatus;
       this.allPrice = 0;
-      this.allJf = 0;
       this.allNum = this.list.length;
       this.list.map(function(item, index){
         if(that.allStatus){
           item.checked = true;
-          that.allPrice += item.sp_lingshoujia*item.ct_count;
-          that.allJf += item.sp_score*item.ct_count;
+          that.allPrice += item.g_price*item.ct_count;
           that.indexList.push(index);
         }else{
           item.checked = false;
           that.indexList = [];
           that.allPrice = 0;
-          that.allJf = 0;
         }
         
       });
@@ -255,7 +227,7 @@ export default {
       this.allPrice = 0;
       this.allNum = 0;
       this.allStatus = false;
-      let result = await getCart(wx.getStorageSync("openid"));
+      let result = await getCart(uni.getStorageSync("openid"));
       if(result.code == 1000){
         this.list = result.data;
         this.isEmpty = true;
@@ -263,42 +235,6 @@ export default {
         this.list.map(function(item){
           item.checked = false;
         });
-      }else{
-        wx.showToast({
-            title: result.msg,
-            icon: 'none',
-            duration: 1000
-        })
-      }
-    },
-
-    async getOrder(){
-      
-      let result = await getOrder(wx.getStorageSync("openid"), this.paramsType, this.page);
-      if(result.code == 1000){
-        if(result.data.length == 0){
-          if(this.page == 1){
-            this.isEmpty = true;
-            this.loading_text = "记录为空，没有数据";
-          }else{
-            this.isEmpty = true;
-            this.loading_text = "没有更多数据了";
-          }
-        }else{
-          if(this.page == 1){
-            this.list = result.data;
-            if(this.list.length < 10){
-              this.isEmpty = true;
-              this.loading_text = "没有更多数据了";
-            }
-          }else{
-            this.list = this.list.concat(result.data);
-          }
-        }
-        this.list.map(function(item){
-          item.checked = false;
-        });
-
       }else{
         wx.showToast({
             title: result.msg,
@@ -317,33 +253,37 @@ export default {
         })
         return;
       }
+			
+			
       let body = '';
       let that = this;
       let selectItems = [];
+			let goodsDetail = [];
       this.indexList.map(function(item, index){
-        body += that.list[item].ct_g_id+"#"+that.list[item].ct_count+"-";
-        console.log("object"+index);
+				let p = {
+					go_g_id: that.list[item].ct_g_id,
+					go_count: that.list[item].ct_count
+				}
+        goodsDetail.push(p);
         selectItems.push(that.list[item]);
       })
       console.log("body");
       body = body.substring(0, body.length-1);
       
       let params = {
-          mo_money: this.allPrice,
-          body: body,
-          detail: '商品详情',
-          mo_openid: wx.getStorageSync('openid'),
-          mo_sheng: '',
-          mo_shi: '',
-          mo_qu: '',
-          mo_address: '',
-          mo_jf: this.allJf
+          o_money: this.allPrice,
+          o_openid: uni.getStorageSync('openid'),
+          goodsDetail: goodsDetail,
+          o_address: ''
       };
-      wx.setStorageSync('params', params);
-      wx.setStorageSync('selectItems', selectItems);
-      const url = "../payOrder/main";
-      wx.navigateTo({ url });
+      uni.setStorageSync('params', params);
+      uni.setStorageSync('selectItems', selectItems);
+      const url = "../pay_address/pay_address";
+      uni.navigateTo({ url });
       return;
+			
+			
+			
       let result = await weixinPay(params);
       console.log(result);
       if(result.code == 1000){
@@ -387,16 +327,7 @@ export default {
   },
 
   onLoad(){
-  },
-
-  onPullDownRefresh(){
-      this.page = 1;
-      // this.getOrder();
-  },
-
-  onReachBottom(){
-      this.page++;
-      // this.getOrder();
+		this.getCart();
   },
 
 

@@ -13,7 +13,7 @@
 			
 			<div class="uni-inline-item">
 				<span>特色</span>
-				<span>{{item.g_type}}</span>
+				<span>{{item.g_miaoshu}}</span>
 			</div>
 			
 			<div class="uni-inline-item">
@@ -43,7 +43,7 @@
 		
         <view class="btn_wrap">
             <button  type="primary" class="primary" hover-class="button-hover"
-			@tap="next">发布</button>
+			@tap="goodsEdit">发布</button>
             
         </view>
 		
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,goodsDetail } from "@/utils/api";
+	import { BASE_IMAGE_URL,goodsDetail,goodsEdit } from "@/utils/api";
 	
 
     export default {
@@ -107,7 +107,30 @@
 			  }
 			},
 			
-	
+			async goodsEdit(){
+				let params = {
+					g_name:this.item.g_name,
+					g_miaoshu:this.item.g_miaoshu,
+					g_tag:this.item.g_tag,
+					g_price:this.item.g_price,
+					g_danwei:this.item.g_danwei
+				};
+				let res = await goodsEdit(params);
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '修改成功',
+					  duration: 1000
+					});
+					uni.navigateBack();
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: '修改失败',
+					  duration: 1000
+					});
+				}
+			}
         }
     }
 </script>

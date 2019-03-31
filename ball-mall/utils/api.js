@@ -23,3 +23,52 @@ export function getImgList() {
 export function goodsDetail(id) {
     return request.get('Project/goodsDetail?g_id='+id)
 }
+
+/**
+ * 发送验证码
+ */
+export function sendCode(params) {
+    return request.post('CommonApi/sendCode', qs.stringify(params))
+}
+
+/**
+ * 绑定手机
+ */
+export function bindPost(params) {
+    return request.post('CommonApi/bindPost',qs.stringify(params));
+}
+
+/**
+ * 获取购物车列表
+ */
+export function getCart(ct_openid) {
+    return request.get('Project/getCart?ct_openid='+ct_openid);
+}
+
+/**
+ * 加入购物车
+ */
+export function jiaruCart(params) {
+    return request.post('Project/jiaruCart', qs.stringify(params));
+}
+
+/**
+ * 修改购物车 数量
+ */
+export function saveCar(params) {
+    return request.post('Project/saveCar', qs.stringify(params));
+}
+
+/**
+ * 删除购物车
+ */
+export function deleteCart(ct_id) {
+    return request.get('Project/deleteCart?ct_id='+ct_id);
+}
+
+/**
+ * 修改价格
+ */
+export function goodsEdit(params) {
+    return request.post('Project/goodsEdit', qs.stringify(params));
+}
