@@ -113,7 +113,8 @@
 					g_miaoshu:this.item.g_miaoshu,
 					g_tag:this.item.g_tag,
 					g_price:this.item.g_price,
-					g_danwei:this.item.g_danwei
+					g_danwei:this.item.g_danwei,
+					g_id: this.item.g_id
 				};
 				let res = await goodsEdit(params);
 				if(res.code == 1000){

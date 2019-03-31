@@ -285,8 +285,8 @@
 		justify-content: space-between;
 		align-items: flex-end;
 		img{
-			width: 30upx;
-			height: 30upx;
+			width: 50upx;
+			height: 50upx;
 			border-radius: 50%;
 		}
 	}
