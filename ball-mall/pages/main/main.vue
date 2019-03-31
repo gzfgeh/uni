@@ -65,14 +65,7 @@
 			}
 		},
 		onLoad: function() {
-			let bindPhone = uni.getStorageSync("bindPhone");
-			console.log('bindPhone');
-			console.log(bindPhone);
-			if(!bindPhone){
-				uni.navigateTo({
-					url: '../bind_phone/bind_phone'
-				})
-			}
+			
 			this.getImgList();
 		},
 		methods: {

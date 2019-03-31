@@ -91,6 +91,16 @@
 				}
 			},
 			async jiaruCart(item){
+				let bindPhone = uni.getStorageSync("bindPhone");
+				console.log('bindPhone');
+				console.log(bindPhone);
+				if(!bindPhone){
+					uni.navigateTo({
+						url: '../bind_phone/bind_phone'
+					})
+					return;
+				}
+				
 				let params = {
 					ct_openid: uni.getStorageSync("openid"),
 					ct_g_id: item.g_id,

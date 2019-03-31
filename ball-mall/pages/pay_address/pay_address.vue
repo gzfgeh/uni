@@ -39,6 +39,9 @@
 import { BASE_IMAGE_URL,weixinPay } from "@/utils/api";
 import weixin_sdk from '@/utils/weixin-jsapi.js';
 
+var amapFile = require('../../static/js/amap-wx.js');
+var dingwei = require('../../static/js/dingwei.js');
+
 export default {
   data() {
 		return {
@@ -52,6 +55,11 @@ export default {
 			selectItems: '',
 			params: '',
 			buy_icon: BASE_IMAGE_URL + "buy_icon.jpg",
+			markersData: {
+                latitude: '',
+                longitude: '',
+                key: '0f8d53697264ae0a58bed025edb73e31'
+            },
 		}
     
   },
@@ -66,6 +74,48 @@ export default {
       this.isChecked = !this.isChecked;
       console.log(this.isChecked);
     },
+		getLocation: function(){
+			let that=this;
+      uni.getLocation({
+          type: 'wgs84', //返回可以用于wx.openLocation的经纬度
+          success: function (res) {
+              var gcj02tobd09 = dingwei.wgs84togcj02(res.longitude, res.latitude);
+							mui.alert(gcj02tobd09);
+							
+              that.markersData.latitude = gcj02tobd09[1]//维度
+              that.markersData.longitude = gcj02tobd09[0]//经度
+              console.log(res.longitude+"----"+gcj02tobd09[0] +"+++------+++"
+              +res.latitude+"------"+gcj02tobd09[1]);
+              that.loadCity();
+          },
+          fail: function(err){
+              console.log(err);
+          }
+      });
+		},
+		loadCity: function(){
+			var that = this;
+			var myAmapFun = new amapFile.AMapWX({ key: this.markersData.key });
+			//console.log(object);
+			myAmapFun.getRegeo({
+					location: '' + that.markersData.longitude + ',' + that.markersData.latitude + '',//location的格式为'经度,纬度'
+					success: function (data) {
+							console.log(data);
+							var address = data[0].regeocodeData.addressComponent;
+							if(address.streetNumber.street.length > 1){
+								that.address = address.province+address.city+address.district
+													+address.streetNumber.street+address.streetNumber.number;
+							}else{
+									that.address =  address.province+address.city+address.district
+													+address.township;
+							}
+					},
+					fail: function (info) {
+							console.log(info);
+					}
+			});
+    },
+		
     openWord: function(){
       wx.downloadFile({
           url: BASE_IMAGE_URL+'pay.docx',
@@ -173,7 +223,7 @@ export default {
 
   onLoad(){
     let that = this;
-    
+    this.getLocation();
   },
 
   onShow(){
