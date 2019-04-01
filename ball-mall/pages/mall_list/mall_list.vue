@@ -20,7 +20,7 @@
 				<div class="item_right_wrap">
 					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
-					<span @click="goDetail(item)" >编辑</span>
+					<span @click="goDetail(item)" v-if="(m_is_gys != 0)">编辑</span>
 					<img src="../../static/img/add_card.png" @click="jiaruCart(item)">
 				</div>
 				
@@ -37,7 +37,7 @@
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
 		
-		<div class="gou_wu_che" @click="goToShopping">
+		<div class="gou_wu_che" @click="goToShopping" v-if="listData.length != 0">
 			<img src="../../static/img/shopping_card_icon.jpg" >
 			<span>{{goods_num}}</span>
 		</div>
@@ -67,23 +67,33 @@
 				listData: [1,2,3,4,5,6],
 				loadingType: 0,
 				typeList:['新鲜蔬菜','肉禽产品','米面粮油','海鲜水产','蛋品豆类','调料干货'],
-				ids: []
+				ids: [],
+				index: 0,
+				m_is_gys: 0
 			}
 		},
 		onShow: function(e) {
 			// this.listData = this.randomfn()
-			this.goodsList(e?e.id:0);
+			this.index = e?e.id:0;
+			this.goodsList();
 			this.getCart();
+			
+			this.m_is_gys = uni.getStorageSync("m_is_gys");
 		},
 		onReachBottom() {
 			this.loadMore();
 		},
 		onPullDownRefresh() {
 			console.log("dddddd");
-			uni.stopPullDownRefresh();
+			
+			this.page = 1;
+			this.listData = [];
+			this.goodsList();
 		},
 		methods: {
 			async getCart(){
+				
+				
 				let res = await getCart(uni.getStorageSync("openid"));
 				if(res.code == 1000){
 					console.log(res.data.length)
@@ -121,10 +131,28 @@
 					this.goods_num ++;
 				}
 			},
-			async goodsList(index){
-				let res = await goodsList(this.page, this.typeList[index]);
+			async goodsList(){
+				let address = uni.getStorageSync("address").split('|');
+				// address = "湖南省|长沙市|芙蓉区".split('|');
+				
+				let res = await goodsList(this.page, this.typeList[this.index], address[0], address[1], address[2]);
 				if(res.code == 1000){
-					this.listData = res.data;
+					if(this.page == 1){
+						uni.stopPullDownRefresh();
+						this.listData = res.data;
+					}else{
+						this.listData.concat(res.data);
+					}
+					
+					if(res.data.length == 0){
+						//没有了
+						this.loadingType = 2;
+						
+					}else{
+						// 还有
+						this.loadingType = 1;
+					}
+					
 				}
 				console.log(res);
 			},
@@ -140,28 +168,9 @@
 			},
 			loadMore() {
 				this.loadingType = 1;
-				setTimeout(() => {
-					this.addData();
-				}, 1200);
-			},
-			addData() {
-				this.loadingType = 2;
-				return;
-				if (this.listData.length > 30) {
-					this.loadingType = 2;
-					return;
-				}
-				for (let i = 1; i <= 10; i++) {
-					this.listData.push(this['data' + Math.floor(Math.random() * 5)]);
-				}
-				this.loadingType = 1;
-			},
-			
-			
-	  
-			
-			
-			
+				this.page++;
+				this.goodsList();
+			}
 		}
 	}
 </script>

@@ -1,13 +1,13 @@
 <template>
 	<view class="uni-tab-bar">
-		<view class="input_wrap" style="height: 100upx;">
+		<view class="input_wrap" style="height: 100upx;" v-if="false">
 			<input class="uni-input" confirm-type="search" placeholder="搜索" />
 			
 		</view>
 		
 				<scroll-view scroll-y class="list"  @scrolltolower="loadMore" 
-														:style="{'height': (screenHeight-50)+'px'}">
-					<block  v-for="(newsitem,index2) in listData" :key="index2" >
+														:style="{'height': (screenHeight-0)+'px'}">
+					<block  v-for="(newsitem,index2) in list" :key="index2" >
 						
 						<view class="row item_wrap">
 							
@@ -34,12 +34,12 @@
 						<!-- <media-list :data="newsitem" @close="close(index1,index2)" @click="goDetail(newsitem)"></media-list> -->
 					</block>
 					
-					<div v-if="listData.length == 0" class="uni-center-item no_data_wrap">
+					<div v-if="list.length == 0" class="uni-center-item no_data_wrap">
 						<img src="../../static/img/no_data.png" class="no_data">
 						<span>暂无订单信息</span>
 					</div>
 					
-					<view class="uni-tab-bar-loading" v-if="listData.length != 0">
+					<view class="uni-tab-bar-loading" v-if="list.length != 0">
 						<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 					</view>
 					
@@ -49,6 +49,7 @@
 </template>
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
+	import { BASE_IMAGE_URL,goodsList, jiaruCart, getCart} from "@/utils/api";
 	
 	export default {
 		components: {
@@ -64,9 +65,10 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				tabIndex: 0,
-				listData: [1,2,3,4,5,6],
+				list: [],
 				screenHeight: 0,
-				loadingType: 0
+				loadingType: 0,
+				page: 1
 			}
 		},
 		onLoad: function() {
@@ -77,10 +79,19 @@
 					console.log(this.screenHeight);
 				}
 			})
+			
+			this.orderList();
 		},
+		
+		onReachBottom() {
+			this.loadMore();
+		},
+		
 		onPullDownRefresh() {
 			console.log("dddddd");
-			uni.stopPullDownRefresh();
+			this.page = 1;
+			this.list = [];
+			this.orderList();
 		},
 		methods: {
 			goToShopping: function(){
@@ -94,6 +105,51 @@
 				})
 			},
 			
+			async orderList(){
+				let that = this;
+				uni.request({
+					url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=getOrder&o_openid='
+						+uni.getStorageSync("openid")+'&page='+this.page,
+					method: 'GET',
+					dataType: 'json',
+					data: this.params,
+					success: (res) => {
+						if(res.data.code == 1000){
+							if(that.page == 1){
+								uni.stopPullDownRefresh();
+								this.listData = res.data.data;
+							}else{
+								this.listData.concat(res.data.data);
+							}	
+							
+							if(res.data.data.length == 0){
+								//没有了
+								this.loadingType = 2;
+								
+							}else{
+								// 还有
+								this.loadingType = 1;
+							}
+							
+						}else{
+							uni.showToast({
+							  icon: 'none',
+							  title: res.data.msg,
+							  duration: 1000
+							});
+						}
+						
+					},
+					fail: (res) => {
+						uni.showToast({
+						  icon: 'none',
+						  title: res.data.msg,
+						  duration: 1000
+						});
+					},
+				});
+			},
+			
 			
 			loadMore() {
 				this.loadingType = 1;
@@ -102,14 +158,9 @@
 				}, 1200);
 			},
 			addData() {
-				if (this.listData.length > 30) {
-					this.loadingType = 2;
-					return;
-				}
-				for (let i = 1; i <= 10; i++) {
-					this.listData.push(this['data' + Math.floor(Math.random() * 5)]);
-				}
 				this.loadingType = 1;
+				this.page++;
+				this.orderList();
 			},
 			
 			

@@ -6,8 +6,9 @@ export const BASE_IMAGE_URL = 'https://www.xiuqiupaopaopao.com/images/';
 /**
  * 商品列表
  */
-export function goodsList(page, g_type) {
-    return request.get('Project/goodsList?g_type='+g_type+"&page="+page)
+export function goodsList(page, g_type, g_sheng, g_shi, g_qu) {
+    return request.get('Project/goodsList?g_type='+g_type+"&page="+page+
+					"&g_sheng="+g_sheng+"&g_shi="+g_shi+"&g_qu="+g_qu)
 }
 
 /**
@@ -71,4 +72,11 @@ export function deleteCart(ct_id) {
  */
 export function goodsEdit(params) {
     return request.post('Project/goodsEdit', qs.stringify(params));
+}
+
+/**
+ * 修改价格
+ */
+export function getUserInfo(m_openid) {
+    return request.get('Project/getUserInfo?m_openid='+m_openid);
 }

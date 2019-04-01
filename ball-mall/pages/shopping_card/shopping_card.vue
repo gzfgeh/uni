@@ -23,7 +23,7 @@
                  
                   <span class="actionClass" @click="reduceAction(index)">-</span>
                   <!-- <span class="item_num">{{item.ct_count}}</span> -->
-									<input type="number" class="item_num" v-model="item.ct_count" maxlength="4">
+									<input type="number" class="item_num" v-model="item.ct_count" maxlength="4" @click="inputChange(index)">
                   <span class="actionClass" @click="addAction(index)">+</span>
               </div>
             </div>
@@ -45,6 +45,26 @@
         <button @click="payNow">结算({{allNum}})</button>
       </div>
     </div>
+		
+		<!--弹窗-->
+		<div class="modal-mask" @tap="hideModal" v-if="showModal"></div>
+		  <div class="modal-dialog" v-if="showModal">
+		  <div class="modal-title">请输入商品个数</div>
+		  <div class="modal-content">
+		    <input type="number" maxlength="4" v-model="modalInput" class="modal-input">
+		  </div>
+		  <div class="modal-footer" >
+		    <div class="btn_wrap" @click="sureModal">
+		      <span>是</span>
+		    </div>
+			
+			<div class="no_btn_wrap" @click="hideModal">
+			  <span>否</span>
+			</div>
+			
+		  </div>
+		</div>
+		
 
   </div>
 </template>
@@ -73,7 +93,10 @@ export default {
 			allPrice: 0,
 			allNum: 0,
 			indexList: [],
-			paramsType: 1
+			paramsType: 1,
+			showModal: false,
+			modalInput: 0,
+			modalIndex: 0
 		}
     
   },
@@ -91,6 +114,20 @@ export default {
           }
       })
     },
+		inputChange: function(index){
+			this.showModal = true;
+			this.modalInput = this.list[index].ct_count;
+			this.modalIndex = index;
+		},
+		hideModal: function(){
+			this.showModal = false;
+		},
+		sureModal: function(){
+			this.list[this.modalIndex].ct_count = this.modalInput;
+			this.$forceUpdate();
+			this.showModal = false;
+			this.calcStatus();
+		},
     async deleteMallOrder(id){
       let params = {
         mo_id: id
@@ -528,6 +565,88 @@ button{
   text-align: left;
   max-width: 300upx;
 }
+
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 20%;
+  left: 0;
+  z-index: 9999;
+  background: #ffffff;
+  margin: 10%;
+  border-radius: 12upx;
+}
+
+.modal-title {
+  padding-top: 50upx;
+  font-size: 36upx;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 40upx 52upx;
+  font-size: 28upx;
+  color: rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 34upx;
+  padding: 0upx 50upx;
+}
+
+.btn_wrap{
+	flex: 1;
+  height: 94upx;
+  margin: 20upx 5%;
+  background: #E2723B;
+  border-radius: 12upx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 34upx;
+}
+
+.no_btn_wrap{
+	flex: 1;
+	height: 94upx;
+	margin: 20upx 5%;
+	background: rgba(0,0,0,0.15);
+	border-radius: 12upx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-size: 34upx;
+}
+
+.modal-input{
+	border: 1px solid rgba(0,0,0,0.15);;
+}
+
 
 checkbox .wx-checkbox-input{
    border-radius: 50%;/* 圆角 */

@@ -47,7 +47,9 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getImgList } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList,getUserInfo } from '@/utils/api'
+	import { formatLocation } from '@/utils/index'
+	var amapFile = require('../../static/js/amap-wx.js');
 	
 	export default {
 		
@@ -61,12 +63,19 @@
 				shipin_btn: BASE_IMAGE_URL+'zhishixiuqiu.png',
 				toutiao_btn: BASE_IMAGE_URL+'toutiao_btn.png',
 				itemList: [],
-				scrollHeight: 0
+				scrollHeight: 0,
+				markersData: {
+				          latitude: '',
+				          longitude: '',
+				          key: '18271349f9e1a27539f6610b296b32ec'
+				      },
+				address: ''
 			}
 		},
 		onLoad: function() {
-			
+			this.getLocation();
 			this.getImgList();
+			this.getUserInfo();
 		},
 		methods: {
 			imageLoad: function(e){
@@ -77,6 +86,13 @@
 				this.scrollHeight = imgHeight * scale;
 				console.log(this.scrollHeight)
 			},
+			async getUserInfo(){
+				let res = await getUserInfo(uni.getStorageSync("openid"));
+				if(res.code == 1000){
+					uni.setStorageSync("m_is_gys", res.data.m_is_gys);
+				}
+				
+			},
 			async getImgList(){
 				let res = await getImgList();
 				if(res.code == 1000){
@@ -85,20 +101,98 @@
 				}
 			},
 			goDetail(index) {
-				uni.navigateTo({
-					url: '../mall_list/mall_list?id='+index
-				})
-			},
-			close(index1, index2) {
-				uni.showModal({
-					content: '是否删除本条信息？',
-					success: (res) => {
-						if (res.confirm) {
-							this.listData[index1].data.splice(index2, 1);
+// 				uni.navigateTo({
+// 					url: '../mall_list/mall_list?id='+index
+// 				})
+// 				return;
+				
+				if(!this.address){
+					let that = this;
+					uni.showModal({
+						title: '提示',
+						content: '请授权位置信息',
+						success: function (res) {
+							if (res.confirm) {
+								that.getLocation();
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+							}
 						}
-					}
-				})
-			}
+					});
+					
+				}else{
+					uni.navigateTo({
+						url: '../mall_list/mall_list?id='+index
+					})
+				}
+				
+			},
+			getLocation: function(){
+				let that=this;
+			  uni.getLocation({
+					type: "gcj02",
+			      success: function (res) {
+					  
+			          that.markersData.latitude = res.latitude//维度
+			          that.markersData.longitude = res.longitude//经度
+			          console.log(res.longitude+"+++------+++"
+			          +res.latitude+"------");
+			          that.loadCity();
+					  
+					  
+			      },
+			      fail: function(err){
+					  wx.showToast({
+					  	title: "获取当前位置失败",
+					  	icon: 'none',
+					  	duration: 1000
+					  });
+			          console.log(err)
+			      }
+			  });
+			},
+			loadCity: function(){
+				var that = this;
+				
+				uni.request({
+					url: 'https://restapi.amap.com/v3/geocode/regeo?key=18271349f9e1a27539f6610b296b32ec&location='
+						+that.markersData.longitude+','+that.markersData.latitude,
+					
+					success: (res) => {
+						console.log(res);
+						if(res.data.status == 1){
+							//成功
+							that.address = res.data.regeocode.formatted_address;
+							uni.setStorageSync("location", that.address);
+							
+							let province = res.data.regeocode.addressComponent.province;
+							let city = res.data.regeocode.addressComponent.city;
+							let district = res.data.regeocode.addressComponent.district;
+							if(!city){
+								city = province;
+							}
+							uni.setStorageSync("address", province+"|"+city+"|"+district);
+							
+						}else{
+							wx.showToast({
+								title: "获取当前地理位置失败",
+								icon: 'none',
+								duration: 1000
+							});
+						}
+					},
+					fail: (res) => {
+						wx.showToast({
+							title: "获取当前地理位置失败",
+							icon: 'none',
+							duration: 1000
+						});
+					},
+				});
+				
+
+			},
+			
 		}
 	}
 </script>
