@@ -11,21 +11,21 @@
 						
 						<view class="row item_wrap">
 							
-							<img src="../../static/img/home_top.png">
+							<img :src="item.g_img">
 							
 							
 							
 							<div class="item_content_wrap">
 								<div class="item_title row_between">
-									<span>广西柑橘</span>
-									<span>订单号：12345</span>
+									<span>{{item.g_name}}</span>
+									<span>订单号：{{item.g_id}}</span>
 								</div>
-								<div class="sub_title">收货地址：深圳市平岗区中华美路60号22懂402室</div>
+								<div class="sub_title">收货地址：{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}{{item.g_address}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between">
-									<span class="num">￥26 x3</span>
-									<span class="num">1.5Kg/份</span>
-									<span class="num">总价:￥80</span>
+									<span class="num">￥{{item.g_price}} x3</span>
+									<span class="num">{{item.g_danwei}}</span>
+									<span class="num">总价:￥{{item.g_money}}</span>
 								</div>
 							</div>
 							
@@ -122,7 +122,7 @@
 								this.listData.concat(res.data.data);
 							}	
 							
-							if(res.data.data.length == 0){
+							if(res.data.data.length < 10){
 								//没有了
 								this.loadingType = 2;
 								
@@ -152,12 +152,6 @@
 			
 			
 			loadMore() {
-				this.loadingType = 1;
-				setTimeout(() => {
-					this.addData();
-				}, 1200);
-			},
-			addData() {
 				this.loadingType = 1;
 				this.page++;
 				this.orderList();

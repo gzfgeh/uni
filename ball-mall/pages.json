@@ -18,7 +18,8 @@
         {
             "path" : "pages/mall_list/mall_list",
             "style" : {
-                "navigationBarTitleText" : "商品列表"
+                "navigationBarTitleText" : "商品列表",
+				"enablePullDownRefresh": true 
             }
         },
 		{
@@ -48,7 +49,8 @@
 		{
 		    "path" : "pages/order_list/order_list",
 		    "style" : {
-		        "navigationBarTitleText" : "订单列表"
+		        "navigationBarTitleText" : "订单列表",
+				"enablePullDownRefresh": true 
 		    }
 		},
 		{
@@ -82,6 +84,6 @@
 		"navigationBarBackgroundColor": "#fff", 
 		"backgroundColor": "#fbf9fe", 
 		"navigationStyle": "default", 
-		"enablePullDownRefresh": true 
+		"enablePullDownRefresh": false 
 	} 
 }

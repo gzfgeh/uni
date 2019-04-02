@@ -8,7 +8,7 @@
 				
 				<div class="item_content_wrap">
 					<div class="item_title">{{item.g_name}}</div>
-					<div class="sub_title">{{item.g_type}}</div>
+					<div class="sub_title">{{item.g_miaoshu}}</div>
 					<span class="item_tag">{{item.g_tag}}</span>
 					<div class="bottom_wrap">
 						<span class="price">￥{{item.g_price}}</span>
@@ -30,7 +30,7 @@
 		
 		<div v-if="listData.length == 0" class="uni-center-item no_data_wrap">
 			<img src="../../static/img/no_data.png" class="no_data">
-			<span>暂无订单信息</span>
+			<span>暂无商品信息</span>
 		</div>
 		
 		<view class="uni-tab-bar-loading" v-if="listData.length != 0">
@@ -144,7 +144,7 @@
 						this.listData.concat(res.data);
 					}
 					
-					if(res.data.length == 0){
+					if(res.data.length < 10){
 						//没有了
 						this.loadingType = 2;
 						

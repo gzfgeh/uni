@@ -128,6 +128,9 @@
 				
 			},
 			getLocation: function(){
+// 				this.address = "上海上海市虹口区华鸿大厦"
+// 				uni.setStorageSync("address", "上海|上海市|虹口区");
+// 				return;
 				let that=this;
 			  uni.getLocation({
 					type: "gcj02",
@@ -170,6 +173,10 @@
 							let district = res.data.regeocode.addressComponent.district;
 							if(!city){
 								city = province;
+							}
+							
+							if(province.length > 2){
+								province = province.substring(0, 2);
 							}
 							uni.setStorageSync("address", province+"|"+city+"|"+district);
 							
