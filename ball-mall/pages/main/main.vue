@@ -136,6 +136,22 @@
 			  uni.getLocation({
 					type: "gcj02",
 			      success: function (res) {
+					  console.log(res);
+					  
+// 					  uni.showModal({
+// 						title: '提示',
+// 						content: JSON.stringify(res),
+// 						success: function (res) {
+// 							if (res.confirm) {
+// 								console.log('用户点击确定');
+// 							} else if (res.cancel) {
+// 								console.log('用户点击取消');
+// 							}
+// 						}
+// 					});
+// 					return;
+
+					  
 					  
 			          that.markersData.latitude = res.latitude//维度
 			          that.markersData.longitude = res.longitude//经度
@@ -146,6 +162,18 @@
 					  
 			      },
 			      fail: function(err){
+// 					  uni.showModal({
+// 					  	title: '提示',
+// 					  	content: JSON.stringify(err),
+// 					  	success: function (res) {
+// 					  		if (res.confirm) {
+// 					  			console.log('用户点击确定');
+// 					  		} else if (res.cancel) {
+// 					  			console.log('用户点击取消');
+// 					  		}
+// 					  	}
+// 					  });
+// 					  return;
 					  wx.showToast({
 					  	title: "获取当前位置失败",
 					  	icon: 'none',
