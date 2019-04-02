@@ -8,8 +8,8 @@
 				
 				<div class="item_content_wrap">
 					<div class="item_title">{{item.g_name}}</div>
-					<div class="sub_title">{{item.g_miaoshu}}</div>
-					<span class="item_tag">{{item.g_tag}}</span>
+					<div class="sub_title" v-if="item.g_miaoshu">{{item.g_miaoshu}}</div>
+					<span class="item_tag" v-if="item.g_tag">{{item.g_tag}}</span>
 					<div class="bottom_wrap">
 						<span class="price">￥{{item.g_price}}</span>
 						<!-- <span class="old_price">￥38</span> -->
@@ -72,9 +72,13 @@
 				m_is_gys: 0
 			}
 		},
+		onLoad: function(e){
+			console.log(e);
+			this.index = e?e.id:0;
+		},
 		onShow: function(e) {
 			// this.listData = this.randomfn()
-			this.index = e?e.id:0;
+			
 			this.goodsList();
 			this.getCart();
 			
@@ -341,6 +345,16 @@
           background: rgb(0,160,220);
           transition: all .6s linear;
 		  }
+		}
+	}
+	
+	.item_content_wrap{
+		.item_tag,
+		.sub_title{
+			max-width: 200upx;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 	}
 </style>

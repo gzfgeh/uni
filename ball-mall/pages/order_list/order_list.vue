@@ -7,7 +7,7 @@
 		
 				<scroll-view scroll-y class="list"  @scrolltolower="loadMore" 
 														:style="{'height': (screenHeight-0)+'px'}">
-					<block  v-for="(newsitem,index2) in list" :key="index2" >
+					<block  v-for="(item,index2) in list" :key="index2" >
 						
 						<view class="row item_wrap">
 							
@@ -20,12 +20,12 @@
 									<span>{{item.g_name}}</span>
 									<span>订单号：{{item.g_id}}</span>
 								</div>
-								<div class="sub_title">收货地址：{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}{{item.g_address}}</div>
+								<div class="sub_title">收货地址：{{item.o_address}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between">
-									<span class="num">￥{{item.g_price}} x3</span>
+									<span class="num">￥{{item.g_price}} x{{item.go_count}}</span>
 									<span class="num">{{item.g_danwei}}</span>
-									<span class="num">总价:￥{{item.g_money}}</span>
+									<span class="num">总价:￥{{item.all_money}}</span>
 								</div>
 							</div>
 							
@@ -114,12 +114,32 @@
 					dataType: 'json',
 					data: this.params,
 					success: (res) => {
+						console.log(res.data.data);
 						if(res.data.code == 1000){
 							if(that.page == 1){
 								uni.stopPullDownRefresh();
-								this.listData = res.data.data;
+								let tempList = res.data.data;
+								that.list = [];
+								tempList.map(function(item){
+									item.good_list.map(function(ite){
+										ite.o_address = item.o_address;
+										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
+										that.list.push(ite);
+									}) 
+								});
+								// this.list = res.data.data;
 							}else{
-								this.listData.concat(res.data.data);
+								let tempList = res.data.data;
+								tempList.map(function(item){
+									item.good_list.map(function(ite){
+										ite.o_address = item.o_address;
+										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
+										
+										that.list.push(ite);
+									}) 
+								});
+								
+								// this.list.concat(res.data.data);
 							}	
 							
 							if(res.data.data.length < 10){

@@ -1,6 +1,6 @@
 <template>
     <view class="content">
-		<div class="item_wrap" @click="bindPhone">
+		<div class="item_wrap" @click="bindPhone" v-if="phoneNum">
             <div class="row_center left_wrap">
                 <img :src="phone" >
                 <span>手机绑定</span>
@@ -103,8 +103,11 @@
 				baozhengjin: 0,
 				openid: '',
 				showModal: false,
-			
+				phoneNum: ''
 			}
+		},
+		onShow: function(){
+			this.phoneNum = uni.getStorageSync("bindPhone");
 		},
         methods: {
 			bindPhone: function(){

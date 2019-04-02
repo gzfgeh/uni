@@ -90,6 +90,7 @@
 				let res = await getUserInfo(uni.getStorageSync("openid"));
 				if(res.code == 1000){
 					uni.setStorageSync("m_is_gys", res.data.m_is_gys);
+					uni.setStorageSync("bindPhone", res.data.m_phone);
 				}
 				
 			},
@@ -128,8 +129,8 @@
 				
 			},
 			getLocation: function(){
-// 				this.address = "上海上海市虹口区华鸿大厦"
-// 				uni.setStorageSync("address", "上海|上海市|虹口区");
+// 				this.address = "广东深圳市坪山区华鸿大厦"
+// 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
 // 				return;
 				let that=this;
 			  uni.getLocation({

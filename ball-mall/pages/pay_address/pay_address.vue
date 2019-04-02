@@ -99,7 +99,7 @@ export default {
         return;
       }
       let that = this;
-			this.params.address = this.address;
+			this.params.o_address = this.address;
 			
 			uni.request({
 				url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=addOrder',
@@ -194,6 +194,7 @@ export default {
     this.selectItems = wx.getStorageSync("selectItems");
     this.params = wx.getStorageSync('params');
     this.buyDisabled = false;
+		console.log(this.selectItems);
   }
 
 };

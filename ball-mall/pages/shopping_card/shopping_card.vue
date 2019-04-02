@@ -29,8 +29,10 @@
             </div>
             <div class="head_wrap" style="font-size: 24upx;">
               <span>小计：￥{{item.g_price*item.ct_count}}</span>
-              <span style="flex: 1;"></span>
-              
+              <span style="flex: 1;">
+								
+							</span>
+              <span class="del" @click="deleteAction(index)">删除</span>
             </div>
           </div>
       </div>
@@ -70,7 +72,7 @@
 </template>
 
 <script>
-import { BASE_IMAGE_URL,getCart,saveCar} from '@/utils/api'
+import { BASE_IMAGE_URL,getCart,saveCar,deleteCart} from '@/utils/api'
 
 
 export default {
@@ -296,13 +298,13 @@ export default {
       let that = this;
       let selectItems = [];
 			let goodsDetail = [];
-      this.indexList.map(function(item, index){
+      this.indexList.map(function(item){
 				let p = {
-					go_g_id: that.list[item].ct_g_id,
-					go_count: that.list[item].ct_count
+					go_g_id: that.list[parseInt(item)].ct_g_id,
+					go_count: that.list[parseInt(item)].ct_count
 				}
         goodsDetail.push(p);
-        selectItems.push(that.list[item]);
+        selectItems.push(that.list[parseInt(item)]);
       })
       console.log("body");
       body = body.substring(0, body.length-1);
@@ -310,7 +312,7 @@ export default {
       let params = {
           o_money: this.allPrice,
           o_openid: uni.getStorageSync('openid'),
-          goodsDetail: goodsDetail,
+          goods: JSON.stringify(goodsDetail),
           o_address: ''
       };
       uni.setStorageSync('params', params);
@@ -535,7 +537,15 @@ button{
   width: 100%;
   height: 80upx;
   font-size: 25upx;
+	
 }
+
+.del{
+		height: 80upx;
+		line-height: 80upx;
+		padding: 0upx 20upx;
+		display: inline-block;
+	}
 
 .content_wrap{
   display: flex;

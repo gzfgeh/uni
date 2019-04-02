@@ -63,8 +63,8 @@ export function saveCar(params) {
 /**
  * 删除购物车
  */
-export function deleteCart(ct_id) {
-    return request.get('Project/deleteCart?ct_id='+ct_id);
+export function deleteCart(params) {
+    return request.post('Project/deleteCart', qs.stringify(params));
 }
 
 /**
