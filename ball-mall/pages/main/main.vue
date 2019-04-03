@@ -147,7 +147,7 @@
 					return;
 				}
 				let that=this;
-			  uni.getLocation({
+			  wx.getLocation({
 					type: "gcj02",
 			      success: function (res) {
 					  console.log(res);
