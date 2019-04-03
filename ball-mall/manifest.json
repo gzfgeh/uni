@@ -64,6 +64,6 @@
         "devServer" : {
             "https" : false
         },
-        "domain" : "www.xiuqiupaopaopao.com"
+        "domain" : "mall.xiuqiupaopaopao.com"
     }
 }

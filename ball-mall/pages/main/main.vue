@@ -73,8 +73,11 @@
 			}
 		},
 		onLoad: function() {
-			this.getLocation();
+			
 			this.getImgList();
+			
+		},
+		onShow: function(){
 			this.getUserInfo();
 		},
 		methods: {
@@ -87,10 +90,23 @@
 				console.log(this.scrollHeight)
 			},
 			async getUserInfo(){
+				
 				let res = await getUserInfo(uni.getStorageSync("openid"));
-				if(res.code == 1000){
+				if((res.code == 1000) && res.data){
 					uni.setStorageSync("m_is_gys", res.data.m_is_gys);
 					uni.setStorageSync("bindPhone", res.data.m_phone);
+					
+					let province = res.data.m_sheng;
+					let city = res.data.m_shi;
+					let district = res.data.m_qu;
+					this.address = province+city+district;
+					uni.setStorageSync("location", this.address);
+					uni.setStorageSync("address", province+"|"+city+"|"+district);
+					
+					if(res.data.m_is_gys == 1){
+						return;
+					}
+					this.getLocation();
 				}
 				
 			},
@@ -102,11 +118,6 @@
 				}
 			},
 			goDetail(index) {
-// 				uni.navigateTo({
-// 					url: '../mall_list/mall_list?id='+index
-// 				})
-// 				return;
-				
 				if(!this.address){
 					let that = this;
 					uni.showModal({
@@ -132,26 +143,14 @@
 // 				this.address = "广东深圳市坪山区华鸿大厦"
 // 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
 // 				return;
+				if(this.address){
+					return;
+				}
 				let that=this;
 			  uni.getLocation({
 					type: "gcj02",
 			      success: function (res) {
 					  console.log(res);
-					  
-// 					  uni.showModal({
-// 						title: '提示',
-// 						content: JSON.stringify(res),
-// 						success: function (res) {
-// 							if (res.confirm) {
-// 								console.log('用户点击确定');
-// 							} else if (res.cancel) {
-// 								console.log('用户点击取消');
-// 							}
-// 						}
-// 					});
-// 					return;
-
-					  
 					  
 			          that.markersData.latitude = res.latitude//维度
 			          that.markersData.longitude = res.longitude//经度
@@ -162,18 +161,6 @@
 					  
 			      },
 			      fail: function(err){
-// 					  uni.showModal({
-// 					  	title: '提示',
-// 					  	content: JSON.stringify(err),
-// 					  	success: function (res) {
-// 					  		if (res.confirm) {
-// 					  			console.log('用户点击确定');
-// 					  		} else if (res.cancel) {
-// 					  			console.log('用户点击取消');
-// 					  		}
-// 					  	}
-// 					  });
-// 					  return;
 					  wx.showToast({
 					  	title: "获取当前位置失败",
 					  	icon: 'none',

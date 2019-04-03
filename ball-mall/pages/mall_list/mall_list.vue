@@ -133,6 +133,12 @@
 					})
 					this.ids.push(item.g_id);
 					this.goods_num ++;
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: '加入购物车失败',
+					  duration: 1000
+					});
 				}
 			},
 			async goodsList(){
