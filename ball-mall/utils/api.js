@@ -56,8 +56,8 @@ export function jiaruCart(params) {
 /**
  * 修改购物车 数量
  */
-export function saveCar(params) {
-    return request.post('Project/saveCar', qs.stringify(params));
+export function saveCart(params) {
+    return request.post('Project/saveCart', qs.stringify(params));
 }
 
 /**

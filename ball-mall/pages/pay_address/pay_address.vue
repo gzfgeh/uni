@@ -101,6 +101,11 @@ export default {
       let that = this;
 			this.params.o_address = this.address;
 			
+			let ssq = uni.getStorageSync("address").split("|");
+			this.params.o_sheng = ssq[0];
+			this.params.o_shi = ssq[1];
+			this.params.o_qu = ssq[2];
+			
 			uni.request({
 				url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=addOrder',
 				header: {'content-type':'application/x-www-form-urlencoded'},

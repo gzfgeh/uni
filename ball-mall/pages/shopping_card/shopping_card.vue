@@ -23,7 +23,8 @@
                  
                   <span class="actionClass" @click="reduceAction(index)">-</span>
                   <!-- <span class="item_num">{{item.ct_count}}</span> -->
-									<input type="number" class="item_num" v-model="item.ct_count" maxlength="4" @click="inputChange(index)">
+									<input type="number" class="item_num" v-model="item.ct_count" 
+									maxlength="4" @click="inputChange(index)">
                   <span class="actionClass" @click="addAction(index)">+</span>
               </div>
             </div>
@@ -53,7 +54,7 @@
 		  <div class="modal-dialog" v-if="showModal">
 		  <div class="modal-title">请输入商品个数</div>
 		  <div class="modal-content">
-		    <input type="number" maxlength="4" v-model="modalInput" class="modal-input">
+		    <input type="number" maxlength="4" v-model="modalInput" class="modal-input" placeholder="请输入购买数量">
 		  </div>
 		  <div class="modal-footer" >
 		    <div class="btn_wrap" @click="sureModal">
@@ -72,7 +73,7 @@
 </template>
 
 <script>
-import { BASE_IMAGE_URL,getCart,saveCar,deleteCart} from '@/utils/api'
+import { BASE_IMAGE_URL,getCart,saveCart,deleteCart} from '@/utils/api'
 
 
 export default {
@@ -172,7 +173,7 @@ export default {
       this.list.map(function(item, index){
         if(item.checked){
           that.allNum++;
-          that.allPrice += item.g_price*item.ct_count;
+          that.allPrice = parseFloat(parseFloat(that.allPrice) + parseFloat(item.g_price*item.ct_count)).toFixed(2);
           that.indexList.push(index);
         }
         if(that.allNum == that.list.length){
@@ -236,12 +237,19 @@ export default {
       let params = {
         ct_openid: wx.getStorageSync("openid"),
         ct_g_id: this.list[index].ct_g_id,
-        ct_count: this.list[index].ct_count
+        ct_count: this.list[index].ct_count,
+				ct_id: this.list[index].ct_id
       };
-      let result = await saveCar(params);
+      let result = await saveCart(params);
       if(result.code == 1000){
         this.calcStatus();
-      }
+      }else{
+				wx.showToast({
+				    title: '操作失败',
+				    icon: 'none',
+				    duration: 1000
+				})
+			}
     },
     allStatusChange: function(){
       let that = this;
@@ -251,7 +259,7 @@ export default {
       this.list.map(function(item, index){
         if(that.allStatus){
           item.checked = true;
-          that.allPrice += item.g_price*item.ct_count;
+          that.allPrice = parseFloat(parseFloat(that.allPrice) + parseFloat(item.g_price*item.ct_count)).toFixed(2) ;
           that.indexList.push(index);
         }else{
           item.checked = false;
@@ -310,7 +318,7 @@ export default {
       body = body.substring(0, body.length-1);
       
       let params = {
-          o_money: this.allPrice,
+          o_money: parseFloat(this.allPrice).toFixed(2),
           o_openid: uni.getStorageSync('openid'),
           goods: JSON.stringify(goodsDetail),
           o_address: ''
