@@ -11,11 +11,9 @@
 				  <span>起保日期</span>
 				  <span class="uni-flex-item"></span>
 				  
-				  <picker mode="multiSelector" :value="dateTimeTwo" @change="changeDateTimeTwo"
-				  @columnchange="changeDateTimeColumnTwo" :range="dateTimeArray">
+				  <picker mode="date" :value="dateTimeTwo" @change="changeDateTimeTwo">
 				    <view class="tui-picker-detail">
-				      {{dateTimeArray[0][dateTimeTwo[0]]}}-{{dateTimeArray[1][dateTimeTwo[1]]}}-{{dateTimeArray[2][dateTimeTwo[2]]}} 
-							{{dateTimeArray[3][dateTimeTwo[3]]}}:{{dateTimeArray[4][dateTimeTwo[4]]}}:{{dateTimeArray[5][dateTimeTwo[5]]}}
+							{{dateTimeTwo}}
 				    </view>
 				  </picker>
 				  
@@ -44,11 +42,10 @@
 		  <span>起保日期</span>
 		  <span class="uni-flex-item"></span>
 		  
-		  <picker mode="multiSelector" :value="dateTime" @change="changeDateTime"
-		  @columnchange="changeDateTimeColumn" :range="dateTimeArray">
+		  <picker mode="date" :value="dateTime" @change="changeDateTime">
 		    <view class="tui-picker-detail">
-		      {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
-		    </view>
+					{{dateTime}}
+				</view>
 		  </picker>
 		  
 		  <span class="arraw"></span>
@@ -56,7 +53,7 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>机动车损失险</span>
-		  <div class="radio_wrap" @click="jidongRadioChange">
+		  <div class="radio_wrap" >
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
@@ -74,14 +71,14 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>第三者责任险</span>
-		  <div class="radio_wrap" @click="jidongRadioChange">
+		  <div class="radio_wrap" >
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
 			  <picker :range="moneyList" :value="jidongValueIndex" @change="jidongChangeValue">
-				<div>
+				<div :class="{'unActive': (jidongValueIndex == 0)}">
 				  {{moneyList[jidongValueIndex]}}
 				</div>
 			  </picker>
@@ -95,7 +92,7 @@
 		  
 		  <div class="uni-between-item">
 			  <picker :range="siJiList" :value="siJiIndex" @change="siJiChange">
-				<div>
+				<div :class="{'unActive': (siJiIndex == 0)}">
 				  {{siJiList[siJiIndex]}}
 				</div>
 			  </picker>
@@ -109,7 +106,7 @@
 		  
 		  <div class="uni-between-item">
 			  <picker :range="siJiList" :value="chengKeIndex" @change="chengKeChange">
-				<div>
+				<div :class="{'unActive': (chengKeIndex == 0)}">
 				  {{siJiList[chengKeIndex]}}
 				</div>
 			  </picker>
@@ -123,7 +120,7 @@
 	  		  
 	  		  <div class="uni-between-item">
 	  			  <picker :range="dataList" :value="qiangIndex" @change="qiangChange">
-	  				<div>
+	  				<div :class="{'unActive': (qiangIndex == 0)}">
 	  				  {{dataList[qiangIndex]}}
 	  				</div>
 	  			  </picker>
@@ -224,12 +221,12 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
 	  data () {
 		return {
 		  step: 1,
-      siJiList: ["1万","2万","3万","4万","5万","10万","20万","30万","50万"],
+      siJiList: ['不投保',"1万","2万","3万","4万","5万","10万","20万","30万","50万"],
       siJiIndex: 0,
       dataList: ["不投保","投保"],
-      jidongIndex: 0,
-      moneyList: ["5万","10万","20万","30万","50万","100万","150万","200万","300万","500万"],
-      glassList: ['不保','国产玻璃','进口玻璃'],
+      jidongIndex: 1,
+      moneyList: ['不投保',"5万","10万","20万","30万","50万","100万","150万","200万","300万","500万"],
+      glassList: ['不投保','国产玻璃','进口玻璃'],
       huaList: ['不投保', '2000', '5000', '10000', '20000'],    
       cateIndex: 0,
       cateResList: [],
@@ -253,7 +250,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
       
       jidongRadioValue: true,
       otherRadioValue: true,
-      jidongValueIndex: 4,
+      jidongValueIndex: 6,
       chengKeIndex: 0,
       qiangIndex: 0,
       huaIndex: 0,
@@ -272,24 +269,30 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
       uni.navigateTo({ url })
     },
     async insurance(){
-        let bi_end_date = this.dateTimeArray[0][this.dateTime[0]]+"-"+this.dateTimeArray[1][this.dateTime[1]]+"-"+this.dateTimeArray[2][this.dateTime[2]]+ " " + this.dateTimeArray[3][this.dateTime[3]]+":"+this.dateTimeArray[4][this.dateTime[4]]+":"+this.dateTimeArray[5][this.dateTime[5]];
-        let ci_end_date = this.dateTimeArray[0][this.dateTimeTwo[0]]+"-"+this.dateTimeArray[1][this.dateTimeTwo[1]]+"-"+this.dateTimeArray[2][this.dateTimeTwo[2]]+ " " + this.dateTimeArray[3][this.dateTimeTwo[3]]+":"+this.dateTimeArray[4][this.dateTimeTwo[4]]+":"+this.dateTimeArray[5][this.dateTimeTwo[5]];
-
+        let bi_end_date = this.dateTime; 
+        let ci_end_date = this.dateTimeTwo;
+				
         let liability = this.moneyList[this.jidongValueIndex];
-        if(liability.indexOf("万") != -1){
-          liability = parseInt(liability.split("万")[0]*10000);
-        }
-
+				if(this.jidongValueIndex != 0){
+					if(liability.indexOf("万") != -1){
+					  liability = parseInt(liability.split("万")[0]*10000);
+					}
+				}
+        
         let driver_seat = this.siJiList[this.siJiIndex];
-        if(driver_seat.indexOf("万") != -1){
-          driver_seat = parseInt(driver_seat.split("万")[0]*10000);
-        }
+				if(this.siJiIndex != 0){
+					if(driver_seat.indexOf("万") != -1){
+					  driver_seat = parseInt(driver_seat.split("万")[0]*10000);
+					}
+				}
 
         let passenger_seat = this.siJiList[this.chengKeIndex];
-        if(passenger_seat.indexOf("万") != -1){
-          passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
-        }
-
+				if(this.chengKeIndex != 0){
+					if(passenger_seat.indexOf("万") != -1){
+					  passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
+					}
+				}	
+				
 				let quote_details = {
 					"compulsory": this.jiaoIndex == 1,
           "destroy": this.jidongIndex == 1,
@@ -307,8 +310,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         
         let params = {
           quote_details: quote_details,
-          bi_start_date: bi_end_date.split(" ")[0],
-          ci_start_date: ci_end_date.split(" ")[0]
+          bi_start_date: this.dateTime,
+          ci_start_date: this.dateTimeTwo
         };
 
 				let res = await insurance(this.global.quotation_id, params);
@@ -338,7 +341,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
           this.changeAllDateTime(res.data.data.biStartTime, res.data.data.ciStartTime);
         }else{
           //默认第二天
-          
+          this.dateTime = getDay(1);
+					this.dateTimeTwo = getDay(1);
         }
 
     },
@@ -351,28 +355,6 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
     changeDateTimeTwo(e){
       console.log(e.mp.detail.value);
       this.dateTimeTwo = e.mp.detail.value;
-    },
-
-    changeDateTimeColumn(e){
-      var arr = this.dateTime, dateArr = this.dateTimeArray;
-
-      arr[e.mp.detail.column] = e.mp.detail.value;
-      dateArr[2] = getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
-
-      this.dateTimeArray = dateArr;
-      this.dateTime = arr;
-      
-    },
-
-    changeDateTimeColumnTwo(e){
-      var arr = this.dateTimeTwo, dateArr = this.dateTimeArray;
-
-      arr[e.mp.detail.column] = e.mp.detail.value;
-      dateArr[2] = getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
-
-      this.dateTimeArray = dateArr;
-      this.dateTimeTwo = arr;
-      
     },
     jidongRadioChange(){
       this.jidongRadioValue = !this.jidongRadioValue;
@@ -482,43 +464,12 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
     },
 
     changeAllDateTime(biStartTime, ciStartTime){
-      // console.log('biStartTime:'+biStartTime+'----ciStartTime:'+ciStartTime);
-      var time = biStartTime;
-      if(time){
-        console.log(time);
-        this.dateTime = [];
-        let dateArr = time.split(" ")[0].split("-");
-        let dateOne = dateArr[0].substring(2, 4);
-        let dateTwo = dateArr[1];
-        let dateThree = dateArr[2];
-        console.log(dateTwo);
-        this.dateTime.push(parseInt(dateOne));
-        this.dateTime.push(parseInt(dateTwo)-1);
-        this.dateTime.push(parseInt(dateThree)-1);
-
-        let timeArr = time.split(" ")[1].split(":");
-        this.dateTime.push(parseInt(timeArr[0]));
-        this.dateTime.push(parseInt(timeArr[1]));
-        this.dateTime.push(parseInt(timeArr[2]));
-      }
-
-      time = ciStartTime;
-      if(time){
-        console.log(time);
-        this.dateTimeTwo = [];
-        let dateArr = time.split(" ")[0].split("-");
-        let dateOne = dateArr[0].substring(2, 4);
-        let dateTwo = dateArr[1];
-        let dateThree = dateArr[2];
-        console.log(dateTwo);
-        this.dateTimeTwo.push(parseInt(dateOne));
-        this.dateTimeTwo.push(parseInt(dateTwo)-1);
-        this.dateTimeTwo.push(parseInt(dateThree)-1);
-
-        let timeArr = time.split(" ")[1].split(":");
-        this.dateTimeTwo.push(parseInt(timeArr[0]));
-        this.dateTimeTwo.push(parseInt(timeArr[1]));
-        this.dateTimeTwo.push(parseInt(timeArr[2]));
+      if(biStartTime && ciStartTime){
+        this.dateTime = biStartTime.split(" ")[0];
+        this.dateTimeTwo = ciStartTime.split(" ")[0];
+      }else{
+        this.dateTime = getDay(1);
+        this.dateTimeTwo = getDay(1);
       }
     },
 
@@ -526,23 +477,6 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
 
   onLoad () {
     this.global = uni.getStorageSync("global");
-
-    // 获取完整的年月日 时分秒，以及默认显示的数组
-    var obj = dateTimePicker(this.startYear, this.endYear);
-    this.dateTimeArray = obj.dateTimeArray;
-    this.dateTime = getDay(1).split("-");
-    this.dateTime[0] = parseInt(this.dateTime[0].substring(2,4));
-    this.dateTime[1] = parseInt(this.dateTime[1])-1;
-    this.dateTime[2] = parseInt(this.dateTime[2])-1;
-    this.dateTime.push(0);
-    this.dateTime.push(0);
-    this.dateTime.push(0);
-
-    this.dateTimeTwo = this.dateTime;
-
-    console.log(this.dateTime);
-
-
     this.getEffectiveDate();
   },
 

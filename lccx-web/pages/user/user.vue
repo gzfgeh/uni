@@ -14,13 +14,13 @@
 		<div class="uni-inline-item">
 			<span>发动机号</span>
 			<input type="text"  class="item_input" v-model="engineNo" @blur="watchEngineInput"
-          placeholder-class="place-holder" placeholder="请输入证件号码">
+          placeholder-class="place-holder" placeholder="请输入发动机号">
 		</div>
 		
 		<div class="uni-inline-item">
 			<span>初登日期</span>
 			<picker mode="date" @change="dateChange" :value="firstRegisterDate">
-				<div class="item_input">
+				<div class="item_input" :class="{'unActive': (firstRegisterDate == '请选择具体日期')}">
 				  {{firstRegisterDate}}
 				</div>
 			  </picker>
@@ -35,25 +35,28 @@
 		<div class="uni-inline-item">
 			<span>车主姓名</span>
 			<input type="text" v-model="name" placeholder="请输入车主姓名"
-				placeholder-class="input-placeholder" class="item_input">
+				placeholder-class="place-holder" class="item_input">
 		</div>
 		
 		<div class="uni-inline-item">
 			<span>身份证号</span>
-			<input type="text" v-model="idcard" placeholder="请输入证件号码"
-				placeholder-class="input-placeholder" class="item_input">
+			<input type="text" v-model="idcard" placeholder="请输入证件号码" @blur="watchCardInput"
+				placeholder-class="place-holder" class="item_input">
 		</div>
 		
 		<div class="uni-inline-item">
 			<span>手机号码</span>
 			<input type="tel" v-model="mobile" placeholder="请输入手机号码"
-				placeholder-class="input-placeholder" class="item_input">
+				placeholder-class="place-holder" class="item_input">
 		</div>
 		
-		<div class="take_photo_wrap uni-center-item" @tap="showModal">
-			<img src="../../static/img/take_photo.png" alt="">
-			<span>识别行驶证，自动填信息</span>
-		</div>
+		<view class="uni-center-item">
+			<view class="take_photo_wrap uni-center-item" @tap="showModal">
+				<img src="../../static/img/take_photo.png" alt="">
+				<span>识别行驶证，自动填信息</span>
+			</view>
+		</view>
+		
 		
 		
         <view class="btn_wrap">
@@ -86,7 +89,7 @@
     export default {
 		data(){
 			return {
-				license_no: '陕AL800U',
+				license_no: '陕G61B86',
 				  mobile: '',
 				  item: '',
 				  name: '',
@@ -100,7 +103,7 @@
 				  trueFrameNo: '',
 				  trueEngineNo: '',
 				  engineNo: '',
-				  firstRegisterDate: '',
+				  firstRegisterDate: '请选择具体日期',
 				  brandCode: '',
 				  responseNo: '',
 				  id: 9,
@@ -109,7 +112,7 @@
 					mobile:'',
 					idcard:'',
 					brand:'',
-					firstRegisterDate:'',
+					firstRegisterDate:'请选择具体日期',
 					engineNo:'',
 					frameNo:'',
 					responseNo:'',
@@ -118,8 +121,8 @@
 			}
 		},
 		onLoad () {
-			  this.license_no = this.$root.$mp.query.license_no?this.$root.$mp.query.license_no:'陕AL800U';
-			  this.id = this.$root.$mp.query.id?this.$root.$mp.query.id:'9';
+			  this.license_no = this.$root.$mp.query.license_no?this.$root.$mp.query.license_no:'陕G61B86';
+			  this.id = this.$root.$mp.query.id?this.$root.$mp.query.id:'66';
 			  this.getVechileData();
 			  this.isShowBtn = true;
 			  console.log('this.globalData.billInfo');
@@ -138,6 +141,18 @@
 			closeModal(){
 				this.isShowModal = false;
 			},
+			watchCardInput(e){
+			  let value = e.mp.detail.value;
+			  let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+			  if(reg.test(value) === false){  
+				  wx.showToast({
+					icon: 'none',
+					title: '请输入正确的身份证',
+					duration: 1000
+				  });
+				  return; 
+			  } 
+			},
 			watchInput(e){
 			  console.log(e.mp.detail.value);
 			  let value = e.mp.detail.value;
@@ -154,18 +169,18 @@
 			//展示底部 popup
 			showBottomPopup: function() {
 				var that = this
-				uni.chooseImage({
+				wx.chooseImage({
 					count: 1,
 					sizeType: ['original', 'compressed'],
 					success: function (res) {
 						console.log(res.tempFilePaths[0]);
-						uni.showLoading({ title: "上传中..." });
-						  uni.uploadFile({
+						wx.showLoading({ title: "上传中..." });
+						  wx.uploadFile({
 							url:"https://api.kaikaibao.com.cn/3.1/ocr",
 							filePath: res.tempFilePaths[0],
 							name: "file",
 							header: { 
-							  "Content-Type": "application/json",
+							  
 							  "Authorization": "Bearer "+uni.getStorageSync('token'),
 							  "x-lccx-did":2 },
 							formData: {"file":res.tempFilePaths[0]},
@@ -222,7 +237,7 @@
 			
             next() {
                 uni.navigateTo({
-                    url: '../carmodal/carmodal',
+                    url: '../carmodal/carmodal?brandCode='+this.brandCode,
                 });
             },
 			
@@ -240,6 +255,10 @@
 				this.firstRegisterDate = this.item.firstRegisterDate;
 				this.brandCode = this.item.brandCode;
 				this.responseNo = this.item.responseNo;
+				if(!this.firstRegisterDate){
+				  this.firstRegisterDate = "请选择具体日期";
+				}
+		
 			  }
 			},
 	
@@ -262,17 +281,18 @@
 				});
 				return;
 			  }
-
-			  if (!this.idcard){
-				uni.showToast({
-				  icon: 'none',
-				  title: '请输入身份证号',
-				  duration: 1000
-				});
-				return;
+			  
+			  let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+			  if(reg.test(this.idcard) === false){  
+				  wx.showToast({
+					icon: 'none',
+					title: '请输入正确的身份证',
+					duration: 1000
+				  });
+				  return; 
 			  }
 
-			  if (!this.frameNo && (this.frameNo.length == 17)){
+			  if (!this.frameNo || (this.frameNo.length != 17)){
 				uni.showToast({
 				  icon: 'none',
 				  title: '请输入正确的车架号',
@@ -366,7 +386,7 @@
 	}
 	
 	.take_photo_wrap{
-		margin: 48upx 144upx;
+		margin: 48upx 0upx;
 		background-color: rgba(66, 225, 255, 0.1);
 		border-radius: 48upx;
 		padding: 28upx 48upx;
@@ -478,5 +498,8 @@
 		margin-left: -24upx;
 		z-index: 1000;
 	}
-
+	
+	.unActive{color: rgba(0,0,0,0.3);}
+	.place-holder{font-size: 28upx;color: rgba(0,0,0,0.3);}
+	
 </style>

@@ -41,17 +41,17 @@
 					<span class="tag" v-if="item.quote_details.excluding" >不计免赔</span>
 				</div>
 				
-				<div>{{item.quote_details.liability}}万</div>
+				<div>{{item.quote_details.liability}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>司机责任险</span>
-				<div>{{item.quote_details.driver_seat}}万</div>
+				<div>{{item.quote_details.driver_seat}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>乘客责任险</span>
-				<div>{{item.quote_details.passenger_seat}}万</div>
+				<div>{{item.quote_details.passenger_seat}}</div>
 			</div>
 			
 			
@@ -119,7 +119,7 @@
 		<div class="license">
 			<radio  :checked="true" color="#427DFF">我已阅读并同意</radio>
 
-			<text class="link">《保险条款》</text>
+			<text class="link">《服务协议》</text>
 		  </div>
 
 
@@ -145,14 +145,20 @@
 
 	  methods: {
 		next: function(){
-		  const url = '../pay_address/main';
+		  const url = '../pay_address/pay_address';
 		  uni.navigateTo({ url })
 		},
+		changeBill: function(){
+      const url = '../quote_bill/quote_bill';
+      wx.navigateTo({ url })
+    },
 
 		async applyUnderwrite(){
+			// "insurer": this.item.quote_result.data[0].insurerCode,
+      //   "biz_id": this.item.biz_id,
 		  let params = {
-			"insurer": this.item.quote_result.data[0].insurerCode,
-			"biz_id": this.item.biz_id,
+			"insurer": 'ASTP',
+        "biz_id": '53800845',
 			"channel_code": "QUANLIAN_PROXY_INSURE",
 			"address_name": this.global.name,
 			"address_mobile": this.global.mobile,
@@ -180,16 +186,19 @@
 			  console.log(res.data);
 			this.item = res.data;
 			this.item.quote_details = JSON.parse(this.item.quote_details);
-			if(parseInt(this.item.quote_details.liability) > 1000){
-			  this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000);
+			if((this.item.quote_details.liability != '不投保') 
+					&& (parseInt(this.item.quote_details.liability) >= 10000)){
+			  this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000)+"万";
 			}
 
-			if(parseInt(this.item.quote_details.driver_seat) > 1000){
-			  this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000);
+			if((this.item.quote_details.driver_seat != '不投保') 
+					&& (parseInt(this.item.quote_details.driver_seat) >= 10000)){
+			  this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000)+"万";
 			}
 
-			if(parseInt(this.item.quote_details.passenger_seat) > 1000){
-			  this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000);
+			if((this.item.quote_details.passenger_seat != '不投保')
+				&& (parseInt(this.item.quote_details.passenger_seat) >= 10000)){
+			  this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000)+"万";
 			}
 
 			if(this.item.mobile){
@@ -316,6 +325,7 @@
 .license {
   padding: 20upx 40upx 0upx;
   border-top: 1upx solid #E4E4E4;
+	display: flex;flex-direction: row;align-items: center;
 }
 
 .link{

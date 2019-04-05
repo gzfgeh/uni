@@ -1,6 +1,5 @@
-// #ifdef H5
-const Fly = require('flyio/dist/npm/fly')
-// #endif
+
+const Fly = require('./fly.js')
 
 var request = new Fly()
 var tokenFly = new Fly()
@@ -21,7 +20,8 @@ request.interceptors.request.use((request) => {
     if (token) {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
-
+	
+	request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
 	request.headers["x-lccx-did"] = 2
 //     if (uni.getStorageSync('device_id')) {
 //         request.headers["x-lccx-did"] = uni.getStorageSync('device_id')

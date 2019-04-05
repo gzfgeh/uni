@@ -2,6 +2,12 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/user/user",
+		    "style" : {
+		        "navigationBarTitleText" : "用户信息"
+		    }
+		},
+		{
 		    "path" : "pages/pay_address/pay_address",
 		    "style" : {
 		        "navigationBarTitleText" : "配送地址"
@@ -69,14 +75,6 @@
                 "navigationBarTitleText" : "商业险"
             }
         },
-        
-        {
-            "path" : "pages/user/user",
-            "style" : {
-                "navigationBarTitleText" : "用户信息"
-            }
-        },
-        
         {
             "path" : "pages/reg/reg",
             "style" : {

@@ -9,7 +9,7 @@
 			<radio-group @change="radioChange">
                 <label class="uni-between-item " v-for="(item, index) in items" :key="index">
                     <view class="radio_wrap">
-						<span>{{item.parentVehName}}{{item.engineDesc}}{{item.gearboxType}}{{item.seat}}</span>
+						<span>{{item.parentVehName}} {{item.engineDesc}} {{item.gearboxType}} {{item.seat}}</span>
 						<span class="price">新车参考价：{{item.newCarPrice}}元</span>
 					</view>
 					<view>
@@ -39,7 +39,7 @@
 			return {
 				items: [],
 				current: 0,
-				brand_name: '法拉利',
+				brand_name: '',
 				familyName:'',
 				license_no: '',
 				response_no: '',
@@ -92,7 +92,7 @@
 
 					let res = await getModelExactness(params);
 					if(res.code == 200){
-						if(!res.data){
+						if((res.data.data.length == 0) || (!res.data.data)){
 							this.isExactness = false;
 							this.getModelMistiness();
 						}else{
@@ -119,6 +119,12 @@
 					  this.familyName = res.data.data[0].familyName;
 								this.brand_name = res.data.data[0].standardName;
 								this.sendTime = res.data.sendTime;
+					}else{
+						wx.showToast({
+							icon: 'none',
+							title: '车辆信息查询失败',
+							duration: 1000
+						});
 					}
 				  }
 	  
@@ -158,7 +164,6 @@
 	
 	.title_wrap{
 		color: rgba(0,0,0,0.7);
-		height: 160upx;
 		padding: 20upx 50upx; 
 		background-color: #F9F9F9;
 		width: 100%;
@@ -191,6 +196,7 @@
 	
 	radio-group label{
 		border-bottom:  2upx solid rgba(0,0,0,0.1);
+		padding: 16upx 10upx 16upx 0upx ;
 	}
 	
 	.btn_wrap{

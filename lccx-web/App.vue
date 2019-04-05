@@ -126,4 +126,5 @@
 	  font-size: 28upx;
 	  color: rgba(0,0,0,0.3);
 	}
+	.uni-center-item{display: flex;flex-direction: row;align-items: center;justify-content: center;}
 </style>

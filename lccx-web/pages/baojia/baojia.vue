@@ -19,7 +19,7 @@
 			  <span @tap="showKeyBoard">{{activeText}}</span>
 			  <image :src="activeImg" @tap="showKeyBoard"></image>
 			  <input type="text" placeholder="请输入车牌号" v-model="license_no"
-				placeholder-class="place-holder">
+				placeholder-class="place-holder" @blur="watchInput">
 		  </div>
 		  
 		</div>
@@ -193,11 +193,12 @@
 			},
 			onConfirm(e) {
 				console.log(e);
-				this.pickerText = e.label;
 				this.pickerCode = e.value[1];
 				this.city_name = e.label.split("-")[1];
+				this.pickerText = this.city_name;
+				this.activeText = e.index[0] == 1 ? '桂' : '陕';
 			},
-			onCancle(e){
+			onCancel(e){
 				
 			},
 			
@@ -216,14 +217,28 @@
 			callPhone(){
 				window.location.href = "tel:4000880329";
 			},
-			next(){
+			watchInput: function(e){
+				console.log(e.mp.detail.value);
+				let value = e.mp.detail.value;
+				this.license_no = this.license_no.toLocaleUpperCase();
+				if(value.length != 6){
+				  wx.showToast({
+					icon: 'none',
+					title: '请输入正确的车牌号',
+					duration: 1000
+				  });
+				  return;
+				}
+				
+			  },
+			next(id){
 				uni.navigateTo({
-				  url: "../user/user"
+				  url: "../user/user?license_no="+(this.activeText+this.license_no)+"&id="+id
 				})
 			},
 			async quotation(){
 				let that = this;
-				if(!this.license_no){
+				if(!this.license_no || (this.license_no.length != 6)){
 					uni.showToast({
 					icon: 'none',
 					title: '请输入车牌号',
@@ -244,7 +259,7 @@
 				  console.log(res);
 				  params.quotation_id = res.data.id;
 				  uni.setStorageSync("global", params);
-				  that.next();
+				  that.next(params.quotation_id);
 				}else{
 				  uni.showToast({
 					icon: 'none',
@@ -258,10 +273,9 @@
         },
 		
 		onLoad () {
-			this.pickerText = this.pickerValueArray[0][this.pickerValueIndex[0]]+"-"
-						+this.pickerValueArray[1][this.pickerValueIndex[1]];
+			this.pickerText = this.pickerValueArray[1][this.pickerValueIndex[1]];
 			this.H5login();
-		  },
+		},
   
     }
 </script>
