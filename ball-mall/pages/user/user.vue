@@ -1,6 +1,6 @@
 <template>
     <view class="content">
-		<div class="item_wrap" @click="bindPhone" v-if="phoneNum">
+		<div class="item_wrap" @click="bindPhone">
             <div class="row_center left_wrap">
                 <img :src="phone" >
                 <span>手机绑定</span>
@@ -121,9 +121,16 @@
 				})
 			},
 			watchOrder: function(){
-				uni.navigateTo({
-					url: '../order_list/order_list'
-				})
+				if(this.phoneNum){
+					uni.navigateTo({
+						url: '../order_list/order_list'
+					})
+				}else{
+					uni.navigateTo({
+						url: '../bind_phone/bind_phone'
+					})
+				}
+				
 			},
 			contactUs: function(){
 				uni.openDocument({

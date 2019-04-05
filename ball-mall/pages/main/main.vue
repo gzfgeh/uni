@@ -75,10 +75,10 @@
 		onLoad: function() {
 			
 			this.getImgList();
-			
+			this.getUserInfo();
 		},
 		onShow: function(){
-			this.getUserInfo();
+			
 		},
 		methods: {
 			imageLoad: function(e){
@@ -98,21 +98,45 @@
 				// return;
 				
 				let res = await getUserInfo(uni.getStorageSync("openid"));
-				if((res.code == 1000) && res.data){
-					uni.setStorageSync("m_is_gys", res.data.m_is_gys);
-					uni.setStorageSync("bindPhone", res.data.m_phone);
-					
-					let province = res.data.m_sheng;
-					let city = res.data.m_shi;
-					let district = res.data.m_qu;
-					this.address = province+city+district;
-					uni.setStorageSync("location", this.address);
-					uni.setStorageSync("address", province+"|"+city+"|"+district);
-					
-					if(res.data.m_is_gys == 1){
-						return;
+				
+// 				uni.showModal({
+// 					title: '提示',
+// 					content: JSON.stringify(res),
+// 					success: function (res) {
+// 						if (res.confirm) {
+// 							
+// 						} else if (res.cancel) {
+// 							console.log('用户点击取消');
+// 						}
+// 					}
+// 				});
+// 				return;
+				
+				uni.removeStorageSync("m_is_gys");
+				uni.removeStorageSync("bindPhone");
+				uni.removeStorageSync("location");
+				uni.removeStorageSync("address");
+				
+				if((res.code == 1000)){
+					if(res.data){
+						uni.setStorageSync("m_is_gys", res.data.m_is_gys);
+						uni.setStorageSync("bindPhone", res.data.m_phone);
+						
+						let province = res.data.m_sheng;
+						let city = res.data.m_shi;
+						let district = res.data.m_qu;
+						this.address = province+city+district;
+						uni.setStorageSync("location", this.address);
+						uni.setStorageSync("address", province+"|"+city+"|"+district);
+						
+						if(res.data.m_is_gys == 1){
+							return;
+						}
 					}
+					
 					this.getLocation();
+				}else{
+					
 				}
 				
 			},

@@ -20,7 +20,7 @@
 				<div class="item_right_wrap">
 					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
-					<span @click="goDetail(item)" v-if="(m_is_gys != 0)">编辑</span>
+					<span @click="goDetail(item)" v-if="m_is_gys">编辑</span>
 					<img src="../../static/img/add_card.png" @click="jiaruCart(item)">
 				</div>
 				
@@ -167,14 +167,32 @@
 				console.log(res);
 			},
 			goToShopping: function(){
-				uni.navigateTo({
-					url: '../shopping_card/shopping_card'
-				})
+				let phoneNum = uni.getStorageSync("bindPhone");
+				if(phoneNum){
+					uni.navigateTo({
+						url: '../shopping_card/shopping_card'
+					})
+				}else{
+					uni.navigateTo({
+						url: '../bind_phone/bind_phone'
+					})
+				}
+				
+				
 			},
 			goDetail(item) {
-				uni.navigateTo({
-					url: '../list_detail/list_detail?id='+item.g_id
-				})
+				let phoneNum = uni.getStorageSync("bindPhone");
+				if(phoneNum){
+					uni.navigateTo({
+						url: '../list_detail/list_detail?id='+item.g_id
+					})
+				}else{
+					uni.navigateTo({
+						url: '../bind_phone/bind_phone'
+					})
+				}
+				
+				
 			},
 			loadMore() {
 				this.loadingType = 1;
