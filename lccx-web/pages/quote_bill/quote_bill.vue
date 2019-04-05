@@ -273,25 +273,34 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         let ci_end_date = this.dateTimeTwo;
 				
         let liability = this.moneyList[this.jidongValueIndex];
-				if(this.jidongValueIndex != 0){
-					if(liability.indexOf("万") != -1){
-					  liability = parseInt(liability.split("万")[0]*10000);
-					}
-				}
+        if(this.jidongValueIndex != 0){
+          
+          if(liability.indexOf("万") != -1){
+            liability = parseInt(liability.split("万")[0]*10000);
+          }
+        }else{
+          liability = false;
+        }
         
         let driver_seat = this.siJiList[this.siJiIndex];
-				if(this.siJiIndex != 0){
-					if(driver_seat.indexOf("万") != -1){
-					  driver_seat = parseInt(driver_seat.split("万")[0]*10000);
-					}
-				}
-
+        if(this.siJiIndex != 0){
+            
+            if(driver_seat.indexOf("万") != -1){
+              driver_seat = parseInt(driver_seat.split("万")[0]*10000);
+            }
+        }else{
+          driver_seat = false;
+        }
+        
         let passenger_seat = this.siJiList[this.chengKeIndex];
-				if(this.chengKeIndex != 0){
-					if(passenger_seat.indexOf("万") != -1){
-					  passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
-					}
-				}	
+        if(this.chengKeIndex != 0){
+          
+          if(passenger_seat.indexOf("万") != -1){
+            passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
+          }
+        }else{
+          passenger_seat = false;
+        }
 				
 				let quote_details = {
 					"compulsory": this.jiaoIndex == 1,
@@ -337,8 +346,12 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         };
         let res = await getEffectiveDate(params);
         if(res.code == 200){
-          // console.log(res.data.data.biStartTime);
-          this.changeAllDateTime(res.data.data.biStartTime, res.data.data.ciStartTime);
+          if(res.data.date){
+            this.changeAllDateTime(res.data.data.biStartTime, res.data.data.ciStartTime);
+          }else{
+            this.dateTime = getDay(1);
+            this.dateTimeTwo = getDay(1);
+          }
         }else{
           //默认第二天
           this.dateTime = getDay(1);

@@ -135,12 +135,34 @@
 	export default {
 	  data () {
 		return {
-		  global: {},
-		  item: {
-			  quote_details: {}
-		  },
-		  quote_result: {}
-		}
+				global: {},
+				item: {
+					quote_details: {
+						excluding: true,
+						liability: '不投保',
+						driver_seat: '不投保',
+						passenger_seat: '不投保',
+					},
+				},
+				quote_result: {},
+				trueMobile: '',
+				trueIdcard: '',
+				name: '',
+				license_no: '',
+				brand: '',
+				trueVin: '',
+				trueEngineNo: '',
+				first_reg_date: '',
+				city_name: '',
+				monthly_expense: '',
+				mileage_expense: '',
+				compulsory: '',
+				tax: '',
+				monthly_expense: 40,
+				mileage_expense:0.07,
+				compulsory:650,
+				tax:320,
+			}
 	  },
 
 	  methods: {
@@ -184,47 +206,73 @@
 		  let res = await getQuotations(this.global.quotation_id);
 		  if(res.code == 200){
 			  console.log(res.data);
-			this.item = res.data;
-			this.item.quote_details = JSON.parse(this.item.quote_details);
-			if((this.item.quote_details.liability != '不投保') 
-					&& (parseInt(this.item.quote_details.liability) >= 10000)){
-			  this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000)+"万";
+				this.item = res.data;
+				
+				this.monthly_expense = this.item.monthly_expense;
+				this.mileage_expense = this.item.mileage_expense;
+				this.compulsory = this.item.compulsory;
+        this.tax = this.item.tax;
+        this.city_name = this.item.city_name;
+				
+				console.log(this.item.quote_details);
+        this.item.quote_details = JSON.parse(this.item.quote_details);
+        console.log(this.item.quote_details);
+				
+				if(!this.item.quote_details){
+          this.item.quote_details.excluding = true;
+        }else{
+          this.item.quote_details.excluding = this.item.quote_details.excluding == "true";
+
+          if((this.item.quote_details.liability) 
+              && (parseInt(this.item.quote_details.liability) >= 10000)){
+            this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000)+"万";
+          }else{
+            this.item.quote_details.liability = "不投保";
+          }
+
+          if((this.item.quote_details.driver_seat) 
+              && (parseInt(this.item.quote_details.driver_seat) >= 10000)){
+            this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000)+"万";
+          }else{
+            this.item.quote_details.driver_seat = '不投保'
+          }
+
+          if((this.item.quote_details.passenger_seat)
+            && (parseInt(this.item.quote_details.passenger_seat) >= 10000)){
+            this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000)+"万";
+          }else{
+            this.item.quote_details.passenger_seat = '不投保'
+          }
+      
+        }
+				
+				this.name = this.item.name;
+				if(this.item.mobile){
+					this.item.trueMobile = this.item.mobile.substring(0,3)+"****"+this.item.mobile.substring(7,11);
+				}
+
+				if(this.item.idcard){
+					this.item.trueIdcard = this.item.idcard.substring(0,3)+"***********"+this.item.idcard.substring(14,18);
+				}
+
+				if(this.item.vin){
+					this.item.trueVin = this.item.vin.substring(0,3)+"***********"+this.item.vin.substring(this.item.vin.length-3,this.item.vin.length);
+				}
+
+				if(this.item.engine_no){
+					this.item.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
+				}
+
+				this.license_no = this.item.license_no;
+        this.brand = this.item.brand;
+        this.first_reg_date = this.item.first_reg_date;
+
+				console.log(this.item);
+				this.global.biz_id = this.item.biz_id;
+				this.item.quote_result = JSON.parse(this.item.quote_result);
+				this.$forceUpdate();
+				}
 			}
-
-			if((this.item.quote_details.driver_seat != '不投保') 
-					&& (parseInt(this.item.quote_details.driver_seat) >= 10000)){
-			  this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000)+"万";
-			}
-
-			if((this.item.quote_details.passenger_seat != '不投保')
-				&& (parseInt(this.item.quote_details.passenger_seat) >= 10000)){
-			  this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000)+"万";
-			}
-
-			if(this.item.mobile){
-			  this.item.trueMobile = this.item.mobile.substring(0,3)+"****"+this.item.mobile.substring(7,11);
-			}
-
-			if(this.item.idcard){
-			  this.item.trueIdcard = this.item.idcard.substring(0,3)+"***********"+this.item.idcard.substring(14,18);
-			}
-
-			if(this.item.vin){
-			  this.item.trueVin = this.item.vin.substring(0,3)+"***********"+this.item.vin.substring(this.item.vin.length-3,this.item.vin.length);
-			}
-
-			if(this.item.engine_no){
-			  this.item.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
-			}
-
-			this.item.quote_details.excluding = this.item.quote_details.excluding == "true";
-
-			console.log(this.item);
-			this.global.biz_id = this.item.biz_id;
-			this.item.quote_result = JSON.parse(this.item.quote_result);
-			this.$forceUpdate();
-		  }
-		}
 
 	  },
 

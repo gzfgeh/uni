@@ -2,13 +2,36 @@
     export default {
         onLaunch: function() {
             console.log('App Launch');
+            let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
+            console.log(tmpUrlSearch);
+            let tmpParas= this.GetRequestParameters(tmpUrlSearch);
+            let partner_id = tmpParas["partner_id"];//提取参数
+            console.log(partner_id);
+            uni.setStorageSync("partner_id", partner_id);
+			let imei = tmpParas["imei"];//提取参数
+			console.log(imei);
+			uni.setStorageSync("imei", imei);
         },
         onShow: function() {
             console.log('App Show');
         },
         onHide: function() {
             console.log('App Hide');
-        }
+        },
+		methods: {
+			GetRequestParameters(locationsearch){
+				let url = locationsearch;  
+				let theRequest = new Object();  
+				if (url.indexOf("?") != -1) {  
+					let str = url.substr(1);  
+					let strs = str.split("&");  
+					for (let i = 0; i < strs.length; i++) {  
+						theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);  
+					}  
+				}  
+				return theRequest;  
+			}
+		}
     }
 </script>
 

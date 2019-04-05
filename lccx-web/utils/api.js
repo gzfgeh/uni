@@ -7,14 +7,14 @@ export const BASE_IMAGE_URL = 'https://api.kaikaibao.com.cn/lccx/images/'
  * 小程序授权
  */
 export function grant(params) {
-    return request.post('3.0/mina/grant', qs.stringify(params))
+    return request.post('3.1/mina/grant', qs.stringify(params))
 }
 
 /**
  * 小程序登录
  */
 export function login(params) {
-    return request.post('3.0/mina/login', qs.stringify(params))
+    return request.post('3.1/mina/login', qs.stringify(params))
 }
 
 /**
@@ -28,133 +28,133 @@ export function H5login(params) {
  * 手机号获取验证码
  */
 export function activation(params) {
-    return request.post('3.0/send/device/activation', qs.stringify(params))
+    return request.post('3.1/send/device/activation', qs.stringify(params))
 }
 
 /**
  * 设备激活
  */
 export function devices(params) {
-    return request.post('3.0/devices', qs.stringify(params))
+    return request.post('3.1/devices', qs.stringify(params))
 }
 
 /**
  * 总里程照片上传
  */
 export function mileage(path) {
-    return request.upload('3.0/device/mileage', { image: fs.createReadStream(path) })
+    return request.upload('3.1/device/mileage', { image: fs.createReadStream(path) })
 }
 
 /**
  * 车辆品牌
  */
 export function getBrands() {
-    return request.get('3.0/vehicle/brands')
+    return request.get('3.1/vehicle/brands')
 }
 
 /**
  * 车辆系列
  */
 export function getSeries(brand_id) {
-    return request.get('3.0/vehicle/series/' + brand_id)
+    return request.get('3.1/vehicle/series/' + brand_id)
 }
 
 /**
  * 车辆型号
  */
 export function getModels(series_id) {
-    return request.get('3.0/vehicle/models/' + series_id)
+    return request.get('3.1/vehicle/models/' + series_id)
 }
 
 /**
  * 设备列表
  */
 export function getDevice() {
-    return request.get('3.0/devices')
+    return request.get('3.1/devices')
 }
 
 /**
  * 得到当前位置
  */
 export function getLoc() {
-    return request.get('3.0/loc')
+    return request.get('3.1/loc')
 }
 
 /**
  * 保险相关数据
  */
 export function getInsurance() {
-    return request.get('3.0/insurance')
+    return request.get('3.1/insurance')
 }
 
 /**
  * 最新行程
  */
 export function getTriplatest() {
-    return request.get('3.0/triplatest')
+    return request.get('3.1/triplatest')
 }
 
 /**
  * 每日行程
  */
 export function getDayTrip(dateString) {
-    return request.get('3.0/trips/' + dateString)
+    return request.get('3.1/trips/' + dateString)
 }
 
 /**
  * 最新评分
  */
 export function getScorelatest() {
-    return request.get('3.0/scorelatest')
+    return request.get('3.1/scorelatest')
 }
 
 /**
  * 每日评分
  */
 export function getDayScore(dateString) {
-    return request.get('3.0/score/' + dateString)
+    return request.get('3.1/score/' + dateString)
 }
 
 /**
  * 账单
  */
 export function getBills() {
-    return request.get('3.0/bills')
+    return request.get('3.1/bills')
 }
 
 /**
  * 购买记录
  */
 export function getBilling() {
-    return request.get('3.0/billing/history')
+    return request.get('3.1/billing/history')
 }
 
 /**
  * 里程价格
  */
 export function getPrices() {
-    return request.get('3.0/prices')
+    return request.get('3.1/prices')
 }
 
 /**
  * 里程价格
  */
 export function alarm(params) {
-    return request.put('3.0/alarm', qs.stringify(params))
+    return request.put('3.1/alarm', qs.stringify(params))
 }
 
 /**
  * 保单列表
  */
 export function getOrders() {
-    return request.get('3.0/orders')
+    return request.get('3.1/orders')
 }
 
 /**
  * 保单详情
  */
 export function getOrderDetail(orderId) {
-    return request.get('3.0/orders/' + orderId)
+    return request.get('3.1/orders/' + orderId)
 }
 
 /**
@@ -217,7 +217,7 @@ export function deposit(params) {
  * 报价 自动续费
  */
 export function recurring(params) {
-    return request.post('3.0/recurring', qs.stringify(params))
+    return request.post('3.1/recurring', qs.stringify(params))
 }
 
 /**
@@ -245,7 +245,7 @@ export function pay(id, params) {
  * 快速报价 / 险种
  */
 export function insurance(id, params) {
-    return request.put('3.1/quotations/' + id + '/insurance', qs.stringify(params))
+    return request.put('3.1/quotations/' + id + '/insurance', params)
 }
 
 /**

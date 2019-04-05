@@ -43,25 +43,25 @@ request.interceptors.response.use(
         if (err.status == 401) {
             console.log('token失效，重新请求token...')
                 // this.lock() // 锁定响应拦截器，
-            uni.login({
-                success: function(res) {
-                    if (res.code) {
-                        uni.setStorageSync('code', res.code);
-                        loginAgain(res.code)
-                            .then((d) => {
-                                let token = d.data.data.token;
-                                console.log('token已更新，值为: ' + token);
-                                uni.setStorageSync('token', token);
-                                uni.setStorageSync('session_key', d.data.data.session_key);
-                            })
-                    } else {
-                        console.log('获取用户登录态失败！' + res.errMsg)
-                    }
-                },
-                fail: function(err) {
-                    console.log(err);
-                }
-            });
+//             uni.login({
+//                 success: function(res) {
+//                     if (res.code) {
+//                         uni.setStorageSync('code', res.code);
+//                         loginAgain(res.code)
+//                             .then((d) => {
+//                                 let token = d.data.data.token;
+//                                 console.log('token已更新，值为: ' + token);
+//                                 uni.setStorageSync('token', token);
+//                                 uni.setStorageSync('session_key', d.data.data.session_key);
+//                             })
+//                     } else {
+//                         console.log('获取用户登录态失败！' + res.errMsg)
+//                     }
+//                 },
+//                 fail: function(err) {
+//                     console.log(err);
+//                 }
+//             });
         } else if (err.status == 500) {
             errorMsg = err.response.data.msg
             console.log(errorMsg)

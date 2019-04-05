@@ -2,6 +2,12 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/bill_detail/bill_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "保单列表"
+		    }
+		},
+		{
 		    "path" : "pages/user/user",
 		    "style" : {
 		        "navigationBarTitleText" : "用户信息"
