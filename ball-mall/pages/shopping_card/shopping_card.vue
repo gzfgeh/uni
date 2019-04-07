@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="head_wrap" style="font-size: 24upx;">
-              <span>小计：￥{{item.g_price*item.ct_count}}</span>
+              <span>小计：￥{{(item.g_price*item.ct_count).toFixed(2)}}</span>
               <span style="flex: 1;">
 								
 							</span>
