@@ -276,7 +276,14 @@ export default {
       this.allStatus = false;
       let result = await getCart(uni.getStorageSync("openid"));
       if(result.code == 1000){
-        this.list = result.data;
+				this.list = [];
+				let address = uni.getStorageSync("address").split("|");
+				result.data.map((item) => {
+					if((item.g_shi.substring(0, 2) == address[1].substring(0, 2)) && (item.g_qu.substring(0, 2) == address[2].substring(0,2)) ){
+						this.list.push(item);
+					}
+				})
+        // this.list = result.data;
         this.isEmpty = true;
         this.loading_text = "";
         this.list.map(function(item){

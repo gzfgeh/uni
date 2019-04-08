@@ -69,7 +69,8 @@
 				typeList:['新鲜蔬菜','肉禽产品','米面粮油','海鲜水产','蛋品豆类','调料干货'],
 				ids: [],
 				index: 0,
-				m_is_gys: 0
+				m_is_gys: 0,
+				list: []
 			}
 		},
 		onLoad: function(e){
@@ -101,7 +102,15 @@
 				let res = await getCart(uni.getStorageSync("openid"));
 				if(res.code == 1000){
 					console.log(res.data.length)
-					this.goods_num = res.data.length;
+					this.list = [];
+					let address = uni.getStorageSync("address").split("|");
+					res.data.map((item) => {
+						if( (item.g_shi.substring(0, 2) == address[1].substring(0, 2)) && (item.g_qu.substring(0, 2) == address[2].substring(0,2)) ){
+							this.list.push(item);
+						}
+					})
+					
+					this.goods_num = this.list.length;
 				}
 			},
 			async jiaruCart(item){
@@ -132,7 +141,8 @@
 						}
 					})
 					this.ids.push(item.g_id);
-					this.goods_num ++;
+					this.getCart();
+					// this.goods_num ++;
 				}else{
 					uni.showToast({
 					  icon: 'none',

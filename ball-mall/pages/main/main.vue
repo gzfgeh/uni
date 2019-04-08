@@ -95,7 +95,7 @@
 				
 // 				this.address = "上海上海市虹口区华鸿大厦"
 // 				uni.setStorageSync("address", "上海|上海市|虹口区");
-				// return;
+// 				return;
 				
 				let res = await getUserInfo(uni.getStorageSync("openid"));
 				
