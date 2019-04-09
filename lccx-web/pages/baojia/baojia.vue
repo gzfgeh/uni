@@ -168,8 +168,8 @@
         },
 		watch: {
 			isShowKeyBoard(curVal, oldVal){
-				this.activeImg = oldVal ? "../../static/img/arrow_down_icon.png"
-					: "../../static/img/arrow_up_icon.png";
+				this.activeImg = oldVal ? BASE_IMAGE_URL+"arrow_down_icon.png"
+					: BASE_IMAGE_URL+"arrow_up_icon.png";
 			}
 		},
         methods: {
