@@ -2,7 +2,14 @@
 <div class="container_wrap container-fill">
   
   <div class="wrap">
-    <div class="info_title">付款信息</div>
+    <div class="info_title">
+      <span class="circle active">1</span>
+      <span style="margin:0rpx 12rpx 0rpx 10rpx;">服务费用</span>
+      <span class="line active"></span>
+      <span class="line"></span>
+      <span class="circle">2</span>
+      <span>交强险</span>
+    </div>
     <div class="item_wrap">
       <div>
         <span class="item_text">设备押金：</span>
@@ -39,19 +46,19 @@
   <div class="wrap" >
     <div class="item_wrap">
       <span class="item_text">姓名：</span>
-      <span class="item_right">张三</span>
+      <input class="item_right" v-model="name" placeholder="请输入姓名"/>
     </div>
     <div class="item_wrap">
       <span class="item_text">手机号码：</span>
-      <span class="item_right">13671780212</span>
+      <input class="item_right" v-model="mobile" placeholder="请输入手机号"/>
     </div>
 
     <div class="input_wrap">
       <div class="input_info">
         <span class="item_text">设备安装/保单寄送地址：</span>
-        <span class="item_right">请输入详细地址</span>
+        <span class="item_right" v-if="false">请输入详细地址</span>
       </div>
-      <input type="text" v-model="address">
+      <textarea type="text" v-model="address" class="address_input" placeholder="请输入详细地址"></textarea>
     </div>
 
   </div>
@@ -94,7 +101,7 @@ export default {
       global: {},
       items: [
         {name: '微信支付', icon_url: BASE_IMAGE_URL+'weixin_pay.png'},
-        {name: '支付宝', icon_url: BASE_IMAGE_URL+'zhifubao.png'},
+        // {name: '支付宝', icon_url: BASE_IMAGE_URL+'zhifubao.png'},
       ],
       current: 0,
     }
@@ -214,7 +221,7 @@ export default {
     this.global = wx.getStorageSync("global");
     // this.getOpenid();
 		console.log(weixin_sdk);
-		this.H5login();
+		// this.H5login();
   },
 
 }
@@ -225,6 +232,11 @@ export default {
   background-color: #F9F9F9;
   width: 100%;
   box-sizing: border-box;
+}
+.address_input{
+  height: 100rpx;
+  width: 100%;
+  margin-top: 20rpx;
 }
 
 radio-group{
@@ -252,7 +264,7 @@ radio-group{
 .input_wrap{
   display: flex;
   flex-direction: column;
-  
+  padding: 0rpx 40rpx 20rpx;
 }
 .input_wrap .input_info{
     display: flex;
@@ -276,7 +288,6 @@ radio-group{
 }
 .wrap{
   background-color: #FFFFFF;
-  padding: 34upx 40upx 0upx;
 }
 .item_wrap{
   
@@ -284,7 +295,7 @@ radio-group{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0rpx;
+  padding: 30rpx 40rpx;
   height: 94rpx;
   box-sizing: border-box;
   border-bottom: 1px solid #f2f2f2;
@@ -294,7 +305,6 @@ radio-group{
 .item_wrap .item_text{
     font-size: 28upx;
     color: #000;
-		margin-bottom: 20upx;
   }
 .item_wrap  .item_info{
     font-size: 28upx;
@@ -324,15 +334,45 @@ radio-group{
 .item_right{
     font-size: 28upx;
     color: #6E6E6E;
+		text-align: right;
   }
 
 .info_title{
-  color: #000;
-  font-size: 52upx;
-  background-color: #FFFFFF;
-  padding-bottom: 40upx;
+  color: rgba(0,0,0,0.7);
+  font-size: 34rpx;
+  background-color: #F9F9F9;
+  height: 96rpx;
   border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40rpx;
+  box-sizing: border-box;
 }
+
+.info_title .circle{
+    border-radius: 50%;
+    width: 32rpx;
+    height: 32rpx;
+    text-align: center;
+    line-height: 32rpx;
+    background-color: rgba(0,0,0,0.1);
+    color: #FFFFFF;
+    font-size: 28rpx;
+    margin-right: 8rpx;
+    
+  }
+.info_title .active{
+    background-color: #427DFF!important;
+    margin-right: 0rpx!important;
+  }	
+	
+	.info_title .line{
+    width: 20rpx;
+    height: 2rpx;
+    background-color: #D6D6D6;
+    margin-right: 12rpx;
+  }
 
 .content_wrap{
   width: 90%;

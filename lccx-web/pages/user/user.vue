@@ -8,13 +8,15 @@
 		<div class="uni-inline-item">
 			<span>车架号</span>
 			<input type="text"  class="item_input" v-model="frameNo" @blur="watchInput"
-          placeholder-class="place-holder" placeholder="请输入车架号">
+          placeholder-class="place-holder" placeholder="请输入车架号" @focus="focusInput">
+			<img src="../../static/img/delete_icon.png" class="close" v-if="frameClose" @click="closeFrame">
 		</div>
 		
 		<div class="uni-inline-item">
 			<span>发动机号</span>
 			<input type="text"  class="item_input" v-model="engineNo" @blur="watchEngineInput"
-          placeholder-class="place-holder" placeholder="请输入发动机号">
+          placeholder-class="place-holder" placeholder="请输入发动机号" @focus="focusEngineInput">
+		  <img src="../../static/img/delete_icon.png" class="close" v-if="engineClose" @click="closeEngine">
 		</div>
 		
 		<div class="uni-inline-item">
@@ -28,7 +30,7 @@
 		
 		<div class="uni-inline-item">
 			<span>品牌型号</span>
-			<input type="text"  class="item_input" v-model="brandCode" 
+			<input type="text"  class="item_input" v-model="brandCode" @blur="watchBrandInput"
           placeholder-class="place-holder" placeholder="请输入品牌型号">
 		</div>
 		
@@ -84,6 +86,7 @@
 <script>
 	import { BASE_IMAGE_URL,basic,getVechileData } from "@/utils/api";
 	import {isChinese} from '../../utils'
+	import {check_card} from '../../utils/check_code';
 	
 
     export default {
@@ -107,6 +110,8 @@
 				  brandCode: '',
 				  responseNo: '',
 				  id: 9,
+				  frameClose: false,
+					engineClose:false,
 				  globalData: {
 					name:'',
 					mobile:'',
@@ -117,18 +122,30 @@
 					frameNo:'',
 					responseNo:'',
 					license_no:''
-				  }
+				  },
+				  closeFrameChange: false,
+					closeEngineChange: false
 			}
 		},
 		onLoad () {
+			Object.assign(this.$data, this.$options.data());
 			  this.license_no = this.$root.$mp.query.license_no?this.$root.$mp.query.license_no:'陕G61B86';
-			  this.id = this.$root.$mp.query.id?this.$root.$mp.query.id:'66';
+			  this.id = this.$root.$mp.query.id?this.$root.$mp.query.id:'94';
 			  this.getVechileData();
 			  this.isShowBtn = true;
 			  console.log('this.globalData.billInfo');
 			  console.log(this.globalData);
 		  },
         methods: {
+			closeFrame: function(){
+			  this.closeFrameChange = true;
+			  this.frameClose = false;
+			  
+			},
+			closeEngine: function(){
+			  this.closeEngineChange = true;
+			  this.closeEngine = false;
+			},
 			dateChange: function(e){
 			  console.log(e.mp.detail.value);
 			  this.firstRegisterDate = e.mp.detail.value;
@@ -141,29 +158,81 @@
 			closeModal(){
 				this.isShowModal = false;
 			},
+			focusInput(e){
+			  this.frameNo = this.trueFrameNo;
+			  if(this.frameNo){
+				this.frameClose = true;
+			  }else{
+				this.frameClose = false;
+			  }
+			  
+			},
 			watchCardInput(e){
+			  let value = e.mp.detail.value; 
+			  this.idcard= value.toLocaleUpperCase();
+				if(check_card(value) === false){  
+					wx.showToast({
+					  icon: 'none',
+					  title: '请输入正确的身份证',
+					  duration: 1000
+					});
+					return; 
+				}
+			},
+			watchBrandInput(e){
 			  let value = e.mp.detail.value;
-			  let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
-			  if(reg.test(value) === false){  
-				  wx.showToast({
-					icon: 'none',
-					title: '请输入正确的身份证',
-					duration: 1000
-				  });
-				  return; 
-			  } 
+			  this.brandCode= value.toLocaleUpperCase();
+			},
+			focusEngineInput(e){
+			  this.engineNo = this.trueEngineNo;
+			  if(this.engineNo){
+				this.engineClose = true;
+			  }else{
+				this.engineClose = false;
+			  }
+			  
 			},
 			watchInput(e){
-			  console.log(e.mp.detail.value);
-			  let value = e.mp.detail.value;
-			  this.trueFrameNo= value.toLocaleUpperCase();
-			  this.frameNo = this.trueFrameNo;
+			  setTimeout(() => {
+				console.log(e.mp.detail.value);
+				let value = e.mp.detail.value;
+				if(this.closeFrameChange){
+				  this.closeFrameChange = false;
+				  this.trueFrameNo = "";
+				  this.frameNo = "";
+				  return;
+				}
+				this.trueFrameNo= value.toLocaleUpperCase();
+				this.frameClose = false;
+				if(value.length != 17){
+				  wx.showToast({
+					  icon: 'none',
+					  title: '请输入正确的车架号',
+					  duration: 1000
+					});
+					return;
+				}
+
+				this.frameNo = this.trueFrameNo.substring(0,7)+"*****"+this.trueFrameNo.substring(12);
+			  }, 100);
+			  
 			},
 			watchEngineInput(e){
 			  console.log(e.mp.detail.value);
-			  let value = e.mp.detail.value;
-			  this.trueEngineNo= value.toLocaleUpperCase();
-			  this.engineNo = this.trueEngineNo;
+			  setTimeout(() => {
+				if(this.closeEngineChange){
+				  this.closeEngineChange = false;
+				  this.trueEngineNo = "";
+				  this.engineNo = "";
+				  return;
+				}
+				let value = e.mp.detail.value;
+				// value = this.trueEngineNo;
+				this.trueEngineNo= value.toLocaleUpperCase();
+				this.engineClose = false;
+				this.engineNo = this.trueEngineNo.substring(0,2)+"****"+this.trueEngineNo.substring(6,8);
+			  }, 100);
+			  
 			},
 	
 			//展示底部 popup
@@ -373,6 +442,7 @@
 		background-color: #FFFFFF;
 		padding: 26upx 0upx 26upx 32upx;
 		border-bottom: 2upx solid rgba(0,0,0,0.1);
+		position: relative;
 	}
 	
 	.uni-inline-item span:nth-child(1){

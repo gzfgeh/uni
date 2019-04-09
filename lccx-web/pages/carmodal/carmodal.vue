@@ -87,12 +87,13 @@
 				async getModelExactness(){
 					let params = {
 						license_no: this.license_no,
-						response_no: this.response_no
+						response_no: '',
+						frame_no: this.global.frameNo
 					};
 
 					let res = await getModelExactness(params);
 					if(res.code == 200){
-						if((res.data.data.length == 0) || (!res.data.data)){
+						if(res.data.state == 0){
 							this.isExactness = false;
 							this.getModelMistiness();
 						}else{
@@ -126,7 +127,11 @@
 							duration: 1000
 						});
 					}
-				  }
+				  },
+				  getHanzi: function(name) {
+				var reg = /[\u4e00-\u9fa5]/g;
+				return name.replace(reg, "");
+			}
 	  
 		},
 		onLoad(){
@@ -135,7 +140,7 @@
 			console.log(global);
 			this.license_no = this.global.license_no;
 			this.response_no = this.global.responseNo;
-			this.brandCode = this.global.brandCode;
+			this.brandCode = this.getHanzi(this.global.brand); 
 			this.isExactness = true;
 		  this.getModelExactness();
 		},

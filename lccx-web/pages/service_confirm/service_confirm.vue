@@ -9,15 +9,15 @@
 			</div>
 			
 			<div class="price">
-				<span>{{item.monthly_expense}}元/月+{{item.mileage_expense}}元/公里</span>
-				<span class="name">交强险 {{item.compulsory}}元+车船税 {{item.tax}}元</span>
+				<span>{{monthly_expense}}元/月+{{mileage_expense}}元/公里</span>
+				<span class="name">交强险 {{compulsory}}元+车船税 {{tax}}元</span>
 			</div>
 			
 		</div>
 		
 		<div class="address_wrap uni-between-item">
 			<span>投保地区</span>
-			<span>{{item.city_name}}</span>
+			<span>{{city_name}}</span>
 		</div>
 		
 		<div class="title uni-between-item">
@@ -26,33 +26,17 @@
 		</div>
 		
 		<div class="content_wrap">
-			<div class="content_item uni-between-item">
-				<div>
-					<span>机动车损失险</span>
-					<span class="tag" v-if="item.quote_details.excluding">不计免赔</span>
+			<block v-for="(ite, index) in list" :key="index">
+				<div class="content_item uni-between-item">
+					<div>
+						<span v-if="ite.value != '不投保'">{{ite.name}}</span>
+						<span class="tag" v-if="ite.value != '不投保'">不计免赔</span>
+						<span v-else>{{ite.name}}</span>
+					</div>
+					
+					<div>{{ite.value}}</div>
 				</div>
-				
-				<div>{{item.quote_details.destroy?'投保':'不投保'}}</div>
-			</div>
-			
-			<div class="content_item uni-between-item">
-				<div>
-					<span>第三者责任险</span>
-					<span class="tag" v-if="item.quote_details.excluding" >不计免赔</span>
-				</div>
-				
-				<div>{{item.quote_details.liability}}</div>
-			</div>
-			
-			<div class="content_item uni-between-item">
-				<span>司机责任险</span>
-				<div>{{item.quote_details.driver_seat}}</div>
-			</div>
-			
-			<div class="content_item uni-between-item">
-				<span>乘客责任险</span>
-				<div>{{item.quote_details.passenger_seat}}</div>
-			</div>
+			</block>	
 			
 			
 		</div>
@@ -66,18 +50,18 @@
 			<div class="content_item uni-between-item">
 				<span>姓名</span>
 				
-				<div>{{item.name}}</div>
+				<div>{{name}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>手机号</span>
 				
-				<div>{{item.trueMobile}}</div>
+				<div>{{trueMobile}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>身份证号</span>
-				<div>{{item.trueIdcard}}</div>
+				<div>{{trueIdcard}}</div>
 			</div>
 		</div>
 		
@@ -89,29 +73,29 @@
 			<div class="content_item uni-between-item">
 				<span>车牌号码</span>
 				
-				<div>{{item.license_no}}</div>
+				<div>{{license_no}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>品牌型号</span>
 				
-				<div>{{item.brand}}</div>
+				<div>{{brand}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>车辆识别代码</span>
-				<div>{{item.trueVin}}</div>
+				<div>{{trueVin}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>发动机号码</span>
 				
-				<div>{{item.trueEngineNo}}</div>
+				<div>{{trueEngineNo}}</div>
 			</div>
 			
 			<div class="content_item uni-between-item">
 				<span>注册日期</span>
-				<div>{{item.first_reg_date}}</div>
+				<div>{{first_reg_date}}</div>
 			</div>
 			
 		</div>
@@ -158,10 +142,11 @@
 				mileage_expense: '',
 				compulsory: '',
 				tax: '',
-				monthly_expense: 40,
-				mileage_expense:0.07,
-				compulsory:650,
-				tax:320,
+				monthly_expense: '',
+				mileage_expense:'',
+				compulsory:'',
+				tax:'',
+				list: []
 			}
 	  },
 
@@ -193,92 +178,128 @@
 
 		  let res = await applyUnderwrite(params);
 		  if(res.code == 200){
-			this.global.monthly_expense = this.item.monthly_expense;
-			this.global.mileage_expense = this.item.mileage_expense;
-			this.global.compulsory = this.item.compulsory;
-			this.global.tax = this.item.tax;
+			this.monthly_expense = this.item.monthly_expense;
+			this.mileage_expense = this.item.mileage_expense;
+			this.ci_prenium = parseInt(this.item.compulsory);
+        this.tax = parseInt(this.item.tax);
 			uni.setStorageSync('global', this.global);
 			this.next();
 		  }
 		},
 
 		async getQuotations(){
-		  let res = await getQuotations(this.global.quotation_id);
-		  if(res.code == 200){
-			  console.log(res.data);
-				this.item = res.data;
+				let res = await getQuotations(this.global.quotation_id);
+				if(res.code == 200){
+					this.item = res.data;
+
+					this.monthly_expense = this.item.monthly_expense;
+					this.mileage_expense = this.item.mileage_expense;
+					this.compulsory = this.item.compulsory;
+					this.tax = this.item.tax;
+					this.city_name = this.item.city_name;
+
+					console.log(this.item.quote_details);
+					this.item.quote_details = JSON.parse(this.item.quote_details);
+					// this.item.quote_details = JSON.parse(this.item.quote_details);
+					console.log(this.item.quote_details);
+
+					if(!this.item.quote_details){
+						this.item.quote_details.excluding = true;
+					}else{
+						this.list = [];
+						let that = this;
+					Object.keys(this.item.quote_details).forEach(function(key){
+							let itemKey = that.item.quote_details[key];
+							
+								let params = {};
+								if(key == 'burn'){
+									params.name = '自燃险';
+								}else if(key == 'destroy'){
+									params.name = '车损险';
+								}else if(key == 'stolen'){
+									params.name = '盗抢险';
+								}else if(key == 'liability'){
+									params.name = '第三者责任险';
+								}else if(key == 'driver_seat'){
+									params.name = '司机座位险';
+								}else if(key == 'passenger_seat'){
+									params.name = '乘客座位险';
+								}else if(key == 'stolen'){
+									params.name = '盗抢险';
+								}else if(key == 'glasses'){
+									params.name = '玻璃险';
+								}else if(key == 'scratch'){
+									params.name = '刮痕险';
+								}else if(key == 'water'){
+									params.name = '涉水险';
+								}else if(key == 'escape'){
+									params.name = '无法找到第三方险';
+								}else if(key == 'lights'){
+									params.name = '车灯险';
+								}else if(key == 'compulsory'){
+									params.name = '交强险';
+								}else if(key == 'no_3rd_party'){
+									params.name = '无法找到第三方特约险';
+								}
+								
+								if(that.item.quote_details[key] == "true"){
+										//返回true
+										params.value = "投保";
+								}else if(that.item.quote_details[key] == "false"){
+									params.value = "不投保";
+								}else if(key == 'glasses'){
+									params.value = that.item.quote_details[key] == 1? '国产玻璃':'进口玻璃';
+								}else{
+									params.value = parseInt(that.item.quote_details[key]);
+									if(params.value > 10000){
+										params.value = params.value/10000 + "万";
+									}
+								}
+								if(key == 'excluding' || key == 'compulsory'){
+									
+								}else if(that.item.quote_details[key] == "false"){
+
+								}else{
+									that.list.push(params);
+								}
+
+					});
 				
-				this.monthly_expense = this.item.monthly_expense;
-				this.mileage_expense = this.item.mileage_expense;
-				this.compulsory = this.item.compulsory;
-        this.tax = this.item.tax;
-        this.city_name = this.item.city_name;
-				
-				console.log(this.item.quote_details);
-        this.item.quote_details = JSON.parse(this.item.quote_details);
-        console.log(this.item.quote_details);
-				
-				if(!this.item.quote_details){
-          this.item.quote_details.excluding = true;
-        }else{
-          this.item.quote_details.excluding = this.item.quote_details.excluding == "true";
+					}
 
-          if((this.item.quote_details.liability) 
-              && (parseInt(this.item.quote_details.liability) >= 10000)){
-            this.item.quote_details.liability = parseInt(this.item.quote_details.liability/10000)+"万";
-          }else{
-            this.item.quote_details.liability = "不投保";
-          }
+					console.log('this.item.quote_details');
+					console.log(this.item.name);
+					this.name = this.item.name;
+					if(this.item.mobile){
+						this.trueMobile = this.item.mobile.substring(0,3)+"****"+this.item.mobile.substring(7,11);
+					}
 
-          if((this.item.quote_details.driver_seat) 
-              && (parseInt(this.item.quote_details.driver_seat) >= 10000)){
-            this.item.quote_details.driver_seat = parseInt(this.item.quote_details.driver_seat/10000)+"万";
-          }else{
-            this.item.quote_details.driver_seat = '不投保'
-          }
+					if(this.item.idcard){
+						this.trueIdcard = this.item.idcard.substring(0,3)+"***********"+this.item.idcard.substring(14,18);
+					}
 
-          if((this.item.quote_details.passenger_seat)
-            && (parseInt(this.item.quote_details.passenger_seat) >= 10000)){
-            this.item.quote_details.passenger_seat = parseInt(this.item.quote_details.passenger_seat/10000)+"万";
-          }else{
-            this.item.quote_details.passenger_seat = '不投保'
-          }
-      
-        }
-				
-				this.name = this.item.name;
-				if(this.item.mobile){
-					this.item.trueMobile = this.item.mobile.substring(0,3)+"****"+this.item.mobile.substring(7,11);
-				}
+					if(this.item.vin){
+						this.trueVin = this.item.vin.substring(0,3)+"***********"+this.item.vin.substring(this.item.vin.length-3,this.item.vin.length);
+					}
 
-				if(this.item.idcard){
-					this.item.trueIdcard = this.item.idcard.substring(0,3)+"***********"+this.item.idcard.substring(14,18);
-				}
+					if(this.item.engine_no){
+						this.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
+					}
+					this.license_no = this.item.license_no;
+					this.brand = this.item.brand;
+					this.first_reg_date = this.item.first_reg_date;
 
-				if(this.item.vin){
-					this.item.trueVin = this.item.vin.substring(0,3)+"***********"+this.item.vin.substring(this.item.vin.length-3,this.item.vin.length);
-				}
-
-				if(this.item.engine_no){
-					this.item.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
-				}
-
-				this.license_no = this.item.license_no;
-        this.brand = this.item.brand;
-        this.first_reg_date = this.item.first_reg_date;
-
-				console.log(this.item);
-				this.global.biz_id = this.item.biz_id;
-				this.item.quote_result = JSON.parse(this.item.quote_result);
-				this.$forceUpdate();
+					console.log(this.item);
+					this.global.biz_id = this.item.biz_id;
+					console.log('this.item.quote_details');
+					console.log(this.item);
+					this.$forceUpdate();
 				}
 			}
-
-	  },
-
+		},
 	  onLoad(){
-		this.global = uni.getStorageSync("global");
-		this.getQuotations();
+			this.global = uni.getStorageSync("global");
+			this.getQuotations();
 	  }
 
 	}

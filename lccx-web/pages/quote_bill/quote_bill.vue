@@ -255,7 +255,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
       qiangIndex: 0,
       huaIndex: 0,
       ziRanIndex: 0,
-      jiaoIndex: 0,
+      jiaoIndex: 1,
       global: '',
       sheShuiIndex: 0,
       sanIndex: 0,
@@ -271,7 +271,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
     async insurance(){
         let bi_end_date = this.dateTime; 
         let ci_end_date = this.dateTimeTwo;
-				
+
         let liability = this.moneyList[this.jidongValueIndex];
         if(this.jidongValueIndex != 0){
           
@@ -294,14 +294,29 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         
         let passenger_seat = this.siJiList[this.chengKeIndex];
         if(this.chengKeIndex != 0){
-          
           if(passenger_seat.indexOf("万") != -1){
             passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
           }
         }else{
           passenger_seat = false;
         }
-				
+
+        let hua_seat = this.huaList[this.huaIndex];
+        if(this.huaIndex != 0){
+          hua_seat = parseInt(hua_seat);
+        }else{
+          hua_seat = false;
+        }
+
+        let glass_seat = this.glassList[this.glassIndex];
+        if(this.glassIndex == 0){
+          glass_seat = false;
+        }else if(glass_seat == '国产玻璃'){
+          glass_seat = 1;
+        }else{
+          glass_seat = 2;
+        }
+
 				let quote_details = {
 					"compulsory": this.jiaoIndex == 1,
           "destroy": this.jidongIndex == 1,
@@ -309,8 +324,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
           "stolen": this.qiangIndex == 1,
           "passenger_seat": passenger_seat,
           "driver_seat": driver_seat,
-          "scratch": this.huaIndex == 0 ?false : this.huaList[this.huaIndex],
-          "glasses": this.glassIndex == 0 ? false : this.glassIndex,
+          "scratch": hua_seat,
+          "glasses": glass_seat,
           "water": this.sheShuiIndex == 1,
           "burn": this.ziRanIndex == 1,
           'no_3rd_party': this.sanIndex == 1,
@@ -328,8 +343,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
 						this.next();
 				}
 		},
-
-    async getEffectiveDate(){
+    
+		async getEffectiveDate(){
         let params = {
           "license_no": this.global.license_no,
           "brand_code": this.global.brand,
@@ -346,7 +361,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         };
         let res = await getEffectiveDate(params);
         if(res.code == 200){
-          if(res.data.date){
+          if(res.data.data){
             this.changeAllDateTime(res.data.data.biStartTime, res.data.data.ciStartTime);
           }else{
             this.dateTime = getDay(1);
@@ -477,6 +492,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
     },
 
     changeAllDateTime(biStartTime, ciStartTime){
+			console.log('biStartTime:'+biStartTime+'----ciStartTime:'+ciStartTime);
       if(biStartTime && ciStartTime){
         this.dateTime = biStartTime.split(" ")[0];
         this.dateTimeTwo = ciStartTime.split(" ")[0];

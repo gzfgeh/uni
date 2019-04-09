@@ -3,7 +3,7 @@
   <div class="head_wrap">
     <div>每月服务费</div>
     <div>本服务包不包含交强险与车船税价格</div>
-    <div>（交强险 {{item.ci_prenium}}元+车船税{{item.tax}}元）</div>
+    <div>（交强险 {{ci_prenium}}元+车船税{{tax}}元）</div>
   </div>
 
   <div class="price_wrap">
@@ -11,7 +11,7 @@
       <span class="price_text">基础服务费</span>
       <div class="item">
         <span>¥</span>
-        <span class="num">{{item.monthly_expense}}</span>
+        <span class="num">{{monthly_expense}}</span>
         <span>/月</span>
       </div>
     </div>
@@ -20,7 +20,7 @@
       <span class="price_text">基础服务费</span>
       <div class="item">
         <span>¥</span>
-        <span class="num">{{item.mileage_expense}}</span>
+        <span class="num">{{mileage_expense}}</span>
         <span>/月</span>
       </div>
     </div>
@@ -70,6 +70,10 @@ export default {
       global: '',
       item: '',
       showModal: false,
+			monthly_expense: '',
+			mileage_expense: '',
+			ci_prenium: '',
+			tax: ''
     }
   },
 
@@ -82,8 +86,10 @@ export default {
       let res = await result(this.global.quotation_id);
       if(res.code == 200){
         this.item = res.data;
-        this.item.monthly_expense = this.item.monthly_expense.toFixed(2);
-        this.item.mileage_expense = this.item.mileage_expense.toFixed(2);
+        this.monthly_expense = this.item.monthly_expense.toFixed(2);
+        this.mileage_expense = this.item.mileage_expense.toFixed(2);
+        this.ci_prenium = parseInt(this.item.ci_prenium);
+        this.tax = parseInt(this.item.tax);
       }
     },
     closeModal: function(){

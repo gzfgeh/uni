@@ -203,7 +203,12 @@
 			},
 			
 			async H5login(){
-				let res = await H5login();
+				let params = {
+					partner_id: uni.getStorageSync("partner_id"),
+					imei: uni.getStorageSync("imei")
+				};
+				
+				let res = await H5login(params);
 				if(res.code == 200){
 					let token = res.data.token;
 					console.log(token);

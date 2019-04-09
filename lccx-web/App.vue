@@ -2,15 +2,18 @@
     export default {
         onLaunch: function() {
             console.log('App Launch');
-            let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
-            console.log(tmpUrlSearch);
-            let tmpParas= this.GetRequestParameters(tmpUrlSearch);
-            let partner_id = tmpParas["partner_id"];//提取参数
-            console.log(partner_id);
-            uni.setStorageSync("partner_id", partner_id);
-			let imei = tmpParas["imei"];//提取参数
-			console.log(imei);
-			uni.setStorageSync("imei", imei);
+			uni.setStorageSync("partner_id", 100);
+			uni.setStorageSync("imei", 123);
+			
+//             let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
+//             console.log(tmpUrlSearch);
+//             let tmpParas= this.GetRequestParameters(tmpUrlSearch);
+//             let partner_id = tmpParas["partner_id"];//提取参数
+//             console.log(partner_id);
+//             uni.setStorageSync("partner_id", partner_id);
+// 			let imei = tmpParas["imei"];//提取参数
+// 			console.log(imei);
+// 			uni.setStorageSync("imei", imei);
         },
         onShow: function() {
             console.log('App Show');
@@ -150,4 +153,19 @@
 	  color: rgba(0,0,0,0.3);
 	}
 	.uni-center-item{display: flex;flex-direction: row;align-items: center;justify-content: center;}
+	
+	.close {
+		color: #333333;
+		border-radius: 24rpx;
+		line-height: 40rpx;
+		text-align: center;
+		height: 40rpx;
+		width: 40rpx;
+		font-size: 36rpx;
+		padding: 2rpx;
+		top: 30rpx;
+		right: 20rpx;
+		position: absolute;
+		z-index: 1000;
+	}
 </style>
