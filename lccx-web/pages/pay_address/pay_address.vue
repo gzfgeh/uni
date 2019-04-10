@@ -91,19 +91,23 @@
 </template>
 <script>
 
-import { BASE_IMAGE_URL,pay,H5login} from "@/utils/api";
+import { BASE_IMAGE_URL,pay,H5login,quotationsToOrder} from "@/utils/api";
 import weixin_sdk from '@/utils/weixin-jsapi.js';
 
 export default {
   data () {
     return {
-      address: "",
       global: {},
+      name: '',
+      mobile: '',
+      address: '',
       items: [
-        {name: '微信支付', icon_url: BASE_IMAGE_URL+'weixin_pay.png'},
-        // {name: '支付宝', icon_url: BASE_IMAGE_URL+'zhifubao.png'},
+        {name: '微信支付', icon_url: BASE_IMAGE_URL+'weixin_pay.png'}
       ],
       current: 0,
+      openid: '',
+      licheng_order_id: '',
+      jiaoqiang_order_id: ''
     }
   },
 
@@ -116,6 +120,24 @@ export default {
 		
 		radioChange: function(e){
       console.log(e.mp.detail.value);
+    },
+		
+		async quotationsToOrder(){
+			// this.global.quotation_id
+      let res = await quotationsToOrder(76);
+      if(res.success){
+        if(res.orders.length > 0){
+          let licheng = res.orders[0];
+          if(licheng.type == 1){
+            this.licheng_order_id = licheng.id;
+          };
+
+          let jiaoqiang = res.orders[1];
+          if(jiaoqiang.type == 2){
+            this.jiaoqiang_order_id = jiaoqiang.id;
+          }
+        }
+      }
     },
 		
 		async H5login(){
@@ -154,7 +176,6 @@ export default {
         let result = res.result;
         console.log(result);
         console.log(result.timestamp);
-				// #ifdef H5
 				
 				weixin_sdk.config({
 						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -208,8 +229,6 @@ export default {
 					console.log(err);
 				})
 
-				
-				// #endif
 
         
       }
@@ -221,7 +240,7 @@ export default {
     this.global = wx.getStorageSync("global");
     // this.getOpenid();
 		console.log(weixin_sdk);
-		// this.H5login();
+		this.quotationsToOrder();
   },
 
 }

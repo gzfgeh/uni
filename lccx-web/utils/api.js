@@ -235,10 +235,17 @@ export function result(id, params) {
 }
 
 /**
+ * 保单转订单
+ */
+export function quotationsToOrder(id, params) {
+    return request.put('3.1/quotations/' + id + '/order', qs.stringify(params))
+}
+
+/**
  * 快速报价 / 保单支付
  */
 export function pay(id, params) {
-    return request.post('3.1/quotations/' + id + '/pay', qs.stringify(params))
+    return request.post('3.1/orders/' + id + '/pay', qs.stringify(params))
 }
 
 /**

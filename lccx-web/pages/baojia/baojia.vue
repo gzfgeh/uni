@@ -243,7 +243,7 @@
 			},
 			async quotation(){
 				let that = this;
-				if(!this.license_no || (this.license_no.length != 6)){
+				if(!this.license_no || (this.license_no.length != 6) || (this.license_no.length != 7)){
 					uni.showToast({
 					icon: 'none',
 					title: '请输入车牌号',
