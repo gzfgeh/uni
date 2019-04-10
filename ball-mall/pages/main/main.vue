@@ -122,21 +122,39 @@
 						uni.setStorageSync("m_is_gys", res.data.m_is_gys);
 						uni.setStorageSync("bindPhone", res.data.m_phone);
 						
-						let province = res.data.m_sheng;
-						let city = res.data.m_shi;
-						let district = res.data.m_qu;
-						this.address = province+city+district;
-						uni.setStorageSync("location", this.address);
-						uni.setStorageSync("address", province+"|"+city+"|"+district);
-						
 						if(res.data.m_is_gys == 1){
-							return;
+							//供应商
+							let province = res.data.m_sheng;
+							let city = res.data.m_shi;
+							let district = res.data.m_qu;
+							this.address = province+city+district;
+							uni.setStorageSync("location", this.address);
+							uni.setStorageSync("address", province+"|"+city+"|"+district);
+							
+// 							uni.showModal({
+// 								title: '是供应商提示',
+// 								content: province+"|"+city+"|"+district,
+// 								success: function (res) {
+// 									if (res.confirm) {
+// 										
+// 									} else if (res.cancel) {
+// 										console.log('用户点击取消');
+// 									}
+// 								}
+// 							});
+// 							return;
+						}else{
+							this.getLocation();
 						}
 					}
 					
-					this.getLocation();
-				}else{
 					
+				}else{
+					wx.showToast({
+						title: "获取用户信息失败",
+						icon: 'none',
+						duration: 1000
+					});
 				}
 				
 			},
@@ -217,7 +235,7 @@
 							let province = res.data.regeocode.addressComponent.province;
 							let city = res.data.regeocode.addressComponent.city;
 							let district = res.data.regeocode.addressComponent.district;
-							if(!city){
+							if(city || (city.length <2)){
 								city = province;
 							}
 							
@@ -225,6 +243,19 @@
 								province = province.substring(0, 2);
 							}
 							uni.setStorageSync("address", province+"|"+city+"|"+district);
+							
+// 							uni.showModal({
+// 								title: '不是供应商提示',
+// 								content: province+"|"+city+"|"+district,
+// 								success: function (res) {
+// 									if (res.confirm) {
+// 										
+// 									} else if (res.cancel) {
+// 										console.log('用户点击取消');
+// 									}
+// 								}
+// 							});
+// 							return;
 							
 						}else{
 							wx.showToast({

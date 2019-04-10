@@ -235,6 +235,16 @@
 				  return;
 				}
 				
+				let temp = value.substring(0, 1);
+				 let p = /[a-z]/i;
+				if(!p.test(temp)){
+				  wx.showToast({
+					icon: 'none',
+					title: '请输入正确的车牌号',
+					duration: 1000
+				  });
+				}
+				
 			  },
 			next(id){
 				uni.navigateTo({
@@ -243,14 +253,26 @@
 			},
 			async quotation(){
 				let that = this;
-				if(!this.license_no || (this.license_no.length != 6) || (this.license_no.length != 7)){
-					uni.showToast({
+				this.license_no = this.license_no.toLocaleUpperCase();
+				if((this.license_no.length != 6) && (this.license_no.length != 7)){
+				  wx.showToast({
 					icon: 'none',
-					title: '请输入车牌号',
+					title: '请输入正确的车牌号',
 					duration: 1000
 				  });
 				  return;
-				};
+				}
+
+				let temp = this.license_no.substring(0, 1);
+				 let p = /[a-z]/i;
+				if(!p.test(temp)){
+				  wx.showToast({
+					icon: 'none',
+					title: '请输入正确的车牌号',
+					duration: 1000
+				  });
+				  return;
+				}
 
 				let params = {
 				  city: that.pickerCode,

@@ -102,6 +102,7 @@
 				let res = await getCart(uni.getStorageSync("openid"));
 				if(res.code == 1000){
 					console.log(res.data.length)
+					
 					this.list = [];
 					let address = uni.getStorageSync("address").split("|");
 					res.data.map((item) => {
@@ -111,6 +112,19 @@
 					})
 					
 					this.goods_num = this.list.length;
+				}else{
+// 					uni.showModal({
+// 						title: '提示',
+// 						content: JSON.stringify(res),
+// 						success: function (res) {
+// 							if (res.confirm) {
+// 								
+// 							} else if (res.cancel) {
+// 								console.log('用户点击取消');
+// 							}
+// 						}
+// 					});
+// 					return;
 				}
 			},
 			async jiaruCart(item){
