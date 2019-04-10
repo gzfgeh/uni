@@ -1,11 +1,11 @@
 <template>
-	<div class="contain">
+	<div class="contain" v-if="!isError">
 		<div class="title_wrap">
 			<div class="car_name">{{familyName}}</div>
 			<div>{{brand_name}}</div>
 		</div>
 		
-		<div class="content_wrap">
+		<div class="content_wrap" v-if="!isError">
 			<radio-group @change="radioChange">
                 <label class="uni-between-item " v-for="(item, index) in items" :key="index">
                     <view class="radio_wrap">
@@ -19,6 +19,18 @@
                 </label>
             </radio-group>
 		</div>
+		
+		<div v-if="isError">
+			<div class="error_head_wrap">
+				<img :src="car_list_error" alt="">
+				<span>车型选择失败</span>
+			</div>
+
+			<div class="error_content">
+				根据您所填写的车辆信息（车架号、发动机号、品牌型号），未能查出具体车型，请确认所填信息正确并重试。
+			</div>
+		</div>
+		
 		
 		<view class="btn_wrap">
 		    <button  type="primary" class="primary" hover-class="button-hover"
@@ -47,7 +59,8 @@
 				isExactness: true,
 				sendTime: '',
 				global: '',
-				currentIndex: 0
+				currentIndex: 0,
+				isError: false
 			}
 		},
 		
@@ -121,6 +134,7 @@
 								this.brand_name = res.data.data[0].standardName;
 								this.sendTime = res.data.sendTime;
 					}else{
+						this.isError = true;
 						wx.showToast({
 							icon: 'none',
 							title: '车辆信息查询失败',

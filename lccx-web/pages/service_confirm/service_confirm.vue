@@ -194,8 +194,8 @@
 
 					this.monthly_expense = this.item.monthly_expense;
 					this.mileage_expense = this.item.mileage_expense;
-					this.compulsory = this.item.compulsory;
-					this.tax = this.item.tax;
+					this.compulsory = parseInt(this.item.compulsory);
+					this.tax = parseInt(this.item.tax);
 					this.city_name = this.item.city_name;
 
 					console.log(this.item.quote_details);
