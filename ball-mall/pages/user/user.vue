@@ -121,6 +121,10 @@
 				})
 			},
 			watchOrder: function(){
+// 				uni.navigateTo({
+// 					url: '../order_list/order_list'
+// 				})
+// 				return;
 				if(this.phoneNum){
 					uni.navigateTo({
 						url: '../order_list/order_list'

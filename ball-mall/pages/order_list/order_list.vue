@@ -10,22 +10,17 @@
 					<block  v-for="(item,index2) in list" :key="index2" >
 						
 						<view class="row item_wrap">
-							
-							<img :src="item.g_img">
-							
-							
-							
 							<div class="item_content_wrap">
 								<div class="item_title row_between">
 									<span>{{item.g_name}}</span>
-									<span>订单号：{{item.g_id}}</span>
+									<span>订单号：{{item.o_out_trade_no}}</span>
 								</div>
 								<div class="sub_title">收货地址：{{item.o_address}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between">
-									<span class="num">￥{{item.g_price}} x{{item.go_count}}</span>
-									<span class="num">{{item.g_danwei}}</span>
-									<span class="num">总价:￥{{item.all_money}}</span>
+									<span class="num">单价: ￥{{item.g_price}}</span>
+									<span class="num">数量: {{item.go_count}}</span>
+									<span class="num">小计: ￥{{item.all_money}}</span>
 								</div>
 							</div>
 							
@@ -123,6 +118,7 @@
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
 										ite.o_address = item.o_address;
+										ite.o_out_trade_no = item.o_out_trade_no;
 										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
 										that.list.push(ite);
 									}) 
