@@ -94,24 +94,10 @@
 // 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
 				
 // 				this.address = "上海上海市虹口区华鸿大厦"
-// 				uni.setStorageSync("address", "上海|上海市|虹口区");
+// 				uni.setStorageSync("address", "上海|上海|虹口区");
 // 				return;
 				
 				let res = await getUserInfo(uni.getStorageSync("openid"));
-				
-// 				uni.showModal({
-// 					title: '提示',
-// 					content: JSON.stringify(res),
-// 					success: function (res) {
-// 						if (res.confirm) {
-// 							
-// 						} else if (res.cancel) {
-// 							console.log('用户点击取消');
-// 						}
-// 					}
-// 				});
-// 				return;
-				
 				uni.removeStorageSync("m_is_gys");
 				uni.removeStorageSync("bindPhone");
 				uni.removeStorageSync("location");
@@ -146,6 +132,8 @@
 						}else{
 							this.getLocation();
 						}
+					}else{
+						this.getLocation();
 					}
 					
 					
@@ -235,12 +223,13 @@
 							let province = res.data.regeocode.addressComponent.province;
 							let city = res.data.regeocode.addressComponent.city;
 							let district = res.data.regeocode.addressComponent.district;
-							if(city || (city.length <2)){
-								city = province;
-							}
 							
 							if(province.length > 2){
 								province = province.substring(0, 2);
+							}
+							
+							if(city || (city.length <2)){
+								city = province;
 							}
 							uni.setStorageSync("address", province+"|"+city+"|"+district);
 							

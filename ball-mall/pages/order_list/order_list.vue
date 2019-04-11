@@ -12,15 +12,34 @@
 						<view class="row item_wrap">
 							<div class="item_content_wrap">
 								<div class="item_title row_between">
-									<span>{{item.g_name}}</span>
 									<span>订单号：{{item.o_out_trade_no}}</span>
+									<span>订单总价: {{item.o_money}}</span>
 								</div>
 								<div class="sub_title">收货地址：{{item.o_address}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between">
-									<span class="num">单价: ￥{{item.g_price}}</span>
+									<div class="num">
+										<span>品名</span>
+										<span>{{item.g_name}}</span>
+									</div>
+									
+									<div class="num">
+										<span>单价</span>
+										<span>￥{{item.g_price}}</span>
+									</div>
+									
+									<div class="num">
+										<span>数量</span>
+										<span>{{item.go_count}}</span>
+									</div>
+									
+									<div class="num">
+										<span>小计</span>
+										<span>￥{{item.all_money}}</span>
+									</div>
+									<!-- <span class="num">单价: ￥{{item.g_price}}</span>
 									<span class="num">数量: {{item.go_count}}</span>
-									<span class="num">小计: ￥{{item.all_money}}</span>
+									<span class="num">小计: ￥{{item.all_money}}</span> -->
 								</div>
 							</div>
 							
@@ -118,6 +137,7 @@
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
 										ite.o_address = item.o_address;
+										ite.o_money = item.o_money;
 										ite.o_out_trade_no = item.o_out_trade_no;
 										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
 										that.list.push(ite);
@@ -130,7 +150,7 @@
 									item.good_list.map(function(ite){
 										ite.o_address = item.o_address;
 										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
-										
+										ite.o_money = item.o_money;
 										that.list.push(ite);
 									}) 
 								});
@@ -294,7 +314,11 @@
 	.num{
 		color: #000000;
 		font-size: 28upx;
-		margin-right: 20upx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1;
 	}
 	
 	.money_text{

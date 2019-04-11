@@ -100,6 +100,7 @@ export default {
       }
       let that = this;
 			this.params.o_address = this.address;
+			uni.setStorageSync("write_address", this.address);
 			
 			let ssq = uni.getStorageSync("address").split("|");
 			this.params.o_sheng = ssq[0];
@@ -192,7 +193,7 @@ export default {
 
   onLoad(){
     let that = this;
-    this.address = uni.getStorageSync("location");
+    this.address = uni.getStorageSync("write_address");
   },
 
   onShow(){
