@@ -11,36 +11,49 @@
 						
 						<view class="row item_wrap">
 							<div class="item_content_wrap">
-								<div class="item_title row_between">
-									<span>订单号：{{item.o_out_trade_no}}</span>
-									<span>订单总价: {{item.o_money}}</span>
+								<div class="item_title row_between" >
+									<span style="font-weight: bold; color: #000000;">订单号：{{item.o_out_trade_no}}</span>
+									<span>订单总价:￥{{item.o_money}}</span>
 								</div>
 								<div class="sub_title">收货地址：{{item.o_address}}</div>
+								<div class="sub_title">订单日期：{{item.o_create_time}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
-								<div class="bottom_wrap row_between">
+								<div class="bottom_wrap row_between" style="font-weight: bold; color: #000000;">
 									<div class="num">
 										<span>品名</span>
-										<span>{{item.g_name}}</span>
 									</div>
 									
 									<div class="num">
 										<span>单价</span>
-										<span>￥{{item.g_price}}</span>
 									</div>
 									
 									<div class="num">
 										<span>数量</span>
-										<span>{{item.go_count}}</span>
 									</div>
 									
 									<div class="num">
 										<span>小计</span>
-										<span>￥{{item.all_money}}</span>
 									</div>
-									<!-- <span class="num">单价: ￥{{item.g_price}}</span>
-									<span class="num">数量: {{item.go_count}}</span>
-									<span class="num">小计: ￥{{item.all_money}}</span> -->
 								</div>
+								
+								<div class="bottom_wrap row_between" v-for="(ite,index) in item.good_list" :key="index">
+									<div class="num">
+										<span>{{ite.g_name}}</span>
+									</div>
+									
+									<div class="num">
+										<span>￥{{ite.g_price}}</span>
+									</div>
+									
+									<div class="num">
+										<span>{{ite.go_count}}</span>
+									</div>
+									
+									<div class="num">
+										<span>￥{{ite.all_money}}</span>
+									</div>
+								</div>
+								
 							</div>
 							
 							
@@ -136,23 +149,19 @@
 								that.list = [];
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
-										ite.o_address = item.o_address;
-										ite.o_money = item.o_money;
-										ite.o_out_trade_no = item.o_out_trade_no;
 										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
-										that.list.push(ite);
+										
 									}) 
+									that.list.push(item);
 								});
-								// this.list = res.data.data;
+								// that.list = res.data.data;
 							}else{
 								let tempList = res.data.data;
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
-										ite.o_address = item.o_address;
 										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
-										ite.o_money = item.o_money;
-										that.list.push(ite);
-									}) 
+									})
+									 that.list.push(item);
 								});
 								
 								// this.list.concat(res.data.data);
@@ -259,14 +268,15 @@
 		background-color: #FFFFFF;
 		color: #9F9F9F;
 		font-size: 26upx;
-		
-		height: 260upx;
 	}
 	
 	.item_content_wrap{
 		flex: 1;
 		margin-left: 20upx;
 		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 	
 	.item_title{
@@ -278,7 +288,7 @@
 		width: 100%;
 	}
 	.sub_title{
-		color: @gray_color;
+		color: #464646;
 		font-size: 24upx;
 		margin: 6upx 0upx;
 	}
@@ -294,11 +304,7 @@
 	.bottom_wrap{
 		color: @gray_color;
 		font-size: 24upx;
-		position: absolute;
-		left: 0upx;
-		bottom: 0upx;
 		width: 100%;
-		height: 60upx;
 		align-items: center;
 		.price{
 			color: red;
