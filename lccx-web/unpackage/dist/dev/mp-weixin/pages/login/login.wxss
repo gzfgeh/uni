@@ -1,0 +1,90 @@
+
+.content{
+		padding-left: 80rpx;
+		padding-right: 80rpx;
+}
+.title{
+		color: rgba(0,0,0,0.7);
+		font-size: 48rpx;
+		margin-top: 80rpx;
+		margin-bottom: 108rpx;
+}
+.input-row{
+		border: 2rpx solid rgba(0,0,0,0.1);
+		border-radius: 12rpx;
+		height: 90rpx;
+		margin-bottom: 40rpx;
+		padding-left: 40rpx;
+		padding-right: 34rpx;
+		font-size: 26rpx;
+		color: rgba(0,0,0,0.7);
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+}
+.get_code{
+		color: rgba(0,0,0,0.7);
+		margin-left: 28rpx;
+		font-size: 28rpx;
+}
+.primary{
+		background-color: #427DFF;
+		border-radius: 12rpx;
+		color: #ffffff;
+		font-size: 28rpx;
+		height: 94rpx;
+		line-height: 94rpx;
+}
+.action-row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+}
+.action-row navigator {
+        color: #007aff;
+        padding: 0 20rpx;
+}
+.oauth-row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+}
+.oauth-image {
+        width: 100rpx;
+        height: 100rpx;
+        border: 1rpx solid #dddddd;
+        border-radius: 100rpx;
+        margin: 0 40rpx;
+        background-color: #ffffff;
+}
+.oauth-image image {
+        width: 60rpx;
+        height: 60rpx;
+        margin: 20rpx;
+}
+

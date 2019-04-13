@@ -1,0 +1,8 @@
+
+uni-image{
+		width: 100%;
+}
+._img{
+	width: 100%!important;
+}
+

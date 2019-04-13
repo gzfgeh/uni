@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/baojia/baojia",
+    "pages/pay_address/pay_address",
+    "pages/bill_detail/bill_detail",
+    "pages/user/user",
+    "pages/pay_two/pay_two",
+    "pages/pay_one/pay_one",
+    "pages/order_one_detail/order_one_detail",
+    "pages/order_two_detail/order_two_detail",
+    "pages/carmodal/carmodal",
+    "pages/pay_success/pay_success",
+    "pages/service_confirm/service_confirm",
+    "pages/service_month_fee/service_month_fee",
+    "pages/quote_bill/quote_bill",
+    "pages/reg/reg",
+    "pages/main/main",
+    "pages/login/login"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fbf9fe",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "color": "#7a7e83",
+    "selectedColor": "#0faeff",
+    "backgroundColor": "#ffffff",
+    "list": []
+  }
+}

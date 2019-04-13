@@ -1,0 +1,1 @@
+<template name="9805b5d2"><view class="_div 9805b5d2 container container-fill"><view class="_div 9805b5d2 item"><image src="../../static/img/pay_success.png" class="_img 9805b5d2"></image><label class="_span 9805b5d2">支付成功</label></view><button type="primary" class="_button 9805b5d2 button" hover-class="button-hover">确定</button></view></template>

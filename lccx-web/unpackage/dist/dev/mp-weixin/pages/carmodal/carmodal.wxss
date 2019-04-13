@@ -1,0 +1,64 @@
+
+.contain{
+	width: 100%;
+}
+.title_wrap{
+	color: rgba(0,0,0,0.7);
+	padding: 20rpx 50rpx; 
+	background-color: #F9F9F9;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.car_name{
+	color: #000000;
+	font-size: 56rpx;
+	font-weight: bold;
+}
+.content_wrap{
+	padding-left: 48rpx;
+	padding-top: 18rpx;
+	padding-bottom: 18rpx;
+}
+.radio_wrap{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	color: rgba(0,0,0,1);
+	font-size: 28rpx;
+	margin-right: 40rpx;
+}
+.radio_wrap .price{
+	font-size: 24rpx;
+	color: rgba(0,0,0,0.4);
+}
+radio-group label{
+	border-bottom:  2rpx solid rgba(0,0,0,0.1);
+	padding: 16rpx 10rpx 16rpx 0rpx;
+}
+.btn_wrap{
+	position: fixed;
+	bottom: 0rpx;
+	width: 100%;
+	height: 160rpx;
+	background-color: #FFFFFF;
+	padding: 30rpx 40rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.primary{
+	background-color: #427DFF;
+	color: #FFFFFF;
+	border-radius: 10rpx;
+	font-size: 32rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+}
+
+

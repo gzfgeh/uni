@@ -1,0 +1,2 @@
+<import src="./carmodal.vue.wxml" />
+    <template is="e3fe98c6" data="{{ ...$root['0'], $root }}"/>

@@ -1,6 +1,7 @@
 <template>
     <div class="app">
         
+		<!-- <el-amap vid="amap" :plugin="plugin" class="amap-demo"></el-amap> -->
 		
 		<swiper :indicator-dots="true" :autoplay="true"
 					:interval="5000" :duration="1000" :style="{'height': scrollHeight+'px'}">            
@@ -48,12 +49,13 @@
 
 <script>
 	import { BASE_IMAGE_URL,getImgList,getUserInfo } from '@/utils/api'
-	import { formatLocation } from '@/utils/index'
-	var amapFile = require('../../static/js/amap-wx.js');
+	import { formatLocation,getPosition } from '@/utils/index'
+	// var VueAMap = require('../../static/js/amap-h5.js');
 	
 	export default {
 		
 		data() {
+			let self = this;
 			return {
 				home_pic: '../../static/img/home_top.png',
 				money_btn: BASE_IMAGE_URL+'money_btn.png',
@@ -67,13 +69,27 @@
 				markersData: {
 				          latitude: '',
 				          longitude: '',
-				          key: '18271349f9e1a27539f6610b296b32ec'
+				          key: '0f8d53697264ae0a58bed025edb73e31'
 				      },
-				address: ''
+				address: '',
+				plugin: [{
+				   pName: 'Geolocation',
+				   events: {
+					 init(o) {
+					   // o 是高德地图定位插件实例
+					   o.getCurrentPosition((status, result) => {
+						 console.log(result);  //  能获取定位的所有信息
+						 if (result && result.position) {
+						   console.log('result.position.lng'+result.position.lng)
+						   console.log('result.position.lat'+result.position.lat)
+						 }
+					   });
+					 }
+				   }
+				 }]
 			}
 		},
 		onLoad: function() {
-			
 			this.getImgList();
 			this.getUserInfo();
 		},
@@ -87,7 +103,6 @@
 				let winWidth = uni.getSystemInfoSync().screenWidth;
 				let scale = winWidth / imgWidth;
 				this.scrollHeight = imgHeight * scale;
-				console.log(this.scrollHeight)
 			},
 			async getUserInfo(){
 // 				this.address = "广东深圳市坪山区华鸿大厦"
@@ -108,7 +123,7 @@
 						uni.setStorageSync("m_is_gys", res.data.m_is_gys);
 						uni.setStorageSync("bindPhone", res.data.m_phone);
 						
-						if(res.data.m_is_gys == 1){
+						if(parseInt(res.data.m_is_gys) == 1){
 							//供应商
 							let province = res.data.m_sheng;
 							let city = res.data.m_shi;
@@ -128,7 +143,6 @@
 // 									}
 // 								}
 // 							});
-// 							return;
 						}else{
 							this.getLocation();
 						}
@@ -179,11 +193,33 @@
 			getLocation: function(){
 // 				this.address = "广东深圳市坪山区华鸿大厦"
 // 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
-// 				return;
+				// return;
 				if(this.address){
 					return;
 				}
 				let that=this;
+				
+				getPosition().then(result => {
+					let queryData = {
+					  longtitude: String(result.longitude).match(/\d+\.\d{0,6}/)[0],
+					  latitude: String(result.latitude).match(/\d+\.\d{0,6}/)[0],
+					  channelType: '00'
+					}
+					console.log(queryData);
+					that.markersData.latitude = queryData.latitude;
+					that.markersData.longitude = queryData.longtitude;
+					that.loadCity();
+					
+				}).catch(err => {
+					console.log(err);
+					wx.showToast({
+						title: "获取当前位置失败",
+						icon: 'none',
+						duration: 1000
+					});
+				})
+				return;
+				
 			  wx.getLocation({
 					type: "gcj02",
 			      success: function (res) {
@@ -245,7 +281,6 @@
 // 									}
 // 								}
 // 							});
-// 							return;
 							
 						}else{
 							wx.showToast({

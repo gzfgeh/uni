@@ -316,7 +316,9 @@ export default {
       this.indexList.map(function(item){
 				let p = {
 					go_g_id: that.list[parseInt(item)].ct_g_id,
-					go_count: that.list[parseInt(item)].ct_count
+					go_count: that.list[parseInt(item)].ct_count,
+					go_g_price: that.list[parseInt(item)].g_price,
+					go_g_name: that.list[parseInt(item)].g_name
 				}
         goodsDetail.push(p);
         selectItems.push(that.list[parseInt(item)]);
