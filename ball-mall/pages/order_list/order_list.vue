@@ -13,10 +13,12 @@
 							<div class="item_content_wrap">
 								<div class="item_title row_between" >
 									<span style="font-weight: bold; color: #000000;">订单号：{{item.o_out_trade_no}}</span>
-									<span>订单总价:￥{{item.o_money}}</span>
+									
 								</div>
+								
 								<div class="sub_title">收货地址：{{item.o_address}}</div>
 								<div class="sub_title">订单日期：{{item.o_create_time}}</div>
+								<div class="sub_title">订单总价: ￥{{item.o_money}}</div>
 								<!-- <span class="num">1.5Kg/份</span> -->
 								<div class="bottom_wrap row_between" style="font-weight: bold; color: #000000;">
 									<div class="num">
@@ -42,7 +44,7 @@
 									</div>
 									
 									<div class="num">
-										<span>￥{{ite.g_price}}</span>
+										<span>￥{{ite.go_g_price}}</span>
 									</div>
 									
 									<div class="num">
@@ -149,7 +151,7 @@
 								that.list = [];
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
-										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
+										ite.all_money = parseFloat(parseFloat(ite.go_g_price) * parseFloat(ite.go_count)).toFixed(2);
 										
 									}) 
 									that.list.push(item);
@@ -159,7 +161,7 @@
 								let tempList = res.data.data;
 								tempList.map(function(item){
 									item.good_list.map(function(ite){
-										ite.all_money = parseFloat(parseFloat(ite.g_price) * parseFloat(ite.go_count)).toFixed(2);
+										ite.all_money = parseFloat(parseFloat(ite.go_g_price) * parseFloat(ite.go_count)).toFixed(2);
 									})
 									 that.list.push(item);
 								});

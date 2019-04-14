@@ -4,9 +4,9 @@
 		<!-- <el-amap vid="amap" :plugin="plugin" class="amap-demo"></el-amap> -->
 		
 		<swiper :indicator-dots="true" :autoplay="true"
-					:interval="5000" :duration="1000" :style="{'height': scrollHeight+'px'}">            
-				<swiper-item v-for="(item, index) in itemList" :key="index" :style="{'height': scrollHeight+'px'}">  
-					<image :src="item.t_url" mode="widthFix" class="head_img" @load="imageLoad" />           
+					:interval="5000" :duration="1000" class="head_img">            
+				<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img">  
+					<image :src="item.t_url" mode="widthFix" class="head_img"  />           
 				</swiper-item>        
 		</swiper>
 
@@ -65,45 +65,29 @@
 				shipin_btn: BASE_IMAGE_URL+'zhishixiuqiu.png',
 				toutiao_btn: BASE_IMAGE_URL+'toutiao_btn.png',
 				itemList: [],
-				scrollHeight: 0,
+				scrollHeight: 200,
 				markersData: {
 				          latitude: '',
 				          longitude: '',
 				          key: '0f8d53697264ae0a58bed025edb73e31'
 				      },
 				address: '',
-				plugin: [{
-				   pName: 'Geolocation',
-				   events: {
-					 init(o) {
-					   // o 是高德地图定位插件实例
-					   o.getCurrentPosition((status, result) => {
-						 console.log(result);  //  能获取定位的所有信息
-						 if (result && result.position) {
-						   console.log('result.position.lng'+result.position.lng)
-						   console.log('result.position.lat'+result.position.lat)
-						 }
-					   });
-					 }
-				   }
-				 }]
 			}
 		},
 		onLoad: function() {
-			this.getImgList();
 			this.getUserInfo();
 		},
 		onShow: function(){
 			
 		},
 		methods: {
-			imageLoad: function(e){
-				let imgWidth = e.mp.detail.width;
-				let imgHeight = e.mp.detail.height;
-				let winWidth = uni.getSystemInfoSync().screenWidth;
-				let scale = winWidth / imgWidth;
-				this.scrollHeight = imgHeight * scale;
-			},
+// 			imageLoad: function(e){
+// 				let imgWidth = e.mp.detail.width;
+// 				let imgHeight = e.mp.detail.height;
+// 				let winWidth = uni.getSystemInfoSync().screenWidth;
+// 				let scale = winWidth / imgWidth;
+// 				this.scrollHeight = imgHeight * scale;
+// 			},
 			async getUserInfo(){
 // 				this.address = "广东深圳市坪山区华鸿大厦"
 // 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
@@ -119,6 +103,7 @@
 				uni.removeStorageSync("address");
 				
 				if((res.code == 1000)){
+					this.getImgList();
 					if(res.data){
 						uni.setStorageSync("m_is_gys", res.data.m_is_gys);
 						uni.setStorageSync("bindPhone", res.data.m_phone);
@@ -144,10 +129,10 @@
 // 								}
 // 							});
 						}else{
-							this.getLocation();
+							this.H5GetLocation();
 						}
 					}else{
-						this.getLocation();
+						this.H5GetLocation();
 					}
 					
 					
@@ -157,7 +142,7 @@
 						icon: 'none',
 						duration: 1000
 					});
-					this.getLocation();
+					this.H5GetLocation();
 				}
 				
 			},
@@ -176,7 +161,7 @@
 						content: '请授权位置信息',
 						success: function (res) {
 							if (res.confirm) {
-								that.getLocation();
+								that.H5GetLocation();
 							} else if (res.cancel) {
 								console.log('用户点击取消');
 							}
@@ -190,14 +175,15 @@
 				}
 				
 			},
-			getLocation: function(){
-// 				this.address = "广东深圳市坪山区华鸿大厦"
-// 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
-				// return;
-				if(this.address){
-					return;
-				}
+			H5GetLocation: function(){
 				let that=this;
+// 				this.address = "上海|上海|青浦"
+// 				uni.setStorageSync("address", "上海|上海|青浦");
+// 				return;
+
+// 				this.address = "广东深圳坪山区华鸿大厦"
+// 				uni.setStorageSync("address", "广东|深圳|坪山区");
+// 				return;
 				
 				getPosition().then(result => {
 					let queryData = {
@@ -209,16 +195,24 @@
 					that.markersData.latitude = queryData.latitude;
 					that.markersData.longitude = queryData.longtitude;
 					that.loadCity();
-					
 				}).catch(err => {
 					console.log(err);
 					wx.showToast({
-						title: "获取当前位置失败",
+						title: "页面获取当前位置失败",
 						icon: 'none',
 						duration: 1000
 					});
+					that.getLocation();
 				})
-				return;
+			},
+			getLocation: function(){
+// 				this.address = "广东深圳市坪山区华鸿大厦"
+// 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
+				// return;
+				if(this.address){
+					return;
+				}
+				let that=this;
 				
 			  wx.getLocation({
 					type: "gcj02",
@@ -231,7 +225,6 @@
 			          +res.latitude+"------");
 			          that.loadCity();
 					  
-					  
 			      },
 			      fail: function(err){
 					  wx.showToast({
@@ -239,7 +232,8 @@
 					  	icon: 'none',
 					  	duration: 1000
 					  });
-			          console.log(err)
+			          console.log(err);
+					  // that.H5GetLocation();
 			      }
 			  });
 			},
@@ -265,11 +259,16 @@
 								province = province.substring(0, 2);
 							}
 							
-							if(city || (city.length <2)){
+							if(!city || (city.length <2)){
 								city = province;
 							}
-							uni.setStorageSync("address", province+"|"+city+"|"+district);
 							
+							if(city.length > 2){
+								city = city.substring(0, 2);
+							}
+							
+							uni.setStorageSync("address", province+"|"+city+"|"+district);
+							that.getImgList();
 // 							uni.showModal({
 // 								title: '不是供应商提示',
 // 								content: province+"|"+city+"|"+district,
@@ -317,6 +316,7 @@
 
 .head_img{
 	width: 100%;
+	height: 400rpx!important;
 }
 
 .item_wrap{

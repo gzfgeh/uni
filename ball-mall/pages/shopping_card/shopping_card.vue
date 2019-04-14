@@ -279,9 +279,12 @@ export default {
 				this.list = [];
 				let address = uni.getStorageSync("address").split("|");
 				result.data.map((item) => {
-					if((item.g_shi.substring(0, 2) == address[1].substring(0, 2)) && (item.g_qu.substring(0, 2) == address[2].substring(0,2)) ){
-						this.list.push(item);
+					if(item.g_shi && item.g_qu){
+						if((item.g_shi.substring(0, 2) == address[1].substring(0, 2)) && (item.g_qu.substring(0, 2) == address[2].substring(0,2)) ){
+							this.list.push(item);
+						}
 					}
+					
 				})
         // this.list = result.data;
         this.isEmpty = true;
