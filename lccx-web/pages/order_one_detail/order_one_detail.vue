@@ -12,7 +12,6 @@
 			
 			<div class="price">
 				<span>{{monthly_expense}}元/月+{{mileage_expense}}元/公里</span>
-				<span class="name">交强险 {{compulsory}}元+车船税 {{tax}}元</span>
 			</div>
 			
 		</div>
