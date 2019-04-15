@@ -5,15 +5,22 @@
 			uni.setStorageSync("partner_id", 100);
 			uni.setStorageSync("imei", 123);
 			
-//             let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
-//             console.log(tmpUrlSearch);
-//             let tmpParas= this.GetRequestParameters(tmpUrlSearch);
-//             let partner_id = tmpParas["partner_id"];//提取参数
-//             console.log(partner_id);
-//             uni.setStorageSync("partner_id", partner_id);
-// 			let imei = tmpParas["imei"];//提取参数
-// 			console.log(imei);
-// 			uni.setStorageSync("imei", imei);
+            let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
+            console.log(tmpUrlSearch);
+            let tmpParas= this.GetRequestParameters(tmpUrlSearch);
+			
+			let openid = tmpParas["openid"];//提取参数
+			console.log(openid);
+			// olVu51XsomjuLGgUx5cTTtoqIQVE
+			uni.setStorageSync("openid", openid);
+			return;
+			
+            let partner_id = tmpParas["partner_id"];//提取参数
+            console.log(partner_id);
+            uni.setStorageSync("partner_id", partner_id);
+			let imei = tmpParas["imei"];//提取参数
+			console.log(imei);
+			uni.setStorageSync("imei", imei);
         },
         onShow: function() {
             console.log('App Show');
