@@ -6,9 +6,11 @@
 		<swiper :indicator-dots="true" :autoplay="true"
 					:interval="5000" :duration="1000" class="head_img">            
 				<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img">  
-					<image :src="item.t_url" mode="widthFix" class="head_img"  />           
+					<image src="https://mall.xiuqiupaopaopao.com/data/upload/1553912802.png" mode="widthFix" class="head_img"  />           
 				</swiper-item>        
 		</swiper>
+		
+		<!-- <img :src="t_url" mode="widthFix" class="head_img"  > -->
 
 
         <div class="row_around content_wrap">
@@ -72,6 +74,7 @@
 				          key: '0f8d53697264ae0a58bed025edb73e31'
 				      },
 				address: '',
+				t_url: ''
 			}
 		},
 		onLoad: function() {
@@ -151,6 +154,8 @@
 				if(res.code == 1000){
 					console.log(res.data);
 					this.itemList = res.data;
+					
+					// this.t_url = this.itemList[0].t_url;
 				}
 			},
 			goDetail(index) {
