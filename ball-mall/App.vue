@@ -8,7 +8,7 @@
 			let openid = tmpParas["openid"];//提取参数
 			console.log(openid);
 			uni.setStorageSync("openid", openid);
-			// uni.setStorageSync("openid", "oms5B1ah5nEAtCsYrzR8JKpdv-uo");
+			// uni.setStorageSync("openid", "oms5B1cYgVWMCWtDOgiTzH6EUmp4");
         },
         onShow: function() {
             console.log('App Show');

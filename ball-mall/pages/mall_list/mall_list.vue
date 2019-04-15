@@ -197,10 +197,10 @@
 						uni.stopPullDownRefresh();
 						this.listData = res.data;
 					}else{
-						this.listData.concat(res.data);
+						this.listData = this.listData.concat(res.data);
 					}
 					
-					if(res.data.length < 10){
+					if(res.data.length < 1){
 						//没有了
 						this.loadingType = 2;
 						
