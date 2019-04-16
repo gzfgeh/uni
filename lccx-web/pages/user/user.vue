@@ -48,7 +48,7 @@
 		
 		<div class="uni-inline-item">
 			<span>手机号码</span>
-			<input type="tel" v-model="mobile" placeholder="请输入手机号码"
+			<input type="number" v-model="mobile" placeholder="请输入手机号码"
 				placeholder-class="place-holder" class="item_input">
 		</div>
 		
@@ -61,7 +61,7 @@
 		
 		
 		
-        <view class="btn_wrap">
+        <view class="btn_wrap" :class="{'hideBtnClass': hideBtn}">
             <button  type="primary" class="primary" hover-class="button-hover"
 			@tap="basic">下一步</button>
             
@@ -93,10 +93,10 @@
 		data(){
 			return {
 				license_no: '陕G61B86',
-				  mobile: '',
+				  mobile: '13800138000',
 				  item: '',
-				  name: '',
-				  idcard: '',
+				  name: '冯瑛',
+				  idcard: '612426197408240028',
 				  isShowModal: false,
 				  file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 				  take_photo: BASE_IMAGE_URL+'take_photo.png',
@@ -124,7 +124,9 @@
 					license_no:''
 				  },
 				  closeFrameChange: false,
-					closeEngineChange: false
+					closeEngineChange: false,
+					clientHeight:document.documentElement.clientHeight,
+					hideBtn: false
 			}
 		},
 		onLoad () {
@@ -135,6 +137,16 @@
 			  this.isShowBtn = true;
 			  console.log('this.globalData.billInfo');
 			  console.log(this.globalData);
+				
+				window.onresize= ()=>{
+					if(this.clientHeight>document.documentElement.clientHeight) {
+						   this.hideBtn = true;
+					}else{                
+							 this.hideBtn = false;          
+					}        
+				}
+
+
 		  },
         methods: {
 			closeFrame: function(){
@@ -470,7 +482,7 @@
 	}
 	
 	.btn_wrap{
-		position: fixed;
+		position: absolute;
 		bottom: 0upx;
 		width: 100%;
 		height: 160upx;
@@ -572,4 +584,5 @@
 	.unActive{color: rgba(0,0,0,0.3);}
 	.place-holder{font-size: 28upx;color: rgba(0,0,0,0.3);}
 	
+	.hideBtnClass{z-index: -2;}
 </style>

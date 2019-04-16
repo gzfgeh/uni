@@ -58,9 +58,8 @@
     },
     "h5" : {
         "title" : "lccx-web",
-        "domain" : "m.kaikaibao.com.cn/lccx2",
         "router" : {
-            "base" : "/h5/"
+            "base" : "/lccx/"
         }
     }
 }

@@ -12,9 +12,7 @@ request.config.baseURL = 'https://api.kaikaibao.com.cn'
 tokenFly.config = request.config
 
 request.interceptors.request.use((request) => {
-    if (getApp().globalData.showLoading) {
-        uni.showLoading({ title: '加载中...' })
-    }
+    uni.showLoading({ title: '加载中...' })
 
     console.log('----------------')
     let token = uni.getStorageSync('token')

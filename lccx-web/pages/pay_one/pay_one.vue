@@ -42,7 +42,7 @@
 export default {
   data(){
     return{
-
+			jiaoqiang_order_id: 3
     }
   },
 
@@ -50,12 +50,15 @@ export default {
   methods: {
     next () {
       wx.navigateTo({
-        url: "../pay_all/main"
+        url: "../pay_all/pay_all?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
     },
   },
 
-  created () {
+  onLoad () {
+    this.global = wx.getStorageSync("global");
+    this.jiaoqiang_order_id = this.$root.$mp.query.jiaoqiang_order_id;
+    this.jiaoqiang_order_id = this.jiaoqiang_order_id ? this.jiaoqiang_order_id : 4;
   },
 
 }

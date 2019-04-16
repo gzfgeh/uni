@@ -162,7 +162,7 @@
 				  pickerCode: 610100,
 				  showModal: false,
 				  license_no: '',
-				  city_name: '西安'
+				  city_name: '西安市'
 	  
             }
         },
@@ -301,6 +301,10 @@
 		
 		onLoad () {
 			this.pickerText = this.pickerValueArray[1][this.pickerValueIndex[1]];
+			
+			this.pickerText = "安康市";
+			this.license_no = "G61B86";
+			
 			this.H5login();
 		},
   

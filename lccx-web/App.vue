@@ -12,7 +12,7 @@
 			let openid = tmpParas["openid"];//提取参数
 			console.log(openid);
 			// olVu51XsomjuLGgUx5cTTtoqIQVE
-			uni.setStorageSync("openid", openid);
+			uni.setStorageSync("openid", "olVu51XsomjuLGgUx5cTTtoqIQVE");
 			return;
 			
             let partner_id = tmpParas["partner_id"];//提取参数

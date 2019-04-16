@@ -86,14 +86,25 @@ export default {
       let res = await result(this.global.quotation_id);
       if(res.code == 200){
         this.item = res.data;
-        if(this.item){
+        if(this.item && (res.data.status == 1)){
           this.monthly_expense = this.item.monthly_expense.toFixed(2);
           this.mileage_expense = this.item.mileage_expense.toFixed(2);
           this.ci_prenium = parseInt(this.item.ci_prenium);
           this.tax = parseInt(this.item.tax);
+        }else{
+          this.showModal = true;
+          this.monthly_expense = '';
+          this.mileage_expense = '';
+          this.ci_prenium = '';
+          this.tax = '';
         }
         
       }else{
+				this.showModal = true;
+				this.monthly_expense = '';
+          this.mileage_expense = '';
+          this.ci_prenium = '';
+          this.tax = '';
         wx.showToast({
 						icon: 'none',
 						title: '报价失败',

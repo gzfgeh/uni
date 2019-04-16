@@ -13,7 +13,12 @@
 		        "navigationBarTitleText" : "配送地址"
 		    }
 		},
-		
+		{
+		    "path" : "pages/pay_all/pay_all",
+		    "style" : {
+		        "navigationBarTitleText" : "配送地址"
+		    }
+		},
 		
 		
 		{

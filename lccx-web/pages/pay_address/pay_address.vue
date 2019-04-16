@@ -83,7 +83,7 @@
       <span>实付</span>
       <span class="bottom_money">¥1370</span>
     </div>
-    <span class="bottom_right" @tap="pay">立即支付</span>
+    <span class="bottom_right" @tap="next">立即支付</span>
   </div>
   
 
@@ -114,7 +114,7 @@ export default {
   methods: {
     next () {
       wx.navigateTo({
-        url: "../device_success/main?device_id="+this.device_id
+        url: "../pay_one/pay_one?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
     },
 		
@@ -206,7 +206,7 @@ export default {
 												});
 											}
 											
-	// 										that.next();
+											that.next();
 										},
 										'fail':function(res){
 												console.log(res);
@@ -239,6 +239,8 @@ export default {
   onLoad () {
     this.global = wx.getStorageSync("global");
     // this.getOpenid();
+		this.name = this.global.name;
+		this.mobile = this.global.mobile;
 		console.log(weixin_sdk);
 		this.quotationsToOrder();
   },

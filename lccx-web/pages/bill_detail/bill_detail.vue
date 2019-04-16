@@ -29,14 +29,16 @@
   </div>
 
   <div class="list_wrap">
-      <div class="ticket" v-for="(item,index) in list" :key="index" @click="next(item)">
+      <div class="ticket" v-for="(item,index) in list" :key="index" @click="next(item)"
+				v-if="((item.type == 1) || (item.type == 2)) &&  (item.status>1)">
         <div class="main">
           <div class="title" v-if="item.type == 1">里程车险</div>
           <div class="title" v-if="item.type == 2">交强险</div>
-          <div class="text">车牌号：{{item.license_no}}</div>
-          <div class="text">姓名：{{item.name}}</div>
-          <image :src="dai_pay_icon" mode="widthFix" v-if="item.status == 1"/>
-          <image :src="finish_icon" mode="widthFix" v-if="item.status == 0"/>
+          <div class="text">被保险人：{{item.name}}</div>
+          <div class="text">保障期限：{{item.starts_on}} - {{item.ends_on}}</div>
+          <image :src="baozhangzhong_icon" mode="widthFix" v-if="item.status == 4"/>
+					<image :src="weiqibao_icon" mode="widthFix" v-if="item.status == 3"/>
+					<image :src="yidaoqi_icon" mode="widthFix" v-if="item.status == 5"/>
         </div>
 
         <div class="link" v-if="item.status == 1">
@@ -68,6 +70,9 @@ export default {
 		  list: [],
 		  dai_pay_icon: BASE_IMAGE_URL+"dai_pay_icon.png",
 		  finish_icon: BASE_IMAGE_URL+"finish_icon.png",
+			baozhangzhong_icon: BASE_IMAGE_URL+"baozhangzhong_icon.png",
+    weiqibao_icon: BASE_IMAGE_URL+"weiqibao_icon.png",
+    yidaoqi_icon: BASE_IMAGE_URL+"yidaoqi_icon.png",
 	  }
     
   },
@@ -91,7 +96,7 @@ export default {
         //未付款
         if(index == 1){
           //里程车险
-          const url = "../pay_address/main?id="+item.id;
+          const url = "../pay_address/pay_address?id="+item.id;
           wx.navigateTo({ url });
         }else{
           //交强险
@@ -103,7 +108,7 @@ export default {
                   //点击取消,默认隐藏弹框
                 } else {
                   //点击确定
-                  const url = "../pay_all/main?id="+item.id;
+                  const url = "../pay_all/pay_all?id="+item.id;
                     wx.navigateTo({ url });
                 }
             }
@@ -141,6 +146,7 @@ export default {
 .container {
   background-color: #F3F3F3;
   font-size: 26rpx;
+	width: 100%;
 }
 .list_wrap{
   margin-top: 130rpx;

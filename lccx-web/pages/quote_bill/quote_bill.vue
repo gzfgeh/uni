@@ -53,7 +53,7 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>机动车损失险</span>
-		  <div class="radio_wrap" >
+		  <div class="radio_wrap" v-if="(jidongIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
@@ -71,7 +71,7 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>第三者责任险</span>
-		  <div class="radio_wrap" >
+		  <div class="radio_wrap" v-if="(jidongValueIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
@@ -88,7 +88,10 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>司机责任险</span>
-		  <span class="uni-flex-item"></span>
+		  <div class="radio_wrap" v-if="(siJiIndex != 0)">
+				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+				<span>不计免赔</span>
+		  </div>
 		  
 		  <div class="uni-between-item">
 			  <picker :range="siJiList" :value="siJiIndex" @change="siJiChange">
@@ -102,7 +105,10 @@
 	  
 	  <div class="item_wrap uni-between-item">
 		  <span>乘客责任险</span>
-		  <span class="uni-flex-item"></span>
+		  <div class="radio_wrap" v-if="(chengKeIndex != 0)">
+				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+				<span>不计免赔</span>
+		  </div>
 		  
 		  <div class="uni-between-item">
 			  <picker :range="siJiList" :value="chengKeIndex" @change="chengKeChange">
@@ -116,7 +122,10 @@
 	  
 	  <div class="item_wrap uni-between-item">
 	  		  <span>盗抢险</span>
-	  		  <span class="uni-flex-item"></span>
+	  		  <div class="radio_wrap" v-if="(qiangIndex != 0)">
+						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+						<span>不计免赔</span>
+					</div>
 	  		  
 	  		  <div class="uni-between-item">
 	  			  <picker :range="dataList" :value="qiangIndex" @change="qiangChange">
@@ -130,7 +139,10 @@
 	  
 	  <div class="item_wrap uni-between-item">
 	  		  <span>划痕险</span>
-	  		  <span class="uni-flex-item"></span>
+	  		  <div class="radio_wrap" v-if="(huaIndex != 0)">
+						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+						<span>不计免赔</span>
+					</div>
 	  		  
 	  		  <div class="uni-between-item">
 	  			  <picker :range="huaList" :value="huaIndex" @change="huaChange">
@@ -144,7 +156,10 @@
 	  
 	  <div class="item_wrap uni-between-item">
 	  		  <span>自燃险</span>
-	  		  <span class="uni-flex-item"></span>
+	  		  <div class="radio_wrap" v-if="(ziRanIndex != 0)">
+						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+						<span>不计免赔</span>
+					</div>
 	  		  
 	  		  <div class="uni-between-item">
 	  			  <picker :range="dataList" :value="ziRanIndex" @change="ziRanChange">
@@ -158,7 +173,10 @@
 	  
     <div class="item_wrap uni-between-item">
     		  <span>玻璃险</span>
-    		  <span class="uni-flex-item"></span>
+    		  <div class="radio_wrap" v-if="(glassIndex != 0)">
+						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+						<span>不计免赔</span>
+					</div>
     		  
     		  <div class="uni-between-item">
     			  <picker :range="glassList" :value="glassIndex" @change="glassChange">
@@ -173,7 +191,10 @@
 		
 		<div class="item_wrap uni-between-item">
 				  <span>涉水险</span>
-				  <span class="uni-flex-item"></span>
+				  <div class="radio_wrap" v-if="(sheShuiIndex != 0)">
+						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
+						<span>不计免赔</span>
+					</div>
 				  
 				  <div class="uni-between-item">
 					  <picker :range="dataList" :value="sheShuiIndex" @change="sheShuiChange">
@@ -518,6 +539,10 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
   width: 100%;
 }
 
+.item_wrap span:nth-child(1){
+	min-width: 100rpx;
+}
+
 .title{
 	color: #989898;
 	font-size: 26upx;
@@ -531,6 +556,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
 	color: rgba(0,0,0,0.4);
 	background-color: #FFFFFF;
 	border-bottom: rgba(0,0,0,0.1) solid 2upx;
+	position: relative;
 }
 
 .item_input{
@@ -726,7 +752,10 @@ picker div{
   align-items: center;
   height: 100%;
   font-size: 24upx;
-  color: rgba(0,0,0,0.7)
+  color: rgba(0,0,0,0.7);
+	position: absolute;
+	left: 40%;
+	top: 0%;
 }
 
 /* 未选中的 背景样式 */

@@ -58,7 +58,7 @@ export default {
   methods: {
     next () {
       wx.navigateTo({
-        url: "../pay_all/main"
+        url: "../bill_detail/bill_detail"
       })
     },
   },
