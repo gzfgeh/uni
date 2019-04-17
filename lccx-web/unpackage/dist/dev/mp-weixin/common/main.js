@@ -159,7 +159,7 @@ store;exports.default = _default;
     var openid = tmpParas["openid"]; //提取参数
     console.log(openid);
     // olVu51XsomjuLGgUx5cTTtoqIQVE olVu51XsomjuLGgUx5cTTtoqIQVE
-    uni.setStorageSync("openid", "olVu51XsomjuLGgUx5cTTtoqIQVE");
+    uni.setStorageSync("openid", openid);
     return;
 
     var partner_id = tmpParas["partner_id"]; //提取参数

@@ -1832,6 +1832,4 @@ button.primary {
 		position: absolute;
 		z-index: 1000;
 }
-page {overflow-x: hidden;overflow-y: auto;}
-	
 

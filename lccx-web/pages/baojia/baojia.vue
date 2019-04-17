@@ -315,6 +315,7 @@
 	.container_wrap {
   background-color: #FFFFFF;
   width: 100%;
+	height: 100%;
 }
 .head_img{
   width: 100%;
