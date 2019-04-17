@@ -38,7 +38,7 @@ input{
 	font-size: 28rpx;
 }
 .take_photo_wrap{
-	margin: 48rpx 0rpx;
+	margin: 48rpx 0rpx 180rpx;
 	background-color: rgba(66, 225, 255, 0.1);
 	border-radius: 48rpx;
 	padding: 28rpx 48rpx;
@@ -50,7 +50,7 @@ input{
 	margin-right: 10rpx;
 }
 .btn_wrap{
-	position: absolute;
+	position: fixed;
 	bottom: 0rpx;
 	width: 100%;
 	height: 160rpx;

@@ -211,7 +211,7 @@ export default {
 											 that.next();
 									 }else{
 										 wx.showToast({
-												title: '支付失败',
+												title: JSON.stringify(res),
 												icon: 'none',
 												duration: 1000
 										});

@@ -1,9 +1,9 @@
-.container.data-v-1e787448 {
+.container.data-v-8568dd40 {
   font-size: 28rpx;
   background-color: #F9F9F9;
   width: 100%;
 }
-.item.data-v-1e787448 {
+.item.data-v-8568dd40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@
           box-sizing: border-box;
   width: 100%;
 }
-.item .item_left.data-v-1e787448 {
+.item .item_left.data-v-8568dd40 {
     width: 80rpx;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -47,16 +47,16 @@
     height: 100%;
     margin-top: 36rpx;
 }
-.item .item_left ._span.data-v-1e787448 {
+.item .item_left ._span.data-v-8568dd40 {
       height: 180rpx;
       width: 2rpx;
       background-color: #ECECEC;
 }
-.item .item_left ._img.data-v-1e787448 {
+.item .item_left ._img.data-v-8568dd40 {
       width: 80rpx;
       height: 80rpx;
 }
-.item .right.data-v-1e787448 {
+.item .right.data-v-8568dd40 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -71,7 +71,7 @@
         -ms-flex: 1;
             flex: 1;
 }
-.item .item_right.data-v-1e787448 {
+.item .item_right.data-v-8568dd40 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -96,7 +96,7 @@
             justify-content: space-between;
     margin-bottom: 40rpx;
 }
-.item .item_right .item_right_wrap.data-v-1e787448 {
+.item .item_right .item_right_wrap.data-v-8568dd40 {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -111,15 +111,15 @@
           -ms-flex-pack: justify;
               justify-content: space-between;
 }
-.item .item_right .item_right_wrap .name.data-v-1e787448 {
+.item .item_right .item_right_wrap .name.data-v-8568dd40 {
         color: rgba(77, 77, 77, 0.4);
         font-size: 34rpx;
 }
-.item .item_right .item_right_wrap .money.data-v-1e787448 {
+.item .item_right .item_right_wrap .money.data-v-8568dd40 {
         font-size: 28rpx;
         color: rgba(159, 159, 159, 0.5);
 }
-.item .item_right .item_status.data-v-1e787448 {
+.item .item_right .item_status.data-v-8568dd40 {
       background-color: rgba(0, 0, 0, 0.1);
       color: #FFFFFF;
       border-radius: 26rpx;
@@ -131,16 +131,16 @@
           -ms-flex-item-align: center;
               align-self: center;
 }
-.item .item_right .active.data-v-1e787448 {
+.item .item_right .active.data-v-8568dd40 {
       color: #4D4D4D;
 }
-.info.data-v-1e787448 {
+.info.data-v-8568dd40 {
   text-align: center;
   font-size: 28rpx;
   opacity: 0.3;
   color: #000000;
 }
-.button.data-v-1e787448 {
+.button.data-v-8568dd40 {
   margin: 40rpx 5%;
   width: 90%;
   height: 94rpx;

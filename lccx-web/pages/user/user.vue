@@ -139,7 +139,7 @@
 			  console.log(this.globalData);
 				
 				window.onresize= ()=>{
-					if(this.clientHeight>document.documentElement.clientHeight) {
+					if(this.clientHeight>document.documentElement.clientHeight+50) {
 						   this.hideBtn = true;
 					}else{                
 							 this.hideBtn = false;          
@@ -468,7 +468,7 @@
 	}
 	
 	.take_photo_wrap{
-		margin: 48upx 0upx;
+		margin: 48upx 0upx 180upx;
 		background-color: rgba(66, 225, 255, 0.1);
 		border-radius: 48upx;
 		padding: 28upx 48upx;
@@ -482,7 +482,7 @@
 	}
 	
 	.btn_wrap{
-		position: absolute;
+		position: fixed;
 		bottom: 0upx;
 		width: 100%;
 		height: 160upx;
