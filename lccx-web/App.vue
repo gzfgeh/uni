@@ -11,7 +11,7 @@
 			
 			let openid = tmpParas["openid"];//提取参数
 			console.log(openid);
-			// olVu51XsomjuLGgUx5cTTtoqIQVE
+			// olVu51XsomjuLGgUx5cTTtoqIQVE olVu51XsomjuLGgUx5cTTtoqIQVE
 			uni.setStorageSync("openid", "olVu51XsomjuLGgUx5cTTtoqIQVE");
 			return;
 			
@@ -175,4 +175,7 @@
 		position: absolute;
 		z-index: 1000;
 	}
+	
+	body {overflow-x: hidden;overflow-y: auto;}
+	
 </style>

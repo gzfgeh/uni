@@ -1,5 +1,1 @@
-<import src="/components/mpvue-picker/mpvuePicker.vue.wxml" />
-<import src="/components/uni-load-more.vue.wxml" />
-<import src="/components/m-input.vue.wxml" />
-<import src="/components/m-icon/m-icon.vue.wxml" />
 

@@ -2,6 +2,7 @@
   "pages": [
     "pages/baojia/baojia",
     "pages/pay_address/pay_address",
+    "pages/pay_all/pay_all",
     "pages/bill_detail/bill_detail",
     "pages/user/user",
     "pages/pay_two/pay_two",

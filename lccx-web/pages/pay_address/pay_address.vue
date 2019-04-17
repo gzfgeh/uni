@@ -83,7 +83,7 @@
       <span>实付</span>
       <span class="bottom_money">¥1370</span>
     </div>
-    <span class="bottom_right" @tap="next">立即支付</span>
+    <span class="bottom_right" @tap="pay">立即支付</span>
   </div>
   
 
@@ -170,7 +170,7 @@ export default {
         paytype: 1,
       };
 
-      let res = await pay(24, params);
+      let res = await pay(this.licheng_order_id, params);
       if(res.success){
         //this.next();
         let result = res.result;
@@ -179,54 +179,63 @@ export default {
 				
 				weixin_sdk.config({
 						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-						appId: result.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
+						appId: 'wx49aad3a138063b53', // 必填，企业号的唯一标识，此处填写企业号corpid
 						timestamp: result.timestamp, // 必填，生成签名的时间戳
 						nonceStr: result.nonceStr, // 必填，生成签名的随机串
 						signature: result.paySign,// 必填，签名，见附录1
-						jsApiList: ["chooseWXPay"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						jsApiList: ['getBrandWCPayRequest'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 				
 				weixin_sdk.ready(function(){
 					weixin_sdk.checkJsApi({
-						jsApiList: ["chooseWXPay"],
+						jsApiList: ['getBrandWCPayRequest'],
 						success: res => {
-							weixin_sdk.chooseWXPay({
-									'timestamp': result.timestamp,
-									'nonceStr': result.nonceStr,
-									'package': result.package,
-									'signType': result.signType,
-									'paySign': result.paySign,
-									'success':function(ress){
-											console.log(ress);
-											if (ress.errMsg === 'chooseWXPay:ok'){
-												wx.showToast({
-														title: '支付成功',
-														icon: 'none',
-														duration: 1000
-												});
-											}
-											
-											that.next();
-										},
-										'fail':function(res){
-												console.log(res);
-												wx.showToast({
-														title: '支付失败',
-														icon: 'none',
-														duration: 1000
-												});
-										},
-										'complete': function(res){
-											console.log(res);
-										}
-								})
-											
-							}
-						})
+							
+							weixin_sdk.invoke(
+							 'getBrandWCPayRequest', {
+									 "appId" : 'wx49aad3a138063b53',       //公众号名称，由商户传入
+									 "timeStamp":result.timestamp, //时间戳，自1970年以来的秒数     
+									 "nonceStr" : result.nonceStr, //随机串     
+									 "package" : result.package,     
+									 "signType" :'MD5',  //微信签名方式：     
+									 "paySign" : result.paySign     //微信签名 
+
+							 },
+							 function(res){ 
+									 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+											 wx.showToast({
+													title: '支付成功',
+													icon: 'none',
+													duration: 1000
+											 });
+											 that.next();
+									 }else{
+										 wx.showToast({
+												title: '支付失败',
+												icon: 'none',
+												duration: 1000
+										});
+									 }
+							 }
+						)
+						},
+						fail:function(res){
+									console.log(res);
+									wx.showToast({
+											title: '支付失败',
+											icon: 'none',
+											duration: 1000
+									});
+							},
 					})
+				})
 						
 				weixin_sdk.error(function(err){
-					console.log(err);
+					wx.showToast({
+							title: '支付失败',
+							icon: 'none',
+							duration: 1000
+					});
 				})
 
 

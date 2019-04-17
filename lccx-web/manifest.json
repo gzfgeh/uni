@@ -59,7 +59,7 @@
     "h5" : {
         "title" : "lccx-web",
         "router" : {
-            "base" : "/lccx/"
+            "base" : "/lccx2/"
         }
     }
 }

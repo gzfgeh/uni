@@ -83,6 +83,9 @@
 .content_item{
 	margin-top: 10rpx;
 }
+.content_item_wrap{
+	min-width: 300rpx;
+}
 .content_item .tag{
 	font-size: 20rpx;
 	color: #FF4242;

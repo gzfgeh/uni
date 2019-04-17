@@ -28,7 +28,7 @@
 		<div class="content_wrap">
 			<block v-for="(ite, index) in list" :key="index">
 				<div class="content_item uni-between-item">
-					<div>
+					<div class="uni-between-item content_item_wrap">
 						<span v-if="ite.value != '不投保'">{{ite.name}}</span>
 						<span class="tag" v-if="ite.value != '不投保'">不计免赔</span>
 						<span v-else>{{ite.name}}</span>
@@ -142,10 +142,6 @@
 				mileage_expense: '',
 				compulsory: '',
 				tax: '',
-				monthly_expense: '',
-				mileage_expense:'',
-				compulsory:'',
-				tax:'',
 				list: []
 			}
 	  },
@@ -180,8 +176,10 @@
 		  if(res.code == 200){
 			this.monthly_expense = this.item.monthly_expense;
 			this.mileage_expense = this.item.mileage_expense;
-			this.ci_prenium = parseInt(this.item.compulsory);
-        this.tax = parseInt(this.item.tax);
+			this.compulsory = parseInt(this.item.compulsory);
+			this.compulsory = this.compulsory?this.compulsory:'';
+			this.tax = parseInt(this.item.tax);
+			this.tax = this.tax?this.tax:'';
 			uni.setStorageSync('global', this.global);
 			this.next();
 		  }
@@ -380,6 +378,10 @@
 
 .content_item{
 	margin-top: 10upx;
+}
+
+.content_item_wrap{
+	min-width: 300upx;
 }
 
 .content_item .tag{

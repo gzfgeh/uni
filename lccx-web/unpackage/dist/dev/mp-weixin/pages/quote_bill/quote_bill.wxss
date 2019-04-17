@@ -3,6 +3,9 @@
   background-color: #F9F9F9;
   width: 100%;
 }
+.item_wrap ._span:nth-child(1){
+	min-width: 100rpx;
+}
 .title{
 	color: #989898;
 	font-size: 26rpx;
@@ -15,6 +18,7 @@
 	color: rgba(0,0,0,0.4);
 	background-color: #FFFFFF;
 	border-bottom: rgba(0,0,0,0.1) solid 2rpx;
+	position: relative;
 }
 .item_input{
   font-size: 30rpx;
@@ -224,7 +228,10 @@ picker ._div{
           align-items: center;
   height: 100%;
   font-size: 24rpx;
-  color: rgba(0,0,0,0.7)
+  color: rgba(0,0,0,0.7);
+	position: absolute;
+	left: 40%;
+	top: 0%;
 }
 
 /* 未选中的 背景样式 */

@@ -1,9 +1,9 @@
-.container.data-v-bc9f14d8 {
+.container.data-v-02dd587c {
   font-size: 28rpx;
   background-color: #F9F9F9;
   width: 100%;
 }
-.item.data-v-bc9f14d8 {
+.item.data-v-02dd587c {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@
           box-sizing: border-box;
   width: 100%;
 }
-.item .item_left.data-v-bc9f14d8 {
+.item .item_left.data-v-02dd587c {
     width: 80rpx;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -46,16 +46,16 @@
     margin-right: 20rpx;
     height: 100%;
 }
-.item .item_left ._span.data-v-bc9f14d8 {
+.item .item_left ._span.data-v-02dd587c {
       height: 180rpx;
       width: 2rpx;
       background-color: #ECECEC;
 }
-.item .item_left ._img.data-v-bc9f14d8 {
+.item .item_left ._img.data-v-02dd587c {
       width: 80rpx;
       height: 80rpx;
 }
-.item .right.data-v-bc9f14d8 {
+.item .right.data-v-02dd587c {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -70,7 +70,7 @@
         -ms-flex: 1;
             flex: 1;
 }
-.item .item_right.data-v-bc9f14d8 {
+.item .item_right.data-v-02dd587c {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -95,7 +95,7 @@
             justify-content: space-between;
     margin-bottom: 40rpx;
 }
-.item .item_right .item_right_wrap.data-v-bc9f14d8 {
+.item .item_right .item_right_wrap.data-v-02dd587c {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -110,15 +110,15 @@
           -ms-flex-pack: justify;
               justify-content: space-between;
 }
-.item .item_right .item_right_wrap .name.data-v-bc9f14d8 {
+.item .item_right .item_right_wrap .name.data-v-02dd587c {
         color: rgba(77, 77, 77, 0.4);
         font-size: 34rpx;
 }
-.item .item_right .item_right_wrap .money.data-v-bc9f14d8 {
+.item .item_right .item_right_wrap .money.data-v-02dd587c {
         font-size: 28rpx;
         color: rgba(159, 159, 159, 0.5);
 }
-.item .item_right .item_status.data-v-bc9f14d8 {
+.item .item_right .item_status.data-v-02dd587c {
       background-color: rgba(0, 0, 0, 0.1);
       color: #FFFFFF;
       border-radius: 26rpx;
@@ -130,17 +130,17 @@
           -ms-flex-item-align: center;
               align-self: center;
 }
-.item .item_right .active.data-v-bc9f14d8 {
+.item .item_right .active.data-v-02dd587c {
       color: #3A7FF7;
       background-color: #E9F3FB;
 }
-.info.data-v-bc9f14d8 {
+.info.data-v-02dd587c {
   text-align: center;
   font-size: 28rpx;
   opacity: 0.3;
   color: #000000;
 }
-.button.data-v-bc9f14d8 {
+.button.data-v-02dd587c {
   margin: 40rpx 5%;
   width: 90%;
   height: 94rpx;
