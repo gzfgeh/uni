@@ -302,8 +302,8 @@
 		onLoad () {
 			this.pickerText = this.pickerValueArray[1][this.pickerValueIndex[1]];
 			
-			this.pickerText = "安康市";
-			this.license_no = "G61B86";
+// 			this.pickerText = "安康市";
+// 			this.license_no = "G61B86";
 			
 			this.H5login();
 		},

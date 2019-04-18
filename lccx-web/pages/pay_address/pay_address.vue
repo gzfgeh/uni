@@ -199,19 +199,19 @@ export default {
         console.log(result.timestamp);
 				
 				if(!openid){
-					uni.showModal({
-						title: '微信支付回调result.mweb_url',
-						content: result.mweb_url,
-						success: function (res) {
-							if (res.confirm) {
-								window.location.href = result.mweb_url;
-							} else if (res.cancel) {
-								console.log('用户点击取消');
-							}
-						}
-					});
+// 					uni.showModal({
+// 						title: '微信支付回调result.mweb_url',
+// 						content: result.mweb_url,
+// 						success: function (res) {
+// 							if (res.confirm) {
+// 								window.location.href = result.mweb_url;
+// 							} else if (res.cancel) {
+// 								console.log('用户点击取消');
+// 							}
+// 						}
+// 					});
 
-					// window.location.href = result.mweb_url;
+					window.location.href = result.mweb_url;
 					uni.setStorageSync("showModal", true);
 					this.showModal = true;
 					return;

@@ -92,11 +92,11 @@
     export default {
 		data(){
 			return {
-				license_no: '陕G61B86',
-				  mobile: '13800138000',
+				license_no: '',
+				  mobile: '',
 				  item: '',
-				  name: '冯瑛',
-				  idcard: '612426197408240028',
+				  name: '',
+				  idcard: '',
 				  isShowModal: false,
 				  file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 				  take_photo: BASE_IMAGE_URL+'take_photo.png',
