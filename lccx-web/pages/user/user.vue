@@ -93,10 +93,10 @@
 		data(){
 			return {
 				license_no: '',
-				  mobile: '',
+				  mobile: '13800138000',
 				  item: '',
-				  name: '',
-				  idcard: '',
+				  name: '冯瑛',
+				  idcard: '612426197408240028',
 				  isShowModal: false,
 				  file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 				  take_photo: BASE_IMAGE_URL+'take_photo.png',
@@ -242,7 +242,8 @@
 				// value = this.trueEngineNo;
 				this.trueEngineNo= value.toLocaleUpperCase();
 				this.engineClose = false;
-				this.engineNo = this.trueEngineNo.substring(0,2)+"****"+this.trueEngineNo.substring(6,8);
+				let length = this.trueEngineNo.length;
+				this.engineNo = this.trueEngineNo.substring(0,length-3)+"***";
 			  }, 100);
 			  
 			},
@@ -332,7 +333,7 @@
 				this.trueFrameNo = this.frameNo;
 				this.frameNo = this.frameNo.substring(0,7)+"*****"+this.frameNo.substring(12);
 				this.trueEngineNo = this.item.engineNo;
-				this.engineNo = this.item.engineNo.substring(0,2)+"****"+this.item.engineNo.substring(6,8);
+				this.engineNo = this.item.engineNo.substring(0,this.trueEngineNo.length-3)+"***";
 				this.firstRegisterDate = this.item.firstRegisterDate;
 				this.brandCode = this.item.brandCode;
 				this.responseNo = this.item.responseNo;

@@ -240,26 +240,26 @@
 									params.name = '无法找到第三方特约险';
 								}
 								
-								if(that.item.quote_details[key] == "true"){
-										//返回true
-										params.value = "投保";
-								}else if(that.item.quote_details[key] == "false"){
+								if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]))){
+									  //返回true
+									  params.value = "投保";
+								  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
 									params.value = "不投保";
-								}else if(key == 'glasses'){
+								  }else if(key == 'glasses'){
 									params.value = that.item.quote_details[key] == 1? '国产玻璃':'进口玻璃';
-								}else{
+								  }else{
 									params.value = parseInt(that.item.quote_details[key]);
 									if(params.value > 10000){
-										params.value = params.value/10000 + "万";
+									  params.value = params.value/10000 + "万";
 									}
-								}
-								if(key == 'excluding' || key == 'compulsory'){
+								  }
+								  if(key == 'excluding' || key == 'compulsory'){
 									
-								}else if(that.item.quote_details[key] == "false"){
+								  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
 
-								}else{
+								  }else{
 									that.list.push(params);
-								}
+								  }
 
 					});
 				
@@ -382,6 +382,10 @@
 
 .content_item_wrap{
 	min-width: 300upx;
+}
+
+.content_item_wrap span:nth-child(1){
+	min-width: 200upx;
 }
 
 .content_item .tag{

@@ -1,6 +1,6 @@
 
-const Fly = require('./fly.js')
-
+const Fly = require('flyio/dist/npm/wx')
+// const Fly = require('./fly.js')
 var request = new Fly()
 var tokenFly = new Fly()
 var qs = require('qs');
@@ -20,7 +20,7 @@ request.interceptors.request.use((request) => {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
 	
-	request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
+	// request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
 	request.headers["x-lccx-did"] = 2
 //     if (uni.getStorageSync('device_id')) {
 //         request.headers["x-lccx-did"] = uni.getStorageSync('device_id')
