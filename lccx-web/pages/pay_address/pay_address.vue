@@ -23,7 +23,7 @@
         <span class="item_text">账户预存：</span>
         <div class="item_service">
           <img src="../../static/img/about.png" mode="widthFix">
-          <span>服务费：40元/月+0.07元/公里</span>
+          <span>服务费：{{global.monthly_expense}}元/月+{{global.mileage_expense}}元/公里</span>
         </div>
       </div>
       <span class="item_right">200元</span>
@@ -81,10 +81,22 @@
   <div class="bottom_wrap">
     <div class="bottom_left">
       <span>实付</span>
-      <span class="bottom_money">¥1370</span>
+      <span class="bottom_money">¥400</span>
     </div>
     <span class="bottom_right" @tap="pay">立即支付</span>
   </div>
+	
+	
+	<div class="modal-mask" v-if="showModal"></div>
+      <div class="modal-dialog" v-if="showModal">
+      <div class="modal-title">请确认微信支付是否已完成</div>
+      <div class="modal-content" @tap="next">
+        已完成支付
+      </div>
+      <div class="modal-bottom" @tap="hideModal">
+        支付遇到问题，重新支付
+      </div>
+    </div>
   
 
 </div>
@@ -107,12 +119,18 @@ export default {
       current: 0,
       openid: '',
       licheng_order_id: '',
-      jiaoqiang_order_id: ''
+      jiaoqiang_order_id: '',
+			showModal: false
     }
   },
 
   methods: {
+		hideModal: function(){
+			this.showModal = false;
+			uni.setStorageSync("showModal", false);
+		},
     next () {
+			uni.setStorageSync("showModal", false);
       wx.navigateTo({
         url: "../pay_one/pay_one?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
@@ -162,11 +180,14 @@ export default {
         });
         return;
       }
+			
+			let openid = uni.getStorageSync("openid");
 
       let params = {
         name: this.global.name,
         mobile: this.global.mobile,
         address: this.address,
+				openid: openid,
         paytype: 1,
       };
 
@@ -176,6 +197,13 @@ export default {
         let result = res.result;
         console.log(result);
         console.log(result.timestamp);
+				
+				if(!openid){
+					window.location.href = result.mweb_url;
+					uni.setStorageSync("showModal", true);
+					this.showModal = true;
+					return;
+				}
 				
 				weixin_sdk.config({
 						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -253,6 +281,11 @@ export default {
 		console.log(weixin_sdk);
 		this.quotationsToOrder();
   },
+	
+	onShow(){
+		let showModal = uni.getStorageSync("showModal");
+		this.showModal = showModal;
+	}
 
 }
 </script>
@@ -498,4 +531,59 @@ radio-group{
 	margin-left: 10upx;
   }
   
+	
+	
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 80%;
+  overflow: hidden;
+  position: fixed;
+  top: 25%;
+  left: 0;
+  z-index: 9999;
+  background: #ffffff;
+  margin: 10%;
+  border-radius: 12upx;
+}
+
+.modal-title {
+  font-size: 34upx;
+  color: rgba(0,0,0,0.8);
+  text-align: center;
+	height: 140upx;
+	line-height: 140upx;
+	border-bottom: 2upx solid #D8D9D9;
+}
+
+.modal-content {
+  text-align: center;
+	height: 94upx;
+	line-height: 94upx;
+	border-bottom: 2upx solid #D8D9D9;
+  font-size: 28upx;
+  color: #427DFF;
+}
+
+.modal-bottom{
+	text-align: center;
+	height: 92upx;
+	line-height: 92upx;
+  font-size: 28upx;
+  color: rgba(0,0,0,0.6)
+}
+
+
+
 </style>

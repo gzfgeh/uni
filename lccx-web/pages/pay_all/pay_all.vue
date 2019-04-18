@@ -73,9 +73,9 @@ export default {
 
   methods: {
     next () {
-      wx.navigateTo({
-        url: "../pay_two/pay_two"
-      })
+//       wx.navigateTo({
+//         url: "../pay_two/pay_two"
+//       })
     },
 
     async pay(){
