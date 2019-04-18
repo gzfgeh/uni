@@ -23,7 +23,7 @@
     
   </div>
 
-  <div class="info" >支付方式</div>
+ <div class="info" >支付方式</div>
   <radio-group @change="radioChange">
         <label class="item_wrap" v-for="(item, index) in items" :key="index">
             <view class="radio_wrap">
@@ -47,7 +47,7 @@
       <span>实付</span>
       <span class="bottom_money">¥400</span>
     </div>
-    <span class="bottom_right" @click="next">立即支付</span>
+    <span class="bottom_right" @click="pay">立即支付</span>
   </div>
   
 
@@ -79,6 +79,9 @@ export default {
     },
 
     async pay(){
+			window.location.href = "http://chexian.axatp.com/template/policy/pay/payRequest.html?ecInsureId=10900019041579255057&external=true";
+			return;
+			
       this.global.address = this.global.address?this.global.address:"address";
       let params = {
         name: this.global.name,
@@ -90,41 +93,14 @@ export default {
 
       let res = await pay(this.jiaoqiang_order_id, params);
       if(res.success){
-        this.next();
-        return;
         let result = res.result;
         console.log(result);
         console.log(result.timestamp);
-
-        wx.requestPayment({
-            'timeStamp': result.timestamp,
-            'nonceStr': result.nonceStr,
-            'package': result.package,
-            'signType': result.signType,
-            'paySign': result.paySign,
-            'success':function(res){
-                console.log(res);
-                wx.showToast({
-                    title: '支付成功',
-                    icon: 'none',
-                    duration: 1000
-                });
-                this.next();
-              },
-              'fail':function(res){
-                  console.log(res);
-                  wx.showToast({
-                      title: '支付失败',
-                      icon: 'none',
-                      duration: 1000
-                  });
-              },
-              'complete': function(res){
-                console.log(res);
-              }
-          })
-      }
-    },
+				window.location.href = result.payLink;
+				
+				return;
+		};
+    }
 
   },
 

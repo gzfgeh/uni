@@ -142,7 +142,7 @@ export default {
 		
 		async quotationsToOrder(){
 			// this.global.quotation_id
-      let res = await quotationsToOrder(76);
+      let res = await quotationsToOrder(this.global.quotation_id);
       if(res.success){
         if(res.orders.length > 0){
           let licheng = res.orders[0];
@@ -199,14 +199,26 @@ export default {
         console.log(result.timestamp);
 				
 				if(!openid){
-					window.location.href = result.mweb_url;
+					uni.showModal({
+						title: '微信支付回调result.mweb_url',
+						content: result.mweb_url,
+						success: function (res) {
+							if (res.confirm) {
+								window.location.href = result.mweb_url;
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+							}
+						}
+					});
+
+					// window.location.href = result.mweb_url;
 					uni.setStorageSync("showModal", true);
 					this.showModal = true;
 					return;
 				}
 				
 				weixin_sdk.config({
-						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 						appId: 'wx49aad3a138063b53', // 必填，企业号的唯一标识，此处填写企业号corpid
 						timestamp: result.timestamp, // 必填，生成签名的时间戳
 						nonceStr: result.nonceStr, // 必填，生成签名的随机串
@@ -239,7 +251,7 @@ export default {
 											 that.next();
 									 }else{
 										 wx.showToast({
-												title: JSON.stringify(res),
+												title: '支付失败',
 												icon: 'none',
 												duration: 1000
 										});
