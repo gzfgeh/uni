@@ -13,7 +13,7 @@
 						<span class="price">新车参考价：{{item.newCarPrice}}元</span>
 					</view>
 					<view>
-                        <radio :checked="index === currentIndex" />
+                        <radio :value="item.indexID" :checked="index === currentIndex" />
                     </view>
                     
                 </label>
@@ -66,7 +66,7 @@
 		
 		methods: {
 			radioChange(e){
-				console.log(e.mp.detail.value);
+				console.log(e);
 				this.currentIndex = e.mp.detail.value;
 			},
 			next(){
@@ -79,7 +79,7 @@
 			},
 			async vehicle(){
 				let params = {
-					"brand_code": this.global.brandCode,
+					"brand_code": this.items[this.currentIndex].brandCode,
 					"model_details": {
 						"family_name": this.items[0].familyName,
 						"standard_name": this.items[0].standardName,
@@ -94,6 +94,12 @@
 					let res = await vehicle(this.global.quotation_id, params);
 					if(res.code == 200){
 						this.next();
+					}else{
+						wx.showToast({
+							icon: 'none',
+							title: res.msg,
+							duration: 1000
+						});
 					}
 				},
 				
@@ -112,6 +118,10 @@
 						}else{
 							this.isExactness = true;
 							this.items = res.data.data;
+							this.items.map((data,index) => {
+								data.indexID = parseInt(index);
+							})
+							console.log(this.items);
 							this.familyName = res.data.data[0].familyName;
 							this.brand_name = res.data.data[0].standardName;
 							this.sendTime = res.data.sendTime;
@@ -130,6 +140,10 @@
 					  uni.stopPullDownRefresh();
 					  console.log(res.data.data);
 					  this.items = res.data.data;
+					  this.items.map((data,index) => {
+								data.indexID = parseInt(index);
+							})
+							console.log(this.items);
 					  this.familyName = res.data.data[0].familyName;
 								this.brand_name = res.data.data[0].standardName;
 								this.sendTime = res.data.sendTime;

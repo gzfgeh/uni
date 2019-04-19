@@ -85,7 +85,7 @@
 
 <script>
 	import { BASE_IMAGE_URL,basic,getVechileData } from "@/utils/api";
-	import {isChinese} from '../../utils'
+	import {isChinese,getDay} from '../../utils'
 	import {check_card} from '../../utils/check_code';
 	
 // 	mobile: '13800138000',
@@ -331,21 +331,26 @@
 			  let that = this;
 			  let res = await getVechileData({license_no: that.license_no});
 			  if(res.code == 200){
-				console.log(res.data);
-				this.item = res.data.data;
-				this.frameNo = this.item.frameNo;
-				this.trueFrameNo = this.frameNo;
-				this.frameNo = this.frameNo.substring(0,7)+"*****"+this.frameNo.substring(12);
-				this.trueEngineNo = this.item.engineNo;
-				this.engineNo = this.item.engineNo.substring(0,this.trueEngineNo.length-3)+"***";
-				console.log('this.trueEngineNo---'+this.trueEngineNo);
-				console.log('this.engineNo---'+this.engineNo);
-				this.firstRegisterDate = this.item.firstRegisterDate;
-				this.brandCode = this.item.brandCode?this.item.brandCode:'';
-				this.responseNo = this.item.responseNo;
-				if(!this.firstRegisterDate){
-				  this.firstRegisterDate = "请选择具体日期";
-				}
+					if((res.data.state == "1") || (res.data.state == 1)){
+							console.log(res.data);
+							this.item = res.data.data;
+							this.frameNo = this.item.frameNo;
+							this.trueFrameNo = this.frameNo;
+							this.frameNo = this.frameNo.substring(0,7)+"*****"+this.frameNo.substring(12);
+							this.trueEngineNo = this.item.engineNo;
+							this.engineNo = this.item.engineNo.substring(0,this.trueEngineNo.length-3)+"***";
+							console.log('this.trueEngineNo---'+this.trueEngineNo);
+							console.log('this.engineNo---'+this.engineNo);
+							this.firstRegisterDate = this.item.firstRegisterDate;
+							this.brandCode = this.item.brandCode?this.item.brandCode:'';
+							this.responseNo = this.item.responseNo;
+							if(!this.firstRegisterDate){
+								this.firstRegisterDate = "请选择具体日期";
+							}
+					}else{
+						this.firstRegisterDate = getDay(0);
+					}
+					
 		
 			  }
 			},
