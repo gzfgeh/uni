@@ -40,7 +40,7 @@
 		
 		<div class="content_wrap">
 			<div class="content_item uni-between-item" v-for="(ite, index) in list" :key="index">
-				<div>
+				<div class="list_item">
 					<span v-if="ite.value != '不投保'">{{ite.name}}</span>
 					<span class="tag" v-if="ite.value != '不投保'">不计免赔</span>
 					<span v-else>{{ite.name}}</span>
@@ -211,7 +211,7 @@
 					}
 
 					if(this.item.engine_no){
-					  this.trueEngineNo = this.item.engine_no.substring(0,1)+"****"+this.item.engine_no.substring(this.item.engine_no.length-1,this.item.engine_no.length);
+					  this.trueEngineNo = this.item.engine_no.substring(0,this.item.engine_no.length-3)+"***";
 					}
 					this.license_no = this.item.license_no;
 					this.brand = this.item.model;
@@ -410,6 +410,16 @@
   text-align: center;
   box-sizing: border-box;
     
+}
+
+.list_item{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.list_item span:nth-child(1){
+	min-width: 200upx;
 }
 
 checkbox .wx-checkbox-input{

@@ -30,22 +30,21 @@
 
   <div class="list_wrap">
       <div class="ticket" v-for="(item,index) in list" :key="index" @click="next(item)"
-				v-if="((item.type == 1) || (item.type == 2)) &&  (item.status>1)">
+				v-if="((item.type == 1) || (item.type == 2))">
         <div class="main">
           <div class="title" v-if="item.type == 1">里程车险</div>
           <div class="title" v-if="item.type == 2">交强险</div>
           <div class="text">被保险人：{{item.name}}</div>
           <div class="text">保障期限：{{item.starts_on}} - {{item.ends_on}}</div>
-          <image :src="baozhangzhong_icon" mode="widthFix" v-if="item.status == 4"/>
-					<image :src="weiqibao_icon" mode="widthFix" v-if="item.status == 3"/>
-					<image :src="yidaoqi_icon" mode="widthFix" v-if="item.status == 5"/>
+          <image src="../../static/img/dai_pay_icon.png" mode="widthFix" v-if="item.status == 1"/>
+					<image src="../../static/img/finish_icon.png" mode="widthFix" v-if="item.status >= 3"/>
         </div>
 
         <div class="link" v-if="item.status == 1">
           <span class="pay_text">立即付款</span>
         </div>
 
-        <div class="link" v-if="item.status == 0">
+        <div class="link" v-if="item.status >= 3">
           查看详情
         </div>
 
@@ -81,12 +80,37 @@ export default {
     changeType: function(index){
       console.log(index);
       this.currentTab = index;
-      this.$forceUpdate();
+			window.scrollTo(0,0);
+      this.getOrders();
     },
     async getOrders(){
+			this.list = [];
       let res = await getOrders();
       if(res.code == 200){
-        this.list = res.data;
+				if(this.currentTab == 0){
+					res.data.map(data => {
+						if(data.type == 1 || data.type == 2){
+							this.list.push(data);
+						}
+					})
+				}else if(this.currentTab == 1){
+					res.data.map(data => {
+						if(data.type == 1 || data.type == 2){
+							if(data.status == 1){
+								this.list.push(data);
+							}
+						}
+					})
+				}else{
+					res.data.map(data => {
+						if(data.type == 1 || data.type == 2){
+							if(data.status >= 3){
+								this.list.push(data);
+							}
+						}
+					})
+				}
+        // this.list = res.data;
       }
     },
 
@@ -108,7 +132,7 @@ export default {
                   //点击取消,默认隐藏弹框
                 } else {
                   //点击确定
-                  const url = "../pay_all/pay_all?id="+item.id;
+                  const url = "../pay_address/pay_address?id="+item.id;
                     wx.navigateTo({ url });
                 }
             }
@@ -119,11 +143,11 @@ export default {
         //已付款
         if(index == 1){
           //里程车险
-          const url = "../order_one_detail/main?id="+item.id;
+          const url = "../order_one_detail/order_one_detail?id="+item.id;
           wx.navigateTo({ url });
         }else{
           //交强险
-          const url = "../order_two_detail/main?id="+item.id;
+          const url = "../order_two_detail/order_two_detail?id="+item.id;
           wx.navigateTo({ url });
 
         }

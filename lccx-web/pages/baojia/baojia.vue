@@ -304,8 +304,6 @@
 			
 // 			this.pickerText = "安康市";
 // 			this.license_no = "G61B86";
-			
-			this.H5login();
 		},
   
     }

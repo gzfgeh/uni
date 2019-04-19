@@ -88,15 +88,19 @@
 	import {isChinese} from '../../utils'
 	import {check_card} from '../../utils/check_code';
 	
+// 	mobile: '13800138000',
+// 				  item: '',
+// 				  name: '冯瑛',
+// 				  idcard: '612426197408240028',
 
     export default {
 		data(){
 			return {
 				license_no: '',
-				  mobile: '13800138000',
+				  mobile: '',
 				  item: '',
-				  name: '冯瑛',
-				  idcard: '612426197408240028',
+				  name: '',
+				  idcard: '',
 				  isShowModal: false,
 				  file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 				  take_photo: BASE_IMAGE_URL+'take_photo.png',
@@ -334,8 +338,10 @@
 				this.frameNo = this.frameNo.substring(0,7)+"*****"+this.frameNo.substring(12);
 				this.trueEngineNo = this.item.engineNo;
 				this.engineNo = this.item.engineNo.substring(0,this.trueEngineNo.length-3)+"***";
+				console.log('this.trueEngineNo---'+this.trueEngineNo);
+				console.log('this.engineNo---'+this.engineNo);
 				this.firstRegisterDate = this.item.firstRegisterDate;
-				this.brandCode = this.item.brandCode;
+				this.brandCode = this.item.brandCode?this.item.brandCode:'';
 				this.responseNo = this.item.responseNo;
 				if(!this.firstRegisterDate){
 				  this.firstRegisterDate = "请选择具体日期";
