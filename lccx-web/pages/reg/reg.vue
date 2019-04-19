@@ -5,9 +5,9 @@
 		<image src="../../static/img/info_three.png" mode="widthFix" style="margin-bottom: 194rpx;"></image>
 		
 		
-		<button class="button btn-primary abs" hover-class="button-hover" @tap="next">
-		  <div>立即报价</div>
-		</button>
+		<div class="button btn-primary abs"  @tap="next">
+		  <button >立即报价</button>
+		</div>
 		
 		<div class="my_order" @tap="myOrder">
 			我的 <br>订单
@@ -112,7 +112,7 @@ img{
 	bottom: 0upx;
 }
 
-.button div{
+.button button{
 	margin: 40upx 5%;
   width: 90%;
   height: 94upx;

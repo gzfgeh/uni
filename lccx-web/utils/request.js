@@ -57,7 +57,7 @@ request.interceptors.response.use(
             errorMsg = err.response.data.msg
             console.log(errorMsg)
         } else if (err.status == 0) {
-            errorMsg = '网络连接异常'
+            errorMsg = '服务器异常'
         } else if (err.status == 1) {
             errorMsg = '网络连接超时'
         } else {

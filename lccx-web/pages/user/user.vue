@@ -97,10 +97,10 @@
 		data(){
 			return {
 				license_no: '',
-				  mobile: '',
+				  mobile: '13671700400',
 				  item: '',
-				  name: '',
-				  idcard: '',
+				  name: '曹占栋',
+				  idcard: '612701197612173415',
 				  isShowModal: false,
 				  file_url: BASE_IMAGE_URL+'take_photo_ex.png',
 				  take_photo: BASE_IMAGE_URL+'take_photo.png',
