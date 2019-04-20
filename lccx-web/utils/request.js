@@ -20,10 +20,11 @@ request.interceptors.request.use((request) => {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
 	
-// 	console.log(request.url);
-// 	if(request.url.indexOf("result") != -1){
-// 		request.headers["Content-Type"] = 'application/json';
-// 	}else{
+	console.log(request.url);
+	if(request.url.indexOf("result") != -1){
+		request.headers["Content-Type"] = 'application/json';
+	}
+// 	else{
 // 		request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
 // 	}
 	
@@ -45,9 +46,32 @@ request.interceptors.response.use(
         return promise.resolve(response.data)
     },
     function(err, promise) {
-        console.log('error-interceptor')
+        console.log('error-interceptor',err)
 
-        uni.hideLoading()
+        uni.hideLoading();
+		
+		if(err.request.url.indexOf("result") != -1){
+			//包含
+// 			uni.showToast({
+//                 title: "status: "+err.status+"--message: "+err.message,
+//                 icon: 'none',
+//                 duration: 5000
+//             })
+			
+// 			uni.showModal({
+// 				title: '提示',
+// 				content: "status: "+err.status+"--message: "+err.message,
+// 				success: function (res) {
+// 					if (res.confirm) {
+// 						
+// 					} else if (res.cancel) {
+// 						console.log('用户点击取消');
+// 					}
+// 				}
+// 			});
+
+		}
+		
         let errorMsg = ''
         if (err.status == 401) {
             console.log('token失效，重新请求token...')
@@ -86,7 +110,7 @@ request.interceptors.response.use(
         }
 
 
-        return promise.reject()
+        return promise.reject();
     }
 )
 

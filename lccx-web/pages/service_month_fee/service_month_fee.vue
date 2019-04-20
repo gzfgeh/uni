@@ -84,9 +84,10 @@ export default {
     },
     async result(){
       let res = await result(this.global.quotation_id);
-      if(res.code == 200){
-        this.item = res.data;
-        if(this.item && (res.data.status == 1)){
+      if(res.code == 200){ 
+        this.item = res.data; 
+				console.log(this.item.details);
+        if(this.item && (parseInt(this.item.details.state) == 1)){
           this.monthly_expense = this.item.monthly_expense.toFixed(2);
           this.mileage_expense = this.item.mileage_expense.toFixed(2);
           this.ci_prenium = parseInt(this.item.ci_prenium);

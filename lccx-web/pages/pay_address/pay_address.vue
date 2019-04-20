@@ -23,7 +23,7 @@
         <span class="item_text">账户预存：</span>
         <div class="item_service">
           <img src="../../static/img/about.png" mode="widthFix">
-          <span>服务费：{{global.monthly_expense}}元/月+{{global.mileage_expense}}元/公里</span>
+          <span>服务费：{{monthly_expense}}元/月+{{mileage_expense}}元/公里</span>
         </div>
       </div>
       <span class="item_right">200元</span>
@@ -46,11 +46,11 @@
   <div class="wrap" >
     <div class="item_wrap">
       <span class="item_text">姓名：</span>
-      <input class="item_right" v-model="name" placeholder="请输入姓名"/>
+      <input class="item_right" v-model="name" placeholder="请输入姓名" @blur="fixIos"/>
     </div>
     <div class="item_wrap">
       <span class="item_text">手机号码：</span>
-      <input class="item_right" v-model="mobile" placeholder="请输入手机号"/>
+      <input class="item_right" v-model="mobile" placeholder="请输入手机号" @blur="fixIos"/>
     </div>
 
     <div class="input_wrap">
@@ -58,7 +58,7 @@
         <span class="item_text">设备安装/保单寄送地址：</span>
         <span class="item_right" v-if="false">请输入详细地址</span>
       </div>
-      <textarea type="text" v-model="address" class="address_input" placeholder="请输入详细地址"></textarea>
+      <textarea type="text" v-model="address" class="address_input" placeholder="请输入详细地址" @blur="fixIos"></textarea>
     </div>
 
   </div>
@@ -90,7 +90,7 @@
 	<div class="modal-mask" v-if="showModal"></div>
       <div class="modal-dialog" v-if="showModal">
       <div class="modal-title">请确认微信支付是否已完成</div>
-      <div class="modal-content" @tap="next">
+      <div class="modal-content" @tap="orderStaus">
         已完成支付
       </div>
       <div class="modal-bottom" @tap="hideModal">
@@ -103,7 +103,7 @@
 </template>
 <script>
 
-import { BASE_IMAGE_URL,pay,H5login,quotationsToOrder} from "@/utils/api";
+import { BASE_IMAGE_URL,pay,H5login,quotationsToOrder,orderStaus} from "@/utils/api";
 import weixin_sdk from '@/utils/weixin-jsapi.js';
 
 export default {
@@ -120,11 +120,19 @@ export default {
       openid: '',
       licheng_order_id: '',
       jiaoqiang_order_id: '',
-			showModal: false
+			showModal: false,
+			monthly_expense: '',
+			mileage_expense: ''
     }
   },
 
   methods: {
+		fixIos: function(){
+				setTimeout(function() {                
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));            
+				}, 100);
+			},
 		hideModal: function(){
 			this.showModal = false;
 			uni.setStorageSync("showModal", false);
@@ -135,6 +143,21 @@ export default {
         url: "../pay_one/pay_one?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
     },
+		
+		async orderStaus(){
+			let res = await orderStaus(this.licheng_order_id);
+			if(res.code == 200){
+				this.next();
+			}else{
+				wx.showToast({
+          icon: 'none',
+          title: '支付失败，请重新支付',
+          duration: 1000
+        });
+				this.hideModal();
+				
+			}
+		},
 		
 		radioChange: function(e){
       console.log(e.mp.detail.value);
@@ -148,11 +171,16 @@ export default {
           let licheng = res.orders[0];
           if(licheng.type == 1){
             this.licheng_order_id = licheng.id;
+						this.monthly_expense = licheng.monthly_expense;
+						this.mileage_expense = licheng.mileage_expense;
           };
 
           let jiaoqiang = res.orders[1];
           if(jiaoqiang.type == 2){
             this.jiaoqiang_order_id = jiaoqiang.id;
+						this.global.compulsory = jiaoqiang.price;
+            this.global.tax = jiaoqiang.tax;
+						uni.setStorageSync("global", this.global);
           }
         }
       }

@@ -283,3 +283,7 @@ export function getQuotations(id) {
 export function history(time) {
     return request.get('3.1/billing/history/' + time)
 }
+
+export function orderStaus(params){
+	return request.post('3.1/orderStaus', qs.stringify(params))
+}

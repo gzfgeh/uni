@@ -101,7 +101,7 @@
 		</div>
 		
 		<div class="license">
-			<radio  :checked="true" color="#427DFF">我已阅读并同意</radio>
+			<radio  :checked="isChecked" color="#427DFF" @tap="changeChecked">我已阅读并同意</radio>
 
 			<text class="link">《服务协议》</text>
 		  </div>
@@ -142,11 +142,15 @@
 				mileage_expense: '',
 				compulsory: '',
 				tax: '',
-				list: []
+				list: [],
+				isChecked: false
 			}
 	  },
 
 	  methods: {
+		  changeChecked: function(){
+			this.isChecked = !this.isChecked;  
+		  },
 		next: function(){
 		  const url = '../pay_address/pay_address';
 		  uni.navigateTo({ url })
@@ -157,6 +161,15 @@
     },
 
 		async applyUnderwrite(){
+			if(!this.isChecked){
+				wx.showToast({
+						icon: 'none',
+						title: '请同意服务协议',
+						duration: 1000
+					});
+				return;
+			}
+			
 			// "insurer": this.item.quote_result.data[0].insurerCode,
       //   "biz_id": this.item.biz_id,
 		  let params = {
@@ -193,7 +206,9 @@
 					this.monthly_expense = this.item.monthly_expense;
 					this.mileage_expense = this.item.mileage_expense;
 					this.compulsory = parseInt(this.item.compulsory);
+					this.compulsory = this.compulsory?this.compulsory:'';
 					this.tax = parseInt(this.item.tax);
+					this.tax = this.tax?this.tax:'';
 					this.city_name = this.item.city_name;
 
 					console.log(this.item.quote_details);
@@ -401,6 +416,8 @@
   padding: 20upx 40upx 0upx;
   border-top: 1upx solid #E4E4E4;
 	display: flex;flex-direction: row;align-items: center;
+	color: #292929;
+	font-size: 28upx;
 }
 
 .link{

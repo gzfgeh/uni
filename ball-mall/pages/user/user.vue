@@ -138,7 +138,7 @@
 			},
 			contactUs: function(){
 				uni.openDocument({
-				    filePath: BASE_IMAGE_URL+'contact.doc',
+				    filePath: BASE_IMAGE_URL+'ball_mall_us.doc',
 				    fileType:'doc',
 				    success: function (res) {
 				        console.log(res);
@@ -148,7 +148,7 @@
 			},
 			aboutUs: function(){
 				uni.openDocument({
-				    filePath: BASE_IMAGE_URL+'about.doc',
+				    filePath: BASE_IMAGE_URL+'ball_mall_jieshao.doc',
 				    fileType:'doc',
 				    success: function (res) {
 				        console.log(res);

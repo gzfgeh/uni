@@ -52,7 +52,7 @@
 		<!--弹窗-->
 		<div class="modal-mask" @tap="hideModal" v-if="showModal"></div>
 		  <div class="modal-dialog" v-if="showModal">
-		  <div class="modal-title">请输入商品个数</div>
+		  <div class="modal-title">请输入购买数量</div>
 		  <div class="modal-content">
 		    <input type="number" maxlength="4" v-model="modalInput" class="modal-input" placeholder="请输入购买数量">
 		  </div>

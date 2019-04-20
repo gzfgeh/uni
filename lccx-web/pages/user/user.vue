@@ -36,7 +36,7 @@
 		
 		<div class="uni-inline-item">
 			<span>车主姓名</span>
-			<input type="text" v-model="name" placeholder="请输入车主姓名"
+			<input type="text" v-model="name" placeholder="请输入车主姓名" @blur="fixIos"
 				placeholder-class="place-holder" class="item_input">
 		</div>
 		
@@ -48,7 +48,7 @@
 		
 		<div class="uni-inline-item">
 			<span>手机号码</span>
-			<input type="number" v-model="mobile" placeholder="请输入手机号码"
+			<input type="number" v-model="mobile" placeholder="请输入手机号码" @blur="fixIos"
 				placeholder-class="place-holder" class="item_input">
 		</div>
 		
@@ -130,7 +130,8 @@
 				  closeFrameChange: false,
 					closeEngineChange: false,
 					clientHeight:document.documentElement.clientHeight,
-					hideBtn: false
+					hideBtn: false,
+					timer: {}
 			}
 		},
 		onLoad () {
@@ -153,6 +154,23 @@
 
 		  },
         methods: {
+			scrollV: function(obj){
+				this.timer = setInterval(() => {
+					obj.scrollIntoView(false);
+				})
+			},
+			
+			clearScrollView: function(){
+				clearInterval(this.timer);
+			},
+			
+			fixIos: function(){
+				setTimeout(function() {                
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));            
+				}, 100);
+			},
+			
 			closeFrame: function(){
 			  this.closeFrameChange = true;
 			  this.frameClose = false;
@@ -184,6 +202,7 @@
 			  
 			},
 			watchCardInput(e){
+				this.fixIos();
 			  let value = e.mp.detail.value; 
 			  this.idcard= value.toLocaleUpperCase();
 				if(check_card(value) === false){  
@@ -196,6 +215,7 @@
 				}
 			},
 			watchBrandInput(e){
+				this.fixIos();
 			  let value = e.mp.detail.value;
 			  this.brandCode= value.toLocaleUpperCase();
 			},
@@ -209,6 +229,7 @@
 			  
 			},
 			watchInput(e){
+				this.fixIos();
 			  setTimeout(() => {
 				console.log(e.mp.detail.value);
 				let value = e.mp.detail.value;
@@ -234,6 +255,7 @@
 			  
 			},
 			watchEngineInput(e){
+				this.fixIos();
 			  console.log(e.mp.detail.value);
 			  setTimeout(() => {
 				if(this.closeEngineChange){

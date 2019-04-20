@@ -40,7 +40,7 @@
 								
 								<div class="bottom_wrap row_between" v-for="(ite,index) in item.good_list" :key="index">
 									<div class="num">
-										<span>{{ite.g_name}}</span>
+										<span>{{ite.go_g_name}}</span>
 									</div>
 									
 									<div class="num">
