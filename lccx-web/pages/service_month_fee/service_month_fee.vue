@@ -47,7 +47,7 @@
       <div class="modal-dialog" v-if="showModal">
       <div class="modal-title">报价失败</div>
       <div class="modal-content">
-        请确认您的爱车是否已进入投保期。若仍报价请确认您的爱车是否已进入投保期。若仍报价失败，请稍后重试。
+        请确认您的爱车是否已进入投保期。若仍报价失败，请稍后重试。
       </div>
       <div class="modal-footer" >
         <div class="btn_wrap" hover-class="btn_hover" @click="closeModal">
@@ -114,6 +114,9 @@ export default {
     },
     closeModal: function(){
       this.showModal = false;
+// 			uni.navigateBack({
+// 					delta: 1
+// 			})
     }
   },
 

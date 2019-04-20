@@ -20,8 +20,18 @@ request.interceptors.request.use((request) => {
         request.headers["Authorization"] = 'Bearer ' + token;
     }
 	
+// 	console.log(request.url);
+// 	if(request.url.indexOf("result") != -1){
+// 		request.headers["Content-Type"] = 'application/json';
+// 	}else{
+// 		request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
+// 	}
+	
 	// request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
-	request.headers["x-lccx-did"] = 2
+	
+	// request.headers["Content-Type"] = 'application/json';
+	
+	// request.headers["x-lccx-did"] = 2
 //     if (uni.getStorageSync('device_id')) {
 //         request.headers["x-lccx-did"] = uni.getStorageSync('device_id')
 //     }

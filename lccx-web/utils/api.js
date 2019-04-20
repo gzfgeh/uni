@@ -230,8 +230,8 @@ export function basic(id, params) {
 /**
  * 快速报价 / 结果
  */
-export function result(id, params) {
-    return request.put('3.1/quotations/' + id + '/result', qs.stringify(params))
+export function result(id) {
+    return request.get('3.1/quotations/' + id + '/result',{},{timeout: 20000})
 }
 
 /**
