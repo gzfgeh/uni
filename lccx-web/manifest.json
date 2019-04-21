@@ -60,6 +60,12 @@
         "title" : "lccx-web",
         "router" : {
             "base" : "/lccx2/"
-        }
-    }
+        },
+		"async":{
+			"timeout": 100000
+		}
+    },
+	"networkTimeout": {
+		"request": 100000
+	}
 }

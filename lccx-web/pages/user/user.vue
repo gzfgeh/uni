@@ -88,10 +88,10 @@
 	import {isChinese,getDay} from '../../utils'
 	import {check_card} from '../../utils/check_code';
 	
-// 	mobile: '13800138000',
+// 	mobile: '13800138000', 13671700400
 // 				  item: '',
-// 				  name: '冯瑛',
-// 				  idcard: '612426197408240028',
+// 				  name: '冯瑛',  曹占栋
+// 				  idcard: '612426197408240028',  612701197612173415
 
     export default {
 		data(){

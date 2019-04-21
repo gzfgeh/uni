@@ -122,7 +122,8 @@ export default {
       jiaoqiang_order_id: '',
 			showModal: false,
 			monthly_expense: '',
-			mileage_expense: ''
+			mileage_expense: '',
+			quotation_id: 0
     }
   },
 
@@ -135,10 +136,9 @@ export default {
 			},
 		hideModal: function(){
 			this.showModal = false;
-			uni.setStorageSync("showModal", false);
 		},
     next () {
-			uni.setStorageSync("showModal", false);
+			this.showModal = false;
       wx.navigateTo({
         url: "../pay_one/pay_one?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
@@ -151,7 +151,7 @@ export default {
 			}else{
 				wx.showToast({
           icon: 'none',
-          title: '支付失败，请重新支付',
+          title: res.message,
           duration: 1000
         });
 				this.hideModal();
@@ -165,7 +165,7 @@ export default {
 		
 		async quotationsToOrder(){
 			// this.global.quotation_id
-      let res = await quotationsToOrder(this.global.quotation_id);
+      let res = await quotationsToOrder(this.quotation_id);
       if(res.success){
         if(res.orders.length > 0){
           let licheng = res.orders[0];
@@ -210,7 +210,7 @@ export default {
       }
 			
 			let openid = uni.getStorageSync("openid");
-
+			wx.setStorageSync("pay_address", this.address);
       let params = {
         name: this.global.name,
         mobile: this.global.mobile,
@@ -227,21 +227,9 @@ export default {
         console.log(result.timestamp);
 				
 				if(!openid){
-// 					uni.showModal({
-// 						title: '微信支付回调result.mweb_url',
-// 						content: result.mweb_url,
-// 						success: function (res) {
-// 							if (res.confirm) {
-// 								window.location.href = result.mweb_url;
-// 							} else if (res.cancel) {
-// 								console.log('用户点击取消');
-// 							}
-// 						}
-// 					});
-
-					window.location.href = result.mweb_url;
-					uni.setStorageSync("showModal", true);
 					this.showModal = true;
+					window.location.href = result.mweb_url;
+					
 					return;
 				}
 				
@@ -316,6 +304,9 @@ export default {
   onLoad () {
     this.global = wx.getStorageSync("global");
     // this.getOpenid();
+		
+		let quotation_id = this.$root.$mp.query.quotation_id;
+		this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
 		this.name = this.global.name;
 		this.mobile = this.global.mobile;
 		console.log(weixin_sdk);
@@ -323,8 +314,19 @@ export default {
   },
 	
 	onShow(){
-		let showModal = uni.getStorageSync("showModal");
-		this.showModal = showModal;
+			let iswechat = this.$root.$mp.query.iswechat;
+			if(iswechat){
+				let quotation_id = this.$root.$mp.query.quotation_id;
+				this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
+				this.name = this.global.name;
+				this.mobile = this.global.mobile;
+				console.log(weixin_sdk);
+				this.address = uni.getStorageSync("pay_address");
+				this.quotationsToOrder();
+				this.showModal = true;
+			}else{
+				uni.removeStorageSync("pay_address");
+			}
 	}
 
 }

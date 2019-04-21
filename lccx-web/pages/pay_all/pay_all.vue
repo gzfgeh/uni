@@ -114,6 +114,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	page,body{
+		background-color: #F9F9F9;
+		height: 100%;
+	}
 .container_wrap {
   background-color: #F9F9F9;
   height: 100%;

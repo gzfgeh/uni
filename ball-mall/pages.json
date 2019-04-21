@@ -8,6 +8,20 @@
 				"navigationStyle": "custom"
 		    }
 		},
+		{
+		    "path" : "pages/aboutUs/aboutUs",
+		    "style" : {
+		        "navigationBarTitleText" : "关于我们",
+				"navigationStyle": "custom"
+		    }
+		},
+		{
+		    "path" : "pages/contactUs/contactUs",
+		    "style" : {
+		        "navigationBarTitleText" : "联系我们",
+				"navigationStyle": "custom"
+		    }
+		},
         {
             "path" : "pages/user/user",
             "style" : {

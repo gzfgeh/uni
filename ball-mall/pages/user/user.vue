@@ -137,24 +137,14 @@
 				
 			},
 			contactUs: function(){
-				uni.openDocument({
-				    filePath: BASE_IMAGE_URL+'ball_mall_us.doc',
-				    fileType:'doc',
-				    success: function (res) {
-				        console.log(res);
-				        console.log('打开文档成功'+res)
-				    }
-				})
+				uni.navigateTo({
+						url: '../aboutUs/aboutUs'
+					})
 			},
 			aboutUs: function(){
-				uni.openDocument({
-				    filePath: BASE_IMAGE_URL+'ball_mall_jieshao.doc',
-				    fileType:'doc',
-				    success: function (res) {
-				        console.log(res);
-				        console.log('打开文档成功'+res)
-				    }
-				})
+				uni.navigateTo({
+						url: '../contactUs/contactUs'
+					})
 			},
 			
         }

@@ -222,7 +222,16 @@
 			callPhone(){
 				window.location.href = "tel:4000880329";
 			},
+			
+			fixIos: function(){
+				setTimeout(function() {                
+					var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+					window.scrollTo(0, Math.max(scrollHeight - 1, 0));            
+				}, 100);
+			},
+			
 			watchInput: function(e){
+				this.fixIos();
 				console.log(e.mp.detail.value);
 				let value = e.mp.detail.value;
 				this.license_no = this.license_no.toLocaleUpperCase();
@@ -302,8 +311,11 @@
 		onLoad () {
 			this.pickerText = this.pickerValueArray[1][this.pickerValueIndex[1]];
 			
-// 			this.pickerText = "榆林市";
+// 			this.pickerText = "安康市";
 // 			this.license_no = "G61B86";
+
+// 			this.pickerText = "榆林市";
+// 			this.license_no = "K9R508";
 		},
   
     }
