@@ -174,7 +174,7 @@
       //   "biz_id": this.item.biz_id,
 		  let params = {
 			"insurer": 'ASTP',
-        "biz_id": '53800845',
+        "biz_id": this.item.biz_id?this.item.biz_id:'53800845',
 			"channel_code": "QUANLIAN_PROXY_INSURE",
 			"address_name": this.global.name,
 			"address_mobile": this.global.mobile,
