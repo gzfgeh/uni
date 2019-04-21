@@ -135,7 +135,10 @@ export default {
 				}, 100);
 			},
 		hideModal: function(){
+			let quotation_id = this.$root.$mp.query.quotation_id;
+			this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
 			this.showModal = false;
+			this.quotationsToOrder();
 		},
     next () {
 			this.showModal = false;
@@ -145,13 +148,28 @@ export default {
     },
 		
 		async orderStaus(){
-			let res = await orderStaus(this.licheng_order_id);
+			let params = {
+				id: this.licheng_order_id
+			};
+			let res = await orderStaus(params);
 			if(res.code == 200){
-				this.next();
+				if(res.data && res.data.success){
+					this.hideModal();
+					this.next();
+				}else{
+					uni.showToast({
+						icon: 'none',
+						title: "支付失败，请稍后重试",
+						duration: 1000
+					});
+					this.hideModal();
+					this.resetPage();
+				}
 			}else{
-				wx.showToast({
+				this.resetPage();
+				uni.showToast({
           icon: 'none',
-          title: res.message,
+          title: res.msg,
           duration: 1000
         });
 				this.hideModal();
@@ -173,6 +191,8 @@ export default {
             this.licheng_order_id = licheng.id;
 						this.monthly_expense = licheng.monthly_expense;
 						this.mileage_expense = licheng.mileage_expense;
+						this.name = licheng.name;
+						this.mobile = licheng.mobile;
           };
 
           let jiaoqiang = res.orders[1];
@@ -210,7 +230,6 @@ export default {
       }
 			
 			let openid = uni.getStorageSync("openid");
-			wx.setStorageSync("pay_address", this.address);
       let params = {
         name: this.global.name,
         mobile: this.global.mobile,
@@ -227,10 +246,8 @@ export default {
         console.log(result.timestamp);
 				
 				if(!openid){
-					this.showModal = true;
+					that.showModal = true;
 					window.location.href = result.mweb_url;
-					
-					return;
 				}
 				
 				weixin_sdk.config({
@@ -299,6 +316,13 @@ export default {
       }
     },
 		
+		resetPage:function(){
+			this.global = wx.getStorageSync("global");
+			let quotation_id = this.$root.$mp.query.quotation_id;
+				this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
+				this.quotationsToOrder();
+		}
+		
   },
 
   onLoad () {
@@ -318,10 +342,7 @@ export default {
 			if(iswechat){
 				let quotation_id = this.$root.$mp.query.quotation_id;
 				this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
-				this.name = this.global.name;
-				this.mobile = this.global.mobile;
 				console.log(weixin_sdk);
-				this.address = uni.getStorageSync("pay_address");
 				this.quotationsToOrder();
 				this.showModal = true;
 			}else{

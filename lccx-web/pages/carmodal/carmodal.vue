@@ -139,14 +139,24 @@
 					if(res.code == 200){
 					  uni.stopPullDownRefresh();
 					  console.log(res.data.data);
-					  this.items = res.data.data;
-					  this.items.map((data,index) => {
-								data.indexID = parseInt(index);
-							})
-							console.log(this.items);
-					  this.familyName = res.data.data[0].familyName;
-								this.brand_name = res.data.data[0].standardName;
-								this.sendTime = res.data.sendTime;
+					  if(res.data.data && res.data.data.length != 0){
+						  if(this.current == 0){
+						  this.items = res.data.data;
+							
+						  }else{
+							  this.items = this.items.concat(res.data.data);
+						  }
+						  
+						  this.items.map((data,index) => {
+									data.indexID = parseInt(index);
+								})
+						  
+								console.log(this.items);
+						  this.familyName = res.data.data[0].familyName;
+									this.brand_name = res.data.data[0].standardName;
+									this.sendTime = res.data.sendTime;
+						  }
+					  
 					}else{
 						this.isError = true;
 						wx.showToast({

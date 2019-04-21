@@ -21,9 +21,9 @@
 		
 		<div class="uni-inline-item">
 			<span>初登日期</span>
-			<picker mode="date" @change="dateChange" :value="firstRegisterDate">
-				<div class="item_input" :class="{'unActive': (firstRegisterDate == '请选择具体日期')}">
-				  {{firstRegisterDate}}
+			<picker mode="date" @change="dateChange" :value="firstRegisterDate" >
+				<div class="item_input" :class="{'unActive': (firstRegisterDate == '请选择具体日期' || defaultToday)}">
+				  {{defaultToday?'请选择具体日期':firstRegisterDate}}
 				</div>
 			  </picker>
 		</div>
@@ -131,7 +131,8 @@
 					closeEngineChange: false,
 					clientHeight:document.documentElement.clientHeight,
 					hideBtn: false,
-					timer: {}
+					timer: {},
+					defaultToday: false
 			}
 		},
 		onLoad () {
@@ -149,9 +150,9 @@
 					}else{                
 							 this.hideBtn = false;          
 					}        
-				}
-
-
+				};
+				this.startDate = getDay(0);
+				console.log(this.startDate);
 		  },
         methods: {
 			scrollV: function(obj){
@@ -183,6 +184,7 @@
 			dateChange: function(e){
 			  console.log(e.mp.detail.value);
 			  this.firstRegisterDate = e.mp.detail.value;
+			  this.defaultToday = false;
 			},
 			showModal(){
 				this.isShowModal = true;
@@ -371,6 +373,7 @@
 							}
 					}else{
 						this.firstRegisterDate = getDay(0);
+						this.defaultToday = true;
 					}
 					
 		

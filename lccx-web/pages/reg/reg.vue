@@ -21,7 +21,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,H5login} from "@/utils/api";
+	import { BASE_IMAGE_URL,H5login,orderStaus} from "@/utils/api";
 	
     export default {
         data() {
@@ -29,6 +29,34 @@
             }
         },
         methods: {
+			async orderStaus(){
+			let params = {
+				id: 153
+			};
+			let res = await orderStaus(params);
+			uni.showModal({
+				title: 'res',
+				content: JSON.stringify(res),
+				success: function (res) {
+					if (res.confirm) {
+						
+					} else if (res.cancel) {
+						console.log('用户点击取消');
+					}
+				}
+			});
+							
+			if(res.code == 200){
+				//this.next();
+			}else{
+				wx.showToast({
+				  icon: 'none',
+				  title: res.msg,
+				  duration: 1000
+				});
+						
+					}
+				},
 			next(){
 				let token = uni.getStorageSync("token");
 				if(token){

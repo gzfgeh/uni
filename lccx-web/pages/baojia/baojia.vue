@@ -313,9 +313,9 @@
 			
 // 			this.pickerText = "安康市";
 // 			this.license_no = "G61B86";
-
+// 
 // 			this.pickerText = "榆林市";
-// 			this.license_no = "K9R508";
+// 			this.license_no = "K1V970";
 		},
   
     }
