@@ -76,9 +76,6 @@
 		onLoad: function(e){
 			console.log(e);
 			this.index = e?e.id:0;
-		},
-		onShow: function(e) {
-			// this.listData = this.randomfn()
 			
 			this.goodsList();
 			this.getCart();
@@ -91,18 +88,21 @@
 				this.m_is_gys = 0;
 			}
 			console.log(this.m_is_gys);
-// 			let that = this;
-// 			uni.showModal({
-// 				title: '是供应商提示',
-// 				content: that.m_is_gys+"",
-// 				success: function (res) {
-// 					if (res.confirm) {
-// 						
-// 					} else if (res.cancel) {
-// 						console.log('用户点击取消');
-// 					}
-// 				}
-// 			});
+			
+		},
+		onShow: function(e) {
+			// this.listData = this.randomfn()
+			
+			
+			
+			let editItem = uni.getStorageSync("editItem");
+			if(editItem){
+				this.listData.map(data => {
+					if(data.g_id == editItem.g_id){
+						data.g_price = editItem.g_price;
+					}
+				})
+			}
 		},
 		onReachBottom() {
 			this.loadMore();
@@ -198,15 +198,17 @@
 						this.listData = res.data;
 					}else{
 						this.listData = this.listData.concat(res.data);
+						
 					}
 					
-					if(res.data.length < 1){
+					if(res.data.length < 10){
 						//没有了
 						this.loadingType = 2;
 						
 					}else{
 						// 还有
 						this.loadingType = 1;
+						
 					}
 					
 				}

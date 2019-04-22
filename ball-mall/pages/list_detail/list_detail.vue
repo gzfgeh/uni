@@ -123,6 +123,7 @@
 					  title: '修改成功',
 					  duration: 1000
 					});
+					uni.setStorageSync("editItem", this.item);
 					uni.navigateBack();
 				}else{
 					uni.showToast({

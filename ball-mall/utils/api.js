@@ -80,3 +80,4 @@ export function goodsEdit(params) {
 export function getUserInfo(m_openid) {
     return request.get('Project/getUserInfo?m_openid='+m_openid);
 }
+

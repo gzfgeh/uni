@@ -45,7 +45,7 @@
       <div class="price_wrap">
         <span>合计：</span>
         <span>￥{{allPrice}}</span>
-        <button @click="payNow">结算({{allNum}})</button>
+        <button @click="getConfig">结算({{allNum}})</button>
       </div>
     </div>
 		
@@ -99,7 +99,8 @@ export default {
 			paramsType: 1,
 			showModal: false,
 			modalInput: 0,
-			modalIndex: 0
+			modalIndex: 0,
+			minMoney: 0
 		}
     
   },
@@ -300,6 +301,33 @@ export default {
         })
       }
     },
+		
+		async getConfig(){
+				let that = this;
+				uni.request({
+					url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Project&a=getConfig',
+					method: 'GET',
+					dataType: 'json',
+					success: (res) => {
+						console.log(res.data.data);
+						if(res.data.code == 1000){
+							that.minMoney = res.data.data.c_min_money;
+							that.warningText = res.data.data.c_detail.substring(3, res.data.data.c_detail.length);
+							that.warningText = that.warningText.substring(0, that.warningText.length-4);
+							that.payNow();
+						}
+						
+					},
+					fail: (res) => {
+						uni.showToast({
+						  icon: 'none',
+						  title: res.data.msg,
+						  duration: 1000
+						});
+					},
+				});
+			},
+			
 
     async payNow(){
       if(this.allPrice == 0){
@@ -310,6 +338,21 @@ export default {
         })
         return;
       }
+			
+			if(parseFloat(this.allPrice) < parseFloat(this.minMoney)){
+				uni.showModal({
+					title: '温馨提示',
+					content: this.warningText,
+					success: function (res) {
+						if (res.confirm) {
+							
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+				return;
+			}
 			
 			
       let body = '';

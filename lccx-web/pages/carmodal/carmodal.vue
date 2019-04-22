@@ -222,6 +222,7 @@
 		padding-left: 48upx;
 		padding-top: 18upx;
 		padding-bottom: 18upx;
+		margin-bottom: 200rpx;
 	}
 	
 	.radio_wrap{
