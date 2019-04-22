@@ -21,7 +21,7 @@
       <div class="item">
         <span>¥</span>
         <span class="num">{{mileage_expense}}</span>
-        <span>/月</span>
+        <span>/公里</span>
       </div>
     </div>
   </div>

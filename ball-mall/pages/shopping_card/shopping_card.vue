@@ -68,6 +68,22 @@
 		  </div>
 		</div>
 		
+		
+		<!--弹窗-->
+		<div class="modal-mask" @tap="hideModalDialog" v-if="showModalDialog"></div>
+		  <div class="modal-dialog" v-if="showModalDialog">
+		  <div class="modal-title">温馨提示</div>
+		  <div class="modal-content">
+		    <rich-text :nodes="htmlString"></rich-text>
+		  </div>
+		  <div class="modal-footer" >
+		    <div class="btn_wrap" @click="hideModalDialog">
+		      <span>确定</span>
+		    </div>
+			
+		  </div>
+		</div>
+		
 
   </div>
 </template>
@@ -100,11 +116,18 @@ export default {
 			showModal: false,
 			modalInput: 0,
 			modalIndex: 0,
-			minMoney: 0
+			minMoney: 0,
+			showModalDialog: false,
+			htmlString: ''
 		}
     
   },
   methods: {
+		hideModalDialog: function(){
+			this.showModalDialog = false;
+		},
+		
+		
     deleteOrder: function(item){
       let that = this;
       wx.showModal({
@@ -312,9 +335,11 @@ export default {
 						console.log(res.data.data);
 						if(res.data.code == 1000){
 							that.minMoney = res.data.data.c_min_money;
-							that.warningText = res.data.data.c_detail.substring(3, res.data.data.c_detail.length);
-							that.warningText = that.warningText.substring(0, that.warningText.length-4);
+// 							that.warningText = res.data.data.c_detail.substring(3, res.data.data.c_detail.length);
+// 							that.warningText = that.warningText.substring(0, that.warningText.length-4);
+							that.htmlString = res.data.data.c_detail;
 							that.payNow();
+							
 						}
 						
 					},
@@ -340,17 +365,18 @@ export default {
       }
 			
 			if(parseFloat(this.allPrice) < parseFloat(this.minMoney)){
-				uni.showModal({
-					title: '温馨提示',
-					content: this.warningText,
-					success: function (res) {
-						if (res.confirm) {
-							
-						} else if (res.cancel) {
-							console.log('用户点击取消');
-						}
-					}
-				});
+// 				uni.showModal({
+// 					title: '温馨提示',
+// 					content: this.warningText,
+// 					success: function (res) {
+// 						if (res.confirm) {
+// 							
+// 						} else if (res.cancel) {
+// 							console.log('用户点击取消');
+// 						}
+// 					}
+// 				});
+				this.showModalDialog = true;
 				return;
 			}
 			

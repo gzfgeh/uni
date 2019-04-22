@@ -33,7 +33,7 @@
 			
 			<div class="uni-inline-item">
 				<span>价格</span>
-				<input type="number" v-model="item.g_price" maxlength="4">
+				<input type="number" v-model="item.g_price" >
 				<span style="flex: 1; text-align: right; padding-right: 40upx">元</span>
 			</div>
 		</div>
