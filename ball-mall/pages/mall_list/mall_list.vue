@@ -18,7 +18,7 @@
 				</div>
 				
 				<div class="item_right_wrap">
-					<span>{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
+					<span class="item_address">{{item.g_sheng}}{{item.g_shi}}{{item.g_qu}}</span>
 					<!-- <uni-number-box @change="onNumberChange" :min="0"></uni-number-box> -->
 					<span @click="goDetail(item)" v-if="m_is_gys==1">编辑</span>
 					<img src="../../static/img/add_card.png" @click="jiaruCart(item)">
@@ -428,5 +428,13 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 		}
+	}
+	
+	.item_address{
+		max-width: 240upx;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		
 	}
 </style>
