@@ -4,8 +4,8 @@
 		<div class="header uni-between-item">
 			
 			<div class="brand_wrap">
-				<img src="../../static/img/baoxian_icon.png" >
-				<span>大地车险</span>
+				<img :src="company_logo" >
+				<span>{{company_name}}</span>
 			</div>
 			
 			<div class="price">
@@ -143,7 +143,11 @@
 				compulsory: '',
 				tax: '',
 				list: [],
-				isChecked: false
+				isChecked: false,
+				companyNameList: ['安盛天平', '天安财险', '大地保险'],
+				companyLogo: [BASE_IMAGE_URL+'an_sheng.png', BASE_IMAGE_URL+'tian_an.png', BASE_IMAGE_URL+'da_di.png'],
+				company_logo: '',
+				company_name: ''
 			}
 	  },
 
@@ -202,6 +206,23 @@
 				let res = await getQuotations(this.global.quotation_id);
 				if(res.code == 200){
 					this.item = res.data;
+					
+					if(this.item.company){
+					  if(this.item.company == "ASTP"){
+						this.company_name = this.companyNameList[0];
+						this.company_logo = this.companyLogo[0];
+					  }else if(this.item.company == "TAIC"){
+						this.company_name = this.companyNameList[1];
+						this.company_logo = this.companyLogo[1];
+					  }else if(this.item.company == 'CCIC'){
+						this.company_name = this.companyNameList[2];
+						this.company_logo = this.companyLogo[2];
+					  }else{
+						this.company_name = this.companyNameList[2];
+						this.company_logo = this.companyLogo[2];
+					  }
+					}
+		
 
 					this.monthly_expense = this.item.monthly_expense;
 					this.mileage_expense = this.item.mileage_expense;

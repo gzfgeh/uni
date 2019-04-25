@@ -6,8 +6,8 @@
 		<div class="header uni-between-item">
 			
 			<div class="brand_wrap">
-				<img src="../../static/img/baoxian_icon.png" >
-				<span>大地车险</span>
+				<img :src="company_logo" mode="widthFix" :class="{'hidden': isHidden}">
+        <span>{{company_name}}</span>
 			</div>
 			
 			<div class="price">
@@ -144,7 +144,12 @@
 			tax: '',
 			starts_on: '',
 			sn: 0,
-			ends_on: ''
+			ends_on: '',
+			companyNameList: ['安盛天平', '天安财险', '大地保险'],
+        companyLogo: [BASE_IMAGE_URL+'an_sheng.png', BASE_IMAGE_URL+'tian_an.png', BASE_IMAGE_URL+'da_di.png'],
+        company_logo: '',
+        company_name: '',
+        isHidden: false
 		}
 	  },
 
@@ -187,6 +192,26 @@
 				  if(data.id == that.order_id){
 					this.item = data;
 					this.item.quote_details = data.detail;
+					
+					if(this.item.insurance_company){
+              if(this.item.insurance_company == "ASTP"){
+                this.company_name = this.companyNameList[0];
+                this.company_logo = this.companyLogo[0];
+              }else if(this.item.insurance_company == "TAIC"){
+                this.company_name = this.companyNameList[1];
+                this.company_logo = this.companyLogo[1];
+              }else if(this.item.insurance_company == 'CCIC'){
+                this.company_name = this.companyNameList[2];
+                this.company_logo = this.companyLogo[2];
+              }else{
+                this.company_name = '';
+                this.isHidden = true;
+              }
+            }else{
+              this.company_name = '';
+                this.isHidden = true;
+            }
+						
 
 					this.starts_on = this.item.starts_on;
 					this.ends_on = this.item.ends_on;
@@ -410,6 +435,10 @@
   text-align: center;
   box-sizing: border-box;
     
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 .list_item{
