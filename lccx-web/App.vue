@@ -13,7 +13,7 @@
 			console.log(openid);
 			// olVu51XsomjuLGgUx5cTTtoqIQVE olVu51XsomjuLGgUx5cTTtoqIQVE
 			uni.setStorageSync("openid", openid);
-			return;
+			// return;
 			
             let partner_id = tmpParas["partner_id"];//提取参数
             console.log(partner_id);
@@ -21,6 +21,19 @@
 			let imei = tmpParas["imei"];//提取参数
 			console.log(imei);
 			uni.setStorageSync("imei", imei);
+			
+			let recommend_user_id = tmpParas["recommend_user_id"];//提取参数
+			console.log(recommend_user_id);
+			uni.setStorageSync("recommend_user_id", recommend_user_id);
+			
+			let recommend_channel = tmpParas["recommend_channel"];//提取参数
+			console.log(recommend_channel);
+			uni.setStorageSync("recommend_channel", recommend_channel);
+			
+			let isagent = tmpParas["isagent"];//提取参数
+			console.log(isagent);
+			uni.setStorageSync("isagent", isagent);
+			
         },
         onShow: function() {
             console.log('App Show');
