@@ -79,8 +79,15 @@ export default {
 
   methods: {
     next () {
-      const url = '../service_confirm/service_confirm';
-      uni.navigateTo({ url })
+			let isagent= uni.getStorageSync("isagent");
+			if(isagent){
+				const url = '../service_confirm_new/service_confirm_new';
+				uni.navigateTo({ url })
+			}else{
+				const url = '../service_confirm/service_confirm';
+				uni.navigateTo({ url })
+			}
+      
     },
     async result(){
       let res = await result(this.global.quotation_id);

@@ -2,17 +2,30 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
-            "path" : "pages/reg/reg",
-            "style" : {
-                "navigationBarTitleText" : "产品介绍"
-            }
-        },
-		{
 		    "path" : "pages/baojia/baojia",
 		    "style" : {
 		        "navigationBarTitleText" : "快速报价"
 		    }
 		},
+		{
+            "path" : "pages/er_wei_ma/er_wei_ma",
+            "style" : {
+                "navigationBarTitleText" : "转发二维码"
+            }
+        },
+		{
+            "path" : "pages/service_confirm_new/service_confirm_new",
+            "style" : {
+                "navigationBarTitleText" : "确认信息"
+            }
+        },
+		{
+            "path" : "pages/reg/reg",
+            "style" : {
+                "navigationBarTitleText" : "产品介绍"
+            }
+        },
+		
 		{
 		    "path" : "pages/pay_address/pay_address",
 		    "style" : {
