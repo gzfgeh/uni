@@ -16,10 +16,8 @@
 			// return;
 			
             let partner_id = tmpParas["partner_id"];//提取参数
-            console.log(partner_id);
             uni.setStorageSync("partner_id", partner_id);
 			let imei = tmpParas["imei"];//提取参数
-			console.log(imei);
 			uni.setStorageSync("imei", imei);
 			
 			let recommend_user_id = tmpParas["recommend_user_id"];//提取参数

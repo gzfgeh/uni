@@ -2,6 +2,12 @@
     "pages" : [
         //pages数组中第一项表示应用启动页,
 		{
+		    "path" : "pages/reg/reg",
+		    "style" : {
+		        "navigationBarTitleText" : "产品介绍"
+		    }
+		},
+		{
 		    "path" : "pages/baojia/baojia",
 		    "style" : {
 		        "navigationBarTitleText" : "快速报价"
@@ -19,13 +25,6 @@
                 "navigationBarTitleText" : "确认信息"
             }
         },
-		{
-            "path" : "pages/reg/reg",
-            "style" : {
-                "navigationBarTitleText" : "产品介绍"
-            }
-        },
-		
 		{
 		    "path" : "pages/pay_address/pay_address",
 		    "style" : {

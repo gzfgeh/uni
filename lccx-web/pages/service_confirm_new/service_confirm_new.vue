@@ -25,7 +25,7 @@
 				<image src="../../static/img/yong_jin_icon.png" mode=""></image>
 				<span>里程车险佣金</span>
 			</div>
-			<span>100.00元</span>
+			<span>{{ci_commission}}元</span>
 		</div>
 		
 		<div class="address_wrap uni-between-item" style="padding: 0upx 40upx; margin-bottom: 40upx; font-size: 24upx;">
@@ -33,13 +33,13 @@
 				<image src="../../static/img/yong_jin_icon.png" mode=""></image>
 				<span>交强险佣金</span>
 			</div>
-			<span>0.00元</span>
+			<span>{{bi_commission}}元</span>
 		</div>
 		
 		<div class="yong_jin_money uni-between-item">
 			<span>佣金合计（税前）</span>
 			<span>
-				<span style="font-size: 52upx; color: #F30000">100.00</span>
+				<span style="font-size: 52upx; color: #F30000">{{all_commission}}</span>
 				<span>元</span>
 			</span>
 		</div>
@@ -167,7 +167,10 @@
 				companyNameList: ['安盛天平', '天安财险', '大地保险'],
 				companyLogo: [BASE_IMAGE_URL+'an_sheng.png', BASE_IMAGE_URL+'tian_an.png', BASE_IMAGE_URL+'da_di.png'],
 				company_logo: '',
-				company_name: ''
+				company_name: '',
+				ci_commission: 0,
+				bi_commission: 0,
+				all_commission: 0
 			}
 	  },
 
@@ -244,9 +247,12 @@
 		},
 
 		async getQuotations(){
-				let res = await getQuotations(266);
+				let res = await getQuotations(this.global.quotation_id);
 				if(res.code == 200){
 					this.item = res.data;
+					this.ci_commission = parseFloat(res.data.ci_commission).toFixed(2);
+					this.bi_commission = parseFloat(res.data.bi_commission).toFixed(2);
+					this.all_commission = parseFloat(this.ci_commission + this.bi_commission).toFixed(2);
 					
 					if(this.item.company){
 					  if(this.item.company == "ASTP"){
