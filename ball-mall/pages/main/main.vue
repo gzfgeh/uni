@@ -6,7 +6,7 @@
 		<swiper :indicator-dots="true" :autoplay="true"
 					:interval="5000" :duration="1000" class="head_img">            
 				<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img">  
-					<image src="https://mall.xiuqiupaopaopao.com/data/upload/1553912802.png" mode="widthFix" class="head_img"  />           
+					<image :src="item.t_url" mode="widthFix" class="head_img"  />           
 				</swiper-item>        
 		</swiper>
 		
