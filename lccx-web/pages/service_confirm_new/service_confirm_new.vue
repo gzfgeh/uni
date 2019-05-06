@@ -200,7 +200,7 @@
 		  uni.navigateTo({ url })
 		},
 		goToErWeiMa: function(){
-		  const url = '../er_wei_ma/er_wei_ma';
+		  const url = '../er_wei_ma/er_wei_ma?quotation_id='+this.global.quotation_id;
 		  uni.navigateTo({ url })
 		},
 		changeBill: function(){

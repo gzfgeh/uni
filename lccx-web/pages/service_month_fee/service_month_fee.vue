@@ -62,7 +62,7 @@
 </template>
 <script>
 
-import { BASE_IMAGE_URL,result } from "@/utils/api";
+import { BASE_IMAGE_URL,result,H5login } from "@/utils/api";
 
 export default {
   data () {
@@ -125,12 +125,38 @@ export default {
 // 			uni.navigateBack({
 // 					delta: 1
 // 			})
-    }
+    },
+		async H5login(){
+				let params = {
+					partner_id: this.$root.$mp.query.partner_id,
+					imei: this.$root.$mp.query.imei
+				};
+				
+				let res = await H5login(params);
+				if(res.code == 200){
+					let token = res.data.token;
+					console.log(token);
+					if(token){
+						uni.setStorageSync('token', token);
+					}
+					this.result();
+				}
+			},
   },
 
   onLoad () {
     this.global = uni.getStorageSync("global");
-    this.result();
+		if(!this.global.quotation_id){
+			this.global.quotation_id = this.$root.$mp.query.quotation_id;
+		}
+		
+		let token = uni.getStorageSync("token");
+		if(!token){
+			this.H5login();
+		}else{
+			this.result();
+		}
+    
   },
 
 }

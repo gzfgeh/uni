@@ -114,7 +114,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getQuotations,applyUnderwrite } from "@/utils/api";
+	import { BASE_IMAGE_URL,getQuotations,applyUnderwrite,H5login } from "@/utils/api";
 	
 	export default {
 	  data () {
@@ -203,101 +203,101 @@
 		},
 
 		async getQuotations(){
-				let res = await getQuotations(this.global.quotation_id);
-				if(res.code == 200){
-					this.item = res.data;
-					
-					if(this.item.company){
-					  if(this.item.company == "ASTP"){
-						this.company_name = this.companyNameList[0];
-						this.company_logo = this.companyLogo[0];
-					  }else if(this.item.company == "TAIC"){
-						this.company_name = this.companyNameList[1];
-						this.company_logo = this.companyLogo[1];
-					  }else if(this.item.company == 'CCIC'){
-						this.company_name = this.companyNameList[2];
-						this.company_logo = this.companyLogo[2];
-					  }else{
-						this.company_name = this.companyNameList[2];
-						this.company_logo = this.companyLogo[2];
-					  }
-					}
-		
+			let res = await getQuotations(this.global.quotation_id);
+			if(res.code == 200){
+				this.item = res.data;
+				
+				if(this.item.company){
+				  if(this.item.company == "ASTP"){
+					this.company_name = this.companyNameList[0];
+					this.company_logo = this.companyLogo[0];
+				  }else if(this.item.company == "TAIC"){
+					this.company_name = this.companyNameList[1];
+					this.company_logo = this.companyLogo[1];
+				  }else if(this.item.company == 'CCIC'){
+					this.company_name = this.companyNameList[2];
+					this.company_logo = this.companyLogo[2];
+				  }else{
+					this.company_name = this.companyNameList[2];
+					this.company_logo = this.companyLogo[2];
+				  }
+				}
 
-					this.monthly_expense = this.item.monthly_expense;
-					this.mileage_expense = this.item.mileage_expense;
-					this.compulsory = parseInt(this.item.compulsory);
-					this.compulsory = this.compulsory?this.compulsory:'';
-					this.tax = parseInt(this.item.tax);
-					this.tax = this.tax?this.tax:'';
-					this.city_name = this.item.city_name;
 
-					console.log(this.item.quote_details);
-					this.item.quote_details = JSON.parse(this.item.quote_details);
-					// this.item.quote_details = JSON.parse(this.item.quote_details);
-					console.log(this.item.quote_details);
+				this.monthly_expense = this.item.monthly_expense;
+				this.mileage_expense = this.item.mileage_expense;
+				this.compulsory = parseInt(this.item.compulsory);
+				this.compulsory = this.compulsory?this.compulsory:'';
+				this.tax = parseInt(this.item.tax);
+				this.tax = this.tax?this.tax:'';
+				this.city_name = this.item.city_name;
 
-					if(!this.item.quote_details){
-						this.item.quote_details.excluding = true;
-					}else{
-						this.list = [];
-						let that = this;
+				console.log(this.item.quote_details);
+				this.item.quote_details = JSON.parse(this.item.quote_details);
+				// this.item.quote_details = JSON.parse(this.item.quote_details);
+				console.log(this.item.quote_details);
+
+				if(!this.item.quote_details){
+					this.item.quote_details.excluding = true;
+				}else{
+					this.list = [];
+					let that = this;
 					Object.keys(this.item.quote_details).forEach(function(key){
-							let itemKey = that.item.quote_details[key];
+						let itemKey = that.item.quote_details[key];
+					
+						let params = {};
+						if(key == 'burn'){
+							params.name = '自燃险';
+						}else if(key == 'destroy'){
+							params.name = '车损险';
+						}else if(key == 'stolen'){
+							params.name = '盗抢险';
+						}else if(key == 'liability'){
+							params.name = '第三者责任险';
+						}else if(key == 'driver_seat'){
+							params.name = '司机座位险';
+						}else if(key == 'passenger_seat'){
+							params.name = '乘客座位险';
+						}else if(key == 'stolen'){
+							params.name = '盗抢险';
+						}else if(key == 'glasses'){
+							params.name = '玻璃险';
+						}else if(key == 'scratch'){
+							params.name = '刮痕险';
+						}else if(key == 'water'){
+							params.name = '涉水险';
+						}else if(key == 'escape'){
+							params.name = '无法找到第三方险';
+						}else if(key == 'lights'){
+							params.name = '车灯险';
+						}else if(key == 'compulsory'){
+							params.name = '交强险';
+						}else if(key == 'no_3rd_party'){
+							params.name = '无法找到第三方特约险';
+						}
+						
+						if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]))){
+							  //返回true
+							  params.value = "投保";
+						  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
+							params.value = "不投保";
+						  }else if(key == 'glasses'){
+							params.value = that.item.quote_details[key] == 1? '国产玻璃':'进口玻璃';
+						  }else{
+							params.value = parseInt(that.item.quote_details[key]);
+							if(params.value > 10000){
+							  params.value = params.value/10000 + "万";
+							}
+						  }
+						  if(key == 'excluding' || key == 'compulsory'){
 							
-								let params = {};
-								if(key == 'burn'){
-									params.name = '自燃险';
-								}else if(key == 'destroy'){
-									params.name = '车损险';
-								}else if(key == 'stolen'){
-									params.name = '盗抢险';
-								}else if(key == 'liability'){
-									params.name = '第三者责任险';
-								}else if(key == 'driver_seat'){
-									params.name = '司机座位险';
-								}else if(key == 'passenger_seat'){
-									params.name = '乘客座位险';
-								}else if(key == 'stolen'){
-									params.name = '盗抢险';
-								}else if(key == 'glasses'){
-									params.name = '玻璃险';
-								}else if(key == 'scratch'){
-									params.name = '刮痕险';
-								}else if(key == 'water'){
-									params.name = '涉水险';
-								}else if(key == 'escape'){
-									params.name = '无法找到第三方险';
-								}else if(key == 'lights'){
-									params.name = '车灯险';
-								}else if(key == 'compulsory'){
-									params.name = '交强险';
-								}else if(key == 'no_3rd_party'){
-									params.name = '无法找到第三方特约险';
-								}
-								
-								if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]))){
-									  //返回true
-									  params.value = "投保";
-								  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
-									params.value = "不投保";
-								  }else if(key == 'glasses'){
-									params.value = that.item.quote_details[key] == 1? '国产玻璃':'进口玻璃';
-								  }else{
-									params.value = parseInt(that.item.quote_details[key]);
-									if(params.value > 10000){
-									  params.value = params.value/10000 + "万";
-									}
-								  }
-								  if(key == 'excluding' || key == 'compulsory'){
-									
-								  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
+						  }else if(((typeof(that.item.quote_details[key]) == 'boolean') && (that.item.quote_details[key]) == false)){
 
-								  }else{
-									that.list.push(params);
-								  }
-
-					});
+						  }else{
+							that.list.push(params);
+						  }
+						
+						});
 				
 					}
 
@@ -329,11 +329,41 @@
 					console.log(this.item);
 					this.$forceUpdate();
 				}
-			}
+			},
+			
+			async H5login(){
+				let params = {
+					partner_id: this.$root.$mp.query.partner_id,
+					imei: this.$root.$mp.query.imei
+				};
+				
+				let res = await H5login(params);
+				if(res.code == 200){
+					let token = res.data.token;
+					console.log(token);
+					if(token){
+						uni.setStorageSync('token', token);
+					}
+					this.getQuotations();
+				}
+			},
+			
 		},
+	  
 	  onLoad(){
-			this.global = uni.getStorageSync("global");
+			
+		this.global = uni.getStorageSync("global");
+		if(!this.global.quotation_id){
+			this.global.quotation_id = this.$root.$mp.query.quotation_id;
+		}
+		
+		let token = uni.getStorageSync("token");
+		if(!token){
+			this.H5login();
+		}else{
 			this.getQuotations();
+		}
+		
 	  }
 
 	}
