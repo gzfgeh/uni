@@ -107,7 +107,7 @@
 		  </div>
 
 
-		  <div class=" button" @click="applyUnderwrite">我要投保</div>
+		  <div class=" button" @click="next">我要投保</div>
   
 		
 	</div>
@@ -156,6 +156,15 @@
 			this.isChecked = !this.isChecked;  
 		  },
 		next: function(){
+			if(!this.isChecked){
+				wx.showToast({
+						icon: 'none',
+						title: '请同意服务协议',
+						duration: 1000
+					});
+				return;
+			}
+			
 		  const url = '../pay_address/pay_address';
 		  uni.navigateTo({ url })
 		},

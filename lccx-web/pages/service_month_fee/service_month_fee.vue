@@ -39,7 +39,7 @@
 	    <span style="color: #427DFF;">《服务条款》</span>
 	  </div>
 	  
-	  <div class=" button" @tap="next">下一步</div>
+	  <div class=" button" @tap="applyUnderwrite">下一步</div>
 	  
   </div>
 	
@@ -57,12 +57,27 @@
       </div>
     </div>
 		
+		<div class="modal-mask" @tap="hideHeModal" v-if="showHeModal"></div>
+		    <div class="modal-dialog" v-if="showHeModal">
+					<div class="modal_head_img">
+						<image src="../../static/img/he_bao_icon.png" mode="widthFix" style="width: 68upx;"/>
+		    
+					</div>
+				<div class="modal-title" style="padding-top: 20upx; margin-bottom: 60upx;">核保失败</div>
+		    <div class="modal-footer" >
+		      <div class="btn_wrap" hover-class="btn_hover" @click="closeHeModal">
+		        
+		        <span>返回报价</span>
+		      </div>
+		    </div>
+		  </div>
+		
 
 </div>
 </template>
 <script>
 
-import { BASE_IMAGE_URL,result,H5login } from "@/utils/api";
+import { BASE_IMAGE_URL,result,H5login,applyUnderwrite } from "@/utils/api";
 
 export default {
   data () {
@@ -73,11 +88,21 @@ export default {
 			monthly_expense: '',
 			mileage_expense: '',
 			ci_prenium: '',
-			tax: ''
+			tax: '',
+			showHeModal: false
     }
   },
 
   methods: {
+		hideHeModal: function(){
+			this.showHeModal = false;
+		},
+		closeHeModal: function(){
+			this.showHeModal = false;
+			uni.navigateBack({
+					delta: 3
+			})
+		},
     next () {
 			let isagent= uni.getStorageSync("isagent");
 			if(isagent){
@@ -89,6 +114,36 @@ export default {
 			}
       
     },
+		async applyUnderwrite(){
+					
+					// "insurer": this.item.quote_result.data[0].insurerCode,
+		//   "biz_id": this.item.biz_id,
+				  let params = {
+					"insurer": 'ASTP',
+					"biz_id": this.item.biz_id?this.item.biz_id:'53800845',
+					"channel_code": "QUANLIAN_PROXY_INSURE",
+					"address_name": this.global.name,
+					"address_mobile": this.global.mobile,
+					"address_details": "路",
+					"address_county": "110112",
+					"address_city": "110100",
+					"address_province": "110000",
+					"policy_email": "caingougou@qq.com"
+				  };
+		
+				  let res = await applyUnderwrite(params);
+				  if(res.code == 200){
+						this.monthly_expense = this.item.monthly_expense;
+						this.mileage_expense = this.item.mileage_expense;
+						this.tax = parseInt(this.item.tax);
+						this.tax = this.tax?this.tax:'';
+						uni.setStorageSync('global', this.global);
+						this.next();
+				  }else{
+						this.showHeModal = true;
+					}
+				},
+				
     async result(){
       let res = await result(this.global.quotation_id);
       if(res.code == 200){ 
@@ -122,9 +177,9 @@ export default {
     },
     closeModal: function(){
       this.showModal = false;
-// 			uni.navigateBack({
-// 					delta: 1
-// 			})
+			uni.navigateBack({
+					delta: 1
+			})
     },
 		async H5login(){
 				let params = {
@@ -372,6 +427,14 @@ export default {
 }
 .btn_hover{
   background: #0000FF;
+}
+
+.modal_head_img{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 68upx;
 }
 
 
