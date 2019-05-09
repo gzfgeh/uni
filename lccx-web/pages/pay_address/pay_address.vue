@@ -71,7 +71,7 @@
               <span class="price">{{item.name}}</span>
             </view>
             <view>
-                <radio  :checked="index === current" color="#427DFF"/>
+                <radio  :checked="index === current" color="#427DFF" :value="index"/>
             </view>
             
         </label>
@@ -105,6 +105,7 @@
 
 import { BASE_IMAGE_URL,pay,H5login,quotationsToOrder,orderStaus} from "@/utils/api";
 import weixin_sdk from '@/utils/weixin-jsapi.js';
+import {isWeiXin} from "@/utils/index.js"
 
 export default {
   data () {
@@ -178,7 +179,7 @@ export default {
 		},
 		
 		radioChange: function(e){
-      console.log(e.mp.detail.value);
+      console.log(e.detail.value);
     },
 		
 		async quotationsToOrder(){
@@ -331,8 +332,27 @@ export default {
 		
 		let quotation_id = this.$root.$mp.query.quotation_id;
 		this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
-		this.name = this.global.name;
-		this.mobile = this.global.mobile;
+		if(this.global){
+			this.name = this.global.name;
+			this.mobile = this.global.mobile;
+		}
+		
+		let openid = uni.getStorageSync("openid");
+		if(!openid){
+			openid = this.$root.$mp.query.openid;
+			uni.setStorageSync("openid", openid);
+		}
+		
+		// if(isWeiXin()){
+		// 	
+		// }else{
+		// 	let para = {
+		// 		name: '支付宝支付',
+		// 		icon_url: BASE_IMAGE_URL+'zhifubao.png'
+		// 	};
+		// 	this.items.push(para);
+		// }
+		
 		console.log(weixin_sdk);
 		this.quotationsToOrder();
   },

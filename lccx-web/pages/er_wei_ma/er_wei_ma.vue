@@ -48,6 +48,10 @@
 		},
 		components: {tkiQrcode},
 		onLoad () {
+			let quotation_id = this.$root.$mp.query.quotation_id;
+			let partner_id = uni.getStorageSync("partner_id");
+			let imei = uni.getStorageSync("imei");
+			this.val = "http://m.kaikaibao.com.cn/lccx2/index.html#/pages/service_confirm/service_confirm?partner_id="+partner_id+"&imei="+imei+"&quotation_id="+quotation_id;
 			this.$refs.qrcode._makeCode();
 		 },
         methods: {

@@ -116,6 +116,8 @@
 <script>
 	import { BASE_IMAGE_URL,getQuotations,applyUnderwrite,H5login } from "@/utils/api";
 	
+	import {isWeiXin} from "@/utils/index.js"
+	
 	export default {
 	  data () {
 		return {
@@ -165,8 +167,19 @@
 				return;
 			}
 			
-		  const url = '../pay_address/pay_address';
-		  uni.navigateTo({ url })
+			let openid = uni.getStorageSync("openid");
+			if(!openid){
+				if(isWeiXin()){
+					//如果是微信浏览器 去获取openid
+					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=http%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d340&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
+				}else{
+					const url = '../pay_address/pay_address';
+					uni.navigateTo({ url })
+				}
+			}else{
+				const url = '../pay_address/pay_address';
+				uni.navigateTo({ url })
+			}
 		},
 		changeBill: function(){
       const url = '../quote_bill/quote_bill';
@@ -366,12 +379,22 @@
 			this.global.quotation_id = this.$root.$mp.query.quotation_id;
 		}
 		
-		let token = uni.getStorageSync("token");
-		if(!token){
-			this.H5login();
-		}else{
-			this.getQuotations();
+		let openid = uni.getStorageSync("openid");
+		if(!openid){
+			openid = this.$root.$mp.query.openid;
+			if(openid){
+				uni.setStorageSync("openid", openid);
+			}
 		}
+		
+		this.H5login();
+		
+		// let token = uni.getStorageSync("token");
+		// if(!token){
+		// 	this.H5login();
+		// }else{
+		// 	this.getQuotations();
+		// }
 		
 	  }
 
