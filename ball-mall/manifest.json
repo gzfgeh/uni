@@ -57,7 +57,7 @@
         "Chrome.path" : "/Applications/Chrome.app"
     },
     "h5" : {
-        "title" : "抛抛商城",
+        "title" : "一情商城",
         "router" : {
             "base" : "/h5/"
         },
