@@ -94,7 +94,9 @@ request.interceptors.response.use(
             errorMsg = '服务器异常'
         } else if (err.status == 1) {
             errorMsg = '网络连接超时'
-        } else {
+        } else if(err.status == 422){
+			errorMsg = ''
+		}else {
             if (err.response.data.errors && err.response.data.errors.code) {
                 errorMsg = err.response.data.errors.code[0]
             } else {

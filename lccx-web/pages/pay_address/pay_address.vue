@@ -237,6 +237,7 @@ export default {
 				if(!openid){
 					that.showModal = true;
 					window.location.href = result.mweb_url;
+					return;
 				}
 				
 				weixin_sdk.config({

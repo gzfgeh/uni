@@ -1,7 +1,8 @@
 <template>
     <view class="content">
-		<!-- <img :src="src" mode="widthFix"> -->
-		<view @longpress="saveQrcode">
+		
+		
+		<view @longpress="saveQrcode" style="visibility: hidden; margin-top: -440upx;">
 			<tki-qrcode
 			ref="qrcode"
 			:val="val"
@@ -18,6 +19,7 @@
 			@result="qrR" />
 		</view>
 		
+		<img :src="src" mode="widthFix">
 	
 		<span>长按保存二维码转发至客户</span>
     </view>
@@ -53,11 +55,15 @@
 			let partner_id = uni.getStorageSync("partner_id");
 			let imei = uni.getStorageSync("imei");
 			this.val = "http://m.kaikaibao.com.cn/lccx2/index.html#/pages/service_confirm/service_confirm?partner_id="+partner_id+"&imei="+imei+"&quotation_id="+quotation_id;
-			// this.$refs.qrcode._makeCode();
+			setTimeout(() => {
+				this.$refs.qrcode._makeCode();
+			}, 1000);
+			
 		 },
         methods: {
 			qrR(res) {
-				this.src = res
+				this.src = res;
+				// this.src = this.base64ToBlob(this.src);
 			},
 			base64ToBlob(code) {
 				let parts = code.split(';base64,');
@@ -73,7 +79,8 @@
 				return URL.createObjectURL(new Blob([uInt8Array], {type: contentType}));
 			 },
 			saveQrcode() {
-				// this.$refs.qrcode._saveCode();
+				this.$refs.qrcode._saveCode();
+				return;
 				
 				let Url = this.base64ToBlob(this.src);
 				console.log(Url);
