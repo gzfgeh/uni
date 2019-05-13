@@ -229,6 +229,18 @@
 			if(res.code == 200){
 				this.item = res.data;
 				
+				// uni.showModal({
+				// 	title: 'getQuotations',
+				// 	content: JSON.stringify(this.item),
+				// 	success: function (res) {
+				// 		if (res.confirm) {
+				// 			
+				// 		} else if (res.cancel) {
+				// 			console.log('用户点击取消');
+				// 		}
+				// 	}
+				// });
+				
 				if(this.item.company){
 				  if(this.item.company == "ASTP"){
 					this.company_name = this.companyNameList[0];
@@ -375,9 +387,19 @@
 	  onLoad(){
 			
 		this.global = uni.getStorageSync("global");
-		if(!this.global.quotation_id){
-			this.global.quotation_id = this.$root.$mp.query.quotation_id;
-		}
+		this.global.quotation_id = this.$root.$mp.query.quotation_id;
+		
+		// uni.showModal({
+		// 	title: 'quotation_id',
+		// 	content: this.global.quotation_id,
+		// 	success: function (res) {
+		// 		if (res.confirm) {
+		// 			
+		// 		} else if (res.cancel) {
+		// 			console.log('用户点击取消');
+		// 		}
+		// 	}
+		// });
 		
 		let openid = uni.getStorageSync("openid");
 		if(!openid){
