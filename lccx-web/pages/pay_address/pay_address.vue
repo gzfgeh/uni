@@ -207,18 +207,6 @@ export default {
       }
     },
 		
-		async H5login(){
-			let res = await H5login();
-			if(res.code == 200){
-				let token = res.data.token;
-				console.log(token);
-				if(token){
-					uni.setStorageSync('token', token);
-				}
-				
-			}
-		},
-		
 		async pay(){
 			let that = this;
       if(!this.address){
@@ -232,8 +220,8 @@ export default {
 			
 			let openid = uni.getStorageSync("openid");
       let params = {
-        name: this.global.name,
-        mobile: this.global.mobile,
+        name: this.name,
+        mobile: this.mobile,
         address: this.address,
 				openid: openid,
         paytype: 1,
@@ -322,12 +310,32 @@ export default {
 			let quotation_id = this.$root.$mp.query.quotation_id;
 				this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
 				this.quotationsToOrder();
-		}
+		},
+		
+		async H5login(){
+				let params = {
+					partner_id: this.$root.$mp.query.partner_id,
+					imei: this.$root.$mp.query.imei
+				};
+				
+				let res = await H5login(params);
+				if(res.code == 200){
+					let token = res.data.token;
+					console.log(token);
+					if(token){
+						uni.setStorageSync('token', token);
+					}
+					this.quotationsToOrder();
+				}
+			},
 		
   },
 
   onLoad () {
     this.global = wx.getStorageSync("global");
+		if(!this.global){
+			wx.setStorageSync("global", {})
+		}
     // this.getOpenid();
 		
 		let quotation_id = this.$root.$mp.query.quotation_id;
@@ -338,10 +346,33 @@ export default {
 		}
 		
 		let openid = uni.getStorageSync("openid");
-		if(!openid){
-			openid = this.$root.$mp.query.openid;
+		if(!openid && isWeiXin()){
+			openid = this.$root.$mp.query.open_id;
+			if(!openid){
+				let curUrl = window.location.href;
+				openid = curUrl.split("open_id=")[1].split("#")[0];
+			}
+			
 			uni.setStorageSync("openid", openid);
+			this.H5login();
+			
+		}else{
+			this.quotationsToOrder();
 		}
+		
+		
+		// uni.showModal({
+		// 			title: 'quotation_id',
+		// 			content: quotation_id,
+		// 			success: function (res) {
+		// 				if (res.confirm) {
+		// 					
+		// 				} else if (res.cancel) {
+		// 					console.log('用户点击取消');
+		// 				}
+		// 			}
+		// 		});
+		
 		
 		// if(isWeiXin()){
 		// 	
@@ -353,8 +384,7 @@ export default {
 		// 	this.items.push(para);
 		// }
 		
-		console.log(weixin_sdk);
-		this.quotationsToOrder();
+		
   },
 	
 	onShow(){

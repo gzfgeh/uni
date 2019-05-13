@@ -149,7 +149,8 @@
 				companyNameList: ['安盛天平', '天安财险', '大地保险'],
 				companyLogo: [BASE_IMAGE_URL+'an_sheng.png', BASE_IMAGE_URL+'tian_an.png', BASE_IMAGE_URL+'da_di.png'],
 				company_logo: '',
-				company_name: ''
+				company_name: '',
+				quotation_id: ''
 			}
 	  },
 
@@ -168,16 +169,24 @@
 			}
 			
 			let openid = uni.getStorageSync("openid");
+			console.log(openid);
+			
+			if(!isWeiXin()){
+				uni.removeStorageSync("openid");
+			}
+		
 			if(!openid){
 				if(isWeiXin()){
 					//如果是微信浏览器 去获取openid
-					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=http%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d340&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
+					let partner_id = this.$root.$mp.query.partner_id;
+					let imei =  this.$root.$mp.query.imei;
+					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=https%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d"+this.quotation_id+"%26partner_id%3d"+partner_id+"%26imei%3d"+imei+"&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
 				}else{
-					const url = '../pay_address/pay_address';
+					const url = '../pay_address/pay_address?quotation_id='+this.quotation_id;
 					uni.navigateTo({ url })
 				}
 			}else{
-				const url = '../pay_address/pay_address';
+				const url = '../pay_address/pay_address?quotation_id='+this.quotation_id;
 				uni.navigateTo({ url })
 			}
 		},
@@ -225,21 +234,9 @@
 		},
 
 		async getQuotations(){
-			let res = await getQuotations(this.global.quotation_id);
+			let res = await getQuotations(this.quotation_id);
 			if(res.code == 200){
 				this.item = res.data;
-				
-				// uni.showModal({
-				// 	title: 'getQuotations',
-				// 	content: JSON.stringify(this.item),
-				// 	success: function (res) {
-				// 		if (res.confirm) {
-				// 			
-				// 		} else if (res.cancel) {
-				// 			console.log('用户点击取消');
-				// 		}
-				// 	}
-				// });
 				
 				if(this.item.company){
 				  if(this.item.company == "ASTP"){
@@ -358,7 +355,6 @@
 					this.first_reg_date = this.item.first_reg_date;
 
 					console.log(this.item);
-					this.global.biz_id = this.item.biz_id;
 					console.log('this.item.quote_details');
 					console.log(this.item);
 					this.$forceUpdate();
@@ -387,19 +383,7 @@
 	  onLoad(){
 			
 		this.global = uni.getStorageSync("global");
-		this.global.quotation_id = this.$root.$mp.query.quotation_id;
-		
-		// uni.showModal({
-		// 	title: 'quotation_id',
-		// 	content: this.global.quotation_id,
-		// 	success: function (res) {
-		// 		if (res.confirm) {
-		// 			
-		// 		} else if (res.cancel) {
-		// 			console.log('用户点击取消');
-		// 		}
-		// 	}
-		// });
+		this.quotation_id = this.$root.$mp.query.quotation_id;
 		
 		let openid = uni.getStorageSync("openid");
 		if(!openid){
