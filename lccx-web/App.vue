@@ -2,8 +2,7 @@
     export default {
         onLaunch: function() {
             console.log('App Launch');
-			uni.setStorageSync("partner_id", 100);
-			uni.setStorageSync("imei", 123);
+			
 			
             let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
             console.log(tmpUrlSearch);
@@ -31,6 +30,10 @@
 			let isagent = tmpParas["isagent"];//提取参数
 			console.log(isagent);
 			uni.setStorageSync("isagent", isagent);
+			
+			// uni.setStorageSync("partner_id", 100);
+			// uni.setStorageSync("imei", 123);
+			// uni.setStorageSync("isagent", true);
 			
         },
         onShow: function() {
