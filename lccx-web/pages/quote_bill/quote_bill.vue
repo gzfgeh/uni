@@ -503,7 +503,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     glassChange(e){
       this.glassIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.glassList;
+				this.glassList = [];
+				this.glassList = temp;
+			}, 1000);
     },
 
 		showSheShuiIndex(){
@@ -511,7 +515,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     sheShuiChange(e){
       this.sheShuiIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
     },
 
 		showSanIndex(){
@@ -519,7 +527,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     sanChange(e){
       this.sanIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
     },
 		
 		showJiangQiang(){
@@ -531,7 +543,13 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
       // this.jiaoIndex = e.detail.value;
 			
 			this.jiaoIndex = e.value;
-			this.$forceUpdate();
+			
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
+			
     },
 		
 		showZiRanIndex(){
@@ -540,7 +558,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 
     ziRanChange(e){
       this.ziRanIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
     },
 
 		showHuaIndex(){
@@ -548,7 +570,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     huaChange(e){
       this.huaIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.huaList;
+				this.huaList = [];
+				this.huaList = temp;
+			}, 1000);
     },
 		
 		showQiangIndex(){
@@ -557,7 +583,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 
     qiangChange(e){
       this.qiangIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
     },
 		
 		showChengKeIndex(){
@@ -565,7 +595,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     chengKeChange(e){
       this.chengKeIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.siJiList;
+				this.siJiList = [];
+				this.siJiList = temp;
+			}, 1000);
     },
 
 		showJiDong(){
@@ -573,7 +607,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     jidongChange(e){
       this.jidongIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.dataList;
+				this.dataList = [];
+				this.dataList = temp;
+			}, 1000);
     },
 
 		showJidongValueIndex(){
@@ -581,7 +619,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     jidongChangeValue(e){
       this.jidongValueIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.moneyList;
+				this.moneyList = [];
+				this.moneyList = temp;
+			}, 1000);
     },
 
 		showSiJiPicker(){
@@ -589,7 +631,11 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 		},
     siJiChange(e){
       this.siJiIndex = e.value;
-			this.$forceUpdate();
+			setTimeout(() => {
+				let temp = this.siJiList;
+				this.siJiList = [];
+				this.siJiList = temp;
+			}, 1000);
     },
 
     imeiFocus: function(e){
