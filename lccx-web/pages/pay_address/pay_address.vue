@@ -136,14 +136,15 @@ export default {
 				}, 100);
 			},
 		hideModal: function(){
-			let quotation_id = this.$root.$mp.query.quotation_id;
-			this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
+			// let quotation_id = this.$root.$mp.query.quotation_id;
+			// this.quotation_id = quotation_id?quotation_id:this.global.quotation_id;
+			// this.showModal = false;
+			// this.quotationsToOrder();
 			this.showModal = false;
-			this.quotationsToOrder();
 		},
     next () {
 			this.showModal = false;
-      wx.navigateTo({
+      uni.navigateTo({
         url: "../pay_one/pay_one?jiaoqiang_order_id="+this.jiaoqiang_order_id
       })
     },
@@ -154,8 +155,8 @@ export default {
 			};
 			let res = await orderStaus(params);
 			if(res.code == 200){
-				if(res.data && res.data.success){
-					this.hideModal();
+				if(res.success){
+					// this.hideModal();
 					this.next();
 				}else{
 					uni.showToast({
@@ -314,9 +315,18 @@ export default {
 		},
 		
 		async H5login(){
+			let partner_id = this.$root.$mp.query.partner_id;
+			let imei = this.$root.$mp.query.imei;
+			if(!partner_id){
+				partner_id = uni.getStorageSync("partner_id");
+			}
+			
+			if(!imei){
+				imei = uni.getStorageSync("imei");
+			}
 				let params = {
-					partner_id: this.$root.$mp.query.partner_id,
-					imei: this.$root.$mp.query.imei
+					partner_id: partner_id,
+					imei: imei
 				};
 				
 				let res = await H5login(params);
@@ -355,36 +365,7 @@ export default {
 			}
 			
 			uni.setStorageSync("openid", openid);
-			this.H5login();
-			
-		}else{
-			this.quotationsToOrder();
 		}
-		
-		
-		// uni.showModal({
-		// 			title: 'quotation_id',
-		// 			content: quotation_id,
-		// 			success: function (res) {
-		// 				if (res.confirm) {
-		// 					
-		// 				} else if (res.cancel) {
-		// 					console.log('用户点击取消');
-		// 				}
-		// 			}
-		// 		});
-		
-		
-		// if(isWeiXin()){
-		// 	
-		// }else{
-		// 	let para = {
-		// 		name: '支付宝支付',
-		// 		icon_url: BASE_IMAGE_URL+'zhifubao.png'
-		// 	};
-		// 	this.items.push(para);
-		// }
-		
 		
   },
 	
@@ -398,7 +379,11 @@ export default {
 				this.showModal = true;
 			}else{
 				uni.removeStorageSync("pay_address");
+				//this.H5login();
+				this.quotationsToOrder();
 			}
+			
+			
 	}
 
 }

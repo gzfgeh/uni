@@ -104,6 +104,10 @@ export default {
 			})
 		},
     next () {
+			// const url = '../service_confirm_new/service_confirm_new';
+			// 	uni.navigateTo({ url })
+			// 	return;
+				
 			let isagent= uni.getStorageSync("isagent");
 			if(isagent){
 				const url = '../service_confirm_new/service_confirm_new';

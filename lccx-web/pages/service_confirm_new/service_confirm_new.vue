@@ -250,9 +250,15 @@
 				let res = await getQuotations(this.global.quotation_id);
 				if(res.code == 200){
 					this.item = res.data;
+					// this.ci_commission = parseFloat(res.data.ci_commission).toFixed(2);
+					// this.bi_commission = parseFloat(res.data.bi_commission).toFixed(2);
+					this.all_commission = parseFloat(parseFloat(this.ci_commission) + parseFloat(this.bi_commission)).toFixed(2);
+					
 					this.ci_commission = parseFloat(res.data.ci_commission).toFixed(2);
 					this.bi_commission = parseFloat(res.data.bi_commission).toFixed(2);
 					this.all_commission = parseFloat(this.ci_commission + this.bi_commission).toFixed(2);
+					this.all_commission = parseFloat(parseFloat(this.ci_commission) + parseFloat(this.bi_commission)).toFixed(2);
+					
 					
 					if(this.item.company){
 					  if(this.item.company == "ASTP"){

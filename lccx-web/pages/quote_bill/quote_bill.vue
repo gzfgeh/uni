@@ -20,20 +20,28 @@
 				  <span class="arraw"></span>
 		</div>
 		
-		<div class="item_wrap uni-between-item">
+		<mpvue-picker mode="selector" ref="mpvuePicker" :pickerValueDefault="jiaoIndex"  @onConfirm="jiaoChange" :pickerValueArray="dataList"></mpvue-picker>
+			
+		<div class="item_wrap uni-between-item" @click="showJiangQiang">
 				  <span>交强险</span>
-				  <span class="uni-flex-item"></span>
+				  <span class="uni-flex-item" ></span>
 				  
 				  <div class="uni-between-item">
-					  <picker :range="dataList" :value="jiaoIndex" @change="jiaoChange">
-						<div :class="{'unActive': (jiaoIndex == 0)}">
-						  {{dataList[jiaoIndex]}}
+						
+						<div class="active" :class="{'unActive': (jiaoIndex[0] == 0)}">
+						  {{dataList[jiaoIndex[0]].label}}
 						</div>
-					  </picker>
+ 
+					  <!-- <picker :range="dataList" :value="jiaoIndex" @change="jiaoChange">
+							<div :class="{'unActive': (jiaoIndex == 0)}">
+								{{dataList[jiaoIndex]}}
+							</div>
+					  </picker> -->
+						
 						<span class="arraw"></span>
 				  </div>
 		</div>
-	  
+		
       <div class="title">
         商业险调整
       </div>
@@ -51,171 +59,235 @@
 		  <span class="arraw"></span>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		<mpvue-picker mode="selector" ref="jidongPicker" :pickerValueDefault="jidongIndex"  @onConfirm="jidongChange" :pickerValueArray="dataList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showJiDong">
 		  <span>机动车损失险</span>
-		  <div class="radio_wrap" v-if="(jidongIndex != 0)">
+		  <div class="radio_wrap" v-if="(jidongIndex[0] != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <picker :range="dataList" :value="jidongIndex" @change="jidongChange">
+			  <!-- <picker :range="dataList" :value="jidongIndex" @change="jidongChange">
 				<div :class="{'unActive': (jidongIndex == 0)}">
 				  {{dataList[jidongIndex]}}
 				</div>
-			  </picker>
+			  </picker> -->
+				
+				<div class="active" :class="{'unActive': (jidongIndex[0] == 0)}">
+				  {{dataList[jidongIndex[0]].label}}
+				</div>
+				
 			  <span class="arraw"></span>
 		  </div>
+			
 	  </div>
 	  
-	  
-	  <div class="item_wrap uni-between-item">
+	  <mpvue-picker mode="selector" ref="jidongValuePicker" :pickerValueDefault="jidongValueIndex"  @onConfirm="jidongChangeValue" :pickerValueArray="moneyList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showJidongValueIndex">
 		  <span>第三者责任险</span>
-		  <div class="radio_wrap" v-if="(jidongValueIndex != 0)">
+		  <div class="radio_wrap" v-if="(jidongValueIndex[0] != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <picker :range="moneyList" :value="jidongValueIndex" @change="jidongChangeValue">
+			  <!-- <picker :range="moneyList" :value="jidongValueIndex" @change="jidongChangeValue">
 				<div :class="{'unActive': (jidongValueIndex == 0)}">
 				  {{moneyList[jidongValueIndex]}}
 				</div>
-			  </picker>
+			  </picker> -->
+				
+				<div class="active" :class="{'unActive': (jidongValueIndex[0] == 0)}">
+				  {{moneyList[jidongValueIndex[0]].label}}
+				</div>
 				<span class="arraw"></span>
 		  </div>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		
+		<mpvue-picker mode="selector" ref="siJiIndexPicker" :pickerValueDefault="siJiIndex"  @onConfirm="siJiChange" :pickerValueArray="siJiList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showSiJiPicker">
 		  <span>司机责任险</span>
-		  <div class="radio_wrap" v-if="(siJiIndex != 0)">
+		  <div class="radio_wrap" v-if="(siJiIndex[0] != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <picker :range="siJiList" :value="siJiIndex" @change="siJiChange">
+			  <!-- <picker :range="siJiList" :value="siJiIndex" @change="siJiChange">
 				<div :class="{'unActive': (siJiIndex == 0)}">
 				  {{siJiList[siJiIndex]}}
 				</div>
-			  </picker>
+			  </picker> -->
+				
+				<div class="active" :class="{'unActive': (siJiIndex[0] == 0)}">
+				  {{siJiList[siJiIndex[0]].label}}
+				</div>
 				<span class="arraw"></span>
 		  </div>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		
+		<mpvue-picker mode="selector" ref="chengKeIndexPicker" :pickerValueDefault="chengKeIndex"  @onConfirm="chengKeChange" :pickerValueArray="siJiList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showChengKeIndex">
 		  <span>乘客责任险</span>
-		  <div class="radio_wrap" v-if="(chengKeIndex != 0)">
+		  <div class="radio_wrap" v-if="(chengKeIndex[0] != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <picker :range="siJiList" :value="chengKeIndex" @change="chengKeChange">
+			  <!-- <picker :range="siJiList" :value="chengKeIndex" @change="chengKeChange">
 				<div :class="{'unActive': (chengKeIndex == 0)}">
 				  {{siJiList[chengKeIndex]}}
 				</div>
-			  </picker>
+			  </picker> -->
+				
+				<div class="actvie" :class="{'unActive': (chengKeIndex[0] == 0)}">
+				  {{siJiList[chengKeIndex[0]].label}}
+				</div>
 				<span class="arraw"></span>
 		  </div>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		
+		<mpvue-picker mode="selector" ref="qiangIndexPicker" :pickerValueDefault="qiangIndex"  @onConfirm="qiangChange" :pickerValueArray="dataList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showQiangIndex">
 	  		  <span>盗抢险</span>
-	  		  <div class="radio_wrap" v-if="(qiangIndex != 0)">
+	  		  <div class="radio_wrap" v-if="(qiangIndex[0] != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <picker :range="dataList" :value="qiangIndex" @change="qiangChange">
+	  			  <!-- <picker :range="dataList" :value="qiangIndex" @change="qiangChange">
 	  				<div :class="{'unActive': (qiangIndex == 0)}">
 	  				  {{dataList[qiangIndex]}}
 	  				</div>
-	  			  </picker>
+	  			  </picker> -->
+						
+						<div class="active" :class="{'unActive': (qiangIndex[0] == 0)}">
+	  				  {{dataList[qiangIndex[0]].label}}
+	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		<mpvue-picker mode="selector" ref="huaIndexPicker" :pickerValueDefault="huaIndex"  @onConfirm="huaChange" :pickerValueArray="huaList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showHuaIndex">
 	  		  <span>划痕险</span>
-	  		  <div class="radio_wrap" v-if="(huaIndex != 0)">
+	  		  <div class="radio_wrap" v-if="(huaIndex[0] != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <picker :range="huaList" :value="huaIndex" @change="huaChange">
+	  			  <!-- <picker :range="huaList" :value="huaIndex" @change="huaChange">
 	  				<div :class="{'unActive': (huaIndex == 0)}">
 	  				  {{huaList[huaIndex]}}
 	  				</div>
-	  			  </picker>
+	  			  </picker> -->
+						
+						<div class="active" :class="{'unActive': (huaIndex[0] == 0)}">
+	  				  {{huaList[huaIndex[0]].label}}
+	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
 	  </div>
 	  
-	  <div class="item_wrap uni-between-item">
+		<mpvue-picker mode="selector" ref="ziRanIndexPicker" :pickerValueDefault="ziRanIndex"  @onConfirm="ziRanChange" :pickerValueArray="dataList"></mpvue-picker>
+		
+	  <div class="item_wrap uni-between-item" @click="showZiRanIndex">
 	  		  <span>自燃险</span>
-	  		  <div class="radio_wrap" v-if="(ziRanIndex != 0)">
+	  		  <div class="radio_wrap" v-if="(ziRanIndex[0] != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <picker :range="dataList" :value="ziRanIndex" @change="ziRanChange">
+	  			  <!-- <picker :range="dataList" :value="ziRanIndex" @change="ziRanChange">
 	  				<div :class="{'unActive': (ziRanIndex == 0)}">
 	  				  {{dataList[ziRanIndex]}}
 	  				</div>
-	  			  </picker>
+	  			  </picker> -->
+						
+						<div class="active" :class="{'unActive': (ziRanIndex[0] == 0)}">
+	  				  {{dataList[ziRanIndex[0]].label}}
+	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
 	  </div>
 	  
-    <div class="item_wrap uni-between-item">
+		
+		<mpvue-picker mode="selector" ref="glassIndexPicker" :pickerValueDefault="glassIndex"  @onConfirm="glassChange" :pickerValueArray="glassList"></mpvue-picker>
+		
+    <div class="item_wrap uni-between-item" @click="showGlassIndex">
     		  <span>玻璃险</span>
-    		  <div class="radio_wrap" v-if="(glassIndex != 0)">
+    		  <div class="radio_wrap" v-if="(glassIndex[0] != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
     		  
     		  <div class="uni-between-item">
-    			  <picker :range="glassList" :value="glassIndex" @change="glassChange">
+    			  <!-- <picker :range="glassList" :value="glassIndex" @change="glassChange">
     				<div :class="{'unActive': (glassIndex == 0)}">
     				  {{glassList[glassIndex]}}
     				</div>
-    			  </picker>
+    			  </picker> -->
+						
+						<div class="active" :class="{'unActive': (glassIndex[0] == 0)}">
+    				  {{glassList[glassIndex[0]].label}}
+    				</div>
     				<span class="arraw"></span>
     		  </div>
     </div>
 			
+		<mpvue-picker mode="selector" ref="sheShuiIndexPicker" :pickerValueDefault="sheShuiIndex"  @onConfirm="sheShuiChange" :pickerValueArray="dataList"></mpvue-picker>
 		
-		<div class="item_wrap uni-between-item">
+		<div class="item_wrap uni-between-item" @click="showSheShuiIndex">
 				  <span>涉水险</span>
-				  <div class="radio_wrap" v-if="(sheShuiIndex != 0)">
+				  <div class="radio_wrap" v-if="(sheShuiIndex[0] != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 				  
 				  <div class="uni-between-item">
-					  <picker :range="dataList" :value="sheShuiIndex" @change="sheShuiChange">
+					 <!-- <picker :range="dataList" :value="sheShuiIndex" @change="sheShuiChange">
 						<div :class="{'unActive': (sheShuiIndex == 0)}">
 						  {{dataList[sheShuiIndex]}}
 						</div>
-					  </picker>
+					  </picker> -->
+						
+						<div class="active" :class="{'unActive': (sheShuiIndex[0] == 0)}">
+						  {{dataList[sheShuiIndex[0]].label}}
+						</div>
 						<span class="arraw"></span>
 				  </div>
 		</div>  	
 	  
-		<div class="item_wrap uni-between-item">
+		<mpvue-picker mode="selector" ref="sanIndexPicker" :pickerValueDefault="sanIndex"  @onConfirm="sanChange" :pickerValueArray="dataList"></mpvue-picker>
+		
+		<div class="item_wrap uni-between-item" @click="showSanIndex">
 				  <span>无法找到第三方特约险</span>
 				  <span class="uni-flex-item"></span>
 				  
 				  <div class="uni-between-item">
-					  <picker :range="dataList" :value="sanIndex" @change="sanChange">
+					  <!-- <picker :range="dataList" :value="sanIndex" @change="sanChange">
 						<div :class="{'unActive': (sanIndex == 0)}">
 						  {{dataList[sanIndex]}}
 						</div>
-					  </picker>
+					  </picker> -->
+						
+						<div class="active" :class="{'unActive': (sanIndex == 0)}">
+						  {{dataList[sanIndex[0]].label}}
+						</div>
 						<span class="arraw"></span>
 				  </div>
 		</div>  
@@ -236,19 +308,29 @@
 	import { BASE_IMAGE_URL,insurance,getEffectiveDate,getExactQoute } from "@/utils/api";
 import {isChinese, getDay} from '../../utils'
 import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
+import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 //glass可以取值 false: 不保 1: 国产玻璃   2: 进口玻璃
 	
 	export default {
+		components: {
+			mpvuePicker
+    },
 	  data () {
 		return {
 		  step: 1,
-      siJiList: ['不投保',"1万","2万","3万","4万","5万","10万","20万","30万","50万"],
-      siJiIndex: 0,
-      dataList: ["不投保","投保"],
-      jidongIndex: 1,
-      moneyList: ['不投保',"5万","10万","20万","30万","50万","100万","150万","200万","300万","500万"],
-      glassList: ['不投保','国产玻璃','进口玻璃'],
-      huaList: ['不投保', '2000', '5000', '10000', '20000'],    
+      siJiList: [{label: "不投保", value: 0}, {label: "1万", value: 1}, {label: "2万", value: 2},
+									{label: "3万", value: 3}, {label: "4万", value: 4}, {label: "5万", value: 5},
+									{label: "10万", value: 6}, {label: "20万", value: 7}, {label: "50万", value: 8}],
+      siJiIndex: [0],
+      dataList: [{label: "不投保", value: 0}, {label: "投保", value: 1}],
+			dataList123: ["不投保", "投保"],
+      jidongIndex: [1],
+      moneyList: [{label: "不投保", value: 0}, {label: "5万", value: 1}, {label: "10万", value: 2},
+									{label: "20万", value: 3}, {label: "30万", value: 4}, {label: "50万", value: 5},
+									{label: "100万", value: 6}, {label: "150万", value: 7}, {label: "200万", value: 8},
+									{label: "300万", value: 9}, {label: "500万", value: 10}],
+      glassList: [{label: "不投保", value: 0}, {label: "国产玻璃", value: 1}, {label: "进口玻璃", value: 2}],
+      huaList: [{label: "不投保", value: 0}, {label: "2000", value: 1}, {label: "5000", value: 2}, {label: "10000", value: 3}, {label: "20000", value: 4}],    
       cateIndex: 0,
       cateResList: [],
       license_no: '',
@@ -271,16 +353,16 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
       
       jidongRadioValue: true,
       otherRadioValue: true,
-      jidongValueIndex: 6,
-      chengKeIndex: 0,
-      qiangIndex: 0,
-      huaIndex: 0,
-      ziRanIndex: 0,
-      jiaoIndex: 1,
+      jidongValueIndex: [6],
+      chengKeIndex: [0],
+      qiangIndex: [0],
+      huaIndex: [0],
+      ziRanIndex: [0],
+      jiaoIndex: [1],
       global: '',
-      sheShuiIndex: 0,
-      sanIndex: 0,
-      glassIndex: 0
+      sheShuiIndex: [0],
+      sanIndex: [0],
+      glassIndex: [0]
 		}
 	  },
 
@@ -293,8 +375,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         let bi_end_date = this.dateTime; 
         let ci_end_date = this.dateTimeTwo;
 
-        let liability = this.moneyList[this.jidongValueIndex];
-        if(this.jidongValueIndex != 0){
+        let liability = this.moneyList[this.jidongValueIndex[0]].label;
+        if(this.jidongValueIndex[0] != 0){
           
           if(liability.indexOf("万") != -1){
             liability = parseInt(liability.split("万")[0]*10000);
@@ -303,8 +385,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
           liability = false;
         }
         
-        let driver_seat = this.siJiList[this.siJiIndex];
-        if(this.siJiIndex != 0){
+        let driver_seat = this.siJiList[this.siJiIndex[0]].label;
+        if(this.siJiIndex[0] != 0){
             
             if(driver_seat.indexOf("万") != -1){
               driver_seat = parseInt(driver_seat.split("万")[0]*10000);
@@ -313,8 +395,8 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
           driver_seat = false;
         }
         
-        let passenger_seat = this.siJiList[this.chengKeIndex];
-        if(this.chengKeIndex != 0){
+        let passenger_seat = this.siJiList[this.chengKeIndex[0]].lable;
+        if(this.chengKeIndex[0] != 0){
           if(passenger_seat.indexOf("万") != -1){
             passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
           }
@@ -322,15 +404,15 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
           passenger_seat = false;
         }
 
-        let hua_seat = this.huaList[this.huaIndex];
-        if(this.huaIndex != 0){
+        let hua_seat = this.huaList[this.huaIndex[0]].label;
+        if(this.huaIndex[0] != 0){
           hua_seat = parseInt(hua_seat);
         }else{
           hua_seat = false;
         }
 
-        let glass_seat = this.glassList[this.glassIndex];
-        if(this.glassIndex == 0){
+        let glass_seat = this.glassList[this.glassIndex[0]].label;
+        if(this.glassIndex[0] == 0){
           glass_seat = false;
         }else if(glass_seat == '国产玻璃'){
           glass_seat = 1;
@@ -339,17 +421,17 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
         }
 
 				let quote_details = {
-					"compulsory": this.jiaoIndex == 1,
-          "destroy": this.jidongIndex == 1,
+					"compulsory": this.jiaoIndex[0] == 1,
+          "destroy": this.jidongIndex[0] == 1,
           "liability": liability,
-          "stolen": this.qiangIndex == 1,
+          "stolen": this.qiangIndex[0] == 1,
           "passenger_seat": passenger_seat,
           "driver_seat": driver_seat,
           "scratch": hua_seat,
           "glasses": glass_seat,
-          "water": this.sheShuiIndex == 1,
-          "burn": this.ziRanIndex == 1,
-          'no_3rd_party': this.sanIndex == 1,
+          "water": this.sheShuiIndex[0] == 1,
+          "burn": this.ziRanIndex[0] == 1,
+          'no_3rd_party': this.sanIndex[0] == 1,
           "excluding": this.jidongRadioValue
         }
         
@@ -407,56 +489,107 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
     },
     jidongRadioChange(){
       this.jidongRadioValue = !this.jidongRadioValue;
+			this.$forceUpdate();
       console.log(this.jidongRadioValue);
     },
 
     otherRadioChange(){
       this.otherRadioValue = !this.otherRadioValue;
+			this.$forceUpdate();
     },
 
+		showGlassIndex(){
+			this.$refs.glassIndexPicker.show();
+		},
     glassChange(e){
-      this.glassIndex = e.mp.detail.value;
+      this.glassIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showSheShuiIndex(){
+			this.$refs.sheShuiIndexPicker.show();
+		},
     sheShuiChange(e){
-      this.sheShuiIndex = e.mp.detail.value;
+      this.sheShuiIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showSanIndex(){
+			this.$refs.sanIndexPicker.show();
+		},
     sanChange(e){
-      this.sanIndex = e.mp.detail.value;
+      this.sanIndex = e.value;
+			this.$forceUpdate();
     },
+		
+		showJiangQiang(){
+			this.$refs.mpvuePicker.show();
+		},
 
     jiaoChange(e){
-      this.jiaoIndex = e.mp.detail.value;
+			console.log(e);
+      // this.jiaoIndex = e.detail.value;
+			
+			this.jiaoIndex = e.value;
+			this.$forceUpdate();
     },
+		
+		showZiRanIndex(){
+			this.$refs.ziRanIndexPicker.show();
+		},
 
     ziRanChange(e){
-      this.ziRanIndex = e.mp.detail.value;
+      this.ziRanIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showHuaIndex(){
+			this.$refs.huaIndexPicker.show();
+		},
     huaChange(e){
-      this.huaIndex = e.mp.detail.value;
+      this.huaIndex = e.value;
+			this.$forceUpdate();
     },
+		
+		showQiangIndex(){
+			this.$refs.qiangIndexPicker.show();
+		},
 
     qiangChange(e){
-      this.qiangIndex = e.mp.detail.value;
+      this.qiangIndex = e.value;
+			this.$forceUpdate();
     },
+		
+		showChengKeIndex(){
+			this.$refs.chengKeIndexPicker.show();
+		},
     chengKeChange(e){
-      this.chengKeIndex = e.mp.detail.value;
+      this.chengKeIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showJiDong(){
+			this.$refs.jidongPicker.show();
+		},
     jidongChange(e){
-      console.log(e.mp.detail.value);
-      this.jidongIndex = e.mp.detail.value;
+      this.jidongIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showJidongValueIndex(){
+			this.$refs.jidongValuePicker.show();
+		},
     jidongChangeValue(e){
-      console.log(e.mp.detail.value);
-      this.jidongValueIndex = e.mp.detail.value;
+      this.jidongValueIndex = e.value;
+			this.$forceUpdate();
     },
 
+		showSiJiPicker(){
+			this.$refs.siJiIndexPicker.show();
+		},
     siJiChange(e){
-      this.siJiIndex = e.mp.detail.value;
+      this.siJiIndex = e.value;
+			this.$forceUpdate();
     },
 
     imeiFocus: function(e){
@@ -603,7 +736,7 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
 }
 
 .unActive{
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.3)!important;
 }
 
 .phone_code_wrap{
@@ -734,6 +867,9 @@ import {dateTimePicker, getMonthDay} from '@/utils/dateTimePicker'
   background: #0000FF;
 }
 
+.active{
+	color: rgba(0,0,0,0.7);
+}
 
 picker{
   margin-right: 10upx;

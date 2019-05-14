@@ -362,9 +362,14 @@
 			},
 			
 			async H5login(){
+				let partner_id = this.$root.$mp.query.partner_id;
+				let imei = this.$root.$mp.query.imei;
+				uni.setStorageSync("partner_id", partner_id);
+				uni.setStorageSync("imei", imei);
+				
 				let params = {
-					partner_id: this.$root.$mp.query.partner_id,
-					imei: this.$root.$mp.query.imei
+					partner_id: partner_id,
+					imei: imei
 				};
 				
 				let res = await H5login(params);
