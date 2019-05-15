@@ -2,13 +2,13 @@
     export default {
         onLaunch: function() {
             console.log('App Launch');
-			// let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
-			// console.log(tmpUrlSearch);
-			// let tmpParas= this.GetRequestParameters(tmpUrlSearch);
-			// let openid = tmpParas["openid"];//提取参数
-			// console.log(openid);
-			// uni.setStorageSync("openid", openid);
-			uni.setStorageSync("openid", "oms5B1cYgVWMCWtDOgiTzH6EUmp4");
+			let tmpUrlSearch = window.location.search;// 得到：?sceneid=h5&wxcode=xxx&puid=fff
+			console.log(tmpUrlSearch);
+			let tmpParas= this.GetRequestParameters(tmpUrlSearch);
+			let openid = tmpParas["openid"];//提取参数
+			console.log(openid);
+			uni.setStorageSync("openid", openid);
+			// uni.setStorageSync("openid", "oms5B1cYgVWMCWtDOgiTzH6EUmp4");
         },
         onShow: function() {
             console.log('App Show');

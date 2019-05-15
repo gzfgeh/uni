@@ -155,6 +155,24 @@
 					console.log(res.data);
 					this.itemList = res.data;
 					
+					this.itemList.map((item) => {
+						if(item.t_url.indexOf("http:") != -1){
+							item.t_url = "https" + item.t_url.substring(4, item.t_url.length);
+						}
+					})
+					
+					// uni.showModal({
+					// 	title: '图片',
+					// 	content: res.data[0].t_url,
+					// 	success: function (res) {
+					// 		if (res.confirm) {
+					// 			
+					// 		} else if (res.cancel) {
+					// 			console.log('用户点击取消');
+					// 		}
+					// 	}
+					// });
+					
 					// this.t_url = this.itemList[0].t_url;
 				}
 			},
