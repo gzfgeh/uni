@@ -117,10 +117,11 @@
             },
             mode(oldVal, newVal) {
                 this.modeChange = true;
-            },
-			pickerValueArray(val){
-				this.initPicker(val);
-			}
+            }
+			// ,
+			// pickerValueArray(val){
+			// 	this.initPicker(val);
+			// }
         },
         methods: {
             initPicker(valueArray) {

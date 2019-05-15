@@ -304,6 +304,9 @@ export default {
 				let address = uni.getStorageSync("address").split("|");
 				result.data.map((item) => {
 					if(item.g_shi && item.g_qu){
+						if(item.g_img.indexOf("http:") != -1){
+							item.g_img = "https" + item.g_img.substring(4, item.g_img.length);
+						}
 						if((item.g_shi.substring(0, 2) == address[1].substring(0, 2)) && (item.g_qu.substring(0, 2) == address[2].substring(0,2)) ){
 							this.list.push(item);
 						}

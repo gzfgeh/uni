@@ -201,6 +201,12 @@
 						
 					}
 					
+					this.listData.map((item) => {
+						if(item.g_img.indexOf("http:") != -1){
+							item.g_img = "https" + item.g_img.substring(4, item.g_img.length);
+						}
+					})
+					
 					if(res.data.length < 10){
 						//没有了
 						this.loadingType = 2;

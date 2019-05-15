@@ -25,19 +25,10 @@
 		<div class="item_wrap uni-between-item" @click="showJiangQiang">
 				  <span>交强险</span>
 				  <span class="uni-flex-item" ></span>
-				  
 				  <div class="uni-between-item">
-						
 						<div class="active" :class="{'unActive': (jiaoIndex[0] == 0)}">
 						  {{dataList[jiaoIndex[0]].label}}
 						</div>
- 
-					  <!-- <picker :range="dataList" :value="jiaoIndex" @change="jiaoChange">
-							<div :class="{'unActive': (jiaoIndex == 0)}">
-								{{dataList[jiaoIndex]}}
-							</div>
-					  </picker> -->
-						
 						<span class="arraw"></span>
 				  </div>
 		</div>
@@ -59,7 +50,7 @@
 		  <span class="arraw"></span>
 	  </div>
 	  
-		<mpvue-picker mode="selector" ref="jidongPicker" :pickerValueDefault="jidongIndex"  @onConfirm="jidongChange" :pickerValueArray="dataList"></mpvue-picker>
+		<mpvue-picker mode="selector" ref="jidongPicker" :pickerValueDefault="jidongIndex"  @onConfirm="jidongChange" :pickerValueArray="jiDongList"></mpvue-picker>
 		
 	  <div class="item_wrap uni-between-item" @click="showJiDong">
 		  <span>机动车损失险</span>
@@ -69,16 +60,9 @@
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <!-- <picker :range="dataList" :value="jidongIndex" @change="jidongChange">
-				<div :class="{'unActive': (jidongIndex == 0)}">
-				  {{dataList[jidongIndex]}}
-				</div>
-			  </picker> -->
-				
 				<div class="active" :class="{'unActive': (jidongIndex[0] == 0)}">
-				  {{dataList[jidongIndex[0]].label}}
+				  {{jiDongList[jidongIndex[0]].label}}
 				</div>
-				
 			  <span class="arraw"></span>
 		  </div>
 			
@@ -94,12 +78,6 @@
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <!-- <picker :range="moneyList" :value="jidongValueIndex" @change="jidongChangeValue">
-				<div :class="{'unActive': (jidongValueIndex == 0)}">
-				  {{moneyList[jidongValueIndex]}}
-				</div>
-			  </picker> -->
-				
 				<div class="active" :class="{'unActive': (jidongValueIndex[0] == 0)}">
 				  {{moneyList[jidongValueIndex[0]].label}}
 				</div>
@@ -323,7 +301,7 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 									{label: "10万", value: 6}, {label: "20万", value: 7}, {label: "50万", value: 8}],
       siJiIndex: [0],
       dataList: [{label: "不投保", value: 0}, {label: "投保", value: 1}],
-			dataList123: ["不投保", "投保"],
+			jiDongList: [{label: "不投保", value: 0}, {label: "投保", value: 1}],
       jidongIndex: [1],
       moneyList: [{label: "不投保", value: 0}, {label: "5万", value: 1}, {label: "10万", value: 2},
 									{label: "20万", value: 3}, {label: "30万", value: 4}, {label: "50万", value: 5},
@@ -608,9 +586,9 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     jidongChange(e){
       this.jidongIndex = e.value;
 			setTimeout(() => {
-				let temp = this.dataList;
-				this.dataList = [];
-				this.dataList = temp;
+				let temp = this.jiDongList;
+				this.jiDongList = [];
+				this.jiDongList = temp;
 			}, 1000);
     },
 
