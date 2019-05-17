@@ -100,7 +100,7 @@ export default {
 		closeHeModal: function(){
 			this.showHeModal = false;
 			uni.navigateBack({
-					delta: 3
+					delta: 4
 			})
 		},
     next () {
@@ -136,7 +136,7 @@ export default {
 				  };
 		
 				  let res = await applyUnderwrite(params);
-				  if(res.code == 200){
+				  if((res.code == 200) && (res.data.state == 1)){
 						this.monthly_expense = this.item.monthly_expense;
 						this.mileage_expense = this.item.mileage_expense;
 						this.tax = parseInt(this.item.tax);

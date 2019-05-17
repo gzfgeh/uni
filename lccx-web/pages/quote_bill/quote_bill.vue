@@ -351,17 +351,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
         }
 
 				let quote_details = {
-					"compulsory": this.jiaoIndex[0] == 1,
-          "destroy": this.jidongIndex[0] == 1,
+					"compulsory": this.jiaoIndex == 1,
+          "destroy": this.jidongIndex == 1,
           "liability": liability,
-          "stolen": this.qiangIndex[0] == 1,
+          "stolen": this.qiangIndex == 1,
           "passenger_seat": passenger_seat,
           "driver_seat": driver_seat,
           "scratch": hua_seat,
           "glasses": glass_seat,
-          "water": this.sheShuiIndex[0] == 1,
-          "burn": this.ziRanIndex[0] == 1,
-          'no_3rd_party': this.sanIndex[0] == 1,
+          "water": this.sheShuiIndex == 1,
+          "burn": this.ziRanIndex == 1,
+          'no_3rd_party': this.sanIndex == 1,
           "excluding": this.jidongRadioValue
         }
         

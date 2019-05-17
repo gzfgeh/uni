@@ -221,7 +221,7 @@
 		  };
 
 		  let res = await applyUnderwrite(params);
-		  if(res.code == 200){
+		  if((res.code == 200) && (res.data.state == 1)){
 			this.monthly_expense = this.item.monthly_expense;
 			this.mileage_expense = this.item.mileage_expense;
 			this.compulsory = parseInt(this.item.compulsory);
@@ -230,6 +230,8 @@
 			this.tax = this.tax?this.tax:'';
 			uni.setStorageSync('global', this.global);
 			this.next();
+		  }else{
+			  
 		  }
 		},
 
