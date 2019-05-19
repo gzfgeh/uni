@@ -100,7 +100,7 @@ export default {
 		closeHeModal: function(){
 			this.showHeModal = false;
 			uni.navigateBack({
-					delta: 3
+					delta: 4
 			})
 		},
     next () {
@@ -121,10 +121,10 @@ export default {
 		async applyUnderwrite(){
 					
 					// "insurer": this.item.quote_result.data[0].insurerCode,
-		//   "biz_id": this.item.biz_id,
+		//   "biz_id": this.item.biz_id?this.item.biz_id:'53800845'
 				  let params = {
 					"insurer": 'ASTP',
-					"biz_id": this.item.biz_id?this.item.biz_id:'53800845',
+					"biz_id": this.item.details.data[0].bizID,
 					"channel_code": "QUANLIAN_PROXY_INSURE",
 					"address_name": this.global.name,
 					"address_mobile": this.global.mobile,
@@ -136,7 +136,7 @@ export default {
 				  };
 		
 				  let res = await applyUnderwrite(params);
-				  if(res.code == 200){
+				  if((res.code == 200) && (res.data.state == "1")){
 						this.monthly_expense = this.item.monthly_expense;
 						this.mileage_expense = this.item.mileage_expense;
 						this.tax = parseInt(this.item.tax);

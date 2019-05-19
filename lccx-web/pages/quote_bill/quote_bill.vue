@@ -26,8 +26,8 @@
 				  <span>交强险</span>
 				  <span class="uni-flex-item" ></span>
 				  <div class="uni-between-item">
-						<div class="active" :class="{'unActive': (jiaoIndex[0] == 0)}">
-						  {{dataList[jiaoIndex[0]].label}}
+						<div class="active" :class="{'unActive': (jiaoIndex == 0)}">
+						  {{dataList[jiaoIndex]}}
 						</div>
 						<span class="arraw"></span>
 				  </div>
@@ -54,14 +54,14 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showJiDong">
 		  <span>机动车损失险</span>
-		  <div class="radio_wrap" v-if="(jidongIndex[0] != 0)">
+		  <div class="radio_wrap" v-if="(jidongIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-				<div class="active" :class="{'unActive': (jidongIndex[0] == 0)}">
-				  {{jiDongList[jidongIndex[0]].label}}
+				<div class="active" :class="{'unActive': (jidongIndex == 0)}">
+				  {{jiDongList[jidongIndex]}}
 				</div>
 			  <span class="arraw"></span>
 		  </div>
@@ -72,14 +72,14 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showJidongValueIndex">
 		  <span>第三者责任险</span>
-		  <div class="radio_wrap" v-if="(jidongValueIndex[0] != 0)">
+		  <div class="radio_wrap" v-if="(jidongValueIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-				<div class="active" :class="{'unActive': (jidongValueIndex[0] == 0)}">
-				  {{moneyList[jidongValueIndex[0]].label}}
+				<div class="active" :class="{'unActive': (jidongValueIndex == 0)}">
+				  {{moneyList[jidongValueIndex]}}
 				</div>
 				<span class="arraw"></span>
 		  </div>
@@ -90,20 +90,15 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showSiJiPicker">
 		  <span>司机责任险</span>
-		  <div class="radio_wrap" v-if="(siJiIndex[0] != 0)">
+		  <div class="radio_wrap" v-if="(siJiIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <!-- <picker :range="siJiList" :value="siJiIndex" @change="siJiChange">
-				<div :class="{'unActive': (siJiIndex == 0)}">
-				  {{siJiList[siJiIndex]}}
-				</div>
-			  </picker> -->
 				
-				<div class="active" :class="{'unActive': (siJiIndex[0] == 0)}">
-				  {{siJiList[siJiIndex[0]].label}}
+				<div class="active" :class="{'unActive': (siJiIndex == 0)}">
+				  {{siJiList[siJiIndex]}}
 				</div>
 				<span class="arraw"></span>
 		  </div>
@@ -114,20 +109,15 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showChengKeIndex">
 		  <span>乘客责任险</span>
-		  <div class="radio_wrap" v-if="(chengKeIndex[0] != 0)">
+		  <div class="radio_wrap" v-if="(chengKeIndex != 0)">
 				<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 				<span>不计免赔</span>
 		  </div>
 		  
 		  <div class="uni-between-item">
-			  <!-- <picker :range="siJiList" :value="chengKeIndex" @change="chengKeChange">
-				<div :class="{'unActive': (chengKeIndex == 0)}">
-				  {{siJiList[chengKeIndex]}}
-				</div>
-			  </picker> -->
 				
-				<div class="actvie" :class="{'unActive': (chengKeIndex[0] == 0)}">
-				  {{siJiList[chengKeIndex[0]].label}}
+				<div class="active" :class="{'unActive': (chengKeIndex == 0)}">
+				  {{siJiList[chengKeIndex]}}
 				</div>
 				<span class="arraw"></span>
 		  </div>
@@ -138,20 +128,14 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showQiangIndex">
 	  		  <span>盗抢险</span>
-	  		  <div class="radio_wrap" v-if="(qiangIndex[0] != 0)">
+	  		  <div class="radio_wrap" v-if="(qiangIndex != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <!-- <picker :range="dataList" :value="qiangIndex" @change="qiangChange">
-	  				<div :class="{'unActive': (qiangIndex == 0)}">
+						<div class="active" :class="{'unActive': (qiangIndex == 0)}">
 	  				  {{dataList[qiangIndex]}}
-	  				</div>
-	  			  </picker> -->
-						
-						<div class="active" :class="{'unActive': (qiangIndex[0] == 0)}">
-	  				  {{dataList[qiangIndex[0]].label}}
 	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
@@ -161,20 +145,14 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showHuaIndex">
 	  		  <span>划痕险</span>
-	  		  <div class="radio_wrap" v-if="(huaIndex[0] != 0)">
+	  		  <div class="radio_wrap" v-if="(huaIndex != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <!-- <picker :range="huaList" :value="huaIndex" @change="huaChange">
-	  				<div :class="{'unActive': (huaIndex == 0)}">
+						<div class="active" :class="{'unActive': (huaIndex == 0)}">
 	  				  {{huaList[huaIndex]}}
-	  				</div>
-	  			  </picker> -->
-						
-						<div class="active" :class="{'unActive': (huaIndex[0] == 0)}">
-	  				  {{huaList[huaIndex[0]].label}}
 	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
@@ -184,20 +162,15 @@
 		
 	  <div class="item_wrap uni-between-item" @click="showZiRanIndex">
 	  		  <span>自燃险</span>
-	  		  <div class="radio_wrap" v-if="(ziRanIndex[0] != 0)">
+	  		  <div class="radio_wrap" v-if="(ziRanIndex != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 	  		  
 	  		  <div class="uni-between-item">
-	  			  <!-- <picker :range="dataList" :value="ziRanIndex" @change="ziRanChange">
-	  				<div :class="{'unActive': (ziRanIndex == 0)}">
-	  				  {{dataList[ziRanIndex]}}
-	  				</div>
-	  			  </picker> -->
 						
-						<div class="active" :class="{'unActive': (ziRanIndex[0] == 0)}">
-	  				  {{dataList[ziRanIndex[0]].label}}
+						<div class="active" :class="{'unActive': (ziRanIndex == 0)}">
+	  				  {{dataList[ziRanIndex]}}
 	  				</div>
 	  				<span class="arraw"></span>
 	  		  </div>
@@ -208,20 +181,15 @@
 		
     <div class="item_wrap uni-between-item" @click="showGlassIndex">
     		  <span>玻璃险</span>
-    		  <div class="radio_wrap" v-if="(glassIndex[0] != 0)">
+    		  <div class="radio_wrap" v-if="(glassIndex != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
     		  
     		  <div class="uni-between-item">
-    			  <!-- <picker :range="glassList" :value="glassIndex" @change="glassChange">
-    				<div :class="{'unActive': (glassIndex == 0)}">
-    				  {{glassList[glassIndex]}}
-    				</div>
-    			  </picker> -->
 						
-						<div class="active" :class="{'unActive': (glassIndex[0] == 0)}">
-    				  {{glassList[glassIndex[0]].label}}
+						<div class="active" :class="{'unActive': (glassIndex == 0)}">
+    				  {{glassList[glassIndex]}}
     				</div>
     				<span class="arraw"></span>
     		  </div>
@@ -231,20 +199,15 @@
 		
 		<div class="item_wrap uni-between-item" @click="showSheShuiIndex">
 				  <span>涉水险</span>
-				  <div class="radio_wrap" v-if="(sheShuiIndex[0] != 0)">
+				  <div class="radio_wrap" v-if="(sheShuiIndex != 0)">
 						<radio :checked="jidongRadioValue" color="#427DFF" class="radio"/>
 						<span>不计免赔</span>
 					</div>
 				  
 				  <div class="uni-between-item">
-					 <!-- <picker :range="dataList" :value="sheShuiIndex" @change="sheShuiChange">
-						<div :class="{'unActive': (sheShuiIndex == 0)}">
-						  {{dataList[sheShuiIndex]}}
-						</div>
-					  </picker> -->
 						
-						<div class="active" :class="{'unActive': (sheShuiIndex[0] == 0)}">
-						  {{dataList[sheShuiIndex[0]].label}}
+						<div class="active" :class="{'unActive': (sheShuiIndex == 0)}">
+						  {{dataList[sheShuiIndex]}}
 						</div>
 						<span class="arraw"></span>
 				  </div>
@@ -257,14 +220,8 @@
 				  <span class="uni-flex-item"></span>
 				  
 				  <div class="uni-between-item">
-					  <!-- <picker :range="dataList" :value="sanIndex" @change="sanChange">
-						<div :class="{'unActive': (sanIndex == 0)}">
-						  {{dataList[sanIndex]}}
-						</div>
-					  </picker> -->
-						
 						<div class="active" :class="{'unActive': (sanIndex == 0)}">
-						  {{dataList[sanIndex[0]].label}}
+						  {{dataList[sanIndex]}}
 						</div>
 						<span class="arraw"></span>
 				  </div>
@@ -296,20 +253,15 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
 	  data () {
 		return {
 		  step: 1,
-      siJiList: [{label: "不投保", value: 0}, {label: "1万", value: 1}, {label: "2万", value: 2},
-									{label: "3万", value: 3}, {label: "4万", value: 4}, {label: "5万", value: 5},
-									{label: "10万", value: 6}, {label: "20万", value: 7}, {label: "50万", value: 8}],
-      siJiIndex: [0],
-      dataList: [{label: "不投保", value: 0}, {label: "投保", value: 1}],
-			jiDongList: [{label: "不投保", value: 0}, {label: "投保", value: 1}],
-      jidongIndex: [1],
-      moneyList: [{label: "不投保", value: 0}, {label: "5万", value: 1}, {label: "10万", value: 2},
-									{label: "20万", value: 3}, {label: "30万", value: 4}, {label: "50万", value: 5},
-									{label: "100万", value: 6}, {label: "150万", value: 7}, {label: "200万", value: 8},
-									{label: "300万", value: 9}, {label: "500万", value: 10}],
-      glassList: [{label: "不投保", value: 0}, {label: "国产玻璃", value: 1}, {label: "进口玻璃", value: 2}],
-      huaList: [{label: "不投保", value: 0}, {label: "2000", value: 1}, {label: "5000", value: 2}, {label: "10000", value: 3}, {label: "20000", value: 4}],    
-      cateIndex: 0,
+      siJiList: ['不投保',"1万","2万","3万","4万","5万","10万","20万","30万","50万"],
+      siJiIndex: 0,
+      dataList: ["不投保","投保"],
+			jiDongList: ["不投保","投保"],
+      jidongIndex: 1,
+      moneyList: ['不投保',"5万","10万","20万","30万","50万","100万","150万","200万","300万","500万"],
+      glassList: ['不投保','国产玻璃','进口玻璃'],
+      huaList: ['不投保', '2000', '5000', '10000', '20000'], 
+			cateIndex: 0,
       cateResList: [],
       license_no: '',
       phone: '',
@@ -331,16 +283,16 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
       
       jidongRadioValue: true,
       otherRadioValue: true,
-      jidongValueIndex: [6],
-      chengKeIndex: [0],
-      qiangIndex: [0],
-      huaIndex: [0],
-      ziRanIndex: [0],
-      jiaoIndex: [1],
+      jidongValueIndex: 6,
+      chengKeIndex: 0,
+      qiangIndex: 0,
+      huaIndex: 0,
+      ziRanIndex: 0,
+      jiaoIndex: 1,
       global: '',
-      sheShuiIndex: [0],
-      sanIndex: [0],
-      glassIndex: [0]
+      sheShuiIndex: 0,
+      sanIndex: 0,
+      glassIndex: 0
 		}
 	  },
 
@@ -353,8 +305,8 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
         let bi_end_date = this.dateTime; 
         let ci_end_date = this.dateTimeTwo;
 
-        let liability = this.moneyList[this.jidongValueIndex[0]].label;
-        if(this.jidongValueIndex[0] != 0){
+        let liability = this.moneyList[this.jidongValueIndex];
+        if(this.jidongValueIndex != 0){
           
           if(liability.indexOf("万") != -1){
             liability = parseInt(liability.split("万")[0]*10000);
@@ -363,8 +315,8 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
           liability = false;
         }
         
-        let driver_seat = this.siJiList[this.siJiIndex[0]].label;
-        if(this.siJiIndex[0] != 0){
+        let driver_seat = this.siJiList[this.siJiIndex];
+        if(this.siJiIndex != 0){
             
             if(driver_seat.indexOf("万") != -1){
               driver_seat = parseInt(driver_seat.split("万")[0]*10000);
@@ -373,8 +325,8 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
           driver_seat = false;
         }
         
-        let passenger_seat = this.siJiList[this.chengKeIndex[0]].lable;
-        if(this.chengKeIndex[0] != 0){
+        let passenger_seat = this.siJiList[this.chengKeIndex];
+        if(this.chengKeIndex != 0){
           if(passenger_seat.indexOf("万") != -1){
             passenger_seat = parseInt(passenger_seat.split("万")[0]*10000);
           }
@@ -382,15 +334,15 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
           passenger_seat = false;
         }
 
-        let hua_seat = this.huaList[this.huaIndex[0]].label;
-        if(this.huaIndex[0] != 0){
+        let hua_seat = this.huaList[this.huaIndex];
+        if(this.huaIndex != 0){
           hua_seat = parseInt(hua_seat);
         }else{
           hua_seat = false;
         }
 
-        let glass_seat = this.glassList[this.glassIndex[0]].label;
-        if(this.glassIndex[0] == 0){
+        let glass_seat = this.glassList[this.glassIndex];
+        if(this.glassIndex == 0){
           glass_seat = false;
         }else if(glass_seat == '国产玻璃'){
           glass_seat = 1;
@@ -399,17 +351,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
         }
 
 				let quote_details = {
-					"compulsory": this.jiaoIndex[0] == 1,
-          "destroy": this.jidongIndex[0] == 1,
+					"compulsory": this.jiaoIndex == 1,
+          "destroy": this.jidongIndex == 1,
           "liability": liability,
-          "stolen": this.qiangIndex[0] == 1,
+          "stolen": this.qiangIndex == 1,
           "passenger_seat": passenger_seat,
           "driver_seat": driver_seat,
           "scratch": hua_seat,
           "glasses": glass_seat,
-          "water": this.sheShuiIndex[0] == 1,
-          "burn": this.ziRanIndex[0] == 1,
-          'no_3rd_party': this.sanIndex[0] == 1,
+          "water": this.sheShuiIndex == 1,
+          "burn": this.ziRanIndex == 1,
+          'no_3rd_party': this.sanIndex == 1,
           "excluding": this.jidongRadioValue
         }
         
@@ -477,7 +429,18 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showGlassIndex(){
-			this.$refs.glassIndexPicker.show();
+			// this.$refs.glassIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.glassList,
+					success: function (res) {
+							that.glassIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
+			
 		},
     glassChange(e){
       this.glassIndex = e.value;
@@ -489,7 +452,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showSheShuiIndex(){
-			this.$refs.sheShuiIndexPicker.show();
+			// this.$refs.sheShuiIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.dataList,
+					success: function (res) {
+							that.sheShuiIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
     sheShuiChange(e){
       this.sheShuiIndex = e.value;
@@ -501,7 +474,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showSanIndex(){
-			this.$refs.sanIndexPicker.show();
+			// this.$refs.sanIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.dataList,
+					success: function (res) {
+							that.sanIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
     sanChange(e){
       this.sanIndex = e.value;
@@ -513,7 +496,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 		
 		showJiangQiang(){
-			this.$refs.mpvuePicker.show();
+			// this.$refs.mpvuePicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.dataList,
+					success: function (res) {
+							that.jiaoIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
 
     jiaoChange(e){
@@ -531,7 +524,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 		
 		showZiRanIndex(){
-			this.$refs.ziRanIndexPicker.show();
+			// this.$refs.ziRanIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.dataList,
+					success: function (res) {
+							that.ziRanIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
 
     ziRanChange(e){
@@ -544,7 +547,18 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showHuaIndex(){
-			this.$refs.huaIndexPicker.show();
+			// this.$refs.huaIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.huaList,
+					success: function (res) {
+							that.huaIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
+			
 		},
     huaChange(e){
       this.huaIndex = e.value;
@@ -556,7 +570,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 		
 		showQiangIndex(){
-			this.$refs.qiangIndexPicker.show();
+			// this.$refs.qiangIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.dataList,
+					success: function (res) {
+							that.qiangIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
 
     qiangChange(e){
@@ -569,7 +593,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 		
 		showChengKeIndex(){
-			this.$refs.chengKeIndexPicker.show();
+			// this.$refs.chengKeIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.siJiList,
+					success: function (res) {
+							that.chengKeIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
     chengKeChange(e){
       this.chengKeIndex = e.value;
@@ -581,7 +615,17 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showJiDong(){
-			this.$refs.jidongPicker.show();
+			// this.$refs.jidongPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.jiDongList,
+					success: function (res) {
+							that.jidongIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
     jidongChange(e){
       this.jidongIndex = e.value;
@@ -593,19 +637,43 @@ import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
     },
 
 		showJidongValueIndex(){
-			this.$refs.jidongValuePicker.show();
+			// this.$refs.jidongValuePicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.moneyList,
+					success: function (res) {
+							that.jidongValueIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
 		},
     jidongChangeValue(e){
       this.jidongValueIndex = e.value;
+			this.$forceUpdate(); 
 			setTimeout(() => {
 				let temp = this.moneyList;
 				this.moneyList = [];
 				this.moneyList = temp;
+				this.jidongValueIndex = e.value;
+				this.$forceUpdate(); 
 			}, 1000);
     },
 
 		showSiJiPicker(){
-			this.$refs.siJiIndexPicker.show();
+			// this.$refs.siJiIndexPicker.show();
+			let that = this;
+			uni.showActionSheet({
+					itemList: that.siJiList,
+					success: function (res) {
+							that.siJiIndex = res.tapIndex;
+					},
+					fail: function (res) {
+							console.log(res.errMsg);
+					}
+			});
+			
 		},
     siJiChange(e){
       this.siJiIndex = e.value;
