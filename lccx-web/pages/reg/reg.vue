@@ -30,14 +30,15 @@
         },
         methods: {
 			next(){
-				let token = uni.getStorageSync("token");
-				if(token){
-					uni.navigateTo({
-					  url: "../baojia/baojia"
-					})
-				}else{
-					this.H5login(1);
-				}
+				// let token = uni.getStorageSync("token");
+				// if(token){
+				// 	uni.navigateTo({
+				// 	  url: "../baojia/baojia"
+				// 	})
+				// }else{
+				// 	this.H5login(1);
+				// }
+				this.H5login(1);
 				
 			},
 			
@@ -56,9 +57,13 @@
 					}
 					
 					if(flag == 1){
-						this.next()
+						uni.navigateTo({
+						  url: "../baojia/baojia"
+						})
 					}else{
-						this.myOrder();
+						uni.navigateTo({
+						  url: "../bill_detail/bill_detail"
+						})
 					}
 					
 				}
@@ -69,14 +74,15 @@
 			},
 			
 			myOrder(){
-				let token = uni.getStorageSync("token");
-				if(token){
-					uni.navigateTo({
-					  url: "../bill_detail/bill_detail"
-					})
-				}else{
-					this.H5login(2);
-				}
+				// let token = uni.getStorageSync("token");
+				// if(token){
+				// 	uni.navigateTo({
+				// 	  url: "../bill_detail/bill_detail"
+				// 	})
+				// }else{
+				// 	this.H5login(2);
+				// }
+				this.H5login(2);
 			}
         }
     }
