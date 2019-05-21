@@ -1,11 +1,11 @@
 <template>
-	<view class="content">
+	<view class="content" >
 		<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
 					:interval="5000" :duration="1000" class="head_img">            
 				<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" @tap="goToH5(index)">  
 					<image :src="item.t_url" mode="widthFix" class="head_img"  />           
 				</swiper-item>        
-		</swiper>
+		</swiper> 
 		
 		<view class="dots">
 			<block v-for="(item, index) in itemList" :key="index">
@@ -18,22 +18,26 @@
 <script>
 	
 	import { BASE_IMAGE_URL,getImgList } from '@/utils/api'
+	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
 	
 export default {
 	data() {
 		return {
 			itemList: [],
 			t_url: '',
-			curIndex: 0
+			curIndex: 0,
+			statusBarHeight: 0
 		};
 	},
 	onLoad() {
+		this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
+		console.log(this.statusBarHeight);
 		this.getImgList();
 	},
 	methods: {
 		goToH5: function(index){
 			uni.navigateTo({
-				url: '/pages/login/login'
+				url: '/pages/forget/forget'
 			});
 		},
 		slideChange: function(e){
@@ -58,7 +62,6 @@ export default {
 
 <style>
 .content {
-	padding-top: 60upx;
 	height: 400upx;
 	position: relative;
 }

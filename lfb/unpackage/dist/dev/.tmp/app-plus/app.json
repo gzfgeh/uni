@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/tabbar/home/home",
+    "pages/forget/forget",
     "pages/login/login",
-    "pages/home_webview/home_webview",
+    "pages/register/register",
     "pages/tabbar/tabbar-2/tabbar-2",
     "pages/tabbar/tabbar-3/tabbar-3",
     "pages/tabbar/tabbar-4/tabbar-4",
@@ -10,13 +11,12 @@
     "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
     "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
     "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
-    "pages/home_webview/home_webview",
-    "pages/login/login"
+    "pages/home_webview/home_webview"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "楼服宝",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

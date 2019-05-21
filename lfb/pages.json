@@ -1,9 +1,17 @@
 {
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
 		{
 			"path": "pages/tabbar/home/home",
+			"style" : {
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
+		},
+		{
+			"path": "pages/forget/forget",
 			"style" : {
 				"navigationStyle": "custom",
 				"app-plus":{
@@ -21,8 +29,13 @@
 		    }
 		},
 		{
-			"path": "pages/home_webview/home_webview",
-			"style": {}
+			"path": "pages/register/register",
+			"style" : {
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
 		},
 		{
 			"path": "pages/tabbar/tabbar-2/tabbar-2",
@@ -56,14 +69,10 @@
             "path" : "pages/home_webview/home_webview",
             "style" : {}
         }
-        ,{
-            "path" : "pages/login/login",
-            "style" : {}
-        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "楼服宝",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},

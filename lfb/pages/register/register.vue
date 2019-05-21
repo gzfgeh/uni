@@ -14,9 +14,19 @@
 			<div class="row_wrap">
 				<div class="row">
 					<img src="../../static/img/login_phone.png">
-					<input type="tel" placeholder="请输入手机号码" maxlength="11" class="mobile">
+					<input type="tel" placeholder="请输入手机号码" maxlength="11" class="mobile" v-model="account">
 				</div>
 			</div>
+			
+			<div class="row_wrap">
+				<div class="row">
+					<img src="../../static/img/login_code.png" style="width: 36upx; margin-right: 30upx;">
+					<input type="text" placeholder="请输入验证码" maxlength="6" class="code" style="width: 260upx;">
+					<span style="flex: 1;"></span>
+					<span class="get_code_txt" @click="getCodeAction">{{count_text}}</span>
+				</div>
+			</div>
+			
 			
 			<div class="row_wrap">
 				<div class="row">
@@ -27,14 +37,14 @@
 			
 		</div>
 		
-		<div class="forget_wrap" @click="goToForget">
-			<span >忘记密码</span>
+		<div class="forget_wrap">
+			<span>点击“注册”表示你已经阅读并同意隐私条款和用户协议</span>
 		</div>
 		
-		<button type="button" class="button" @click="loginAction">登录</button>
+		<button type="button" class="mui-btn mui-btn-primary button" @click="loginAction">注册</button>
 		
 		<div class="regist_wrap">
-			<span>还没账号，<span class="regist_txt" @click="goToRegister">立即注册</span></span>
+			<span>已有账号，<span class="regist_txt" @click="goToLogin">立即登录</span></span>
 		</div>
 		
 	</view>
@@ -44,7 +54,13 @@
 	export default {
 		data() {
 			return {
-				statusBarHeight: 0
+				statusBarHeight: 0,
+				isSending: false,
+				intervalObj: {}, 
+				time: 60,
+				count_text: '发送验证码',
+				account: '',
+                password: '',
 			};
 		},
 		methods:{
@@ -53,18 +69,63 @@
 					delta: 1
 				});
 			},
-			goToRegister(){
+			goToLogin(){
 				uni.navigateTo({
-					url: '/pages/register/register'
+					url: '/pages/login/login'
 				});
+			},
+			getCodeAction(){
+				if(!this.isSending){
+					this.getCode();
+				}
 			},
 			async loginAction(){
 				
 			},
-			goToForget(){
-				uni.navigateTo({
-					url: '/pages/forget/forget'
-				});
+			async getCode(){
+				console.log(this.account);
+				if((!this.account) || (this.account.length != 11)){
+					uni.showToast({
+					  icon: 'none',
+					  title: '手机号输入错误',
+					  duration: 1000
+					});
+					return;
+				}
+				this.isSending = true;
+					this.countDown();
+					return;
+				
+				let res = await sendCode({phone: this.account});
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '发送成功',
+					  duration: 1000
+					});
+					this.isSending = true;
+					this.countDown();
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: '发送失败',
+					  duration: 1000
+					});
+				}
+			},
+			countDown() {
+				let that = this;
+			    this.intervalObj = setInterval(function() {
+			        that.time--;
+			        if (that.time <= 0) {
+			            that.time = 60;
+			            clearInterval(that.intervalObj);
+						that.count_text = "重新获取";
+			        } else {
+						that.count_text = "重新获取("+that.time+"s)";
+			        }
+			
+			    }, 1000);
 			},
 		},
 		onLoad() {
@@ -87,6 +148,12 @@
 		width: 100%;
 		height: 100%;
 	}
+	
+	.get_code_txt{
+		font-size: 28upx;
+		color: #107EFF;
+	}
+	.code{width: 300upx;}
 	
 			.head_wrap{
 				padding: 20upx 32upx 20upx;
@@ -115,8 +182,6 @@
 			}
 			
 			.login_wrap div{
-				
-				padding: 0upx 8upx;
 				margin-bottom: 30upx;
 			}
 			
@@ -138,10 +203,10 @@
 			}
 			
 			.forget_wrap{
-				text-align: right;
-				padding-right: 100upx;
-				color: #107EFF;
-				font-size: 28upx;
+				text-align: center;
+				color: #999999;
+				font-size: 24upx;
+				margin-top: 40upx;
 			}
 			
 			.button{
