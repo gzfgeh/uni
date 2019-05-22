@@ -37,8 +37,8 @@
 			<div class="col_justify_center item_wrap" id="bind">
 				<div class="row_between item">
 					<span>企业号</span>
-					<div class="row_center">
-						<span id="qiye"></span>
+					<div class="row">
+						<span class="item_name un_active wx_openid">未绑定</span>
 						<span class="arraw"></span>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 			<div class="col_justify_center item_wrap" >
 				<div class="row_between item">
 					<div class="row">
-						<img src="../../static/img/qq.png" style="width: 16px; height: 17px; margin-right: 10px;" class="qq_icon"> 
+						<img src="../../static/img/qq.png" style="width: 32upx; height: 34upx; margin-right: 20upx;" class="qq_icon"> 
 						<span>QQ</span>
 					</div>
 					
@@ -88,9 +88,10 @@
 				</div>
 			</div>
 			
-			<button class=" button" style="color: #FFFFFF!important;" onclick="updateInfo();">更新</button>
+			<button class=" button" hover-class="hover_class"
+			style="color: #FFFFFF!important;background-color: #107EFF;" @click="updateInfo">更新</button>
 			
-			<button class=" button" onclick="loginOut();">退出</button>
+			<button class=" button" hover-class="hover_class" @click="loginOut">退出</button>
 			
 		</div>
 		
@@ -105,7 +106,14 @@
 			}
 		},
 		methods: {
-			
+			loginOut(){
+				uni.navigateBack({
+					delta: 1
+				});
+			},
+			updateInfo(){
+				
+			}
 		}
 	}
 </script>
@@ -190,9 +198,10 @@
 			  	font-size: 32upx;
 			  	width: 90%;
 			  	height: 80upx;
-				line-height: 60upx;
+				line-height: 80upx;
 				padding: 0px;
 				border: 2upx solid #107EFF!important;
 				color: #107EFF!important;
+				background-color: #E3E3E3;
 			  }
 </style>

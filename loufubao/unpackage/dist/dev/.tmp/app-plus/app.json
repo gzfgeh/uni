@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/tabbar/home/home",
+    "pages/personal/personal",
     "pages/forget/forget",
     "pages/login/login",
     "pages/register/register",
@@ -13,7 +13,8 @@
     "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
     "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
     "pages/home_webview/home_webview",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/address_list/address_list"
   ],
   "subPackages": [],
   "window": {

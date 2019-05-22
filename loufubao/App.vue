@@ -32,4 +32,6 @@ export default {
 .col{display: flex; flex-direction: column; align-items: center;}
 .col_justify_center{display: flex; flex-direction: column; justify-content: center;}
 .col_center{display: flex; flex-direction: column; align-items: center; justify-content: center;}
+
+.hover_class{opacity: 0.9; background-color: #F7F7F7;}
 </style>

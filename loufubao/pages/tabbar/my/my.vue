@@ -31,7 +31,17 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap" style="margin-top: 30upx;">
+		<div class=" bottom_item_wrap" style="margin-top: 30upx;" @click="goToAddress">
+			<div class="row_between bottom_item">
+				<img src="../../../static/img/wode_kefu.jpg" class="icon" mode="widthFix">
+				<span>我的地址</span>
+				<span style="flex: 1;"></span>
+				<span></span>
+				<img src="../../../static/img/right.png" mode="widthFix">
+			</div>
+		</div>
+		
+		<div class=" bottom_item_wrap">
 			<div class="row_between bottom_item">
 				<img src="../../../static/img/wode_kefu.jpg" class="icon" mode="widthFix">
 				<span>联系客服</span>
@@ -79,6 +89,12 @@
 					url: '/pages/personal/personal'
 				});
 			},
+			
+			goToAddress: function(){
+				uni.navigateTo({
+					url: '/pages/address_list/address_list'
+				});
+			}
 		}
 	}
 </script>
