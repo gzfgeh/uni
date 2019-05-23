@@ -1,20 +1,20 @@
 <template>
 	<view>
 		<block  v-for="(item,index) in list" :key="index" >
-			<li class="mui-table-view-cell-item item_wrap col_between">
+			<div class="item_wrap">
 				<div class="row_between wrap">
-					<span class="sex"></span>
+					<span class="sex">123</span>
 					<div class="content_wrap">
-						<span class="name">
-							&nbsp;&nbsp;<span class="tel"></span>
+						<span class="name">王先生 
+							<span class="tel">1380013000</span>
 						</span>
-						<span class="address"></span>
+						<span class="address">上海普陀区金沙江路1518弄近铁城市广场 100室</span>
 					</div>
-					<img class="edit-img" src="../../static/img/login_pwd.png" >
+					<img  src="../../static/img/edit_address_icon.png" mode="widthFix">
 				</div>
-			</li>
+			</div>
 		</block>	
-		<div v-if="list.length == 0" class="uni-center-item no_data_wrap">
+		<div v-if="list.length == 0" class=" no_data_wrap">
 			<span>暂无订单信息</span>
 		</div>
 		
@@ -27,10 +27,14 @@
 
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
+	import uniNavBar from '@/components/uni-nav-bar.vue'
+	import uniIcon from '@/components/uni-icon.vue'
 	
 	export default {
 		components: {
-			uniLoadMore
+			uniLoadMore,
+			uniNavBar,
+			uniIcon
 		},
 		data() {
 			return {
@@ -54,7 +58,7 @@
 					}else{
 						this.loadingType = 0;
 					}
-				}, 3000);
+				}, 1000);
 			}
 		},
 		onReachBottom() {
@@ -71,7 +75,12 @@
 		},
 		onLoad(){
 			
-		}
+		},
+		onNavigationBarButtonTap:function(e){
+            uni.navigateTo({
+				url: '/pages/add_address/add_address'
+			});
+        },
 	}
 </script>
 
@@ -137,8 +146,6 @@
 		}
 		
 		.item_wrap {
-		    height: 100upx;
-		    width: 100%;
 			padding-left: 20upx;
 			background-color: #FFFFFF;
 		}
@@ -183,11 +190,13 @@
 		.content_wrap .tel{
 			color: #666666;
 			font-size: 28upx;
+			margin-left: 20upx;
 		}
 		
 		.address{
 			color: #333333;
 			font-size: 28upx;
+			margin-top: 10upx;
 		}
 		
 </style>

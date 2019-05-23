@@ -45,8 +45,13 @@
 		    }
 		},
 		{
-			"path": "pages/tabbar/tabbar-2/tabbar-2",
-			"style": {}
+			"path": "pages/tabbar/service/service",
+			"style" : {
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
 		},
 		{
 			"path": "pages/tabbar/tabbar-3/tabbar-3",
@@ -93,7 +98,41 @@
             "path" : "pages/address_list/address_list",
             "style" : {
 				"navigationBarTitleText": "我的地址",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"app-plus":{
+					"titleNView":{
+						"buttons":[{
+							"text": "新增",
+							"float": "right",
+							"fontSize": "16px",
+							"color":"#107EFF"
+						}]
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/add_address/add_address",
+            "style" : {
+				"navigationBarTitleText": "新增地址"
+			}
+        }
+        ,{
+            "path" : "pages/complain/complain",
+            "style" : {
+				"navigationBarTitleText": "投诉建议"
+			}
+        }
+        ,{
+            "path" : "pages/express_info/express_info",
+            "style" : {
+				"navigationBarTitleText": "国内快递"
+			}
+        }
+        ,{
+            "path" : "pages/express_main/express_main",
+            "style" : {
+				"navigationBarTitleText": "个人快递"
 			}
         }
     ],
@@ -123,7 +162,7 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/tabbar/tabbar-2/tabbar-2",
+				"pagePath": "pages/tabbar/service/service",
 				"iconPath": "static/img/tabbar/guanzhu.png",
 				"selectedIconPath": "static/img/tabbar/guanzhuactive.png",
 				"text": "服务"

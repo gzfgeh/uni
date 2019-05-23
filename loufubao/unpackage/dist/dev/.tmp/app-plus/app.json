@@ -5,7 +5,7 @@
     "pages/forget/forget",
     "pages/login/login",
     "pages/register/register",
-    "pages/tabbar/tabbar-2/tabbar-2",
+    "pages/tabbar/service/service",
     "pages/tabbar/tabbar-3/tabbar-3",
     "pages/tabbar/tabbar-4/tabbar-4",
     "pages/tabbar/my/my",
@@ -14,7 +14,11 @@
     "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
     "pages/home_webview/home_webview",
     "pages/message/message",
-    "pages/address_list/address_list"
+    "pages/address_list/address_list",
+    "pages/add_address/add_address",
+    "pages/complain/complain",
+    "pages/express_info/express_info",
+    "pages/express_main/express_main"
   ],
   "subPackages": [],
   "window": {
@@ -36,7 +40,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/tabbar/tabbar-2/tabbar-2",
+        "pagePath": "pages/tabbar/service/service",
         "iconPath": "static/img/tabbar/guanzhu.png",
         "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
         "text": "服务"

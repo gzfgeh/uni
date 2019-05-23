@@ -61,7 +61,7 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap">
+		<div class=" bottom_item_wrap" @click="goToComplain">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="../../../static/img/wode_kefu.jpg" class="icon" mode="widthFix">
 				<span>投诉建议</span>
@@ -93,6 +93,11 @@
 			goToAddress: function(){
 				uni.navigateTo({
 					url: '/pages/address_list/address_list'
+				});
+			},
+			goToComplain: function(){
+				uni.navigateTo({
+					url: '/pages/complain/complain'
 				});
 			}
 		}

@@ -1,7 +1,19 @@
 {
   "navigationBarTitleText": "我的地址",
   "enablePullDownRefresh": true,
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "新增",
+        "float": "right",
+        "fontSize": "16px",
+        "color": "#107EFF"
+      }
+    ]
+  },
   "usingComponents": {
-    "uni-load-more": "/components/uni-load-more"
+    "uni-load-more": "/components/uni-load-more",
+    "uni-nav-bar": "/components/uni-nav-bar",
+    "uni-icon": "/components/uni-icon"
   }
 }

@@ -157,14 +157,14 @@
 .dot_normal{width: 10upx;height: 10upx;border-radius: 50%;background-color: #E0E5ED;margin: 0upx 6upx;position: relative;z-index: 100;}
 .active{width: 24upx;height: 10upx;border-radius: 40%;background-color: #107EFF;z-index: 100;}
 
-.home_head_wrap{position: absolute;top: 80upx; width: 100%; color: #FFFFFF; font-size: 24upx; padding: 0upx 20upx; box-sizing: border-box;}
+.home_head_wrap{position: absolute;top: 60upx; width: 100%; color: #FFFFFF; font-size: 24upx; padding: 0upx 20upx; box-sizing: border-box;}
 .home_head_left span{font-size: 24upx; overflow: hidden;width: 130upx;white-space: nowrap;text-overflow:ellipsis;}
 .home_head_left img{width: 24upx; height: 24upx; margin-left: 5upx;}
 .msg_wrap{position: relative;}
 .msg_wrap img{width: 50upx; height: 40upx;}
 .red_hot{width: 20upx; height: 20upx; position: absolute;right: 0upx; top: 0upx;background-color: red; z-index: 2;border-radius: 50%;}
 
-.search_wrap{position: relative;border-radius: 36upx; background-color: rgba(244, 244, 244, 0.75); flex: 1;height: 72upx; margin: 0upx 40upx; padding-left: 20upx; color: #9B9B9B; font-size: 28upx;}
+.search_wrap{position: relative;border-radius: 36upx; background-color: rgba(244, 244, 244, 0.75); flex: 1;height: 72upx; margin: 0upx 20upx; padding-left: 20upx; color: #9B9B9B; font-size: 28upx;}
 .search_wrap img{width: 28upx; height: 28upx; margin-right: 20upx;}
 .more_wrap{margin-top: 60upx; padding: 0upx 30upx; color: #333333; font-size: 44upx;}
 .more_wrap img{width: 36upx; height: 42upx; margin-right: 16upx;}

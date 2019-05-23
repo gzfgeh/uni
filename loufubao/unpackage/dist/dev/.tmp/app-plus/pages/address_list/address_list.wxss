@@ -53,8 +53,6 @@
 			background-color: #FFFFFF;
 }
 .item_wrap {
-		    height: 100rpx;
-		    width: 100%;
 			padding-left: 20rpx;
 			background-color: #FFFFFF;
 }
@@ -104,10 +102,12 @@
 .content_wrap .tel{
 			color: #666666;
 			font-size: 28rpx;
+			margin-left: 20rpx;
 }
 .address{
 			color: #333333;
 			font-size: 28rpx;
+			margin-top: 10rpx;
 }
 		
 
