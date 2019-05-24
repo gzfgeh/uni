@@ -326,14 +326,151 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      companyList: [1, 2, 3, 4, 5, 6, 7] };
+      companyList: [1, 2, 3, 4, 5, 6, 7],
+      goodsTypeFlag: false,
+      payStyleFlag: false,
+      packageFlag: false,
+      faPiaoFlag: false,
+      beiZhuFlag: false };
 
   },
   methods: {
+    showGoodsType: function showGoodsType() {
+      this.goodsTypeFlag = true;
+    },
+    showPayStyle: function showPayStyle() {
+      this.payStyleFlag = true;
+    },
+    showPackageFlag: function showPackageFlag() {
+      this.packageFlag = true;
+    },
+    showFaPiaoFlag: function showFaPiaoFlag() {
+      this.faPiaoFlag = true;
+    },
+    showBeiZhuFlag: function showBeiZhuFlag() {
+      this.beiZhuFlag = true;
+    },
+    hideModal: function hideModal() {
+      this.goodsTypeFlag = false;
+      this.payStyleFlag = false;
+      this.packageFlag = false;
+      this.faPiaoFlag = false;
+      this.beiZhuFlag = false;
+    },
     BaoJiaChange: function BaoJiaChange(e) {
 
     },
@@ -381,6 +518,18 @@ var render = function() {
 
   var m5 = __webpack_require__(/*! ../../static/img/express_comp_logo.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/express_comp_logo.png")
 
+  var m6 = __webpack_require__(/*! ../../static/img/login_close.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/login_close.png")
+
+  var m7 = __webpack_require__(/*! ../../static/img/login_close.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/login_close.png")
+
+  var m8 = __webpack_require__(/*! ../../static/img/login_close.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/login_close.png")
+
+  var m9 = __webpack_require__(/*! ../../static/img/reduce_icon.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/reduce_icon.png")
+
+  var m10 = __webpack_require__(/*! ../../static/img/add_icon.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/add_icon.png")
+
+  var m11 = __webpack_require__(/*! ../../static/img/login_close.png */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/login_close.png")
+
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -390,7 +539,13 @@ var render = function() {
         m2: m2,
         m3: m3,
         m4: m4,
-        m5: m5
+        m5: m5,
+        m6: m6,
+        m7: m7,
+        m8: m8,
+        m9: m9,
+        m10: m10,
+        m11: m11
       }
     }
   )

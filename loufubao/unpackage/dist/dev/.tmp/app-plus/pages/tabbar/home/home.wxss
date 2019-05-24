@@ -18,7 +18,7 @@
 .red_hot{width: 20rpx; height: 20rpx; position: absolute;right: 0rpx; top: 0rpx;background-color: red; z-index: 2;border-radius: 50%;}
 .search_wrap{position: relative;border-radius: 36rpx; background-color: rgba(244, 244, 244, 0.75); -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1;height: 72rpx; margin: 0rpx 20rpx; padding-left: 20rpx; color: #9B9B9B; font-size: 28rpx;}
 .search_wrap ._img{width: 28rpx; height: 28rpx; margin-right: 20rpx;}
-.more_wrap{margin-top: 60rpx; padding: 0rpx 30rpx; color: #333333; font-size: 44rpx;}
+.more_wrap{ padding: 30rpx; color: #333333; font-size: 44rpx;}
 .more_wrap ._img{width: 36rpx; height: 42rpx; margin-right: 16rpx;}
 .more_item{font-size: 24rpx; color: #999999;}
 .scroll-Y{ white-space: nowrap; width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box;padding: 30rpx;}

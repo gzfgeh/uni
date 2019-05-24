@@ -191,6 +191,16 @@ var _default =
       uni.navigateTo({
         url: '/pages/express_info/express_info' });
 
+    },
+    goToYunFei: function goToYunFei() {
+      uni.navigateTo({
+        url: '/pages/yun_fei/yun_fei' });
+
+    },
+    goToForbid: function goToForbid() {
+      uni.navigateTo({
+        url: '/pages/forbid/forbid' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

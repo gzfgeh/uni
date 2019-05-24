@@ -214,7 +214,12 @@ var _default =
     },
     goToH5: function goToH5(index) {
       uni.navigateTo({
-        url: '/pages/forget/forget' });
+        url: '/pages/express_main/express_main' });
+
+    },
+    goToRecentUsed: function goToRecentUsed() {
+      uni.navigateTo({
+        url: '/pages/recent_used/recent_used' });
 
     },
     slideChange: function slideChange(e) {
@@ -226,7 +231,7 @@ var _default =
     getImgList: function () {var _getImgList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   (0, _api.getImgList)());case 2:res = _context.sent;
                 if (res.code == 1000) {
-                  console.log(res.data, " at pages/tabbar/home/home.vue:129");
+                  console.log(res.data, " at pages/tabbar/home/home.vue:134");
                   this.itemList = res.data;
 
                   this.itemList.map(function (item) {

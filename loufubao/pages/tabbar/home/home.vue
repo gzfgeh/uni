@@ -33,9 +33,9 @@
 		
 		<div class="content_wrap">
 			<div class="module_content">
-				<swiper :indicator-dots="false" :autoplay="false" @change="slideContentChange">            
-						<swiper-item v-for="(item, index) in itemList" :key="index" @tap="goToH5(index)">  
-							<div class="col">
+				<swiper :indicator-dots="false" :autoplay="false" @change="slideContentChange" style="height: 200upx">            
+						<swiper-item v-for="(item, index) in itemList" :key="index" >  
+							<div class="col" @tap="goToH5(index)">
 								<img src="../../../static/img/home_kuaidi.jpg" alt="">
 								<span>快递服务</span>
 							</div>         
@@ -49,7 +49,7 @@
 				</view>
 			</div>
 			
-			<div class="row_between more_wrap">
+			<div class="row_between more_wrap" @click="goToRecentUsed">
 				<div class="row_center">
 					<img src="../../../static/img/home_use.jpg">
 					<span>最近使用</span>
@@ -114,7 +114,12 @@
 		},
 		goToH5: function(index){
 			uni.navigateTo({
-				url: '/pages/forget/forget'
+				url: '/pages/express_main/express_main'
+			});
+		},
+		goToRecentUsed(){
+			uni.navigateTo({
+				url: '/pages/recent_used/recent_used'
 			});
 		},
 		slideChange: function(e){
@@ -166,7 +171,7 @@
 
 .search_wrap{position: relative;border-radius: 36upx; background-color: rgba(244, 244, 244, 0.75); flex: 1;height: 72upx; margin: 0upx 20upx; padding-left: 20upx; color: #9B9B9B; font-size: 28upx;}
 .search_wrap img{width: 28upx; height: 28upx; margin-right: 20upx;}
-.more_wrap{margin-top: 60upx; padding: 0upx 30upx; color: #333333; font-size: 44upx;}
+.more_wrap{ padding: 30upx; color: #333333; font-size: 44upx;}
 .more_wrap img{width: 36upx; height: 42upx; margin-right: 16upx;}
 
 .more_item{font-size: 24upx; color: #999999;}

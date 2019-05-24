@@ -153,6 +153,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -172,6 +195,16 @@ var _default =
     goToGeRenKuaidi: function goToGeRenKuaidi() {
       uni.navigateTo({
         url: '/pages/express_main/express_main' });
+
+    },
+    goToExpressList: function goToExpressList() {
+      uni.navigateTo({
+        url: '/pages/express_list/express_list' });
+
+    },
+    goToServiceForm: function goToServiceForm() {
+      uni.navigateTo({
+        url: '/pages/service_form/service_form' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -220,7 +253,17 @@ var render = function() {
 
   var m7 = __webpack_require__(/*! ../../../static/img/fuwu_kuaidi_qianshou.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_kuaidi_qianshou.jpg")
 
-  var m8 = __webpack_require__(/*! ../../../static/img/fuwu_bottom.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_bottom.jpg")
+  var m8 = __webpack_require__(/*! ../../../static/img/fuwu_bg.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_bg.jpg")
+
+  var m9 = __webpack_require__(/*! ../../../static/img/fuwu_yinshui.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_yinshui.jpg")
+
+  var m10 = __webpack_require__(/*! ../../../static/img/fuwu_baojie.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_baojie.jpg")
+
+  var m11 = __webpack_require__(/*! ../../../static/img/fuwu_shangwu.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_shangwu.jpg")
+
+  var m12 = __webpack_require__(/*! ../../../static/img/fuwu_lvzhi.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_lvzhi.jpg")
+
+  var m13 = __webpack_require__(/*! ../../../static/img/fuwu_bottom.jpg */ "../../../../../../Users/tuyao/Documents/uni/loufubao/static/img/fuwu_bottom.jpg")
 
   _vm.$mp.data = Object.assign(
     {},
@@ -234,7 +277,12 @@ var render = function() {
         m5: m5,
         m6: m6,
         m7: m7,
-        m8: m8
+        m8: m8,
+        m9: m9,
+        m10: m10,
+        m11: m11,
+        m12: m12,
+        m13: m13
       }
     }
   )

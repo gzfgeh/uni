@@ -135,6 +135,46 @@
 				"navigationBarTitleText": "个人快递"
 			}
         }
+        ,{
+            "path" : "pages/recent_used/recent_used",
+            "style" : {
+				"navigationBarTitleText": "功能调整"
+			}
+        }
+        ,{
+            "path" : "pages/yun_fei/yun_fei",
+            "style" : {
+				"navigationBarTitleText": "运费计算"
+			}
+        }
+        ,{
+            "path" : "pages/forbid/forbid",
+            "style" : {
+				"navigationBarTitleText": "禁止寄递物品指导目录"
+			}
+        }
+        ,{
+            "path" : "pages/express_list/express_list",
+            "style" : {
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
+        }
+        ,{
+            "path" : "pages/express_detail/express_detail",
+            "style" : {
+				"navigationBarTitleText": "快递详情"
+			}
+        }
+        ,{
+            "path" : "pages/service_form/service_form",
+            "style" : {
+				"navigationBarTitleText": "饮水服务"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

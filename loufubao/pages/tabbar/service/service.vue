@@ -30,7 +30,7 @@
                     <div @click="openExpressPage(2)">
                         <img src="../../../static/img/fuwu_yundan_genzong.jpg" mode="widthFix">
                     </div>
-                    <div @click="openExpressPage(3)">
+                    <div @click="goToExpressList">
                         <img src="../../../static/img/fuwu_kuaidi_qianshou.jpg" mode="widthFix">
                     </div>
 
@@ -39,6 +39,29 @@
             </div>
         </div>
 		
+		<div class="pd">
+
+            <div class="imc-col clearfix">
+
+                <img class="left" src="../../../static/img/fuwu_bg.jpg" mode="widthFix" @click="goToServiceForm"/>
+
+                <div class="right clearfix" id="company_services">
+					
+                    <div onclick="goToServiceOrder(1);">
+                        <img src="../../../static/img/fuwu_yinshui.jpg" mode="widthFix">
+                    </div>
+                    <div onclick="goToServiceOrder(2);">
+                        <img src="../../../static/img/fuwu_baojie.jpg" mode="widthFix">
+                    </div>
+                    <div onclick="goToServiceOrder(3);">
+                        <img src="../../../static/img/fuwu_shangwu.jpg" mode="widthFix">
+                    </div>
+                    <div onclick="goToServiceOrder(4);">
+                        <img src="../../../static/img/fuwu_lvzhi.jpg" mode="widthFix">
+                    </div>
+                </div>
+            </div>
+		</div>
 		
 		<div class="pd">
 			<div class="bottom-col">
@@ -72,6 +95,16 @@
 			goToGeRenKuaidi(){
 				uni.navigateTo({
 					url: '/pages/express_main/express_main'
+				});
+			},
+			goToExpressList(){
+				uni.navigateTo({
+					url: '/pages/express_list/express_list'
+				});
+			},
+			goToServiceForm(){
+				uni.navigateTo({
+					url: '/pages/service_form/service_form'
 				});
 			}
 		}

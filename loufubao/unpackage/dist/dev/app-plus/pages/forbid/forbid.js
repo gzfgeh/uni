@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"forbid-col-content{font-size:",[0,28],";padding:",[0,40]," ",[0,30],";line-height: ",[0,40],";}\n.",[1],"forbid-col-content .",[1],"_p:nth-child(2n+1){color:#000;}\n",],undefined,{path:"./pages/forbid/forbid.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/forbid/forbid.wxml') } }));

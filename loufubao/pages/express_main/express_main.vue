@@ -59,15 +59,15 @@
 			</div>
 
 			<div class="person-express-bottom clearfix">
-				<div class="person-express-col">
-					<div class="person-express-detail" onclick="openWindowPage('yunfei.html')">
-						<img src="../../static/img/express_jisuan.png">
+				<div class="person-express-col" @click="goToYunFei">
+					<div class="person-express-detail" >
+						<img src="../../static/img/express_jisuan.png" mode="widthFix">
 						<div>运费计算</div>
 					</div>
 				</div>
-				<div class="person-express-col">
-					<div class="person-express-detail" onclick="openWindowPage('forbid.html')">
-						<img src="../../static/img/express_weijin.png">
+				<div class="person-express-col" @click="goToForbid">
+					<div class="person-express-detail" >
+						<img src="../../static/img/express_weijin.png" mode="widthFix">
 						<div>违禁品信息</div>
 					</div>
 				</div>
@@ -90,6 +90,16 @@
 			goToExpressInfo(){
 				uni.navigateTo({
 					url: '/pages/express_info/express_info'
+				});
+			},
+			goToYunFei(){
+				uni.navigateTo({
+					url: '/pages/yun_fei/yun_fei'
+				});
+			},
+			goToForbid(){
+				uni.navigateTo({
+					url: '/pages/forbid/forbid'
 				});
 			}
 		}
