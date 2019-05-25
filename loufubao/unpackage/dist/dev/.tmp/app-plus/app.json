@@ -24,7 +24,9 @@
     "pages/forbid/forbid",
     "pages/express_list/express_list",
     "pages/express_detail/express_detail",
-    "pages/service_form/service_form"
+    "pages/service_form/service_form",
+    "pages/service_form_sure/service_form_sure",
+    "pages/service_pay/service_pay"
   ],
   "subPackages": [],
   "window": {

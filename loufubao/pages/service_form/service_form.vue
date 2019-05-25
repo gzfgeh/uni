@@ -6,7 +6,7 @@
 			</div>
 
 			<div class="col item_wrap">
-			  <div class="row_between item" style="border-top: transparent;">
+			  <div class="row item" style="border-top: transparent;">
 				<span>姓名</span>
 				<input type="text" placeholder="请填写收件人姓名" class="name" />
 			  </div>
@@ -16,7 +16,7 @@
 
 
 			<div class="col item_wrap">
-			  <div class="row_between item">
+			  <div class="row item">
 				<span>手机号</span>
 				<input type="tel" placeholder="请填写收件人手机号" maxlength="11" class="mobile" />
 			  </div>
@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="col item_wrap">
-			  <div class="row_between item">
+			  <div class="row item">
 				<span>公司名称</span>
 				<input type="text" placeholder="请填写公司姓名" class="company_name" />
 			  </div>
@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="row item_wrap" onclick="showTypeAction();">
-			  <div class="row_between pick_item">
+			  <div class="row pick_item">
 				<span>类型</span>
 				<span class="content">请选择</span>
 				<span class="arraw"></span>
@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="col item_wrap">
-			  <div class="row_between item">
+			  <div class="row item">
 				<span>数量</span>
 				<input type="tel" placeholder="请填写数量" class="number" />
 			  </div>
@@ -52,7 +52,7 @@
 			</div>
 
 			<div class="row item_wrap" onclick="lookTime();">
-			  <div class="row_between pick_item">
+			  <div class="row pick_item">
 				<span>服务时间</span>
 				<span class="content service_time">请选择</span>
 				<span class="arraw"></span>
@@ -66,7 +66,7 @@
 
 			</div>
 
-			<button class="mui-btn mui-btn-primary button" onclick="goToServiceOrderSure();">提交需求</button>
+			<button class=" button" @click="goToFormSure">提交需求</button>
 
 		  </div>
 
@@ -81,7 +81,11 @@
 			}
 		},
 		methods: {
-			
+			goToFormSure(){
+				uni.navigateTo({
+					url: '/pages/service_form_sure/service_form_sure'
+				});
+			}
 		}
 	}
 </script>
@@ -131,7 +135,6 @@
       border-bottom: 2upx solid #E3E3E3;
       color: #333333;
       font-size: 28upx;
-      padding-right: 30upx;
     }
 
     .pick_item .content {
@@ -166,6 +169,9 @@
       height: 140upx;
       background-color: #F9F9F9;
       margin-bottom: 0rem;
+	  width:100%;
+	  box-sizing: border-box;
+	  min-height: 200upx;
     }
 
     textarea::-webkit-input-placeholder {

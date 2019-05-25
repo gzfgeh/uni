@@ -175,6 +175,18 @@
 				"navigationBarTitleText": "饮水服务"
 			}
         }
+        ,{
+            "path" : "pages/service_form_sure/service_form_sure",
+            "style" : {
+				"navigationBarTitleText": "饮水服务"
+			}
+        }
+        ,{
+            "path" : "pages/service_pay/service_pay",
+            "style" : {
+				"navigationBarTitleText": "提交订单"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

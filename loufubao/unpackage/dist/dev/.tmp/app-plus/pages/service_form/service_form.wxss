@@ -37,7 +37,6 @@
       border-bottom: 2rpx solid #E3E3E3;
       color: #333333;
       font-size: 28rpx;
-      padding-right: 30rpx;
 }
 .pick_item .content {
       -webkit-box-flex: 1;
@@ -71,6 +70,10 @@ textarea {
       height: 140rpx;
       background-color: #F9F9F9;
       margin-bottom: 0rem;
+	  width:100%;
+	  -webkit-box-sizing: border-box;
+	          box-sizing: border-box;
+	  min-height: 200rpx;
 }
 textarea::-webkit-input-placeholder {
       color: #999999;
