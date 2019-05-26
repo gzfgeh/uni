@@ -12,7 +12,7 @@
 		
 		<!-- <img :src="t_url" mode="widthFix" class="head_img"  > -->
 		
-		<div class="search_wrap">
+		<div class="search_wrap" @click="goToGoodsList">
 			<img src="../../static/img/home_search.png" mode="widthFix">
 			<span>请输入关键字</span>
 		</div>
@@ -85,10 +85,16 @@
 		onLoad: function() {
 			this.getUserInfo();
 		},
+		
 		onShow: function(){
 			
 		},
 		methods: {
+			goToGoodsList: function(){
+				uni.navigateTo({
+					url: '../goods_list/goods_list'
+				})
+			},
 // 			imageLoad: function(e){
 // 				let imgWidth = e.mp.detail.width;
 // 				let imgHeight = e.mp.detail.height;
@@ -371,7 +377,7 @@ swiper-item{
 	flex-direction: row;
 	align-items: center;
 	width: 90%;
-	height: 100upx;
+	height: 80upx;
 	margin: 20upx 5%;
 	box-sizing: border-box;
 	border-radius: 20upx;

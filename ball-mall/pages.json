@@ -74,6 +74,15 @@
 		    }
 		}
         
+        ,{
+            "path" : "pages/goods_list/goods_list",
+            "style" : {
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
+        }
     ],
     "tabBar" : {
         "color" : "#7a7e83",
