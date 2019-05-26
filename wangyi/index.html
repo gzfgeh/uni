@@ -1,0 +1,74 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <title>入职第一天，网易爸爸教我学做人 </title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/VideoJS.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div class="hidden">
+        <script src="https://s19.cnzz.com/z_stat.php?id=1271204282&web_id=1271204282" language="JavaScript"></script>
+    </div>
+
+    <img id="p1"  class="index" src="images/index.jpg">
+    <img class="indexbtn"  src="images/indexbtn.png">
+    <img  class="hd hidden" src="images/hd.png">
+    <div class="btn hidden"></div>
+
+    <img id="p2"  class="p2  hidden" src="images/end.jpg">
+    <img   class="endbtn1 hidden " src="images/endbtn1.png">
+    <img   class="endbtn2 hidden " src="images/endbtn2.png">
+    <img   class="endbtn3  hidden" src="images/endbtn3.png">
+    <div id="video" class="video "></div>
+    <div class="btn1 hidden"></div>
+    <div class="btn2 hidden"></div>
+    <div class="share hidden">
+        <img src="images/share.png">
+    </div>
+
+
+
+
+</div>
+<script>
+    var state=0;
+ var appid="wx35bd94b19babdd26";
+ var timestamp="1558857335";
+ var nonceStr="DkaA8I15hhTBb0gB";
+ var signature="50b1d9e6fefd8921e00f7ba92f59792b4caf423c";
+ var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+ var shareData = {
+     title: '入职第一天，网易爸爸教我学做人',
+     desc: '网易新员工实力吐槽，速看！三石要来删了！',
+     link: 'http://wy.youyuq.com/h5/wyklhw/index.php',
+     imgUrl: 'http://wy.youyuq.com/h5/wyklhw/images/logo.jpg',
+ };
+
+
+ wx.config({
+     debug: false,
+     appId: 'wx35bd94b19babdd26',
+     timestamp: '1558857335',
+     nonceStr: 'DkaA8I15hhTBb0gB',
+     signature: '50b1d9e6fefd8921e00f7ba92f59792b4caf423c',
+     jsApiList: [
+         'onMenuShareTimeline',
+         'onMenuShareAppMessage'],
+ });
+ wx.ready(function() {
+     wx.onMenuShareAppMessage(shareData);
+     wx.onMenuShareTimeline(shareData);
+ });
+</script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>

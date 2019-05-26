@@ -11,6 +11,11 @@
 		</swiper>
 		
 		<!-- <img :src="t_url" mode="widthFix" class="head_img"  > -->
+		
+		<div class="search_wrap">
+			<img src="../../static/img/home_search.png" mode="widthFix">
+			<span>请输入关键字</span>
+		</div>
 
 
         <div class="row_around content_wrap">
@@ -361,6 +366,22 @@ swiper-item{
 	width: 100%;
 }
 
+.search_wrap{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 90%;
+	height: 100upx;
+	margin: 20upx 5%;
+	box-sizing: border-box;
+	border-radius: 20upx;
+	background-color: rgba(0,0,0,0.1);
+	color: #000000;
+	font-size: 28upx;
+	border: solid 2upx #F2F2F2;
+	padding-left: 40upx;
+}
 
+.search_wrap img{width: 40upx;margin-right: 20upx;}
 	
 </style>
