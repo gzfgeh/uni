@@ -1,12 +1,15 @@
 <template>
 	<view style="width: 100%;">
-		<uni-nav-bar color="#333333" left-icon="back"
+		<uni-nav-bar color="#333333" left-icon="back" @click-left="back"
 			background-color="#FFFFFF" fixed="true">
 			<view class="input-view">
 				<uni-icon type="search" size="22" color="#666666"></uni-icon>
-				<input confirm-type="search" @confirm="confirm" class="input" type="text" placeholder="输入搜索关键词" />
+				<input confirm-type="search" @confirm="confirm" class="input" 
+					type="text" :placeholder="placeHolderText" v-model="searchKey"/>
 			</view>
 		</uni-nav-bar>
+		
+		<div style="height: 88upx; width: 100%;"></div>
 		
 		<div v-for="(item,index) in listData" :key="index" >
 			<view  class="row item_wrap">
@@ -56,7 +59,7 @@
 	import uniNavBar from '@/components/uni-nav-bar.vue';
 	import uniIcon from '@/components/uni-icon.vue';
 	import uniLoadMore from '@/components/uni-load-more.vue';
-	import { BASE_IMAGE_URL,goodsList, jiaruCart, getCart} from "@/utils/api";
+	import { BASE_IMAGE_URL,goodsSearchList, jiaruCart, getCart,getConfig} from "@/utils/api";
 	
 	export default {
 		components: {
@@ -81,14 +84,16 @@
 				ids: [],
 				index: 0,
 				m_is_gys: 0,
-				list: []
+				list: [],
+				searchKey: '',
+				placeHolderText: '输入搜索关键词'
 			}
 		},
 		onLoad: function(e){
 			console.log(e);
 			this.index = e?e.id:0;
 			
-			this.goodsList();
+			this.goodsSearchList();
 			this.getCart();
 			
 			this.m_is_gys = uni.getStorageSync("m_is_gys");
@@ -99,7 +104,7 @@
 				this.m_is_gys = 0;
 			}
 			console.log(this.m_is_gys);
-			
+			this.getConfig();
 		},
 		onShow: function(e) {
 			// this.listData = this.randomfn()
@@ -123,12 +128,25 @@
 			
 			this.page = 1;
 			this.listData = [];
-			this.goodsList();
+			this.goodsSearchList();
 		},
 		methods: {
+			back() {
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+			async getConfig(){
+				let res = await getConfig();
+				if(res.code == 1000){
+					this.placeHolderText = res.data.c_detail;
+					let length = this.placeHolderText.length;
+					this.placeHolderText = this.placeHolderText.substring(3, length);
+					let temp = this.placeHolderText.indexOf("<");
+					this.placeHolderText = this.placeHolderText.substring(0, temp);
+				}
+			},
 			async getCart(){
-				
-				
 				let res = await getCart(uni.getStorageSync("openid"));
 				if(res.code == 1000){
 					console.log(res.data.length)
@@ -198,11 +216,11 @@
 					});
 				}
 			},
-			async goodsList(){
+			async goodsSearchList(){
 				let address = uni.getStorageSync("address").split('|');
 				// address = "湖南省|长沙市|芙蓉区".split('|');
 				
-				let res = await goodsList(this.page, this.typeList[this.index], address[0], address[1], address[2]);
+				let res = await goodsSearchList(this.page, this.searchKey, address[0], address[1], address[2]);
 				if(res.code == 1000){
 					if(this.page == 1){
 						uni.stopPullDownRefresh();
@@ -230,6 +248,11 @@
 					
 				}
 				console.log(res);
+			},
+			confirm(){
+				this.page = 1;
+				this.loadingType = 1;
+				this.goodsSearchList();
 			},
 			goToShopping: function(){
 				let phoneNum = uni.getStorageSync("bindPhone");
@@ -262,7 +285,7 @@
 			loadMore() {
 				this.loadingType = 1;
 				this.page++;
-				this.goodsList();
+				this.goodsSearchList();
 			}
 		}
 	}

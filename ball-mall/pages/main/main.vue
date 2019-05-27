@@ -14,7 +14,7 @@
 		
 		<div class="search_wrap" @click="goToGoodsList">
 			<img src="../../static/img/home_search.png" mode="widthFix">
-			<span>请输入关键字</span>
+			<span>{{placeHolderText}}</span>
 		</div>
 
 
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getImgList,getUserInfo } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList,getUserInfo,getConfig } from '@/utils/api'
 	import { formatLocation,getPosition } from '@/utils/index'
 	// var VueAMap = require('../../static/js/amap-h5.js');
 	
@@ -79,17 +79,29 @@
 				          key: '0f8d53697264ae0a58bed025edb73e31'
 				      },
 				address: '',
-				t_url: ''
+				t_url: '',
+				placeHolderText: '输入搜索关键词'
 			}
 		},
 		onLoad: function() {
 			this.getUserInfo();
+			this.getConfig();
 		},
 		
 		onShow: function(){
 			
 		},
 		methods: {
+			async getConfig(){
+				let res = await getConfig();
+				if(res.code == 1000){
+					this.placeHolderText = res.data.c_detail;
+					let length = this.placeHolderText.length;
+					this.placeHolderText = this.placeHolderText.substring(3, length);
+					let temp = this.placeHolderText.indexOf("<");
+					this.placeHolderText = this.placeHolderText.substring(0, temp);
+				}
+			},
 			goToGoodsList: function(){
 				uni.navigateTo({
 					url: '../goods_list/goods_list'
@@ -103,12 +115,12 @@
 // 				this.scrollHeight = imgHeight * scale;
 // 			},
 			async getUserInfo(){
-// 				this.address = "广东深圳市坪山区华鸿大厦"
-// 				uni.setStorageSync("address", "广东省|深圳市|坪山区");
+				// this.address = "广东深圳市坪山区华鸿大厦"
+				// uni.setStorageSync("address", "广东省|深圳市|坪山区");
 				
 // 				this.address = "上海上海市虹口区华鸿大厦"
 // 				uni.setStorageSync("address", "上海|上海|虹口区");
-// 				return;
+				// return;
 				
 				let res = await getUserInfo(uni.getStorageSync("openid"));
 				uni.removeStorageSync("m_is_gys");

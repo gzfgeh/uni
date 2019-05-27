@@ -12,6 +12,14 @@ export function goodsList(page, g_type, g_sheng, g_shi, g_qu) {
 }
 
 /**
+ * 商品列表 搜索
+ */
+export function goodsSearchList(page, g_name, g_sheng, g_shi, g_qu) {
+    return request.get('Project/goodsSearchList?g_name='+g_name+"&page="+page+
+					"&g_sheng="+g_sheng+"&g_shi="+g_shi+"&g_qu="+g_qu)
+}
+
+/**
  * 首页轮播
  */
 export function getImgList() {
@@ -79,5 +87,12 @@ export function goodsEdit(params) {
  */
 export function getUserInfo(m_openid) {
     return request.get('Project/getUserInfo?m_openid='+m_openid);
+}
+
+/**
+ * 提示语
+ */
+export function getConfig() {
+    return request.get('Project/getConfig');
 }
 
