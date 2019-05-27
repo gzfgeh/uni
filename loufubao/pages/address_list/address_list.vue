@@ -30,6 +30,8 @@
 	import uniNavBar from '@/components/uni-nav-bar.vue'
 	import uniIcon from '@/components/uni-icon.vue'
 	
+	import { BASE_IMAGE_URL,getAllAddress } from '@/utils/api'
+	
 	export default {
 		components: {
 			uniLoadMore,
@@ -50,6 +52,14 @@
 		},
 		methods: {
 			async getList(){
+				let params = {
+					userID: '',
+					type: 1
+				};
+				let res = await getAllAddress(params);
+				if(res.status == 1){
+					
+				}
 				setTimeout(() => {
 					uni.stopPullDownRefresh();
 					this.list = this.list.concat([1,2,3,4,5,6,7,8,9,0,11,22,33,44]) ;
