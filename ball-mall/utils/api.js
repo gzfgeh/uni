@@ -6,9 +6,9 @@ export const BASE_IMAGE_URL = 'https://www.xiuqiupaopaopao.com/images/';
 /**
  * 商品列表
  */
-export function goodsList(page, g_type, g_sheng, g_shi, g_qu) {
+export function goodsList(page, g_type, g_sheng, g_shi, g_qu, g_name) {
     return request.get('Project/goodsList?g_type='+g_type+"&page="+page+
-					"&g_sheng="+g_sheng+"&g_shi="+g_shi+"&g_qu="+g_qu)
+					"&g_sheng="+g_sheng+"&g_shi="+g_shi+"&g_qu="+g_qu+"&g_name="+g_name)
 }
 
 /**

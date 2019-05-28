@@ -31,10 +31,13 @@
         },
         {
             "path" : "pages/mall_list/mall_list",
-            "style" : {
-                "navigationBarTitleText" : "商品列表",
-				"enablePullDownRefresh": true 
-            }
+			"style" : {
+				"enablePullDownRefresh": true ,
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
         },
 		{
 		    "path" : "pages/list_detail/list_detail",
@@ -77,6 +80,7 @@
         ,{
             "path" : "pages/goods_list/goods_list",
             "style" : {
+				"enablePullDownRefresh": true ,
 				"navigationStyle": "custom",
 				"app-plus":{
 					"titleNView":false
