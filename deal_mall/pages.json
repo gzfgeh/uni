@@ -14,6 +14,12 @@
 		    }
 		},
 		{
+            "path" : "pages/mall_list/mall_list",
+            "style" : {
+				"navigationBarTitleText": "商品列表"
+		    }
+        },
+		{
             "path" : "pages/personal/personal",
             "style" : {
 				"navigationBarTitleText": "个人信息"
@@ -64,19 +70,7 @@
 				}
 		    }
 		},
-		{
-			"path": "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
-			"style": {}
-		},
-		{
-			"path": "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
-			"style": {}
-		},
-		{
-			"path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
-			"style": {}
-		}
-	    ,{
+	    {
             "path" : "pages/home_webview/home_webview",
             "style" : {}
         }
@@ -147,16 +141,7 @@
 				"navigationBarTitleText": "禁止寄递物品指导目录"
 			}
         }
-        ,{
-            "path" : "pages/express_list/express_list",
-            "style" : {
-				"enablePullDownRefresh": true,
-				"navigationStyle": "custom",
-				"app-plus":{
-					"titleNView":false
-				}
-		    }
-        }
+        
         ,{
             "path" : "pages/express_detail/express_detail",
             "style" : {
@@ -186,7 +171,7 @@
         "current": 0, //当前激活的编译模式（list 的索引项）  
         "list": [{  
             "name": "课程", //模式名称  
-            "pathName": "pages/my/my", //启动页面，必选  
+            "pathName": "pages/mall_list/mall_list", //启动页面，必选  
             "query": "id=1" //启动参数, QueryString 格式  
         }]  
     },

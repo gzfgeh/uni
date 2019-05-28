@@ -3,7 +3,7 @@
 		<view class="content" >
 			<swiper :indicator-dots="true" :autoplay="true" @change="slideChange"
 						:interval="5000" :duration="1000" class="head_img">            
-					<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" @tap="goToH5(index)">  
+					<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" >  
 						<image src="https://bay.2donghua.com/web/uploads/image/store_1/39db83b2af38b3b427aff184ef1d7dd422bf6a10.png" mode="widthFix" class="head_img"  />           
 					</swiper-item>        
 			</swiper> 
@@ -11,7 +11,7 @@
 		
 		<div class="row">
 			<block v-for="(item, index) in modelList" :key="index">
-				<navigator class="col_center model_item" >
+				<navigator class="col_center model_item" url="../../mall_list/mall_list">
 					<img :src="item.img" mode="widthFix">
 					<span>{{item.text}}</span>
 				</navigator>
