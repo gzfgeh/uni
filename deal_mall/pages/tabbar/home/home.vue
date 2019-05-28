@@ -19,9 +19,9 @@
 		</div>
 		
 		<div class="row_center center_wrap">
-			<div class="line"></div>
+			<span class="line"></span>
 			<span>服装</span>
-			<div class="line"></div>
+			<span class="line"></span>
 		</div>
 		
 		<div class="row content_wrap">
@@ -109,17 +109,17 @@
 <style>
 .content {height: 360upx;position: relative;}
 .head_img{width: 100%;height: 360upx!important;}
-.model_item{flex: 1; height: 190upx; width: 100%; font-size: 24upx; border-top: 2upx solid #E3E3E3;}
+.model_item{flex: 1; height: 190upx; width: 100%; font-size: 30upx; border-top: 2upx solid #E3E3E3;}
 .model_item img{width: 80upx; margin-bottom: 16upx;}
 
 .hover-class{background-color: rgba(0,0,0,0.7);}
 .center_wrap{height: 100upx;}
-.center_wrap .line{width: 30upx; height: 2upx; background-color: #BBBBBB; }
-.center_wrap span{margin: 0upx 40upx; font-size: 28upx;}
+.center_wrap .line{width: 30upx; height: 4upx; background: #ddd; display: inline-block; position: relative;z-index: 100;}
+.center_wrap span{margin: 0upx 20upx; font-size: 34upx;}
 
 .content_wrap{flex-flow: wrap;}
 .content_item{width: 31.33%; margin: 10upx 1%; height: 360upx;}
 .content_item img{width: 100%; height: 242upx;}
-.content_bottom{padding: 0upx 18upx; margin-top: 16upx; font-size: 24upx; color: #353535; flex: 1;}
-.content_bottom .price{color: #ff334b; font-size: 24upx; text-align: center;}
+.content_bottom{padding: 0upx 18upx; margin-top: 16upx; font-size: 30upx; color: #353535; flex: 1;}
+.content_bottom .price{color: #ff334b; font-size: 34upx; text-align: center;}
 </style>

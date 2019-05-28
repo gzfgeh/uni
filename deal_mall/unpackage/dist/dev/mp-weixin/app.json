@@ -3,13 +3,12 @@
     "pages/tabbar/home/home",
     "pages/tabbar/mall_type/mall_type",
     "pages/mall_list/mall_list",
+    "pages/tabbar/card/card",
+    "pages/tabbar/my/my",
     "pages/personal/personal",
     "pages/forget/forget",
     "pages/login/login",
     "pages/register/register",
-    "pages/tabbar/tabbar-3/tabbar-3",
-    "pages/tabbar/tabbar-4/tabbar-4",
-    "pages/tabbar/my/my",
     "pages/home_webview/home_webview",
     "pages/message/message",
     "pages/address_list/address_list",
@@ -51,9 +50,9 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/tabbar/tabbar-3/tabbar-3",
+        "pagePath": "pages/tabbar/card/card",
         "iconPath": "static/img/tabbar/news.png",
-        "selectedIconPath": "static/img/tabbar/news.png",
+        "selectedIconPath": "static/img/tabbar/newsactive.png",
         "text": "购物车"
       },
       {

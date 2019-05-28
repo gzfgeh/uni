@@ -20,6 +20,18 @@
 		    }
         },
 		{
+			"path": "pages/tabbar/card/card",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
+			"path": "pages/tabbar/my/my",
+			"style" : {
+				"navigationBarTitleText": "个人中心"
+		    }
+		},
+		{
             "path" : "pages/personal/personal",
             "style" : {
 				"navigationBarTitleText": "个人信息"
@@ -53,23 +65,6 @@
 		    }
 		},
 		
-		{
-			"path": "pages/tabbar/tabbar-3/tabbar-3",
-			"style": {}
-		},
-		{
-			"path": "pages/tabbar/tabbar-4/tabbar-4",
-			"style": {}
-		},
-		{
-			"path": "pages/tabbar/my/my",
-			"style" : {
-				"navigationStyle": "custom",
-				"app-plus":{
-					"titleNView":false
-				}
-		    }
-		},
 	    {
             "path" : "pages/home_webview/home_webview",
             "style" : {}
@@ -199,9 +194,9 @@
 				"text": "分类"
 			},
 			{
-				"pagePath": "pages/tabbar/tabbar-3/tabbar-3",
+				"pagePath": "pages/tabbar/card/card",
 				"iconPath": "static/img/tabbar/news.png",
-				"selectedIconPath": "static/img/tabbar/news.png",
+				"selectedIconPath": "static/img/tabbar/newsactive.png",
 				"text": "购物车"
 			},
 			{
