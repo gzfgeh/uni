@@ -2,6 +2,8 @@
 
 body,html,#main{
     background-color: #e3e2dd !important;
+    height: 100%;
+    overflow: hidden;
   }
   #main{
     position: relative;

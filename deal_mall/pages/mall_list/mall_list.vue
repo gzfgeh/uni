@@ -11,11 +11,11 @@
 		<div class="list_wrap">
 			<navigator v-for="(item, index) in list" :key="index" class="list_item">
 				<image src="https://bay.2donghua.com/web/uploads/image/store_1/f04f242ce46046dde84b0a6f7d9ba3f25f52a585.jpg" mode="aspectFill"></image>
-				<div>
-					<span>萧遇女装连衣裙2019夏季新品</span>
+				<div class="item_info">
+					<span class="item_info_text">萧遇女装连衣裙2019夏季新品</span>
 					<div class="row_between">
-						<span>￥300.00</span>
-						<span>已售0件</span>
+						<span class="price">￥300.00</span>
+						<span class="sell_num">已售0件</span>
 					</div>
 				</div>
 				
@@ -29,6 +29,11 @@
 		<view class="uni-tab-bar-loading" v-if="list.length != 0">
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
+		
+		<div class="quick_icon col_center">
+			<span>快捷</span>
+			<span>导航</span>
+		</div>
 		
 	</view>
 </template>
@@ -98,8 +103,13 @@
 .head_item{flex: 1;}
 .active_type{color: #FF4544;}
 
-.list_wrap{padding-top: 106upx; display: flex; flex-direction: row; flex-flow: wrap;width: 100%;}
-.list_item{display: flex; flex-direction: column;width: 48%; margin: 20upx 1%;}
+.list_wrap{padding-top: 106upx; display: flex; flex-direction: row; flex-flow: wrap;width: 100%;background-color: #EFEFF4;}
+.list_item{display: flex; flex-direction: column;width: 49%; margin: 5upx 0.5%;background-color: #FFFFFF;}
+.list_item .item_info{padding: 4upx 22upx; font-size: 28upx;}
+.list_item .item_info .item_info_text{font-size: 34upx; overflow: hidden;text-overflow: ellipsis;word-break: break-all;line-clamp: 2;}
 .list_item image{width: 100%; height: 365upx;}
+.list_item .item_info .price{color: #ff334b;}
+.list_item .item_info .sell_num{color: #999;}
 
+.quick_icon{position: fixed;right: 50upx; bottom: 140upx; z-index: 20;width: 100upx; height: 100upx; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24upx;}
 </style>
