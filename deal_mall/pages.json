@@ -81,18 +81,7 @@
         ,{
             "path" : "pages/address_list/address_list",
             "style" : {
-				"navigationBarTitleText": "我的地址",
-				"enablePullDownRefresh": true,
-				"app-plus":{
-					"titleNView":{
-						"buttons":[{
-							"text": "新增",
-							"float": "right",
-							"fontSize": "16px",
-							"color":"#107EFF"
-						}]
-					}
-				}
+				"navigationBarTitleText": "收货地址"
 			}
         }
         ,{

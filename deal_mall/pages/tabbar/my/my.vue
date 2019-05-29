@@ -9,7 +9,7 @@
 					<span>枫</span>
 				</div>
 				
-				<div class="address_wrap row">
+				<div class="address_wrap row" @click="goToAddress">
 					<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-address.png" alt="">
 					<span>收货地址</span>
 				</div>
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap" @click="goToComplain">
+		<div class=" bottom_item_wrap" @click="goToAddress">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-dz.png" class="icon" mode="widthFix">
 				<span>收货地址</span>

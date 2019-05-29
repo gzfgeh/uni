@@ -1,50 +1,25 @@
 <template>
 	<view class="contain">
 		<div class="mui-content">
-			<div class="head_wrap">
-			  <span>联系人</span>
-			</div>
 
 			<div class="row item_wrap">
 			  <div class="row_between item">
-				<span class="item_span">姓名</span>
-				<input type="text" placeholder="请填写收件人姓名" class="name">
+				<span class="item_span">收货人</span>
+				<input type="text" v-model="name">
 			  </div>
 			</div>
 
 			<div class="row item_wrap">
 			  <div class="row_between item">
-				<span class="item_span">手机号</span>
-				<input type="tel" maxlength="11" placeholder="请输入手机号码" class="mobile">
-			  </div>
-			</div>
-				
-				<div class="row item_wrap">
-				  <div class="row_between item">
-					<span class="item_span">固定电话</span>
-					<input type="text" placeholder="请输入固定电话号码" class="phone">
-				  </div>
-				</div>
-
-			<div class="head_wrap">
-			  <span>收货地址</span>
-			</div>
-
-			<div class="row item_wrap" id="addressType" onclick="showAddress();">
-			  <div class="row_between item">
-				<span>地址类型</span>
-				<span class="content">请选择</span>
-				
-				<span class="arraw"></span>
+				<span class="item_span">联系电话</span>
+				<input type="text" v-model="mobile">
 			  </div>
 			</div>
 
-			<div class="row item_wrap" onclick="showReason();">
+			<div class="row item_wrap" @click="showMulLinkageThreePicker">
 			  <div class="row_between item">
-				<span>所在地区</span>
-				<span class="content">请选择</span>
-				<!-- <span class="content city">市</span>
-				  <span class="content region">区</span> -->
+				<span class="item_span">所在地区</span>
+				<span class="content">{{pickerText}}</span>
 				<span class="arraw"></span>
 			  </div>
 			</div>
@@ -52,41 +27,52 @@
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">详细地址</span>
-				<input type="text" placeholder="请填写详细地址" class="detail">
+				<input type="text" v-model="detail">
 			  </div>
 			</div>
-
-			<div class="row item_wrap">
-			  <div class="row_between item">
-				<span class="item_span">设为默认地址</span>
-				<div class="mui-switch mui-switch-blue mui-switch-mini">
-				  <div class="mui-switch-handle"></div>
-				</div>
-			  </div>
-			</div>
-
-			<button type="button" class="mui-btn mui-btn-primary button" onclick="saveAddress();">保存</button>
-			<button type="button" class="mui-btn mui-btn-primary button" onclick="delAddress();">删除</button>
-
-		  </div>
+			
+		</div>
+		
+		<div class="bottom_wrap">保存</div>
+		
+		<mpvue-city-picker :themeColor="themeColor" ref="mpvueCityPicker" :pickerValueDefault="cityPickerValueDefault"
+		 @onCancel="onCancel" @onConfirm="onConfirm"></mpvue-city-picker>
 
 	</view>
 </template>
 
 <script>
+	import mpvueCityPicker from '../../components/mpvueCityPicker.vue'
+	
 	export default {
+		components: {
+			mpvueCityPicker
+		},
 		data() {
 			return {
-				
+				name: '',
+				phone: '',
+				detail: '',
+				cityPickerValueDefault: [0, 0, 1],
+				themeColor: '#007AFF',
+				pickerText: '请选择'
 			}
 		},
 		methods: {
-			
+			// 三级联动选择
+			showMulLinkageThreePicker() {
+				this.$refs.mpvueCityPicker.show()
+			},
+			onConfirm(e) {
+				this.pickerText = e.label;
+			}
 		}
 	}
 </script>
 
 <style>
+	page{height: 100%; background: #EFEFF4;}
+	.bottom_wrap{position: fixed;bottom: 0upx;left:0upx; width: 100%; height: 100upx;line-height: 100upx;text-align: center;color: #FFF; background: #FF4544; font-size: 34upx;}
 .head_wrap {
       padding: 28upx;
       width: 100%;
@@ -121,7 +107,7 @@
     .item .content {
       flex: 1;
       text-align: right;
-      font-size: 28upx;
+      font-size: 32upx;
       color: #666666;
       height: 100upx;
       line-height: 100upx;
@@ -160,7 +146,7 @@
     .item .item_span {
       width: 200upx;
       color: #333333;
-      font-size: 28upx;
+      font-size: 34upx;
     }
 
     .upload_wrap {
