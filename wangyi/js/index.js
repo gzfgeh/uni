@@ -30,13 +30,13 @@ function evTurn(e) {
 //     }, 500)
 // }
 
-videoJS('video', 'http://project.youzewang.com/wangyi/tesila.mp4');
+videoJS('video', 'http://mh.2donghua.com/h5/tesila.mp4');
 document.addEventListener('DOMContentLoaded', function() {
     function audioAutoPlay() {
 
-        videoJS('video', 'http://project.youzewang.com/wangyi/tesila.mp4');
+        videoJS('video', 'http://mh.2donghua.com/h5/tesila.mp4');
         document.addEventListener("WeixinJSBridgeReady", function() {
-            videoJS('video', 'http://project.youzewang.com/wangyi/tesila.mp4');
+            videoJS('video', 'http://mh.2donghua.com/h5/tesila.mp4');
 
         }, false);
     }
@@ -79,7 +79,7 @@ $(function() {
             }
         }
 
-        if (myVid.currentTime > 172) {
+        if (myVid.currentTime > 6) {
             videoJS.pause();
             //$('#video').remove();
 
