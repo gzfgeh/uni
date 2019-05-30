@@ -79,7 +79,7 @@ $(function() {
             }
         }
 
-        if (myVid.currentTime > 174) {
+        if (myVid.currentTime > 172) {
             videoJS.pause();
             //$('#video').remove();
 
@@ -124,21 +124,21 @@ $(function() {
         $('.btn').hide();
     });
 
-    // $('#p1').on('click', function() {
-    //     actionOut("#p1", 'action_translateY', 1, "");
+    $('#p1').on('click', function() {
+        // actionOut("#p1", 'action_translateY', 1, "");
 
-    //     setTimeout(function() {
+        setTimeout(function() {
 
-    //         videoJS.play();
-    //         $('.indexbtn').hide();
-    //         $('.index').hide();
-    //         $('.video').show();
-    //         setTimeout(function() {
-    //             videoJS.play();
-    //         }, 50)
+            videoJS.play();
+            $('.indexbtn').hide();
+            $('.index').hide();
+            $('.video').show();
+            setTimeout(function() {
+                videoJS.play();
+            }, 50)
 
-    //     }, 1000);
-    // });
+        }, 1000);
+    });
 
     $('.endbtn1').on('click', function() {
         window.location.href = "https://jinshuju.net/f/cajgoa";

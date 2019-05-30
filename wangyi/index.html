@@ -21,7 +21,7 @@
             <script src="https://s19.cnzz.com/z_stat.php?id=1271204282&web_id=1271204282" language="JavaScript"></script>
         </div>
 
-        <div class="swiper-container" style="position: relative; z-index: 100000; width: 100%; height: 100%;">
+        <!-- <div class="swiper-container" style="position: relative; z-index: 100000; width: 100%; height: 100%;">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide1">
                     <img id="p1" class="index" src="images/index.png" style="width: 100%; height: 100%;">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="swiper-slide slide2"></div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- <div class="swiper-container">
@@ -43,6 +43,9 @@
                 </div>
             </div>
         </div> -->
+
+        <img id="p1" class="index" src="images/index.png" style="width: 100%; height: 100%;">
+        <!-- <img class="indexbtn" src="images/up.png"> -->
 
         <img class="hd hidden" src="images/hd.png">
         <div class="btn hidden"></div>
@@ -65,15 +68,6 @@
 
     </div>
     <script>
-        // var scrollImg = $.mggScrollImg('.head_wrap', {
-        //     loop: false, //循环切换
-        //     auto: false, //自动切换
-        //     auto_wait_time: 3000, //轮播间隔
-        //     scroll_time: 300, //滚动时长
-        //     callback: function(ind) { //这里传过来的是索引值
-        //         $('#page').text(ind + 1);
-        //     }
-        // });
         $(document).ready(function() {
             var mySwiper = new Swiper('.swiper-container', {
                 direction: 'vertical', // 垂直切换选项
@@ -81,6 +75,8 @@
                 on: {
                     slideChangeTransitionEnd: function() {
                         $(".swiper-container").hide();
+                        $(".index").hide();
+                        $(".indexbtn").hide();
                         setTimeout(function() {
                             videoJS.play();
                             $('.indexbtn').hide();
@@ -88,7 +84,7 @@
                             $('.video').show();
                             setTimeout(function() {
                                 videoJS.play();
-                            }, 50)
+                            }, 500)
 
                         }, 1000);
                     },
