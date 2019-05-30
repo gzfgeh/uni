@@ -35,6 +35,8 @@ ul, li{list-style:none;}
 .col_between{display: flex; flex-direction: column; justify-content: space-between;}
 .col_center{display: flex; flex-direction: column; align-items: center; justify-content: center;}
 
+.flex_one{flex: 1;}
+
 .hover_class{opacity: 0.9; background-color: #F7F7F7;}
 .no_data_wrap{text-align: center; margin-top: 100upx;}
 .arraw{width: 20upx;height: 20upx;border-top: 4upx solid #999999;border-right: 4upx solid #999999;transform: rotate(45deg);margin-left: 4upx;display: inline-block;}

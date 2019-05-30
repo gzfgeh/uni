@@ -5,6 +5,7 @@
     "pages/mall_list/mall_list",
     "pages/tabbar/card/card",
     "pages/tabbar/my/my",
+    "pages/order_list/order_list",
     "pages/personal/personal",
     "pages/forget/forget",
     "pages/login/login",
@@ -19,7 +20,7 @@
     "pages/recent_used/recent_used",
     "pages/yun_fei/yun_fei",
     "pages/forbid/forbid",
-    "pages/express_detail/express_detail",
+    "pages/goods_detail/goods_detail",
     "pages/service_form/service_form",
     "pages/service_form_sure/service_form_sure",
     "pages/service_pay/service_pay"

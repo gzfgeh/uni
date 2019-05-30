@@ -28,7 +28,7 @@
       "list": [
         {
           "name": "课程",
-          "pathName": "pages/mall_list/mall_list",
+          "pathName": "pages/goods_detail/goods_detail",
           "query": "id=1",
           "id": 0
         }

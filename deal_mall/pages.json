@@ -33,6 +33,13 @@
 		    }
 		},
 		{
+            "path" : "pages/order_list/order_list",
+            "style" : {
+				"navigationBarTitleText": "订单列表",
+				"enablePullDownRefresh": true
+		    }
+        },
+		{
             "path" : "pages/personal/personal",
             "style" : {
 				"navigationBarTitleText": "个人信息"
@@ -128,9 +135,9 @@
         }
         
         ,{
-            "path" : "pages/express_detail/express_detail",
+            "path" : "pages/goods_detail/goods_detail",
             "style" : {
-				"navigationBarTitleText": "快递详情"
+				"navigationBarTitleText": "商品详情"
 			}
         }
         ,{
@@ -156,7 +163,7 @@
         "current": 0, //当前激活的编译模式（list 的索引项）  
         "list": [{  
             "name": "课程", //模式名称  
-            "pathName": "pages/mall_list/mall_list", //启动页面，必选  
+            "pathName": "pages/goods_detail/goods_detail", //启动页面，必选  
             "query": "id=1" //启动参数, QueryString 格式  
         }]  
     },

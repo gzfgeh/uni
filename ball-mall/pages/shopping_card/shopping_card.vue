@@ -337,10 +337,10 @@ export default {
 					success: (res) => {
 						console.log(res.data.data);
 						if(res.data.code == 1000){
-							that.minMoney = res.data.data.c_min_money;
+							that.minMoney = res.data.data[0].c_min_money;
 // 							that.warningText = res.data.data.c_detail.substring(3, res.data.data.c_detail.length);
 // 							that.warningText = that.warningText.substring(0, that.warningText.length-4);
-							that.htmlString = res.data.data.c_detail;
+							that.htmlString = res.data.data[0].c_detail;
 							that.payNow();
 							
 						}

@@ -95,7 +95,7 @@
 			async getConfig(){
 				let res = await getConfig();
 				if(res.code == 1000){
-					this.placeHolderText = res.data.c_detail;
+					this.placeHolderText = res.data[1].c_detail;
 					let length = this.placeHolderText.length;
 					this.placeHolderText = this.placeHolderText.substring(3, length);
 					let temp = this.placeHolderText.indexOf("<");

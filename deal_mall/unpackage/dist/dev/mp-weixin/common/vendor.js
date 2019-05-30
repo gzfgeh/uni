@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/city-data/area.js":
-/*!****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/components/city-data/area.js ***!
-  \****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/city-data/area.js":
+/*!*************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/components/city-data/area.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12553,10 +12553,10 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/city-data/city.js":
-/*!****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/components/city-data/city.js ***!
-  \****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/city-data/city.js":
+/*!*************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/components/city-data/city.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14067,10 +14067,10 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/city-data/province.js":
-/*!********************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/components/city-data/province.js ***!
-  \********************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/city-data/province.js":
+/*!*****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/components/city-data/province.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14217,17 +14217,17 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js":
-/*!*******************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js ***!
-  \*******************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js":
+/*!****************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/App.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/App.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
@@ -14241,401 +14241,418 @@ createApp(app).$mount();
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fadd_address%2Fadd_address\"}":
-/*!****************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fadd_address%2Fadd_address"} ***!
-  \****************************************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fadd_address%2Fadd_address\"}":
+/*!*************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fadd_address%2Fadd_address"} ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _add_address = _interopRequireDefault(__webpack_require__(/*! ./pages/add_address/add_address.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/add_address/add_address.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _add_address = _interopRequireDefault(__webpack_require__(/*! ./pages/add_address/add_address.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/add_address/add_address.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_add_address.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Faddress_list%2Faddress_list\"}":
-/*!******************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Faddress_list%2Faddress_list"} ***!
-  \******************************************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Faddress_list%2Faddress_list\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Faddress_list%2Faddress_list"} ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _address_list = _interopRequireDefault(__webpack_require__(/*! ./pages/address_list/address_list.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/address_list/address_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _address_list = _interopRequireDefault(__webpack_require__(/*! ./pages/address_list/address_list.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/address_list/address_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_address_list.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fcomplain%2Fcomplain\"}":
-/*!**********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fcomplain%2Fcomplain"} ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _complain = _interopRequireDefault(__webpack_require__(/*! ./pages/complain/complain.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/complain/complain.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_complain.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fexpress_detail%2Fexpress_detail\"}":
-/*!**********************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fexpress_detail%2Fexpress_detail"} ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _express_detail = _interopRequireDefault(__webpack_require__(/*! ./pages/express_detail/express_detail.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/express_detail/express_detail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_express_detail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fexpress_info%2Fexpress_info\"}":
-/*!******************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fexpress_info%2Fexpress_info"} ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _express_info = _interopRequireDefault(__webpack_require__(/*! ./pages/express_info/express_info.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/express_info/express_info.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_express_info.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fexpress_main%2Fexpress_main\"}":
-/*!******************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fexpress_main%2Fexpress_main"} ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _express_main = _interopRequireDefault(__webpack_require__(/*! ./pages/express_main/express_main.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/express_main/express_main.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_express_main.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fforbid%2Fforbid\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fforbid%2Fforbid"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _forbid = _interopRequireDefault(__webpack_require__(/*! ./pages/forbid/forbid.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/forbid/forbid.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_forbid.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fforget%2Fforget\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fforget%2Fforget"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _forget = _interopRequireDefault(__webpack_require__(/*! ./pages/forget/forget.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/forget/forget.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_forget.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fhome_webview%2Fhome_webview\"}":
-/*!******************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fhome_webview%2Fhome_webview"} ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _home_webview = _interopRequireDefault(__webpack_require__(/*! ./pages/home_webview/home_webview.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/home_webview/home_webview.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_home_webview.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!****************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fmall_list%2Fmall_list\"}":
-/*!************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fmall_list%2Fmall_list"} ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _mall_list = _interopRequireDefault(__webpack_require__(/*! ./pages/mall_list/mall_list.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/mall_list/mall_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_mall_list.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fmessage%2Fmessage\"}":
-/*!********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/message.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/message/message.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_message.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fpersonal%2Fpersonal\"}":
-/*!**********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fpersonal%2Fpersonal"} ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _personal = _interopRequireDefault(__webpack_require__(/*! ./pages/personal/personal.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/personal/personal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_personal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Frecent_used%2Frecent_used\"}":
-/*!****************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Frecent_used%2Frecent_used"} ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _recent_used = _interopRequireDefault(__webpack_require__(/*! ./pages/recent_used/recent_used.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/recent_used/recent_used.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_recent_used.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fregister%2Fregister\"}":
-/*!**********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fregister%2Fregister"} ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/register/register.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/register/register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_register.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_form%2Fservice_form\"}":
-/*!******************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_form%2Fservice_form"} ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _service_form = _interopRequireDefault(__webpack_require__(/*! ./pages/service_form/service_form.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/service_form/service_form.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_service_form.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_form_sure%2Fservice_form_sure\"}":
-/*!****************************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_form_sure%2Fservice_form_sure"} ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _service_form_sure = _interopRequireDefault(__webpack_require__(/*! ./pages/service_form_sure/service_form_sure.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/service_form_sure/service_form_sure.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_service_form_sure.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_pay%2Fservice_pay\"}":
-/*!****************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_pay%2Fservice_pay"} ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _service_pay = _interopRequireDefault(__webpack_require__(/*! ./pages/service_pay/service_pay.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/service_pay/service_pay.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_service_pay.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fcard%2Fcard\"}":
-/*!***********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fcard%2Fcard"} ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _card = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/card/card.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/tabbar/card/card.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_card.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fhome%2Fhome\"}":
-/*!***********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fhome%2Fhome"} ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _home = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/home/home.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/tabbar/home/home.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_home.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fmall_type%2Fmall_type\"}":
-/*!*********************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fmall_type%2Fmall_type"} ***!
-  \*********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _mall_type = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/mall_type/mall_type.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/tabbar/mall_type/mall_type.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_mall_type.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fmy%2Fmy\"}":
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fcomplain%2Fcomplain\"}":
 /*!*******************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fmy%2Fmy"} ***!
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fcomplain%2Fcomplain"} ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _my = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/my/my.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/tabbar/my/my.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_my.default);
+var _complain = _interopRequireDefault(__webpack_require__(/*! ./pages/complain/complain.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/complain/complain.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_complain.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fyun_fei%2Fyun_fei\"}":
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fexpress_info%2Fexpress_info\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fexpress_info%2Fexpress_info"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _express_info = _interopRequireDefault(__webpack_require__(/*! ./pages/express_info/express_info.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/express_info/express_info.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_express_info.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fexpress_main%2Fexpress_main\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fexpress_main%2Fexpress_main"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _express_main = _interopRequireDefault(__webpack_require__(/*! ./pages/express_main/express_main.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/express_main/express_main.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_express_main.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fforbid%2Fforbid\"}":
+/*!***************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fforbid%2Fforbid"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _forbid = _interopRequireDefault(__webpack_require__(/*! ./pages/forbid/forbid.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/forbid/forbid.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_forbid.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fforget%2Fforget\"}":
+/*!***************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fforget%2Fforget"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _forget = _interopRequireDefault(__webpack_require__(/*! ./pages/forget/forget.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/forget/forget.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_forget.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fgoods_detail%2Fgoods_detail\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fgoods_detail%2Fgoods_detail"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _goods_detail = _interopRequireDefault(__webpack_require__(/*! ./pages/goods_detail/goods_detail.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/goods_detail/goods_detail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_goods_detail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fhome_webview%2Fhome_webview\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fhome_webview%2Fhome_webview"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _home_webview = _interopRequireDefault(__webpack_require__(/*! ./pages/home_webview/home_webview.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/home_webview/home_webview.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_home_webview.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
+/*!*************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fmall_list%2Fmall_list\"}":
+/*!*********************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fmall_list%2Fmall_list"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _mall_list = _interopRequireDefault(__webpack_require__(/*! ./pages/mall_list/mall_list.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/mall_list/mall_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_mall_list.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fmessage%2Fmessage\"}":
+/*!*****************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/message.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/message/message.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_message.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Forder_list%2Forder_list\"}":
+/*!***********************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Forder_list%2Forder_list"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _order_list = _interopRequireDefault(__webpack_require__(/*! ./pages/order_list/order_list.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/order_list/order_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_order_list.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fpersonal%2Fpersonal\"}":
+/*!*******************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fpersonal%2Fpersonal"} ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _personal = _interopRequireDefault(__webpack_require__(/*! ./pages/personal/personal.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/personal/personal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_personal.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Frecent_used%2Frecent_used\"}":
+/*!*************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Frecent_used%2Frecent_used"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _recent_used = _interopRequireDefault(__webpack_require__(/*! ./pages/recent_used/recent_used.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/recent_used/recent_used.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_recent_used.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fregister%2Fregister\"}":
+/*!*******************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fregister%2Fregister"} ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/register/register.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/register/register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_register.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_form%2Fservice_form\"}":
+/*!***************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_form%2Fservice_form"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _service_form = _interopRequireDefault(__webpack_require__(/*! ./pages/service_form/service_form.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/service_form/service_form.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_service_form.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_form_sure%2Fservice_form_sure\"}":
+/*!*************************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_form_sure%2Fservice_form_sure"} ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _service_form_sure = _interopRequireDefault(__webpack_require__(/*! ./pages/service_form_sure/service_form_sure.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/service_form_sure/service_form_sure.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_service_form_sure.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fservice_pay%2Fservice_pay\"}":
+/*!*************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fservice_pay%2Fservice_pay"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _service_pay = _interopRequireDefault(__webpack_require__(/*! ./pages/service_pay/service_pay.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/service_pay/service_pay.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_service_pay.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fcard%2Fcard\"}":
 /*!********************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fyun_fei%2Fyun_fei"} ***!
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fcard%2Fcard"} ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _yun_fei = _interopRequireDefault(__webpack_require__(/*! ./pages/yun_fei/yun_fei.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/yun_fei/yun_fei.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _card = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/card/card.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/tabbar/card/card.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_card.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fhome%2Fhome\"}":
+/*!********************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fhome%2Fhome"} ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _home = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/home/home.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/tabbar/home/home.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_home.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fmall_type%2Fmall_type\"}":
+/*!******************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fmall_type%2Fmall_type"} ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _mall_type = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/mall_type/mall_type.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/tabbar/mall_type/mall_type.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_mall_type.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fmy%2Fmy\"}":
+/*!****************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fmy%2Fmy"} ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _my = _interopRequireDefault(__webpack_require__(/*! ./pages/tabbar/my/my.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/tabbar/my/my.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_my.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fyun_fei%2Fyun_fei\"}":
+/*!*****************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fyun_fei%2Fyun_fei"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _yun_fei = _interopRequireDefault(__webpack_require__(/*! ./pages/yun_fei/yun_fei.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/yun_fei/yun_fei.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_yun_fei.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json":
-/*!**********************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/pages.json ***!
-  \**********************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json":
+/*!*******************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/pages.json ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14644,10 +14661,10 @@ createPage(_yun_fei.default);
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/add_icon.png":
-/*!***********************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/add_icon.png ***!
-  \***********************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/add_icon.png":
+/*!********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/add_icon.png ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14655,21 +14672,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_arraw.jpg":
-/*!****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_arraw.jpg ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABkAAD/4QOPaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6OTVhOGZjMDUtYzQwNy00Y2Q4LTlmMTktMjQzZTgwOTdmMjdlIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjU5QUZCQjZBMENBRDExRTk5QTA2RDNBM0ZEODY0NDgwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjU5QUIyNzgzMENBRDExRTk5QTA2RDNBM0ZEODY0NDgwIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE4IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTJhNmE1NWQtZDE0NS00MTA5LWEzOGEtZDQ1NzFhYTgzOGY5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6MzllMmMxODktMzNhYy0xMTdjLTk3YjQtYjcyYWI4MmI0N2QwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAgICAgICAgICAwMDAwMDAwMDAwEBAQEBAQECAQECAgIBAgIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgAIAA0AwERAAIRAQMRAf/EAGoAAQADAQEAAAAAAAAAAAAAAAAFBgcCCgEBAAAAAAAAAAAAAAAAAAAAABAAAQQBAwICCAcAAAAAAAAAAgEDBAUAERIGIQciEzEyIxTlZqYYUySl1VYXCBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9/GAwGAwGAwGAwKdf8/4hxiWMC8umocwmxe93CNOmOg2euwnRgxZPk70TVEPaqp1TpgQX9ydt/5H+kX37XgZz3M7q0k2oqj4XyF5bmBfxZ2rMKyiKMVuvs2HVcWdCYjvsk5IASbVS3oXUVRF0C6du+7Nby4Wauz8qs5Eg6IzqoxLJRRNzkAzVdry+lWCVT06ipIi7Q2DAYDAxTnHZqLzG9evmb12qkSmo4S2jr0sGnDjMhGacaX32ETPsGhRR8SKqa9NcCnfbl85fT3xzAfbl85fT3xzA6D/ADobZi43zQgMCEwMOPqJgYqhCQkN6iiQqmqKnVFwN743W3NTXNwbm8HkDzGgM2BV6wJJMomiDL/PTRkuj+J4CVPW3FqShP4DAYDAYDAYDA//2Q=="
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_comp_logo.png":
-/*!********************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_comp_logo.png ***!
-  \********************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_comp_logo.png":
+/*!*****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_comp_logo.png ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14677,10 +14683,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAABbCAYAAAAR
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_end_add.png":
-/*!******************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_end_add.png ***!
-  \******************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_end_add.png":
+/*!***************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_end_add.png ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14688,10 +14694,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABQCAYAAACp
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_guoji.png":
-/*!****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_guoji.png ***!
-  \****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_guoji.png":
+/*!*************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_guoji.png ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14699,10 +14705,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABQCAYAAABB
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_guonei.png":
-/*!*****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_guonei.png ***!
-  \*****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_guonei.png":
+/*!**************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_guonei.png ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14710,10 +14716,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABOCAYAAAB4
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_jisuan.png":
-/*!*****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_jisuan.png ***!
-  \*****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_jisuan.png":
+/*!**************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_jisuan.png ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14721,10 +14727,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABRCAYAAAA3
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_start_add.png":
-/*!********************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_start_add.png ***!
-  \********************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_start_add.png":
+/*!*****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_start_add.png ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14732,10 +14738,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABRCAYAAABi
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_tongcheng.png":
-/*!********************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_tongcheng.png ***!
-  \********************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_tongcheng.png":
+/*!*****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_tongcheng.png ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14743,10 +14749,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABOCAYAAAB4
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_weijin.png":
-/*!*****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_weijin.png ***!
-  \*****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_weijin.png":
+/*!**************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_weijin.png ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14754,10 +14760,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAABRCAYAAAD2
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/express_wuliu.png":
-/*!****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/express_wuliu.png ***!
-  \****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/express_wuliu.png":
+/*!*************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/express_wuliu.png ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14765,10 +14771,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABPCAYAAACz
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/goods_item.jpg":
-/*!*************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/goods_item.jpg ***!
-  \*************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/goods_item.jpg":
+/*!**********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/goods_item.jpg ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14776,10 +14782,10 @@ module.exports = __webpack_require__.p + "static/img/goods_item.d7b253ab.jpg";
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/hetongchakan.png":
-/*!***************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/hetongchakan.png ***!
-  \***************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/hetongchakan.png":
+/*!************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/hetongchakan.png ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14787,10 +14793,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAA5CAYAAACb
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/loginBg.png":
-/*!**********************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/loginBg.png ***!
-  \**********************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/loginBg.png":
+/*!*******************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/loginBg.png ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14798,10 +14804,10 @@ module.exports = __webpack_require__.p + "static/img/loginBg.28158f01.png";
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/login_close.png":
-/*!**************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/login_close.png ***!
-  \**************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_close.png":
+/*!***********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/login_close.png ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14809,10 +14815,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADF
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/login_code.png":
-/*!*************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/login_code.png ***!
-  \*************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_code.png":
+/*!**********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/login_code.png ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14820,10 +14826,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAA7CAYAAADB
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/login_phone.png":
-/*!**************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/login_phone.png ***!
-  \**************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_phone.png":
+/*!***********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/login_phone.png ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14831,10 +14837,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA5CAYAAABe
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/login_pwd.png":
-/*!************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/login_pwd.png ***!
-  \************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_pwd.png":
+/*!*********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/login_pwd.png ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14842,10 +14848,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAA1CAYAAAA3
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/logo.png":
-/*!*******************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/logo.png ***!
-  \*******************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/logo.png":
+/*!****************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/logo.png ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14853,10 +14859,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATsAAAFrCAYAAACu
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/mtyou_icon.png":
-/*!*************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/mtyou_icon.png ***!
-  \*************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/mtyou_icon.png":
+/*!**********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/mtyou_icon.png ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14864,10 +14870,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABYCAYAAABx
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/qq.png":
-/*!*****************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/qq.png ***!
-  \*****************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/qq.png":
+/*!**************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/qq.png ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14875,10 +14881,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAyCAYAAAAa
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/reduce_icon.png":
-/*!**************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/reduce_icon.png ***!
-  \**************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/reduce_icon.png":
+/*!***********************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/reduce_icon.png ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14886,21 +14892,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/sanjiao.png":
-/*!**********************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/sanjiao.png ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAJCAYAAADZ9rdLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NmQ5MjE0MS05ZjFiLTQ2YTQtODFlNS1iYWIwODkxMWNmZWIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUEwMDExREMwRDAxMTFFOUFBMjlDMTI4MTg0QTZBQ0UiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUEwMDExREIwRDAxMTFFOUFBMjlDMTI4MTg0QTZBQ0UiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpmMWJjZDhjYS05NDQ0LTQ3NGYtYjgyYi1jNzMyM2ZjMzBhMjQiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2ZjZlMWYyMC0zNzUyLTExN2MtYTUzZC1jY2Y3MTkxNzVjOGIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4rH/8OAAAAbklEQVR42mIUqPvPgAbkgPgAECsykAbuA7EDED+CCTBhUfQIqugeJQbjMhxmgSORFmA1GJ/hxFqA02BChhOyAK/BxBiOy4J7hAwGAUYsqQUXAKWi/VC2IyGDSTUcZgEDMQaDAAuJafkRKYoBAgwAPSUfozZzg5EAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_canyin.jpg":
-/*!*******************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_canyin.jpg ***!
-  \*******************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_canyin.jpg":
+/*!****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_canyin.jpg ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14908,10 +14903,10 @@ module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_fuli.jpg":
-/*!*****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_fuli.jpg ***!
-  \*****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_fuli.jpg":
+/*!**************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_fuli.jpg ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14919,10 +14914,10 @@ module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_left.jpg":
-/*!*****************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_left.jpg ***!
-  \*****************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_left.jpg":
+/*!**************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_left.jpg ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14930,10 +14925,10 @@ module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_shangpin.jpg":
-/*!*********************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_shangpin.jpg ***!
-  \*********************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_shangpin.jpg":
+/*!******************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_shangpin.jpg ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14941,10 +14936,10 @@ module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_zhihui.jpg":
-/*!*******************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/tiaozheng_zhihui.jpg ***!
-  \*******************************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_zhihui.jpg":
+/*!****************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/tiaozheng_zhihui.jpg ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14952,10 +14947,10 @@ module.exports = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/weibo.png":
-/*!********************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/weibo.png ***!
-  \********************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/weibo.png":
+/*!*****************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/weibo.png ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14963,10 +14958,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAvCAYAAABZ
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/weixin.png":
-/*!*********************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/weixin.png ***!
-  \*********************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/weixin.png":
+/*!******************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/static/img/weixin.png ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14974,15 +14969,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAsCAYAAAAu
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js":
-/*!************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/utils/api.js ***!
-  \************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/api.js":
+/*!*********************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/utils/api.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.goodsList = goodsList;exports.getImgList = getImgList;exports.goodsDetail = goodsDetail;exports.sendCode = sendCode;exports.bindPost = bindPost;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsEdit = goodsEdit;exports.getUserInfo = getUserInfo;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.goodsList = goodsList;exports.getImgList = getImgList;exports.goodsDetail = goodsDetail;exports.sendCode = sendCode;exports.bindPost = bindPost;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsEdit = goodsEdit;exports.getUserInfo = getUserInfo;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
 var BASE_IMAGE_URL = 'https://www.xiuqiupaopaopao.com/images/';
@@ -15067,10 +15062,10 @@ function getUserInfo(m_openid) {
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/fly.js":
-/*!************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/utils/fly.js ***!
-  \************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/fly.js":
+/*!*********************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/utils/fly.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15877,16 +15872,16 @@ function getUserInfo(m_openid) {
 
 /***/ }),
 
-/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js":
-/*!****************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/deal_mall/utils/request.js ***!
-  \****************************************************************/
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/request.js":
+/*!*************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/utils/request.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var Fly = __webpack_require__(/*! ./fly.js */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/fly.js");
+var Fly = __webpack_require__(/*! ./fly.js */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/fly.js");
 console.log(Fly);
 
 var request = new Fly();

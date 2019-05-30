@@ -19,25 +19,25 @@
 		<div class="my_order_text">我的订单</div>
 		
 		<div class="row_between func_wrap">
-			<div class="col_center func_item">
+			<div class="col_center func_item" @click="goToOrderList(0)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-0.png" mode="widthFix">
 				<span>待发货</span>
 				<span class="num">2</span>
 			</div>
 			
-			<div class="col_center func_item">
+			<div class="col_center func_item" @click="goToOrderList(1)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-2.png" mode="widthFix">
 				<span>待收货</span>
 				<span class="num">1</span>
 			</div>
 			
-			<div class="col_center func_item">
+			<div class="col_center func_item" @click="goToOrderList(2)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-3.png" mode="widthFix">
 				<span>已完成</span>
 				<span class="num">12</span>
 			</div>
 			
-			<div class="col_center func_item">
+			<div class="col_center func_item" @click="goToOrderList(3)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-4.png" mode="widthFix">
 				<span>售后</span>
 				<span class="num">2</span>
@@ -125,9 +125,9 @@
 					url: '/pages/address_list/address_list'
 				});
 			},
-			goToComplain: function(){
+			goToOrderList: function(index){
 				uni.navigateTo({
-					url: '/pages/complain/complain'
+					url: '/pages/order_list/order_list?index='+index
 				});
 			}
 		}

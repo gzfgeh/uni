@@ -25,8 +25,8 @@
 		</div>
 		
 		<div class="row content_wrap">
-			<block v-for="(item, index) in list" :key="index">
-				<navigator class="col_center content_item" >
+			<block v-for="(item, index) in list" :key="index" >
+				<navigator class="col_center content_item" @click="goToDetail(index)">
 					<img src="https://bay.2donghua.com/web/uploads/image/store_1/f04f242ce46046dde84b0a6f7d9ba3f25f52a585.jpg" mode="aspectFill">
 					<div class="col_between content_bottom">
 						<span>萧遇女装连衣裙2019夏季新品</span>
@@ -67,9 +67,9 @@
 		//this.getImgList();
 	},
 	methods: {
-		goToMsg: function(){
+		goToDetail: function(index){
 			uni.navigateTo({
-				url: '/pages/message/message'
+				url: '/pages/goods_detail/goods_detail'
 			});
 		},
 		goToH5: function(index){
