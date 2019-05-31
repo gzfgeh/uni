@@ -161,9 +161,7 @@
         ,{
             "path" : "pages/express_action_list/express_action_list",
             "style" : {
-				"navigationBarTitleText": "快递列表",
-				"enablePullDownRefresh": true,
-				"onReachBottomDistance": 150
+				"navigationBarTitleText": "快递列表"
 			}
         }
     ],
