@@ -158,6 +158,14 @@
 				"navigationBarTitleText": "提交订单"
 			}
         }
+        ,{
+            "path" : "pages/express_action_list/express_action_list",
+            "style" : {
+				"navigationBarTitleText": "快递列表",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 150
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  
