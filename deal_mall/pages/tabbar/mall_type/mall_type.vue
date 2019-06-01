@@ -17,10 +17,10 @@
 			</scroll-view>
 			
 			<div class="content_list" >
-				<navigator v-for="(item, index) in dateList" :key="index" class="item col_center">
+				<div v-for="(item, index) in dateList" :key="index" class="item col_center" @click="goToDetail(index)">
 					<img src="https://bay.2donghua.com/web/uploads/image/store_1/4bb3e57de292c4586168e73ce82834b9102186ea.png" alt="">
 					<span>男上衣</span>
-				</navigator>
+				</div>
 			</div>
 			
 		</div>
@@ -43,9 +43,9 @@
 			changeType(index){
 				this.typeIndex = index;
 			},
-			goToGeRenKuaidi(){
+			goToDetail(index){
 				uni.navigateTo({
-					url: '/pages/express_main/express_main'
+					url: '/pages/goods_detail/goods_detail'
 				});
 			},
 			goToExpressList(){

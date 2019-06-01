@@ -11,10 +11,10 @@
 		
 		<div class="row">
 			<block v-for="(item, index) in modelList" :key="index">
-				<navigator class="col_center model_item" url="../../mall_list/mall_list">
+				<div class="col_center model_item" @click="goToType(index)">
 					<img :src="item.img" mode="widthFix">
 					<span>{{item.text}}</span>
-				</navigator>
+				</div>
 			</block>
 		</div>
 		
@@ -72,9 +72,9 @@
 				url: '/pages/goods_detail/goods_detail'
 			});
 		},
-		goToH5: function(index){
+		goToType: function(index){
 			uni.navigateTo({
-				url: '/pages/express_main/express_main'
+				url: '/pages/mall_list/mall_list'
 			});
 		},
 		goToRecentUsed(){

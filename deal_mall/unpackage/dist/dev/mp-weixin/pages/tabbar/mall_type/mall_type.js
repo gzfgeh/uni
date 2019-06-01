@@ -143,9 +143,9 @@ var _default =
     changeType: function changeType(index) {
       this.typeIndex = index;
     },
-    goToGeRenKuaidi: function goToGeRenKuaidi() {
+    goToDetail: function goToDetail(index) {
       uni.navigateTo({
-        url: '/pages/express_main/express_main' });
+        url: '/pages/goods_detail/goods_detail' });
 
     },
     goToExpressList: function goToExpressList() {

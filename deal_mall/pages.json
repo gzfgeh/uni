@@ -78,14 +78,6 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/message/message",
-            "style" : {
-				"navigationBarTitleText": "消息中心",
-				"enablePullDownRefresh": true,
-				"onReachBottomDistance": 150
-			}
-        }
-        ,{
             "path" : "pages/address_list/address_list",
             "style" : {
 				"navigationBarTitleText": "收货地址"
@@ -98,70 +90,9 @@
 			}
         }
         ,{
-            "path" : "pages/complain/complain",
-            "style" : {
-				"navigationBarTitleText": "投诉建议"
-			}
-        }
-        ,{
-            "path" : "pages/express_info/express_info",
-            "style" : {
-				"navigationBarTitleText": "国内快递"
-			}
-        }
-        ,{
-            "path" : "pages/express_main/express_main",
-            "style" : {
-				"navigationBarTitleText": "个人快递"
-			}
-        }
-        ,{
-            "path" : "pages/recent_used/recent_used",
-            "style" : {
-				"navigationBarTitleText": "功能调整"
-			}
-        }
-        ,{
-            "path" : "pages/yun_fei/yun_fei",
-            "style" : {
-				"navigationBarTitleText": "运费计算"
-			}
-        }
-        ,{
-            "path" : "pages/forbid/forbid",
-            "style" : {
-				"navigationBarTitleText": "禁止寄递物品指导目录"
-			}
-        }
-        
-        ,{
             "path" : "pages/goods_detail/goods_detail",
             "style" : {
 				"navigationBarTitleText": "商品详情"
-			}
-        }
-        ,{
-            "path" : "pages/service_form/service_form",
-            "style" : {
-				"navigationBarTitleText": "饮水服务"
-			}
-        }
-        ,{
-            "path" : "pages/service_form_sure/service_form_sure",
-            "style" : {
-				"navigationBarTitleText": "饮水服务"
-			}
-        }
-        ,{
-            "path" : "pages/service_pay/service_pay",
-            "style" : {
-				"navigationBarTitleText": "提交订单"
-			}
-        }
-        ,{
-            "path" : "pages/express_action_list/express_action_list",
-            "style" : {
-				"navigationBarTitleText": "快递列表"
 			}
         }
     ],

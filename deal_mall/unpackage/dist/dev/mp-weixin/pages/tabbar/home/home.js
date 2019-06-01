@@ -172,9 +172,9 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
         url: '/pages/goods_detail/goods_detail' });
 
     },
-    goToH5: function goToH5(index) {
+    goToType: function goToType(index) {
       uni.navigateTo({
-        url: '/pages/express_main/express_main' });
+        url: '/pages/mall_list/mall_list' });
 
     },
     goToRecentUsed: function goToRecentUsed() {

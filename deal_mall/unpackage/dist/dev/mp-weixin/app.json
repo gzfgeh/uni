@@ -11,19 +11,9 @@
     "pages/login/login",
     "pages/register/register",
     "pages/home_webview/home_webview",
-    "pages/message/message",
     "pages/address_list/address_list",
     "pages/add_address/add_address",
-    "pages/complain/complain",
-    "pages/express_info/express_info",
-    "pages/express_main/express_main",
-    "pages/recent_used/recent_used",
-    "pages/yun_fei/yun_fei",
-    "pages/forbid/forbid",
-    "pages/goods_detail/goods_detail",
-    "pages/service_form/service_form",
-    "pages/service_form_sure/service_form_sure",
-    "pages/service_pay/service_pay"
+    "pages/goods_detail/goods_detail"
   ],
   "subPackages": [],
   "window": {
