@@ -5,9 +5,11 @@ INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/Android
 INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:2:1-61:12
 INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:2:1-61:12
 MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/f8999c43f299a5093a72d192e0af46a8/AndroidManifest.xml:2:1-228:12
+MERGED from [uppro_auth_sdk.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uppro_auth_sdk.aar/48d8f4360e86da2ce994eb4cf43b7c4a/AndroidManifest.xml:2:1-11:12
 MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/caf6a4fa7e4beaa6bdd5114e0bfa4f05/AndroidManifest.xml:20:1-37:12
 MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/703293c0ec73e6af1264479aecb5f95c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/6096babdba75259e2572c76033108505/AndroidManifest.xml:17:1-26:12
+MERGED from [:yun_pay] /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/yun_pay/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/AndroidManifest.xml:17:1-31:12
 MERGED from [:uniplugin_richalert] /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/uniplugin_richalert/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.fresco:fresco:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fresco-0.12.0.aar/af19135cf85239445f4f511a3e432481/AndroidManifest.xml:2:1-9:12
@@ -35,7 +37,7 @@ INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/Android
 INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:2:1-61:12
 INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:2:1-61:12
 	package
-		ADDED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:3:5-37
+		ADDED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:3:5-38
 		INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -184,12 +186,16 @@ INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/Android
 INJECTED from /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml
 MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/f8999c43f299a5093a72d192e0af46a8/AndroidManifest.xml:7:5-44
 MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/f8999c43f299a5093a72d192e0af46a8/AndroidManifest.xml:7:5-44
+MERGED from [uppro_auth_sdk.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uppro_auth_sdk.aar/48d8f4360e86da2ce994eb4cf43b7c4a/AndroidManifest.xml:7:5-9:41
+MERGED from [uppro_auth_sdk.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uppro_auth_sdk.aar/48d8f4360e86da2ce994eb4cf43b7c4a/AndroidManifest.xml:7:5-9:41
 MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/caf6a4fa7e4beaa6bdd5114e0bfa4f05/AndroidManifest.xml:25:5-27:41
 MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/caf6a4fa7e4beaa6bdd5114e0bfa4f05/AndroidManifest.xml:25:5-27:41
 MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/703293c0ec73e6af1264479aecb5f95c/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/703293c0ec73e6af1264479aecb5f95c/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/6096babdba75259e2572c76033108505/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/6096babdba75259e2572c76033108505/AndroidManifest.xml:20:5-43
+MERGED from [:yun_pay] /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/yun_pay/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:yun_pay] /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/yun_pay/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/AndroidManifest.xml:21:5-23:78
 MERGED from [:uniplugin_richalert] /Users/tuyao/Documents/uni/UniPlugin-Hello-AS/uniplugin_richalert/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
