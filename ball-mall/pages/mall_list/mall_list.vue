@@ -358,10 +358,14 @@
 	
 	.item_title{
 		color: #464646;
-		font-size: 34upx;
-		overflow: hidden;
-		white-space: nowrap;
+		font-size: 30upx;
+		line-height: 30upx;
+		max-width: 200upx;
 		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 	.sub_title{
 		color: @gray_color;
