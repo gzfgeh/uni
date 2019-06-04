@@ -40,33 +40,9 @@
 		    }
         },
 		{
-            "path" : "pages/personal/personal",
-            "style" : {
-				"navigationBarTitleText": "个人信息"
-			}
-        },
-		{
-			"path": "pages/forget/forget",
-			"style" : {
-				"navigationStyle": "custom",
-				"app-plus":{
-					"titleNView":false
-				}
-		    }
-		},
-		{
 			"path": "pages/login/login",
 			"style" : {
 				"navigationBarTitleText": "授权登陆"
-		    }
-		},
-		{
-			"path": "pages/register/register",
-			"style" : {
-				"navigationStyle": "custom",
-				"app-plus":{
-					"titleNView":false
-				}
 		    }
 		},
 		

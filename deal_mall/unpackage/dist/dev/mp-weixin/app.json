@@ -6,10 +6,7 @@
     "pages/tabbar/card/card",
     "pages/tabbar/my/my",
     "pages/order_list/order_list",
-    "pages/personal/personal",
-    "pages/forget/forget",
     "pages/login/login",
-    "pages/register/register",
     "pages/home_webview/home_webview",
     "pages/address_list/address_list",
     "pages/add_address/add_address",
@@ -54,6 +51,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

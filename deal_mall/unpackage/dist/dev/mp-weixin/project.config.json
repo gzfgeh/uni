@@ -8,10 +8,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
-	"appid": "wxe69aa7bf74fcaf86",
+	"appid": "touristappid",
 	"projectname": "deal_mall",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
