@@ -5,8 +5,8 @@
 			<img src="https://bay.2donghua.com/web/statics/images/user-center/img-user-bg.png" mode="aspectFill" class="head_bg">
 			<div class="info_wrap row_between">
 				<div class="user_wrap row">
-					<img src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKmIdOEXj8ecxR1ibrZBEw7YyDp0SeYuOglCCpwyV9PR0zz7PI4YM4f3vt0FcB2cUfSN65icnvzBJDw/132" alt="">
-					<span>枫</span>
+					<img :src="avatarUrl" alt="">
+					<span>{{nickName}}</span>
 				</div>
 				
 				<div class="address_wrap row" @click="goToAddress">
@@ -107,11 +107,23 @@
 	export default {
 		data() {
 			return {
-				statusBarHeight: 0
+				avatarUrl: "",
+				nickName: ""
 			}
 		},
 		onLoad() {
-			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
+		},
+		onShow() {
+			let userInfo = uni.getStorageSync("userInfo");
+			if(userInfo){
+				this.avatarUrl = userInfo.avatarUrl;
+				this.nickName = userInfo.nickName;
+			}else{
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			}
+			
 		},
 		methods: {
 			goToSetting: function(){

@@ -162,6 +162,11 @@ var _default =
       uni.switchTab({
         url: '/pages/tabbar/card/card' });
 
+    },
+    goToHome: function goToHome() {
+      uni.switchTab({
+        url: '/pages/tabbar/home/home' });
+
     } },
 
   onLoad: function onLoad() {

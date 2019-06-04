@@ -111,35 +111,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -158,13 +129,19 @@ var _default =
         url: '/pages/register/register' });
 
     },
-    loginAction: function () {var _loginAction = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:case "end":return _context.stop();}}}, _callee, this);}));function loginAction() {return _loginAction.apply(this, arguments);}return loginAction;}(),
+    myLogin: function () {var _myLogin = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:case "end":return _context.stop();}}}, _callee, this);}));function myLogin() {return _myLogin.apply(this, arguments);}return myLogin;}(),
 
 
     goToForget: function goToForget() {
       uni.navigateTo({
         url: '/pages/forget/forget' });
 
+    },
+    getUserInfo: function getUserInfo(e) {
+      if (e.mp.detail.userInfo) {
+        console.log(e.mp.detail.userInfo);
+        uni.setStorageSync("userInfo", e.mp.detail.userInfo);
+      }
     } },
 
   onLoad: function onLoad() {
@@ -200,28 +177,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var m0 = __webpack_require__(/*! ../../static/img/loginBg.png */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/loginBg.png")
-
-  var m1 = __webpack_require__(/*! ../../static/img/login_close.png */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_close.png")
-
-  var m2 = __webpack_require__(/*! ../../static/img/logo.png */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/logo.png")
-
-  var m3 = __webpack_require__(/*! ../../static/img/login_phone.png */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_phone.png")
-
-  var m4 = __webpack_require__(/*! ../../static/img/login_pwd.png */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/static/img/login_pwd.png")
-
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        m0: m0,
-        m1: m1,
-        m2: m2,
-        m3: m3,
-        m4: m4
-      }
-    }
-  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -57,10 +57,7 @@
 		{
 			"path": "pages/login/login",
 			"style" : {
-				"navigationStyle": "custom",
-				"app-plus":{
-					"titleNView":false
-				}
+				"navigationBarTitleText": "授权登陆"
 		    }
 		},
 		{

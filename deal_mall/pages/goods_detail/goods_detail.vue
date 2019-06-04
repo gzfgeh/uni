@@ -28,7 +28,7 @@
 		</div>
 		
 		<div class="bottom_wrap">
-			<div class="bottom_left col_center">
+			<div class="bottom_left col_center" @click="goToHome">
 				<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-store.png" mode="widthFix">
 				<span>首页</span>
 			</div>
@@ -61,6 +61,11 @@
 			goToShoppingCard(){
 				uni.switchTab({
 					url: '/pages/tabbar/card/card'
+				});
+			},
+			goToHome(){
+				uni.switchTab({
+					url: '/pages/tabbar/home/home'
 				});
 			}
 		},

@@ -118,7 +118,7 @@
 .center_wrap span{margin: 0upx 20upx; font-size: 34upx;}
 
 .content_wrap{flex-flow: wrap;}
-.content_item{width: 31.33%; margin: 10upx 1%; height: 360upx;}
+.content_item{width: 31.33%; margin: 10upx 1%;}
 .content_item img{width: 100%; height: 242upx;}
 .content_bottom{padding: 0upx 18upx; margin-top: 16upx; font-size: 30upx; color: #353535; flex: 1;}
 .content_bottom .price{color: #ff334b; font-size: 34upx; text-align: center;}

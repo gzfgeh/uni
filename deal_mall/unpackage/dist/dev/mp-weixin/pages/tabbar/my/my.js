@@ -207,11 +207,23 @@ var _default =
 {
   data: function data() {
     return {
-      statusBarHeight: 0 };
+      avatarUrl: "",
+      nickName: "" };
 
   },
   onLoad: function onLoad() {
-    this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
+  },
+  onShow: function onShow() {
+    var userInfo = uni.getStorageSync("userInfo");
+    if (userInfo) {
+      this.avatarUrl = userInfo.avatarUrl;
+      this.nickName = userInfo.nickName;
+    } else {
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+    }
+
   },
   methods: {
     goToSetting: function goToSetting() {
