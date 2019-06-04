@@ -98,7 +98,33 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/uni-load-more.vue"));};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniNumberBox = function uniNumberBox() {return __webpack_require__.e(/*! import() | components/uni-number-box */ "components/uni-number-box").then(__webpack_require__.bind(null, /*! ../../../components/uni-number-box.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/uni-number-box.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    uniLoadMore: uniLoadMore },
+    uniNumberBox: uniNumberBox },
 
   data: function data() {
     return {
@@ -140,23 +166,119 @@ __webpack_require__.r(__webpack_exports__);
         contentrefresh: "正在加载...",
         contentnomore: "没有更多数据了" },
 
-      list: [],
+      list: [
+      { ct_count: 1, attrs: [1, 2], g_price: 1 },
+      { ct_count: 1, attrs: [1, 2], g_price: 5 },
+      { ct_count: 1, attrs: [1, 2], g_price: 10 },
+      { ct_count: 1, attrs: [1, 2], g_price: 12 },
+      { ct_count: 1, attrs: [1, 2], g_price: 7 },
+      { ct_count: 1, attrs: [1, 2, 3], g_price: 1000 }],
+
       loadingType: 0,
       page: 1,
-      all_radio: false };
+      allPrice: 0,
+      allNum: 0,
+      indexList: [],
+      allStatus: false,
+      isEditStatus: false };
 
   },
   onLoad: function onLoad() {},
   methods: {
-    changeRadio: function changeRadio(e) {
-      console.log(e);
+    editAction: function editAction() {
+      if (this.isEditStatus) {
+        this.isEditStatus = !this.isEditStatus;
+        this.allStatus = true;
+        this.allStatusChange();
+      } else {
+        this.isEditStatus = !this.isEditStatus;
+        this.allStatus = true;
+        this.allStatusChange();
+      }
     },
-    goToPage: function goToPage() {
-      uni.navigateTo({
-        url: url });
+    deleteAction: function deleteAction() {
 
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+    },
+    inputChange: function inputChange(e) {
+      this.calcStatus();
+    },
+    changeChecked: function changeChecked(item) {
+      console.log(item);
+      item.checked = !item.checked;
+      this.calcStatus();
+    },
+    calcStatus: function calcStatus() {
+      var that = this;
+      this.allNum = 0;
+      this.allPrice = 0;
+      this.indexList = [];
+      this.list.map(function (item, index) {
+        if (item.checked) {
+          that.allNum++;
+          that.allPrice = parseFloat(parseFloat(that.allPrice) + parseFloat(item.g_price * item.ct_count)).toFixed(2);
+          that.indexList.push(index);
+        }
+        if (that.allNum == that.list.length) {
+          that.allStatus = true;
+        } else {
+          that.allStatus = false;
+        }
+      });
+    },
+
+    allStatusChange: function allStatusChange() {
+      var that = this;
+      this.allStatus = !this.allStatus;
+      this.allPrice = 0;
+      this.allNum = this.list.length;
+      this.list.map(function (item, index) {
+        if (that.allStatus) {
+          item.checked = true;
+          that.allPrice = parseFloat(parseFloat(that.allPrice) + parseFloat(item.g_price * item.ct_count)).toFixed(2);
+          that.indexList.push(index);
+        } else {
+          item.checked = false;
+          that.indexList = [];
+          that.allPrice = 0;
+        }
+
+      });
+
+    },
+    reduceAction: function reduceAction(index) {
+      this.addCart(index, 1);
+    },
+    addAction: function addAction(index) {
+      this.addCart(index, 0);
+    },
+    addCart: function () {var _addCart = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(index, type) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                if (type == 0) {
+                  this.list[index].ct_count++;
+                } else {
+                  if (this.list[index].ct_count != 1) {
+                    this.list[index].ct_count--;
+                  }
+                };
+
+                this.calcStatus();
+
+                // let params = {
+                // 	ct_openid: wx.getStorageSync("openid"),
+                // 	ct_g_id: this.list[index].ct_g_id,
+                // 	ct_count: this.list[index].ct_count,
+                // 	ct_id: this.list[index].ct_id
+                // };
+                // let result = await saveCart(params);
+                // if(result.code == 1000){
+                // 	this.calcStatus();
+                // }else{
+                // 	wx.showToast({
+                // 		title: '操作失败',
+                // 		icon: 'none',
+                // 		duration: 1000
+                // 	})
+                // }
+              case 3:case "end":return _context.stop();}}}, _callee, this);}));function addCart(_x, _x2) {return _addCart.apply(this, arguments);}return addCart;}() } };exports.default = _default;
 
 /***/ }),
 

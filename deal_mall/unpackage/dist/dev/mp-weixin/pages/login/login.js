@@ -141,6 +141,9 @@ var _default =
       if (e.mp.detail.userInfo) {
         console.log(e.mp.detail.userInfo);
         uni.setStorageSync("userInfo", e.mp.detail.userInfo);
+        uni.navigateBack({
+          delta: 1 });
+
       }
     } },
 
