@@ -1,0 +1,1 @@
+<view bind:__l="__l"><view class="search_wrap _div"><view class="input_wrap row _div"><image src="https://bay.2donghua.com/web/statics/wxapp/images/icon-search.png" mode="widthFix" class="_img"></image><input type="text" value=""/></view><label data-event-opts="{{[['tap',[['back',['$event']]]]]}}" class="cancle_btn _span" bindtap="__e">取消</label></view></view>

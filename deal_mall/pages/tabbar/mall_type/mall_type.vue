@@ -1,6 +1,6 @@
 <template>
 	<view class="contain">
-		<div class="head_wrap row_center">
+		<div class="head_wrap row_center" @click="goToSearchList">
 			<navigator class="search_wrap row_center">
 				<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-search.png" mode="widthFix">
 				<span>搜索</span>
@@ -17,7 +17,7 @@
 			</scroll-view>
 			
 			<div class="content_list" >
-				<div v-for="(item, index) in dateList" :key="index" class="item col_center" @click="goToDetail(index)">
+				<div v-for="(item, index) in dateList" :key="index" class="item col_center" @click="goToGoodsList(index)">
 					<img :src="item.t_img" alt="">
 					<span>{{item.t_name}}</span>
 				</div>
@@ -46,19 +46,14 @@
 				this.typeIndex = index;
 				this.getSecondTypeList(this.list[index].t_id);
 			},
-			goToDetail(index){
+			goToGoodsList(index){
 				uni.navigateTo({
-					url: '/pages/goods_detail/goods_detail'
+					url: '/pages/mall_list/mall_list?g_type='+this.dateList[index].t_id
 				});
 			},
-			goToExpressList(){
+			goToSearchList: function(){
 				uni.navigateTo({
-					url: '/pages/express_list/express_list'
-				});
-			},
-			goToServiceForm(){
-				uni.navigateTo({
-					url: '/pages/service_form/service_form'
+					url: '/pages/goods_search/goods_search'
 				});
 			},
 			async getSecondTypeList(t_id){

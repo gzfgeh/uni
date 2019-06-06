@@ -146,19 +146,14 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
       this.typeIndex = index;
       this.getSecondTypeList(this.list[index].t_id);
     },
-    goToDetail: function goToDetail(index) {
+    goToGoodsList: function goToGoodsList(index) {
       uni.navigateTo({
-        url: '/pages/goods_detail/goods_detail' });
+        url: '/pages/mall_list/mall_list?g_type=' + this.dateList[index].t_id });
 
     },
-    goToExpressList: function goToExpressList() {
+    goToSearchList: function goToSearchList() {
       uni.navigateTo({
-        url: '/pages/express_list/express_list' });
-
-    },
-    goToServiceForm: function goToServiceForm() {
-      uni.navigateTo({
-        url: '/pages/service_form/service_form' });
+        url: '/pages/goods_search/goods_search' });
 
     },
     getSecondTypeList: function () {var _getSecondTypeList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(t_id) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (

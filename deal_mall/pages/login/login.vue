@@ -7,15 +7,23 @@
 		<div class="apply_info">申请获取以下权限</div>
 		<div class="apply">获得你的公开信息（昵称、头像等）</div>
 		
-		<button @getuserinfo="getUserInfo" @tap="myLogin" class="login-btn" openType="getUserInfo">授权登录</button>
+		<button @getuserinfo="getUserInfo" class="login-btn" openType="getUserInfo" v-if="!isShowPhone">授权登录</button>
+		
+		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" class="login-btn" v-if="isShowPhone">获取手机号授权</button>
+		
 	</view>
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getOpenid,addSaveUserInfo,bindPhone } from '@/utils/api'
+	
 	export default {
 		data() {
 			return {
-				statusBarHeight: 0
+				isShowPhone: false,
+				session_key: '',
+				openid: '',
+				userInfo: {}
 			};
 		},
 		methods:{
@@ -29,26 +37,65 @@
 					url: '/pages/register/register'
 				});
 			},
-			async myLogin(){
-				
+			getPhoneNumber(e){
+				console.log(e.detail.iv);
+				console.log(e.detail.encryptedData);
+				this.bindPhone(e.detail.encryptedData, e.detail.iv);
 			},
-			goToForget(){
-				uni.navigateTo({
-					url: '/pages/forget/forget'
-				});
+			async bindPhone(encryptedData, iv){
+				let params = {
+					openid: this.openid,
+					encryptedData: encryptedData,
+					iv: iv,
+					sessionKey: this.session_key
+				};
+				let res = await bindPhone(params);
+				if(res.code == 1000){
+					uni.setStorageSync("userInfo", this.userInfo);
+					uni.navigateBack({  
+						delta: 1 
+					});
+				}
+			},
+			async addSaveUserInfo(m_avatar, m_sex, m_name){
+				let params = {
+					m_avatar: m_avatar,
+					m_sex: m_sex,
+					m_name: m_name,
+					m_openid: this.openid
+				};
+				
+				let res = await addSaveUserInfo(params);
+				if(res.code == 1000){
+					this.isShowPhone = true;
+				}
 			},
 			getUserInfo(e){
 				if (e.mp.detail.userInfo){
 					console.log(e.mp.detail.userInfo);
-					uni.setStorageSync("userInfo", e.mp.detail.userInfo);
-					uni.navigateBack({
-						delta: 1
-					});
+					//uni.setStorageSync("userInfo", e.mp.detail.userInfo);
+					let userInfo = e.mp.detail.userInfo;
+					this.userInfo = userInfo;
+					this.addSaveUserInfo(userInfo.avatarUrl, userInfo.gender, userInfo.nickName);
 				}
-			}
+			},
+			 async getOpenid(code){
+				 let res = await getOpenid(code);
+				 if(res.code == 1000){
+					this.session_key = res.data.wxData.session_key;
+					this.openid = res.data.wxData.openid;
+				 }
+				
+			 }
 		},
 		onLoad() {
-			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
+			let that = this;
+			wx.login({    
+				success:function(res){
+					console.log(res.code);
+					that.getOpenid(res.code);
+				} 
+            });
 		},
 		
 	}

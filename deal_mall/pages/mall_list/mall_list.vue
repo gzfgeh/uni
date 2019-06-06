@@ -10,12 +10,12 @@
 		
 		<div class="list_wrap">
 			<navigator v-for="(item, index) in list" :key="index" class="list_item">
-				<image src="https://bay.2donghua.com/web/uploads/image/store_1/f04f242ce46046dde84b0a6f7d9ba3f25f52a585.jpg" mode="aspectFill"></image>
+				<image :src="item.g_img" mode="aspectFill"></image>
 				<div class="item_info">
-					<span class="item_info_text">萧遇女装连衣裙2019夏季新品</span>
+					<span class="item_info_text">{{item.g_name}}</span>
 					<div class="row_between">
-						<span class="price">￥300.00</span>
-						<span class="sell_num">已售0件</span>
+						<span class="price">￥{{item.g_price}}</span>
+						<span class="sell_num">已售{{item.g_kucun}}件</span>
 					</div>
 				</div>
 				
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getGoodsList } from '@/utils/api'
+	
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
 		components: {
@@ -55,7 +57,8 @@
 				loadingType: 0,
 				page: 1,
 				typeList: ['综合', '最新', '价格', '销量'],
-				curType: 0
+				curType: 0,
+				g_type: 0
 			}
 		},
 		methods: {
@@ -63,20 +66,26 @@
 				this.curType = index;
 			},
 			async getList(){
-				setTimeout(() => {
-					uni.stopPullDownRefresh();
-					this.list = this.list.concat([1,2,3,4,5,6,7,8,9,0,11,22,33,44]) ;
-					if(this.list.length < 10){
+				let res = await getGoodsList(this.g_type,this.page);
+				uni.stopPullDownRefresh();
+				if(res.code == 1000){
+					if(this.page == 1){
+						this.list = res.data;
+					}else{
+						this.list = this.list.concat(res.data);
+					}
+					
+					if(res.data.length < 10){
 						this.loadingType = 2;
 					}else{
 						this.loadingType = 0;
 					}
-				}, 3000);
+				}
 			},
 			goToDetail(){
 				uni.navigateTo({
-				url: '/pages/express_detail/express_detail'
-			});
+					url: '/pages/express_detail/express_detail'
+				});
 			}
 		},
 		onReachBottom() {
@@ -91,8 +100,9 @@
 			this.list = [];
 			this.getList();
 		},
-		onLoad(){
-			
+		onLoad(options){
+			this.g_type = options.g_type;
+			this.getList();
 		}
 		
 	}

@@ -157,13 +157,17 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
       t_url: '',
       curIndex: 0,
       contentCurIndex: 0,
-      statusBarHeight: 0,
       list: [1, 2, 3, 4, 5, 6, 7, 8] };
 
   },
   onLoad: function onLoad() {
-    this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
-    console.log(this.statusBarHeight);
+    var userInfo = uni.getStorageSync("userInfo");
+    if (!userInfo) {
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return;
+    }
     this.getImgList();
   },
   methods: {

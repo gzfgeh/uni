@@ -1,42 +1,4 @@
 {
-<<<<<<< HEAD
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.6.4",
-  "appid": "touristappid",
-  "projectname": "deal_mall",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": 0,
-      "list": [
-        {
-          "name": "课程",
-          "pathName": "pages/tabbar/home/home",
-          "query": "id=1",
-          "id": 0
-        }
-      ]
-    }
-  }
-=======
 	"description": "项目配置文件。",
 	"packOptions": {
 		"ignore": []
@@ -48,8 +10,6 @@
 	"libVersion": "2.6.4",
 	"appid": "touristappid",
 	"projectname": "deal_mall",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -68,12 +28,11 @@
 			"list": [
 				{
 					"name": "课程",
-					"pathName": "pages/goods_detail/goods_detail",
+					"pathName": "pages/tabbar/home/home",
 					"query": "id=1",
 					"id": 0
 				}
 			]
 		}
 	}
->>>>>>> 3f085c9f88dd16658011f7902301dbc773a1874b
 }

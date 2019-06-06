@@ -10,7 +10,8 @@
     "pages/home_webview/home_webview",
     "pages/address_list/address_list",
     "pages/add_address/add_address",
-    "pages/goods_detail/goods_detail"
+    "pages/goods_detail/goods_detail",
+    "pages/goods_search/goods_search"
   ],
   "subPackages": [],
   "window": {
@@ -51,6 +52,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

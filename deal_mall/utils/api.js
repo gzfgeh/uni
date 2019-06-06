@@ -11,6 +11,13 @@ export function getFirstTypeList() {
 }
 
 /**
+ * 商品列表
+ */
+export function getGoodsList(g_type,page) {
+    return request.get('Api/Project/getGoodsList?g_type='+g_type+"&page="+page)
+}
+
+/**
  * 首页轮播
  */
 export function getImgList() {
@@ -24,18 +31,12 @@ export function getSecondTypeList(t_id) {
     return request.get('Api/Project/getSecondTypeList?t_id='+t_id);
 }
 
-/**
- * 发送验证码
- */
-export function sendCode(params) {
-    return request.post('CommonApi/sendCode', qs.stringify(params))
-}
 
 /**
  * 绑定手机
  */
-export function bindPost(params) {
-    return request.post('CommonApi/bindPost',qs.stringify(params));
+export function bindPhone(params) {
+    return request.post('Api/Weixin/bindPhone',qs.stringify(params));
 }
 
 /**
@@ -80,3 +81,17 @@ export function getUserInfo(m_openid) {
     return request.get('Project/getUserInfo?m_openid='+m_openid);
 }
 
+
+/**
+ * 获取openid
+ */
+export function getOpenid(code) {
+    return request.get('Api/Weixin/getOpenid?code='+code);
+}
+
+/**
+ * 修改用户信息
+ */
+export function addSaveUserInfo(params) {
+    return request.get('Api/Weixin/addSaveUserInfo', qs.stringify(params));
+}
