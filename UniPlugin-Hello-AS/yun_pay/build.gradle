@@ -31,13 +31,13 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    compileOnly fileTree(dir: '../app/libs', include: ['uniapp-release.aar'])
-    compileOnly fileTree(dir: '../app/libs', include: ['uppro_auth_sdk.aar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly fileTree(include: ['uniapp-release.aar'], dir: '../app/libs')
+    compileOnly fileTree(include: ['uppro_auth_sdk.aar'], dir: '../app/libs')
     implementation 'com.android.support:appcompat-v7:25.3.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('libs/UPPayAssistEx.jar')
+    implementation files('libs/UPPayPluginExPro.jar')
 }

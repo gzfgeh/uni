@@ -1,4 +1,4 @@
-#Sun Jun 02 17:02:05 CST 2019
+#Thu Jun 06 09:49:51 CST 2019
 base.0=/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/7
 path.0=classes.dex
 renamed.0=classes.dex
