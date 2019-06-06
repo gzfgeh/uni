@@ -14448,31 +14448,30 @@ createPage(_my.default);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.goodsList = goodsList;exports.getImgList = getImgList;exports.goodsDetail = goodsDetail;exports.sendCode = sendCode;exports.bindPost = bindPost;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsEdit = goodsEdit;exports.getUserInfo = getUserInfo;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getFirstTypeList = getFirstTypeList;exports.getImgList = getImgList;exports.getSecondTypeList = getSecondTypeList;exports.sendCode = sendCode;exports.bindPost = bindPost;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsEdit = goodsEdit;exports.getUserInfo = getUserInfo;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
-var BASE_IMAGE_URL = 'https://www.xiuqiupaopaopao.com/images/';
+var BASE_IMAGE_URL = 'https://bay.2donghua.com/';
 
 /**
-                                                                 * 商品列表
-                                                                 */exports.BASE_IMAGE_URL = BASE_IMAGE_URL;
-function goodsList(page, g_type, g_sheng, g_shi, g_qu) {
-  return _request.default.get('Project/goodsList?g_type=' + g_type + "&page=" + page +
-  "&g_sheng=" + g_sheng + "&g_shi=" + g_shi + "&g_qu=" + g_qu);
+                                                   * 商品分类
+                                                   */exports.BASE_IMAGE_URL = BASE_IMAGE_URL;
+function getFirstTypeList() {
+  return _request.default.get('Api/Project/getFirstTypeList');
 }
 
 /**
    * 首页轮播
    */
 function getImgList() {
-  return _request.default.get('Project/getImgList');
+  return _request.default.get('Api/Project/getImgList');
 }
 
 /**
-   * 商品详情
+   * 商品二级分类
    */
-function goodsDetail(id) {
-  return _request.default.get('Project/goodsDetail?g_id=' + id);
+function getSecondTypeList(t_id) {
+  return _request.default.get('Api/Project/getSecondTypeList?t_id=' + t_id);
 }
 
 /**
@@ -15360,7 +15359,7 @@ var tokenFly = new Fly();
 
 // 网络超时时间
 request.config.timeout = 60 * 1000;
-request.config.baseURL = 'https://mall.xiuqiupaopaopao.com/Api/';
+request.config.baseURL = 'https://bay.2donghua.com/';
 
 tokenFly.config = request.config;
 

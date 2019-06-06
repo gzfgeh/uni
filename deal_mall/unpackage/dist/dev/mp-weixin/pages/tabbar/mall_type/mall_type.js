@@ -98,50 +98,53 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
 {
   data: function data() {
     return {
-      list: ["服装", "食品", "家用电器", "书籍杂志", "鞋子包包", "化妆配饰"],
-      dateList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+      list: [],
+      dateList: [],
       typeIndex: 0 };
 
   },
   onLoad: function onLoad() {
-
+    this.getFirstTypeList();
   },
   methods: {
     changeType: function changeType(index) {
       this.typeIndex = index;
+      this.getSecondTypeList(this.list[index].t_id);
     },
     goToDetail: function goToDetail(index) {
       uni.navigateTo({
@@ -157,7 +160,19 @@ var _default =
       uni.navigateTo({
         url: '/pages/service_form/service_form' });
 
-    } } };exports.default = _default;
+    },
+    getSecondTypeList: function () {var _getSecondTypeList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(t_id) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getSecondTypeList)(t_id));case 2:res = _context.sent;
+                if (res.code == 1000) {
+                  this.dateList = res.data;
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getSecondTypeList(_x) {return _getSecondTypeList2.apply(this, arguments);}return getSecondTypeList;}(),
+
+    getFirstTypeList: function () {var _getFirstTypeList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  (0, _api.getFirstTypeList)());case 2:res = _context2.sent;
+                if (res.code == 1000) {
+                  this.list = res.data;
+                  this.getSecondTypeList(this.list[0].t_id);
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getFirstTypeList() {return _getFirstTypeList2.apply(this, arguments);}return getFirstTypeList;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

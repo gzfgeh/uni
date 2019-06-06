@@ -45,7 +45,7 @@
   <div class="bottom_wrap">
     <div class="bottom_left">
       <span>实付</span>
-      <span class="bottom_money">¥400</span>
+      <span class="bottom_money">¥{{allMoney}}</span>
     </div>
     <span class="bottom_right" @click="pay">立即支付</span>
   </div>
@@ -67,7 +67,8 @@ export default {
       items: [
         {name: '微信支付', icon_url: BASE_IMAGE_URL+'weixin_pay.png'}
       ],
-			currentIndex: 0
+			currentIndex: 0,
+			allMoney: 0
     }
   },
 
@@ -108,6 +109,8 @@ export default {
     this.global = wx.getStorageSync("global");
     this.jiaoqiang_order_id = this.$root.$mp.query.jiaoqiang_order_id;
     this.jiaoqiang_order_id = this.jiaoqiang_order_id ? this.jiaoqiang_order_id : 4;
+		
+		this.allMoney = parseInt(this.global.compulsory) + parseInt(this.global.tax);
   },
 
 }

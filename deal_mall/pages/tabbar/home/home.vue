@@ -4,7 +4,7 @@
 			<swiper :indicator-dots="true" :autoplay="true" @change="slideChange"
 						:interval="5000" :duration="1000" class="head_img">            
 					<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" >  
-						<image src="https://bay.2donghua.com/web/uploads/image/store_1/39db83b2af38b3b427aff184ef1d7dd422bf6a10.png" mode="widthFix" class="head_img"  />           
+						<image :src="item.t_url" mode="widthFix" class="head_img"  />           
 					</swiper-item>        
 			</swiper> 
 		</view>
@@ -47,7 +47,7 @@
 	export default {
 	data() {
 		return {
-			itemList: [1,2,1,3,4,5],
+			itemList: [],
 			modelList: [
 				{img: "https://bay.2donghua.com/web/uploads/image/store_1/907ec021b2075525a827e8d139197a66ab255075.png", text: "商品列表"},
 				{img: "https://bay.2donghua.com/web/uploads/image/store_1/4c4862b1ac26a3c776b0db0c24dec20c8226d8e8.png", text: "VR"},
@@ -64,7 +64,7 @@
 	onLoad() {
 		this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
 		console.log(this.statusBarHeight);
-		//this.getImgList();
+		this.getImgList();
 	},
 	methods: {
 		goToDetail: function(index){
@@ -93,12 +93,6 @@
 			if(res.code == 1000){
 				console.log(res.data);
 				this.itemList = res.data;
-				
-				this.itemList.map((item) => {
-					if(item.t_url.indexOf("http:") != -1){
-						item.t_url = "https" + item.t_url.substring(4, item.t_url.length);
-					}
-				})
 			}
 		}
 		

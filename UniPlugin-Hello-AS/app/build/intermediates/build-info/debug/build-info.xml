@@ -5,35 +5,32 @@
     build-mode="COLD"
     density="xxhdpi"
     format="10"
-    ir-eligibility="CLASS_ADDED"
+    ir-eligibility="METHOD_ADDED"
     plugin-version="3.2.1"
-    timestamp="1559466123647"
+    timestamp="1559785790051"
     token="-2326534952323965538"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="11" />
+        duration="6" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="18" />
+        duration="19" />
     <task
         name="verifier"
-        duration="1" />
+        duration="2" />
 
     <artifact
         location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
-    <artifact
-        location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1559465784150"
+        timestamp="1559785150953"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
@@ -45,19 +42,19 @@
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
@@ -77,15 +74,12 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1559466123647"
+        ir-eligibility="METHOD_ADDED"
+        timestamp="1559785790051"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

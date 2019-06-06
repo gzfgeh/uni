@@ -12,14 +12,14 @@
 			<scroll-view scroll-y class="scoll_wrap">
 				<div v-for="(item, index) in list" :key="index" :class="{'active_type': (typeIndex == index)}"
 					class="item_wrap row_center" @click="changeType(index)">
-					<span>{{item}}</span>
+					<span>{{item.t_name}}</span>
 				</div>
 			</scroll-view>
 			
 			<div class="content_list" >
 				<div v-for="(item, index) in dateList" :key="index" class="item col_center" @click="goToDetail(index)">
-					<img src="https://bay.2donghua.com/web/uploads/image/store_1/4bb3e57de292c4586168e73ce82834b9102186ea.png" alt="">
-					<span>男上衣</span>
+					<img :src="item.t_img" alt="">
+					<span>{{item.t_name}}</span>
 				</div>
 			</div>
 			
@@ -28,20 +28,23 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getFirstTypeList,getSecondTypeList } from '@/utils/api'
+	
 	export default {
 		data() {
 			return {
-				list: ["服装", "食品", "家用电器", "书籍杂志", "鞋子包包", "化妆配饰"],
-				dateList: [1,2,3,4,5,6,7,8,9,0],
+				list: [],
+				dateList: [],
 				typeIndex: 0
 			}
 		},
 		onLoad() {
-
+			this.getFirstTypeList();
 		},
 		methods: {
 			changeType(index){
 				this.typeIndex = index;
+				this.getSecondTypeList(this.list[index].t_id);
 			},
 			goToDetail(index){
 				uni.navigateTo({
@@ -57,6 +60,19 @@
 				uni.navigateTo({
 					url: '/pages/service_form/service_form'
 				});
+			},
+			async getSecondTypeList(t_id){
+				let res = await getSecondTypeList(t_id);
+				if(res.code == 1000){
+					this.dateList = res.data;
+				}
+			},
+			async getFirstTypeList(){
+				let res = await getFirstTypeList();
+				if(res.code == 1000){
+					this.list = res.data;
+					this.getSecondTypeList(this.list[0].t_id);
+				}
 			}
 		}
 	}

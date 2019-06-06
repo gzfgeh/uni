@@ -147,7 +147,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
 {
   data: function data() {
     return {
-      itemList: [1, 2, 1, 3, 4, 5],
+      itemList: [],
       modelList: [
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/907ec021b2075525a827e8d139197a66ab255075.png", text: "商品列表" },
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/4c4862b1ac26a3c776b0db0c24dec20c8226d8e8.png", text: "VR" },
@@ -164,7 +164,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
   onLoad: function onLoad() {
     this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
     console.log(this.statusBarHeight);
-    //this.getImgList();
+    this.getImgList();
   },
   methods: {
     goToDetail: function goToDetail(index) {
@@ -193,12 +193,6 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.itemList = res.data;
-
-                  this.itemList.map(function (item) {
-                    if (item.t_url.indexOf("http:") != -1) {
-                      item.t_url = "https" + item.t_url.substring(4, item.t_url.length);
-                    }
-                  });
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
