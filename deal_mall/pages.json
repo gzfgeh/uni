@@ -73,7 +73,7 @@
         "current": 0, //当前激活的编译模式（list 的索引项）  
         "list": [{  
             "name": "课程", //模式名称  
-            "pathName": "pages/goods_detail/goods_detail", //启动页面，必选  
+            "pathName": "pages/tabbar/home/home", //启动页面，必选  
             "query": "id=1" //启动参数, QueryString 格式  
         }]  
     },
