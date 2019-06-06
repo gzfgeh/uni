@@ -10,6 +10,8 @@
 	"libVersion": "2.6.4",
 	"appid": "touristappid",
 	"projectname": "deal_mall",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

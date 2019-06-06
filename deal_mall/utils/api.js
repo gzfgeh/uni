@@ -1,28 +1,27 @@
 import request from './request'
 var qs = require('qs')
 
-export const BASE_IMAGE_URL = 'https://www.xiuqiupaopaopao.com/images/';
+export const BASE_IMAGE_URL = 'https://bay.2donghua.com/';
 
 /**
- * 商品列表
+ * 商品分类
  */
-export function goodsList(page, g_type, g_sheng, g_shi, g_qu) {
-    return request.get('Project/goodsList?g_type='+g_type+"&page="+page+
-					"&g_sheng="+g_sheng+"&g_shi="+g_shi+"&g_qu="+g_qu)
+export function getFirstTypeList() {
+    return request.get('Api/Project/getFirstTypeList');
 }
 
 /**
  * 首页轮播
  */
 export function getImgList() {
-    return request.get('Project/getImgList')
+    return request.get('Api/Project/getImgList')
 }
 
 /**
- * 商品详情
+ * 商品二级分类
  */
-export function goodsDetail(id) {
-    return request.get('Project/goodsDetail?g_id='+id)
+export function getSecondTypeList(t_id) {
+    return request.get('Api/Project/getSecondTypeList?t_id='+t_id);
 }
 
 /**
