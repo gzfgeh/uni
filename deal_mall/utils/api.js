@@ -168,12 +168,12 @@ export function getOrder(o_status, page) {
  * 发货操作
  */
 export function confirmShipping(o_id, o_express_name, o_express_no) {
-    return request.get('pi/Mall/confirmShipping?o_id='+o_id+"&o_express_name="+o_express_name+"&o_express_no="+o_express_no);
+    return request.get('Api/Mall/confirmShipping?o_id='+o_id+"&o_express_name="+o_express_name+"&o_express_no="+o_express_no);
 }
 
 /**
  * 确认收货
  */
-export function confirmShipping1(params) {
-    return request.post('pi/Mall/confirmShipping', qs.stringify(params));
+export function confirmReceipt(params) {
+    return request.post('Api/Mall/confirmReceipt', qs.stringify(params));
 }

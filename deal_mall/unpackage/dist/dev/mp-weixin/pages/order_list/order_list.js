@@ -98,7 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
+
+
 
 
 
@@ -188,11 +191,13 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                   }
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
-    goToDetail: function goToDetail() {
-      uni.navigateTo({
-        url: '/pages/express_detail/express_detail' });
 
-    } },
+    confirmShipping: function () {var _confirmShipping2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(index) {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  (0, _api.confirmShipping)(this.list[index].o_id, this.list[index].o_express_name, this.list[index].o_express_no));case 2:res = _context2.sent;
+                if (res.code == 1000) {
+
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function confirmShipping(_x) {return _confirmShipping2.apply(this, arguments);}return confirmShipping;}() },
+
 
   onReachBottom: function onReachBottom() {
     this.loadingType = 1;
@@ -210,7 +215,6 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
     this.curType = options.index;
     this.getList();
   } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 
