@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniNumberBox = function uniNumberBox() {return __webpack_require__.e(/*! import() | components/uni-number-box */ "components/uni-number-box").then(__webpack_require__.bind(null, /*! ../../../components/uni-number-box.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/uni-number-box.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -153,6 +153,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniNumberBox = function uniNumberBox() {return __webpack_require__.e(/*! import() | components/uni-number-box */ "components/uni-number-box").then(__webpack_require__.bind(null, /*! ../../../components/uni-number-box.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/uni-number-box.vue"));};var _default =
 
 
 {
@@ -166,14 +169,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         contentrefresh: "正在加载...",
         contentnomore: "没有更多数据了" },
 
-      list: [
-      { ct_count: 1, attrs: [1, 2], g_price: 1 },
-      { ct_count: 1, attrs: [1, 2], g_price: 5 },
-      { ct_count: 1, attrs: [1, 2], g_price: 10 },
-      { ct_count: 1, attrs: [1, 2], g_price: 12 },
-      { ct_count: 1, attrs: [1, 2], g_price: 7 },
-      { ct_count: 1, attrs: [1, 2, 3], g_price: 1000 }],
-
+      list: [],
       loadingType: 0,
       page: 1,
       allPrice: 0,
@@ -183,7 +179,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       isEditStatus: false };
 
   },
-  onLoad: function onLoad() {},
+  onShow: function onShow() {
+    var userInfo = uni.getStorageSync("userInfo");
+    if (!userInfo) {
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return;
+    } else {
+      this.getCart();
+    }
+  },
   methods: {
     editAction: function editAction() {
       if (this.isEditStatus) {
@@ -196,9 +202,43 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         this.allStatusChange();
       }
     },
-    deleteAction: function deleteAction() {
+    deleteCart: function () {var _deleteCart2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var p, ids, that, params, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+                this.isEditStatus) {_context.next = 6;break;}
+                p = [];
+                this.list.map(function (item, index) {
+                  if (item.checked) {
+                    p.push(item);
+                  }
+                });
 
-    },
+                uni.setStorageSync("itemList", p);
+                uni.navigateTo({
+                  url: '/pages/post_order/post_order' });return _context.abrupt("return");case 6:
+
+
+
+
+                ids = "";
+                that = this;
+                this.list.map(function (item, index) {
+                  if (item.checked) {
+                    ids = that.list[index].ct_id + ",";
+                  }
+                });
+
+                params = {
+                  ct_id: ids.substring(0, ids.length - 1) };_context.next = 12;return (
+
+                  (0, _api.deleteCart)(params));case 12:result = _context.sent;
+                if (result.code == 1000) {
+                  wx.showToast({
+                    title: '删除成功',
+                    icon: 'none',
+                    duration: 1000 });
+
+                  this.getCart();
+                }case 14:case "end":return _context.stop();}}}, _callee, this);}));function deleteCart() {return _deleteCart2.apply(this, arguments);}return deleteCart;}(),
+
     inputChange: function inputChange(e) {
       this.calcStatus();
     },
@@ -251,7 +291,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     addAction: function addAction(index) {
       this.addCart(index, 0);
     },
-    addCart: function () {var _addCart = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(index, type) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    addCart: function () {var _addCart = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(index, type) {var params, result;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 if (type == 0) {
                   this.list[index].ct_count++;
                 } else {
@@ -259,26 +299,42 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
                     this.list[index].ct_count--;
                   }
                 };
+                params = {
+                  ct_openid: wx.getStorageSync("openid"),
+                  ct_g_id: this.list[index].ct_g_id,
+                  ct_count: this.list[index].ct_count,
+                  ct_id: this.list[index].ct_id };_context2.next = 5;return (
 
-                this.calcStatus();
+                  (0, _api.saveCart)(params));case 5:result = _context2.sent;
+                if (result.code == 1000) {
+                  this.calcStatus();
+                } else {
+                  wx.showToast({
+                    title: '操作失败',
+                    icon: 'none',
+                    duration: 1000 });
 
-                // let params = {
-                // 	ct_openid: wx.getStorageSync("openid"),
-                // 	ct_g_id: this.list[index].ct_g_id,
-                // 	ct_count: this.list[index].ct_count,
-                // 	ct_id: this.list[index].ct_id
-                // };
-                // let result = await saveCart(params);
-                // if(result.code == 1000){
-                // 	this.calcStatus();
-                // }else{
-                // 	wx.showToast({
-                // 		title: '操作失败',
-                // 		icon: 'none',
-                // 		duration: 1000
-                // 	})
-                // }
-              case 3:case "end":return _context.stop();}}}, _callee, this);}));function addCart(_x, _x2) {return _addCart.apply(this, arguments);}return addCart;}() } };exports.default = _default;
+                }case 7:case "end":return _context2.stop();}}}, _callee2, this);}));function addCart(_x, _x2) {return _addCart.apply(this, arguments);}return addCart;}(),
+
+
+    getCart: function () {var _getCart2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var result;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                this.allPrice = 0;
+                this.allNum = 0;
+                this.allStatus = false;_context3.next = 5;return (
+                  (0, _api.getCart)(uni.getStorageSync("openid")));case 5:result = _context3.sent;
+                if (result.code == 1000) {
+                  this.list = result.data;
+                  this.list.map(function (item) {
+                    item.checked = false;
+                  });
+                } else {
+                  uni.showToast({
+                    title: result.msg,
+                    icon: 'none',
+                    duration: 1000 });
+
+                }case 7:case "end":return _context3.stop();}}}, _callee3, this);}));function getCart() {return _getCart2.apply(this, arguments);}return getCart;}() } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

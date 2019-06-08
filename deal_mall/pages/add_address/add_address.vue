@@ -5,14 +5,14 @@
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">收货人</span>
-				<input type="text" v-model="name">
+				<input type="text" v-model="a_name">
 			  </div>
 			</div>
 
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">联系电话</span>
-				<input type="text" v-model="mobile">
+				<input type="number" v-model="a_phone" maxlength="11">
 			  </div>
 			</div>
 
@@ -27,13 +27,23 @@
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">详细地址</span>
-				<input type="text" v-model="detail">
+				<input type="text" v-model="a_address">
 			  </div>
 			</div>
 			
+			<div class="row item_wrap">
+			  <div class="row_between item">
+				<span class="item_span">设置默认</span>
+				<switch @change="changeDefault" v-model="a_is_default"/>
+			  </div>
+			</div>
+			
+			
+			
+			
 		</div>
 		
-		<div class="bottom_wrap">保存</div>
+		<div class="bottom_wrap" @click="addAddress">保存</div>
 		
 		<mpvue-city-picker :themeColor="themeColor" ref="mpvueCityPicker" :pickerValueDefault="cityPickerValueDefault"
 		 @onCancel="onCancel" @onConfirm="onConfirm"></mpvue-city-picker>
@@ -42,6 +52,7 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,addAddress,editAddress } from '@/utils/api'
 	import mpvueCityPicker from '../../components/mpvueCityPicker.vue'
 	
 	export default {
@@ -50,21 +61,120 @@
 		},
 		data() {
 			return {
-				name: '',
-				phone: '',
-				detail: '',
+				a_name: '',
+				a_phone: '',
+				a_address: '',
 				cityPickerValueDefault: [0, 0, 1],
 				themeColor: '#007AFF',
-				pickerText: '请选择'
+				pickerText: '请选择',
+				a_sheng: '',
+				a_shi: '',
+				a_qu: '',
+				a_is_default: false,
+				item: {}
+			}
+		},
+		onLoad() {
+			this.item = uni.getStorageSync("itemList");
+			let item = this.item;
+			if(item){
+				this.a_name = item.a_name;
+				this.a_phone = item.a_phone;
+				this.a_address = item.a_address;
+				this.a_sheng = item.a_sheng;
+				this.a_shi = item.a_shi;
+				this.a_qu = item.a_qu;
+				this.pickerText = this.a_sheng+"-"+this.a_shi+"-"+this.a_qu;
+				this.a_is_default = item.a_is_default == 1;
+				uni.setNavigationBarTitle({
+						title: "修改地址"
+					})
 			}
 		},
 		methods: {
+			changeDefault(e){
+				console.log(e);
+				this.a_is_default = e.detail.value;
+			},
 			// 三级联动选择
 			showMulLinkageThreePicker() {
-				this.$refs.mpvueCityPicker.show()
+				this.$refs.mpvueCityPicker.show();
 			},
+			onCancel(e){},
 			onConfirm(e) {
+				console.log(e);
+				this.cityPickerValueDefault = e.value;
 				this.pickerText = e.label;
+				let address = this.pickerText.split("-");
+				this.a_sheng = address[0];
+				this.a_shi = address[1];
+				this.a_qu = address[2];
+			},
+			async addAddress(){
+				if(!this.a_name){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入收货人"
+					});
+					return;
+				};
+				
+				if(!this.a_phone){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入联系电话"
+					});
+					return;
+				};
+				
+				if(!this.a_address){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入详细地址"
+					});
+					return;
+				};
+				
+				if(this.pickerText == '请选择'){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请选择省市区"
+					});
+					return;
+				};
+				
+				let params = {
+					a_sheng: this.a_sheng,
+					a_shi: this.a_shi,
+					a_qu: this.a_qu,
+					a_name: this.a_name,
+					a_address: this.a_address,
+					a_phone: this.a_phone,
+					a_openid: uni.getStorageSync("openid"),
+					a_is_default: this.a_is_default?1:0
+				};
+				let res;
+				if(this.item){
+					params.a_id = this.item.a_id;
+					res = await editAddress(params);
+				}else{
+					res = await addAddress(params);
+				};
+				
+				if(res.code == 1000){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "操作成功"
+					})
+					uni.navigateBack({
+						delta: 1
+					});
+				}
 			}
 		}
 	}
@@ -141,6 +251,7 @@
       flex: 1;
       text-align: left;
       padding: 0px 0px 0px 16upx;
+			font-size: 34upx;
     }
 
     .item .item_span {

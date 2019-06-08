@@ -14241,6 +14241,23 @@ createApp(app).$mount();
 
 /***/ }),
 
+/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fabout_us%2Fabout_us\"}":
+/*!**********************************************************************************************!*\
+  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fabout_us%2Fabout_us"} ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _about_us = _interopRequireDefault(__webpack_require__(/*! ./pages/about_us/about_us.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/about_us/about_us.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_about_us.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fadd_address%2Fadd_address\"}":
 /*!****************************************************************************************************!*\
   !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fadd_address%2Fadd_address"} ***!
@@ -14271,6 +14288,23 @@ createPage(_add_address.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _address_list = _interopRequireDefault(__webpack_require__(/*! ./pages/address_list/address_list.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/address_list/address_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_address_list.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ffix_page%2Ffix_page\"}":
+/*!**********************************************************************************************!*\
+  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ffix_page%2Ffix_page"} ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _fix_page = _interopRequireDefault(__webpack_require__(/*! ./pages/fix_page/fix_page.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/fix_page/fix_page.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_fix_page.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -14377,6 +14411,23 @@ createPage(_order_list.default);
 
 /***/ }),
 
+/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fpost_order%2Fpost_order\"}":
+/*!**************************************************************************************************!*\
+  !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Fpost_order%2Fpost_order"} ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _post_order = _interopRequireDefault(__webpack_require__(/*! ./pages/post_order/post_order.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/pages/post_order/post_order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_post_order.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fcard%2Fcard\"}":
 /*!***********************************************************************************************!*\
   !*** /Users/guzhenfu/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fcard%2Fcard"} ***!
@@ -14457,6 +14508,28 @@ createPage(_my.default);
 
 /***/ }),
 
+/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/kuaidi_close.png":
+/*!***************************************************************************!*\
+  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/kuaidi_close.png ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAkCAYAAAD/yagrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YTEyYTM0MS1jYTJlLTRlNjItYTM4YS05N2QyNmJiMjE3YTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUFENEZGMjEwRDkxMTFFOUExQTk5OEE1QzdBMDUyRDMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUFENEZGMjAwRDkxMTFFOUExQTk5OEE1QzdBMDUyRDMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpmOTg0NjQ4MC0zMmJjLTRmZWYtYjg0Mi00Nzk5NDZmZDNhNWIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NmExMmEzNDEtY2EyZS00ZTYyLWEzOGEtOTdkMjZiYjIxN2EwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+pClw+AAAAYtJREFUeNrs2D9KxEAYBfDNoCgLor21ggfQAyhYrnoA66CdBxBsthNki0VyDf8UImhlayd4AzsRLJRVjG8ggSHMJDP53ihBBx7LhGXzY7P75ZEkz/NeF5bqdWR1BjplO5imqbmdRj4inv+z3GRZ1vobXUIekI0IyD3kDpmXXnqNvC1ez8hYjRwja8i1D9YFXUBukMVi3ydiS2RS7FeRc2MfBH1BjhFzdjGwVaRe78iwcq6gSz9CDohYF3IbuZKOJxZWhPSdo1KsGBky8NtiKcjQO1MoloZscwv1xVKRzluoB1avEwNSYgfIMhvZFlqHvUBm2EgJ1IWdrbyHgmTUPNtvlo5k9dGJ4/iXWeF+G2r7dzO7AQVqQ04iFBkR1DUnB+QiI4I2DfNRDKwiI2NVxCCoDflWM4KoWCVE7jTMSRpWRURSsSoykoZVP4CkYF3QOeSQiGzCHrWFviLryBMR6cLeI1uSmvdYYC+RfVYLqlTEXWQTeZb2UY1dqWlIUuyp72cn/w9y/yr0W4ABAFQsnaO4jBhwAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/static/img/right.png":
+/*!********************************************************************!*\
+  !*** /Users/guzhenfu/Documents/uni/deal_mall/static/img/right.png ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC5ElEQVR4Xu2ZsXXbMBCGcSjAMt4g2iDeIPIEUSaI2AhgZWmC2BNYrkiokTyB5QnibGBvEG8gl2IB5J0ekOfoSYUfCfBkgh0Lirrv7v/vcATW8wt6Hj9LAFIF9JxAkkDPCyCZYJJAkkDPCSQJ9LwAwnWBqqouAeBFSrmmDDmIBMqyHHLOf7nA51LKGVUIQQAsl8uz7Xb7CABfXOBrIUSe5/mGGoggADBIB2EFAN9c0E9CiAtqEIIB8JmuqmoOAJfufgMAF5PJ5IlKJQQHgIGWZTnmnC89BGPMrCiKFQUIUQBgoIvF4txa+8gY+4T31tqpUuq2awjRALhKGADA2pujtXallMq7hBAVAEVzjA7AZ1trjR7ww3cIAMi7MMfOABwxx+9FUaBPRLs6BeAg4NSI4/LOHI0xecwO0TkA3yGMMTg07SbHmOZIAoA3x7qusRK+xhyfyQA4Zo7GGPSFP6FMgRyAQ+YYcnwmCeCAOW5Cjc9kAbwZn9EXPjsJXEkpr9uUA2kAbybHf7uFtjsEeQAIQWt9wxibuhb5rJQ6b6sKSANwS5V7ABj64LMsG7a5VCELAI/PxhgMfuCyfSelHLeVef87JAForUe4VWOMnYUej8kB0Fr/ZIxduQy9YvmHPCWSAYB6r+sas47Zx/PAs7V2FHIKxPeQAODWZRi8d/c7IcS0TbM75h2dA9jXO2NsJqWct212JAHs690YgyX/8Rcih/TOOR+HNDsyFbCvd2vtQ5Zl4xh6PwQhqge4j6b3vr8zxq6llL7lxZL9f++JBsB9Lvfm9mqMmcbc/XUmATfP3wCAH2NfAGDUhd6jS6AsywHnHEve9/ffQohRV3qPCmBf79baW6XU7khL6QriAXtfg6Pv+t8DOAgArTUOM7jeDn6YeU+w0STgev1ICDGnpPdoAJpmJebzQSQQM4Cm70oAmhI89edTBZx6Bpv+/1QBTQme+vOpAk49g03/f6qApgRP/fneV8BfVMNAUBA86uwAAAAASUVORK5CYII="
+
+/***/ }),
+
 /***/ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js":
 /*!************************************************************!*\
   !*** /Users/guzhenfu/Documents/uni/deal_mall/utils/api.js ***!
@@ -14465,7 +14538,7 @@ createPage(_my.default);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getFirstTypeList = getFirstTypeList;exports.getGoodsList = getGoodsList;exports.getImgList = getImgList;exports.getSecondTypeList = getSecondTypeList;exports.bindPhone = bindPhone;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsEdit = goodsEdit;exports.getUserInfo = getUserInfo;exports.getOpenid = getOpenid;exports.addSaveUserInfo = addSaveUserInfo;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getFirstTypeList = getFirstTypeList;exports.getGoodsList = getGoodsList;exports.getImgList = getImgList;exports.getSecondTypeList = getSecondTypeList;exports.bindPhone = bindPhone;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsDetail = goodsDetail;exports.getUserInfo = getUserInfo;exports.getOpenid = getOpenid;exports.addSaveUserInfo = addSaveUserInfo;exports.getRecommendList = getRecommendList;exports.aboutUs = aboutUs;exports.getAddressList = getAddressList;exports.addAddress = addAddress;exports.deleteAddress = deleteAddress;exports.editAddress = editAddress;exports.addOrder = addOrder;exports.baoxiu = baoxiu;exports.getOrder = getOrder;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
 var BASE_IMAGE_URL = 'https://bay.2donghua.com/';
@@ -14480,8 +14553,13 @@ function getFirstTypeList() {
 /**
    * 商品列表
    */
-function getGoodsList(g_type, page) {
-  return _request.default.get('Api/Project/getGoodsList?g_type=' + g_type + "&page=" + page);
+function getGoodsList(g_type, page, type, keyword) {
+  if (g_type) {
+    return _request.default.get('Api/Project/getGoodsList?g_type=' + g_type + "&page=" + page + "&type=" + type + "&keyword=" + keyword);
+  } else {
+    return _request.default.get('Api/Project/getGoodsList?page=' + page + "&type=" + type + "&keyword=" + keyword);
+  }
+
 }
 
 /**
@@ -14510,35 +14588,35 @@ function bindPhone(params) {
    * 获取购物车列表
    */
 function getCart(ct_openid) {
-  return _request.default.get('Project/getCart?ct_openid=' + ct_openid);
+  return _request.default.get('Api/Project/getCart?ct_openid=' + ct_openid);
 }
 
 /**
    * 加入购物车
    */
 function jiaruCart(params) {
-  return _request.default.post('Project/jiaruCart', qs.stringify(params));
+  return _request.default.post('Api/Project/jiaruCart', qs.stringify(params));
 }
 
 /**
    * 修改购物车 数量
    */
 function saveCart(params) {
-  return _request.default.post('Project/saveCart', qs.stringify(params));
+  return _request.default.post('Api/Project/saveCart', qs.stringify(params));
 }
 
 /**
    * 删除购物车
    */
 function deleteCart(params) {
-  return _request.default.post('Project/deleteCart', qs.stringify(params));
+  return _request.default.post('Api/Project/deleteCart', qs.stringify(params));
 }
 
 /**
-   * 修改价格
+   * 商品详情
    */
-function goodsEdit(params) {
-  return _request.default.post('Project/goodsEdit', qs.stringify(params));
+function goodsDetail(g_id) {
+  return _request.default.get('Api/Project/goodsDetail?g_id=' + g_id);
 }
 
 /**
@@ -14560,8 +14638,72 @@ function getOpenid(code) {
    * 修改用户信息
    */
 function addSaveUserInfo(params) {
-  return _request.default.get('Api/Weixin/addSaveUserInfo', qs.stringify(params));
+  return _request.default.post('Api/Weixin/addSaveUserInfo', qs.stringify(params));
 }
+
+/**
+   * 修改用户信息
+   */
+function getRecommendList() {
+  return _request.default.get('Api/Project/getRecommendList');
+}
+
+/**
+   * 关于我们
+   */
+function aboutUs() {
+  return _request.default.get('Api/Project/aboutUs');
+}
+
+/**
+   * 地址列表
+   */
+function getAddressList(a_openid) {
+  return _request.default.get('Api/Mall/getAddressList?a_openid=' + a_openid);
+}
+
+/**
+   * 地址列表
+   */
+function addAddress(params) {
+  return _request.default.post('Api/Mall/addAddress', qs.stringify(params));
+}
+
+/**
+   * 删除地址
+   */
+function deleteAddress(params) {
+  return _request.default.post('Api/Mall/deleteAddress', qs.stringify(params));
+}
+
+/**
+   * 编辑地址
+   */
+function editAddress(params) {
+  return _request.default.post('Api/Mall/editAddress', qs.stringify(params));
+}
+
+/**
+   * 下单接口
+   */
+function addOrder(params) {
+  return _request.default.post('Api/Weixin/addOrder', qs.stringify(params));
+}
+
+/**
+   * 报修接口
+   */
+function baoxiu(params) {
+  return _request.default.post('Api/Project/baoxiu', qs.stringify(params));
+}
+
+/**
+   * 订单列表
+   */
+function getOrder(o_status, page) {
+  return _request.default.get('Api/Weixin/getOrder?o_openid=' + uni.getStorageSync("openid") + "&o_status=" + o_status + "&page=" + page);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 
@@ -15397,9 +15539,7 @@ request.config.baseURL = 'https://bay.2donghua.com/';
 tokenFly.config = request.config;
 
 request.interceptors.request.use(function (request) {
-  if (getApp().globalData.showLoading) {
-    uni.showLoading({ title: '加载中...' });
-  }
+  uni.showLoading({ title: '加载中...' });
   request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
   return request;
 });

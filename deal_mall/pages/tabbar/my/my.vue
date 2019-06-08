@@ -22,26 +22,26 @@
 			<div class="col_center func_item" @click="goToOrderList(0)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-0.png" mode="widthFix">
 				<span>待发货</span>
-				<span class="num">2</span>
+				<!-- <span class="num">2</span> -->
 			</div>
 			
 			<div class="col_center func_item" @click="goToOrderList(1)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-2.png" mode="widthFix">
 				<span>待收货</span>
-				<span class="num">1</span>
+				<!-- <span class="num">1</span> -->
 			</div>
 			
 			<div class="col_center func_item" @click="goToOrderList(2)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-3.png" mode="widthFix">
 				<span>已完成</span>
-				<span class="num">12</span>
+				<!-- <span class="num">12</span> -->
 			</div>
 			
-			<div class="col_center func_item" @click="goToOrderList(3)">
+			<!-- <div class="col_center func_item" @click="goToOrderList(3)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-4.png" mode="widthFix">
 				<span>售后</span>
 				<span class="num">2</span>
-			</div>
+			</div> -->
 		</div>
 		
 		<div class=" bottom_item_wrap"  @click="goToAddress">
@@ -63,10 +63,10 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap">
+		<div class=" bottom_item_wrap" @click="callPhone">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-kf.png" class="icon" mode="widthFix">
-				<span>在线客服</span>
+				<span>联系客服</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
@@ -81,23 +81,32 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap" @click="goToComplain">
+		<div class=" bottom_item_wrap" @click="goToAboutUs">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-bangding.png" class="icon" mode="widthFix">
-				<span>绑定手机号</span>
+				<span>关于我们</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap" @click="goToComplain" style="border-bottom: 20upx solid #E3E3E3;">
+		<div class=" bottom_item_wrap" @click="goToFix" style="border-bottom: 20upx solid #E3E3E3;">
+			<div class="row_between bottom_item uni-navigate-right">
+				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-bangding.png" class="icon" mode="widthFix">
+				<span>报修</span>
+				<span style="flex: 1;"></span>
+				<span class="arraw"></span>
+			</div>
+		</div>
+		
+		<!-- <div class=" bottom_item_wrap" @click="goToComplain" style="border-bottom: 20upx solid #E3E3E3;">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-4.png" class="icon" mode="widthFix">
 				<span>售后</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
-		</div>
+		</div> -->
 		
 		
 	</view>
@@ -116,28 +125,50 @@
 		onShow() {
 			let userInfo = uni.getStorageSync("userInfo");
 			if(userInfo){
-				this.avatarUrl = userInfo.avatarUrl;
-				this.nickName = userInfo.nickName;
-			}else{
-				uni.navigateTo({
-					url: '/pages/login/login'
-				});
+				this.avatarUrl = userInfo.m_avatar;
+				this.nickName = userInfo.m_name;
 			}
 			
 		},
 		methods: {
-			goToSetting: function(){
+			callPhone: function(){
+				uni.makePhoneCall({
+					phoneNumber:"17373349812",
+					success: () => {
+						console.log("成功拨打电话")
+					}
+				})
+			},
+			goToAboutUs: function(){
 				uni.navigateTo({
-					url: '/pages/personal/personal'
+					url: '/pages/about_us/about_us'
 				});
 			},
-			
+			goToFix: function(){
+				uni.navigateTo({
+					url: '/pages/fix_page/fix_page'
+				});
+			},
 			goToAddress: function(){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(!userInfo){
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+					return;
+				}
 				uni.navigateTo({
 					url: '/pages/address_list/address_list'
 				});
 			},
 			goToOrderList: function(index){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(!userInfo){
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+					return;
+				}
 				uni.navigateTo({
 					url: '/pages/order_list/order_list?index='+index
 				});

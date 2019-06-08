@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/uni-load-more.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -143,6 +143,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/uni-load-more.vue"));};var _default =
 
 
 {
@@ -156,27 +158,35 @@ __webpack_require__.r(__webpack_exports__);
         contentrefresh: "正在加载...",
         contentnomore: "没有更多数据了" },
 
-      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 22, 33, 44],
+      list: [],
       loadingType: 0,
       page: 1,
-      typeList: ['待发货', '待收货', '已完成', '售后'],
+      typeList: ['待发货', '待收货', '已完成'],
       curType: 0 };
 
   },
   methods: {
     changeType: function changeType(index) {
       this.curType = index;
+      this.page = 1;
+      this.list = [];
+      this.getList();
     },
-    getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                setTimeout(function () {
-                  uni.stopPullDownRefresh();
-                  _this.list = _this.list.concat([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 22, 33, 44]);
-                  if (_this.list.length < 10) {
-                    _this.loadingType = 2;
+    getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getOrder)(this.curType, this.page));case 2:res = _context.sent;
+                if (res.code == 1000) {
+                  if (this.page == 1) {
+                    this.list = res.data;
                   } else {
-                    _this.loadingType = 0;
+                    this.list = this.list.concat(res.data);
                   }
-                }, 3000);case 1:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
+
+                  if (res.data.length < 10) {
+                    this.loadingType = 2;
+                  } else {
+                    this.loadingType = 0;
+                  }
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
     goToDetail: function goToDetail() {
       uni.navigateTo({
@@ -198,6 +208,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   onLoad: function onLoad(options) {
     this.curType = options.index;
+    this.getList();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

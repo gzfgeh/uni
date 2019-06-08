@@ -115,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 {
@@ -151,7 +152,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
 
                   (0, _api.bindPhone)(params));case 3:res = _context.sent;
                 if (res.code == 1000) {
-                  uni.setStorageSync("userInfo", this.userInfo);
+                  uni.setStorageSync("userInfo", res.data);
                   uni.navigateBack({
                     delta: 1 });
 
@@ -170,7 +171,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                   this.isShowPhone = true;
                 }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function addSaveUserInfo(_x3, _x4, _x5) {return _addSaveUserInfo2.apply(this, arguments);}return addSaveUserInfo;}(),
 
-    getUserInfo: function getUserInfo(e) {
+    getUserInfor: function getUserInfor(e) {
       if (e.mp.detail.userInfo) {
         console.log(e.mp.detail.userInfo);
         //uni.setStorageSync("userInfo", e.mp.detail.userInfo);
@@ -184,6 +185,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                 if (res.code == 1000) {
                   this.session_key = res.data.wxData.session_key;
                   this.openid = res.data.wxData.openid;
+                  uni.setStorageSync("openid", this.openid);
                 }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getOpenid(_x6) {return _getOpenid2.apply(this, arguments);}return getOpenid;}() },
 
 

@@ -203,6 +203,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -216,28 +225,50 @@ var _default =
   onShow: function onShow() {
     var userInfo = uni.getStorageSync("userInfo");
     if (userInfo) {
-      this.avatarUrl = userInfo.avatarUrl;
-      this.nickName = userInfo.nickName;
-    } else {
-      uni.navigateTo({
-        url: '/pages/login/login' });
-
+      this.avatarUrl = userInfo.m_avatar;
+      this.nickName = userInfo.m_name;
     }
 
   },
   methods: {
-    goToSetting: function goToSetting() {
-      uni.navigateTo({
-        url: '/pages/personal/personal' });
+    callPhone: function callPhone() {
+      uni.makePhoneCall({
+        phoneNumber: "17373349812",
+        success: function success() {
+          console.log("成功拨打电话");
+        } });
 
     },
+    goToAboutUs: function goToAboutUs() {
+      uni.navigateTo({
+        url: '/pages/about_us/about_us' });
 
+    },
+    goToFix: function goToFix() {
+      uni.navigateTo({
+        url: '/pages/fix_page/fix_page' });
+
+    },
     goToAddress: function goToAddress() {
+      var userInfo = uni.getStorageSync("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+        return;
+      }
       uni.navigateTo({
         url: '/pages/address_list/address_list' });
 
     },
     goToOrderList: function goToOrderList(index) {
+      var userInfo = uni.getStorageSync("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+        return;
+      }
       uni.navigateTo({
         url: '/pages/order_list/order_list?index=' + index });
 

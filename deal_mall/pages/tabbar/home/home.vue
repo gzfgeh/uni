@@ -20,17 +20,17 @@
 		
 		<div class="row_center center_wrap">
 			<span class="line"></span>
-			<span>服装</span>
+			<span>推荐商品</span>
 			<span class="line"></span>
 		</div>
 		
 		<div class="row content_wrap">
 			<block v-for="(item, index) in list" :key="index" >
 				<navigator class="col_center content_item" @click="goToDetail(index)">
-					<img src="https://bay.2donghua.com/web/uploads/image/store_1/f04f242ce46046dde84b0a6f7d9ba3f25f52a585.jpg" mode="aspectFill">
+					<img :src="item.g_img" mode="aspectFill">
 					<div class="col_between content_bottom">
-						<span>萧遇女装连衣裙2019夏季新品</span>
-						<span class="price">￥300.00</span>
+						<span>{{item.g_name}}</span>
+						<span class="price">￥{{item.g_price}}</span>
 					</div>
 				</navigator>
 			</block>
@@ -42,7 +42,7 @@
 
 <script>
 	
-	import { BASE_IMAGE_URL,getImgList } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList,getRecommendList } from '@/utils/api'
 	
 	export default {
 	data() {
@@ -61,30 +61,44 @@
 		};
 	},
 	onLoad() {
-		let userInfo = uni.getStorageSync("userInfo");
-		if(!userInfo){
-			uni.navigateTo({
-				url: '/pages/login/login'
-			});
-			return;
-		}
+		this.getRecommendList();
 		this.getImgList();
 	},
+	
 	methods: {
 		goToDetail: function(index){
+			let userInfo = uni.getStorageSync("userInfo");
+			if(!userInfo){
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+				return;
+			}
 			uni.navigateTo({
-				url: '/pages/goods_detail/goods_detail'
+				url: '/pages/goods_detail/goods_detail?g_id='+this.list[index].g_id
 			});
 		},
 		goToType: function(index){
-			uni.navigateTo({
-				url: '/pages/mall_list/mall_list'
-			});
-		},
-		goToRecentUsed(){
-			uni.navigateTo({
-				url: '/pages/recent_used/recent_used'
-			});
+			let userInfo = uni.getStorageSync("userInfo");
+			if(!userInfo){
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+				return;
+			}
+			
+			if(index == 0){
+				uni.navigateTo({
+					url: '/pages/mall_list/mall_list'
+				});
+			}else if(index == 1){
+				
+			}else{
+				uni.navigateTo({
+					url: '/pages/order_list/order_list'
+				});
+			}
+			
 		},
 		slideChange: function(e){
 			this.curIndex = e.mp.detail.current;
@@ -98,7 +112,14 @@
 				console.log(res.data);
 				this.itemList = res.data;
 			}
-		}
+		},
+		async getRecommendList(){
+			let res = await getRecommendList();
+			if(res.code == 1000){
+				console.log(res.data);
+				this.list = res.data;
+			}
+		},
 		
 	}
 };

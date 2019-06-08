@@ -13,8 +13,13 @@ export function getFirstTypeList() {
 /**
  * 商品列表
  */
-export function getGoodsList(g_type,page) {
-    return request.get('Api/Project/getGoodsList?g_type='+g_type+"&page="+page)
+export function getGoodsList(g_type,page,type,keyword) {
+	if(g_type){
+		return request.get('Api/Project/getGoodsList?g_type='+g_type+"&page="+page+"&type="+type+"&keyword="+keyword)
+	}else{
+		return request.get('Api/Project/getGoodsList?page='+page+"&type="+type+"&keyword="+keyword)
+	}
+    
 }
 
 /**
@@ -43,35 +48,35 @@ export function bindPhone(params) {
  * 获取购物车列表
  */
 export function getCart(ct_openid) {
-    return request.get('Project/getCart?ct_openid='+ct_openid);
+    return request.get('Api/Project/getCart?ct_openid='+ct_openid);
 }
 
 /**
  * 加入购物车
  */
 export function jiaruCart(params) {
-    return request.post('Project/jiaruCart', qs.stringify(params));
+    return request.post('Api/Project/jiaruCart', qs.stringify(params));
 }
 
 /**
  * 修改购物车 数量
  */
 export function saveCart(params) {
-    return request.post('Project/saveCart', qs.stringify(params));
+    return request.post('Api/Project/saveCart', qs.stringify(params));
 }
 
 /**
  * 删除购物车
  */
 export function deleteCart(params) {
-    return request.post('Project/deleteCart', qs.stringify(params));
+    return request.post('Api/Project/deleteCart', qs.stringify(params));
 }
 
 /**
- * 修改价格
+ * 商品详情
  */
-export function goodsEdit(params) {
-    return request.post('Project/goodsEdit', qs.stringify(params));
+export function goodsDetail(g_id) {
+    return request.get('Api/Project/goodsDetail?g_id='+g_id);
 }
 
 /**
@@ -93,5 +98,68 @@ export function getOpenid(code) {
  * 修改用户信息
  */
 export function addSaveUserInfo(params) {
-    return request.get('Api/Weixin/addSaveUserInfo', qs.stringify(params));
+    return request.post('Api/Weixin/addSaveUserInfo', qs.stringify(params));
+}
+
+/**
+ * 修改用户信息
+ */
+export function getRecommendList() {
+    return request.get('Api/Project/getRecommendList');
+}
+
+/**
+ * 关于我们
+ */
+export function aboutUs() {
+    return request.get('Api/Project/aboutUs');
+}
+
+/**
+ * 地址列表
+ */
+export function getAddressList(a_openid) {
+    return request.get('Api/Mall/getAddressList?a_openid='+a_openid);
+}
+
+/**
+ * 地址列表
+ */
+export function addAddress(params) {
+    return request.post('Api/Mall/addAddress', qs.stringify(params));
+}
+
+/**
+ * 删除地址
+ */
+export function deleteAddress(params) {
+    return request.post('Api/Mall/deleteAddress', qs.stringify(params));
+}
+
+/**
+ * 编辑地址
+ */
+export function editAddress(params) {
+    return request.post('Api/Mall/editAddress', qs.stringify(params));
+}
+
+/**
+ * 下单接口
+ */
+export function addOrder(params) {
+    return request.post('Api/Weixin/addOrder', qs.stringify(params));
+}
+
+/**
+ * 报修接口
+ */
+export function baoxiu(params) {
+    return request.post('Api/Project/baoxiu', qs.stringify(params));
+}
+
+/**
+ * 订单列表
+ */
+export function getOrder(o_status, page) {
+    return request.get('Api/Weixin/getOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
 }

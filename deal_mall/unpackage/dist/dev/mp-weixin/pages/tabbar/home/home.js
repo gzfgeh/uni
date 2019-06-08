@@ -161,29 +161,43 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
 
   },
   onLoad: function onLoad() {
-    var userInfo = uni.getStorageSync("userInfo");
-    if (!userInfo) {
-      uni.navigateTo({
-        url: '/pages/login/login' });
-
-      return;
-    }
+    this.getRecommendList();
     this.getImgList();
   },
+
   methods: {
     goToDetail: function goToDetail(index) {
+      var userInfo = uni.getStorageSync("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+        return;
+      }
       uni.navigateTo({
-        url: '/pages/goods_detail/goods_detail' });
+        url: '/pages/goods_detail/goods_detail?g_id=' + this.list[index].g_id });
 
     },
     goToType: function goToType(index) {
-      uni.navigateTo({
-        url: '/pages/mall_list/mall_list' });
+      var userInfo = uni.getStorageSync("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
 
-    },
-    goToRecentUsed: function goToRecentUsed() {
-      uni.navigateTo({
-        url: '/pages/recent_used/recent_used' });
+        return;
+      }
+
+      if (index == 0) {
+        uni.navigateTo({
+          url: '/pages/mall_list/mall_list' });
+
+      } else if (index == 1) {
+
+      } else {
+        uni.navigateTo({
+          url: '/pages/order_list/order_list' });
+
+      }
 
     },
     slideChange: function slideChange(e) {
@@ -197,7 +211,14 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.itemList = res.data;
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}() } };exports.default = _default;
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}(),
+
+    getRecommendList: function () {var _getRecommendList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  (0, _api.getRecommendList)());case 2:res = _context2.sent;
+                if (res.code == 1000) {
+                  console.log(res.data);
+                  this.list = res.data;
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getRecommendList() {return _getRecommendList2.apply(this, arguments);}return getRecommendList;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

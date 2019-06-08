@@ -138,6 +138,15 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
       typeIndex: 0 };
 
   },
+  onShow: function onShow() {
+    var userInfo = uni.getStorageSync("userInfo");
+    if (!userInfo) {
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return;
+    }
+  },
   onLoad: function onLoad() {
     this.getFirstTypeList();
   },

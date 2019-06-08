@@ -13,16 +13,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 /*每个页面公共css */
 ._ul, ._li{list-style:none;}
 .row{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center;}
@@ -37,4 +27,7 @@
 .hover_class{opacity: 0.9; background-color: #F7F7F7;}
 .no_data_wrap{text-align: center; padding-top: 100rpx;}
 .arraw{width: 20rpx;height: 20rpx;border-top: 4rpx solid #999999;border-right: 4rpx solid #999999;-webkit-transform: rotate(45deg);-ms-transform: rotate(45deg);transform: rotate(45deg);margin-left: 4rpx;display: inline-block;}
+.modal-mask {width: 100%;height: 80%;position: fixed;top: 0;left: 0;background: #000;opacity: 0.5;overflow: hidden;z-index: 99;color: #fff;}
+
+
 

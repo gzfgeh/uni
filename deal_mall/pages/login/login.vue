@@ -5,9 +5,10 @@
 		</div>
 		
 		<div class="apply_info">申请获取以下权限</div>
-		<div class="apply">获得你的公开信息（昵称、头像等）</div>
+		<div class="apply" v-if="!isShowPhone">获得你的公开信息（昵称、头像等）</div>
+		<div class="apply" v-if="isShowPhone">获得你的手机号</div>
 		
-		<button @getuserinfo="getUserInfo" class="login-btn" openType="getUserInfo" v-if="!isShowPhone">授权登录</button>
+		<button @getuserinfo="getUserInfor" class="login-btn" openType="getUserInfo" v-if="!isShowPhone">授权登录</button>
 		
 		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" class="login-btn" v-if="isShowPhone">获取手机号授权</button>
 		
@@ -51,7 +52,7 @@
 				};
 				let res = await bindPhone(params);
 				if(res.code == 1000){
-					uni.setStorageSync("userInfo", this.userInfo);
+					uni.setStorageSync("userInfo", res.data);
 					uni.navigateBack({  
 						delta: 1 
 					});
@@ -70,7 +71,7 @@
 					this.isShowPhone = true;
 				}
 			},
-			getUserInfo(e){
+			getUserInfor(e){
 				if (e.mp.detail.userInfo){
 					console.log(e.mp.detail.userInfo);
 					//uni.setStorageSync("userInfo", e.mp.detail.userInfo);
@@ -84,6 +85,7 @@
 				 if(res.code == 1000){
 					this.session_key = res.data.wxData.session_key;
 					this.openid = res.data.wxData.openid;
+					uni.setStorageSync("openid", this.openid);
 				 }
 				
 			 }

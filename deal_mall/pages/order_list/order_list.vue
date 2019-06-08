@@ -9,26 +9,26 @@
 		</div>
 		
 		<div class="list_wrap">
-			<navigator v-for="(item, index) in list" :key="index" class="list_item">
-				<div class="item_head">平台自营</div>
+			<navigator v-for="(item, index) in list" :key="index" class="list_item" v-if="item.good_list.length>0">
+				<!-- <div class="item_head">平台自营</div> -->
 				<div class="row_between">
-					<span>订单号:20190526213447585095</span>
-					<span>2019-05-26 21:34</span>
+					<span>订单号:{{item.o_out_trade_no}}</span>
+					<span>{{item.o_create_time}}</span>
 				</div>
-				<div class="item_info row">
-					<img src="https://bay.2donghua.com/web/uploads/image/store_1/edfe8f5f2027ef4539a05d7284b26f2951329dae.jpg" mode="aspectFill">
+				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="index">
+					<img :src="ite.go_g_img" mode="aspectFill">
 					<div class="item_tag flex_one item_content" >
 						<div class="item_tag flex_one">
-							<span class="name">意大利比安易INOVIA COND 英诺华</span>
-							<span class="tag"> 规格:默认 </span>
+							<span class="name">{{ite.go_g_name}}</span>
+							<!-- <span class="tag"> 规格:默认 </span> -->
 						</div>
 						<div class="row">
-							<span class="num flex_one">x1</span>
-							<span class="price">￥:20.00</span>
+							<span class="num flex_one">x{{ite.go_count}}</span>
+							<span class="price">￥:{{ite.go_g_price}}</span>
 						</div>
 					</div>
 				</div>
-				<div>合计：￥20.00</div>
+				<div class="price">合计：￥{{item.o_money}}</div>
 			</navigator>
 		</div>
 		
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getOrder } from '@/utils/api'
+	
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
 		components: {
@@ -56,27 +58,35 @@
 					contentrefresh: "正在加载...",
 					contentnomore: "没有更多数据了"
 				},
-				list: [1,2,3,4,5,6,7,8,9,0,11,22,33,44],
+				list: [],
 				loadingType: 0,
 				page: 1,
-				typeList: ['待发货', '待收货', '已完成', '售后'],
+				typeList: ['待发货', '待收货', '已完成'],
 				curType: 0
 			}
 		},
 		methods: {
 			changeType(index){
 				this.curType = index;
+				this.page = 1;
+				this.list = [];
+				this.getList();
 			},
 			async getList(){
-				setTimeout(() => {
-					uni.stopPullDownRefresh();
-					this.list = this.list.concat([1,2,3,4,5,6,7,8,9,0,11,22,33,44]) ;
-					if(this.list.length < 10){
+				let res = await getOrder(this.curType, this.page);
+				if(res.code == 1000){
+					if(this.page == 1){
+						this.list = res.data;
+					}else{
+						this.list = this.list.concat(res.data);
+					}
+					
+					if(res.data.length < 10){
 						this.loadingType = 2;
 					}else{
 						this.loadingType = 0;
 					}
-				}, 3000);
+				}
 			},
 			goToDetail(){
 				uni.navigateTo({
@@ -98,6 +108,7 @@
 		},
 		onLoad(options){
 			this.curType = options.index;
+			this.getList();
 		}
 		
 	}
@@ -119,7 +130,7 @@
 .list_item .item_info .tag{color: #888; font-size: 24upx;}
 .list_item .item_content{height: 156upx; box-sizing:border-box;}
 .list_item .item_tag{display: flex; flex-direction: column;}
-.list_item .item_info .price{color: #ff4544;}
+.price{color: #ff4544;}
 .list_item .item_info .num{color: #888; font-size: 24upx;}
 
 .quick_icon{position: fixed;right: 50upx; bottom: 140upx; z-index: 20;width: 100upx; height: 100upx; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24upx;}

@@ -11,7 +11,10 @@
     "pages/address_list/address_list",
     "pages/add_address/add_address",
     "pages/goods_detail/goods_detail",
-    "pages/goods_search/goods_search"
+    "pages/goods_search/goods_search",
+    "pages/post_order/post_order",
+    "pages/about_us/about_us",
+    "pages/fix_page/fix_page"
   ],
   "subPackages": [],
   "window": {

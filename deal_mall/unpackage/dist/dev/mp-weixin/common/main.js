@@ -79,20 +79,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
-
-    setTimeout(function () {
-      uni.setTabBarBadge({
-        index: 1,
-        text: '31' });
-
-      uni.showTabBarRedDot({
-        index: 3 });
-
-    }, 1000);
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -100,7 +90,6 @@ __webpack_require__.r(__webpack_exports__);
   onHide: function onHide() {
     console.log('App Hide');
   } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

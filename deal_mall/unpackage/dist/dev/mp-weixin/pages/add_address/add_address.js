@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/mpvueCityPicker.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/mpvueCityPicker.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -142,6 +142,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/mpvueCityPicker.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/mpvueCityPicker.vue"));};var _default =
 
 
 {
@@ -150,22 +161,121 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
-      name: '',
-      phone: '',
-      detail: '',
+      a_name: '',
+      a_phone: '',
+      a_address: '',
       cityPickerValueDefault: [0, 0, 1],
       themeColor: '#007AFF',
-      pickerText: '请选择' };
+      pickerText: '请选择',
+      a_sheng: '',
+      a_shi: '',
+      a_qu: '',
+      a_is_default: false,
+      item: {} };
 
   },
+  onLoad: function onLoad() {
+    this.item = uni.getStorageSync("itemList");
+    var item = this.item;
+    if (item) {
+      this.a_name = item.a_name;
+      this.a_phone = item.a_phone;
+      this.a_address = item.a_address;
+      this.a_sheng = item.a_sheng;
+      this.a_shi = item.a_shi;
+      this.a_qu = item.a_qu;
+      this.pickerText = this.a_sheng + "-" + this.a_shi + "-" + this.a_qu;
+      this.a_is_default = item.a_is_default == 1;
+      uni.setNavigationBarTitle({
+        title: "修改地址" });
+
+    }
+  },
   methods: {
+    changeDefault: function changeDefault(e) {
+      console.log(e);
+      this.a_is_default = e.detail.value;
+    },
     // 三级联动选择
     showMulLinkageThreePicker: function showMulLinkageThreePicker() {
       this.$refs.mpvueCityPicker.show();
     },
+    onCancel: function onCancel(e) {},
     onConfirm: function onConfirm(e) {
+      console.log(e);
+      this.cityPickerValueDefault = e.value;
       this.pickerText = e.label;
-    } } };exports.default = _default;
+      var address = this.pickerText.split("-");
+      this.a_sheng = address[0];
+      this.a_shi = address[1];
+      this.a_qu = address[2];
+    },
+    addAddress: function () {var _addAddress2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+                this.a_name) {_context.next = 3;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请输入收货人" });return _context.abrupt("return");case 3:
+
+
+                ;if (
+
+                this.a_phone) {_context.next = 7;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请输入联系电话" });return _context.abrupt("return");case 7:
+
+
+                ;if (
+
+                this.a_address) {_context.next = 11;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请输入详细地址" });return _context.abrupt("return");case 11:
+
+
+                ;if (!(
+
+                this.pickerText == '请选择')) {_context.next = 15;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请选择省市区" });return _context.abrupt("return");case 15:
+
+
+                ;
+
+                params = {
+                  a_sheng: this.a_sheng,
+                  a_shi: this.a_shi,
+                  a_qu: this.a_qu,
+                  a_name: this.a_name,
+                  a_address: this.a_address,
+                  a_phone: this.a_phone,
+                  a_openid: uni.getStorageSync("openid"),
+                  a_is_default: this.a_is_default ? 1 : 0 };if (!
+
+
+                this.item) {_context.next = 24;break;}
+                params.a_id = this.item.a_id;_context.next = 21;return (
+                  (0, _api.editAddress)(params));case 21:res = _context.sent;_context.next = 27;break;case 24:_context.next = 26;return (
+
+                  (0, _api.addAddress)(params));case 26:res = _context.sent;case 27:
+                ;
+
+                if (res.code == 1000) {
+                  uni.showToast({
+                    icon: 'none',
+                    duration: 1000,
+                    title: "操作成功" });
+
+                  uni.navigateBack({
+                    delta: 1 });
+
+                }case 29:case "end":return _context.stop();}}}, _callee, this);}));function addAddress() {return _addAddress2.apply(this, arguments);}return addAddress;}() } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

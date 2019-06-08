@@ -153,10 +153,10 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
         contentrefresh: "正在加载...",
         contentnomore: "没有更多数据了" },
 
-      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 22, 33, 44],
+      list: [],
       loadingType: 0,
       page: 1,
-      typeList: ['综合', '最新', '价格', '销量'],
+      typeList: ['综合', '最新', '价格', '库存'],
       curType: 0,
       g_type: 0 };
 
@@ -164,9 +164,10 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
   methods: {
     changeType: function changeType(index) {
       this.curType = index;
+      this.getList();
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _api.getGoodsList)(this.g_type, this.page));case 2:res = _context.sent;
+                  (0, _api.getGoodsList)(this.g_type, this.page, this.curType));case 2:res = _context.sent;
                 uni.stopPullDownRefresh();
                 if (res.code == 1000) {
                   if (this.page == 1) {
@@ -182,11 +183,31 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                   }
                 }case 5:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
-    goToDetail: function goToDetail() {
+    goToDetail: function goToDetail(index) {
       uni.navigateTo({
-        url: '/pages/express_detail/express_detail' });
+        url: '/pages/goods_detail/goods_detail?g_id=' + this.list[index].g_id });
 
-    } },
+    },
+    jiaruCart: function () {var _jiaruCart2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(item) {var params, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                params = {
+                  ct_openid: uni.getStorageSync("openid"),
+                  ct_g_id: item.g_id };_context2.next = 3;return (
+
+                  (0, _api.jiaruCart)(params));case 3:res = _context2.sent;
+                if (res.code == 1000) {
+                  uni.showToast({
+                    icon: 'none',
+                    title: '添加成功',
+                    duration: 1000 });
+
+                } else {
+                  uni.showToast({
+                    icon: 'none',
+                    title: '加入购物车失败',
+                    duration: 1000 });
+
+                }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function jiaruCart(_x) {return _jiaruCart2.apply(this, arguments);}return jiaruCart;}() },
+
 
   onReachBottom: function onReachBottom() {
     this.loadingType = 1;

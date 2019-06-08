@@ -12,9 +12,7 @@ request.config.baseURL = 'https://bay.2donghua.com/'
 tokenFly.config = request.config
 
 request.interceptors.request.use((request) => {
-    if (getApp().globalData.showLoading) {
-        uni.showLoading({ title: '加载中...' })
-    }
+    uni.showLoading({ title: '加载中...' })
 	request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
     return request
 })

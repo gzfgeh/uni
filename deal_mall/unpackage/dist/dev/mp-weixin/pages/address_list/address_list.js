@@ -139,13 +139,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 {
   data: function data() {
     return {
-      list: [1, 2],
+      list: [],
       select_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-checked.png",
       normal_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-uncheck.png",
       cur_index: -1 };
@@ -153,42 +152,51 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
   },
   methods: {
     selectItem: function selectItem(index) {
-      this.cur_index = index;
+      uni.setStorageSync("addressItem", this.list[index]);
+      uni.navigateBack({
+        delta: 1 });
+
     },
-    getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getAddressList)(uni.getStorageSync("openid")));case 2:res = _context.sent;
+                if (res.code == 1000) {
+                  this.list = res.data;
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
+
+    goToEditAddress: function goToEditAddress(index) {
+      uni.setStorageSync("itemList", this.list[index]);
+      uni.navigateTo({
+        url: '/pages/add_address/add_address' });
+
+    },
+    deleteAction: function deleteAction(index) {var _this = this;
+      uni.showModal({
+        title: "提示",
+        content: "是否删除?",
+        success: function success(res) {
+          if (res.confirm) {
+            _this.deleteAddress(index);
+          }
+        } });
+
+    },
+    deleteAddress: function () {var _deleteAddress2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(index) {var params, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 params = {
-                  userID: '',
-                  type: 1 };_context.next = 3;return (
+                  a_id: this.list[index].a_id };_context2.next = 3;return (
 
-                  (0, _api.getAllAddress)(params));case 3:res = _context.sent;
-                if (res.status == 1) {
+                  (0, _api.deleteAddress)(params));case 3:res = _context2.sent;
+                if (res.code == 1000) {
+                  uni.showToast({
+                    icon: 'none',
+                    title: '删除成功',
+                    duration: 1000 });
 
-                }
-                setTimeout(function () {
-                  uni.stopPullDownRefresh();
-                  _this.list = _this.list.concat([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 22, 33, 44]);
-                  if (_this.list.length < 10) {
-                    _this.loadingType = 2;
-                  } else {
-                    _this.loadingType = 0;
-                  }
-                }, 1000);case 6:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}() },
+                  this.getList();
+                }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function deleteAddress(_x) {return _deleteAddress2.apply(this, arguments);}return deleteAddress;}() },
 
 
-  onReachBottom: function onReachBottom() {
-    this.loadingType = 1;
-    this.page++;
+  onShow: function onShow() {
     this.getList();
-  },
-
-  onPullDownRefresh: function onPullDownRefresh() {
-    console.log("dddddd");
-    this.page = 1;
-    this.list = [];
-    this.getList();
-  },
-  onLoad: function onLoad() {
-
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
     uni.navigateTo({

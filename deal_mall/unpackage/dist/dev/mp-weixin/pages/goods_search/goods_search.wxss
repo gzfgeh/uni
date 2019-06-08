@@ -3,7 +3,7 @@
 .input_wrap{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row;background: #fff; border: 1rpx solid #E3E3E3;
 	border-radius: 10rpx; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; margin-right: 24rpx; color: #000; padding: 0rpx 20rpx; font-size: 24rpx;}
 .input_wrap ._img{margin-right: 10rpx; width: 26rpx;}
-.input_wrap input{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1; margin-left: 20rpx;}
+.input_wrap input{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1; margin-left: 20rpx; height: 160rpx;}
 .cancle_btn{height: 64rpx; line-height: 64rpx; color: #00c203;
 }
 

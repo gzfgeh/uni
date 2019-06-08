@@ -38,6 +38,15 @@
 				typeIndex: 0
 			}
 		},
+		onShow(){
+			let userInfo = uni.getStorageSync("userInfo");
+			if(!userInfo){
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+				return;
+			}
+		},
 		onLoad() {
 			this.getFirstTypeList();
 		},

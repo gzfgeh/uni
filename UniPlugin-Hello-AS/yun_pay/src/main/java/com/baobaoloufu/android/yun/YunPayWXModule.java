@@ -15,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class YunPayWXModule extends WXSDKEngine.DestroyableModule {
-    public String CONTENT = "content";
+    public String CONTENT = "tn";
 
     @JSMethod(uiThread = true)
     public void show(JSONObject options, JSCallback jsCallback){
@@ -24,10 +24,18 @@ public class YunPayWXModule extends WXSDKEngine.DestroyableModule {
 
             if(UPPayAssistEx.checkWalletInstalled(activity)){
                 //是否安装云闪付
-                Toast.makeText(mWXSDKInstance.getContext(), "999999", Toast.LENGTH_SHORT).show();
 
-                String serverMode = "01";
-                UPPayAssistEx.startPay(activity, null, null, "123456789", serverMode);
+                try {
+                    String content = options.getString(CONTENT);
+//                    String content = "515865190618187165301";
+                    Toast.makeText(mWXSDKInstance.getContext(), content, Toast.LENGTH_SHORT).show();
+
+                    String serverMode = "01";
+                    UPPayAssistEx.startPay(activity, null, null, content, serverMode);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
         }

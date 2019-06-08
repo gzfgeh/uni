@@ -5,13 +5,14 @@
 				<div class="row item_content">
 					<radio :checked="item.checked" @click="changeChecked(item)" ></radio>
 					<div class="flex_one row item_wrap">
-						<image src="https://bay.2donghua.com/web/uploads/image/store_1/af2a5d4dfece262ef43d427039e807e9537ccd22.jpg" mode="aspectFill"></image>
+						<image :src="item.g_img" mode="aspectFill"></image>
 						<div class="content_wrap">
-							<div class="flex_one">
-								<span class="goods_name">意大利比安易INOVIA COND 英诺华</span>
-								<div class="attr-list" v-for="(ite,ind) in item.attrs" :key="ind">
+							<div class="flex_one col">
+								<span class="goods_name">{{item.g_name}}</span>
+								<!-- <div class="attr-list" v-for="(ite,ind) in item.attrs" :key="ind">
 									<span class="attr-item"> 规格:默认 </span>
-								</div>
+								</div> -->
+								<span class="attr-list">{{item.g_miaoshu}}</span>
 							</div>
 							<div class="row item_bottom">
 								<span class="price">￥{{item.g_price}}</span>
@@ -39,7 +40,7 @@
 				<span class="money">总计:￥{{allPrice}}</span>
 			</div>
 			<span class="edit_btn" @click="editAction">{{isEditStatus?'完成':'编辑'}}</span>
-			<span class="buy_btn" @click="deleteAction">{{isEditStatus?'删除':'下单'}}</span>
+			<span class="buy_btn" @click="deleteCart">{{isEditStatus?'删除':'下单'}}</span>
 		</div>
 		
 		<div v-if="list.length == 0" class="no_data_wrap">
@@ -54,6 +55,8 @@
 </template> 
 
 <script>
+	import { BASE_IMAGE_URL,getCart,saveCart,deleteCart } from '@/utils/api'
+	
 	import uniNumberBox from '../../../components/uni-number-box.vue'
 	export default {
 		components: {
@@ -66,14 +69,7 @@
 						contentrefresh: "正在加载...",
 						contentnomore: "没有更多数据了"
 					},
-				list: [
-					{ct_count: 1, attrs: [1,2],g_price: 1},
-					{ct_count: 1, attrs: [1,2],g_price: 5},
-					{ct_count: 1, attrs: [1,2],g_price: 10},
-					{ct_count: 1, attrs: [1,2],g_price: 12},
-					{ct_count: 1, attrs: [1,2],g_price: 7},
-					{ct_count: 1, attrs: [1,2,3],g_price: 1000}
-				],
+				list: [],
 				loadingType: 0,
 				page: 1,
 				allPrice: 0,
@@ -83,7 +79,17 @@
 				isEditStatus: false
 			};
 		},
-		onLoad() {},
+		onShow(){
+			let userInfo = uni.getStorageSync("userInfo");
+			if(!userInfo){
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+				return;
+			}else{
+				this.getCart();
+			}
+		},
 		methods: {
 			editAction(){
 				if(this.isEditStatus){
@@ -96,8 +102,42 @@
 					this.allStatusChange();
 				}
 			},
-			deleteAction(){
-				
+			async deleteCart(){
+				if(!this.isEditStatus){
+					let p = [];
+					this.list.map(function(item, index){
+						if(item.checked){
+						  p.push(item);
+						}
+					 });
+					
+					uni.setStorageSync("itemList", p);
+					uni.navigateTo({
+						url: '/pages/post_order/post_order'
+					});
+						  
+					return;
+				}
+				let ids = "";
+				let that = this;
+			  this.list.map(function(item, index){
+				if(item.checked){
+				  ids = that.list[index].ct_id+",";
+				}
+			  });
+			  
+			  let params = {
+				ct_id: ids.substring(0, ids.length-1),
+			  };
+			  let result = await deleteCart(params);
+			  if(result.code == 1000){
+				wx.showToast({
+					title: '删除成功',
+					icon: 'none',
+					duration: 1000
+				});
+				this.getCart();
+			  }
 			},
 			inputChange(e){
 				this.calcStatus();
@@ -159,25 +199,41 @@
 					  this.list[index].ct_count --;
 					}
 				};
-				
-				this.calcStatus();
-					
-				// let params = {
-				// 	ct_openid: wx.getStorageSync("openid"),
-				// 	ct_g_id: this.list[index].ct_g_id,
-				// 	ct_count: this.list[index].ct_count,
-				// 	ct_id: this.list[index].ct_id
-				// };
-				// let result = await saveCart(params);
-				// if(result.code == 1000){
-				// 	this.calcStatus();
-				// }else{
-				// 	wx.showToast({
-				// 		title: '操作失败',
-				// 		icon: 'none',
-				// 		duration: 1000
-				// 	})
-				// }
+				let params = {
+					ct_openid: wx.getStorageSync("openid"),
+					ct_g_id: this.list[index].ct_g_id,
+					ct_count: this.list[index].ct_count,
+					ct_id: this.list[index].ct_id
+				};
+				let result = await saveCart(params);
+				if(result.code == 1000){
+					this.calcStatus();
+				}else{
+					wx.showToast({
+						title: '操作失败',
+						icon: 'none',
+						duration: 1000
+					})
+				}
+			},
+			
+			async getCart(){
+			  this.allPrice = 0;
+			  this.allNum = 0;
+			  this.allStatus = false;
+			  let result = await getCart(uni.getStorageSync("openid"));
+			  if(result.code == 1000){
+				this.list = result.data;
+				this.list.map(function(item){
+				  item.checked = false;
+				});
+			  }else{
+				uni.showToast({
+					title: result.msg,
+					icon: 'none',
+					duration: 1000
+				})
+			  }
 			},
 	
 	
@@ -209,6 +265,7 @@ page{height: 100%; background-color: #F3F3F3;}
 .attr-item{display: inline-block;}
 .item_bottom{width: 100%;}
 .item_bottom .price{flex: 1; color:#ff4544}
+.radio{display: flex; flex-direction: row; align-items: center;}
 
 .actionWrap{display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 10upx 0upx;min-width: 200upx;}
 .actionClass{background: #ffffff;display: inline-block;height: 40upx;line-height: 40upx;text-align: center;width: 60upx;color: #000000;border: 1upx solid #dddddd;}

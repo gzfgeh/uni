@@ -5,25 +5,24 @@
 		
 		<block  v-for="(item,index) in list" :key="index" class="list_wrap">
 			<div class="item_wrap">
-				<div class="row_between item_head">
-					<span>收货人：张三</span>
-					<span>020-81167888</span>
+				<div class="row_between item_head" @click="selectItem(index)">
+					<span>收货人：{{item.a_name}}</span>
+					<span>{{item.a_phone}}</span>
 				</div>
-				<div class="detail">收货地址：广东省广州市海珠区新港中路397号</div>
+				<div class="detail" @click="selectItem(index)">收货地址：{{item.a_sheng}}{{item.a_shi}}{{item.a_qu}}{{item.a_address}}</div>
 				
 				<div class="row_between">
-					<div class="row" style="flex: 1;" @click="selectItem(index)">
-						<img :src="(cur_index == index)?select_icon_url:normal_icon_url" class="radio_icon">
-						<span :class="{'active': (cur_index == index)}">设为默认</span>
+					<div class="row" style="flex: 1;" >
+						<span :class="{'active': (item.a_is_default == 1)}">{{(item.a_is_default == 1)?'默认地址':' '}}</span>
 					</div>
 					
-					<div class="row_between">
+					<div class="row_between" @click="goToEditAddress(index)">
 						<div class="row edit_item">
 							<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-edit.png" class="edit_icon">
 							<span>编辑</span>
 						</div>
 						
-						<div class="row edit_item">
+						<div class="row edit_item" @click="deleteAction(index)">
 							<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-delete.png" class="edit_icon">
 							<span>删除</span>
 						</div>
@@ -40,12 +39,12 @@
 
 <script>
 	
-	import { BASE_IMAGE_URL,getAllAddress } from '@/utils/api'
+	import { BASE_IMAGE_URL,getAddressList,deleteAddress } from '@/utils/api'
 	
 	export default {
 		data() {
 			return {
-				list: [1,2],
+				list: [],
 				select_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-checked.png",
 				normal_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-uncheck.png",
 				cur_index: -1
@@ -53,42 +52,51 @@
 		},
 		methods: {
 			selectItem(index){
-				this.cur_index = index;
+				uni.setStorageSync("addressItem", this.list[index]);
+				uni.navigateBack({
+						delta: 1
+					});
 			},
 			async getList(){
-				let params = {
-					userID: '',
-					type: 1
-				};
-				let res = await getAllAddress(params);
-				if(res.status == 1){
-					
+				let res = await getAddressList(uni.getStorageSync("openid"));
+				if(res.code == 1000){
+					this.list = res.data;
 				}
-				setTimeout(() => {
-					uni.stopPullDownRefresh();
-					this.list = this.list.concat([1,2,3,4,5,6,7,8,9,0,11,22,33,44]) ;
-					if(this.list.length < 10){
-						this.loadingType = 2;
-					}else{
-						this.loadingType = 0;
+			},
+			goToEditAddress(index){
+				uni.setStorageSync("itemList", this.list[index]);
+				uni.navigateTo({
+					url: '/pages/add_address/add_address'
+				});
+			},
+			deleteAction(index){
+				uni.showModal({
+					title:"提示",
+					content:"是否删除?",
+					success: (res) => {
+						if(res.confirm){
+							this.deleteAddress(index);
+						}
 					}
-				}, 1000);
+				})
+			},
+			async deleteAddress(index){
+				let params = {
+					a_id: this.list[index].a_id
+				};
+				let res = await deleteAddress(params);
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '删除成功',
+					  duration: 1000
+					});
+					this.getList();
+				}
 			}
 		},
-		onReachBottom() {
-			this.loadingType = 1;
-			this.page++;
+		onShow(){
 			this.getList();
-		},
-		
-		onPullDownRefresh() {
-			console.log("dddddd");
-			this.page = 1;
-			this.list = [];
-			this.getList();
-		},
-		onLoad(){
-			
 		},
 		onNavigationBarButtonTap:function(e){
             uni.navigateTo({
