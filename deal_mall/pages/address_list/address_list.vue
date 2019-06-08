@@ -4,25 +4,25 @@
 		<navigator class="bottom_wrap" url="../add_address/add_address">添加新地址</navigator>
 		
 		<block  v-for="(item,index) in list" :key="index" class="list_wrap">
-			<div class="item_wrap">
-				<div class="row_between item_head" @click="selectItem(index)">
+			<div class="item_wrap" @click="selectItem(index)">
+				<div class="row_between item_head" >
 					<span>收货人：{{item.a_name}}</span>
 					<span>{{item.a_phone}}</span>
 				</div>
-				<div class="detail" @click="selectItem(index)">收货地址：{{item.a_sheng}}{{item.a_shi}}{{item.a_qu}}{{item.a_address}}</div>
+				<div class="detail">收货地址：{{item.a_sheng}}{{item.a_shi}}{{item.a_qu}}{{item.a_address}}</div>
 				
 				<div class="row_between">
 					<div class="row" style="flex: 1;" >
 						<span :class="{'active': (item.a_is_default == 1)}">{{(item.a_is_default == 1)?'默认地址':' '}}</span>
 					</div>
 					
-					<div class="row_between" @click="goToEditAddress(index)">
-						<div class="row edit_item">
+					<div class="row_between" >
+						<div class="row edit_item" @click.stop="goToEditAddress(index)">
 							<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-edit.png" class="edit_icon">
 							<span>编辑</span>
 						</div>
 						
-						<div class="row edit_item" @click="deleteAction(index)">
+						<div class="row edit_item" @click.stop="deleteAction(index)">
 							<img src="https://bay.2donghua.com/web/statics/wxapp/images/icon-delete.png" class="edit_icon">
 							<span>删除</span>
 						</div>
@@ -52,10 +52,11 @@
 		},
 		methods: {
 			selectItem(index){
+				console.log("1111")
 				uni.setStorageSync("addressItem", this.list[index]);
 				uni.navigateBack({
-						delta: 1
-					});
+					delta: 1
+				});
 			},
 			async getList(){
 				let res = await getAddressList(uni.getStorageSync("openid"));
@@ -64,6 +65,7 @@
 				}
 			},
 			goToEditAddress(index){
+				console.log("0000")
 				uni.setStorageSync("itemList", this.list[index]);
 				uni.navigateTo({
 					url: '/pages/add_address/add_address'
@@ -95,14 +97,9 @@
 				}
 			}
 		},
-		onShow(){
+		onLoad(){
 			this.getList();
 		},
-		onNavigationBarButtonTap:function(e){
-            uni.navigateTo({
-				url: '/pages/add_address/add_address'
-			});
-        },
 	}
 </script>
 

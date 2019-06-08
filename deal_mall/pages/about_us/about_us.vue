@@ -18,6 +18,11 @@
 				let res = await aboutUs();
 				if(res.code == 1000){
 					this.detail = res.data.i_detail;
+					    var richtext=  this.detail;
+						const regex = new RegExp('<img', 'gi');
+						richtext= richtext.replace(regex, `<img style="max-width: 100%;"`);
+					 
+						this.detail = richtext;
 				}
 			}
 		},
@@ -28,5 +33,6 @@
 </script>
 
 <style>
-
+image{max-width:100%!important;}
+img{max-width:100%!important;}
 </style>

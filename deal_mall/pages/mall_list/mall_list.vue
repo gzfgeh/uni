@@ -134,7 +134,7 @@
 .head_item{flex: 1;}
 .active_type{color: #FF4544;}
 
-.list_wrap{padding-top: 106upx; display: flex; flex-direction: row; flex-flow: wrap;width: 100%;background-color: #EFEFF4;}
+.list_wrap{padding-top: 106upx; display: flex; flex-direction: row; flex-flow: wrap;width: 100%;background-color: #ffffff;}
 .list_item{display: flex; flex-direction: column;width: 49%; margin: 5upx 0.5%;background-color: #FFFFFF;}
 .list_item .item_info{padding: 4upx 22upx; font-size: 28upx;}
 .list_item .item_info .item_info_text{font-size: 34upx; overflow: hidden;text-overflow: ellipsis;word-break: break-all;line-clamp: 2;}

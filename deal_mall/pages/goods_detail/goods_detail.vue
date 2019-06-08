@@ -59,7 +59,7 @@
 			
 			<div class="bottom_right row flex_one">
 				<span class="flex_one add_card row_center" @click="showDialog(1)">加入购物车</span>
-				<span class="flex_one buy_btn row_center" @click="showDialog(2)">立即购买</span>
+				<span class="flex_one buy_btn row_center" @click="showDialog(2)">立即下单</span>
 			</div>
 		</div>
 			
@@ -225,7 +225,7 @@
   box-sizing: border-box;
 }
 
-.modal-dialog .goods_img{width: 160upx; height: 160upx; position: fixed; bottom: 280upx; z-index: 101000;border: 1upx solid #E3E3E3; padding: 5upx;background: #FFF;box-shadow:0px 6upx 54upx 0px rgba(221,221,221,0.41);}
+.modal-dialog .goods_img{width: 160upx; height: 160upx; position: fixed; bottom: 280upx; z-index: 999999;border: 1upx solid #E3E3E3; padding: 5upx;background: #FFF;box-shadow:0px 6upx 54upx 0px rgba(221,221,221,0.41);}
 .modal-dialog .close{width: 30upx; height: 30upx; padding: 10upx;}
 .modal-dialog .item_wrap{margin-bottom: 60upx; border-bottom: 1upx solid #E3E3E3;min-height: 120upx;}
 .price_wrap{display: flex;flex-direction: column;padding-left: 200upx; font-size: 28upx; color:#666666; }

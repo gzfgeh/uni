@@ -152,6 +152,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
   },
   methods: {
     selectItem: function selectItem(index) {
+      console.log("1111");
       uni.setStorageSync("addressItem", this.list[index]);
       uni.navigateBack({
         delta: 1 });
@@ -164,6 +165,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
     goToEditAddress: function goToEditAddress(index) {
+      console.log("0000");
       uni.setStorageSync("itemList", this.list[index]);
       uni.navigateTo({
         url: '/pages/add_address/add_address' });
@@ -195,13 +197,8 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
                 }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function deleteAddress(_x) {return _deleteAddress2.apply(this, arguments);}return deleteAddress;}() },
 
 
-  onShow: function onShow() {
+  onLoad: function onLoad() {
     this.getList();
-  },
-  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
-    uni.navigateTo({
-      url: '/pages/add_address/add_address' });
-
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

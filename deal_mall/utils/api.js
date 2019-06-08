@@ -163,3 +163,17 @@ export function baoxiu(params) {
 export function getOrder(o_status, page) {
     return request.get('Api/Weixin/getOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
 }
+
+/**
+ * 发货操作
+ */
+export function confirmShipping(o_id, o_express_name, o_express_no) {
+    return request.get('pi/Mall/confirmShipping?o_id='+o_id+"&o_express_name="+o_express_name+"&o_express_no="+o_express_no);
+}
+
+/**
+ * 确认收货
+ */
+export function confirmShipping1(params) {
+    return request.post('pi/Mall/confirmShipping', qs.stringify(params));
+}
