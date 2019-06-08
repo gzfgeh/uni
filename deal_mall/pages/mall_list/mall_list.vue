@@ -67,7 +67,7 @@
 				this.getList();
 			},
 			async getList(){
-				let res = await getGoodsList(this.g_type,this.page, this.curType);
+				let res = await getGoodsList(this.g_type,this.page, this.curType, '');
 				uni.stopPullDownRefresh();
 				if(res.code == 1000){
 					if(this.page == 1){

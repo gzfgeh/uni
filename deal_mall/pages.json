@@ -71,7 +71,8 @@
         ,{
             "path" : "pages/goods_search/goods_search",
             "style" : {
-				"navigationBarTitleText": "商品搜索"
+				"navigationBarTitleText": "商品搜索",
+				"enablePullDownRefresh": true
 			}
         }
         ,{

@@ -167,7 +167,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhe
       this.getList();
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _api.getGoodsList)(this.g_type, this.page, this.curType));case 2:res = _context.sent;
+                  (0, _api.getGoodsList)(this.g_type, this.page, this.curType, ''));case 2:res = _context.sent;
                 uni.stopPullDownRefresh();
                 if (res.code == 1000) {
                   if (this.page == 1) {

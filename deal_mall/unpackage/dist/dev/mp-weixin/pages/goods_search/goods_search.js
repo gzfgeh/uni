@@ -98,25 +98,62 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more */ "components/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni-load-more.vue */ "../../../../../../Users/guzhenfu/Documents/uni/deal_mall/components/uni-load-more.vue"));};var _default =
+
+
+{
+  components: {
+    uniLoadMore: uniLoadMore },
+
+  data: function data() {
+    return {
+      loadingText: {
+        contentdown: "上拉显示更多",
+        contentrefresh: "正在加载...",
+        contentnomore: "没有更多数据了" },
+
+      list: [],
+      loadingType: 0,
+      page: 1,
+      keyword: '' };
 
   },
   methods: {
@@ -124,7 +161,39 @@ var _default =
       uni.navigateBack({
         delta: 1 });
 
-    } } };exports.default = _default;
+    },
+    search: function () {var _search = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getGoodsList)('', this.page, 1, this.keyword));case 2:res = _context.sent;
+                uni.stopPullDownRefresh();
+                if (res.code == 1000) {
+                  if (this.page == 1) {
+                    this.list = res.data;
+                  } else {
+                    this.list = this.list.concat(res.data);
+                  }
+
+                  if (res.data.length < 10) {
+                    this.loadingType = 2;
+                  } else {
+                    this.loadingType = 0;
+                  }
+                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function search() {return _search.apply(this, arguments);}return search;}() },
+
+
+  onLoad: function onLoad() {
+  },
+  onReachBottom: function onReachBottom() {
+    this.loadingType = 1;
+    this.page++;
+    this.search();
+  },
+
+  onPullDownRefresh: function onPullDownRefresh() {
+    console.log("dddddd");
+    this.page = 1;
+    this.list = [];
+    this.search();
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
