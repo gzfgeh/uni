@@ -44,7 +44,7 @@
 			</div> -->
 		</div>
 		
-		<div class=" bottom_item_wrap"  @click="goToAddress">
+		<!-- <div class=" bottom_item_wrap"  @click="goToAddress">
 			<div class="row_between bottom_item">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-about-us.png" class="icon" mode="widthFix">
 				<span>我的分销商</span>
@@ -52,9 +52,9 @@
 				<span class="arraw"></span>
 				
 			</div>
-		</div>
+		</div> -->
 		
-		<div class=" bottom_item_wrap">
+		<div class=" bottom_item_wrap" @click="goToOrderList(0)">
 			<div class="row_between bottom_item">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-mch.png" class="icon" mode="widthFix">
 				<span>下级订单</span>
