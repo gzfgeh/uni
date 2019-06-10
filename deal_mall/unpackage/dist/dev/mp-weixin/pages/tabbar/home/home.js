@@ -152,7 +152,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/907ec021b2075525a827e8d139197a66ab255075.png", text: "商品列表" },
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/3c53acb31445befbc40f5c5d26cceadd99281896.png", text: "我的库存" },
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/4c4862b1ac26a3c776b0db0c24dec20c8226d8e8.png", text: "VR" },
-      { img: "https://bay.2donghua.com/web/uploads/image/store_1/79db9b3d322f61952dd9f6c0678740b10c94f268.png", text: "入货计单" },
+      { img: "https://bay.2donghua.com/web/uploads/image/store_1/79db9b3d322f61952dd9f6c0678740b10c94f268.png", text: "入货订单" },
       { img: "https://bay.2donghua.com/web/uploads/image/store_1/7a60a8b4f65843cb7414d730fc445426274c4f71.png", text: "出货订单" }],
 
       t_url: '',
