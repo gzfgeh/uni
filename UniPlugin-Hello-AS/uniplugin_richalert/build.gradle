@@ -22,6 +22,11 @@ android {
         }
     }
 
+    sourceSets.main{
+        jni.srcDirs = []
+        jniLibs.srcDirs = ['libs']
+    }
+
 }
 
 repositories {
@@ -40,6 +45,9 @@ dependencies {
     compileOnly "com.android.support:appcompat-v7:25.3.1"
     implementation 'com.alibaba:fastjson:1.1.46.android'
     implementation 'com.facebook.fresco:fresco:0.12.0'
+
+    implementation files('libs/UPPayAssistEx.jar')
+    implementation files('libs/UPPayPluginExPro.jar')
 
     /*implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'

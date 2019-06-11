@@ -1,4 +1,4 @@
-# Referenced at /Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:80
+# Referenced at /Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:94
 -keep class io.dcloud.application.DCloudApplication { <init>(...); }
-# Referenced at /Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:222
+# Referenced at /Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:236
 -keep class io.dcloud.multiprocess.activity.WebAppActivity1 { <init>(...); }

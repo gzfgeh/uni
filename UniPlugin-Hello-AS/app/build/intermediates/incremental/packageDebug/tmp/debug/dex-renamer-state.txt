@@ -1,19 +1,13 @@
-#Fri Jun 07 20:59:20 CST 2019
+#Sun Jun 09 15:36:18 CST 2019
+path.3=classes.dex
+path.2=classes.dex
 path.1=classes.dex
 path.0=classes.dex
-renamed.5=classes6.dex
-renamed.4=classes5.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/4
-base.4=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/1
-base.3=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/3
-base.2=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/0
-base.1=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/5
+base.3=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/1
+base.2=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/3
+base.1=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/0
 base.0=/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/transforms/dexMerger/debug/2
-path.5=classes.dex
-path.4=classes.dex
-path.3=classes.dex
-path.2=classes.dex

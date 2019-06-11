@@ -1,1 +1,1 @@
-include ':app', ':uniplugin_richalert', ':yun_pay'
+include ':app', ':uniplugin_richalert'

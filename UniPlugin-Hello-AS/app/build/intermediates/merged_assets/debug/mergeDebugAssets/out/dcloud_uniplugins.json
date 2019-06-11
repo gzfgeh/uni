@@ -12,16 +12,6 @@
     },
     {
       "hooksClass": "uni.dcloud.io.uniplugin_stepcounter.StepCounterHookProxy"
-    },
-    {
-      "hooksClass": "",
-      "plugins": [
-        {
-          "type": "module",
-          "name": "Yun-Pay",
-          "class": "com.baobaoloufu.android.yun.YunPayWXModule"
-        }
-      ]
     }
   ]
 }
