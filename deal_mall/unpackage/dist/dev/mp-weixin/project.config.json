@@ -4,12 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true
+		"urlCheck": true,
+		"postcss": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wxe69aa7bf74fcaf86",
 	"projectname": "deal_mall",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
