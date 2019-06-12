@@ -93,6 +93,12 @@
 				"navigationBarTitleText": "报修"
 			}
         }
+        ,{
+            "path" : "pages/ku_cun_list/ku_cun_list",
+            "style" : {
+				"navigationBarTitleText": "库存列表"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  
@@ -117,7 +123,7 @@
 				"pagePath": "pages/tabbar/home/home",
 				"iconPath": "static/img/tabbar/home.png",
 				"selectedIconPath": "static/img/tabbar/homeactive.png",
-				"text": "商城"
+				"text": "商品"
 			},
 			{
 				"pagePath": "pages/tabbar/mall_type/mall_type",

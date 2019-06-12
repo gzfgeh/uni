@@ -193,6 +193,8 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
           url: '/pages/mall_list/mall_list' });
 
       } else if (index == 1) {
+        uni.navigateTo({
+          url: '/pages/ku_cun_list/ku_cun_list' });
 
       } else {
         uni.navigateTo({

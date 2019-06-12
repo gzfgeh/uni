@@ -43,7 +43,8 @@ page{height: 100%; background: #EFEFF4;}
       line-height: 100rpx;
 }
 .button {
-      border-radius: 6rpx;
+      -webkit-border-radius: 6rpx;
+              border-radius: 6rpx;
       width: 90%;
       margin: 20rpx 5% 0px;
       -webkit-box-sizing: border-box;

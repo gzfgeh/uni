@@ -11,10 +11,10 @@
 		
 		<div class="row">
 			<block v-for="(item, index) in modelList" :key="index">
-				<div class="col_center model_item" @click="goToType(index)">
+				<navigator class="col_center model_item" @click="goToType(index)">
 					<img :src="item.img" mode="widthFix">
 					<span>{{item.text}}</span>
-				</div>
+				</navigator>
 			</block>
 		</div>
 		
@@ -93,7 +93,9 @@
 					url: '/pages/mall_list/mall_list'
 				});
 			}else if(index == 1){
-				
+				uni.navigateTo({
+					url: '/pages/ku_cun_list/ku_cun_list'
+				});
 			}else{
 				uni.navigateTo({
 					url: '/pages/order_list/order_list'

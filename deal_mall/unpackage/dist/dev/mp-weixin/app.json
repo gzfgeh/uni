@@ -14,7 +14,8 @@
     "pages/goods_search/goods_search",
     "pages/post_order/post_order",
     "pages/about_us/about_us",
-    "pages/fix_page/fix_page"
+    "pages/fix_page/fix_page",
+    "pages/ku_cun_list/ku_cun_list"
   ],
   "subPackages": [],
   "window": {
@@ -33,7 +34,7 @@
         "pagePath": "pages/tabbar/home/home",
         "iconPath": "static/img/tabbar/home.png",
         "selectedIconPath": "static/img/tabbar/homeactive.png",
-        "text": "商城"
+        "text": "商品"
       },
       {
         "pagePath": "pages/tabbar/mall_type/mall_type",
