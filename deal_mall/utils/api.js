@@ -177,3 +177,17 @@ export function confirmShipping(o_id, o_express_name, o_express_no) {
 export function confirmReceipt(params) {
     return request.post('Api/Mall/confirmReceipt', qs.stringify(params));
 }
+
+/**
+ * 设置预警值
+ */
+export function setKucunYujing(params) {
+    return request.post('Api/Project/setKucunYujing', qs.stringify(params));
+}
+
+/**
+ * 我的库存
+ */
+export function getKucun() {
+    return request.post('Api/Project/getKucun?k_m_id='+uni.getStorageSync("userInfo").m_id);
+}

@@ -83,7 +83,23 @@
 				this.type="";
 			},
 			bindCompanyCode(){
+				let params = {
+					k_g_id: this.list[this.curType].g_id,
+					k_m_id: uni.getStorageSync("userInfo").m_id,
+					k_yj_value: this.companyCode
+				};
+				
+				let res = await setKucunYujing(params);
+				if(res.code == 1000){
+					uni.showToast({
+					  icon: 'none',
+					  title: '设置成功',
+					  duration: 1000
+					});
+					this.list[this.curType].g_kucun = this.companyCode;
+				}
 				this.type="";
+				
 			},
 			setYuJing(index){
 				console.log(index);

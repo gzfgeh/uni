@@ -85,6 +85,7 @@
 					goodsDetail.push(p);
 				});
 				
+				let userInfo = uni.getStorageSync("userInfo");
 				let params = {
 					o_openid: uni.getStorageSync("openid"),
 					o_money: this.money,
@@ -93,7 +94,9 @@
 					o_shi: this.addressItem.a_shi,
 					o_qu: this.addressItem.a_qu,
 					goods: JSON.stringify(goodsDetail),
-					o_role: uni.getStorageSync("userInfo").m_role
+					k_m_role: userInfo.m_role,
+					k_m_id: userInfo.m_id,
+					k_p_m_id: userInfo.m_p_m_id
 				};
 				let res = await addOrder(params);
 				if(res.code == 1000){
