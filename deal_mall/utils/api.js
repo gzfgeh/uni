@@ -83,7 +83,7 @@ export function goodsDetail(g_id) {
  * 修改价格
  */
 export function getUserInfo(m_openid) {
-    return request.get('Project/getUserInfo?m_openid='+m_openid);
+    return request.get('Api/Weixin/getUserInfo?openid='+m_openid);
 }
 
 

@@ -117,6 +117,20 @@
 				}
 			},
 			showDialog(index){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(userInfo.m_role == 0){
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {
+							if(res.confirm){
+							}
+						}
+					})
+					return;
+				}
+						
 				if(this.showModal){
 					if(index == 1){
 						//加入购物车

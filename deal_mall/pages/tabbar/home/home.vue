@@ -42,7 +42,7 @@
 
 <script>
 	
-	import { BASE_IMAGE_URL,getImgList,getRecommendList } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList,getRecommendList,getUserInfo } from '@/utils/api'
 	
 	export default {
 	data() {
@@ -65,8 +65,21 @@
 		this.getRecommendList();
 		this.getImgList();
 	},
+	onShow() {
+		this.getUserInfo();
+	},
 	
 	methods: {
+		async getUserInfo(){
+			let openid = uni.getStorageSync("openid");
+			if(openid){
+				let res = getUserInfo(openid);
+				if(res.code == 1000){
+					uni.setStorageSync("userInfo", res.data);
+				}
+			}
+			
+		},
 		goToDetail: function(index){
 			let userInfo = uni.getStorageSync("userInfo");
 			if(!userInfo){

@@ -28,17 +28,12 @@ android {
     }
 
 }
-
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.so'], dir: 'libs')
+//    implementation fileTree(include: ['*.aar'], dir: 'libs')
 
-    compileOnly fileTree(dir: '../app/libs', include: ['uniapp-release.aar'])
+    implementation fileTree(dir: '../app/libs', include: ['uniapp-release.aar'])
 
     compileOnly "com.android.support:recyclerview-v7:25.3.1"
     compileOnly "com.android.support:support-v4:25.3.1"

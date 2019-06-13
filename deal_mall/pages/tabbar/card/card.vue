@@ -87,7 +87,28 @@
 				});
 				return;
 			}else{
-				this.getCart();
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {
+							if(res.confirm){
+								uni.switchTab({
+									url: '../home/home'
+								})
+							}
+						}
+					})
+				}else if(userInfo.m_role == 1){
+					//区域经销商
+					this.getCart();
+				}else if(userInfo.m_role == 2){
+					//分销商
+					this.getCart();
+				}
+				
 			}
 		},
 		methods: {

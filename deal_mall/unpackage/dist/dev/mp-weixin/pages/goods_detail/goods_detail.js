@@ -217,6 +217,20 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                 }case 5:case "end":return _context.stop();}}}, _callee, this);}));function jiaruCart() {return _jiaruCart2.apply(this, arguments);}return jiaruCart;}(),
 
     showDialog: function showDialog(index) {
+      var userInfo = uni.getStorageSync("userInfo");
+      if (userInfo.m_role == 0) {
+        uni.showModal({
+          title: "提示",
+          content: "无权浏览，如需使用请联系客服开通权限",
+          showCancel: false,
+          success: function success(res) {
+            if (res.confirm) {
+            }
+          } });
+
+        return;
+      }
+
       if (this.showModal) {
         if (index == 1) {
           //加入购物车

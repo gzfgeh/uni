@@ -165,8 +165,21 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     this.getRecommendList();
     this.getImgList();
   },
+  onShow: function onShow() {
+    this.getUserInfo();
+  },
 
   methods: {
+    getUserInfo: function () {var _getUserInfo2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var openid, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                openid = uni.getStorageSync("openid");
+                if (openid) {
+                  res = (0, _api.getUserInfo)(openid);
+                  if (res.code == 1000) {
+                    uni.setStorageSync("userInfo", res.data);
+                  }
+                }case 2:case "end":return _context.stop();}}}, _callee, this);}));function getUserInfo() {return _getUserInfo2.apply(this, arguments);}return getUserInfo;}(),
+
+
     goToDetail: function goToDetail(index) {
       var userInfo = uni.getStorageSync("userInfo");
       if (!userInfo) {
@@ -209,19 +222,19 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     slideContentChange: function slideContentChange(e) {
       this.contentCurIndex = e.mp.detail.current;
     },
-    getImgList: function () {var _getImgList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _api.getImgList)());case 2:res = _context.sent;
+    getImgList: function () {var _getImgList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  (0, _api.getImgList)());case 2:res = _context2.sent;
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.itemList = res.data;
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}(),
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}(),
 
-    getRecommendList: function () {var _getRecommendList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  (0, _api.getRecommendList)());case 2:res = _context2.sent;
+    getRecommendList: function () {var _getRecommendList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  (0, _api.getRecommendList)());case 2:res = _context3.sent;
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.list = res.data;
-                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getRecommendList() {return _getRecommendList2.apply(this, arguments);}return getRecommendList;}() } };exports.default = _default;
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getRecommendList() {return _getRecommendList2.apply(this, arguments);}return getRecommendList;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
