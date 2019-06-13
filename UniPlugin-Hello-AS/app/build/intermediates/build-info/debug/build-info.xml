@@ -6,7 +6,7 @@
     density="xxhdpi"
     format="10"
     plugin-version="3.2.1"
-    timestamp="1560412481895"
+    timestamp="1560419045231"
     token="-2326534952323965538"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -18,14 +18,11 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="50" />
+        duration="0" />
     <task
         name="verifier"
-        duration="7" />
+        duration="0" />
 
-    <artifact
-        location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
     <artifact
         location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
         type="SPLIT" />
@@ -40,6 +37,9 @@
         type="SPLIT" />
     <artifact
         location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
         type="SPLIT" />
     <artifact
         location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -65,11 +65,8 @@
 
     <build
         build-mode="FULL"
-        timestamp="1560412481895"
+        timestamp="1560419045231"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
             type="SPLIT" />
@@ -84,6 +81,9 @@
             type="SPLIT" />
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
             location="/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
