@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements Handler.Callback,
             /*************************************************
              * 步骤2：通过银联工具类启动支付插件
              ************************************************/
+
 //            UPPayAssistEx.startPay(this, null, null, tn, "01");
 
 

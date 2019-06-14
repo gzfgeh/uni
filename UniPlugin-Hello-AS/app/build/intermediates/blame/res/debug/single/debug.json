@@ -328,12 +328,12 @@
         "source": "/Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/f8999c43f299a5093a72d192e0af46a8/res/drawable/dcloud_slt_as_ios7_other_bt_top.xml"
     },
     {
-        "merged": "/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/res/merged/debug/anim_abc_popup_exit.xml.flat",
-        "source": "/Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/res/anim/abc_popup_exit.xml"
-    },
-    {
         "merged": "/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/res/merged/debug/drawable_dcloud_shortcut_guide_meizu.gif.flat",
         "source": "/Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/f8999c43f299a5093a72d192e0af46a8/res/drawable/dcloud_shortcut_guide_meizu.gif"
+    },
+    {
+        "merged": "/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/res/merged/debug/anim_abc_popup_exit.xml.flat",
+        "source": "/Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/res/anim/abc_popup_exit.xml"
     },
     {
         "merged": "/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/res/merged/debug/layout_abc_select_dialog_material.xml.flat",

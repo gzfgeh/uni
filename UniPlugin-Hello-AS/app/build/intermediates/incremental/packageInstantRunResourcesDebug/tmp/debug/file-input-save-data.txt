@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jun 14 15:16:56 CST 2019
+#Fri Jun 14 16:40:20 CST 2019
 210.set=ASSET
 2.path=weex-main-jsfm.js
 14.set=ASSET
