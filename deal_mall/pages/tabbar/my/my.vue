@@ -72,14 +72,14 @@
 			</div>
 		</div>
 		
-		<div class=" bottom_item_wrap" @click="goToAddress">
+		<!-- <div class=" bottom_item_wrap" @click="goToAddress">
 			<div class="row_between bottom_item uni-navigate-right">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-dz.png" class="icon" mode="widthFix">
 				<span>收货地址</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
-		</div>
+		</div> -->
 		
 		<div class=" bottom_item_wrap" @click="goToAboutUs">
 			<div class="row_between bottom_item uni-navigate-right">
@@ -158,7 +158,7 @@
 					return;
 				}
 				uni.navigateTo({
-					url: '/pages/address_list/address_list'
+					url: '/pages/address_list/address_list?my=1'
 				});
 			},
 			goToOrderList: function(index){

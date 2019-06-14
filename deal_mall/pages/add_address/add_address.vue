@@ -71,11 +71,12 @@
 				a_shi: '',
 				a_qu: '',
 				a_is_default: false,
-				item: {}
+				item: ''
 			}
 		},
 		onLoad() {
 			this.item = uni.getStorageSync("itemList");
+			console.log(this.item);
 			let item = this.item;
 			if(item){
 				this.a_name = item.a_name;
@@ -89,6 +90,8 @@
 				uni.setNavigationBarTitle({
 						title: "修改地址"
 					})
+			}else{
+				Object.assign(this, this.$options.data());
 			}
 		},
 		methods: {
@@ -158,6 +161,7 @@
 					a_is_default: this.a_is_default?1:0
 				};
 				let res;
+				console.log(this.item);
 				if(this.item){
 					params.a_id = this.item.a_id;
 					res = await editAddress(params);

@@ -65,7 +65,7 @@ public final class R {
     public static final class layout {
         private layout() {}
 
-        public static final int weex_recycler_layout = 0x7f090045;
+        public static final int weex_recycler_layout = 0x7f090046;
     }
     public static final class string {
         private string() {}

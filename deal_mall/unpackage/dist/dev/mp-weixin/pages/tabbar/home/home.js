@@ -175,6 +175,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                 if (openid) {
                   res = (0, _api.getUserInfo)(openid);
                   if (res.code == 1000) {
+                    uni.removeStorageSync("userInfo");
                     uni.setStorageSync("userInfo", res.data);
                   }
                 }case 2:case "end":return _context.stop();}}}, _callee, this);}));function getUserInfo() {return _getUserInfo2.apply(this, arguments);}return getUserInfo;}(),
@@ -211,7 +212,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
 
       } else {
         uni.navigateTo({
-          url: '/pages/order_list/order_list' });
+          url: '/pages/order_list/order_list?typeIndex=' + index });
 
       }
 

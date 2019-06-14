@@ -258,7 +258,7 @@ var _default =
         return;
       }
       uni.navigateTo({
-        url: '/pages/address_list/address_list' });
+        url: '/pages/address_list/address_list?my=1' });
 
     },
     goToOrderList: function goToOrderList(index) {

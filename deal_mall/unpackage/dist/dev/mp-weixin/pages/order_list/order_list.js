@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -189,7 +189,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       page: 1,
       typeList: ['待发货', '待收货', '已完成'],
       curType: 0,
-      type: 'middle',
+      type: '',
       companyCode: '' };
 
   },
@@ -238,8 +238,19 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
   },
   onLoad: function onLoad(options) {
     this.curType = options.index;
+    var typeIndex = options.typeIndex;
+    if (typeIndex == 3) {
+      uni.setNavigationBarTitle({
+        title: "入货订单" });
+
+    } else if (typeIndex == 4) {
+      uni.setNavigationBarTitle({
+        title: "出货订单" });
+
+    }
     this.getList();
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

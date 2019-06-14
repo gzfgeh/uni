@@ -75,6 +75,7 @@
 			if(openid){
 				let res = getUserInfo(openid);
 				if(res.code == 1000){
+					uni.removeStorageSync("userInfo");
 					uni.setStorageSync("userInfo", res.data);
 				}
 			}
@@ -111,7 +112,7 @@
 				});
 			}else{
 				uni.navigateTo({
-					url: '/pages/order_list/order_list'
+					url: '/pages/order_list/order_list?typeIndex='+index
 				});
 			}
 			

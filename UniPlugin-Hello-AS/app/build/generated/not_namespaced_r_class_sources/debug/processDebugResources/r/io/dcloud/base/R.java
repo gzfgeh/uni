@@ -219,40 +219,40 @@ public final class R {
         public static final int tab1 = 0x7f0700c1;
         public static final int tab2 = 0x7f0700c2;
         public static final int tab3 = 0x7f0700c3;
-        public static final int text = 0x7f0700c6;
-        public static final int text_bar = 0x7f0700ca;
-        public static final int time = 0x7f0700cb;
-        public static final int title = 0x7f0700cc;
-        public static final int titleBtn = 0x7f0700cd;
-        public static final int tvTitleText = 0x7f0700d2;
-        public static final int webview = 0x7f0700d5;
+        public static final int text = 0x7f0700c7;
+        public static final int text_bar = 0x7f0700cb;
+        public static final int time = 0x7f0700cc;
+        public static final int title = 0x7f0700cd;
+        public static final int titleBtn = 0x7f0700ce;
+        public static final int tvTitleText = 0x7f0700d3;
+        public static final int webview = 0x7f0700d6;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int ad_dcloud_main = 0x7f09001b;
-        public static final int ad_dcloud_splash = 0x7f09001c;
-        public static final int dcloud_activity_main_market = 0x7f09001d;
-        public static final int dcloud_custom_alert_dialog_layout = 0x7f09001e;
-        public static final int dcloud_custom_notification = 0x7f09001f;
-        public static final int dcloud_custom_notification_dark = 0x7f090020;
-        public static final int dcloud_custom_notification_mi = 0x7f090021;
-        public static final int dcloud_custom_notification_transparent = 0x7f090022;
-        public static final int dcloud_custom_notification_white = 0x7f090023;
-        public static final int dcloud_dialog = 0x7f090024;
-        public static final int dcloud_image_pick_gallery = 0x7f090025;
-        public static final int dcloud_image_pick_gallery_item = 0x7f090026;
-        public static final int dcloud_loadingview = 0x7f090027;
-        public static final int dcloud_main_test_activity = 0x7f090028;
-        public static final int dcloud_market_fragment_base = 0x7f090029;
-        public static final int dcloud_record_address = 0x7f09002a;
-        public static final int dcloud_record_default = 0x7f09002b;
-        public static final int dcloud_shortcut_permission_guide_layout = 0x7f09002c;
-        public static final int dcloud_snow_black_progress = 0x7f09002d;
-        public static final int dcloud_snow_white_progress = 0x7f09002e;
-        public static final int dcloud_streamapp_custom_dialog_layout = 0x7f09002f;
-        public static final int side_bar_layout = 0x7f090042;
-        public static final int webview_layout = 0x7f090044;
+        public static final int ad_dcloud_main = 0x7f09001c;
+        public static final int ad_dcloud_splash = 0x7f09001d;
+        public static final int dcloud_activity_main_market = 0x7f09001e;
+        public static final int dcloud_custom_alert_dialog_layout = 0x7f09001f;
+        public static final int dcloud_custom_notification = 0x7f090020;
+        public static final int dcloud_custom_notification_dark = 0x7f090021;
+        public static final int dcloud_custom_notification_mi = 0x7f090022;
+        public static final int dcloud_custom_notification_transparent = 0x7f090023;
+        public static final int dcloud_custom_notification_white = 0x7f090024;
+        public static final int dcloud_dialog = 0x7f090025;
+        public static final int dcloud_image_pick_gallery = 0x7f090026;
+        public static final int dcloud_image_pick_gallery_item = 0x7f090027;
+        public static final int dcloud_loadingview = 0x7f090028;
+        public static final int dcloud_main_test_activity = 0x7f090029;
+        public static final int dcloud_market_fragment_base = 0x7f09002a;
+        public static final int dcloud_record_address = 0x7f09002b;
+        public static final int dcloud_record_default = 0x7f09002c;
+        public static final int dcloud_shortcut_permission_guide_layout = 0x7f09002d;
+        public static final int dcloud_snow_black_progress = 0x7f09002e;
+        public static final int dcloud_snow_white_progress = 0x7f09002f;
+        public static final int dcloud_streamapp_custom_dialog_layout = 0x7f090030;
+        public static final int side_bar_layout = 0x7f090043;
+        public static final int webview_layout = 0x7f090045;
     }
     public static final class string {
         private string() {}

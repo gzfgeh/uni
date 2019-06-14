@@ -89,7 +89,7 @@
 				page: 1,
 				typeList: ['待发货', '待收货', '已完成'],
 				curType: 0,
-				type:'middle',
+				type:'',
 				companyCode: ''
 			}
 		},
@@ -138,6 +138,16 @@
 		},
 		onLoad(options){
 			this.curType = options.index;
+			let typeIndex = options.typeIndex;
+			if(typeIndex == 3){
+				uni.setNavigationBarTitle({
+					title:"入货订单"
+				})
+			}else if(typeIndex == 4){
+				uni.setNavigationBarTitle({
+					title:"出货订单"
+				})
+			}
 			this.getList();
 		}
 		

@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -28,9 +28,14 @@ android {
     }
 
 }
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation fileTree(include: ['*.so'], dir: 'libs')
 //    implementation fileTree(include: ['*.aar'], dir: 'libs')
 
     implementation fileTree(dir: '../app/libs', include: ['uniapp-release.aar'])

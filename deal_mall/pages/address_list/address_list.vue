@@ -1,7 +1,7 @@
 <template>
 	<view>
 		
-		<navigator class="bottom_wrap" url="../add_address/add_address">添加新地址</navigator>
+		<navigator class="bottom_wrap" @click="goToAddress">添加新地址</navigator>
 		
 		<block  v-for="(item,index) in list" :key="index" class="list_wrap">
 			<div class="item_wrap" @click="selectItem(index)">
@@ -47,15 +47,27 @@
 				list: [],
 				select_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-checked.png",
 				normal_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-uncheck.png",
-				cur_index: -1
+				cur_index: -1,
+				type: 0
 			}
 		},
 		methods: {
 			selectItem(index){
-				console.log("1111")
-				uni.setStorageSync("addressItem", this.list[index]);
-				uni.navigateBack({
-					delta: 1
+				console.log(this.type);
+				if(this.type == 1){
+					this.goToEditAddress(index);
+				}else{
+					uni.setStorageSync("addressItem", this.list[index]);
+					uni.navigateBack({
+						delta: 1
+					});
+				}
+				
+			},
+			goToAddress(){
+				uni.setStorageSync("itemList", "");
+				uni.navigateTo({
+					url: '/pages/add_address/add_address'
 				});
 			},
 			async getList(){
@@ -97,9 +109,12 @@
 				}
 			}
 		},
-		onLoad(){
+		onShow(){
 			this.getList();
 		},
+		onLoad(options) {
+			this.type = options.my;
+		}
 	}
 </script>
 

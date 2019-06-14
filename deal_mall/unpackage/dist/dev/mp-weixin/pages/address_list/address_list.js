@@ -147,15 +147,27 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       list: [],
       select_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-checked.png",
       normal_icon_url: "https://bay.2donghua.com/web/statics/wxapp/images/icon-uncheck.png",
-      cur_index: -1 };
+      cur_index: -1,
+      type: 0 };
 
   },
   methods: {
     selectItem: function selectItem(index) {
-      console.log("1111");
-      uni.setStorageSync("addressItem", this.list[index]);
-      uni.navigateBack({
-        delta: 1 });
+      console.log(this.type);
+      if (this.type == 1) {
+        this.goToEditAddress(index);
+      } else {
+        uni.setStorageSync("addressItem", this.list[index]);
+        uni.navigateBack({
+          delta: 1 });
+
+      }
+
+    },
+    goToAddress: function goToAddress() {
+      uni.setStorageSync("itemList", "");
+      uni.navigateTo({
+        url: '/pages/add_address/add_address' });
 
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
@@ -197,8 +209,11 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                 }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function deleteAddress(_x) {return _deleteAddress2.apply(this, arguments);}return deleteAddress;}() },
 
 
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     this.getList();
+  },
+  onLoad: function onLoad(options) {
+    this.type = options.my;
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

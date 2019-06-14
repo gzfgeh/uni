@@ -171,11 +171,12 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       a_shi: '',
       a_qu: '',
       a_is_default: false,
-      item: {} };
+      item: '' };
 
   },
   onLoad: function onLoad() {
     this.item = uni.getStorageSync("itemList");
+    console.log(this.item);
     var item = this.item;
     if (item) {
       this.a_name = item.a_name;
@@ -189,6 +190,8 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       uni.setNavigationBarTitle({
         title: "修改地址" });
 
+    } else {
+      Object.assign(this, this.$options.data());
     }
   },
   methods: {
@@ -255,14 +258,15 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   a_address: this.a_address,
                   a_phone: this.a_phone,
                   a_openid: uni.getStorageSync("openid"),
-                  a_is_default: this.a_is_default ? 1 : 0 };if (!
+                  a_is_default: this.a_is_default ? 1 : 0 };
 
 
-                this.item) {_context.next = 24;break;}
-                params.a_id = this.item.a_id;_context.next = 21;return (
-                  (0, _api.editAddress)(params));case 21:res = _context.sent;_context.next = 27;break;case 24:_context.next = 26;return (
+                console.log(this.item);if (!
+                this.item) {_context.next = 25;break;}
+                params.a_id = this.item.a_id;_context.next = 22;return (
+                  (0, _api.editAddress)(params));case 22:res = _context.sent;_context.next = 28;break;case 25:_context.next = 27;return (
 
-                  (0, _api.addAddress)(params));case 26:res = _context.sent;case 27:
+                  (0, _api.addAddress)(params));case 27:res = _context.sent;case 28:
                 ;
 
                 if (res.code == 1000) {
@@ -274,7 +278,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   uni.navigateBack({
                     delta: 1 });
 
-                }case 29:case "end":return _context.stop();}}}, _callee, this);}));function addAddress() {return _addAddress2.apply(this, arguments);}return addAddress;}() } };exports.default = _default;
+                }case 30:case "end":return _context.stop();}}}, _callee, this);}));function addAddress() {return _addAddress2.apply(this, arguments);}return addAddress;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

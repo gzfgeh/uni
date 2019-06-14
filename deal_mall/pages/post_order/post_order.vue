@@ -1,21 +1,25 @@
 <template>
 	<view class="content">
-		<navigator url="../address_list/address_list" class="row_between address_wrap" @click="goToAddress" v-if="!isShowAddress">
-			<span>收货地址</span>
-			<span class="arraw"></span>
+		<navigator class="row_between address_wrap" @click="goToAddress" >
+			
+			<block v-if="!isShowAddress">
+				<span>收货地址</span>
+				<span class="arraw"></span>
+			</block>
+			
+			<block v-if="isShowAddress">
+				<div class="address_content">
+					<div class="row_between">
+						<span>收货人：{{addressItem.a_name}}</span>
+						<span>{{addressItem.a_phone}}</span>
+					</div>
+					
+					<span class="address">收货地址：{{addressItem.a_sheng}}{{addressItem.a_shi}}{{addressItem.a_qu}}{{addressItem.a_address}}</span>
+				</div>
+				<img src="../../static/img/right.png" mode="aspectFill">
+			</block>
 		</navigator>
 		
-		<navigator url="../address_list/address_list" class="row_between address_wrap" @click="goToAddress" v-if="isShowAddress">
-			<div class="address_content">
-				<div class="row_between">
-					<span>收货人：{{addressItem.a_name}}</span>
-					<span>{{addressItem.a_phone}}</span>
-				</div>
-				
-				<span class="address">收货地址：{{addressItem.a_sheng}}{{addressItem.a_shi}}{{addressItem.a_qu}}{{addressItem.a_address}}</span>
-			</div>
-			<img src="../../static/img/right.png" mode="aspectFill">
-		</navigator>
 		
 		<block v-for="(item, index) in itemList" :key="index">
 			<div class="item_wrap row">

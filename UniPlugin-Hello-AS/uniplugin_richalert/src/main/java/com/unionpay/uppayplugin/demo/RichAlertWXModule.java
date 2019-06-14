@@ -15,13 +15,6 @@ import com.unionpay.UPPayAssistEx;
 import org.json.JSONException;
 
 public class RichAlertWXModule extends WXSDKEngine.DestroyableModule {
-    public String CONTENT = "content";
-    public String CONTENT_COLOR  = "contentColor";
-    public String CONTENT_ALIGN  = "contentAlign";
-    public String POSITION = "position";
-    public String BUTTONS = "buttons";
-    public String CHECKBOX = "checkBox";
-    public String TITLE_ALIGN = "titleAlign";
 
     @JSMethod(uiThread = true)
     public void show(JSONObject options, JSCallback jsCallback) {
@@ -45,6 +38,9 @@ public class RichAlertWXModule extends WXSDKEngine.DestroyableModule {
                     Toast.makeText(mWXSDKInstance.getContext(), content, Toast.LENGTH_SHORT).show();
 
                 }
+            }else{
+                Toast.makeText(mWXSDKInstance.getContext(), "请安装云闪付软件", Toast.LENGTH_SHORT).show();
+
             }
         }
     }
