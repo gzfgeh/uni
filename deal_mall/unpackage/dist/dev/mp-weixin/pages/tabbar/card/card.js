@@ -224,17 +224,26 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       }
     },
     deleteCart: function () {var _deleteCart2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var p, ids, that, params, result;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
-                this.isEditStatus) {_context.next = 6;break;}
+                this.isEditStatus) {_context.next = 9;break;}
                 p = [];
                 this.list.map(function (item, index) {
                   if (item.checked) {
                     p.push(item);
                   }
-                });
+                });if (!(
+
+                p.length == 0)) {_context.next = 6;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请选择商品" });return _context.abrupt("return");case 6:
+
+
+
 
                 uni.setStorageSync("itemList", p);
                 uni.navigateTo({
-                  url: '/pages/post_order/post_order' });return _context.abrupt("return");case 6:
+                  url: '/pages/post_order/post_order' });return _context.abrupt("return");case 9:
 
 
 
@@ -248,9 +257,9 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                 });
 
                 params = {
-                  ct_id: ids.substring(0, ids.length - 1) };_context.next = 12;return (
+                  ct_id: ids.substring(0, ids.length - 1) };_context.next = 15;return (
 
-                  (0, _api.deleteCart)(params));case 12:result = _context.sent;
+                  (0, _api.deleteCart)(params));case 15:result = _context.sent;
                 if (result.code == 1000) {
                   wx.showToast({
                     title: '删除成功',
@@ -258,7 +267,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                     duration: 1000 });
 
                   this.getCart();
-                }case 14:case "end":return _context.stop();}}}, _callee, this);}));function deleteCart() {return _deleteCart2.apply(this, arguments);}return deleteCart;}(),
+                }case 17:case "end":return _context.stop();}}}, _callee, this);}));function deleteCart() {return _deleteCart2.apply(this, arguments);}return deleteCart;}(),
 
     inputChange: function inputChange(e) {
       this.calcStatus();

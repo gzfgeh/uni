@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -201,7 +201,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       this.getList();
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _api.getOrder)(this.curType, this.page));case 2:res = _context.sent;
+                  (0, _api.getChuOrder)(this.curType, this.page));case 2:res = _context.sent;
                 if (res.code == 1000) {
                   if (this.page == 1) {
                     this.list = res.data;
@@ -236,21 +236,10 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     this.list = [];
     this.getList();
   },
-  onLoad: function onLoad(options) {
-    this.curType = options.index;
-    var typeIndex = options.typeIndex;
-    if (typeIndex == 3) {
-      uni.setNavigationBarTitle({
-        title: "入货订单" });
+  onLoad: function onLoad() {
 
-    } else if (typeIndex == 4) {
-      uni.setNavigationBarTitle({
-        title: "出货订单" });
-
-    }
     this.getList();
   } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

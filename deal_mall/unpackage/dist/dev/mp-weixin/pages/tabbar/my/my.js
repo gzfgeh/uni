@@ -98,129 +98,133 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
 {
   data: function data() {
     return {
       avatarUrl: "",
-      nickName: "" };
+      nickName: "",
+      phone: "17373349812" };
 
   },
   onLoad: function onLoad() {
+    this.getConfig();
   },
   onShow: function onShow() {
     var userInfo = uni.getStorageSync("userInfo");
@@ -231,9 +235,20 @@ var _default =
 
   },
   methods: {
+    getConfig: function () {var _getConfig2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getConfig)());case 2:res = _context.sent;
+                if (res.code == 1000) {
+                  res.data.map(function (item) {
+                    if (item.i_name == "客服电话") {
+                      _this.phone = item.i_info;
+                    }
+                  });
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getConfig() {return _getConfig2.apply(this, arguments);}return getConfig;}(),
+
     callPhone: function callPhone() {
+      console.log(this.phone);
       uni.makePhoneCall({
-        phoneNumber: "17373349812",
+        phoneNumber: this.phone,
         success: function success() {
           console.log("成功拨打电话");
         } });
@@ -261,6 +276,29 @@ var _default =
         url: '/pages/address_list/address_list?my=1' });
 
     },
+    goToInOrderList: function goToInOrderList(index) {
+      var userInfo = uni.getStorageSync("userInfo");
+      if (!userInfo) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+        return;
+      }
+
+      if (userInfo.m_role == 0) {
+        //游客
+        uni.showModal({
+          title: "提示",
+          content: "无权浏览，如需使用请联系客服开通权限",
+          showCancel: false,
+          success: function success(res) {} });
+
+      } else {
+        uni.navigateTo({
+          url: '/pages/in_order_list/in_order_list?index=' + index });
+
+      }
+    },
     goToOrderList: function goToOrderList(index) {
       var userInfo = uni.getStorageSync("userInfo");
       if (!userInfo) {
@@ -269,9 +307,20 @@ var _default =
 
         return;
       }
-      uni.navigateTo({
-        url: '/pages/order_list/order_list?index=' + index });
 
+      if (userInfo.m_role == 0) {
+        //游客
+        uni.showModal({
+          title: "提示",
+          content: "无权浏览，如需使用请联系客服开通权限",
+          showCancel: false,
+          success: function success(res) {} });
+
+      } else {
+        uni.navigateTo({
+          url: '/pages/order_list/order_list?index=' + index });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

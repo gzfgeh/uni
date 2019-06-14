@@ -42,7 +42,7 @@
 
 <script>
 	
-	import { BASE_IMAGE_URL,getImgList,getRecommendList,getUserInfo } from '@/utils/api'
+	import { BASE_IMAGE_URL,getImgList,getRecommendList,getUserInfo,getConfig } from '@/utils/api'
 	
 	export default {
 	data() {
@@ -58,22 +58,42 @@
 			t_url: '',
 			curIndex: 0,
 			contentCurIndex: 0,
-			list: [1,2,3,4,5,6,7,8]
+			list: [],
+			vrUrl: ''
 		};
 	},
 	onLoad() {
-		this.getRecommendList();
-		this.getImgList();
+		
 	},
 	onShow() {
+		let userInfo = uni.getStorageSync("userInfo");
+		if(!userInfo){
+			uni.navigateTo({
+				url: '/pages/login/login'
+			});
+			return;
+		}
+		this.getRecommendList();
+		this.getImgList();
 		this.getUserInfo();
+		this.getConfig();
 	},
 	
 	methods: {
+		async getConfig(){
+			let res = await getConfig();
+			if(res.code == 1000){
+				res.data.map((item) => {
+					if(item.i_name == "vr链接"){
+						this.vrUrl = item.i_info;
+					}
+				})
+			}
+		},
 		async getUserInfo(){
 			let openid = uni.getStorageSync("openid");
 			if(openid){
-				let res = getUserInfo(openid);
+				let res = await getUserInfo(openid);
 				if(res.code == 1000){
 					uni.removeStorageSync("userInfo");
 					uni.setStorageSync("userInfo", res.data);
@@ -107,13 +127,63 @@
 					url: '/pages/mall_list/mall_list'
 				});
 			}else if(index == 1){
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {
+							if(res.confirm){
+								uni.switchTab({
+									url: '../home/home'
+								})
+							}
+						}
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/ku_cun_list/ku_cun_list'
+					});
+				}
+				
+			}else if(index == 2){
+				// VR 
+				console.log(this.vrUrl);
 				uni.navigateTo({
-					url: '/pages/ku_cun_list/ku_cun_list'
+					url: '/pages/home_webview/home_webview?vrUrl='+this.vrUrl
 				});
-			}else{
-				uni.navigateTo({
-					url: '/pages/order_list/order_list?typeIndex='+index
-				});
+			}else if(index == 3){
+				//入货订单
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {}
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/in_order_list/in_order_list'
+					});
+				}
+			}
+			else{
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {}
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/order_list/order_list?typeIndex='+index
+					});
+				}
+				
 			}
 			
 		},

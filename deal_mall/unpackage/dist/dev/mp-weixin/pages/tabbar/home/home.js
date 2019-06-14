@@ -158,27 +158,47 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       t_url: '',
       curIndex: 0,
       contentCurIndex: 0,
-      list: [1, 2, 3, 4, 5, 6, 7, 8] };
+      list: [],
+      vrUrl: '' };
 
   },
   onLoad: function onLoad() {
-    this.getRecommendList();
-    this.getImgList();
+
   },
   onShow: function onShow() {
+    var userInfo = uni.getStorageSync("userInfo");
+    if (!userInfo) {
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return;
+    }
+    this.getRecommendList();
+    this.getImgList();
     this.getUserInfo();
+    this.getConfig();
   },
 
   methods: {
-    getUserInfo: function () {var _getUserInfo2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var openid, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                openid = uni.getStorageSync("openid");
-                if (openid) {
-                  res = (0, _api.getUserInfo)(openid);
-                  if (res.code == 1000) {
-                    uni.removeStorageSync("userInfo");
-                    uni.setStorageSync("userInfo", res.data);
-                  }
-                }case 2:case "end":return _context.stop();}}}, _callee, this);}));function getUserInfo() {return _getUserInfo2.apply(this, arguments);}return getUserInfo;}(),
+    getConfig: function () {var _getConfig2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _api.getConfig)());case 2:res = _context.sent;
+                if (res.code == 1000) {
+                  res.data.map(function (item) {
+                    if (item.i_name == "vr链接") {
+                      _this.vrUrl = item.i_info;
+                    }
+                  });
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getConfig() {return _getConfig2.apply(this, arguments);}return getConfig;}(),
+
+    getUserInfo: function () {var _getUserInfo2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var openid, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                openid = uni.getStorageSync("openid");if (!
+                openid) {_context2.next = 6;break;}_context2.next = 4;return (
+                  (0, _api.getUserInfo)(openid));case 4:res = _context2.sent;
+                if (res.code == 1000) {
+                  uni.removeStorageSync("userInfo");
+                  uni.setStorageSync("userInfo", res.data);
+                }case 6:case "end":return _context2.stop();}}}, _callee2, this);}));function getUserInfo() {return _getUserInfo2.apply(this, arguments);}return getUserInfo;}(),
+
 
 
     goToDetail: function goToDetail(index) {
@@ -207,12 +227,62 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
           url: '/pages/mall_list/mall_list' });
 
       } else if (index == 1) {
-        uni.navigateTo({
-          url: '/pages/ku_cun_list/ku_cun_list' });
+        if (userInfo.m_role == 0) {
+          //游客
+          uni.showModal({
+            title: "提示",
+            content: "无权浏览，如需使用请联系客服开通权限",
+            showCancel: false,
+            success: function success(res) {
+              if (res.confirm) {
+                uni.switchTab({
+                  url: '../home/home' });
 
-      } else {
+              }
+            } });
+
+        } else {
+          uni.navigateTo({
+            url: '/pages/ku_cun_list/ku_cun_list' });
+
+        }
+
+      } else if (index == 2) {
+        // VR 
+        console.log(this.vrUrl);
         uni.navigateTo({
-          url: '/pages/order_list/order_list?typeIndex=' + index });
+          url: '/pages/home_webview/home_webview?vrUrl=' + this.vrUrl });
+
+      } else if (index == 3) {
+        //入货订单
+        if (userInfo.m_role == 0) {
+          //游客
+          uni.showModal({
+            title: "提示",
+            content: "无权浏览，如需使用请联系客服开通权限",
+            showCancel: false,
+            success: function success(res) {} });
+
+        } else {
+          uni.navigateTo({
+            url: '/pages/in_order_list/in_order_list' });
+
+        }
+      } else
+      {
+        if (userInfo.m_role == 0) {
+          //游客
+          uni.showModal({
+            title: "提示",
+            content: "无权浏览，如需使用请联系客服开通权限",
+            showCancel: false,
+            success: function success(res) {} });
+
+        } else {
+          uni.navigateTo({
+            url: '/pages/order_list/order_list?typeIndex=' + index });
+
+        }
 
       }
 
@@ -223,19 +293,19 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     slideContentChange: function slideContentChange(e) {
       this.contentCurIndex = e.mp.detail.current;
     },
-    getImgList: function () {var _getImgList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  (0, _api.getImgList)());case 2:res = _context2.sent;
+    getImgList: function () {var _getImgList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  (0, _api.getImgList)());case 2:res = _context3.sent;
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.itemList = res.data;
-                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}(),
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getImgList() {return _getImgList2.apply(this, arguments);}return getImgList;}(),
 
-    getRecommendList: function () {var _getRecommendList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-                  (0, _api.getRecommendList)());case 2:res = _context3.sent;
+    getRecommendList: function () {var _getRecommendList2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+                  (0, _api.getRecommendList)());case 2:res = _context4.sent;
                 if (res.code == 1000) {
                   console.log(res.data);
                   this.list = res.data;
-                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getRecommendList() {return _getRecommendList2.apply(this, arguments);}return getRecommendList;}() } };exports.default = _default;
+                }case 4:case "end":return _context4.stop();}}}, _callee4, this);}));function getRecommendList() {return _getRecommendList2.apply(this, arguments);}return getRecommendList;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

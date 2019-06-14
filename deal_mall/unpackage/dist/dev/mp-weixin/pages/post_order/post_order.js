@@ -211,7 +211,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   uni.showToast({
                     icon: 'none',
                     duration: 1000,
-                    title: "提交成功" });
+                    title: res.msg });
 
                 }case 11:case "end":return _context.stop();}}}, _callee, this);}));function postOrder() {return _postOrder.apply(this, arguments);}return postOrder;}() },
 

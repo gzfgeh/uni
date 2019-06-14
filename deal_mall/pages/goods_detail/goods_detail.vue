@@ -17,7 +17,9 @@
 			</div>
 		</div>
 		
-		<rich-text :nodes="item.g_detail"></rich-text> 
+		<!-- <uParse :content="item.g_detail" /> -->
+		<rich-text :nodes="detail"></rich-text>
+		<div style="height: 110upx;"></div>
 		
 		<div class="modal-mask" v-if="showModal"></div>
 		<div class="modal-dialog" v-if="showModal">
@@ -68,8 +70,12 @@
 
 <script>
 	import { BASE_IMAGE_URL,goodsDetail,jiaruCart } from '@/utils/api'
+	import uParse from '@/components/uParse/src/wxParse.vue'
 	
 	export default {
+		components: {
+			uParse
+		},
 		data() {
 			return {
 				itemList: [],
@@ -80,7 +86,8 @@
 				showModal: false,
 				goodsImg: '',
 				ct_count: 1,
-				type: 1
+				type: 1,
+				detail: ''
 			}
 		},
 		methods: {
@@ -179,11 +186,20 @@
 				let res = await goodsDetail(g_id);
 				if(res.code == 1000){
 					this.item = res.data;
-					this.item.g_img_list.map((item) => {
-						if(item.img){
-							this.goodsImg = item.img;
-						}
-					})
+					// this.item.g_img_list.map((item) => {
+					// 	if(item.img){
+					// 		this.goodsImg = item.img;
+					// 	}
+					// });
+					this.goodsImg = this.item.g_img;
+					
+					this.detail = res.data.g_detail;
+					console.log(this.item.detail);
+					var richtext=  this.detail;
+					const regex = new RegExp('<img', 'gi');
+					richtext= richtext.replace(regex, `<img style="max-width: 100%!important;height: auto;"`);
+					this.detail = richtext;
+					console.log(this.detail);
 				}
 			}
 		},
@@ -200,6 +216,9 @@
 </script>
 
 <style>
+	
+	@import url("../../components/uParse/src/wxParse.css");
+	
 .head_img{width: 100%;}
 .goods_info{padding: 17upx 13upx; background: #fff; border-bottom: 20upx solid #EFEFF4;}
 .goods_info .name{margin-bottom: 26upx; font-weight: bold; line-height: 1.7;}
@@ -244,4 +263,8 @@
 .modal-dialog .item_wrap{margin-bottom: 60upx; border-bottom: 1upx solid #E3E3E3;min-height: 120upx;}
 .price_wrap{display: flex;flex-direction: column;padding-left: 200upx; font-size: 28upx; color:#666666; }
 .price_wrap .price{color: #FF4544; font-size: 32upx;}
+
+image{max-width:100%!important;}
+img{max-width:100%!important;}
+
 </style>

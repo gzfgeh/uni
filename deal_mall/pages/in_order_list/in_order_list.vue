@@ -15,7 +15,7 @@
 					<span>订单号:{{item.o_out_trade_no}}</span>
 					<span>{{item.o_create_time}}</span>
 				</div>
-				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="index">
+				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="ind">
 					<img :src="ite.go_g_img" mode="aspectFill">
 					<div class="item_tag flex_one item_content" >
 						<div class="item_tag flex_one">
@@ -28,9 +28,16 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="row_between express_wrap"  v-if="curType > 0">
+					<span>快递公司：{{item.o_express_name}}</span>
+					<span>快递编号: {{item.o_express_no}}</span>
+				</div>
+				
 				<div class="row">
 					<span class="price flex_one">合计：￥{{item.o_money}}</span>
-					<span class="send_goods_btn" @click="confirmShipping(index)">发货</span>
+					<span class="send_goods_btn" v-if="curType == 1" @click="confirmReceipt(index)">确认收货</span>
+					<span v-if="curType == 0">状态：{{typeList[curType]}}</span>
 				</div>
 			</div>
 		</div>
@@ -43,39 +50,17 @@
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
 		
-		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
-			<div class="company-modal">
-				<div class="modal-title">设置预警数</div>
-				<div class="content_wrap">
-					<div class="company-code">
-						<span>姓名</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
-					</div>
-					<div class="company-code">
-						<span>手机号</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
-					</div>
-					<div class="company-code">
-						<span>库存数量</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
-					</div>
-				</div>
-				
-				<button size="mini" @tap="bindCompanyCode()">提交</button>
-			</div>
-		</uni-popup>
 		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getChuOrder,confirmShipping } from '@/utils/api'
-	import uniPopup from '@/components/uni-popup.vue'
+	import { BASE_IMAGE_URL,getOrder,confirmReceipt } from '@/utils/api'
+	
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
 		components: {
-			uniLoadMore,
-			uniPopup
+			uniLoadMore
 		},
 		data() {
 			return {
@@ -101,7 +86,7 @@
 				this.getList();
 			},
 			async getList(){
-				let res = await getChuOrder(this.curType, this.page);
+				let res = await getOrder(this.curType, this.page);
 				if(res.code == 1000){
 					if(this.page == 1){
 						this.list = res.data;
@@ -117,10 +102,19 @@
 				}
 			},
 			
-			async confirmShipping(index){
-				let res = await confirmShipping(this.list[index].o_id, this.list[index].o_express_name, this.list[index].o_express_no);
+			async confirmReceipt(index){
+				let params = {
+					o_id: this.list[index].o_id
+				};
+				
+				let res = await confirmReceipt(params);
 				if(res.code == 1000){
-					
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "操作成功"
+					});
+					this.getList();
 				}
 			}
 		},
@@ -136,8 +130,18 @@
 			this.list = [];
 			this.getList();
 		},
-		onLoad(){
-			
+		onLoad(options){
+			this.curType = options.index;
+			let typeIndex = options.typeIndex;
+			if(typeIndex == 3){
+				uni.setNavigationBarTitle({
+					title:"入货订单"
+				})
+			}else if(typeIndex == 4){
+				uni.setNavigationBarTitle({
+					title:"出货订单"
+				})
+			}
 			this.getList();
 		}
 		
@@ -174,4 +178,6 @@
 .company-code span{display: inline-block; min-width: 200upx;}
 .company-code input{border:none;text-align:left;padding:10upx; flex: 1;}
 
+
+.express_wrap{font-size: 30upx; padding-bottom: 20upx; border-bottom: 1upx solid #E3E3E3; margin-bottom: 20upx;}
 </style>

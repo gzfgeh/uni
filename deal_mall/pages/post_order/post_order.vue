@@ -111,7 +111,7 @@
 					uni.showToast({
 						icon: 'none',
 						duration: 1000,
-						title: "提交成功"
+						title: res.msg
 					});
 				}
 			}

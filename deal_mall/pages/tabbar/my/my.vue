@@ -19,19 +19,19 @@
 		<div class="my_order_text">我的订单</div>
 		
 		<div class="row_between func_wrap">
-			<div class="col_center func_item" @click="goToOrderList(0)">
+			<div class="col_center func_item" @click="goToInOrderList(0)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-0.png" mode="widthFix">
 				<span>待发货</span>
 				<!-- <span class="num">2</span> -->
 			</div>
 			
-			<div class="col_center func_item" @click="goToOrderList(1)">
+			<div class="col_center func_item" @click="goToInOrderList(1)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-2.png" mode="widthFix">
 				<span>待收货</span>
 				<!-- <span class="num">1</span> -->
 			</div>
 			
-			<div class="col_center func_item" @click="goToOrderList(2)">
+			<div class="col_center func_item" @click="goToInOrderList(2)">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-order-3.png" mode="widthFix">
 				<span>已完成</span>
 				<!-- <span class="num">12</span> -->
@@ -57,7 +57,7 @@
 		<div class=" bottom_item_wrap" @click="goToOrderList(0)">
 			<div class="row_between bottom_item">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-user-mch.png" class="icon" mode="widthFix">
-				<span>下级订单</span>
+				<span>出货订单</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
@@ -113,14 +113,18 @@
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,getConfig } from '@/utils/api'
+	
 	export default {
 		data() {
 			return {
 				avatarUrl: "",
-				nickName: ""
+				nickName: "",
+				phone: "17373349812"
 			}
 		},
 		onLoad() {
+			this.getConfig();
 		},
 		onShow() {
 			let userInfo = uni.getStorageSync("userInfo");
@@ -131,9 +135,20 @@
 			
 		},
 		methods: {
+			async getConfig(){
+				let res = await getConfig();
+				if(res.code == 1000){
+					res.data.map((item) => {
+						if(item.i_name == "客服电话"){
+							this.phone = item.i_info;
+						}
+					})
+				}
+			},
 			callPhone: function(){
+				console.log(this.phone);
 				uni.makePhoneCall({
-					phoneNumber:"17373349812",
+					phoneNumber:this.phone,
 					success: () => {
 						console.log("成功拨打电话")
 					}
@@ -161,6 +176,29 @@
 					url: '/pages/address_list/address_list?my=1'
 				});
 			},
+			goToInOrderList: function(index){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(!userInfo){
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+					return;
+				}
+				
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {}
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/in_order_list/in_order_list?index='+index
+					});
+				}
+			},
 			goToOrderList: function(index){
 				let userInfo = uni.getStorageSync("userInfo");
 				if(!userInfo){
@@ -169,9 +207,20 @@
 					});
 					return;
 				}
-				uni.navigateTo({
-					url: '/pages/order_list/order_list?index='+index
-				});
+				
+				if(userInfo.m_role == 0){
+					//游客
+					uni.showModal({
+						title: "提示",
+						content: "无权浏览，如需使用请联系客服开通权限",
+						showCancel: false,
+						success(res) {}
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/order_list/order_list?index='+index
+					});
+				}
 			}
 		}
 	}

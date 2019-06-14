@@ -92,12 +92,20 @@ var _default =
     return {
       webviewStyles: {
         progress: {
-          color: '#FF3333' } } };
+          color: '#FF3333' } },
 
 
+      src: 'https://bay.2donghua.com/m.html' };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {},
+
+
+  onLoad: function onLoad(opt) {
+    console.log(opt.vrUrl);
+    this.src = opt.vrUrl;
+    this.$forceUpdate();
+  } };exports.default = _default;
 
 /***/ }),
 

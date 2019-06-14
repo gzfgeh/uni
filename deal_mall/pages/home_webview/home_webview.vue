@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<web-view :webview-styles="webviewStyles" src="https://www.baidu.com"></web-view>
+		<web-view :webview-styles="webviewStyles" :src="src"></web-view>
 	</view>
 </template>
 
@@ -12,11 +12,17 @@
                     progress: {
                         color: '#FF3333'
                     }
-                }
+                },
+				src: 'https://bay.2donghua.com/m.html'
 			}
 		},
 		methods: {
 			
+		},
+		onLoad(opt) {
+			console.log(opt.vrUrl);
+			this.src = opt.vrUrl;
+			this.$forceUpdate();
 		}
 	}
 </script>

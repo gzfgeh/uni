@@ -14,6 +14,13 @@ tokenFly.config = request.config
 request.interceptors.request.use((request) => {
     uni.showLoading({ title: '加载中...' })
 	request.headers["Content-Type"] = 'application/x-www-form-urlencoded';
+	let userInfo = uni.getStorageSync("userInfo");
+	if(userInfo){
+		request.headers["mid"] = userInfo.m_id;
+		request.headers["openid"] = uni.getStorageSync("openid");
+		request.headers["mrole"] = userInfo.m_role;
+		request.headers["mpmid"] = userInfo.m_p_m_id;
+	}
     return request
 })
 

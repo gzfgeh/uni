@@ -191,3 +191,17 @@ export function setKucunYujing(params) {
 export function getKucun() {
     return request.post('Api/Project/getKucun?k_m_id='+uni.getStorageSync("userInfo").m_id);
 }
+
+/**
+ * 配置信息
+ */
+export function getConfig() {
+    return request.get('Api/Project/getConfig');
+}
+
+/**
+ * 订单列表
+ */
+export function getChuOrder(o_status, page) {
+    return request.get('Api/Weixin/getChuOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
+}

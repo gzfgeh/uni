@@ -99,6 +99,12 @@
 				"navigationBarTitleText": "库存列表"
 			}
         }
+        ,{
+            "path" : "pages/in_order_list/in_order_list",
+            "style" : {
+				"navigationBarTitleText": "入货订单"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

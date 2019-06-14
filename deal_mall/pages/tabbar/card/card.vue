@@ -131,6 +131,15 @@
 						  p.push(item);
 						}
 					 });
+					 
+					 if(p.length == 0){
+						 uni.showToast({
+							icon: 'none',
+							duration: 1000,
+							title: "请选择商品"
+						});
+						 return;
+					 }
 					
 					uni.setStorageSync("itemList", p);
 					uni.navigateTo({
