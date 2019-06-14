@@ -33,21 +33,15 @@
 			<span>导航</span>
 		</div> -->
 		
-		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="bindCompany">
-				
-				<div class="company-modal">
-				
+		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
+			<div class="company-modal">
 				<div class="modal-title">设置预警数</div>
 				<div class="company-code">
 					<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
 				</div>
-				
 				<button size="mini" @tap="bindCompanyCode()">提交</button>
-				
-				</div>
-				
-				
-			</uni-popup>
+			</div>
+		</uni-popup>
 		
 	</view>
 </template>
@@ -79,10 +73,10 @@
 			}
 		},
 		methods: {
-			bindCompany(){
+			hidePop(){
 				this.type="";
 			},
-			bindCompanyCode(){
+			async bindCompanyCode(){
 				let params = {
 					k_g_id: this.list[this.curType].g_id,
 					k_m_id: uni.getStorageSync("userInfo").m_id,
@@ -187,8 +181,8 @@
 
 
 .company-modal{width:500upx;text-align:center;}
-	.company-code{padding:10upx 0 30upx 0;}
-	.company-code input{border:1px solid #eee;text-align:left;padding:20upx;}
+.company-code{padding:10upx 0 30upx 0;}
+.company-code input{border:1px solid #eee;text-align:left;padding:20upx;}
 	
 	
 	

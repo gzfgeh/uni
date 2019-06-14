@@ -43,16 +43,39 @@
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
 		
+		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
+			<div class="company-modal">
+				<div class="modal-title">设置预警数</div>
+				<div class="content_wrap">
+					<div class="company-code">
+						<span>姓名</span>
+						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
+					</div>
+					<div class="company-code">
+						<span>手机号</span>
+						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
+					</div>
+					<div class="company-code">
+						<span>库存数量</span>
+						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
+					</div>
+				</div>
+				
+				<button size="mini" @tap="bindCompanyCode()">提交</button>
+			</div>
+		</uni-popup>
+		
 	</view>
 </template>
 
 <script>
 	import { BASE_IMAGE_URL,getOrder,confirmShipping } from '@/utils/api'
-	
+	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
 		components: {
-			uniLoadMore
+			uniLoadMore,
+			uniPopup
 		},
 		data() {
 			return {
@@ -65,7 +88,9 @@
 				loadingType: 0,
 				page: 1,
 				typeList: ['待发货', '待收货', '已完成'],
-				curType: 0
+				curType: 0,
+				type:'middle',
+				companyCode: ''
 			}
 		},
 		methods: {
@@ -141,4 +166,12 @@
 .send_goods_btn{padding: 5upx 20upx; color: #fff; border: 1upx solid #E3E3E3; background: #107EFF;border-radius: 10upx;}
 
 .quick_icon{position: fixed;right: 50upx; bottom: 140upx; z-index: 20;width: 100upx; height: 100upx; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24upx;}
+
+
+.company-modal{width:600upx;text-align:center;}
+.company-modal .content_wrap{margin: 20upx 0upx;}
+.company-code{padding:10upx 0 10upx 0;display: flex; flex-direction: row; align-items: center;border:1px solid #eee;}
+.company-code span{display: inline-block; min-width: 200upx;}
+.company-code input{border:none;text-align:left;padding:10upx; flex: 1;}
+
 </style>

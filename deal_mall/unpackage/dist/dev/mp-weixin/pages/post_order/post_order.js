@@ -163,7 +163,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
         url: '/pages/address_list/address_list' });
 
     },
-    postOrder: function () {var _postOrder = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var goodsDetail, params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+    postOrder: function () {var _postOrder = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var goodsDetail, userInfo, params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
                 this.addressItem) {_context.next = 3;break;}
                 uni.showToast({
                   icon: 'none',
@@ -185,6 +185,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   goodsDetail.push(p);
                 });
 
+                userInfo = uni.getStorageSync("userInfo");
                 params = {
                   o_openid: uni.getStorageSync("openid"),
                   o_money: this.money,
@@ -193,9 +194,11 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   o_shi: this.addressItem.a_shi,
                   o_qu: this.addressItem.a_qu,
                   goods: JSON.stringify(goodsDetail),
-                  o_role: uni.getStorageSync("userInfo").m_role };_context.next = 8;return (
+                  k_m_role: userInfo.m_role,
+                  k_m_id: userInfo.m_id,
+                  k_p_m_id: userInfo.m_p_m_id };_context.next = 9;return (
 
-                  (0, _api.addOrder)(params));case 8:res = _context.sent;
+                  (0, _api.addOrder)(params));case 9:res = _context.sent;
                 if (res.code == 1000) {
                   uni.navigateBack({
                     delta: 5 });
@@ -206,7 +209,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                     duration: 1000,
                     title: "提交成功" });
 
-                }case 10:case "end":return _context.stop();}}}, _callee, this);}));function postOrder() {return _postOrder.apply(this, arguments);}return postOrder;}() },
+                }case 11:case "end":return _context.stop();}}}, _callee, this);}));function postOrder() {return _postOrder.apply(this, arguments);}return postOrder;}() },
 
 
   onLoad: function onLoad() {var _this = this;
