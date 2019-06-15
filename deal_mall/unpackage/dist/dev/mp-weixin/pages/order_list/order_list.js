@@ -98,7 +98,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
+
 
 
 
@@ -190,7 +192,9 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       typeList: ['待发货', '待收货', '已完成'],
       curType: 0,
       type: '',
-      companyCode: '' };
+      express_name: '',
+      express_no: '',
+      actionIndex: 0 };
 
   },
   methods: {
@@ -199,6 +203,9 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       this.page = 1;
       this.list = [];
       this.getList();
+    },
+    hidePop: function hidePop() {
+      this.type = '';
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   (0, _api.getChuOrder)(this.curType, this.page));case 2:res = _context.sent;
@@ -216,12 +223,29 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   }
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
+    setExpress: function setExpress(index) {
+      this.express_name = "";
+      this.express_no = "";
+      this.type = 'middle';
+      this.actionIndex = index;
+    },
 
-    confirmShipping: function () {var _confirmShipping2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(index) {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  (0, _api.confirmShipping)(this.list[index].o_id, this.list[index].o_express_name, this.list[index].o_express_no));case 2:res = _context2.sent;
+    confirmShipping: function () {var _confirmShipping2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(index) {var params, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                params = {
+                  o_id: this.list[this.actionIndex].o_id,
+                  o_express_name: this.express_name,
+                  o_express_no: this.express_no };_context2.next = 3;return (
+
+                  (0, _api.confirmShipping)(params));case 3:res = _context2.sent;
                 if (res.code == 1000) {
+                  uni.showToast({
+                    icon: 'none',
+                    duration: 1000,
+                    title: "操作成功" });
 
-                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function confirmShipping(_x) {return _confirmShipping2.apply(this, arguments);}return confirmShipping;}() },
+                  this.type = '';
+                  this.getList();
+                }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function confirmShipping(_x) {return _confirmShipping2.apply(this, arguments);}return confirmShipping;}() },
 
 
   onReachBottom: function onReachBottom() {
@@ -240,6 +264,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
 
     this.getList();
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

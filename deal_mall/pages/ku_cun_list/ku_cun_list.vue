@@ -8,11 +8,11 @@
 					
 					<div class="row_between" style="margin: 20upx 0upx;">
 						<span class="price">￥{{item.g_price}}</span>
-						<span class="sell_num">库存{{item.g_kucun}}件</span>
+						<span class="sell_num">库存{{item.k_kucun}}件</span>
 					</div>
 					
 					<div class="row_between" style="margin-bottom: 10upx;">
-						<span class="yu_jing">预警数: {{item.g_price}}</span>
+						<span class="yu_jing">预警数: {{item.k_yj_value}}</span>
 						<span class="yu_jing_btn" @click.stop="setYuJing(index)">设置预警</span>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getGoodsList,jiaruCart } from '@/utils/api'
+	import { BASE_IMAGE_URL,getKucun,setKucunYujing } from '@/utils/api'
 	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -90,7 +90,7 @@
 					  title: '设置成功',
 					  duration: 1000
 					});
-					this.list[this.curType].g_kucun = this.companyCode;
+					this.getList();
 				}
 				this.type="";
 				
@@ -101,7 +101,7 @@
 				this.type = 'middle';
 			},
 			async getList(){
-				let res = await getGoodsList(this.g_type,this.page, this.curType, '');
+				let res = await getKucun(this.page);
 				uni.stopPullDownRefresh();
 				if(res.code == 1000){
 					if(this.page == 1){

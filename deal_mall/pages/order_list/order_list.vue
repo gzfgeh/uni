@@ -15,7 +15,7 @@
 					<span>订单号:{{item.o_out_trade_no}}</span>
 					<span>{{item.o_create_time}}</span>
 				</div>
-				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="index">
+				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="ind">
 					<img :src="ite.go_g_img" mode="aspectFill">
 					<div class="item_tag flex_one item_content" >
 						<div class="item_tag flex_one">
@@ -28,9 +28,15 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="row_between express_wrap"  v-if="curType > 0">
+					<span>快递公司：{{item.o_express_name}}</span>
+					<span>快递编号: {{item.o_express_no}}</span>
+				</div>
+				
 				<div class="row">
 					<span class="price flex_one">合计：￥{{item.o_money}}</span>
-					<span class="send_goods_btn" @click="confirmShipping(index)">发货</span>
+					<span class="send_goods_btn" @click="setExpress(index)" v-if="curType == 0">发货</span>
 				</div>
 			</div>
 		</div>
@@ -45,23 +51,19 @@
 		
 		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
 			<div class="company-modal">
-				<div class="modal-title">设置预警数</div>
+				<div class="modal-title">设置快递信息</div>
 				<div class="content_wrap">
 					<div class="company-code">
-						<span>姓名</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
+						<span>快递公司</span>
+						<input type="test" v-model="express_name" placeholder="输入快递公司"  />
 					</div>
 					<div class="company-code">
-						<span>手机号</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
-					</div>
-					<div class="company-code">
-						<span>库存数量</span>
-						<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
+						<span>快递编号</span>
+						<input type="number" v-model="express_no" placeholder="输入快递编号"  />
 					</div>
 				</div>
 				
-				<button size="mini" @tap="bindCompanyCode()">提交</button>
+				<button size="mini" @tap="confirmShipping()">提交</button>
 			</div>
 		</uni-popup>
 		
@@ -90,7 +92,9 @@
 				typeList: ['待发货', '待收货', '已完成'],
 				curType: 0,
 				type:'',
-				companyCode: ''
+				express_name: '',
+				express_no: '',
+				actionIndex: 0
 			}
 		},
 		methods: {
@@ -99,6 +103,9 @@
 				this.page = 1;
 				this.list = [];
 				this.getList();
+			},
+			hidePop(){
+				this.type = '';
 			},
 			async getList(){
 				let res = await getChuOrder(this.curType, this.page);
@@ -116,11 +123,28 @@
 					}
 				}
 			},
+			setExpress(index){
+				this.express_name = "";
+				this.express_no = "";
+				this.type = 'middle';
+				this.actionIndex = index;
+			},
 			
 			async confirmShipping(index){
-				let res = await confirmShipping(this.list[index].o_id, this.list[index].o_express_name, this.list[index].o_express_no);
+				let params = {
+					o_id: this.list[this.actionIndex].o_id,
+					o_express_name: this.express_name,
+					o_express_no: this.express_no
+				};
+				let res = await confirmShipping(params);
 				if(res.code == 1000){
-					
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "操作成功"
+					});
+					this.type = '';
+					this.getList();
 				}
 			}
 		},
@@ -173,5 +197,8 @@
 .company-code{padding:10upx 0 10upx 0;display: flex; flex-direction: row; align-items: center;border:1px solid #eee;}
 .company-code span{display: inline-block; min-width: 200upx;}
 .company-code input{border:none;text-align:left;padding:10upx; flex: 1;}
+
+
+.express_wrap{font-size: 30upx; padding-bottom: 20upx; border-bottom: 1upx solid #E3E3E3; margin-bottom: 20upx;}
 
 </style>

@@ -167,8 +167,8 @@ export function getOrder(o_status, page) {
 /**
  * 发货操作
  */
-export function confirmShipping(o_id, o_express_name, o_express_no) {
-    return request.get('Api/Mall/confirmShipping?o_id='+o_id+"&o_express_name="+o_express_name+"&o_express_no="+o_express_no);
+export function confirmShipping(params) {
+    return request.post('Api/Mall/confirmShipping', qs.stringify(params));
 }
 
 /**
@@ -188,8 +188,8 @@ export function setKucunYujing(params) {
 /**
  * 我的库存
  */
-export function getKucun() {
-    return request.post('Api/Project/getKucun?k_m_id='+uni.getStorageSync("userInfo").m_id);
+export function getKucun(page) {
+    return request.get('Api/Project/getKucun?page='+page);
 }
 
 /**

@@ -180,4 +180,5 @@
 
 
 .express_wrap{font-size: 30upx; padding-bottom: 20upx; border-bottom: 1upx solid #E3E3E3; margin-bottom: 20upx;}
+
 </style>

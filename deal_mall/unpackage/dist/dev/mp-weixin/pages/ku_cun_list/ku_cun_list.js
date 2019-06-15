@@ -183,14 +183,14 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   k_yj_value: this.companyCode };_context.next = 3;return (
 
 
-                  setKucunYujing(params));case 3:res = _context.sent;
+                  (0, _api.setKucunYujing)(params));case 3:res = _context.sent;
                 if (res.code == 1000) {
                   uni.showToast({
                     icon: 'none',
                     title: '设置成功',
                     duration: 1000 });
 
-                  this.list[this.curType].g_kucun = this.companyCode;
+                  this.getList();
                 }
                 this.type = "";case 6:case "end":return _context.stop();}}}, _callee, this);}));function bindCompanyCode() {return _bindCompanyCode.apply(this, arguments);}return bindCompanyCode;}(),
 
@@ -201,7 +201,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       this.type = 'middle';
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  (0, _api.getGoodsList)(this.g_type, this.page, this.curType, ''));case 2:res = _context2.sent;
+                  (0, _api.getKucun)(this.page));case 2:res = _context2.sent;
                 uni.stopPullDownRefresh();
                 if (res.code == 1000) {
                   if (this.page == 1) {
@@ -222,12 +222,12 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
         url: '/pages/goods_detail/goods_detail?g_id=' + this.list[index].g_id });
 
     },
-    jiaruCart: function () {var _jiaruCart2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(item) {var params, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+    jiaruCart: function (_jiaruCart) {function jiaruCart(_x) {return _jiaruCart.apply(this, arguments);}jiaruCart.toString = function () {return _jiaruCart.toString();};return jiaruCart;}( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(item) {var params, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 params = {
                   ct_openid: uni.getStorageSync("openid"),
                   ct_g_id: item.g_id };_context3.next = 3;return (
 
-                  (0, _api.jiaruCart)(params));case 3:res = _context3.sent;
+                  jiaruCart(params));case 3:res = _context3.sent;
                 if (res.code == 1000) {
                   uni.showToast({
                     icon: 'none',
@@ -240,7 +240,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                     title: '加入购物车失败',
                     duration: 1000 });
 
-                }case 5:case "end":return _context3.stop();}}}, _callee3, this);}));function jiaruCart(_x) {return _jiaruCart2.apply(this, arguments);}return jiaruCart;}() },
+                }case 5:case "end":return _context3.stop();}}}, _callee3, this);}));return function (_x2) {return _ref.apply(this, arguments);};}()) },
 
 
   onReachBottom: function onReachBottom() {

@@ -21,5 +21,6 @@
 .company-code{padding:10rpx 0 10rpx 0;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center;border:1px solid #eee;}
 .company-code ._span{display: inline-block; min-width: 200rpx;}
 .company-code input{border:none;text-align:left;padding:10rpx; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1;}
+.express_wrap{font-size: 30rpx; padding-bottom: 20rpx; border-bottom: 1rpx solid #E3E3E3; margin-bottom: 20rpx;}
 
 

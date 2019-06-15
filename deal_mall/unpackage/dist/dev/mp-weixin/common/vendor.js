@@ -15384,8 +15384,8 @@ function getOrder(o_status, page) {
 /**
    * 发货操作
    */
-function confirmShipping(o_id, o_express_name, o_express_no) {
-  return _request.default.get('Api/Mall/confirmShipping?o_id=' + o_id + "&o_express_name=" + o_express_name + "&o_express_no=" + o_express_no);
+function confirmShipping(params) {
+  return _request.default.post('Api/Mall/confirmShipping', qs.stringify(params));
 }
 
 /**
@@ -15405,8 +15405,8 @@ function setKucunYujing(params) {
 /**
    * 我的库存
    */
-function getKucun() {
-  return _request.default.post('Api/Project/getKucun?k_m_id=' + uni.getStorageSync("userInfo").m_id);
+function getKucun(page) {
+  return _request.default.get('Api/Project/getKucun?page=' + page);
 }
 
 /**
