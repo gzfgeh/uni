@@ -209,6 +209,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     },
     getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   (0, _api.getChuOrder)(this.curType, this.page));case 2:res = _context.sent;
+                uni.stopPullDownRefresh();
                 if (res.code == 1000) {
                   if (this.page == 1) {
                     this.list = res.data;
@@ -221,7 +222,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   } else {
                     this.loadingType = 0;
                   }
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
+                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
 
     setExpress: function setExpress(index) {
       this.express_name = "";

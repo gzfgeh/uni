@@ -15,6 +15,11 @@
 						<span class="yu_jing">预警数: {{item.k_yj_value}}</span>
 						<span class="yu_jing_btn" @click.stop="setYuJing(index)">设置预警</span>
 					</div>
+					
+					<div class="row_between" style="margin-bottom: 10upx; margin-top: 20upx;">
+						<span class="yu_jing"></span>
+						<span class="yu_jing_btn" @click.stop="setSellValue(index)" v-if="m_role == 2">销售记录</span>
+					</div>
 				</div>
 				
 			</navigator>
@@ -43,11 +48,33 @@
 			</div>
 		</uni-popup>
 		
+		<uni-popup :show="sellType === 'middle'" position="middle" mode="fixed"  @hidePopup="hideSellPop">
+			<div class="company-modal1">
+				<div class="modal-title">设置销售记录</div>
+				<div class="content_wrap">
+					<div class="company-code1">
+						<span>姓名</span>
+						<input type="text" maxlength="5" v-model="o_name" placeholder="请输入姓名"  />
+					</div>
+					<div class="company-code1">
+						<span>手机号</span>
+						<input type="number" maxlength="11" v-model="o_phone" placeholder="请输入手机号"  />
+					</div>
+					<div class="company-code1">
+						<span>数量</span>
+						<input type="number" maxlength="5" v-model="o_num" placeholder="请输入数量"  />
+					</div>
+				</div>
+				
+				<button size="mini" @tap="addSaleOrder()">提交</button>
+			</div>
+		</uni-popup>
+		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getKucun,setKucunYujing } from '@/utils/api'
+	import { BASE_IMAGE_URL,getKucun,setKucunYujing,addSaleOrder } from '@/utils/api'
 	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -69,12 +96,50 @@
 				curType: 0,
 				g_type: 0,
 				type:'',
-				companyCode: ''
+				companyCode: '',
+				o_name: '',
+				o_phone: '',
+				o_num: '',
+				sellType: '',
+				m_role: 0
 			}
 		},
 		methods: {
 			hidePop(){
 				this.type="";
+			},
+			hideSellPop(){
+				this.sellType = "";
+			},
+			setSellValue(index){
+				this.sellType = "middle";
+				this.o_name = "";
+				this.o_phone = "";
+				this.o_num = "";
+				this.curType = index;
+			},
+			async addSaleOrder(){
+				let params = {
+					o_name: this.o_name,
+					o_phone: this.o_phone,
+					go_g_id: this.list[this.curType].g_id,
+					go_count: this.o_num,
+					go_g_price: this.list[this.curType].g_price,
+					go_g_name: this.list[this.curType].g_name,
+					go_g_img: this.list[this.curType].g_img,
+					o_openid: uni.getStorageSync("openid")
+				};
+				let res = await addSaleOrder(params);
+				if(res.code == 1000){
+					this.sellType = "";
+					this.getList();
+				}else{
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: res.msg
+					});
+				}
 			},
 			async bindCompanyCode(){
 				let params = {
@@ -157,6 +222,7 @@
 		},
 		onLoad(options){
 			this.g_type = options.g_type;
+			this.m_role = uni.getStorageSync("userInfo").m_role;
 			this.getList();
 		}
 		
@@ -184,7 +250,11 @@
 .company-code{padding:10upx 0 30upx 0;}
 .company-code input{border:1px solid #eee;text-align:left;padding:20upx;}
 	
-	
+.company-modal1{width:600upx;text-align:center;}
+.company-modal1 .content_wrap{margin: 20upx 0upx;}
+.company-code1{padding:10upx 0 10upx 0;display: flex; flex-direction: row; align-items: center;border:1px solid #eee;}
+.company-code1 span{display: inline-block; min-width: 200upx;}
+.company-code1 input{border:none;text-align:left;padding:10upx; flex: 1;}
 	
 .quick_icon{position: fixed;right: 50upx; bottom: 140upx; z-index: 20;width: 100upx; height: 100upx; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24upx;}
 </style>

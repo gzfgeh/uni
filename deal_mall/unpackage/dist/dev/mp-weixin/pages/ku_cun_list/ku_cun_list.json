@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "库存列表",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "uni-load-more": "/components/uni-load-more",
     "uni-popup": "/components/uni-popup"

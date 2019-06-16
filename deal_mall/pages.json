@@ -96,13 +96,22 @@
         ,{
             "path" : "pages/ku_cun_list/ku_cun_list",
             "style" : {
-				"navigationBarTitleText": "库存列表"
+				"navigationBarTitleText": "库存列表",
+				"enablePullDownRefresh": true
 			}
         }
         ,{
             "path" : "pages/in_order_list/in_order_list",
             "style" : {
-				"navigationBarTitleText": "入货订单"
+				"navigationBarTitleText": "入货订单",
+				"enablePullDownRefresh": true
+			}
+        }
+        ,{
+            "path" : "pages/sell_order_list/sell_order_list",
+            "style" : {
+				"navigationBarTitleText": "销售记录",
+				"enablePullDownRefresh": true
 			}
         }
     ],

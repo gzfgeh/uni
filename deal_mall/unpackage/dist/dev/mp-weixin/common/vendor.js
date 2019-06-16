@@ -15105,6 +15105,23 @@ createPage(_post_order.default);
 
 /***/ }),
 
+/***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Fsell_order_list%2Fsell_order_list\"}":
+/*!*********************************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Fsell_order_list%2Fsell_order_list"} ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _sell_order_list = _interopRequireDefault(__webpack_require__(/*! ./pages/sell_order_list/sell_order_list.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/pages/sell_order_list/sell_order_list.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_sell_order_list.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../../Users/tuyao/Documents/uni/deal_mall/main.js?{\"page\":\"pages%2Ftabbar%2Fcard%2Fcard\"}":
 /*!********************************************************************************************!*\
   !*** /Users/tuyao/Documents/uni/deal_mall/main.js?{"page":"pages%2Ftabbar%2Fcard%2Fcard"} ***!
@@ -15215,7 +15232,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACq
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getFirstTypeList = getFirstTypeList;exports.getGoodsList = getGoodsList;exports.getImgList = getImgList;exports.getSecondTypeList = getSecondTypeList;exports.bindPhone = bindPhone;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsDetail = goodsDetail;exports.getUserInfo = getUserInfo;exports.getOpenid = getOpenid;exports.addSaveUserInfo = addSaveUserInfo;exports.getRecommendList = getRecommendList;exports.aboutUs = aboutUs;exports.getAddressList = getAddressList;exports.addAddress = addAddress;exports.deleteAddress = deleteAddress;exports.editAddress = editAddress;exports.addOrder = addOrder;exports.baoxiu = baoxiu;exports.getOrder = getOrder;exports.confirmShipping = confirmShipping;exports.confirmReceipt = confirmReceipt;exports.setKucunYujing = setKucunYujing;exports.getKucun = getKucun;exports.getConfig = getConfig;exports.getChuOrder = getChuOrder;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getFirstTypeList = getFirstTypeList;exports.getGoodsList = getGoodsList;exports.getImgList = getImgList;exports.getSecondTypeList = getSecondTypeList;exports.bindPhone = bindPhone;exports.getCart = getCart;exports.jiaruCart = jiaruCart;exports.saveCart = saveCart;exports.deleteCart = deleteCart;exports.goodsDetail = goodsDetail;exports.getUserInfo = getUserInfo;exports.getOpenid = getOpenid;exports.addSaveUserInfo = addSaveUserInfo;exports.getRecommendList = getRecommendList;exports.aboutUs = aboutUs;exports.getAddressList = getAddressList;exports.addAddress = addAddress;exports.deleteAddress = deleteAddress;exports.editAddress = editAddress;exports.addOrder = addOrder;exports.baoxiu = baoxiu;exports.getOrder = getOrder;exports.confirmShipping = confirmShipping;exports.confirmReceipt = confirmReceipt;exports.setKucunYujing = setKucunYujing;exports.getKucun = getKucun;exports.getConfig = getConfig;exports.getChuOrder = getChuOrder;exports.addSaleOrder = addSaleOrder;exports.BASE_IMAGE_URL = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/request.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
 var BASE_IMAGE_URL = 'https://bay.2donghua.com/';
@@ -15421,6 +15438,13 @@ function getConfig() {
    */
 function getChuOrder(o_status, page) {
   return _request.default.get('Api/Weixin/getChuOrder?o_openid=' + uni.getStorageSync("openid") + "&o_status=" + o_status + "&page=" + page);
+}
+
+/**
+   * 设置销售记录
+   */
+function addSaleOrder(params) {
+  return _request.default.post('Api/Weixin/addSaleOrder', qs.stringify(params));
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

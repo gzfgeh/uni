@@ -205,3 +205,10 @@ export function getConfig() {
 export function getChuOrder(o_status, page) {
     return request.get('Api/Weixin/getChuOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
 }
+
+/**
+ * 设置销售记录
+ */
+export function addSaleOrder(params) {
+    return request.post('Api/Weixin/addSaleOrder', qs.stringify(params));
+}

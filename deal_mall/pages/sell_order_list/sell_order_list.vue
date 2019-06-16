@@ -1,13 +1,5 @@
 <template>
 	<view>
-		
-		<div class="head_wrap">
-			<div v-for="(item, index) in typeList" :key="index" @click="changeType(index)"
-				class="head_item row_center" >
-				<span :class="{'active_type': (curType == index)}">{{item}}</span>
-			</div>
-		</div>
-		
 		<div class="list_wrap">
 			<div v-for="(item, index) in list" :key="index" class="list_item" v-if="item.good_list.length>0">
 				<!-- <div class="item_head">平台自营</div> -->
@@ -30,8 +22,8 @@
 				</div>
 				
 				<div class="row_between express_wrap"  v-if="curType > 0">
-					<span>快递公司：{{item.o_express_name}}</span>
-					<span>快递编号: {{item.o_express_no}}</span>
+					<span>姓名：{{item.o_express_name}}</span>
+					<span>手机号: {{item.o_express_no}}</span>
 				</div>
 				
 				<div class="row">
@@ -71,7 +63,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getChuOrder,confirmShipping } from '@/utils/api'
+	import { BASE_IMAGE_URL,getOrder,confirmShipping } from '@/utils/api'
 	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -90,7 +82,7 @@
 				loadingType: 0,
 				page: 1,
 				typeList: ['待发货', '待收货', '已完成'],
-				curType: 0,
+				curType: 2,
 				type:'',
 				express_name: '',
 				express_no: '',
@@ -108,7 +100,7 @@
 				this.type = '';
 			},
 			async getList(){
-				let res = await getChuOrder(this.curType, this.page);
+				let res = await getOrder(this.curType, this.page);
 				uni.stopPullDownRefresh();
 				if(res.code == 1000){
 					if(this.page == 1){
@@ -175,7 +167,7 @@
 .head_item span{height: 100upx; line-height: 100upx;}
 .active_type{color: #f00;border-bottom: 2upx solid #f00;}
 
-.list_wrap{padding-top: 102upx; width: 100%;background-color: #EFEFF4; box-sizing: border-box;}
+.list_wrap{width: 100%;background-color: #EFEFF4; box-sizing: border-box;}
 .list_item{border-bottom: 1upx solid #E3E3E3;width: 100%; margin-bottom: 20upx;background-color: #FFF;padding: 32upx 24upx;box-sizing: border-box;font-size: 28upx;}
 .list_item .item_head{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-bottom: 12upx;font-size: 24upx;}
 

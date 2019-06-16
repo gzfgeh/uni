@@ -37,6 +37,7 @@
 				<div class="row">
 					<span class="price flex_one">合计：￥{{item.o_money}}</span>
 					<span class="send_goods_btn" v-if="curType == 1" @click="confirmReceipt(index)">确认收货</span>
+					<!-- <span class="send_goods_btn" v-if="(curType == 2) && (m_role == 2)" @click="showSetSell(index)">销售记录</span> -->
 					<span v-if="curType == 0">状态：{{typeList[curType]}}</span>
 				</div>
 			</div>
@@ -50,17 +51,41 @@
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
 		
+		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
+			<div class="company-modal">
+				<div class="modal-title">设置销售记录</div>
+				<div class="content_wrap">
+					<div class="company-code">
+						<span>姓名</span>
+						<input type="text" maxlength="5" v-model="o_name" placeholder="请输入姓名"  />
+					</div>
+					<div class="company-code">
+						<span>手机号</span>
+						<input type="number" maxlength="11" v-model="o_phone" placeholder="请输入手机号"  />
+					</div>
+					<div class="company-code">
+						<span>数量</span>
+						<input type="number" maxlength="5" v-model="o_num" placeholder="请输入数量"  />
+					</div>
+				</div>
+				
+				<button size="mini" @tap="addOrder()">提交</button>
+			</div>
+		</uni-popup>
+		
+		
 		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getOrder,confirmReceipt } from '@/utils/api'
-	
+	import { BASE_IMAGE_URL,getOrder,addOrder } from '@/utils/api'
+	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
 		components: {
-			uniLoadMore
+			uniLoadMore,
+			uniPopup
 		},
 		data() {
 			return {
@@ -75,7 +100,11 @@
 				typeList: ['待发货', '待收货', '已完成'],
 				curType: 0,
 				type:'',
-				companyCode: ''
+				o_name: '',
+				o_phone: '',
+				activeIndex: 0,
+				o_num: '',
+				m_role: 0
 			}
 		},
 		methods: {
@@ -85,8 +114,15 @@
 				this.list = [];
 				this.getList();
 			},
+			showSetSell(index){
+				this.type = 'middle';
+				this.o_name = "";
+				this.o_phone = "";
+				this.activeIndex = index;
+			},
 			async getList(){
 				let res = await getOrder(this.curType, this.page);
+				uni.stopPullDownRefresh();
 				if(res.code == 1000){
 					if(this.page == 1){
 						this.list = res.data;
@@ -132,6 +168,9 @@
 		},
 		onLoad(options){
 			this.curType = options.index;
+			if(!this.curType){
+				this.curType = 0;
+			}
 			let typeIndex = options.typeIndex;
 			if(typeIndex == 3){
 				uni.setNavigationBarTitle({
@@ -142,7 +181,9 @@
 					title:"出货订单"
 				})
 			}
+			this.m_role = uni.getStorageSync("userInfo").m_role;
 			this.getList();
+		
 		}
 		
 	}

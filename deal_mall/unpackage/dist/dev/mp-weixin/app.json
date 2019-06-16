@@ -16,7 +16,8 @@
     "pages/about_us/about_us",
     "pages/fix_page/fix_page",
     "pages/ku_cun_list/ku_cun_list",
-    "pages/in_order_list/in_order_list"
+    "pages/in_order_list/in_order_list",
+    "pages/sell_order_list/sell_order_list"
   ],
   "subPackages": [],
   "window": {
