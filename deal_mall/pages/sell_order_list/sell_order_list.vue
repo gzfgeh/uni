@@ -22,8 +22,8 @@
 				</div>
 				
 				<div class="row_between express_wrap"  v-if="curType > 0">
-					<span>姓名：{{item.o_express_name}}</span>
-					<span>手机号: {{item.o_express_no}}</span>
+					<span>姓名：{{item.o_name}}</span>
+					<span>手机号: {{item.o_phone}}</span>
 				</div>
 				
 				<div class="row">
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getOrder,confirmShipping } from '@/utils/api'
+	import { BASE_IMAGE_URL,getSaleOrder,confirmShipping } from '@/utils/api'
 	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
@@ -100,7 +100,7 @@
 				this.type = '';
 			},
 			async getList(){
-				let res = await getOrder(this.curType, this.page);
+				let res = await getSaleOrder(this.curType, this.page);
 				uni.stopPullDownRefresh();
 				if(res.code == 1000){
 					if(this.page == 1){

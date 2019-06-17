@@ -212,3 +212,10 @@ export function getChuOrder(o_status, page) {
 export function addSaleOrder(params) {
     return request.post('Api/Weixin/addSaleOrder', qs.stringify(params));
 }
+
+/**
+ * 订单列表
+ */
+export function getSaleOrder(o_status, page) {
+    return request.get('Api/Weixin/getSaleOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
+}
