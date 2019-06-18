@@ -63,7 +63,8 @@
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    border-radius: 20rpx;
+    -webkit-border-radius: 20rpx;
+            border-radius: 20rpx;
     -webkit-box-shadow: 0rpx 0rpx 20rpx 0rpx #EAEAEA;
             box-shadow: 0rpx 0rpx 20rpx 0rpx #EAEAEA;
     padding: 30rpx 0rpx;
@@ -166,7 +167,8 @@
   line-height: 94rpx;
   color: #ffffff;
   background-color: #427DFF;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   text-align: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -192,7 +194,8 @@
   z-index: 9999;
   background: #ffffff;
   margin: 10%;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
 }
 .modal-title {
   padding-top: 50rpx;
@@ -223,7 +226,8 @@
   height: 94rpx;
   margin: 20rpx 10%;
   background: #427DFF;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,6 +257,26 @@
 }
 .btn_hover{
   background: #0000FF;
+}
+.modal_head_img{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	margin-top: 68rpx;
 }
 
 

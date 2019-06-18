@@ -132,6 +132,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/utils/api.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/mpvueCityPicker.vue */ "../../../../../../Users/tuyao/Documents/uni/deal_mall/components/mpvueCityPicker.vue"));};var _default =
 
 
@@ -143,7 +157,9 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
     return {
       b_name: '',
       b_phone: '',
-      b_content: '' };
+      b_content: '',
+      b_address: '',
+      b_goods_no: '' };
 
   },
   onLoad: function onLoad() {
@@ -175,14 +191,34 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   title: "请输入报修内容" });return _context.abrupt("return");case 11:
 
 
+                ;if (
+
+                this.b_goods_no) {_context.next = 15;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请输入商品编码" });return _context.abrupt("return");case 15:
+
+
+                ;if (
+
+                this.b_address) {_context.next = 19;break;}
+                uni.showToast({
+                  icon: 'none',
+                  duration: 1000,
+                  title: "请输入地址" });return _context.abrupt("return");case 19:
+
+
                 ;
 
                 params = {
                   b_name: this.b_name,
                   b_content: this.b_content,
-                  b_phone: this.b_phone };_context.next = 15;return (
+                  b_phone: this.b_phone,
+                  b_goods_no: this.b_goods_no,
+                  b_address: this.b_address };_context.next = 23;return (
 
-                  (0, _api.baoxiu)(params));case 15:res = _context.sent;
+                  (0, _api.baoxiu)(params));case 23:res = _context.sent;
 
                 if (res.code == 1000) {
                   uni.showToast({
@@ -193,7 +229,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
                   uni.navigateBack({
                     delta: 1 });
 
-                }case 17:case "end":return _context.stop();}}}, _callee, this);}));function fixContent() {return _fixContent.apply(this, arguments);}return fixContent;}() } };exports.default = _default;
+                }case 25:case "end":return _context.stop();}}}, _callee, this);}));function fixContent() {return _fixContent.apply(this, arguments);}return fixContent;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

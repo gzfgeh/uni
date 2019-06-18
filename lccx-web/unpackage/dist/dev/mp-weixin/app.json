@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/reg/reg",
     "pages/baojia/baojia",
+    "pages/er_wei_ma/er_wei_ma",
+    "pages/service_confirm_new/service_confirm_new",
     "pages/pay_address/pay_address",
     "pages/pay_all/pay_all",
     "pages/bill_detail/bill_detail",
@@ -14,7 +17,6 @@
     "pages/service_confirm/service_confirm",
     "pages/service_month_fee/service_month_fee",
     "pages/quote_bill/quote_bill",
-    "pages/reg/reg",
     "pages/main/main",
     "pages/login/login"
   ],
@@ -32,5 +34,9 @@
     "selectedColor": "#0faeff",
     "backgroundColor": "#ffffff",
     "list": []
-  }
+  },
+  "networkTimeout": {
+    "request": 100000
+  },
+  "sitemapLocation": "sitemap.json"
 }

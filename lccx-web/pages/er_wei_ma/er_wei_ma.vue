@@ -54,7 +54,7 @@
 			console.log(quotation_id);
 			let partner_id = uni.getStorageSync("partner_id");
 			let imei = uni.getStorageSync("imei");
-			this.val = "http://m.kaikaibao.com.cn/lccx2/index.html#/pages/service_confirm/service_confirm?partner_id="+partner_id+"&imei="+imei+"&quotation_id="+quotation_id;
+			this.val = "http://m.kaikaibao.com.cn/lccx2/index.html?partner_id="+partner_id+"&imei="+imei+"&quotation_id="+quotation_id+"#/pages/service_confirm/service_confirm";
 			setTimeout(() => {
 				this.$refs.qrcode._makeCode();
 			}, 1000);

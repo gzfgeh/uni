@@ -19,6 +19,7 @@
 	padding-left: 48rpx;
 	padding-top: 18rpx;
 	padding-bottom: 18rpx;
+	margin-bottom: 200rpx;
 }
 .radio_wrap{
 	display: -webkit-box;
@@ -55,7 +56,8 @@ radio-group label{
 .primary{
 	background-color: #427DFF;
 	color: #FFFFFF;
-	border-radius: 10rpx;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
 	font-size: 32rpx;
 	height: 100rpx;
 	line-height: 100rpx;

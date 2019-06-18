@@ -125,7 +125,8 @@
 }
 .ticket {
   background-color: #fff;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   padding: 40rpx 40rpx 20rpx 40rpx;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
@@ -164,7 +165,8 @@
     color: #3A7FF7;
     font-size: 26rpx;
     background-color: #E9F3FB;
-    border-radius: 26rpx;
+    -webkit-border-radius: 26rpx;
+            border-radius: 26rpx;
     padding: 8rpx 24rpx;
 }
 

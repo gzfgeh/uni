@@ -57,7 +57,7 @@
   font-size: 14px;
 }
 .unActive{
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.3)!important;
 }
 .phone_code_wrap{
   -webkit-box-orient: horizontal;
@@ -117,7 +117,8 @@
     line-height: 94rpx;
     color: #ffffff;
     background-color: #427DFF;
-    border-radius: 10rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     text-align: center;
 }
 .modal-mask {
@@ -141,7 +142,8 @@
   z-index: 9999;
   background: #ffffff;
   margin: 10%;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
 }
 .modal-title {
   padding-top: 50rpx;
@@ -172,7 +174,8 @@
   height: 94rpx;
   margin: 20rpx 10%;
   background: #427DFF;
-  border-radius: 12rpx;
+  -webkit-border-radius: 12rpx;
+          border-radius: 12rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -202,6 +205,9 @@
 }
 .btn_hover{
   background: #0000FF;
+}
+.active{
+	color: rgba(0,0,0,0.7);
 }
 picker{
   margin-right: 10rpx;
@@ -236,7 +242,8 @@ picker ._div{
 
 /* 未选中的 背景样式 */
 radio .wx-radio-input{
-   border-radius: 50%;/* 圆角 */
+   -webkit-border-radius: 50%;
+           border-radius: 50%;/* 圆角 */
    width: 30rpx; /* 背景的宽 */
    height: 30rpx; /* 背景的高 */
 }
@@ -250,7 +257,8 @@ radio .wx-radio-input.wx-radio-input-checked{
 
 /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
 radio .wx-radio-input.wx-radio-input-checked::before{
-   border-radius: 50%;/* 圆角 */
+   -webkit-border-radius: 50%;
+           border-radius: 50%;/* 圆角 */
    width: 30rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
    height: 30rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
    line-height: 30rpx;

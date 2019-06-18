@@ -104,9 +104,19 @@
 				};
 				let res = await addOrder(params);
 				if(res.code == 1000){
-					uni.navigateBack({
-						  delta: 5
-					  })
+					uni.showModal({
+						title:"提示",
+						content:"下单成功",
+						showCancel:false,
+						success(res) {
+							if(res.confirm){
+								uni.switchTab({
+									url:'../tabbar/home/home'
+								})
+							}
+						}
+					})
+					
 				}else{
 					uni.showToast({
 						icon: 'none',

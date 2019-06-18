@@ -9,7 +9,7 @@ page{background: #FFFFFF;height: 100%;}
 .scoll_wrap{width: 224rpx; height: 100%;background-color: #F7F7F7;}
 .item_wrap{height: 106rpx;border-left: 8rpx solid transparent;}
 .active_type{border-left-color:#ff4544; background-color: #FFFFFF;color:#ff4544;}
-.content_list{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row;background-color: #FFFFFF; width: 100%; -webkit-flex-flow: wrap; -ms-flex-flow: wrap; flex-flow: wrap;}
+.content_list{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row;background-color: #FFFFFF; -webkit-flex-flow: wrap; -ms-flex-flow: wrap; flex-flow: wrap;-webkit-align-content: flex-start;-ms-flex-line-pack: start;align-content: flex-start;width: 100%;}
 .content_list .item{font-size: 28rpx; width: 33.33%; height: 200rpx; margin: 0rpx!important;}
 .content_list .item ._img{width: 92rpx; height: 92rpx;}
 

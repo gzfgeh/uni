@@ -95,7 +95,7 @@ page{background: #FFFFFF;height: 100%;}
 .item_wrap{height: 106upx;border-left: 8upx solid transparent;}
 .active_type{border-left-color:#ff4544; background-color: #FFFFFF;color:#ff4544;}
 
-.content_list{display: flex; flex-direction: row;background-color: #FFFFFF; width: 100%; flex-flow: wrap;}
+.content_list{display: flex; flex-direction: row;background-color: #FFFFFF; flex-flow: wrap;align-content: flex-start;width: 100%;}
 .content_list .item{font-size: 28upx; width: 33.33%; height: 200upx; margin: 0upx!important;}
 .content_list .item img{width: 92upx; height: 92upx;}
 </style>

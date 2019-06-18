@@ -227,7 +227,7 @@ export default {
 				openid: openid,
         paytype: 1,
       };
-
+			console.log(this.licheng_order_id);
       let res = await pay(this.licheng_order_id, params);
       if(res.success){
         //this.next();

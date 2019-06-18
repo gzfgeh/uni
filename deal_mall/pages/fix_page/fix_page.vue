@@ -5,14 +5,28 @@
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">姓名</span>
-				<input type="text" v-model="b_name">
+				<input type="text" v-model="b_name" placeholder="请输入姓名">
 			  </div>
 			</div>
 
 			<div class="row item_wrap">
 			  <div class="row_between item">
 				<span class="item_span">手机号码</span>
-				<input type="text" v-model="b_phone">
+				<input type="text" v-model="b_phone" placeholder="请输入手机号">
+			  </div>
+			</div>
+			
+			<div class="row item_wrap">
+			  <div class="row_between item">
+				<span class="item_span">商品编码</span>
+				<input type="text" v-model="b_goods_no" placeholder="请输入商品编码">
+			  </div>
+			</div>
+			
+			<div class="row item_wrap">
+			  <div class="row_between item">
+				<span class="item_span">地址</span>
+				<input type="text" v-model="b_address" placeholder="请输入地址">
 			  </div>
 			</div>
 
@@ -43,7 +57,9 @@
 			return {
 				b_name: '',
 				b_phone: '',
-				b_content: ''
+				b_content: '',
+				b_address: '',
+				b_goods_no: ''
 			}
 		},
 		onLoad() {
@@ -77,10 +93,30 @@
 					return;
 				};
 				
+				if(!this.b_goods_no){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入商品编码"
+					});
+					return;
+				};
+				
+				if(!this.b_address){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入地址"
+					});
+					return;
+				};
+				
 				let params = {
 					b_name: this.b_name,
 					b_content: this.b_content,
-					b_phone: this.b_phone
+					b_phone: this.b_phone,
+					b_goods_no: this.b_goods_no,
+					b_address: this.b_address
 				};
 				let res = await baoxiu(params);
 				

@@ -204,8 +204,18 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
 
                   (0, _api.addOrder)(params));case 9:res = _context.sent;
                 if (res.code == 1000) {
-                  uni.navigateBack({
-                    delta: 5 });
+                  uni.showModal({
+                    title: "提示",
+                    content: "下单成功",
+                    showCancel: false,
+                    success: function success(res) {
+                      if (res.confirm) {
+                        uni.switchTab({
+                          url: '../tabbar/home/home' });
+
+                      }
+                    } });
+
 
                 } else {
                   uni.showToast({

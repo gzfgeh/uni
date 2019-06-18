@@ -49,7 +49,8 @@
     line-height: 94rpx;
     color: #ffffff;
     background-color: #427DFF;
-    border-radius: 10rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     text-align: center;
     position: fixed;
 	bottom: 30rpx;
