@@ -196,8 +196,27 @@
 			this.isChecked = !this.isChecked;  
 		  },
 		next: function(){
-		  const url = '../pay_address/pay_address';
-		  uni.navigateTo({ url })
+		  let openid = uni.getStorageSync("openid");
+			console.log(openid);
+			
+			if(!isWeiXin()){
+				uni.removeStorageSync("openid");
+			}
+		
+			if(!openid){
+				if(isWeiXin()){
+					//如果是微信浏览器 去获取openid
+					let partner_id = uni.getStorageSync("partner_id");
+					let imei = uni.getStorageSync("imei");
+					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=https%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d"+this.quotation_id+"%26partner_id%3d"+partner_id+"%26imei%3d"+imei+"&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
+				}else{
+					const url = '../pay_address/pay_address?quotation_id='+this.quotation_id;
+					uni.navigateTo({ url })
+				}
+			}else{
+				const url = '../pay_address/pay_address?quotation_id='+this.quotation_id;
+				uni.navigateTo({ url })
+			}
 		},
 		goToErWeiMa: function(){
 		  const url = '../er_wei_ma/er_wei_ma?quotation_id='+this.global.quotation_id;
@@ -247,7 +266,7 @@
 		},
 
 		async getQuotations(){
-				let res = await getQuotations(this.global.quotation_id);
+				let res = await getQuotations(this.quotation_id);
 				if(res.code == 200){
 					this.item = res.data;
 					// this.ci_commission = parseFloat(res.data.ci_commission).toFixed(2);
@@ -382,13 +401,68 @@
 					console.log(this.item);
 					this.$forceUpdate();
 				}
+			},
+			
+			async H5login(){
+				let partner_id = uni.getStorageSync("partner_id");
+				let imei = uni.getStorageSync("imei");
+				let params = {
+					partner_id: partner_id,
+					imei: imei
+				};
+				
+				let res = await H5login(params);
+				if(res.code == 200){
+					let token = res.data.token;
+					console.log(token);
+					if(token){
+						uni.setStorageSync('token', token);
+					}
+					this.getQuotations();
+				}
+			},
+			
+			getQueryString(name) {
+				var reg = new RegExp("[?&]" + name + "=([^&#]*)", "i");
+				var res = window.location.href.match(reg);
+			 
+				if( res && res.length>1 ){
+					return decodeURIComponent(res[1]);
+				}
+				return '';
 			}
+			
 		},
 	  onLoad(){
+		this.quotation_id = this.getQueryString("quotation_id");
+		if(!this.quotation_id){
 			this.global = uni.getStorageSync("global");
-			//this.H5login();
-			this.getQuotations();
+			if(!this.global.quotation_id){
+				this.quotation_id = this.$root.$mp.query.quotation_id;
+			}else{
+				this.quotation_id = this.global.quotation_id;
+			}
+		}
+		
+		let openid = uni.getStorageSync("openid");
+		if(!openid){
+			openid = this.$root.$mp.query.openid;
+			if(openid){
+				uni.setStorageSync("openid", openid);
+			}
+		}
+		
+		this.H5login();
+		
+		// let token = uni.getStorageSync("token");
+		// if(!token){
+		// 	this.H5login();
+		// }else{
+		// 	this.getQuotations();
+		// }
+		
 	  }
+	  
 
 	}
 </script>

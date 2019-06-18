@@ -178,8 +178,8 @@
 			if(!openid){
 				if(isWeiXin()){
 					//如果是微信浏览器 去获取openid
-					let partner_id = this.GetRequestParameters(window.location.search)["partner_id"];
-					let imei =  this.GetRequestParameters(window.location.search)["imei"];
+					let partner_id = uni.getStorageSync("partner_id");
+					let imei = uni.getStorageSync("imei");
 					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=https%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d"+this.quotation_id+"%26partner_id%3d"+partner_id+"%26imei%3d"+imei+"&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
 				}else{
 					const url = '../pay_address/pay_address?quotation_id='+this.quotation_id;
@@ -364,11 +364,8 @@
 			},
 			
 			async H5login(){
-				let partner_id = this.GetRequestParameters(window.location.search)["partner_id"];
-				let imei = this.GetRequestParameters(window.location.search)["imei"];
-				uni.setStorageSync("partner_id", partner_id);
-				uni.setStorageSync("imei", imei);
-				
+				let partner_id = uni.getStorageSync("partner_id");
+				let imei = uni.getStorageSync("imei");
 				let params = {
 					partner_id: partner_id,
 					imei: imei
@@ -385,31 +382,27 @@
 				}
 			},
 			
-			GetRequestParameters(locationsearch){
-				let url = locationsearch;  
-				let theRequest = new Object();  
-				if (url.indexOf("?") != -1) {  
-					let str = url.substr(1);  
-					let strs = str.split("&");  
-					for (let i = 0; i < strs.length; i++) {  
-						theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);  
-					}  
-				}  
-				return theRequest;  
+			getQueryString(name) {
+				var reg = new RegExp("[?&]" + name + "=([^&#]*)", "i");
+				var res = window.location.href.match(reg);
+			 
+				if( res && res.length>1 ){
+					return decodeURIComponent(res[1]);
+				}
+				return '';
 			}
 			
 		},
 	  
-	  onLoad(opt){
-		this.global = uni.getStorageSync("global");
-		if(!this.global.quotation_id){
-			this.quotation_id = this.$root.$mp.query.quotation_id;
-		}else{
-			this.quotation_id = this.global.quotation_id;
-		}
-		
+	  onLoad(){
+		this.quotation_id = this.getQueryString("quotation_id");
 		if(!this.quotation_id){
-			this.quotation_id = this.GetRequestParameters(window.location.search)["quotation_id"];
+			this.global = uni.getStorageSync("global");
+			if(!this.global.quotation_id){
+				this.quotation_id = this.$root.$mp.query.quotation_id;
+			}else{
+				this.quotation_id = this.global.quotation_id;
+			}
 		}
 		
 		let openid = uni.getStorageSync("openid");

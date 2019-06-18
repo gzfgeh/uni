@@ -8,26 +8,33 @@
             console.log(tmpUrlSearch);
             let tmpParas= this.GetRequestParameters(tmpUrlSearch);
 			
-			let openid = tmpParas["openid"];//提取参数
+			// let openid = tmpParas["openid"];
+			let openid = this.getQueryString("openid");//提取参数
 			console.log(openid);
-			// olVu51XsomjuLGgUx5cTTtoqIQVE olVu51XsomjuLGgUx5cTTtoqIQVE
 			uni.setStorageSync("openid", openid);
-			// return;
 			
-            let partner_id = tmpParas["partner_id"];//提取参数
+			let partner_id = this.getQueryString("partner_id")
+            // let partner_id = tmpParas["partner_id"];//提取参数
             uni.setStorageSync("partner_id", partner_id);
-			let imei = tmpParas["imei"];//提取参数
-			uni.setStorageSync("imei", imei);
+			console.log('partner_id:'+partner_id);
 			
-			let recommend_user_id = tmpParas["recommend_user_id"];//提取参数
+			// let imei = tmpParas["imei"];//提取参数
+			let imei = this.getQueryString("imei")
+			uni.setStorageSync("imei", imei);
+			console.log('imei'+imei);
+			
+			// let recommend_user_id = tmpParas["recommend_user_id"];//提取参数
+			let recommend_user_id = this.getQueryString("recommend_user_id");//提取参数
 			console.log(recommend_user_id);
 			uni.setStorageSync("recommend_user_id", recommend_user_id);
 			
-			let recommend_channel = tmpParas["recommend_channel"];//提取参数
+			// let recommend_channel = tmpParas["recommend_channel"];//提取参数
+			let recommend_channel = this.getQueryString("recommend_channel");//提取参数
 			console.log(recommend_channel);
 			uni.setStorageSync("recommend_channel", recommend_channel);
 			
-			let isagent = tmpParas["isagent"];//提取参数
+			// let isagent = tmpParas["isagent"];//提取参数
+			let isagent = this.getQueryString("isagent");//提取参数
 			console.log(isagent);
 			uni.setStorageSync("isagent", isagent);
 			
@@ -54,7 +61,17 @@
 					}  
 				}  
 				return theRequest;  
+			},
+			getQueryString(name) {
+				var reg = new RegExp("[?&]" + name + "=([^&#]*)", "i");
+				var res = window.location.href.match(reg);
+			 
+				if( res && res.length>1 ){
+					return decodeURIComponent(res[1]);
+				}
+				return '';
 			}
+
 		}
     }
 </script>

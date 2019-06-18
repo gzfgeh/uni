@@ -1,63 +1,63 @@
 {
-  "pages": [
-    "pages/tabbar/home/home",
-    "pages/tabbar/mall_type/mall_type",
-    "pages/mall_list/mall_list",
-    "pages/tabbar/card/card",
-    "pages/tabbar/my/my",
-    "pages/order_list/order_list",
-    "pages/login/login",
-    "pages/home_webview/home_webview",
-    "pages/address_list/address_list",
-    "pages/add_address/add_address",
-    "pages/goods_detail/goods_detail",
-    "pages/goods_search/goods_search",
-    "pages/post_order/post_order",
-    "pages/about_us/about_us",
-    "pages/fix_page/fix_page",
-    "pages/ku_cun_list/ku_cun_list",
-    "pages/in_order_list/in_order_list",
-    "pages/sell_order_list/sell_order_list"
-  ],
-  "subPackages": [],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "比安易桥系统",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "tabBar": {
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "color": "#888888",
-    "selectedColor": "#ff4544",
-    "list": [
-      {
-        "pagePath": "pages/tabbar/home/home",
-        "iconPath": "static/img/tabbar/home.png",
-        "selectedIconPath": "static/img/tabbar/homeactive.png",
-        "text": "商品"
-      },
-      {
-        "pagePath": "pages/tabbar/mall_type/mall_type",
-        "iconPath": "static/img/tabbar/guanzhu.png",
-        "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
-        "text": "分类"
-      },
-      {
-        "pagePath": "pages/tabbar/card/card",
-        "iconPath": "static/img/tabbar/news.png",
-        "selectedIconPath": "static/img/tabbar/newsactive.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/tabbar/my/my",
-        "iconPath": "static/img/tabbar/me.png",
-        "selectedIconPath": "static/img/tabbar/meactive.png",
-        "text": "我"
-      }
-    ]
-  },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/tabbar/home/home",
+        "pages/tabbar/mall_type/mall_type",
+        "pages/mall_list/mall_list",
+        "pages/tabbar/card/card",
+        "pages/tabbar/my/my",
+        "pages/order_list/order_list",
+        "pages/login/login",
+        "pages/home_webview/home_webview",
+        "pages/address_list/address_list",
+        "pages/add_address/add_address",
+        "pages/goods_detail/goods_detail",
+        "pages/goods_search/goods_search",
+        "pages/post_order/post_order",
+        "pages/about_us/about_us",
+        "pages/fix_page/fix_page",
+        "pages/ku_cun_list/ku_cun_list",
+        "pages/in_order_list/in_order_list",
+        "pages/sell_order_list/sell_order_list"
+    ],
+    "subPackages": [],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "比安易桥系统",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "color": "#888888",
+        "selectedColor": "#ff4544",
+        "list": [
+            {
+                "pagePath": "pages/tabbar/home/home",
+                "iconPath": "static/img/tabbar/home.png",
+                "selectedIconPath": "static/img/tabbar/homeactive.png",
+                "text": "商品"
+            },
+            {
+                "pagePath": "pages/tabbar/mall_type/mall_type",
+                "iconPath": "static/img/tabbar/guanzhu.png",
+                "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/tabbar/card/card",
+                "iconPath": "static/img/tabbar/news.png",
+                "selectedIconPath": "static/img/tabbar/newsactive.png",
+                "text": "购物车"
+            },
+            {
+                "pagePath": "pages/tabbar/my/my",
+                "iconPath": "static/img/tabbar/me.png",
+                "selectedIconPath": "static/img/tabbar/meactive.png",
+                "text": "我"
+            }
+        ]
+    },
+    "usingComponents": {},
+    "sitemapLocation": "sitemap.json"
 }

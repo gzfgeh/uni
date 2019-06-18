@@ -79,7 +79,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getOrder,addOrder } from '@/utils/api'
+	import { BASE_IMAGE_URL,getOrder,addOrder,confirmReceipt } from '@/utils/api'
 	import uniPopup from '@/components/uni-popup.vue'
 	import uniLoadMore from '@/components/uni-load-more.vue';
 	export default {
