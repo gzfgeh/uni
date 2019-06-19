@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<div class="list_wrap">
-			<navigator v-for="(item, index) in list" :key="index" class="list_item" @click="goToDetail(index)">
+			<navigator v-for="(item, index) in list" :key="index" class="list_item" >
 				<image :src="item.g_img" mode="aspectFill"></image>
 				<div class="item_info">
 					<span class="item_info_text">{{item.g_name}}</span>
@@ -44,7 +44,7 @@
 				<div class="company-code">
 					<input type="number" maxlength="5" v-model="companyCode" placeholder="输入预警数"  />
 				</div>
-				<button size="mini" @tap="bindCompanyCode()">提交</button>
+				<button type="primary" @tap="bindCompanyCode()">提交</button>
 			</div>
 		</uni-popup>
 		
@@ -119,6 +119,33 @@
 				this.curType = index;
 			},
 			async addSaleOrder(){
+				if(!this.o_name){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入姓名"
+					});
+					return;
+				};
+				
+				if(!this.o_phone){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入手机号"
+					});
+					return;
+				};
+				
+				if(!this.o_num || (this.o_num == 0)){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入正确的数值"
+					});
+					return;
+				};
+				
 				let params = {
 					o_name: this.o_name,
 					o_phone: this.o_phone,
@@ -142,6 +169,14 @@
 				}
 			},
 			async bindCompanyCode(){
+				if(!this.companyCode || (this.companyCode == 0)){
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: "请输入正确的数值"
+					});
+					return;
+				};
 				let params = {
 					k_g_id: this.list[this.curType].g_id,
 					k_m_id: uni.getStorageSync("userInfo").m_id,
