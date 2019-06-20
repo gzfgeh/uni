@@ -30,7 +30,7 @@
 		data() {
 			return {
 				val: 'https://www.baidu.com',
-				cover: 'https://inews.gtimg.com/newsapp_bt/0/2543905722/1000'
+				cover: '../../static/center-1.png'
 			};
 		},
 		onLoad() {},
@@ -43,7 +43,7 @@
 				uni.getImageInfo({
 					src: that.cover,
 					success(res) {
-						console.log(res.path);
+						res.path = that.cover;
 						ctx.drawImage(res.path, 0, 0, 375, uni.upx2px(1020));
 						let linearGrad = ctx.createLinearGradient(0, 0, 800, 0);
 						linearGrad.addColorStop('0.25', '#8b00d2');
@@ -58,41 +58,46 @@
 						console.log("111111");
 						ctx.draw(false, () => {
 							console.log("1234");
-							uni.canvasToTempFilePath({
-								x: 0,
-								y: 0,
-								width: 375,
-								height: uni.upx2px(1020),
-								destWidth: 375,
-								destHeight: uni.upx2px(1020),
-								canvasId: 'firstCanvas',
-								success: function(res) {
-									
-									console.log(res.tempFilePath);
-									base64ToPath(res.tempFilePath)
-									  .then(path => {
-										console.log(path)
-										that.cover = path;
-									  })
-									  .catch(error => {
-										console.error(error)
-									  })
-									return;
-									uni.saveImageToPhotosAlbum({
-										filePath: res.tempFilePath,
-										success: function() {
-											console.log('save success');
-										}
-									});
-								},
-								fail(e) {
-									console.log(e);
-									uni.showToast({
-										title: '生成海报失败',
-										icon: 'none'
-									});
-								}
-							});
+							setTimeout( () => {
+								uni.canvasToTempFilePath({
+									x: 0,
+									y: 0,
+									width: 375,
+									height: uni.upx2px(1020),
+									destWidth: 375,
+									destHeight: uni.upx2px(1020),
+									canvasId: 'firstCanvas',
+									success: function(res) {
+										
+										console.log(res.tempFilePath);
+										that.cover = res.tempFilePath;
+										return;
+										base64ToPath(res.tempFilePath)
+										  .then(path => {
+											console.log(path)
+											that.cover = path;
+										  })
+										  .catch(error => {
+											console.error(error)
+										  })
+										return;
+										uni.saveImageToPhotosAlbum({
+											filePath: res.tempFilePath,
+											success: function() {
+												console.log('save success');
+											}
+										});
+									},
+									fail(e) {
+										console.log(e);
+										uni.showToast({
+											title: '生成海报失败',
+											icon: 'none'
+										});
+									}
+								});
+							}, 2000);
+							
 						});
 					},
 					fail(error) {
