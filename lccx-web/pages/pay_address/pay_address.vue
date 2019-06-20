@@ -227,16 +227,6 @@ export default {
 				openid: openid,
         paytype: 1,
       };
-			console.log(this.licheng_order_id);
-			let test = uni.getStorageSync("test");
-			if(test == true){
-				wx.showToast({
-						title: '支付失败,服务器错误',
-						icon: 'none',
-						duration: 1000
-				});
-				return;
-			}
       let res = await pay(this.licheng_order_id, params);
       if(res.success){
         //this.next();

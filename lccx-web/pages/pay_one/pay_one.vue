@@ -20,7 +20,7 @@
         <div class="item_right" style="margin-bottom: 0rpx;">
           <div class="item_right_wrap">
             <span class="name">交强险</span>
-            <span class="money">服务费用：970元</span>
+            <span class="money">服务费用：{{allMoney}}元</span>
           </div>
           <span class="item_status active">未付款</span>
         </div>
@@ -42,7 +42,8 @@
 export default {
   data(){
     return{
-			jiaoqiang_order_id: 3
+			jiaoqiang_order_id: 3,
+			allMoney: ''
     }
   },
 
@@ -59,6 +60,7 @@ export default {
     this.global = wx.getStorageSync("global");
     this.jiaoqiang_order_id = this.$root.$mp.query.jiaoqiang_order_id;
     this.jiaoqiang_order_id = this.jiaoqiang_order_id ? this.jiaoqiang_order_id : 4;
+		this.allMoney = parseInt(this.global.compulsory) + parseInt(this.global.tax);
   },
 
 }

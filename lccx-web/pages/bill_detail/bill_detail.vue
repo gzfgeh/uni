@@ -61,6 +61,7 @@
 </template>
 <script>
 import { BASE_IMAGE_URL,getOrders} from "@/utils/api";
+import {isWeiXin} from "@/utils/index.js"
 
 export default {
   data(){
@@ -120,8 +121,32 @@ export default {
         //未付款
         if(index == 1){
           //里程车险
-          const url = "../pay_address/pay_address?id="+item.id;
-          wx.navigateTo({ url });
+     //      const url = "../pay_address/pay_address?quotation_id="+item.quotation_id;
+     //      wx.navigateTo({ url });
+					// return;
+					
+					let openid = uni.getStorageSync("openid");
+					console.log(openid);
+					
+					if(!isWeiXin()){
+						uni.removeStorageSync("openid");
+					}
+				
+					if(!openid){
+						if(isWeiXin()){
+							//如果是微信浏览器 去获取openid
+							let partner_id = uni.getStorageSync("partner_id");
+							let imei = uni.getStorageSync("imei");
+							window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx49aad3a138063b53&redirect_uri=https://api.kaikaibao.com.cn/3.1/getoauth?redit_url=https%3a%2f%2fm.kaikaibao.com.cn%2flccx2%2findex.html%23%2fpages%2fpay_address%2fpay_address%3fquotation_id%3d"+item.quotation_id+"%26partner_id%3d"+partner_id+"%26imei%3d"+imei+"&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect";
+						}else{
+							const url = '../pay_address/pay_address?quotation_id='+item.quotation_id;
+							uni.navigateTo({ url })
+						}
+					}else{
+						const url = '../pay_address/pay_address?quotation_id='+item.quotation_id;
+						uni.navigateTo({ url })
+					}
+			
         }else{
           //交强险
           wx.showModal({
@@ -132,7 +157,7 @@ export default {
                   //点击取消,默认隐藏弹框
                 } else {
                   //点击确定
-                  const url = "../pay_address/pay_address?id="+item.id;
+                  const url = "../pay_address/pay_address?quotation_id="+item.quotation_id;
                     wx.navigateTo({ url });
                 }
             }

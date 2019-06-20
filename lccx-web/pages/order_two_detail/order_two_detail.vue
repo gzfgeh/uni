@@ -27,7 +27,7 @@
 			
 			<div class="content_item uni-between-item">
 				<span>保单号：</span>
-				<div>{{sn}}</div>
+				<div>{{policyno}}</div>
 			</div>
 		</div>
 		
@@ -144,7 +144,7 @@
 			compulsory: '',
 			tax: '',
 			starts_on: '',
-			sn: 0,
+			policyno: 0,
 			ends_on: '',
 			companyNameList: ['安盛天平', '天安财险', '大地保险'],
         companyLogo: [BASE_IMAGE_URL+'an_sheng.png', BASE_IMAGE_URL+'tian_an.png', BASE_IMAGE_URL+'da_di.png'],
@@ -216,7 +216,7 @@
 						
 					this.starts_on = this.item.starts_on;
 					this.ends_on = this.item.ends_on;
-					this.sn = this.item.sn;
+					this.policyno = this.item.policyno;
 					this.monthly_expense = this.item.monthly_expense;
 					this.mileage_expense = this.item.mileage_expense;
 					this.compulsory = parseInt(this.item.compulsory);
