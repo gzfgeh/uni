@@ -1,5 +1,13 @@
 {
-	"pages": [{
+	"pages": [
+		{
+			"path": "pages/main/main",
+			"style": {
+				"navigationBarTitleText": "最热",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 			"path": "pages/new/new",
 			"style": {
@@ -68,7 +76,11 @@
 			"path": "pages/about/about",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/main/main",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "看图",
