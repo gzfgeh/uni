@@ -84,7 +84,8 @@
 						go_count: item.ct_count,
 						go_g_price: item.g_price,
 						go_g_name: item.g_name,
-						go_g_img: item.g_img
+						go_g_img: item.g_img,
+						go_t_is_no: item.t_is_no
 					}
 					goodsDetail.push(p);
 				});

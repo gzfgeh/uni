@@ -114,6 +114,12 @@
 				"enablePullDownRefresh": true
 			}
         }
+        ,{
+            "path" : "pages/send_goods/send_goods",
+            "style" : {
+				"navigationBarTitleText": "发货"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

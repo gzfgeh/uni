@@ -125,6 +125,11 @@
 				}
 			},
 			setExpress(index){
+				uni.setStorageSync("good_list", this.list[index].good_list)
+				uni.navigateTo({
+					url:'../send_goods/send_goods?o_id='+this.list[index].o_id
+				});
+				return;
 				this.express_name = "";
 				this.express_no = "";
 				this.type = 'middle';
