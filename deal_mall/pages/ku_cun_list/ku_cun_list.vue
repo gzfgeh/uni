@@ -106,7 +106,8 @@
 				o_phone: '',
 				o_num: '',
 				sellType: '',
-				m_role: 0
+				m_role: 0,
+				reportForm: true
 			}
 		},
 		methods: {
@@ -128,6 +129,7 @@
 				this.curType = index;
 			},
 			async addSaleOrder(formid){
+				
 				if(!this.o_name){
 					uni.showToast({
 						icon: 'none',
@@ -300,7 +302,7 @@
 .company-code input{border:1px solid #eee;text-align:left;padding:20upx;}
 	
 .company-modal1{width:600upx;text-align:center;}
-.company-modal1 .content_wrap{margin: 20upx 0upx;}
+.company-modal1 .content_wrap{margin: 20upx 0upx 100upx; }
 .company-code1{padding:10upx 0 10upx 0;display: flex; flex-direction: row; align-items: center;border:1px solid #eee;}
 .company-code1 span{display: inline-block; min-width: 200upx;}
 .company-code1 input{border:none;text-align:left;padding:10upx; flex: 1;}

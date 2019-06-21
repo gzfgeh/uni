@@ -16,7 +16,8 @@
 .company-code{padding:10rpx 0 30rpx 0;}
 .company-code input{border:1px solid #eee;text-align:left;padding:20rpx;}
 .company-modal1{width:600rpx;text-align:center;}
-.company-modal1 .content_wrap{margin: 20rpx 0rpx;}
+.company-modal1 .content_wrap{margin: 20rpx 0rpx 100rpx;
+}
 .company-code1{padding:10rpx 0 10rpx 0;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center;border:1px solid #eee;}
 .company-code1 ._span{display: inline-block; min-width: 200rpx;}
 .company-code1 input{border:none;text-align:left;padding:10rpx; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1;}

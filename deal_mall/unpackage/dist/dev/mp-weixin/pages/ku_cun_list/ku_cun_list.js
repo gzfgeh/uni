@@ -206,7 +206,8 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       o_phone: '',
       o_num: '',
       sellType: '',
-      m_role: 0 };
+      m_role: 0,
+      reportForm: true };
 
   },
   methods: {
@@ -228,6 +229,7 @@ var _api = __webpack_require__(/*! @/utils/api */ "../../../../../../Users/tuyao
       this.curType = index;
     },
     addSaleOrder: function () {var _addSaleOrder2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(formid) {var params, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+
                 this.o_name) {_context.next = 3;break;}
                 uni.showToast({
                   icon: 'none',
