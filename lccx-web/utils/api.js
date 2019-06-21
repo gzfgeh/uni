@@ -287,3 +287,92 @@ export function history(time) {
 export function orderStaus(params){
 	return request.post('3.1/orderStaus', qs.stringify(params))
 }
+
+
+//代理人平台接口
+/**
+ * get 根据openid登录
+ */
+export function dlrLogin(params){
+	return request.get('3.1/agents/session?openid=' + params)
+}
+
+/**
+ * post 代理人登录获取验证码
+ */
+export function dlrLoginCode(params){
+	return request.post('1.0/send/login', qs.stringify(params))
+}
+
+/**
+ * post 代理人登录
+ */
+export function dlrHandleLogin(params){
+	return request.post('3.1/agents/login', qs.stringify(params))
+}
+
+/**
+ * post 代理人注册获取验证码
+ */
+export function dlrRegisterCode(params){
+	return request.post('1.0/send/register', qs.stringify(params))
+}
+
+/**
+ * post 代理人注册
+ */
+export function dlrRegister(params){
+	return request.post('3.1/agents/register', qs.stringify(params))
+}
+
+/**
+ * get 获取地区
+ */
+export function getRegions(){
+	return request.get('3.1/agents/regions')
+}
+
+/**
+ * get 获取海报
+ */
+export function getPosterImg(){
+	return request.get('3.1/agents/posters')
+}
+
+/**
+ * get 获取我的资产
+ */
+export function getMyAssets(){
+	return request.get('3.1/agents/assets')
+}
+
+/**
+ * put 修改银行卡
+ */
+export function bindCard(params){
+	return request.put('3.1/agents/bank_card', qs.stringify(params))
+}
+
+/**
+ * post 提现
+ */
+export function withdraw(params){
+	return request.post('3.1/agents/withdraw', qs.stringify(params))
+}
+
+/**
+ * get 获取提现记录
+ */
+export function getWithdrawRecord(){
+	return request.get('3.1/agents/withdrew')
+}
+
+/**
+ * get 获取收入记录
+ */
+export function getIncomeRecord(){
+	return request.get('3.1/agents/incomes')
+}
+
+
+

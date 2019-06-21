@@ -66,7 +66,12 @@
 					</div>
 				</div>
 				
-				<button size="mini" @tap="addSaleOrder()">提交</button>
+				<!-- <button type="primary">提交</button> -->
+				<form @submit="formSubmit" :report-submit="reportForm">
+					<view class="btn-area">
+						<button form-type="submit" class="bottom_wrap formid">提交</button>
+					</view>
+				</form>
 			</div>
 		</uni-popup>
 		
@@ -105,6 +110,10 @@
 			}
 		},
 		methods: {
+			formSubmit: function(e) {
+				console.log('form发生了submit事件，携带数据为：', e.detail.formId);
+				this.addSaleOrder(e.detail.formId);
+			 },
 			hidePop(){
 				this.type="";
 			},
@@ -118,7 +127,7 @@
 				this.o_num = "";
 				this.curType = index;
 			},
-			async addSaleOrder(){
+			async addSaleOrder(formid){
 				if(!this.o_name){
 					uni.showToast({
 						icon: 'none',
@@ -154,7 +163,9 @@
 					go_g_price: this.list[this.curType].g_price,
 					go_g_name: this.list[this.curType].g_name,
 					go_g_img: this.list[this.curType].g_img,
-					o_openid: uni.getStorageSync("openid")
+					o_openid: uni.getStorageSync("openid"),
+					go_t_is_no: this.list[this.curType].go_t_is_no,
+					formid: formid
 				};
 				let res = await addSaleOrder(params);
 				if(res.code == 1000){
@@ -265,6 +276,9 @@
 </script>
 
 <style>
+	
+.bottom_wrap{position: absolute;bottom: 0upx;left:0upx; width: 100%; height: 100upx;line-height: 100upx;text-align: center;color: #FFF; background: #FF4544; font-size: 34upx;border-radius: 0upx;}
+
 .head_wrap{width: 100%; display: flex; flex-direction: row;position: fixed;top: 0upx; left: 0upx;background-color: #FFF;border-top: 2upx solid #E3E3E3; height: 100upx;}
 .head_item{flex: 1;}
 .active_type{color: #FF4544;}

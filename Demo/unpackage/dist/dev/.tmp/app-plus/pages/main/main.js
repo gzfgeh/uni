@@ -130,7 +130,7 @@ var _index = __webpack_require__(/*! @/components/image-tools/index.js */ "../..
   data: function data() {
     return {
       val: 'https://www.baidu.com',
-      cover: 'https://inews.gtimg.com/newsapp_bt/0/2543905722/1000' };
+      cover: '../../static/center-1.png' };
 
   },
   onLoad: function onLoad() {},
@@ -143,7 +143,7 @@ var _index = __webpack_require__(/*! @/components/image-tools/index.js */ "../..
       uni.getImageInfo({
         src: that.cover,
         success: function success(res) {
-          console.log(res.path, " at pages/main/main.vue:46");
+          res.path = that.cover;
           ctx.drawImage(res.path, 0, 0, 375, uni.upx2px(1020));
           var linearGrad = ctx.createLinearGradient(0, 0, 800, 0);
           linearGrad.addColorStop('0.25', '#8b00d2');
@@ -158,45 +158,50 @@ var _index = __webpack_require__(/*! @/components/image-tools/index.js */ "../..
           console.log("111111", " at pages/main/main.vue:58");
           ctx.draw(false, function () {
             console.log("1234", " at pages/main/main.vue:60");
-            uni.canvasToTempFilePath({
-              x: 0,
-              y: 0,
-              width: 375,
-              height: uni.upx2px(1020),
-              destWidth: 375,
-              destHeight: uni.upx2px(1020),
-              canvasId: 'firstCanvas',
-              success: function success(res) {
+            setTimeout(function () {
+              uni.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: 375,
+                height: uni.upx2px(1020),
+                destWidth: 375,
+                destHeight: uni.upx2px(1020),
+                canvasId: 'firstCanvas',
+                success: function success(res) {
 
-                console.log(res.tempFilePath, " at pages/main/main.vue:71");
-                (0, _index.base64ToPath)(res.tempFilePath).
-                then(function (path) {
-                  console.log(path, " at pages/main/main.vue:74");
-                  that.cover = path;
-                }).
-                catch(function (error) {
-                  console.error(error, " at pages/main/main.vue:78");
-                });
-                return;
-                uni.saveImageToPhotosAlbum({
-                  filePath: res.tempFilePath,
-                  success: function success() {
-                    console.log('save success', " at pages/main/main.vue:84");
-                  } });
+                  console.log(res.tempFilePath, " at pages/main/main.vue:72");
+                  that.cover = res.tempFilePath;
+                  return;
+                  (0, _index.base64ToPath)(res.tempFilePath).
+                  then(function (path) {
+                    console.log(path, " at pages/main/main.vue:77");
+                    that.cover = path;
+                  }).
+                  catch(function (error) {
+                    console.error(error, " at pages/main/main.vue:81");
+                  });
+                  return;
+                  uni.saveImageToPhotosAlbum({
+                    filePath: res.tempFilePath,
+                    success: function success() {
+                      console.log('save success', " at pages/main/main.vue:87");
+                    } });
 
-              },
-              fail: function fail(e) {
-                console.log(e, " at pages/main/main.vue:89");
-                uni.showToast({
-                  title: '生成海报失败',
-                  icon: 'none' });
+                },
+                fail: function fail(e) {
+                  console.log(e, " at pages/main/main.vue:92");
+                  uni.showToast({
+                    title: '生成海报失败',
+                    icon: 'none' });
 
-              } });
+                } });
+
+            }, 2000);
 
           });
         },
         fail: function fail(error) {
-          console.log(error, " at pages/main/main.vue:99");
+          console.log(error, " at pages/main/main.vue:104");
         } });
 
 

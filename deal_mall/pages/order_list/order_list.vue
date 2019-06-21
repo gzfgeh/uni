@@ -125,7 +125,18 @@
 				}
 			},
 			setExpress(index){
-				uni.setStorageSync("good_list", this.list[index].good_list)
+				this.list[index].good_list.map((item)=>{
+					item.go_no_list = [];
+					for(let i=0; i<parseInt(item.go_count); i++){
+						if(parseInt(item.go_t_is_no) == 1){
+							let p = {
+								go_id: ''
+							};
+							item.go_no_list.push(p);
+						}
+					}
+				});
+				uni.setStorageSync("good_list", this.list[index].good_list);
 				uni.navigateTo({
 					url:'../send_goods/send_goods?o_id='+this.list[index].o_id
 				});
@@ -166,7 +177,7 @@
 			this.list = [];
 			this.getList();
 		},
-		onLoad(){
+		onShow(){
 			
 			this.getList();
 		}

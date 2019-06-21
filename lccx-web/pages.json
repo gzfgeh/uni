@@ -121,7 +121,62 @@
             "style" : {
                 "navigationBarTitleText" : "登录"
             }
-        }
+        },
+		//代理人平台页面
+        {
+            "path" : "pages/dlr_login/dlr_login",
+            "style" : {
+                "navigationBarTitleText" : "登录"
+            }
+        },
+        {
+            "path" : "pages/dlr_register/dlr_register",
+            "style" : {
+                "navigationBarTitleText" : "注册"
+            }
+        },
+        {
+            "path" : "pages/dlr_card_info/dlr_card_info",
+            "style" : {
+                "navigationBarTitleText" : "银行卡信息"
+            }
+        },
+        {
+            "path" : "pages/dlr_poster/dlr_poster",
+            "style" : {
+                "navigationBarTitleText" : "代理人海报"
+            }
+        },
+		{
+            "path" : "pages/dlr_my_assets/dlr_my_assets",
+            "style" : {
+                "navigationBarTitleText" : "我的资产"
+            }
+		},
+		{
+            "path" : "pages/dlr_detailed/dlr_detailed",
+            "style" : {
+                "navigationBarTitleText" : "明细"
+            }
+		},
+		{
+            "path" : "pages/dlr_withdraw/dlr_withdraw",
+            "style" : {
+                "navigationBarTitleText" : "提现"
+            }
+		},
+		{
+            "path" : "pages/dlr_card_list/dlr_card_list",
+            "style" : {
+                "navigationBarTitleText" : "银行卡"
+            }
+		},
+		{
+            "path" : "pages/dlr_withdraw_success/dlr_withdraw_success",
+            "style" : {
+                "navigationBarTitleText" : "提现成功"
+            }
+		}
     ],
     "tabBar" : {
         "color" : "#7a7e83",

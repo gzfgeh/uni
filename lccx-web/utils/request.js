@@ -95,7 +95,16 @@ request.interceptors.response.use(
         } else if (err.status == 1) {
             errorMsg = '网络连接超时'
         } else if(err.status == 422){
-			errorMsg = ''
+			if(err.response.data.errors){
+				for(var key in err.response.data.errors){
+					if(key){
+						errorMsg = err.response.data.errors[key][0]
+						break
+					}
+				}
+			} else {
+				errorMsg = err.response.data.msg
+			}
 		}else {
             if (err.response.data.errors && err.response.data.errors.code) {
                 errorMsg = err.response.data.errors.code[0]

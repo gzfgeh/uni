@@ -31,7 +31,7 @@
 		<!-- <div class="bottom_wrap" @click="confirmShipping">提交</div> -->
 		<form @submit="formSubmit" :report-submit="reportForm">
 			<view class="btn-area">
-				<button formType="submit" class="bottom_wrap">提交</button>
+				<button form-type="submit" class="bottom_wrap formid">提交</button>
 			</view>
 		</form>
 
@@ -58,21 +58,13 @@
 		onLoad(opt) {
 			this.o_id = opt.o_id;
 			this.list = uni.getStorageSync("good_list");
-			this.list.map((item)=>{
-				item.go_no_list = [];
-				for(let i=0; i<parseInt(item.go_count); i++){
-					let p = {
-						go_id: ''
-					};
-					item.go_no_list.push(p);
-				}
-			})
 		},
 		methods: {
 			formSubmit: function(e) {
-				console.log('form发生了submit事件，携带数据为：', e.detail.value)
+				console.log('form发生了submit事件，携带数据为：', e.detail.formId);
+				this.confirmShipping(e.detail.formId);
 			 },
-			async confirmShipping(){
+			async confirmShipping(formId){
 				if(!this.express_name){
 					uni.showToast({
 						icon: 'none',
@@ -101,6 +93,8 @@
 					
 					let para = {
 						go_id: item.go_id,
+						go_g_id: item.go_g_id,
+						go_g_name:item.go_g_name,
 						go_no_list: no_list
 					};
 					gn_no_list.push(para);
@@ -111,9 +105,11 @@
 					o_id: this.o_id,
 					o_express_name: this.express_name,
 					o_express_no: this.express_no,
-					gn_no_list: go_no_list,
-					formid: this.formid
+					gn_no_list: gn_no_list,
+					formid: formId
 				};
+				// console.log(params);
+				// return;
 				let res = await confirmShipping(params);
 				
 				if(res.code == 1000){
@@ -125,6 +121,12 @@
 					uni.navigateBack({
 						delta: 1
 					});
+				}else{
+					uni.showToast({
+						icon: 'none',
+						duration: 1000,
+						title: res.msg
+					})
 				}
 			}
 		}
@@ -178,8 +180,8 @@
 	  padding: 10upx 0upx;
 	}
 	
-	.bycode input{margin: 10upx 0upx;}
-
+	.bycode input{margin: 10upx 0upx;border-bottom: 2upx solid #E3E3E3;}
+	.bycode input:last-child{border: none}
     .item .content {
       flex: 1;
       text-align: right;
