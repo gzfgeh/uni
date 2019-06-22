@@ -122,6 +122,11 @@
 				this.sellType = "";
 			},
 			setSellValue(index){
+				uni.setStorageSync("good_list", this.list[index]);
+				uni.navigateTo({
+					url:'../sell_goods/sell_goods'
+				});
+				return;
 				this.sellType = "middle";
 				this.o_name = "";
 				this.o_phone = "";
@@ -271,6 +276,9 @@
 		onLoad(options){
 			this.g_type = options.g_type;
 			this.m_role = uni.getStorageSync("userInfo").m_role;
+			
+		},
+		onShow(){
 			this.getList();
 		}
 		
