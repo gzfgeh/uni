@@ -14,7 +14,7 @@
 		<div v-for="(item,index) in listData" :key="index" >
 			<view  class="row item_wrap">
 				
-				<img :src="item.g_img">
+				<img :src="item.g_img" @click="previewImage(index)">
 				
 				<div class="item_content_wrap">
 					<div class="item_title">{{item.g_name}}</div>
@@ -132,6 +132,14 @@
 			this.goodsList();
 		},
 		methods: {
+			previewImage: function(index) {
+				let imageList = [];
+				imageList.push(this.listData[index].g_img);
+				uni.previewImage({
+					current: this.listData[index].g_img,
+					urls: imageList
+				})
+			},
 			back() {
 				uni.navigateBack({
 					delta: 1

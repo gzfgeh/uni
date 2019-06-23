@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/tuyao/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si-rLK/values-si-rLK.xml",
+            "outputFile": "/Users/guzhenfu/Documents/uni/UniPlugin-Hello-AS/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si-rLK/values-si-rLK.xml",
             "map": [
                 {
-                    "source": "/Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/ce7b7f120f39211894ae15e311a1a3be/res/values-si-rLK/values-si-rLK.xml",
+                    "source": "/Users/guzhenfu/.gradle/wrapper/dists/gradle-2.14.1-all/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/b64ab8b9073b966cd05621e548a03610/res/values-si-rLK/values-si-rLK.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
