@@ -2,6 +2,7 @@
 	<view class="content">
 		<div style="width: 100%;">
 			<button type="primary" @tap="saveToAlbum">保存</button>
+			<button type="primary" @tap="shareFriend">微信好友分享</button>
 		</div>
 		
 		<view class="post">

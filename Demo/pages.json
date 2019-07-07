@@ -15,6 +15,7 @@
 				"enablePullDownRefresh": true
 			}
 		},
+		
 		{
 			"path": "pages/hot/hot",
 			"style": {
