@@ -2,7 +2,7 @@
 	<view class="content">
 		<div style="width: 100%;">
 			<button type="primary" @tap="saveToAlbum">保存</button>
-			<button type="primary" @tap="shareFriend">微信好友分享</button>
+			<button type="primary" @tap="getShareData">微信好友分享</button>
 		</div>
 		
 		<view class="post">
@@ -22,7 +22,10 @@
  
 <script>
 	import tkiQrcode from '@/components/tki-qrcode/tki-qrcode.vue';
-	import { pathToBase64, base64ToPath } from '@/components/image-tools/index.js'
+	import { pathToBase64, base64ToPath } from '@/components/image-tools/index.js';
+	import weixin_sdk from '@/utils/weixin-jsapi.js';
+	import { getShareData } from '@/utils/api.js';
+	
 	export default {
 		name: 'canvas-drawer',
 		components: {
@@ -36,6 +39,47 @@
 		},
 		onLoad() {},
 		methods: {
+			async getShareData(){
+				let res = await getShareData();
+				if(res.code == 1000){
+					this.shareFriend(res.data);
+				}
+			},
+			async shareFriend(result){
+				
+				weixin_sdk.config({
+						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						appId: 'wx619e8821f163f2cc', // 必填，企业号的唯一标识，此处填写企业号corpid
+						timestamp: result.timestamp, // 必填，生成签名的时间戳
+						nonceStr: result.noncestr, // 必填，生成签名的随机串
+						signature: result.signature,// 必填，签名，见附录1
+						jsApiList: ['onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+				
+				weixin_sdk.ready(function(){
+					weixin_sdk.onMenuShareTimeline({
+						title: 'test1', // 分享标题
+						link: 'https://www.gzfgeh.xyz', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+						imgUrl: 'https://www.baidu.com/img/bd_logo1.png?where=super', // 分享图标
+						success: function () {
+						// 用户点击了分享后执行的回调函数
+						},
+						cancel: function () {
+						// 用户点击了取消分享后执行的回调函数
+						}
+					 });
+
+				})
+						
+				weixin_sdk.error(function(err){
+					wx.showToast({
+							title: '支付失败',
+							icon: 'none',
+							duration: 1000
+					});
+				})
+				
+			},
 			qrR(path) {
 				let that = this;
 				this.qr_path = path;

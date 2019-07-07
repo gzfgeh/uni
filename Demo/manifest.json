@@ -28,7 +28,8 @@
         "router" : {
             "mode" : "hash",
             "base" : "/h5/"
-        }
+        },
+        "domain" : "https://www.gzfgeh.xyz"
     }
 }
 // 小程序特有相关

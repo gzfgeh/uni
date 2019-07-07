@@ -1,7 +1,11 @@
 import request from './request'
 var qs = require('qs')
 
-export const BASE_IMAGE_URL = 'https://bay.2donghua.com/';
+export const BASE_IMAGE_URL = 'https://www.gzfgeh.xyz/';
+
+export function getShareData() {
+    return request.get('Api/Weixin/getShareData');
+}
 
 /**
  * 商品分类
