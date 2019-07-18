@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="../css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+    <link rel="stylesheet" href="../css/app.css">
+	
+	<style type="text/css">
+        html,
+        body, .mui-content {
+            background: #FFF;
+            height: 100%;
+        }
+		.head_icon{width: 30px; height: 30px; border-radius: 50%; top: 6px; right: 10px;}
+		
+		.item_wrap{margin-left: 4%; width: 92%; font-size: 12px; color: #999;}
+		.item_wrap .title{margin-bottom: 10px;}
+		.item_wrap .item{position: relative;background: #F2F2F2;height: 40px;}
+		.item_wrap .item div{height: 100%;  display: inline-block; width: 40%;position: absolute; }
+		.item_wrap .item input{border:none;height: 40px;background: #F2F2F2;color: #000000; width: 60%;}
+		::-webkit-input-placeholder{color: #999999;font-size: 14px;}
+		::-webkit-textarea-placeholder{color: #999999;font-size: 14px;}
+		.item_wrap .item img{ width: 17px; height: 15px; position: absolute; right: 15px; top: 12px; }
+		
+		.item_wrap .item_select{border: 1px solid #E0E0E0; border-radius: 3px; height: 40px; padding: 0px 15px;}
+		.item_wrap .item_select img{width: 12px; height: 6px;}
+		.item_wrap .item_select .text{color: #000; font-size: 15px;}
+		
+		textarea{background: #F2F2F2; height: 85px; border:none;}
+		
+		
+		.upload_img_wrap{width: 32%;position: relative;margin-right: 1%;
+				padding: 1%;box-sizing: border-box;} 
+			
+		.upload_img_wrap .img_btn{width: 100%;max-height: 1rem;}
+			
+		.upload_img_wrap .del_btn{position: absolute;top: -0.05rem;
+				right: -0rem;width: 0.2rem;height: 0.2rem;z-index: 10;}
+				
+		.btn_wrap{width: 90%;background: #0B2A47;color: #FFF; height: 50px; margin: 20px 5% 50px;}
+		.btn_wrap button{height: 50px; line-height: 50px; text-align: center; color: #FFFFFF; background-color: transparent;}
+					
+		.print_btn{width: 90%;background: #EC9924;color: #FFF; height: 50px; margin: 80px 5% 0px;}
+    </style>
+	
+</head>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        
+        <h1 class="mui-title">录入</h1>
+        <!-- <img src="../images/splash.png"  class="head_icon"/> -->
+    </header>
+
+    <div class="mui-content">
+		<div class="item_wrap" style="margin-top: 30px;">
+			<div class="title">车牌号</div>
+			<div class="item">
+				<input type="text" placeholder="请输入车牌号">
+				<div id="take_photo">
+					<img src="../images/camera.png" >
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="item_wrap car_select" style="margin-top: 10px;">
+			<div class="title">违章车型</div>
+			<div class="item_select row_between">
+				<span class="text" id="car_text">燃油车（小型）</span>
+				<img src="../images/arraw_down.png">
+			</div>
+		</div>
+		
+		<div class="item_wrap name_select" style="margin-top: 10px;">
+			<div class="title">路队中段</div>
+			<div class="item_select row_between">
+				<span class="text" id="name_text">公园中队</span>
+				<img src="../images/arraw_down.png">
+			</div>
+		</div>
+		
+		<div class="item_wrap road_select" style="margin-top: 10px;">
+			<div class="title">拍照路段</div>
+			<div class="item_select row_between">
+				<span class="text" id="road_text">国庆路</span>
+				<img src="../images/arraw_down.png">
+			</div>
+		</div>
+		
+		<div class="item_wrap time_refresh" style="margin-top: 10px;">
+			<div class="title">拍照时间</div>
+			<div class="item_select row_between">
+				<span class="text time_value"></span>
+				<img src="../images/refresh.png" style="width: 17px; height: 15px;">
+			</div>
+		</div>
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">备注信息</div>
+			<textarea placeholder="请输入备注信息"></textarea>
+		</div>
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">拍照中队</div>
+			<div class="item">
+				<input type="text" placeholder="李澔">
+			</div>
+		</div>
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">拍照人员</div>
+			<div class="item">
+				<input type="text" placeholder="李澔">
+			</div>
+		</div>
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">违章图片</div>
+			<div class="row img_wrap">
+					
+			</div>
+		</div>
+		
+		<button type="button" class="mui-btn mui-btn-link print_btn" onclick="getCode();">打印</button>
+		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="getCode();">上传</button>
+		
+		
+    </div>
+
+
+
+
+</body>
+<script src="../js/mui.js"></script>
+<script src="../js/mui.picker.min.js"></script>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/myStorage.js"></script>
+<script src="../js/plugin.js"></script>
+<script src="../js/home.js"></script>
+<script src="../js/jpush.js"></script>
+<script type='text/javascript'>
+    
+	var images = [];
+	var carPickerList = [];
+	var namePickerList = [];
+	var roadPickerList = [];
+	var carPicker = new mui.PopPicker();
+	var namePicker = new mui.PopPicker();
+	var roadPicker = new mui.PopPicker();
+	var car_value = "燃油车（小型）";
+	var name_value = "公园中队";
+	var road_value = "国庆路";
+	
+	$(".time_value").html(getDateTime());
+	
+	carPickerList = [{text: '燃油车（小型）', value: 0}, {text: '小型车', value: 1},{text: '大型车', value: 2}];
+	carPicker.setData(carPickerList);
+	
+	namePickerList = [{text: '公园中队', value: 0}, {text: '公园小队', value: 1},{text: '公园大队', value: 2}];
+	namePicker.setData(namePickerList);
+	
+	roadPickerList = [{text: '国庆路', value: 0}, {text: '北京路', value: 1},{text: '河南路', value: 2}];
+	roadPicker.setData(roadPickerList);
+	
+	mui(".car_select").on('tap', 'div', function() {
+		document.activeElement.blur();
+		setTimeout(() => {
+			carPicker.show(function(SelectedItem) {
+			    console.log(SelectedItem[0].text);
+			    mui('#car_text')[0].innerHTML = SelectedItem[0].text;
+			    car_value = SelectedItem[0].value;
+			})
+		}, 500);
+		
+	})
+	
+	mui(".name_select").on('tap', 'div', function() {
+		document.activeElement.blur();
+		setTimeout(()=>{
+			namePicker.show(function(SelectedItem) {
+			    console.log(SelectedItem[0].text);
+			    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
+			    name_value = SelectedItem[0].value;
+			})
+		}, 500);
+		
+	})
+	
+	mui(".road_select").on('tap', 'div', function() {
+		document.activeElement.blur();
+		setTimeout(() => {
+			roadPicker.show(function(SelectedItem) {
+			    console.log(SelectedItem[0].text);
+			    mui('#road_text')[0].innerHTML = SelectedItem[0].text;
+			    road_value = SelectedItem[0].value;
+			})
+		}, 500)
+	})
+	
+	mui(".time_refresh").on('tap', 'div', function() {
+		$(".time_value").html(getDateTime());
+	})
+	
+	mui(".item").on('tap', '#take_photo', function() {
+		$(".time_value").html(getDateTime());
+	})
+	
+	var fileName = "temp.jpg";
+	mui(".img_wrap").on('tap', '.add_btn', function() {
+		
+		plus.nativeUI.actionSheet({
+		    cancel: "取消",
+		    buttons: [{
+		        title: "拍照"
+		    }, {
+		        title: "从相册中选择"
+		    }]
+		}, function(e) { //1 是拍照  2 从相册中选择
+		    switch (e.index) {
+		        case 1:
+		            appendByCamera();
+		            break;
+		        case 2:
+		            appendByGallery();
+		            break;
+		    }
+		});
+	});
+	// 拍照添加文件
+	function appendByCamera() {
+	    plus.camera.getCamera().captureImage(function(e) {
+	        console.log("e is" + e);
+	        plus.io.resolveLocalFileSystemURL(e, function(entry) {
+	            var path = entry.toLocalURL();
+	            console.log(path);
+	            $('.top-img').attr('src', path);
+	            var pathList = path.split("/");
+	            fileName = pathList[pathList.length-1];
+	            console.log(fileName);
+				
+	            Global.getCanvasBase64(path)
+	                .then(function(base64) {
+	                    console.log(base64);
+	                    // uploadFile(base64);
+	                }, function(err) {
+	                    console.log(err);
+	                })
+	
+	        }, function(e) {
+	            mui.toast("读取拍照文件错误：" + e.message);
+	        });
+	
+	    });
+	}
+	
+	function appendByGallery() {
+	    plus.gallery.pick(function(path) {
+			var pathList = path.split("/");
+			fileName = pathList[pathList.length-1];
+			
+	        Global.getCanvasBase64(path)
+	            .then(function(base64) {
+	                console.log(base64);
+	                // uploadFile(base64);
+					// images.push(data.url);
+					// addImage();
+	            }, function(err) {
+	                console.log(err);
+	            })
+	
+	    });
+	}
+	
+	function getDateTime(){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		if(parseInt(month) < 10){
+			month = "0"+month;
+		}
+		var day = date.getDate();
+		if(parseInt(day) < 10){
+			day = "0"+day;
+		}
+		var hour = date.getHours();
+		if(parseInt(hour) < 10){
+			hour = "0"+hour;
+		}
+		var minute = date.getMinutes();
+		if(parseInt(minute) < 10){
+			minute = "0"+minute;
+		}
+		var second = date.getSeconds();
+		if(parseInt(second) < 10){
+			second = "0"+second;
+		}
+		return year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+	}
+	
+	
+	mui.init();
+	mui.plusReady(function() {
+	    //上页中的 传递的值
+	    var self = plus.webview.currentWebview();
+	    isStep = self.isStep;
+		
+		console.log("9999");
+	});
+	
+	addImage();
+	function addImage(){
+			var html = '';
+			$(".img_wrap").html(""); 
+			images.map(function(item, index){
+				html += '<div class="upload_img_wrap">'+
+							'<img src="'+item+'" class="img_btn">'+
+							'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
+						'</div>';
+			});
+			
+			html += '<div class="upload_img_wrap add_btn">'+
+						'<img src="../images/upload_icon.jpg" class="img_btn">'+
+					'</div>';
+			
+			$(".img_wrap").append(html);
+			
+			mui(".upload_img_wrap").on('tap', '.del_btn', function() {
+				console.log("000")
+				var index = $(this).data("index");
+				images.splice(index, 1);
+				addImage();
+			});
+			
+		}
+		
+</script>
+
+</html>

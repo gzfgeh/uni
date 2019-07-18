@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+	
+	<style type="text/css">
+        html,
+        body, .mui-content {
+            background: #FFF;
+            height: 100%;
+        }
+		.head_icon{width: 30px; height: 30px; border-radius: 50%; top: 6px; right: 10px;}
+		
+		.item_wrap{margin-left: 4%; width: 92%; font-size: 12px; color: #999;}
+		.item_wrap .title{margin-bottom: 10px;}
+		.item_wrap .item{position: relative;}
+		.item_wrap .item input{border:none;background: #F2F2F2;height: 40px;}
+		::-webkit-input-placeholder{color: #999999;font-size: 14px;}
+		::-webkit-textarea-placeholder{color: #999999;font-size: 14px;}
+		.item_wrap .item img{ width: 17px; height: 15px; position: absolute; right: 15px; top: 12px;}
+		
+		.item_wrap .item_select{border: 1px solid #E0E0E0; border-radius: 3px; height: 40px; padding: 0px 15px;}
+		.item_wrap .item_select img{width: 12px; height: 6px;}
+		.item_wrap .item_select .text{color: #000; font-size: 15px;}
+		
+		textarea{background: #F2F2F2; height: 170px; border:none;}
+		
+		
+		.upload_img_wrap{width: 32%;position: relative;margin-right: 1%;
+				padding: 1%;box-sizing: border-box;} 
+			
+		.upload_img_wrap .img_btn{width: 100%;max-height: 0.8rem;}
+			
+		.upload_img_wrap .del_btn{position: absolute;top: -0.05rem;
+				right: -0rem;width: 0.2rem;height: 0.2rem;z-index: 10;}
+				
+		.btn_wrap{width: 90%;background: #0B2A47;color: #FFF; height: 50px; margin: 80px 5% 50px;}
+		.btn_wrap button{height: 50px; line-height: 50px; text-align: center; color: #FFFFFF; background-color: transparent;}
+		
+		.tag_wrap{display: flex;flex-direction: row; flex-flow: wrap;}	
+		.tag{border: 1px solid #E6E6E6; border-radius: 3px; color: #999; font-size: 15px; background: #FFF; 
+				padding: 10px 14px; margin-right: 10px; margin-bottom: 20px;}
+			
+    </style>
+	
+</head>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        
+        <h1 class="mui-title">撤回理由</h1>
+        <!-- <img src="../images/splash.png"  class="head_icon"/> -->
+    </header>
+
+    <div class="mui-content">
+		
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">撤回理由</div>
+			<textarea placeholder="请输入撤回理由"></textarea>
+		</div>
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="tag_wrap">
+				<span class="tag">录入错误</span>
+				<span class="tag">并非在此路段</span>
+				<span class="tag">车牌号错误</span>
+				<span class="tag">车牌异常</span>
+			</div>
+		</div>
+		
+		
+		<div class="item_wrap" style="margin-top: 10px;">
+			<div class="title">撤回图片</div>
+			<div class="row img_wrap">
+					
+			</div>
+		</div>
+		
+		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="getCode();">确定</button>
+		
+		
+    </div>
+
+	
+    <!--口子弹窗-->
+    <div class="modal-mask row selfModal hideClass">
+        <div class="modal-dialog">
+            <img src="../images/close_icon.png" class="close_style" onclick="closeDialg();" />
+            <div class="modal-content" onclick="goToFindTabDialog();">
+                <img src="" class="conten_bg" id="content_id" />
+                <!--<img src="../images/try_btn.png" class="dialog_bottom_btn"  />-->
+            </div>
+        </div>
+    </div>
+
+    <!--弹窗-->
+    <div class="modal-mask row inviteModal hideClass">
+        <div class="modal-dialog">
+            <img src="../images/close_icon.png" class="close_style" onclick="closeInviteDialg();" />
+            <div class="modal-content">
+                <img src="../images/invalite_friend_bg.png" class="invalite_bg" id="invalite_id" />
+                <div class="row invite_bottom_content">
+                    <div class="col wx_wrap">
+                        <img src="../images/wx_icon.png" />
+                        <span>微信</span>
+                    </div>
+
+                    <div class="col wx_friend_wrap">
+                        <img src="../images/wx_friend_icon.png" />
+                        <span>朋友圈</span>
+                    </div>
+
+                    <div class="col qq_wrap" onclick="share('qq')">
+                        <img src="../images/qq_icon.png" />
+                        <span>QQ</span>
+                    </div>
+
+                    <div class="col copy_wrap">
+                        <img src="../images/copy_icon.png" />
+                        <span>复制链接</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--强制更新弹窗-->
+    <div class="modal-mask row updateApp hideClass">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col update_content_bg">
+                    <div class="flex_item row">提示</div>
+                    <div class="flex_item row update_msg">是否更新到最新版本？</div>
+                    <div class="flex_item row updateAction">现在升级</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+<script src="../js/mui.js"></script>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/swiper.min.js"></script>
+<!--<script src="html5plus://ready"></script>-->
+<script src="../js/myStorage.js"></script>
+<script src="../js/plugin.js"></script>
+<script src="../js/home.js"></script>
+<script src="../js/jpush.js"></script>
+<script type='text/javascript'>
+    
+	var images = [];
+	addImage();
+	function addImage(){
+			var html = '';
+			$(".img_wrap").html(""); 
+			images.map(function(item, index){
+				html += '<div class="upload_img_wrap">'+
+							'<img src="'+item+'" class="img_btn">'+
+							'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
+						'</div>';
+			});
+			
+			html += '<div class="upload_img_wrap add_btn">'+
+						'<img src="../images/upload_icon.jpg" class="img_btn">'+
+					'</div>';
+			
+			$(".img_wrap").append(html);
+			
+			mui(".upload_img_wrap").on('tap', '.del_btn', function() {
+				console.log("000")
+				var index = $(this).data("index");
+				images.splice(index, 1);
+				addImage();
+			});
+			
+		}
+		
+</script>
+
+</html>

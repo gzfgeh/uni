@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>目标页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/app.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+	        <a class=" mui-icon mui-action-back mui-icon-left-nav mui-pull-left"></a>
+	        <h1 class="mui-title">支付结果</h1>
+	        <img src="../images/custom_icon.png" onclick="customService();"/>
+	    </header>-->
+    
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-2.1.1.min.js"></script>
+		<script src="../js/myStorage.js"></script>
+		<script src="../js/app.js"></script>
+		<script type='text/javascript' src='https://webchat.7moor.com/javascripts/7moorInit.js?accessId=7d124b80-b7fd-11e8-83af-b5259d279e2c&autoShow=false&language=ZHCN' async='async'>
+		</script>
+		<script type='text/javascript'>
+		var qimoClientId =  myStorage.getItem("user").mobile;
+		</script>
+		
+		<script type="text/javascript">
+			mui.init();
+			var isSecondPay = false;
+			mui.plusReady(function() {
+                var self = plus.webview.currentWebview();
+                //self.id.substring(17)
+//				var baiduWV = plus.webview.create("http://116.25.44.121:18081/api/paycb/fuyou/return", "baidu", {
+//				var baiduWV = plus.webview.create("http://project.youzewang.com/app/loan/html/pay_success.html?3", "baidu", {
+				var baiduWV = plus.webview.create(self.id.substring(17), "baidu", {
+					top: "0px",
+					bottom: 0
+				});
+                self.append(baiduWV);
+				
+				isSecondPay = self.isSecondPay;
+//              baiduWV.addEventListener('loaded',function(){  //监听页面，当页面加载完成时
+//                  plus.nativeUI.closeWaiting();
+//              },false);
+//              baiduWV.addEventListener('loading',function(){//监听页面，当页面加载时
+//                  plus.nativeUI.showWaiting('',{style:'black',modal:false,background:'rgba(0,0,0,0)'});
+//              },false);
+
+			});
+			
+			//Android 物理返回
+			var old_back = mui.back;
+			mui.back = function(){
+				close();
+			}
+			
+			function close(){
+				var url = "pay_style.html";
+				Global.commonAjax({ url: "v2/user/input/status" },
+		           function(data) {
+		           		
+		               if((data != "") && (data != null)){
+		               		if(!isSecondPay){
+		               			if(data.isPayCreditFee == "N"){
+			               			url = "pay_action.html";
+			               		}else{
+			               			url = "credit_result.html";
+			               		}
+		               		}else{
+		               			if(data.isPayLimitFee == "N"){
+			               			url = "credit_rating_second.html";
+			               		}else{
+			               			url = "recommend.html";
+			               		}
+		               		}
+		               		
+		               	}
+		               
+		               mui.openWindow({
+			                url: url,
+			                id: url,
+			                waiting: {
+			                    autoShow: false
+			                }
+			            })
+		               
+		            },
+		            function(err){
+			            	if(!isSecondPay){
+			            		mui.openWindow({
+				                url: url,
+				                id: url,
+				                waiting: {
+				                    autoShow: false
+				                }
+				            })
+			            	}else{
+			            		mui.toast(err);
+			            	}
+		            		
+		            }
+		           );
+			}
+			
+			function customService(){
+	      		qimoChatClick();
+	      	}
+			
+		</script>
+		
+	</body>
+
+</html>

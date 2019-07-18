@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	</head>
+
+	<body>
+		<div onclick="clickFunction();">1234567</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/myStorage.js"></script>
+	<script>
+		
+		window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
+		
+		
+// 		mui.init();
+// 		var main;
+//         var Intent;
+//         var intent;
+// 		document.addEventListener('plusready', function() {
+// 			console.log("111111");
+//             main = plus.android.runtimeMainActivity();
+//             Intent = plus.android.importClass("android.content.Intent");
+//             intent = new Intent(main.getIntent());
+//         }, false);
+// 
+//         function clickFunction(){
+//         	checkPermissionPhoto(goToAndroid, null);
+//         };
+// 
+// 
+//         //发现页 点击检查权限
+//         function checkPermissionPhoto(callback, fail) {
+//         	console.log("2222222")
+//             var mainAct = plus.android.runtimeMainActivity();
+//             plus.android.invoke("com.HBuilder.integrate.Tools", "initUtils", mainAct);
+//             var callBack = plus.android.implements("com.HBuilder.integrate.Tools$CallBack", {
+//                 "success": function() {
+//                     console.log("3333333")
+//                     if (callback) {
+//                         callback();
+//                     }
+//                 },
+//                 "failure": function() {
+//                 	console.log("4444444")
+//                     if (fail) {
+//                         fail();
+//                     }
+//                 }
+//             });
+//             plus.android.invoke("com.HBuilder.integrate.Tools", "permission", ["android.permission-group.CAMERA"], callBack);
+// 
+//         }
+// 
+// 		
+// 		function goToAndroid(){
+// 			intent.setClassName(main, "com.frank.plate.activity.PreviewActivity");
+//             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//             main.startActivityForResult(intent, 19);
+// 			main.onActivityResult = function(request, code, data) {
+// 				
+// 				console.log("555555"+code)
+// 				if ( (request == 19) && (code == -1)) {
+// 					console.log("6666666");
+// 					var result = data.getStringExtra("result");
+// 
+// 					console.log(result);
+// 				}
+// 
+// 			}
+// 					
+// 		}
+		
+		
+// 
+// function goToNext(){
+// 	if(myStorage && myStorage.getItem("user")){
+// 		//如果有值，证明登录过了
+// 		mui.openWindow({
+// 			id: 'home.html',
+// 			url: 'html/home.html',
+// 			waiting:{
+// 				autoShow:false
+// 			},
+// 			extras: {
+// 				isfirst: false
+// 			}
+// 		});
+// 	}else{
+// 		//没有登录
+// 		console.log("login 登陆");
+// 		mui.openWindow({
+// 			id: 'login.html',
+// 			url: 'html/login.html',
+// 
+// 			waiting: {
+// 				autoshow: false
+// 			}
+// 		});
+// 	}
+// }
+// // H5 plus事件处理
+// function plusReady(){
+// 	console.log("login 登陆");
+// 	goToNext();
+// }
+// 
+// 
+// if(window.plus){
+// 	plusReady();
+// }else{
+// 	document.addEventListener('plusready', plusReady, false);
+// }
+
+
+</script>
+
+</html>
