@@ -47,27 +47,27 @@
 		</div>
 		
 		<div class="item_wrap">
-			<div class="  item">
+			<div class="item record_item">
 				<img src="../images/fadan_icon.png">
 				<span>罚单记录</span>
 			</div>
 			
-			<div class="  item">
+			<div class="item upload_item">
 				<img src="../images/upload_icon.png">
 				<span>未上传记录</span>
 			</div>
 			
-			<div class="  item">
+			<div class="item setting_item">
 				<img src="../images/luduan_icon.png">
 				<span>路段设置</span>
 			</div>
 			
-			<div class="  item">
+			<div class="item change_item">
 				<img src="../images/change_pwd_icon.png">
 				<span>修改密码</span>
 			</div>
 			
-			<div class="  item">
+			<div class="item">
 				<img src="../images/version_info.png">
 				<span>版本信息</span>
 			</div>
@@ -77,63 +77,9 @@
 				<span></span>
 			</div>
 		</div>
-    </div>
-	
-	<img src="../images/add_btn.png" class="add_btn">
-
-    <!--弹窗-->
-    <div class="modal-mask row hideClass">
-        <div class="modal-dialog">
-            <img src="../images/close_icon.png" class="close_style" onclick="closeDialg();" />
-            <div class="modal-content">
-                <img src="../images/close_dialog_bg.png" class="conten_bg" />
-                <div class="col dialog_content_wrap">
-                    <div class="col dialog_content_item_wrap">
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/agress_icon.png" class="first_step_icon" />
-                            <span class="dialog_step_text">真实身份认证</span>
-                        </div>
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/agress_icon.png" style="visibility: hidden;" />
-                            <span class="dialog_step_bottom_text first_text">完成即可获得0元现金</span>
-                        </div>
-
-                        <img src="../images/add_money_icon.png" class="addMoney addMoneyFirst" />
-                        <span class="first_step_money">0</span>
-                    </div>
-
-                    <div class="col dialog_content_item_wrap">
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/agress_icon.png" class="second_step_icon" />
-                            <span class="dialog_step_text">填写个人信息</span>
-                        </div>
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/agress_icon.png" style="visibility: hidden;" />
-                            <span class="dialog_step_bottom_text second_text">完成即可获得0元现金</span>
-                        </div>
-
-                        <img src="../images/add_money_icon.png" class="addMoney addMoneySecond" />
-                        <span class="second_step_money">0</span>
-                    </div>
-
-                    <div class="col dialog_content_item_wrap">
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/unagress_icon.png" class="third_step_icon" />
-                            <span class="dialog_step_text">完成额度评估</span>
-                        </div>
-                        <div class="row dialog_step_wrap">
-                            <img src="../images/agress_icon.png" style="visibility: hidden;" />
-                            <span class="dialog_step_bottom_text third_text">完成即可获得0元现金</span>
-                        </div>
-
-                        <img src="../images/add_money_icon.png" class="addMoney addMoneyThird" />
-                        <span class="third_step_money">0</span>
-                    </div>
-
-                </div>
-                <img src="../images/again_get_money.png" class="dialog_bottom_btn" />
-            </div>
-        </div>
+		
+		<img src="../images/add_btn.png" class="add_btn">
+		
     </div>
 
     <script src="../js/mui.min.js"></script>
@@ -149,379 +95,99 @@
             //上页中的 传递的值
             var self = plus.webview.currentWebview();
             isStep = self.isStep;
+			
+			fastQuit();
         });
+		
+		mui(".mui-content").on('tap', '.add_btn', function() {
+			mui.openWindow({
+				id: 'home.html',
+				url: 'home.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		
+		})
+		// 罚单记录
+		mui(".mui-content").on('tap', '.record_item', function() {
+			mui.openWindow({
+				id: 'record_list.html',
+				url: 'record_list.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		})
+		// 未上传记录
+		mui(".mui-content").on('tap', '.upload_item', function() {
+			mui.openWindow({
+				id: 'upload.html',
+				url: 'upload.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		})
+		
+		// 路段设置
+		mui(".mui-content").on('tap', '.setting_item', function() {
+			mui.openWindow({
+				id: 'setting.html',
+				url: 'setting.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		})
+		
+		// 路段设置
+		mui(".mui-content").on('tap', '.change_item', function() {
+			mui.openWindow({
+				id: 'register.html',
+				url: 'register.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		})
+		
+		
+		var backcount = 0;
+		function fastQuit() {
+		    //双击退出登录
+		    mui.back = function() {
+		        if (mui.os.ios) return;
+		        if (backcount > 0) {
+		            if (window.plus) 
+						plus.runtime.quit();
+		            return;
+		        };
+		        mui.toast("再按一次退出应用");
+		        backcount++;
+		        setTimeout(function() {
+		            backcount = 0;
+		        }, 2000);
+		    }
+		}
 
-        //Android 物理返回
-        var old_back = mui.back;
-        mui.back = function() {
-            var display = $(".qimo_chatpup").css("display");
-            if (display == "block") {
-                $(".qimo_chatpup").css("display", "none");
-                return;
-            }
-
-            if ($('.modal-mask').hasClass("hideClass")) {
-                headLeftBack();
-            } else {
-                $('.modal-mask').addClass("hideClass");
-            }
-        }
-
-        //左上角 返回
-        function headLeftBack() {
-            if (isStep) {
-                //mui.fire(plus.webview.getWebviewById('identificateFirst.html'), 'identificateAgain', {});
-
-                mui.openWindow({
-                    url: 'identificateFirst.html',
-                    id: 'identificateFirst.html',
-                    waiting: {
-                        autoShow: false
-                    }
-                });
-            } else {
-                initStatus("close");
-            }
-
-
-
-        }
-
-        //左上角 关闭按钮
-        $('.header_close').click(function() {
-
-            initStatus("close");
-        })
-
-        $(".dialog_bottom_btn").click(function() {
-        		var clickType = {
-                source: myStorage.getItem("user").sourceCode,
-                page: 'detail'
-            }
-            plus.statistic.eventTrig("againinputinfo", JSON.stringify(clickType))
-            
-            $('.modal-mask').addClass("hideClass");
-        })
-
-        //弹窗中 关闭按钮
-        function closeDialg() {
-            var clickType = {
-                source: myStorage.getItem("user").sourceCode,
-                page: 'detail'
-            }
-            plus.statistic.eventTrig("closeinputinfo", JSON.stringify(clickType))
-
-            Global.openKouzi();
-            Global.closeStepWindow();
-        };
-
-        mui.plusReady(function() {
-            initData();
-            showMoneyInfo();
-            initStatus();
-        });
-
-        var step = 0;
-
-        function initStatus(close) {
-            Global.commonAjax({
-                    url: "v2/user/input/status"
-                },
-                function(data) {
-
-                    if ((data != "") && (data != null)) {
-                        if (data.isInputIdcard == "N") {
-                            step = 0;
-                            $(".first_step_icon").attr("src", "../images/unagress_icon.png");
-                            $(".second_step_icon").attr("src", "../images/unagress_icon.png");
-                            $(".third_step_icon").attr("src", "../images/unagress_icon.png");
-                            $(".first_step_money").css("color", "#C3C3C3");
-                            $(".second_step_money").css("color", "#C3C3C3");
-                            $(".third_step_money").css("color", "#C3C3C3");
-                            $(".addMoneyFirst").attr("src", "../images/un_money_icon.png");
-                            $(".addMoneySecond").attr("src", "../images/un_money_icon.png");
-                            $(".addMoneyThird").attr("src", "../images/un_money_icon.png");
-                        } else if (data.isInputDetail == "N") {
-                            step = 1;
-                            $(".first_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".second_step_icon").attr("src", "../images/unagress_icon.png");
-                            $(".third_step_icon").attr("src", "../images/unagress_icon.png");
-                            $(".first_step_money").css("color", "#FF5445");
-                            $(".second_step_money").css("color", "#C3C3C3");
-                            $(".third_step_money").css("color", "#C3C3C3");
-                            $(".addMoneyFirst").attr("src", "../images/add_money_icon.png");
-                            $(".addMoneySecond").attr("src", "../images/un_money_icon.png");
-                            $(".addMoneyThird").attr("src", "../images/un_money_icon.png");
-
-                        } else if (data.isPayLimitFee == "N") {
-                            step = 2;
-                            $(".first_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".second_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".third_step_icon").attr("src", "../images/unagress_icon.png");
-
-                            $(".first_step_money").css("color", "#FF5445");
-                            $(".second_step_money").css("color", "#FF5445");
-                            $(".third_step_money").css("color", "#C3C3C3");
-
-                            $(".addMoneyFirst").attr("src", "../images/add_money_icon.png");
-                            $(".addMoneySecond").attr("src", "../images/add_money_icon.png");
-                            $(".addMoneyThird").attr("src", "../images/un_money_icon.png");
-
-                        } else {
-                            step = 3;
-                            $(".first_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".second_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".third_step_icon").attr("src", "../images/agress_icon.png");
-                            $(".first_step_money").css("color", "#FF5445");
-                            $(".second_step_money").css("color", "#FF5445");
-                            $(".third_step_money").css("color", "#FF5445");
-
-                            $(".addMoneyFirst").attr("src", "../images/add_money_icon.png");
-                            $(".addMoneySecond").attr("src", "../images/add_money_icon.png");
-                            $(".addMoneyThird").attr("src", "../images/add_money_icon.png");
-                        }
-                    }
-
-                    if (close) {
-                        $('.modal-mask').removeClass("hideClass");
-                    }
-
-                }
-            );
-        }
-
-        var studyPickerList = [];
-        var marryPickerList = [];
-        var housePickerList = [];
-        var loanPickerList = [];
-
-
-        function initData() {
-            Global.commonAjax({
-                    url: "sys/latest/syscfg"
-                },
-                function(data) {
-                    studyPickerList = [];
-                    marryPickerList = [];
-                    housePickerList = [];
-                    loanPickerList = [];
-                    data.highestDegree.map(function(resItem) {
-                        var item = {
-                            value: resItem.codeValue,
-                            text: resItem.codeName
-                        };
-                        studyPickerList.push(item);
-                    });
-                    studyPicker.setData(studyPickerList);
-
-                    data.maritalStatus.map(function(resItem) {
-                        var item = {
-                            value: resItem.codeValue,
-                            text: resItem.codeName
-                        };
-                        marryPickerList.push(item);
-                    });
-                    marryPicker.setData(marryPickerList);
-
-                    data.houseStatus.map(function(resItem) {
-                        var item = {
-                            value: resItem.codeValue,
-                            text: resItem.codeName
-                        };
-                        housePickerList.push(item);
-                    });
-                    housePicker.setData(housePickerList);
-
-                    data.loansStatus.map(function(resItem) {
-                        var item = {
-                            value: resItem.codeValue,
-                            text: resItem.codeName
-                        };
-                        loanPickerList.push(item);
-                    });
-                    loanPicker.setData(loanPickerList);
-
-                    if (myStorage && myStorage.getItem("userInfo")) {
-                        var userInfo = myStorage.getItem("userInfo");
-                        selectStudyValue = userInfo.highestDegree;
-                        selectMarryValue = userInfo.maritalStatus;
-                        selectLoanValue = userInfo.loansStatus;
-                        selectHouseValue = userInfo.houseStatus;
-
-                        //                      mui('#study_value')[0].style.color = "#333333";
-                        //                      mui('#study_value')[0].style.opacity = "1";
-                        studyPickerList.map(function(item) {
-                            if (item.value == selectStudyValue) {
-                                mui('#study_value')[0].innerHTML = item.text;
-                            }
-                        })
-
-
-                        //                      mui('#marry_value')[0].style.color = "#333333";
-                        //                      mui('#marry_value')[0].style.opacity = "1";
-                        marryPickerList.map(function(item) {
-                            if (item.value == selectMarryValue) {
-                                mui('#marry_value')[0].innerHTML = item.text;
-                            }
-                        })
-
-                        //                      mui('#house_value')[0].style.color = "#333333";
-                        //                      mui('#house_value')[0].style.opacity = "1";
-                        //mui('#house_value')[0].innerHTML = housePickerList[selectHouseValue].text;
-                        housePickerList.map(function(item) {
-                            if (item.value == selectHouseValue) {
-                                mui('#house_value')[0].innerHTML = item.text;
-                            }
-                        })
-
-                        //                      mui('#loan_value')[0].style.color = "#333333";
-                        //                      mui('#loan_value')[0].style.opacity = "1";
-                        //mui('#loan_value')[0].innerHTML = loanPickerList[selectLoanValue].text;
-                        loanPickerList.map(function(item) {
-                            if (item.value == selectLoanValue) {
-                                mui('#loan_value')[0].innerHTML = item.text;
-                            }
-                        })
-                    }
-
-                },
-                function(err) {
-                    mui.toast(err);
-                }
-            )
-        }
-
-        var selectStudyValue, selectMarryValue, selectLoanValue, selectHouseValue;
-        var studyPicker = new mui.PopPicker();
-
-        function showStudyPicker() {
-            studyPicker.show(function(SelectedItem) {
-                console.log(SelectedItem[0].text);
-                mui('#study_value')[0].style.color = "#333333";
-                mui('#study_value')[0].style.opacity = "1";
-                mui('#study_value')[0].innerHTML = SelectedItem[0].text;
-                selectStudyValue = SelectedItem[0].value;
-            })
-        }
-
-        var marryPicker = new mui.PopPicker();
-
-        function showMarryPicker() {
-            marryPicker.show(function(SelectedItem) {
-                console.log(SelectedItem[0].text);
-                mui('#marry_value')[0].style.color = "#333333";
-                mui('#marry_value')[0].style.opacity = "1";
-                mui('#marry_value')[0].innerHTML = SelectedItem[0].text;
-                selectMarryValue = SelectedItem[0].value;
-            })
-        }
-
-        var housePicker = new mui.PopPicker();
-
-        function showHousePicker() {
-            housePicker.show(function(SelectedItem) {
-                console.log(SelectedItem[0].text);
-                mui('#house_value')[0].style.color = "#333333";
-                mui('#house_value')[0].style.opacity = "1";
-                mui('#house_value')[0].innerHTML = SelectedItem[0].text;
-                selectHouseValue = SelectedItem[0].value;
-            })
-        }
-
-        var loanPicker = new mui.PopPicker();
-
-        function showLoanPicker() {
-            loanPicker.show(function(SelectedItem) {
-                console.log(SelectedItem[0].text);
-                mui('#loan_value')[0].style.color = "#333333";
-                mui('#loan_value')[0].style.opacity = "1";
-                mui('#loan_value')[0].innerHTML = SelectedItem[0].text;
-                selectLoanValue = SelectedItem[0].value;
-            })
-        }
-        //浮层 奖金信息
-        function showMoneyInfo() {
-            if (myStorage) {
-                if (myStorage.getItem("inputIdInfoReturn")) {
-                    $(".first_step_money").html(myStorage.getItem("inputIdInfoReturn"));
-                    $(".first_text").html("完成即可获得" + myStorage.getItem("inputIdInfoReturn") + "元现金");
-
-                }
-
-                if (myStorage.getItem("inputBaseInfoReturn")) {
-                    $(".second_step_money").html(myStorage.getItem("inputBaseInfoReturn"));
-                    $(".second_text").html("完成即可获得" + myStorage.getItem("inputBaseInfoReturn") + "元现金");
-                }
-
-                if (myStorage.getItem("payReturn")) {
-                    $(".third_step_money").html(myStorage.getItem("payReturn"));
-                    $(".third_text").html("完成即可获得" + myStorage.getItem("payReturn") + "元现金");
-                }
-            }
-
-        }
-
-        /**
-         * 信用评估 
-         */
-        function goToCredit() {
-            if (mui('#marry_value')[0].innerHTML == "请选择") {
-                mui.toast("请选择婚姻状态");
-                return;
-            }
-
-            if (mui('#study_value')[0].innerHTML == "请选择") {
-                mui.toast("请选择学历");
-                return;
-            }
-
-            if (mui('#house_value')[0].innerHTML == "请选择") {
-                mui.toast("请选择住房状态");
-                return;
-            }
-
-            if (mui('#loan_value')[0].innerHTML == "请选择") {
-                mui.toast("请选择借款状态");
-                return;
-            }
-            var params = {
-                maritalStatus: selectMarryValue,
-                highestDegree: selectStudyValue,
-                loansStatus: selectLoanValue,
-                houseStatus: selectHouseValue
-            };
-
-
-            Global.commonAjax({
-                    url: "user/input/detail",
-                    method: "POST",
-                    data: params
-                },
-                function(data) {
-                    var clickType = {
-                        source: myStorage.getItem("user").sourceCode
-                    }
-                    plus.statistic.eventTrig("applydetail", JSON.stringify(clickType))
-
-                    mui.toast("提交成功");
-                    mui.openWindow({
-                        url: 'credit.html',
-                        id: 'credit.html',
-                        waiting: {
-                            autoShow: false
-                        },
-                        extras: {
-                            isStep: true
-                        }
-                    })
-                },
-                function(err) {
-                    mui.toast(err);
-                }
-            )
-
-
-        }
+      
+        
     </script>
 </body>
 

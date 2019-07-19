@@ -13,10 +13,12 @@
 	
 	<style type="text/css">
         html,
-        body, .mui-content {
+        body {
             background: #FFF;
-            height: 100%;
+            /* height: 100%;
+			width: 100%; */
         }
+		.mui-content{position: absolute;min-height: 100%;width: 100%; height: auto;}
 		.head_icon{width: 30px; height: 30px; border-radius: 50%; top: 6px; right: 10px;}
 		
 		.item_wrap{margin-left: 4%; width: 92%; font-size: 12px; color: #999;}
@@ -42,7 +44,7 @@
 		.upload_img_wrap .del_btn{position: absolute;top: -0.05rem;
 				right: -0rem;width: 0.2rem;height: 0.2rem;z-index: 10;}
 				
-		.btn_wrap{width: 90%;background: #0B2A47;color: #FFF; position: fixed;bottom: 20px;
+		.btn_wrap{width: 90%;background: #0B2A47;color: #FFF; position: absolute;bottom: 20px;
 			height: 50px; margin: 0px 5%;}
 		.btn_wrap button{height: 50px; line-height: 50px; text-align: center; color: #FFFFFF; background-color: transparent;}
 					
@@ -88,76 +90,28 @@
 		
     </div>
 
-	
-    <!--口子弹窗-->
-    <div class="modal-mask row selfModal hideClass">
-        <div class="modal-dialog">
-            <img src="../images/close_icon.png" class="close_style" onclick="closeDialg();" />
-            <div class="modal-content" onclick="goToFindTabDialog();">
-                <img src="" class="conten_bg" id="content_id" />
-                <!--<img src="../images/try_btn.png" class="dialog_bottom_btn"  />-->
-            </div>
-        </div>
-    </div>
-
-    <!--弹窗-->
-    <div class="modal-mask row inviteModal hideClass">
-        <div class="modal-dialog">
-            <img src="../images/close_icon.png" class="close_style" onclick="closeInviteDialg();" />
-            <div class="modal-content">
-                <img src="../images/invalite_friend_bg.png" class="invalite_bg" id="invalite_id" />
-                <div class="row invite_bottom_content">
-                    <div class="col wx_wrap">
-                        <img src="../images/wx_icon.png" />
-                        <span>微信</span>
-                    </div>
-
-                    <div class="col wx_friend_wrap">
-                        <img src="../images/wx_friend_icon.png" />
-                        <span>朋友圈</span>
-                    </div>
-
-                    <div class="col qq_wrap" onclick="share('qq')">
-                        <img src="../images/qq_icon.png" />
-                        <span>QQ</span>
-                    </div>
-
-                    <div class="col copy_wrap">
-                        <img src="../images/copy_icon.png" />
-                        <span>复制链接</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--强制更新弹窗-->
-    <div class="modal-mask row updateApp hideClass">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="col update_content_bg">
-                    <div class="flex_item row">提示</div>
-                    <div class="flex_item row update_msg">是否更新到最新版本？</div>
-                    <div class="flex_item row updateAction">现在升级</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 </body>
 <script src="../js/mui.js"></script>
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/swiper.min.js"></script>
-<!--<script src="html5plus://ready"></script>-->
-<script src="../js/myStorage.js"></script>
-<script src="../js/plugin.js"></script>
-<script src="../js/home.js"></script>
-<script src="../js/jpush.js"></script>
 <script type='text/javascript'>
     
+	var originalHeight = document.documentElement.clientHeight || document.body.clientHeight;
+	$(window).on("resize",function(){
+		//软键盘弹起与隐藏  都会引起窗口的高度发生变化
+		var resizeHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+		if(resizeHeight * 1 < originalHeight * 1) { //resizeHeight<originalHeight证明窗口被挤压了
+
+			plus.webview.currentWebview().setStyle({
+				height: originalHeight
+			});
+
+		}
+	})
+	
 	var images = [];
 	addImage();
 	function addImage(){

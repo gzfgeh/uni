@@ -34,7 +34,7 @@
 
 		<header class="mui-bar mui-bar-nav" >
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <img src="../images/back.png" class="mui-action-back">	
+		    <!-- <img src="../images/back.png" class="mui-action-back">	 -->
 		    <h1 class="mui-title">罚单记录</h1>
 		</header>
 		
@@ -118,7 +118,7 @@
 			
 			$(".express-list").html("");
 			page=1;
-			getData(page);
+			// getData(page);
 			
 		}, 1500);
 	}
@@ -129,7 +129,7 @@
 	function pullupRefresh() {
 		setTimeout(function() {
 			mui('#pullrefresh').pullRefresh().endPullupToRefresh(isEnd); //参数为true代表没有更多数据了。
-			getData(page);
+			// getData(page);
 		}, 1500);
 	}
 	if (mui.os.plus) {
@@ -139,7 +139,7 @@
 				mui('#pullrefresh').pullRefresh().pullupLoading();
 			}, 1000);
 			
-			getData(page);
+			// getData(page);
 		});
 	} else {
 		mui.ready(function() {
@@ -211,18 +211,28 @@
 	var page=1;
 	var isEnd=0;
 
-	mui(".express-list").on('tap', 'li ', function() {
-
+	mui(".express-list").on('tap', 'li', function() {
 		var id=$(this).attr("data-id");
-
 		Global.openWindow({
-			url:"message_detail.html?id="+id,
-			id: "message_detail.html",
+			url:"detail.html?id="+id,
+			id: "detail.html",
 			waiting: {
 				autoShow: false
 			}
 		})
-
+	})
+	
+	mui(".express-list").on('tap', '.btn', function() {
+	
+		var id=$(this).attr("data-id");
+		Global.openWindow({
+			url:"reason.html?id="+id,
+			id: "reason.html",
+			waiting: {
+				autoShow: false
+			}
+		})
+	
 	})
 
 
