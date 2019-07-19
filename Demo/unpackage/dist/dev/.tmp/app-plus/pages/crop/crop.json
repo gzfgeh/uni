@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "裁剪图片",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "确认",
+        "float": "right",
+        "fontSize": "16px",
+        "color": "#107EFF",
+        "width": "60px"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单收入",
+  "usingComponents": {
+    "van-notify": "/dist/notify/index"
+  }
+}

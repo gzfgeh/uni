@@ -1,0 +1,25 @@
+<!--pages/addressList/index.wxml-->
+<view class='addressList'>
+  <view wx:if='{{addressListData.length == 0}}' class='addressList_null'>
+    <image src='/images/zxw/address_null.png'></image>
+    <text>您还没有添加地址哦</text>
+  </view>
+  <view wx:if='{{addressListData.length > 0}}'  class='addressView' wx:for='{{addressListData}}' wx:key='index' bindtap='chooseAddress' data-chooseaddress='{{addressListData[index]}}'>
+    <view class='address_content'>
+      <view class='address1'>
+        <view class='van-ellipsis'>{{item.position}}</view>
+        <view wx:if='{{item.is_often}}'>常用</view>
+      </view>
+      <view class='address2 van-ellipsis'>{{item.position_detail}}</view>
+      <view class='name_phone'>
+        <view class='name van-ellipsis'>{{item.name}}</view>
+        <view class='phone van-ellipsis'>{{item.phone}}</view>
+      </view>
+    </view>
+    <view class='edit' data-id='{{item.id}}' catchtap='toaddAddress'>编辑</view>
+    <view class='line' wx:if='{{index != addressListData.length - 1}}'></view>
+  </view>
+
+</view>
+<view class='addAddress' bindtap='toaddAddress'>新增地址</view>
+<van-notify id="van-notify" />

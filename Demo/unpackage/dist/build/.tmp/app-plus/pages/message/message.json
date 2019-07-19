@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "消息中心",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 150,
+  "pullToRefresh": {
+    "support": true,
+    "color": "#107EFF",
+    "style": "circle"
+  },
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more"
+  }
+}

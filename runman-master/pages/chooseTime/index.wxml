@@ -1,0 +1,17 @@
+<!--pages/chooseTime/index.wxml-->
+<view class='chooseTime'> 
+  <picker-view indicator-style="height: 50rpx;" style="width: 100%; height: 400rpx;" value="{{dayHourMinute_index}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{day}}" wx:key='index' style="line-height: 34px;text-align:center;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{hour}}" wx:key='index' style="line-height: 34px;text-align: center">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{minute}}" wx:key='index' style="line-height: 34px;text-align: center">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+  <view class='sure' bindtap='submit'>确定</view>
+</view>
+
+<van-notify id='van-notify'/>

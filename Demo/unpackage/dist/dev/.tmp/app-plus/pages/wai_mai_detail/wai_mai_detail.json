@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "外卖订单展示",
+  "usingComponents": {
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+  }
+}

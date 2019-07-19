@@ -1,0 +1,291 @@
+/* pages/helpMeBuy/index.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+.helpMeBuy_title{
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+/* 商品类型 */
+.buyNavList{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40rpx 0;
+  white-space: nowrap;
+  /* outline: 1px solid red; */
+}
+.buyNavList_content{
+  display: inline-block;
+  width: 134rpx;
+  height: 64rpx;
+  margin-left: 30rpx;
+  border-radius: 16rpx;
+  background-color: #F2F2F2;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: normal;
+  text-align: center;
+  line-height: 64rpx;
+}
+.buyNavList_content_active{
+  background-color: #F5D200;
+}
+/* 间隔线 */
+.line{
+  width: 632rpx;
+  height: 2rpx;
+  margin: 0 auto;
+  background-color: #F2F2F2;
+}
+/* 备注 */
+.remark{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 44rpx 36rpx 0;
+}
+.remark_textarea{
+  width: 100%;
+  height: 238rpx;
+  box-sizing: border-box;
+  padding: 24rpx 46rpx;
+  border: 4rpx solid#D3D3D3;
+  border-radius: 16rpx;
+}
+.weui_textarea_counter{
+  width: 100%;
+  height: 84rpx;
+  box-sizing: border-box;
+  line-height: 84rpx;
+  color: #8E8F90;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+/* 购买地址 */
+.buyAddress{
+  width: 100%;
+  height: 166rpx;
+  /* outline: 1rpx solid red; */
+}
+.buyAddressType{
+  width: 100%;
+  height: 66rpx;
+  line-height: 66rpx;
+  box-sizing: border-box;
+  padding:0 26rpx;
+  /* outline: 1rpx solid red; */
+}
+.buyAddressType_content{
+  display: inline-block;
+}
+.buyAddressType_text{
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: normal;
+  margin-right: 35rpx;
+}
+.specified_address{
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 0 26rpx 0 175rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* outline: 1px solid red; */
+}
+.specified_address_tips,.nearby_address_tips{
+  width: 410rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #8E8F90;
+  font-size: 28rpx;
+  font-weight: normal;
+  /* outline: 1px solid red; */
+}
+.oftenUse_common{
+  width: 124rpx;
+  height: 62rpx;
+  background-color: #F5D200;
+  color: #000;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 62rpx;
+  text-align: center;
+  border-radius: 120rpx;
+}
+.nearby_address{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #8E8F90;
+  font-size: 28rpx;
+  font-weight: normal;
+  /* outline: 1px solid red; */
+}
+/* 收货地址 */
+.receiveAddress,.goodsPrice,.tip,.sendTime,.chooseSex{
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 0 26rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* outline: 1rpx solid red; */
+}
+.tip{
+  margin-bottom: 100rpx;
+}
+.receiveAddress_content,.goodsPrice_content{
+  width: 550rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* 商品价格 */
+.goodsPrice_tips,.goodsPrice_tips2{
+  width: 360rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color:#F5D200;
+  font-size: 28rpx;
+  font-weight: normal;
+  /* outline: 1px solid red; */
+}
+.goodsPrice_tips2{
+  width: 530rpx;
+}
+.phStyle{
+  color: #8E8F90;
+}
+.goodsPrice_budget,.goodsPrice_budget2{
+  width: 185rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #8E8F90;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.goodsPrice_budget2{
+  width: 20rpx;
+  justify-content: flex-end;
+}
+
+/* 价格估算弹框 */
+.budgePrice{
+  width: 100%;
+}
+.budgePrice_top{
+  width: 750rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 0 26rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1F1F1F;
+  font-size: 30rpx;
+  font-weight: normal;
+  border-bottom: 2rpx solid #D3D3D3;
+}
+.budgeTitle{
+  font-size: 36rpx;
+}
+.budgePrice_center{
+  width: 678rpx;
+  height: 80rpx;
+  margin: 34rpx auto 40rpx;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  box-shadow:0px 6rpx 6rpx rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.budgePrice_center_title{
+  color: #F5D200;
+  font-size: 36rpx;
+  font-weight: bold;
+  display: inline-block;
+  width: 25%;
+  text-align: right;
+}
+.budgePrice_center input{
+  width: 72%;
+  height: 80rpx;
+}
+.budgePrice_bottom{
+  width: 530rpx;
+  margin: 0 auto 28rpx;
+  color: #4A4A4A;
+  font-size: 30rpx;
+}
+
+
+/* 小费 */
+.tip_content{
+  width: 550rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* outline: 1px solid red; */
+}
+
+/* 下单 */
+.submit{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.runMoney_tips{
+  width: 375rpx;
+  height: 100rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10rpx 0 10rpx 26rpx;
+}
+.runMoney_tips view:nth-of-type(1){
+  width: 100%;
+  color: #8E8F90;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.runMoney_tips view:nth-of-type(1) text{
+  margin-left: 15rpx
+}
+.runMoney_tips view:nth-of-type(2){
+  width: 100%;
+  font-size: 24rpx;
+  color: #F5D200;
+  font-weight: normal;
+}
+.submit_button{
+  width: 375rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: normal;
+  border-radius: 0;
+  background-color: #F5D200;
+}
+.submit_button:after{
+  border: none;
+}

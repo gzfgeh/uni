@@ -1,0 +1,22 @@
+{
+  "navigationBarTitleText": "选择楼宇",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 150,
+  "pullToRefresh": {
+    "support": true,
+    "color": "#107EFF",
+    "style": "circle"
+  },
+  "titleNView": {
+    "searchInput": {
+      "align": "center",
+      "placeholder": "请输入关键字",
+      "borderRadius": "30upx",
+      "backgroundColor": "#fff"
+    }
+  },
+  "usingComponents": {
+    "uni-nav-bar": "/components/uni-nav-bar",
+    "uni-load-more": "/components/uni-load-more"
+  }
+}

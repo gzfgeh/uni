@@ -1,0 +1,31 @@
+{
+  "navigationBarTitleText": "快递列表",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 150,
+  "pullToRefresh": {
+    "support": true,
+    "color": "#107EFF",
+    "style": "circle",
+    "offset": "50px"
+  },
+  "titleNView": {
+    "searchInput": {
+      "align": "center",
+      "placeholder": "请输入运单号或订单编号",
+      "borderRadius": "30upx",
+      "backgroundColor": "#fff"
+    },
+    "buttons": [
+      {
+        "text": "",
+        "fontSrc": "/static/iconfont.ttf",
+        "fontSize": "22px",
+        "float": "right"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more",
+    "uni-popup": "/components/popup-pay"
+  }
+}

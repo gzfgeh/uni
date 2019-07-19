@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "骑士取消订单",
+  "usingComponents": {
+    "van-notify": "/dist/notify/index"
+  }
+}

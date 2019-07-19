@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "快递详情",
+  "usingComponents": {
+    "uni-popup": "/components/popup-pay"
+  }
+}

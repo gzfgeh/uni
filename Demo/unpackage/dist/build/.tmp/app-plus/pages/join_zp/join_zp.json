@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "招聘",
+  "usingComponents": {
+    "u-parse": "/components/uParse/src/wxParse"
+  }
+}

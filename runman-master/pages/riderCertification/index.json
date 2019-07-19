@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "骑士实名认证",
+  "usingComponents": {
+    "van-notify": "/dist/notify/index",
+    "van-steps": "/dist/steps/index",
+    "ym-upload_idCard": "/component/ym-upload_idCard/index"
+  }
+}

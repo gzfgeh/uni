@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "外卖",
+  "usingComponents": {
+    "uni-popup": "/components/popup-pay"
+  }
+}

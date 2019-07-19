@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/helpMeBuy/index",
+    "pages/riderCertification/index",
+    "pages/addressList/index",
+    "pages/addAddress/index",
+    "pages/chooseAddress/index",
+    "pages/chooseCity/index",
+    "pages/confirmOrder/index",
+    "pages/chooseSex/index",
+    "pages/confirmOrderSuccess/index",
+    "pages/my/index",
+    "pages/chooseTime/index",
+    "pages/getOrderSuccess/index",
+    "pages/riderCheckOrder/index",
+    "pages/riderOrderIncome/index",
+    "pages/consumerOrderList/index",
+    "pages/riderOrderList/index",
+    "pages/consumerOrderDetail/index",
+    "pages/riderOrderDetail/index",
+    "pages/riderCancelOrder/index"
+  ],
+  "usingComponents": {
+    "van-stepper": "./dist/stepper/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置选择的快捷定位"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小黑猫跑腿",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxa867107cd2c1c857"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

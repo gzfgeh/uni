@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "购物车",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "删除",
+        "float": "right",
+        "fontSize": "16px",
+        "color": "#FF5269",
+        "width": "60px"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

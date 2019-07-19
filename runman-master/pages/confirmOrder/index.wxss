@@ -1,0 +1,305 @@
+/* pages/confirmOrder/index.wxss */
+
+page {
+  background-color: #f2f2f2;
+}
+
+.confirmOrder {
+  width: 100%;
+  /* outline: 1rpx solid red; */
+}
+
+/* 地图和送货地址信息 */
+
+.map_address {
+  width: 100%;
+  height: 835rpx;
+  position: relative;
+}
+
+.map_address map {
+  width: 100%;
+  height: 100%;
+}
+
+.map_address .address {
+  width: 678rpx;
+  height: 312rpx;
+  position: absolute;
+  left: 36rpx;
+  bottom: 20rpx;
+  /* outline: 1rpx solid red; */
+}
+
+/* 送货地址信息 */
+
+.navType2_helpMeTake {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  /* outline: 1rpx solid red; */
+}
+
+.navType2_helpMeTake_common {
+  width: 100%;
+  height: 154rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imageLogo_common {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.navType2_helpMeTake_common2 {
+  width: 55%;
+  height: 85rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* outline: 1px solid red; */
+}
+
+.navType2_helpMeTake_common2_view1 {
+  width: 100%;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.navType2_helpMeTake_common2_subview1 {
+  width: 100%;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-size: 24rpx;
+}
+
+.navType2_helpMeTake_common2_namephone {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #8e8f90;
+  font-weight: normal;
+  font-size: 28rpx;
+}
+
+.navType2_helpMeTake_common2_view2 {
+  max-width: 260rpx;
+  margin-right: 20rpx;
+}
+
+.navType2_helpMeTake_common2_view3 {
+  width: 220rpx;
+}
+
+.oftenUse_common {
+  width: 124rpx;
+  height: 62rpx;
+  background-color: #f5d200;
+  color: #000;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 62rpx;
+  text-align: center;
+  border-radius: 120rpx;
+}
+
+/* 表单填写信息 */
+
+.orderMessage {
+  width: 100%;
+  background-color: #fff;
+}
+
+.writeMes {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 110rpx;
+  padding: 0 26rpx;
+  background-color: #fff;
+}
+
+.writeMesCommon {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f2f2f2;
+  position: relative;
+}
+
+.titleCommon {
+  max-width: 30%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #4a4a4a;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.inputCommon {
+  width: 70%;
+  box-sizing: border-box;
+  padding-right: 30rpx;
+  height: 100rpx;
+  font-size: 28rpx;
+}
+
+.phStyle {
+  color: #8e8f90;
+}
+
+.commonRightLogo {
+  font-size: 30rpx;
+  color: #8e8f90;
+  position: absolute;
+  top: 30rpx;
+  right: 0;
+}
+
+.tosubmit {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  border-top: 1rpx solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.yunfei {
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-left: 26rpx;
+  line-height: 100rpx;
+  color: #8e8f90;
+  font-size: 28rpx;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+.submit {
+  width: 50%;
+  height: 100%;
+  border-radius: 0;
+  outline: none;
+  background-color: #f5d200;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.submit::after {
+  border: none;
+}
+
+/* 物品品类价值估算popup */
+
+.goodsTypeValue {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.typeValue {
+  width: 100%;
+  height: 856rpx;
+  background-color: #fff;
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+}
+
+.typeValue_content {
+  width: 100%;
+  height: calc(100% - 180rpx);
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 0 26rpx;
+  position: relative;
+  /* outline: 1rpx solid red; */
+}
+
+.typeValue_close {
+  font-size: 45rpx;
+  position: absolute;
+  z-index: 99;
+  right: 35rpx;
+  top: 15rpx;
+}
+
+.titleCommon2 {
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  color: #4a4a4a;
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.typeValue_types, .typeValue_values {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.typeValue_active {
+  background-color: #f5d200 !important;
+  color: #fff !important;
+}
+
+.typeValue_type, .typeValue_value {
+  width: 200rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  margin-bottom: 30rpx;
+  margin-right: 30rpx;
+  border-radius: 16rpx;
+  color: #4a4a4a;
+  font-size: 28rpx;
+  font-weight: normal;
+  background-color: #f2f2f2;
+}
+
+.typeValue_sure {
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sureSubmit {
+  width: 410rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #f5d200;
+  border-radius: 50rpx;
+  color: #4a4a4a;
+  font-size: 28rpx;
+  font-weight: normal;
+}

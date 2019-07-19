@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "宝宝团队",
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "titleNView": {
+    "type": "transparent",
+    "titleColor": "#fff",
+    "backgroundColor": "#007AFF",
+    "buttons": [
+      {
+        "text": "",
+        "fontSrc": "/static/iconfont.ttf",
+        "fontSize": "22px",
+        "float": "right"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

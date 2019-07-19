@@ -1,0 +1,176 @@
+<!--pages/paotui/index.wxml-->
+<view class='runmanMain'>
+  <!-- 我的 -->
+  <cover-view class='my' bindtap='toMy'>
+      <cover-image src='/images/zxw/my.png' class='myImg'></cover-image>
+      <cover-view>我的</cover-view>
+  </cover-view>
+  <!-- 头部nav1 -->
+  <cover-view class='navType1'>
+    <block wx:for='{{navType1}}' wx:key='index'>
+      <cover-view bindtap='navType1_click' data-index='{{index}}' class='navType1_consumer {{navType1_index == index ? "navType1_active" : "" }}'>{{item.title}}</cover-view>
+    </block>
+  </cover-view>
+  <!-- 我要帮忙===>地图和二级导航内容切换 -->
+  <view class='navType1_consumer_view' hidden='{{navType1_index != 0}}'>
+    <!-- 当前位置地图 -->
+    <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" markers="{{markers}}"></map>
+    <!-- 二级导航 -->
+    <cover-view class='navType1_consumer_navType2'>
+      <cover-view class='navType2'>
+        <block wx:for='{{navType2}}' wx:key='index'>
+          <cover-view class='navType2_content' bindtap='navType2_click' data-index='{{index}}'>
+            <cover-view class='navType2_content_title {{ index == navType2_index ? "navType2_content_title_active" : ""}}'>{{item.title}}</cover-view>
+            <cover-view class='{{ index == navType2_index ? "navType2_content_active" : ""}}'></cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+      <!-- 二级导航切换内容帮我取 -->
+      <cover-view class='navType2_helpMeTake' hidden='{{navType2_index != 0}}'>
+        <!-- 取 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index1='0' data-index2='0'>
+          <cover-image src='/images/zxw/take_logo.png' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common1' wx:if='{{!navType2_status[0][0]}}'>
+            <cover-view class='navType2_helpMeTake_common1_view1 van-ellipsis'>从哪里取货</cover-view>
+            <cover-view class='navType2_helpMeTake_common1_view2 van-ellipsis'>点击填写取货信息</cover-view>
+          </cover-view>
+          <cover-view class='navType2_helpMeTake_common2' wx:else style='height: 120rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{navType2_address[0][0].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{navType2_address[0][0].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{navType2_address[0][0].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{navType2_address[0][0].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index1='0' data-index2='0'>常用</cover-view>
+        </cover-view>
+        <cover-image class='line' style='width:100%;height:1rpx;background-color:#f2f2f2;'></cover-image>
+        <!-- 收 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index1='0' data-index2='1'>
+          <cover-image src='/images/zxw/deliver_logo.png' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common1' wx:if='{{!navType2_status[0][1]}}'>
+            <cover-view class='navType2_helpMeTake_common1_view1 van-ellipsis'>取货后送到哪里?</cover-view>
+            <cover-view class='navType2_helpMeTake_common1_view2 van-ellipsis'>点击填写收货信息</cover-view>
+          </cover-view>
+          <cover-view class='navType2_helpMeTake_common2' wx:else style='height: 110rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{navType2_address[0][1].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{navType2_address[0][1].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{navType2_address[0][1].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{navType2_address[0][1].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index1='0' data-index2='1'>常用</cover-view>
+        </cover-view>
+      </cover-view>
+      <!-- 二级导航切换内容帮我送 -->
+      <cover-view class='navType2_helpMeSend' hidden='{{navType2_index != 1}}'>
+        <!-- 送 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index1='1' data-index2='0'>
+          <cover-image src='/images/zxw/send_logo.png' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common1' wx:if='{{!navType2_status[1][0]}}'>
+            <cover-view class='navType2_helpMeTake_common1_view1 van-ellipsis'>骑士从哪里取货</cover-view>
+            <cover-view class='navType2_helpMeTake_common1_view2 van-ellipsis'>点击填写取货信息</cover-view>
+          </cover-view>
+          <cover-view class='navType2_helpMeTake_common2' wx:else style='height: 110rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{navType2_address[1][0].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{navType2_address[1][0].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{navType2_address[1][0].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{navType2_address[1][0].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index1='1' data-index2='0'>常用</cover-view>
+        </cover-view>
+        <cover-image class='line' style='width:100%;height:1rpx;background-color:#f2f2f2;'></cover-image>
+        <!-- 收 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index1='1' data-index2='1'>
+          <cover-image src='/images/zxw/deliver_logo.png' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common1' wx:if='{{!navType2_status[1][1]}}'>
+            <cover-view class='navType2_helpMeTake_common1_view1 van-ellipsis'>要送到哪里?</cover-view>
+            <cover-view class='navType2_helpMeTake_common1_view2 van-ellipsis'>点击填写收货信息</cover-view>
+          </cover-view>
+          <cover-view class='navType2_helpMeTake_common2' wx:else style='height: 110rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{navType2_address[1][1].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{navType2_address[1][1].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{navType2_address[1][1].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{navType2_address[1][1].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index1='1' data-index2='1'>常用</cover-view>
+        </cover-view>
+      </cover-view>
+      <!-- 二级导航切换内容帮我买 -->
+      <cover-view class='navType2_helpMeBuy' hidden='{{navType2_index != 2}}'>
+        <cover-view class='buyNavList'>
+          <block wx:for='{{buyNavList}}' wx:key='index'>
+            <cover-view class='buyNavList_content van-ellipsis' bindtap='buyNavListType_click' data-index='{{index}}'>{{item}}</cover-view>
+          </block>
+        </cover-view>
+        <cover-view class='buyNavList_tips'>请选择需要帮您购买的商品分类</cover-view>
+      </cover-view>
+
+    </cover-view>
+  </view>
+
+  <!-- 我是骑士 -->
+  <view class='navType1_rider_view' hidden='{{navType1_index != 1}}'>
+    <!-- 状态切换 -->
+    <view class='riderStatus {{riderStatus ? "" : "riderStatus_close" }}' bindtap='riderStatus_change'>
+      <view class='riderStatus_title van-ellipsis {{riderStatus ? "" : "riderStatus_title_close" }}'>{{riderStatus ? '开工' : '收工'}}</view>
+    </view>
+    <!-- 客户待接单列表 -->
+    <view class='riderOrderList' wx:for='{{riderOrderList}}' wx:key='index' hidden='{{!riderStatus}}'>
+      <view class='orderList_top'>
+        <image src='{{item.order_time_type_title == "实时" ? "/images/zxw/ontime.png" : "/images/zxw/notontime.png"}}' style='{{item.order_time_type_title == "实时" ? "width:104rpx" : "width:134rpx"}}'></image>
+        <view class='top_distance' style='{{item.order_time_type_title == "实时" ? "margin-left:84rpx" : "margin-left:54rpx"}};{{item.distance == "/" ? "opacity:0" : ""}}'>
+          <text>{{item.distance}}</text>
+          <text>距您位置</text>
+        </view>
+        <view class='top_income'>
+          <text>{{item.total_fee}}元</text>
+          <text>本单收入</text>
+        </view>
+        <view class='countdown_time'>
+          <view class='countTimeCommon countdown_hour van-ellipsis' hidden='{{countDownTime[index][0] == 0}}'>{{countDownTime[index][0]}}</view>
+          <text hidden='{{countDownTime[index][0] == 0}}'>:</text>
+          <view class='countTimeCommon countdown_minute van-ellipsis'>{{countDownTime[index][1]}}</view>
+          <text>:</text>
+          <view class='countTimeCommon countdown_second van-ellipsis'>{{countDownTime[index][2]}}</view>
+        </view>
+      </view>
+      <view class='orderList_center'>
+        <view class='addressFrom'>
+          <image src='/images/zxw/take_logo.png' wx:if='{{item.run_type == 1}}'></image>
+          <image src='/images/zxw/send_logo.png' wx:elif='{{item.run_type == 3}}'></image>
+          <image src='/images/zxw/buy2.png' wx:elif='{{item.run_type == 5}}'></image>
+          <view class='addressFrom_view'>
+            <view class='address_from van-ellipsis'  wx:if='{{item.start_position}}'>{{item.start_position}}</view>
+            <view class='subaddress_from van-ellipsis'  wx:if='{{item.start_position_detail}}'>{{item.start_position_detail}}</view>
+            <view class='address_from' wx:if='{{!item.start_position && !item.start_position_detail}}'>骑士就近购买</view>
+          </view>
+        </view>
+        <view class='addressTo'>
+          <image src='/images/zxw/deliver_logo.png'></image>
+          <view class='addressTo_view'>
+            <view class='address_to van-ellipsis'>{{item.end_position}}</view>
+            <view class='subaddress_to van-ellipsis'>{{item.end_position_detail}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='orderList_bottom'>
+        <view class='orderType van-ellipsis'>{{item.service_title}}</view>
+        <image class='orderGender' src='{{item.gender == 1 ? "/images/zxw/boy.png" : "/images/zxw/girl.png"}}'></image>
+        <image src='/images/zxw/take_logo2.png' wx:if='{{item.run_type == 1}}'></image>
+        <image src='/images/zxw/send_logo2.png' wx:elif='{{item.run_type == 3}}'></image>
+        <image src='/images/zxw/buy1.png' wx:elif='{{item.run_type == 5}}'></image>
+        <view class='checkOrder' bindtap='checkOrder' data-order_no='{{item.order_no}}'>查看订单</view>
+      </view>
+    </view>
+  </view>
+  <view class='riderRefresh' hidden='{{!(riderStatus && navType1_index)}}' overlay-style='background:rgba(0,0,0,0.4);' bindtap='riderRefresh'>刷新页面</view>
+
+</view>
+<often-use-address addressOftenUse_show='{{addressOftenUse_show}}' originFrom='isIndexGetPlace' placeIndex1='{{placeIndex1}}' placeIndex2='{{placeIndex2}}' bindaddressOftenUse_show_close2='addressOftenUse_onClose2' bindoftenUse_choosed='oftenUse_choosed'></often-use-address>
+<van-notify id="van-notify" />

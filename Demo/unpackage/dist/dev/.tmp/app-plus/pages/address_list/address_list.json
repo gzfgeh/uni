@@ -1,0 +1,25 @@
+{
+  "navigationBarTitleText": "地址管理",
+  "enablePullDownRefresh": true,
+  "pullToRefresh": {
+    "support": true,
+    "color": "#107EFF",
+    "style": "circle"
+  },
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "新增",
+        "float": "right",
+        "fontSize": "16px",
+        "color": "#107EFF",
+        "width": "60px"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more",
+    "uni-nav-bar": "/components/uni-nav-bar",
+    "uni-icon": "/components/uni-icon"
+  }
+}

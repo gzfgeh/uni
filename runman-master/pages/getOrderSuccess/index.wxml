@@ -1,0 +1,10 @@
+<!--pages/getOrderSuccess/index.wxml-->
+<view class='confirmOrder_success'>
+  <image src='/images/zxw/confirmSuccess.png' class='successImg'></image>
+  <view class='tip1'>恭喜,您已抢单成功!</view>
+  <view class='tip2'>请及时按照任务要求进行服务</view>
+  <view class='buttonGroup'>
+    <view class='myRelease' bindtap='jump' data-type='release'>我的任务</view>
+    <view class='backToIndex' bindtap='jump' data-type='index'>返回首页</view>
+  </view>
+</view>

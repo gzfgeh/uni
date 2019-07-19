@@ -1,0 +1,128 @@
+/* pages/addressList/index.wxss */
+page,.addressList_null{
+  width: 100%;
+  height: 100%;
+  background-color: #FCFCFC;
+}
+.addressList_null:before{
+  content: "";
+  display: table
+}
+.addressList_null image{
+  display: block;
+  width: 448rpx;
+  height: 284rpx;
+  margin: 156rpx auto 80rpx;
+}
+.addressList_null text{
+  display: block;
+  width: 100%;
+  color: #4A4A4A;
+  font-size: 44rpx;
+  font-weight: 500;
+  text-align: center;
+}
+.line{
+  width: 632rpx;
+  height: 2rpx;
+  background-color:#F2F2F2;
+  position: absolute;
+  left: 60rpx;
+  bottom: 0;
+}
+.addressView{
+  width: 100%;
+  height:190rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding:36rpx 28rpx 36rpx 60rpx;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  /* outline: 1rpx solid red; */
+}
+.addressView:last-child{
+  margin-bottom: 140rpx;
+}
+.address_content{
+  width: 500rpx;
+  height: 115rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* outline: 1rpx solid red; */
+}
+.address1{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.address1 view:nth-of-type(1){
+  max-width: 400rpx;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.address1 view:nth-of-type(2){
+  width: 84rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  margin-left: 10rpx;
+  background-color:#FFF7C7;
+  color:#4A4A4A;
+  font-size: 28rpx;
+  font-weight: normal;
+  border-radius: 8rpx;
+}
+.address2{
+  max-width: 100%;
+  font-size: 24rpx;
+  color:#4A4A4A;
+  font-weight: bold;
+}
+.name_phone{
+  width: 100%;
+  height: 25rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 24rpx;
+  color:#8E8F90;
+  font-weight: normal;
+}
+.phone{
+  margin-left: 10rpx;
+}
+.edit{
+  width: 124rpx;
+  height: 62rpx;
+  background-color: #F5D200;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 62rpx;
+  border-radius: 120rpx;
+}
+
+/* 新增地址 */
+.addAddress{
+  width: 410rpx;
+  height: 100rpx;
+  background-color: #F5D200;
+  text-align: center;
+  line-height: 100rpx;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  font-weight: normal;
+  position: fixed;
+  left: 50%;
+  border-radius: 50rpx;
+  margin-left: -205rpx;
+  bottom: 20rpx;
+}
+
+

@@ -1,0 +1,68 @@
+<!--pages/riderCertification/index.wxml-->
+<view class='riderCertification'>
+  <view class='steps'>
+    <van-steps class='step' steps="{{ steps }}" active="{{ status == 0 ? 0 : (status == 1 ? 1 : 2) }}" active-color="#F5D200" />
+  </view>
+  <!-- 未提交审核 -->
+  <view class='status0' wx:if='{{status == 0}}'>
+    <form bindsubmit='status0Submit' report-submit='true'>
+      <view class='cerficaMessage'>
+        <view class='titleInputCommon'>
+          <view class='titleCommon van-ellipsis'>姓名</view>
+          <input class='inputCommon' placeholder='请填写姓名' bindinput='watchCerficaMessage' data-type='name'></input>
+        </view>
+        <view class='titleInputCommon'>
+          <view class='titleCommon van-ellipsis'>联系方式</view>
+          <input class='inputCommon' placeholder='请输入手机号码' type='number' maxlength='11' bindinput='watchCerficaMessage' data-type='phone'></input>
+        </view>
+        <view class='titleInputCommon'>
+          <view class='titleCommon van-ellipsis'>身份证号</view>
+          <input class='inputCommon' placeholder='请输入身份证号' type='idcard' maxlength='18' bindinput='watchCerficaMessage' data-type='idcard'></input>
+        </view>
+        <view class='titleInputCommon'>
+          <view class='titleCommon van-ellipsis'>性别</view>
+          <view class='inputCommon' style='line-height: 100rpx'>
+            <radio-group class="radio-group" bindchange="radioChange">
+              <label class="radio" wx:for="{{sexs}}" wx:key='index' style='margin-right: 30rpx'>
+                <radio value='{{index}}' checked="{{item.checked}}" color='#F5D200' />{{item.value}}
+                <text>{{item.name}}</text>
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class='titleInputCommon'>
+          <view class='titleCommon van-ellipsis'>所在学校</view>
+          <input class='inputCommon' placeholder='请输入学校' bindinput='watchCerficaMessage' data-type='school'></input>
+        </view>
+      </view>
+      <ym-upload_idCard binduploadIdCard="uploadHandle" cardFace="{{cerficaMessage.id_image_front}}" cardVerso="{{cerficaMessage.id_image_back}}"></ym-upload_idCard>
+      <button form-type="submit" class='status1Submit'>提交</button>
+    </form>
+  </view>
+  <!-- 审核中 -->
+  <view class='status1' wx:elif='{{status == 1}}'>
+    <view class='confirmOrder_success'>
+      <image src='/images/zxw/confirmSuccess.png' class='successImg'></image>
+      <view class='tip1'>恭喜,认证资料提交!</view>
+      <view class='tip2'>请耐心等待工作人员审核您的身份信息</view>
+    </view>
+  </view>
+  <!-- 审核通过，已是骑士 -->
+  <view class='status3' wx:elif='{{status == 3}}'>
+    <view class='confirmOrder_success'>
+      <image src='/images/zxw/confirmSuccess.png' class='successImg'></image>
+      <view class='tip1'>您已通过审核，是一名骑士!</view>
+    </view>
+  </view>
+  <!-- 审核失败 -->
+  <view class='status5' wx:elif='{{status == 5}}'>
+    <view class='confirmOrder_success'>
+      <image src='/images/zxw/confirmFailure.png' class='successImg'></image>
+      <view class='tip1'>抱歉，您的审核未通过</view>
+      <view class='tip2'>请与小黑猫客服进行联系或仔细核查您提供的资料信息，点击下方按钮重新提交信息</view>
+      <view class='reSubmit' bindtap='reSubmit'>重新提交</view>
+    </view>
+  </view>
+
+</view>
+<van-notify id="van-notify" />

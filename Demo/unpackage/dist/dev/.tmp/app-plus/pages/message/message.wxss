@@ -1,0 +1,11 @@
+
+page{background: #F8F8F8;}
+.item_wrap{background: #fff; padding: 20rpx; color: #999; font-size: 28rpx; margin-bottom: 20rpx;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;}
+.item_wrap .dot{width: 12rpx; height: 12rpx; background: #cccccc; border-radius: 50%;margin-right: 10rpx;}
+.item_wrap .title{color: #333; font-size: 32rpx;}
+.title_wrap{padding: 20rpx 0rpx; width: 100%; border-bottom: 1rpx solid #E4E4E4;}
+.look_btn{text-align: right; color: #1480FF; font-size: 28rpx;}
+.content{padding: 20rpx 0rpx;}
+.only_one{overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;}
+.active{background: #FC3E3E!important;}
+

@@ -1,0 +1,61 @@
+/* pages/chooseSex/index.wxss */
+page,.chooseSex{
+  width: 100%;
+  height: 100%;
+  background-color: #FCFCFC;
+}
+.chooseSex{
+  box-sizing: border-box;
+  padding: 0 26rpx;
+}
+.tips1{
+  display: inline-block;
+  width: 100%;
+  margin:60rpx 0 98rpx;
+  color: #4A4A4A;
+  font-size: 44rpx;
+  font-weight: bold;
+}
+.sex{
+  width: 100%;
+  height: 270rpx;
+  margin-bottom: 58rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.boy,.girl{
+  width: 160rpx;
+  height: 270rpx;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: center;
+}
+.boy image,.girl image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.boy radio,.girl radio{
+  margin-top: 45rpx;
+}
+.tips2{
+  display: inline-block;
+  width: 100%;
+  color: #D3D3D3;
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.sexSure{
+  width: 410rpx;
+  height: 100rpx;
+  background-color: #F5D200;
+  border-radius: 50rpx;
+  color: #4A4A4A;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin: 100rpx auto 0;
+}
+
+

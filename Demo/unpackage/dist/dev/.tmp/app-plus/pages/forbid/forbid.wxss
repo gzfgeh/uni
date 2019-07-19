@@ -1,0 +1,4 @@
+
+.forbid-col-content{font-size:28rpx;padding:40rpx 30rpx;line-height: 40rpx;}
+.forbid-col-content ._p:nth-child(2n+1){color:#000;}
+

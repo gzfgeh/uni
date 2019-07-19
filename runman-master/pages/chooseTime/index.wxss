@@ -1,0 +1,25 @@
+/* pages/chooseTime/index.wxss */
+page,.chooseTime{
+  width: 100%;
+  height: 100%;
+}
+.chooseTime{
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-top: 100rpx;
+  position: relative;
+}
+.sure{
+  position: absolute;
+  left: 25rpx;
+  bottom: 25rpx;
+  width: 700rpx;
+  height: 100rpx;
+  background-color: #F5D200;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+}

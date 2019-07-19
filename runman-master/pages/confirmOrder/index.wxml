@@ -1,0 +1,98 @@
+<!--pages/confirmOrder/index.wxml-->
+<view class='confirmOrder' style='{{showGoodsTypeValue ? "height:100vh;overflow:hidden;" : ""}}'>
+
+  <!-- 地图和送货地址信息 -->
+  <view class='map_address'>
+    <!-- 地图 -->
+    <map id="navi_map" longitude="{{markers[2].longitude}}" latitude="{{markers[2].latitude}}" scale="12" markers="{{markers}}" polyline="{{polyline}}"></map>
+    <!-- 送货地址信息 -->
+    <cover-view class='address'>
+      <cover-view class='navType2_helpMeTake'>
+        <!-- 取 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index='0'>
+          <cover-image src='{{orderType == "helpMeQu" ? "/images/zxw/take_logo.png" : "/images/zxw/send_logo.png"}}' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common2' style='height: 120rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{choosedAddress[0].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{choosedAddress[0].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{choosedAddress[0].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{choosedAddress[0].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index='0'>常用</cover-view>
+        </cover-view>
+        <cover-image class='line' style='width:100%;height:1rpx;background-color:#f2f2f2;'></cover-image>
+        <!-- 收 -->
+        <cover-view class='navType2_helpMeTake_common' bindtap='toChooseAddress' data-index='1'>
+          <cover-image src='/images/zxw/deliver_logo.png' class='imageLogo_common'></cover-image>
+          <cover-view class='navType2_helpMeTake_common2' style='height: 110rpx;'>
+            <cover-view class='navType2_helpMeTake_common2_view1 van-ellipsis'>{{choosedAddress[1].address}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_subview1 van-ellipsis'>{{choosedAddress[1].detailAddress}}</cover-view>
+            <cover-view class='navType2_helpMeTake_common2_namephone'>
+              <cover-view class='navType2_helpMeTake_common2_view2 van-ellipsis'>{{choosedAddress[1].name}}</cover-view>
+              <cover-view class='navType2_helpMeTake_common2_view3 van-ellipsis'>{{choosedAddress[1].phone}}</cover-view>
+            </cover-view>
+          </cover-view>
+          <cover-view class='oftenUse_common' catchtap='addressOftenUse_onClose' data-index='1'>常用</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </view>
+
+  <!-- 表单填写信息 -->
+  <form bindsubmit="formSubmit" report-submit='true' class='orderMessage'>
+    <view class='writeMes'>
+      <view class='writeMesCommon' bindtap='chooseGoodsTypeValue'>
+        <text class='titleCommon van-ellipsis'>物品</text>
+        <input class='inputCommon' value='{{orderData.goodsTypeValue}}' disabled='true' placeholder='请选择物品信息' placeholder-style='phStyle'></input>
+        <text class='commonRightLogo'>></text>
+      </view>
+      <view class='writeMesCommon' bindtap='chooseSendTime'>
+        <text class='titleCommon van-ellipsis'>发货时间</text>
+        <input class='inputCommon' style='color:#F5D200;' value='{{sendTime}}' disabled='true' placeholder='请选择发货时间' placeholder-style='phStyle'></input>
+        <text class='commonRightLogo'>></text>
+      </view>
+      <view class='writeMesCommon' bindtap='chooseSex'>
+        <text class='titleCommon van-ellipsis'>性别选择</text>
+        <input class='inputCommon' value='{{orderData.sex == "0" ? "女" : (orderData.sex == "1" ? "男" : "")}}' disabled='true' placeholder='请选择您的性别' placeholder-style='phStyle'></input>
+        <text class='commonRightLogo'>></text>
+      </view>
+      <view class='writeMesCommon'>
+        <text class='titleCommon van-ellipsis'>备注</text>
+        <input class='inputCommon' type='text' placeholder='点击填写备注内容' placeholder-style='phStyle' bindinput='watchOrderData' data-type='remark'></input>
+      </view>
+      <view class='writeMesCommon'>
+        <text class='titleCommon van-ellipsis'>小费</text>
+        <input class='inputCommon' style='color:#F5D200;' type='digit' placeholder='加点小费更多人接单哦' placeholder-style='phStyle'  bindinput='watchOrderData' data-type='tip'></input>
+      </view>
+      <view class='tosubmit'>
+        <view class='yunfei van-ellipsis'>跑腿运费: {{runMoney}}元</view>
+        <button form-type="submit" class='submit'>下单</button>
+      </view>
+    </view>
+  </form>
+
+
+</view>
+
+<often-use-address addressOftenUse_show='{{addressOftenUse_show}}' originFrom='isConfirmOrder' placeIndex='{{placeIndex}}' bindaddressOftenUse_show_close2='addressOftenUse_onClose2' bindoftenUse_choosed='oftenUse_choosed'></often-use-address>
+
+<cover-view class='goodsTypeValue' hidden='{{!showGoodsTypeValue}}' bindtap='chooseGoodsTypeValue'></cover-view>
+<cover-view class='typeValue' hidden='{{!showGoodsTypeValue}}'>
+  <cover-view class='typeValue_content'>
+    <cover-view class='typeValue_close' bindtap='chooseGoodsTypeValue'>×</cover-view>
+    <cover-view class='titleCommon2 van-ellipsis'>类型</cover-view>
+    <cover-view class='typeValue_types'>
+      <cover-view class='typeValue_type van-ellipsis {{typeValue_choosed.type.index == index ? "typeValue_active" : ""}}' wx:for='{{typeValueData.type}}' wx:key='index' bindtap='typeValue_click' data-type='type' data-index='{{index}}' data-val='{{item}}'>{{item}}</cover-view>
+    </cover-view>
+    <cover-view class='titleCommon2 van-ellipsis'>价值(元)</cover-view>
+    <cover-view class='typeValue_values'>
+      <cover-view class='typeValue_value van-ellipsis {{typeValue_choosed.value.index == index ? "typeValue_active" : ""}}' wx:for='{{typeValueData.value}}' wx:key='index' bindtap='typeValue_click' data-type='value' data-index='{{index}}' data-val='{{item}}'>{{item}}</cover-view>
+    </cover-view>
+  </cover-view>
+  <cover-view class='typeValue_sure'>
+    <cover-view class='sureSubmit' bindtap='typeValue_submit'>确认</cover-view>
+  </cover-view>
+</cover-view>
+
+<van-notify id='van-notify'/>

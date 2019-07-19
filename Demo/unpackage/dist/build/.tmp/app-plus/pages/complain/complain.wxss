@@ -1,0 +1,110 @@
+
+.head_wrap{
+				padding: 26rpx 0px;
+				width: 100%;
+				text-align: center;
+				color: #999999;
+				font-size: 24rpx;
+				-webkit-box-sizing: border-box;
+				        box-sizing: border-box;
+}
+::-webkit-input-placeholder{
+				color: #999999;
+				font-size: 28rpx;
+}
+.item_wrap{
+				width: 100%;
+				background-color: #FFFFFF;
+				padding-left: 28rpx;
+				-webkit-box-sizing: border-box;
+				        box-sizing: border-box;
+}
+.item{
+				height: 100rpx;
+				width: 100%;
+				color: #333333;
+				font-size: 28rpx;
+				padding-right: 30rpx;
+				-webkit-box-sizing: border-box;
+				        box-sizing: border-box;
+}
+.item .content{
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				text-align: right;
+				font-size: 28rpx;
+				color: #666666;
+				height: 100rpx;
+				line-height: 100rpx;
+}
+.button{
+				border-radius: 12rpx;
+				width: 90%;
+				margin: 52rpx 5% 0px;
+				-webkit-box-sizing: border-box;
+				        box-sizing: border-box;
+				background-color: #107EFF;
+				color: #FFFFFF;
+				font-size: 32rpx;
+				height: 88rpx;
+}
+.item input{
+				margin-bottom: 0px;
+				border: none;
+				background: transparent;
+				padding-left: 16rpx;
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				    -ms-flex: 1;
+				        flex: 1;
+				text-align: right;
+				padding-right: 0px;
+}
+.upload_wrap{
+				padding: 36rpx 30rpx;
+				background: #FFFFFF;
+				color: #333333;
+				font-size: 28rpx;
+}
+.img_wrap{
+				-webkit-flex-flow: wrap;
+				    -ms-flex-flow: wrap;
+				        flex-flow: wrap;
+				margin-top: 36rpx;
+}
+.upload_img_wrap{
+				width: 32%;
+				position: relative;
+				margin-right: 1%;
+				padding: 1%;
+				-webkit-box-sizing: border-box;
+				        box-sizing: border-box;
+}
+.upload_img_wrap .img_btn{
+				width: 100%;
+				max-height: 80rpx;
+}
+.upload_img_wrap .del_btn{
+				position: absolute;
+				top: -10rpx;
+				right: 0rpx;
+				width: 40rpx;
+				height: 40rpx;
+				z-index: 10;
+}
+textarea {
+			  padding: 18rpx 22rpx;
+			  height: 140rpx;
+			  background-color: #F9F9F9;
+			  width: 93%;
+}
+textarea::-webkit-input-placeholder {
+			  color: #999999;
+			  font-size: 24rpx;
+}
+page{
+				background-color: #F3F3F3;
+}
+

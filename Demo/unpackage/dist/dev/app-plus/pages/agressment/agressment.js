@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"agree_btn{position: fixed; bottom: ",[0,0],"; height:",[0,100],"; width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center;border-top: ",[0,2]," solid #F1F1F1;}\n",],undefined,{path:"./pages/agressment/agressment.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/agressment/agressment.wxml') } }));

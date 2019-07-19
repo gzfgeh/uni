@@ -1,6 +1,6 @@
 package android.baobaoloufu.com.wxapi;
 
-import android.app.Activity;
+import io.dcloud.feature.payment.weixin.AbsWXPayCallbackActivity;
 
-public class WXPayEntryActivity extends Activity {
+public class WXPayEntryActivity extends AbsWXPayCallbackActivity {
 }

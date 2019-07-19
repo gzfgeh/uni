@@ -86,7 +86,9 @@ dependencies {
     // 基座需要，必须添加
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
+    implementation files('libs/wechat-sdk-android-with-mta-5.1.4.jar')
+
     // 添加uni-app插件
 //    implementation project(':uniplugin_richalert')
-    implementation project(':yun_pay')
+//    implementation project(':yun_pay')
 }

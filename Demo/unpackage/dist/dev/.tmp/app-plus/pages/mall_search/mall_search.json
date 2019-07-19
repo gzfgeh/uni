@@ -1,0 +1,22 @@
+{
+  "navigationBarTitleText": "",
+  "titleNView": {
+    "searchInput": {
+      "align": "center",
+      "placeholder": "请输入关键字",
+      "borderRadius": "30upx",
+      "backgroundColor": "#fff",
+      "autoFocus": true
+    },
+    "buttons": [
+      {
+        "text": "搜索",
+        "float": "right",
+        "fontSize": "18px",
+        "color": "#107EFF",
+        "width": "60px"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

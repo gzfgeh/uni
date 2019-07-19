@@ -1,0 +1,20 @@
+<!--pages/chooseSex/index.wxml-->
+<view class='chooseSex'>
+  <text class='tips1'>为了更精准的为您匹配骑士\n请选择您的性别</text>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <view class='sex'>
+      <view class='boy'>
+        <image src='/images/zxw/boy.png'></image>
+        <radio checked='{{choosedSex.boy}}' value='boy' color='#F5D200'></radio>
+      </view>
+      <view class='girl'>
+        <image src='/images/zxw/girl.png'></image>
+        <radio checked='{{choosedSex.girl}}' value='girl' color='#F5D200'></radio>
+      </view>
+    </view>
+  </radio-group>
+  <text class='tips2'>准确的选择可以让骑士更好的为您提供上门服务哦</text>
+  <view class='sexSure' bindtap='sexSure'>确定</view>
+</view>
+
+<van-notify id='van-notify' />
