@@ -70,6 +70,17 @@
 		
 		//window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
 		
+		var client_h = document.documentElement.clientHeight;
+		$(window).on("resize",function(){
+			var body_h =  document.body.scrollHeight;
+			if(body_h < client_h){
+				$(".bottom").hide();
+				console.log("小了");
+			}else{
+				console.log("正常");
+				$(".bottom").show();
+			}
+		})
 		
 		mui.init();
 		mui.ready(function() {
