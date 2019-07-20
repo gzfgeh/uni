@@ -180,17 +180,43 @@
 	roadPicker.setData(roadPickerList);
 	
 	//离开 解除打印机
-	// var mui_old_back = mui.back;
-	// mui.back = function() {
-	//     plus.android.invoke(packname+".Tools", "disconnect", main);
-	// 	mui_old_back();
-	// }
+	var mui_old_back = mui.back;
+	mui.back = function() {
+	    plus.android.invoke(packname+".Tools", "disconnect", main);
+		mui_old_back();
+	}
 	
 	// 打印东西
 	mui(".mui-content").on('tap', '.print_btn', function() {
-		plus.android.invoke(packname+".Tools", "initUtils", main);
-		plus.android.invoke(packname+".Tools", "print", "1234womenhao我们好");
+		
+		plus.android.invoke(packname+".Tools", "initPrint");
+		var btnArray = ['取消', '确定'];
+		mui.confirm('确定是否打印', '提示', btnArray, function(e) {
+		    if (e.index == 1) {
+				actionPrint();
+		    }
+		
+		});
+		
 	});
+	
+	function actionPrint(){
+		var callBack = plus.android.implements(packname+".Tools$CallBack", {
+			"success": function() {
+				
+				if (callback) {
+					//mui.toast("打印机初始化未完成");
+				}
+			},
+			"failure": function() {
+				console.log("4444444")
+				if (fail) {
+					mui.toast("打印机初始化未完成");
+				}
+			}
+		});
+		plus.android.invoke(packname+".Tools", "print", "1234womenhao我们好", callBack);
+	}
 	
 	
 	mui(".car_select").on('tap', 'div', function() {
@@ -268,6 +294,8 @@
 				var result = data.getStringExtra("result");
 				console.log(result);
 				$(".car_num").val(result);
+				plus.screen.unlockOrientation();
+				plus.screen.lockOrientation("portrait-primary"); 
 			}
 
 		}

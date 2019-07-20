@@ -51,7 +51,7 @@
 		    </div>
 			
 			<div class="input_wrap" >
-		        <input type="text"  placeholder="请输入密码" class="password">
+		        <input type="password"  placeholder="请输入密码" class="password">
 		    </div>
 			
 			
@@ -68,50 +68,50 @@
 	
 	<script>
 		
-		window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
+		//window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
 		
 		
-		// mui.init();
-		// mui.ready(function() {
-		// 	if(myStorage && myStorage.getItem("user")){
-		// 		// 登陆过了
-		// 		mui.openWindow({
-		// 			id: 'personInfo.html',
-		// 			url: 'html/personInfo.html',
-		// 			waiting:{
-		// 				autoShow:false
-		// 			},
-		// 			extras: {
-		// 				isfirst: false
-		// 			}
-		// 		});
-		// 	}else{
-		// 		//没有登陆
-		// 	}
-		// });
-		// 
-		// mui(".mui-content").on('tap', '.btn_wrap', function() {
-		// 	if(!$(".account").val()){
-		// 		mui.toast("请输入账号");
-		// 		return;
-		// 	};
-		// 	if(!$(".password").val()){
-		// 		mui.toast("请输入密码");
-		// 		return;
-		// 	};
-		// 	
-		// 	mui.openWindow({
-		// 		id: 'personInfo.html',
-		// 		url: 'html/personInfo.html',
-		// 		waiting:{
-		// 			autoShow:false
-		// 		},
-		// 		extras: {
-		// 			isfirst: false
-		// 		}
-		// 	});
-		// 
-		// })
+		mui.init();
+		mui.ready(function() {
+			if(myStorage && myStorage.getItem("user")){
+				// 登陆过了
+				mui.openWindow({
+					id: 'personInfo.html',
+					url: 'html/personInfo.html',
+					waiting:{
+						autoShow:false
+					},
+					extras: {
+						isfirst: false
+					}
+				});
+			}else{
+				//没有登陆
+			}
+		});
+		
+		mui(".mui-content").on('tap', '.btn_wrap', function() {
+			if(!$(".account").val()){
+				mui.toast("请输入账号");
+				return;
+			};
+			if(!$(".password").val()){
+				mui.toast("请输入密码");
+				return;
+			};
+			
+			mui.openWindow({
+				id: 'personInfo.html',
+				url: 'html/personInfo.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		
+		})
 		
 // 		mui.init();
 // 		var main;
