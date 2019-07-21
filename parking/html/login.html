@@ -49,7 +49,7 @@
 		</div>
 		
 		
-		<button type="button" class="mui-btn mui-btn-link btn_wrap">登录</button>
+		<button type="button" class="mui-btn btn_wrap">登录</button>
 		<!-- <div style="height: 25%;"></div> -->
 		<div class="bottom">猎科网络技术支持</div>
     </div>
@@ -58,13 +58,16 @@
 </body>
 <script type="text/javascript" src="../js/mui.min.js"></script>
 <script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/myStorage.js"></script>
 <script src="../js/app.js"></script>
-<script src="html5plus://ready"></script>
 <script type="text/javascript" charset="utf-8">
     mui.init();
     mui.ready(function() {
-    	if(myStorage && myStorage.getItem("user")){
-    		// 登陆过了
+		var userinfo= window.localStorage.getItem("userinfo");
+		var token= window.localStorage.getItem("token");
+		
+    	if(userinfo && token){
+    		
     		mui.openWindow({
     			id: 'personInfo.html',
     			url: 'personInfo.html',
@@ -76,11 +79,12 @@
     			}
     		});
     	}else{
-    		//没有登陆
     	}
 
     });
 	
+	$(".account").val("18513212904");
+	$(".password").val("888888");
 	
 	var client_h = document.documentElement.clientHeight;
 	$(window).on("resize",function(){
@@ -95,27 +99,48 @@
 	})
 
     mui(".mui-content").on('tap', '.btn_wrap', function() {
+		document.activeElement.blur();
+    	if(!$(".account").val()){
+    		mui.toast("请输入账号");
+    		return;
+    	};
+    	if(!$(".password").val()){
+    		mui.toast("请输入密码");
+    		return;
+    	};
 		
-    	// if(!$(".account").val()){
-    	// 	mui.toast("请输入账号");
-    	// 	return;
-    	// };
-    	// if(!$(".password").val()){
-    	// 	mui.toast("请输入密码");
-    	// 	return;
-    	// };
-    	
-    	mui.openWindow({
-    		id: 'personInfo.html',
-    		url: 'personInfo.html',
-    		waiting:{
-    			autoShow:false
-    		},
-    		extras: {
-    			isfirst: false
-    		}
-    	});
-    
+		var params = {
+			username: $(".account").val(),
+			password: $(".password").val()
+		};
+		
+		Global.commonAjax({
+				url: "login/index",
+				method: "POST",
+				data: params
+			},
+			function(data) {
+				Global.hideLoading();
+				myStorage.setItem("userinfo", data.userinfo);
+				myStorage.setItem("token", data.token);
+				
+				mui.openWindow({
+					id: 'personInfo.html',
+					url: 'personInfo.html',
+					waiting:{
+						autoShow:false
+					},
+					extras: {
+						isfirst: false
+					}
+				});
+				
+			},
+			function(err, code) {
+				Global.hideLoading();
+				mui.toast(err);
+			}
+		)
     })
 </script>
 

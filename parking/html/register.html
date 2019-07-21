@@ -33,7 +33,7 @@
 		.item_wrap .item_select img{width: 12px; height: 6px;}
 		.item_wrap .item_select .text{color: #000; font-size: 15px;}
 		
-		textarea{background: #F2F2F2; height: 85px; border:none;}
+		input{color: #000;}
 		
 		
 		.upload_img_wrap{width: 32%;position: relative;margin-right: 1%;
@@ -66,21 +66,21 @@
 		<div class="item_wrap" style="margin-top: 30px;">
 			<div class="title">原密码</div>
 			<div class="item">
-				<input type="text" placeholder="请输入原密码">
+				<input type="text" placeholder="请输入原密码" class="nowpass">
 			</div>
 		</div>
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">新密码</div>
 			<div class="item">
-				<input type="text" placeholder="请输入新密码">
+				<input type="text" placeholder="请输入新密码" class="pass">
 			</div>
 		</div>
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">确认密码</div>
 			<div class="item">
-				<input type="text" placeholder="请输入确认密码">
+				<input type="text" placeholder="请输入确认密码" class="repass">
 			</div>
 		</div>
 		
@@ -95,6 +95,7 @@
 </body>
 <script src="../js/mui.js"></script>
 <script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/myStorage.js"></script>
 <script src="../js/app.js"></script>
 <script type='text/javascript'>
     
@@ -112,32 +113,49 @@
 		}
 	})
 	
-	var images = [];
-	addImage();
-	function addImage(){
-			var html = '';
-			$(".img_wrap").html(""); 
-			images.map(function(item, index){
-				html += '<div class="upload_img_wrap">'+
-							'<img src="'+item+'" class="img_btn">'+
-							'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
-						'</div>';
-			});
-			
-			html += '<div class="upload_img_wrap add_btn">'+
-						'<img src="../images/upload_icon.jpg" class="img_btn">'+
-					'</div>';
-			
-			$(".img_wrap").append(html);
-			
-			mui(".upload_img_wrap").on('tap', '.del_btn', function() {
-				console.log("000")
-				var index = $(this).data("index");
-				images.splice(index, 1);
-				addImage();
-			});
-			
-		}
+	function getCode(){
+		if(!$(".nowpass").val()){
+			mui.toast("请输入原密码");
+			return;
+		};
+		
+		if(!$(".pass").val()){
+			mui.toast("请输入新密码");
+			return;
+		};
+		
+		if(!$(".repass").val()){
+			mui.toast("请输入确认密码");
+			return;
+		};
+		
+		if($(".repass").val() != $(".pass").val()){
+			mui.toast("新密码和确认密码不一致");
+			return;
+		};
+		
+		var params = {
+			nowpass: $(".nowpass").val(),
+			pass: $(".pass").val(),
+			repass: $(".repass").val(),
+			token:myStorage.getItem("token")
+		};
+		
+		Global.commonAjax({
+				url: "set/repass",
+				method: 'POST',
+				data: params
+			},
+			function(data) {
+				console.log(data);
+				mui.toast("密码修改成功");
+				mui.back();
+			},
+			function(err, code) {
+				mui.toast(err);
+			}
+		)
+	}
 		
 </script>
 

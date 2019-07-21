@@ -33,7 +33,7 @@
 		.item_wrap .item_select img{width: 12px; height: 6px;}
 		.item_wrap .item_select .text{color: #000; font-size: 15px;}
 		
-		textarea{background: #F2F2F2; height: 85px; border:none;}
+		textarea{background: #F2F2F2; height: 85px; border:none;color: #000;}
 		
 		
 		.upload_img_wrap{width: 32%;position: relative;margin-right: 1%;
@@ -76,7 +76,7 @@
 		<div class="item_wrap car_select" style="margin-top: 10px;">
 			<div class="title">违章车型</div>
 			<div class="item_select row_between">
-				<span class="text" id="car_text">燃油车（小型）</span>
+				<span class="text" id="car_text"></span>
 				<img src="../images/arraw_down.png">
 			</div>
 		</div>
@@ -84,7 +84,7 @@
 		<div class="item_wrap name_select" style="margin-top: 10px;">
 			<div class="title">路队中段</div>
 			<div class="item_select row_between">
-				<span class="text" id="name_text">公园中队</span>
+				<span class="text" id="name_text"></span>
 				<img src="../images/arraw_down.png">
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 		<div class="item_wrap road_select" style="margin-top: 10px;">
 			<div class="title">拍照路段</div>
 			<div class="item_select row_between">
-				<span class="text" id="road_text">国庆路</span>
+				<span class="text" id="road_text"></span>
 				<img src="../images/arraw_down.png">
 			</div>
 		</div>
@@ -107,20 +107,20 @@
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">备注信息</div>
-			<textarea placeholder="请输入备注信息"></textarea>
+			<textarea placeholder="请输入备注信息" class="remark"></textarea>
 		</div>
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">拍照中队</div>
 			<div class="item">
-				<input type="text" placeholder="李澔">
+				<input class="take_photo_road" type="text" readonly style="color: #999;">
 			</div>
 		</div>
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">拍照人员</div>
 			<div class="item">
-				<input type="text" placeholder="李澔">
+				<input class="take_photo_name" type="text" readonly style="color: #999;">
 			</div>
 		</div>
 		
@@ -132,7 +132,7 @@
 		</div>
 		
 		<button type="button" class="mui-btn mui-btn-link print_btn">打印</button>
-		<button type="button" class="mui-btn mui-btn-link btn_wrap">上传</button>
+		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="recordAdd();">上传</button>
 		
 		
     </div>
@@ -150,13 +150,72 @@
 	var intent;
 	var packname = "com.LiekeNet.DaTongCGJ";
 	mui.plusReady(function() {
-		addImage();
+		
 		main = plus.android.runtimeMainActivity();
 		Intent = plus.android.importClass("android.content.Intent");
 		intent = new Intent(main.getIntent());
-		
+		addImage();
+		getTeams();
+		console.log(myStorage.getItem("userinfo").username);
+		$(".take_photo_name").val(myStorage.getItem("userinfo").username);
 	});
-    
+    $(".time_value").html(getDateTime());
+	$(".car_num").val("豫A12345")
+	
+	// mui(".mui_content").on('tap', '.btn_wrap', function() {
+	// 	
+	// 	
+	// 	recordAdd();
+	// 	
+	// });
+	
+	// 上传
+	function recordAdd(){
+		console.log("9999");
+		console.log($(".car_num").val());
+		if(!$(".car_num").val()){
+			mui.toast("请输入车牌号");
+			return;
+		}
+		if(!$(".remark").val()){
+			mui.toast("请输入备注信息");
+			return;
+		}
+		
+		if(images.length != 2){
+			mui.toast("请上传两种违章图片");
+			return;
+		}
+		
+		var imagesTemp = [];
+		images.map(function(item){
+			imagesTemp.push(item.split(Global.imgUrl)[1]);
+		})
+		
+		var params = {
+			license_plate: $(".car_num").val(),
+			photo_time: $(".time_value").html(),
+			road_id: road_value,
+			car_type: car_value,
+			username: myStorage.getItem("userinfo").username,
+			remark: $(".remark").val(),
+			imgs: imagesTemp,
+			token:myStorage.getItem("token")
+		};
+		Global.commonAjax({
+				url: "index/record_add",
+				method: 'POST',
+				data: params
+			},
+			function(data) {
+				console.log(data);
+			},
+			function(err, code) {
+				mui.toast(err);
+			}
+		)
+	}
+	
 	var images = [];
 	var carPickerList = [];
 	var namePickerList = [];
@@ -164,25 +223,22 @@
 	var carPicker = new mui.PopPicker();
 	var namePicker = new mui.PopPicker();
 	var roadPicker = new mui.PopPicker();
-	var car_value = "燃油车（小型）";
-	var name_value = "公园中队";
-	var road_value = "国庆路";
+	var car_value = "";
+	var name_value = "";
+	var road_value = "";
 	
-	$(".time_value").html(getDateTime());
 	
-	carPickerList = [{text: '燃油车（小型）', value: 0}, {text: '小型车', value: 1},{text: '大型车', value: 2}];
+	
+	// 01 小型车，02 大型车，51 新能源小型车，52 新能源大型车
+	carPickerList = [{text: '小型车', value: "01"}, {text: '大型车', value: "02"},{text: '新能源小型车', value: "51"},{text: '新能源大型车', value: "52"}];
 	carPicker.setData(carPickerList);
-	
-	namePickerList = [{text: '公园中队', value: 0}, {text: '公园小队', value: 1},{text: '公园大队', value: 2}];
-	namePicker.setData(namePickerList);
-	
-	roadPickerList = [{text: '国庆路', value: 0}, {text: '北京路', value: 1},{text: '河南路', value: 2}];
-	roadPicker.setData(roadPickerList);
+	mui('#car_text')[0].innerHTML = carPickerList[0].text;
+	car_value = carPickerList[0].value;
 	
 	//离开 解除打印机
 	var mui_old_back = mui.back;
 	mui.back = function() {
-	    plus.android.invoke(packname+".Tools", "disconnect", main);
+	    //plus.android.invoke(packname+".Tools", "disconnect", main);
 		mui_old_back();
 	}
 	
@@ -238,6 +294,8 @@
 			    console.log(SelectedItem[0].text);
 			    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
 			    name_value = SelectedItem[0].value;
+				$(".take_photo_road").val(SelectedItem[0].text);
+				getRoads(SelectedItem[0].value);
 			})
 		}, 500);
 		
@@ -260,6 +318,7 @@
 	
 	mui(".item").on('tap', '#take_photo', function() {
 		$(".time_value").html(getDateTime());
+		document.activeElement.blur();
 		checkPermissionPhoto(goToAndroid, null);
 	});
 	//点击检查权限
@@ -302,10 +361,9 @@
 				
 	}
 	
-	
 	var fileName = "temp.jpg";
 	mui(".img_wrap").on('tap', '.add_btn', function() {
-		
+		document.activeElement.blur();
 		plus.nativeUI.actionSheet({
 		    cancel: "取消",
 		    buttons: [{
@@ -330,19 +388,9 @@
 	        console.log("e is" + e);
 	        plus.io.resolveLocalFileSystemURL(e, function(entry) {
 	            var path = entry.toLocalURL();
-	            console.log(path);
-	            $('.top-img').attr('src', path);
 	            var pathList = path.split("/");
 	            fileName = pathList[pathList.length-1];
-	            console.log(fileName);
-				
-	            Global.getCanvasBase64(path)
-	                .then(function(base64) {
-	                    console.log(base64);
-	                    // uploadFile(base64);
-	                }, function(err) {
-	                    console.log(err);
-	                })
+	            uploadFile(path);
 	
 	        }, function(e) {
 	            mui.toast("读取拍照文件错误：" + e.message);
@@ -355,18 +403,36 @@
 	    plus.gallery.pick(function(path) {
 			var pathList = path.split("/");
 			fileName = pathList[pathList.length-1];
-			
-	        Global.getCanvasBase64(path)
-	            .then(function(base64) {
-	                console.log(base64);
-	                // uploadFile(base64);
-					// images.push(data.url);
-					// addImage();
-	            }, function(err) {
-	                console.log(err);
-	            })
+	        uploadFile(path);
 	
 	    });
+	}
+	
+	function uploadFile (path) {
+		Global.showLoading();
+	    var task = plus.uploader.createUpload(Global.baseUrl+"upfiles/upload",
+	        {method:"POST"},
+	        function(t,status){ //上传完成
+				Global.hideLoading();
+	            if(status==200){
+	            	console.log("上传成功："+t.responseText);
+	            	console.log("上传成功---："+JSON.parse(t.responseText).code);
+					if(JSON.parse(t.responseText).code == 200){
+						console.log(Global.imgUrl+JSON.parse(t.responseText).data.url)
+						images.push(Global.imgUrl+JSON.parse(t.responseText).data.url);
+						addImage();
+					}
+					
+	            }else{
+	                console.log("上传失败："+status);
+	            }
+	        }
+	    );
+	    //添加其他参数
+	    task.addData("token",myStorage.getItem("token"));
+        // 页面中要上传的 图片路径
+	    task.addFile(path,{key:path});
+	    task.start();
 	}
 	
 	function getDateTime(){
@@ -399,16 +465,22 @@
 	function addImage(){
 			var html = '';
 			$(".img_wrap").html(""); 
-			images.map(function(item, index){
-				html += '<div class="upload_img_wrap">'+
-							'<img src="'+item+'" class="img_btn">'+
-							'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
-						'</div>';
-			});
+			console.log(images);
+			if(images){
+				images.map(function(item, index){
+					html += '<div class="upload_img_wrap">'+
+								'<img src="'+item+'" class="img_btn">'+
+								'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
+							'</div>';
+				});
+			}
 			
-			html += '<div class="upload_img_wrap add_btn">'+
-						'<img src="../images/upload_icon.jpg" class="img_btn">'+
-					'</div>';
+			if(images==undefined || images.length < 2){
+				html += '<div class="upload_img_wrap add_btn">'+
+							'<img src="../images/upload_icon.jpg" class="img_btn">'+
+						'</div>';
+			}
+			
 			
 			$(".img_wrap").append(html);
 			
@@ -419,6 +491,55 @@
 				addImage();
 			});
 			
+		}
+		
+		// 获取中队
+		function getTeams(){
+			Global.commonAjax({
+					url: "index/team",
+					method: 'POST',
+					data: {"token":myStorage.getItem("token")}
+				},
+				function(data) {
+					console.log(data);
+					namePickerList = [];
+					data.map(function(item, index){
+						namePickerList.push({text: item.level_name, value: item.level_id})
+					});
+					namePicker.setData(namePickerList);
+					
+					mui('#name_text')[0].innerHTML = namePickerList[0].text;
+					name_value = namePickerList[0].value;
+					$(".take_photo_road").val(namePickerList[0].text);
+					getRoads(namePickerList[0].value);
+				},
+				function(err, code) {
+					mui.toast(err);
+				}
+			)
+		}
+			
+		// 获取路段
+		function getRoads(teamId){
+			Global.commonAjax({
+					url: "index/roads",
+					method: 'POST',
+					data: {"token":myStorage.getItem("token"), "teamId": teamId}
+				},
+				function(data) {
+					console.log(data);
+					roadPickerList = [];
+					data.map(function(item, index){
+						roadPickerList.push({text: item.road_name, value: item.road_id})
+					});
+					roadPicker.setData(roadPickerList);
+					mui('#road_text')[0].innerHTML = roadPickerList[0].text;
+					road_value = roadPickerList[0].value;
+				},
+				function(err, code) {
+					mui.toast(err);
+				}
+			)
 		}
 		
 </script>

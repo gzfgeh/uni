@@ -33,7 +33,6 @@
 		
 		<navigator class=" bottom_item_wrap" style="margin-top: 30upx;" @click="goToSetting">
 			<div class="row_between bottom_item" style="border-top: 2upx solid #E3E3E3;">
-				<img src="../../../static/img/my_geren_icon.png" class="icon" mode="aspectFill" style="height: 30upx;width: 45upx;">
 				<span>个人资料</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>

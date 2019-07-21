@@ -508,6 +508,7 @@ page{
   background: #ffffff;
   padding: 0upx 40upx 0upx 20upx;
 	width: 100%;
+	box-sizing: border-box;
 }
 
 .item_wrap img{

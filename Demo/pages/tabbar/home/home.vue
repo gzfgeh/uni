@@ -1,242 +1,20 @@
 <template>
-	<view class="col" style="height: 100%;padding-top:118upx;box-sizing: border-box;">
-		<view class="content col" style="width:100%;">
-			<div class="head_bg">
-				<img src="../../../static/img/home_head_bg.png" mode="widthFix">
-			</div>
-			
-			<div class="row_between home_head_wrap" :style="{'top': (isAPP?'80upx':'30upx')}">
-				<div class="row_center home_head_left" @tap="selectBuild()">
-					<img src="../../../static/img/home_location.png" mode="widthFix">
-					<span>{{buildingName}}</span>
-					<!-- <img src="../../../static/img/lou_select.png" mode="widthFix"> -->
-					<span class="arraw_down_white"></span>
-				</div>
-				
-				<div class="row">
-					<img src="../../../static/img/home_search.png" @click="goToSearch"
-						mode="widthFix" class="search_icon">
-					<img src="../../../static/img/home_scan.png" @click="goToScan" style="margin-left: 0upx;"
-						mode="widthFix" class="search_icon" v-if="isAPP">
-					
-					<div class="msg_wrap row_center" @tap="goToMsg">
-						<img src="../../../static/img/home_msg.png" mode="widthFix">
-						<div class="red_hot" v-if="msgCount > 0"></div>
-					</div>
-				</div>
-			</div>
-		</view>
-			
-		<scroll-view scroll-y style="height:100%;position:relative;z-index:10;padding-top:44upx; box-sizing: border-box;"
-				:style="{'top': (isAPP?'0upx':'-44upx')}">
-			<!-- item.bannerImageUrl -->
-			<div class="swiper_wrap" >
-				<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
-						:interval="3000" :duration="500" class="head_img">            
-						<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" @tap="goToH5(index)">  
-							<image :src="item.bannerImageUrl" mode="widthFix" class="head_img"  />           
-						</swiper-item>        
-				</swiper> 
-				
-				<view class="dots">
-					<block v-for="(item, index) in itemList" :key="index">
-						<view class="dot_normal" :class="{'active': (index==curIndex)}"></view>
-					</block>
-				</view>
-			</div>
-			
-			<div style="background: #F5F5F5;padding-top:30upx;">
-			
-				<div class="gonggao_wrap row">
-					<img src="../../../static/img/home_gonggao.png" mode="widthFix">
-					<view class="uni-swiper-msg">
-						<swiper vertical="true" autoplay="true" circular="true" interval="3000">
-							<swiper-item v-for="(item, index) in msg" :key="index">
-								<span @click="goToWebView(index)">{{item.detail}}</span>
-							</swiper-item>
-						</swiper>
-					</view>
-				</div>
-				
-				<div class="content_wrap row_center">
-					<navigator class="col_center flex_one" v-for="(item, index) in contentList" :key="index" @tap="goToContent(index)">
-						<img :src="item.configNameImg1" mode="widthFix">
-						<span>{{item.configName}}</span>
-					</navigator>
-				</div>
-				
-				<div class="build_wrap row">
-					<navigator class="row_center flex_one" @click="goToBuildSuoYin">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
-						<span>楼层索引</span>
-					</navigator>
-					
-					<div class="line"></div>
-					
-					<navigator class="row_center flex_one" @click="goToTeam">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
-						<span>服务团队</span>
-					</navigator>
-					
-					<div class="line"></div>
-					
-					<navigator class="row_center flex_one" @click="joinUs">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
-						<span>加入我们</span>
-					</navigator>
-				</div>
-				
-				<img src="../../../static/img/home_center_img.png" mode="widthFix" class="center_wrap" @click="goToWebView">
-				
-				<div class="recommand_one">
-					<div class="item">
-						<div class="row_between head">
-							<span class="title">品质生活</span>
-							<div class="row">
-								<span>更多</span>
-								<img src="../../../static/img/right_icon.png" mode="aspectFill">
-							</div>
-						</div>
-						<div>这里有你想不到的优惠</div>
-					</div>
-					
-					
-					<div class="recommand_item" v-if="shopList[0]">
-						<img :src="shopList[0].list_img" mode="aspectFill">
-						<div class="right_wrap">
-							<div class="row_center right">
-								<div class="right_item" >
-									<span class="name">{{shopList[1].store_name}}</span>
-									<span class="desc">{{shopList[1].desc}}</span>
-								</div>
-								<img :src="shopList[1].list_img" mode="aspectFill">
-							</div>
-							
-							<div class="row_center right">
-								<div class="right_item" >
-									<span class="name">{{shopList[2].store_name}}</span>
-									<span class="desc">{{shopList[2].desc}}</span>
-								</div>
-								<img :src="shopList[2].list_img" mode="aspectFill">
-							</div>
-							
-						</div>
-					</div>
-					
-					
-					<div class="nav" v-if="shopList[3]">
-						<div class="nav-item">
-							<div class="row_center">
-								<img :src="shopList[3].list_img" />
-							</div>
-							
-							<div class="scroll_content_wrap">
-								<span>{{shopList[3].store_name}}</span>
-								<span class="desc">{{shopList[3].desc}}</span>
-							</div>
-						</div>
-						
-						<div class="nav-item">
-							<div class="row_center">
-								<img :src="shopList[4].list_img" />
-							</div>
-							
-							<div class="scroll_content_wrap">
-								<span>{{shopList[4].store_name}}</span>
-								<span class="desc">{{shopList[4].desc}}</span>
-							</div>
-						</div>
-						
-						<div class="nav-item">
-							<div class="row_center">
-								<img :src="shopList[5].list_img" />
-							</div>
-							
-							<div class="scroll_content_wrap">
-								<span>{{shopList[5].store_name}}</span>
-								<span class="desc">{{shopList[5].desc}}</span>
-							</div>
-						</div>
-							
-					</div>
-					
-				</div>
-			
-			
-				<div class="recommand_two" >
-					<div class="item">
-						<div class="row_between head">
-							<span class="title">健康餐饮</span>
-							<div class="row">
-								<span>更多</span>
-								<img src="../../../static/img/right_icon.png" mode="aspectFill">
-							</div>
-						</div>
-						<div>健康生活从这里开始</div>
-					</div>
-					
-					<div class="list_item" v-if="shopList[6]">
-						<navigator class="item_wrap">
-							<div class="item">
-								<img  :src="shopList[6].list_img" mode="aspectFill">
-								<div class="content_item">
-									<span class="title">{{shopList[6].store_name}}</span>
-									<span class="content">{{shopList[6].desc}}</span>
-									<!-- <div class="tag_wrap">
-										<span v-for="(ite,ind) in shopList" :key="ind">#健康</span>
-									</div> -->
-								</div>
-							</div>
-						</navigator>
-						
-						<navigator class="item_wrap">
-							<div class="item">
-								<img  :src="shopList[7].list_img" mode="aspectFill">
-								<div class="content_item">
-									<span class="title">{{shopList[7].store_name}}</span>
-									<span class="content">{{shopList[7].desc}}</span>
-									<!-- <div class="tag_wrap">
-										<span v-for="(ite,ind) in shopList" :key="ind">#健康</span>
-									</div> -->
-								</div>
-							</div>
-						</navigator>
-						
-						<navigator class="item_wrap">
-							<div class="item" style="border-bottom: none;">
-								<img  :src="shopList[8].list_img" mode="aspectFill">
-								<div class="content_item">
-									<span class="title">{{shopList[8].store_name}}</span>
-									<span class="content">{{shopList[8].desc}}</span>
-									<!-- <div class="tag_wrap">
-										<span v-for="(ite,ind) in shopList" :key="ind">#健康</span>
-									</div> -->
-								</div>
-							</div>
-						</navigator>
-					</div>
-					
-				</div>
-			
-			
-			
-			</div>
-			
-		</scroll-view>
-			
-			
+	<view >
+		
+		<div>12233444</div>
 	</view>
 	
 </template>
 
 <script>
 	
-	import { BASE_IMAGE_URL,getImgList,getBanners,getServiceLeftMenuList,
-			yunshanfu_app,getHomePageConfigNew,getMessageListByType,getTopLine,search } from '@/utils/api'
+	import { BASE_IMAGE_URL,getShareData } from '@/utils/api'
 	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
 	// #ifdef APP-PLUS
 		//const dcRichAlert = uni.requireNativePlugin('licence');
 	// #endif
+	
+	import weixin_sdk from '../../../utils/weixin-jsapi.js';
 	
 	export default {
 	data() {
@@ -256,258 +34,57 @@
 			shopList: []
 		};
 	},
-	onShow(){
-		let buildName =uni.getStorageSync("userInfo").buildingName;
-		if(!buildName){
-			return;
-		}
-		if(buildName != this.buildingName){
-			this.buildingName = buildName;
-			this.getBanners();
-			this.getHomePageConfigNew();
-		}
-		this.getList();
-	},
 	onLoad() {
-		this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
-		this.paddingValue = parseInt(uni.getSystemInfoSync().statusBarHeight)+32 + 'px'
-		console.log(this.statusBarHeight);
 		
-		this.getBanners();
-		this.getHomePageConfigNew();
-		this.getTopLine();
-		this.search();
-		
-		// #ifdef APP-PLUS
-		this.isAPP = true;
-		
-		// #endif
+		this.getShareData();
 	},
 	methods: {
-		goToWebView(index){
-			// this.yunshanfu_app();
-			// return;
+		async getShareData(){
+			let res = await getShareData(window.location.href.split('#')[0]);
+			if(res.code == 1000){
+				this.initWeiXin(res.data);
+			}
+		},
+		initWeiXin(result){
+			weixin_sdk.config({
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: 'wx619e8821f163f2cc', // 必填，企业号的唯一标识，此处填写企业号corpid
+					timestamp: result.timestamp, // 必填，生成签名的时间戳
+					nonceStr: result.noncestr, // 必填，生成签名的随机串
+					signature: result.signature,// 必填，签名，见附录1
+					jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
 			
-			if(index>=0){
-				uni.navigateTo({
-					url: '../../home_webview/home_webview?url='+this.msg[index].topLineUrl
-				})
-			}else{
-				//老虎机
-				if(!this.isLogin()){
-					return;
-				}
-				uni.navigateTo({
-					url: '../../home_webview/home_webview?url=http://pc.baobaoloufu.com/award/index.html'
-				})
-			}
-			
-		},
-		async getTopLine(){
-			let res = await getTopLine();
-			if(res.status == 1){
-				this.msg = res.data;
-			}
-		},
-		async search(){
-			let params = {
-				searchType: 2,
-				keyword: "",
-				page:1,
-				limit:10,
-				storeTag:1
-			};
-			let res = await search(params);
-			if(res.status == 1){
-				this.shopList = res.data;
-			}
-		},
-		async getList(){
-			let params = {
-				userID: uni.getStorageSync("userInfo").userID,
-				page: 1,
-				limit: 20
-			};
-			let res = await getMessageListByType(params);
-			uni.stopPullDownRefresh();
-			if(res.status == 1){
-				this.msgCount = res.data.length;
-			}
-			
-		},
-		goToSearch: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.navigateTo({
-				url: '/pages/express_list/express_list'
-			});
-		},
-		goToScan: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.scanCode({
-				success: function (res) {
-					console.log('条码类型：' + res.scanType);
-					console.log('条码内容：' + res.result);
-					
-					if(res.result.indexOf("pages/express_main/express_main?orderSN=")>-1)
-					{
-						var orderSN=res.result.split("orderSN=")[1];
-						uni.navigateTo({
-							url: '/pages/express_main/express_main?orderSN='+orderSN
-						});
-						
+			weixin_sdk.ready(function(){
+					//分享给朋友
+				  weixin_sdk.onMenuShareAppMessage({
+					title: 'title', // 分享标题
+					desc: 'desc', // 分享描述
+					link: window.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+					imgUrl: 'https://www.baidu.com/img/bd_logo1.png', // 分享图标
+					success: function () {
+					  // 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+					  // 用户取消分享后执行的回调函数
 					}
-					else{
-						
-						uni.showModal({
-							title: res.scanType,
-							content: res.result,
-							success: function (result) {
-								if (result.confirm) {
-									console.log('用户点击确定');
-								} else if (result.cancel) {
-									console.log('用户点击取消');
-								}
-							}
-						});
-						
+				  })
+
+				  //分享到朋友圈
+				  weixin_sdk.onMenuShareTimeline({
+					title: 'title', // 分享标题
+					link: window.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+					imgUrl: 'https://www.baidu.com/img/bd_logo1.png', // 分享图标
+					success: function () {
+					  // 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+					  // 用户取消分享后执行的回调函数
 					}
-					
-					
-					
-				}
+				  })
 			});
 		},
-		goToMsg: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.navigateTo({
-				url: '/pages/message/message'
-			});
-		},
-		goToBuildSuoYin: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.navigateTo({
-				url: '/pages/build_suoyin/build_suoyin'
-			});
-		},
-		goToTeam: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.navigateTo({
-				url: '/pages/baobao_team/baobao_team'
-			});
-		},
-		goToH5: function(index){
-			// uni.navigateTo({
-			// 	url: '/pages/express_main/express_main'
-			// });
-		},
-		goToContent: function(index){
-			if(index == 0){
-				//快递
-				uni.navigateTo({
-					url: '/pages/express_main/express_main'
-				});
-			}else if(index == 1){
-				// 外卖
-				if(!this.isLogin()){
-					return;
-				}
-				uni.navigateTo({
-					url: '/pages/wai_mai_main/wai_mai_main'
-				});
-			}else if(index == 2){
-				uni.switchTab({  
-					url: '../service/service'  
-				});
-			}else{
-				uni.showToast({
-				  icon: 'none',
-				  title: '敬请期待',
-				  duration: 1000
-				});
-			}
-		},
-		joinUs: function(){
-			uni.navigateTo({
-				url: '/pages/join_us/join_us'
-			});
-		},
-		selectBuild: function(){
-			if(!this.isLogin()){
-				return;
-			}
-			uni.navigateTo({
-				url: '/pages/build/build'
-			});
-		},
-		goToRecentUsed:function(){
-			uni.navigateTo({
-				url: '/pages/recent_used/recent_used'
-			});
-		},
-		goToApp: function(){
-			yunPay.show();
-		},
-		slideChange: function(e){
-			this.curIndex = e.mp.detail.current;
-		},
-		slideContentChange: function(e){
-			this.contentCurIndex = e.mp.detail.current;
-		},
-		async getHomePageConfigNew(){
-			let res = await getHomePageConfigNew(uni.getStorageSync("userInfo").buildingID);
-			if(res.status == 1){
-				this.contentList = res.data;
-			}
-		},
-		async getServiceLeftMenuList(){
-			let res = await getServiceLeftMenuList(uni.getStorageSync("userInfo").buildingID);
-			if(res.status == 1){
-				this.contentList = res.data;
-			}
-		},
-		async getBanners(){
-			let res = await getBanners(24, uni.getStorageSync("userInfo").buildingID);
-			if(res.status == 1){
-				this.itemList = res.data;
-			}
-		},
-		async yunshanfu_app(){
-			console.log(dcRichAlert);
-			// return;
-			let res = await yunshanfu_app();
-			if(res.status == 1){
-				let rn = res.data;
-				dcRichAlert.show({
-					title: rn
-				}, result => {
-					const msg = JSON.stringify(result);
-					let type = msg.type;
-					if(type == "-1"){
-						uni.showToast({
-						  icon: 'none',
-						  title: '请安装云闪付APP',
-						  duration: 1000
-						});
-					}else{
-						uni.showToast({
-						  icon: 'none',
-						  title: type,
-						  duration: 1000
-						});
-					}
-				});
-			}
-		}
+		
 		
 	}
 };

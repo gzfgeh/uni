@@ -7,7 +7,7 @@ var tokenFly = new Fly()
 
 // 网络超时时间
 request.config.timeout = 10 * 1000
-request.config.baseURL = 'https://apitest.baobaoloufu.com/'
+request.config.baseURL = 'https://www.gzfgeh.xyz/'
 
 tokenFly.config = request.config
 

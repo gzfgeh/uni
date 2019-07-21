@@ -160,9 +160,9 @@
     },
     "h5" : {
         "router" : {
-            "base" : ""
+            "base" : "/h5/"
         },
         "title" : "楼服宝",
-        "domain" : "http://malltest.baobaoloufu.com"
+        "domain" : "https://www.gzfgeh.xyz"
     }
 }

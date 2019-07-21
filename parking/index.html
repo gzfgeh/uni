@@ -55,7 +55,7 @@
 		    </div>
 			
 			
-			<button type="button" class="mui-btn mui-btn-link btn_wrap">登录</button>
+			<button type="button" class="mui-btn btn_wrap">登录</button>
 			
 		    <div class="bottom">猎科网络技术支持</div>
 		
@@ -69,6 +69,9 @@
 	<script>
 		
 		//window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
+		
+		$(".account").val("18513212904");
+		$(".password").val("888888");
 		
 		var client_h = document.documentElement.clientHeight;
 		$(window).on("resize",function(){
@@ -84,7 +87,10 @@
 		
 		mui.init();
 		mui.ready(function() {
-			if(myStorage && myStorage.getItem("user")){
+			var userinfo= myStorage.getItem("userinfo");
+			var token= myStorage.getItem("token");
+			
+			if(userinfo && token){
 				// 登陆过了
 				mui.openWindow({
 					id: 'personInfo.html',
@@ -102,6 +108,7 @@
 		});
 		
 		mui(".mui-content").on('tap', '.btn_wrap', function() {
+			document.activeElement.blur();
 			if(!$(".account").val()){
 				mui.toast("请输入账号");
 				return;
@@ -111,119 +118,39 @@
 				return;
 			};
 			
-			mui.openWindow({
-				id: 'personInfo.html',
-				url: 'html/personInfo.html',
-				waiting:{
-					autoShow:false
+			var params = {
+				username: $(".account").val(),
+				password: $(".password").val()
+			};
+			
+			Global.commonAjax({
+					url: "login/index",
+					method: "POST",
+					data: params
 				},
-				extras: {
-					isfirst: false
+				function(data) {
+					Global.hideLoading();
+					myStorage.setItem("userinfo", data.userinfo);
+					myStorage.setItem("token", data.token);
+					mui.toast("登陆成功");
+					mui.openWindow({
+						id: 'personInfo.html',
+						url: 'html/personInfo.html',
+						waiting:{
+							autoShow:false
+						},
+						extras: {
+							isfirst: false
+						}
+					});
+					
+				},
+				function(err, code) {
+					Global.hideLoading();
+					mui.toast(err);
 				}
-			});
-		
+			)
 		})
-		
-// 		mui.init();
-// 		var main;
-//         var Intent;
-//         var intent;
-// 		document.addEventListener('plusready', function() {
-// 			console.log("111111");
-//             main = plus.android.runtimeMainActivity();
-//             Intent = plus.android.importClass("android.content.Intent");
-//             intent = new Intent(main.getIntent());
-//         }, false);
-// 
-//         function clickFunction(){
-//         	checkPermissionPhoto(goToAndroid, null);
-//         };
-// 
-// 
-//         //发现页 点击检查权限
-//         function checkPermissionPhoto(callback, fail) {
-//         	console.log("2222222")
-//             var mainAct = plus.android.runtimeMainActivity();
-//             plus.android.invoke("com.HBuilder.integrate.Tools", "initUtils", mainAct);
-//             var callBack = plus.android.implements("com.HBuilder.integrate.Tools$CallBack", {
-//                 "success": function() {
-//                     console.log("3333333")
-//                     if (callback) {
-//                         callback();
-//                     }
-//                 },
-//                 "failure": function() {
-//                 	console.log("4444444")
-//                     if (fail) {
-//                         fail();
-//                     }
-//                 }
-//             });
-//             plus.android.invoke("com.HBuilder.integrate.Tools", "permission", ["android.permission-group.CAMERA"], callBack);
-// 
-//         }
-// 
-// 		
-// 		function goToAndroid(){
-// 			intent.setClassName(main, "com.frank.plate.activity.PreviewActivity");
-//             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//             main.startActivityForResult(intent, 19);
-// 			main.onActivityResult = function(request, code, data) {
-// 				
-// 				console.log("555555"+code)
-// 				if ( (request == 19) && (code == -1)) {
-// 					console.log("6666666");
-// 					var result = data.getStringExtra("result");
-// 
-// 					console.log(result);
-// 				}
-// 
-// 			}
-// 					
-// 		}
-		
-		
-// 
-// function goToNext(){
-// 	if(myStorage && myStorage.getItem("user")){
-// 		//如果有值，证明登录过了
-// 		mui.openWindow({
-// 			id: 'home.html',
-// 			url: 'html/home.html',
-// 			waiting:{
-// 				autoShow:false
-// 			},
-// 			extras: {
-// 				isfirst: false
-// 			}
-// 		});
-// 	}else{
-// 		//没有登录
-// 		console.log("login 登陆");
-// 		mui.openWindow({
-// 			id: 'login.html',
-// 			url: 'html/login.html',
-// 
-// 			waiting: {
-// 				autoshow: false
-// 			}
-// 		});
-// 	}
-// }
-// // H5 plus事件处理
-// function plusReady(){
-// 	console.log("login 登陆");
-// 	goToNext();
-// }
-// 
-// 
-// if(window.plus){
-// 	plusReady();
-// }else{
-// 	document.addEventListener('plusready', plusReady, false);
-// }
-
-
 </script>
 
 </html>

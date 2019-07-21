@@ -15,7 +15,7 @@
 		.mui-bar-nav~.mui-content .mui-pull-top-pocket{top: 14px;}
 		.info{font-size: 12px; color: #999;padding-left: 16px; background: #FFF; padding-top: 44px; padding-bottom: 13px;}
 		
-		.item_wrap{background: #FFF;margin-top: 22px;}
+		.item_wrap{background: #FFF;margin-top: 0px;}
 		.item{ border-top: 10px solid #F3F3F3; padding: 23px 16px 13px; height: 100px;box-sizing: border-box;}
 		.item .title_wrap{display: flex; flex-direction: column;justify-content: space-between; height: 100%;}
 		.item .title{font-size: 20px; color: #000;}
@@ -38,194 +38,103 @@
 		    <h1 class="mui-title">罚单记录</h1>
 		</header>
 		
-		<div class="mui-content">
+		<div class="mui-content" id="app">
 			<div class="info">已经处理或者超过两个小时的记录无法撤回</div>
 			
-			<!--下拉刷新容器-->
-			<div id="pullrefresh" class=" mui-scroll-wrapper ">
-				<div class="mui-scroll">
-					<!--数据列表-->
-					<div class="item_wrap">
-
-						<div class="row_between item">
-							<div class="title_wrap">
-								<span class="title">皖AH2026</span>
-								<div class="row">
-									<span class="time">2019-07-08   14:08:26</span>
-									<span class="text">已打印</span>
-									<span class="status">合格</span>
-								</div>
-							</div>
-							<button type="button" class="mui-btn mui-btn-link btn">撤回</button>
+			<div class="item_wrap">
+			
+				<!-- <div class="row_between item">
+					<div class="title_wrap">
+						<span class="title">皖AH2026</span>
+						<div class="row">
+							<span class="time">2019-07-08   14:08:26</span>
+							<span class="text">已打印</span>
+							<span class="status">{{item.name}}</span>
 						</div>
-						
-						<div class="row_between item">
-							<div class="title_wrap">
-								<span class="title">皖AH2026</span>
-								<div class="row">
-									<span class="time">2019-07-08   14:08:26</span>
-									<span class="text">已打印</span>
-									<span class="status">合格</span>
-								</div>
-							</div>
-							<button type="button" class="mui-btn mui-btn-link btn">撤回</button>
-						</div>
-						
-
 					</div>
-				</div>
+					<button type="button" class="mui-btn mui-btn-link btn">撤回</button>
+				</div> -->
+				
+			
 			</div>
+							
 
-			<div class="empty_text">
+			<div class="empty_text hideClass">
 				数据为空
 			</div>
 
 		</div>
 
-
-
-
-
 <script src="../js/mui.js"></script>
+<!-- <script src="../js/vue.js"></script> -->
 <script src="../js/jquery-2.1.1.min.js"></script>
 <script src="../js/myStorage.js"></script>
 <script src="../js/app.js"></script>
 
 <script>
-	var h5pullDown = true;
-	mui.init({
-		pullRefresh: {
-			container: '#pullrefresh',
-			down: {
-				callback: pulldownRefresh
-			},
-			up: {
-				contentrefresh: '正在加载...',
-				callback: pullupRefresh
-			}
-		}
-	});
-// 	mui.plusReady(function() {
-// 		mui('#pullrefresh').pullRefresh().pullupLoading();
-// 		getData(page);
-// 	});
-	/**
-	 * 下拉刷新具体业务实现
-	 */
-	function pulldownRefresh() {
-		setTimeout(function() {
-			mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-			
-			$(".express-list").html("");
-			page=1;
-			// getData(page);
-			
-		}, 1500);
-	}
-	var count = 0;
-	/**
-	 * 上拉加载具体业务实现
-	 */
-	function pullupRefresh() {
-		setTimeout(function() {
-			mui('#pullrefresh').pullRefresh().endPullupToRefresh(isEnd); //参数为true代表没有更多数据了。
-			// getData(page);
-		}, 1500);
-	}
-	if (mui.os.plus) {
-		mui.plusReady(function() {
-
-			setTimeout(function() {
-				mui('#pullrefresh').pullRefresh().pullupLoading();
-			}, 1000);
-			
-			// getData(page);
-		});
-	} else {
-		mui.ready(function() {
-			mui('#pullrefresh').pullRefresh().pullupLoading();
-		});
-	}
-
-	function getData(pageIndex){
-		$(".empty_text").hide();
+	
+	mui.init();
+	mui.plusReady(function () {
+	    getData();
 		
+		
+	})
+	list = [{name: '111asd'}, {name: 'ssss'}, {name: 'asd'}, {name: 'ssss'},{name: 'asd'}, {name: 'ssss'}]
+	setData(list);
+	
+	var list = [];
+	function getData(){
 		Global.commonAjax({
-					url: "notifications?page="+pageIndex
-
-				},
-				function(data) {
-
-					console.log(JSON.stringify(data));
-
-					if(data)
-					{
-						var html="";
-						data = data.data;
-						if(data.data.length>0)
-						{
-							console.log("000-----111")
-							for(var i=0;i<data.data.length;i++)
-							{
-								console.log("000-----222")
-								html += '<li class="row_between item" data-id="'+data.data[i].id+'">';
-								 if(data.data[i].icon){
-									 html += '<img src="'+data.data[i].icon+'" >';
-								 }
-										html += 
-										'<div class="content_wrap">'+
-											'<span class="title">'+data.data[i].title+'</span>'+
-											'<span class="content">'+data.data[i].content+'</span>'+
-										'</div>'+
-										'<span class="flex_one"></span>';
-								if(data.data[i].created_at)	{
-									html += '<span class="time">'+data.data[i].created_at+'</span>';
-								}	
-									html += 
-									'</li>';
-							}
-
-							page++;
-
-							$(".express-list").append(html);
-						}
-						else
-						{
-							isEnd=1;
-						}
-
-
-						if(pageIndex==1&&data.data.length==0)
-						{
-							$(".empty_text").show();
-						}
-					}
-				},
-				function(err) {
-
-					console.log(err);
-
-				})
+				url: "index/user_records",
+				method: 'POST',
+				data: {token: myStorage.getItem("token")}
+			},
+			function(data) {
+				console.log(data);
+				list = data?data:[];
+				list = [{name: '111asd'}, {name: 'ssss'}, {name: 'asd'}, {name: 'ssss'},{name: 'asd'}, {name: 'ssss'}]
+				setData(list);
+			},
+			function(err, code) {
+				mui.toast(err);
+			}
+		)
+	};
+	
+	function setData(list){
+		var html = "";
+		for(var i=0; i<list.length; i++){
+			html += '<div class="row_between item" data-id="">'+
+					'<div class="title_wrap">'+
+						'<span class="title">皖AH2026</span>'+
+						'<div class="row">'+
+							'<span class="time">2019-07-08   14:08:26</span>'+
+							'<span class="text">已打印</span>'+
+							'<span class="status">合格</span>'+
+						'</div></div>'+
+					'<button type="button" class="mui-btn mui-btn-link btn">撤回</button>'+
+				'</div>';
+		};
+		$(".item_wrap").append(html);
 	}
-
-	var page=1;
-	var isEnd=0;
-
-	mui(".express-list").on('tap', 'li', function() {
+	
+	mui(".item_wrap").on('tap', '.title_wrap', function() {
+	
 		var id=$(this).attr("data-id");
-		Global.openWindow({
+		mui.openWindow({
 			url:"detail.html?id="+id,
 			id: "detail.html",
 			waiting: {
 				autoShow: false
 			}
 		})
+	
 	})
 	
-	mui(".express-list").on('tap', '.btn', function() {
+	mui(".item_wrap").on('tap', '.btn', function() {
 	
 		var id=$(this).attr("data-id");
-		Global.openWindow({
+		mui.openWindow({
 			url:"reason.html?id="+id,
 			id: "reason.html",
 			waiting: {

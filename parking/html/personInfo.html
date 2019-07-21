@@ -96,6 +96,9 @@
             var self = plus.webview.currentWebview();
             isStep = self.isStep;
 			
+			$(".name").html(myStorage.getItem("userinfo").username);
+			$(".address").html("所属中队："+myStorage.getItem("userinfo").levelName);
+			
 			fastQuit();
         });
 		
