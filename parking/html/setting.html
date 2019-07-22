@@ -67,9 +67,9 @@
     <div class="modal-mask row updateApp hideClass">
         <div class="modal-dialog">
             <div class="title">请输入路段名称</div>
-			<input type="text" class="road_name">
+			<input type="text" class="road_name" maxlength="15"/>
 			<div class="row_between dialog_btn">
-				<span onclick="clearAction();">清除</span>
+				<span onclick="clearAction();">取消</span>
 				<span onclick="addAction();">确定</span>
 			</div>
         </div>
@@ -86,23 +86,45 @@
 	
 	mui.init();
 	mui.plusReady(function () {
-	    
+	    getRoads();
 	});
-	addData();
-	var list = [1,2,3,4,5,6,7];
+	
+	var list = [];
+	// 获取路段
+	function getRoads(){
+		Global.commonAjax({
+				url: "index/roads",
+				method: 'POST',
+				data: {"token":myStorage.getItem("token"), "teamId": myStorage.getItem("userinfo").level_id}
+			},
+			function(data) {
+				console.log(data);
+				list = data;
+				addData();
+			},
+			function(err, code) {
+				mui.toast(err);
+			}
+		)
+	}
+	
+	
+	
 	function addData(){
 		var html = "";
-		for(var i=0; i<10; i++){
-			html += '<div class="item_wrap" >望江西路</div>';
+		for(var i=0; i<list.length; i++){
+			html += '<div class="item_wrap" data-id="'+list[i].road_id+'">'+list[i].road_name+'</div>';
 		};
 		$(".list_wrap").append(html);
 	};
 	
-	mui(".list_wrap").on('tap', '.item_wrap', function() {
-	
-		$(".updateApp").removeClass("hideClass");
-		$(".road_name").val("10");
-	})
+	var type = 0, road_id = 0;
+	// mui(".list_wrap").on('tap', '.item_wrap', function() {
+	// 	$(".updateApp").removeClass("hideClass");
+	// 	$(".road_name").val($(this).html());
+	// 	type = 1;
+	// 	road_id = $(this).data("id");
+	// })
 	
 	//显示弹框
 	function add(){
@@ -144,6 +166,11 @@
 	
 	//新增路段
 	function addAction(){
+		if(type == 1){
+			editAction();
+			return;
+		}
+		console.log($(".road_name").val());
 		if(!$(".road_name").val()){
 			mui.toast("请输入路段名称");
 			return;
@@ -162,6 +189,7 @@
 				console.log(data);
 				mui.toast("新增成功");
 				$(".updateApp").addClass("hideClass");
+				getRoads();
 			},
 			function(err, code) {
 				mui.toast(err);

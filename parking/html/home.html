@@ -158,16 +158,24 @@
 		getTeams();
 		console.log(myStorage.getItem("userinfo").username);
 		$(".take_photo_name").val(myStorage.getItem("userinfo").username);
+		
+		carTypeIndex = myStorage.getItem("carTypeIndex");
+		carTypeIndex = carTypeIndex?carTypeIndex:0;
+		carNameIndex = myStorage.getItem("carNameIndex");
+		carNameIndex = carNameIndex?carNameIndex: 0;
+		carRoadIndex = myStorage.getItem("carRoadIndex");
+		carRoadIndex = carRoadIndex?carRoadIndex: 0;
+		
+		// 01 小型车，02 大型车，51 新能源小型车，52 新能源大型车
+		carPickerList = [{text: '小型车', value: "01", index: 0}, {text: '大型车', value: "02", index: 1},{text: '新能源小型车', value: "51", index: 2},{text: '新能源大型车', value: "52", index: 3}];
+		carPicker.setData(carPickerList);
+		mui('#car_text')[0].innerHTML = carPickerList[carTypeIndex].text;
+		car_value = carPickerList[carTypeIndex].text;
+		
 	});
     $(".time_value").html(getDateTime());
-	$(".car_num").val("豫A12345")
+	// $(".car_num").val("豫A12345");
 	
-	// mui(".mui_content").on('tap', '.btn_wrap', function() {
-	// 	
-	// 	
-	// 	recordAdd();
-	// 	
-	// });
 	
 	// 上传
 	function recordAdd(){
@@ -177,10 +185,14 @@
 			mui.toast("请输入车牌号");
 			return;
 		}
-		if(!$(".remark").val()){
-			mui.toast("请输入备注信息");
-			return;
-		}
+		// if(!$(".remark").val()){
+		// 	mui.toast("请输入备注信息");
+		// 	return;
+		// }
+		
+		myStorage.setItem("carTypeIndex", carTypeIndex);
+		myStorage.setItem("carNameIndex", carNameIndex);
+		myStorage.setItem("carRoadIndex", carRoadIndex);
 		
 		if(images.length != 2){
 			mui.toast("请上传两种违章图片");
@@ -197,9 +209,10 @@
 			photo_time: $(".time_value").html(),
 			road_id: road_value,
 			car_type: car_value,
+			team_id: name_value,
 			username: myStorage.getItem("userinfo").username,
 			remark: $(".remark").val(),
-			imgs: imagesTemp,
+			photos: imagesTemp,
 			token:myStorage.getItem("token")
 		};
 		Global.commonAjax({
@@ -209,9 +222,33 @@
 			},
 			function(data) {
 				console.log(data);
+				mui.toast("上传成功");
+				mui.back();
 			},
 			function(err, code) {
 				mui.toast(err);
+				console.log("9990000");
+				var recordList = myStorage.getItem("recordList");
+				if(recordList){
+					recordList = JSON.parse(recordList);
+					params.roadName = $('#road_text').html();
+					params.teamName = $('#name_text').html();
+					var flag = false;
+					for(var i=0; i<recordList.length; i++){
+						if(recordList[i].photo_time == params.photo_time){
+							flag = true;
+						}
+					};
+					if(!flag){
+						recordList.unshift(params);
+					}
+				}else{
+					params.roadName = $('#road_text').html();
+					params.teamName = $('#name_text').html();
+					recordList = [];
+					recordList.push(params);
+				};
+				myStorage.setItem("recordList", JSON.stringify(recordList));
 			}
 		)
 	}
@@ -227,18 +264,12 @@
 	var name_value = "";
 	var road_value = "";
 	
-	
-	
-	// 01 小型车，02 大型车，51 新能源小型车，52 新能源大型车
-	carPickerList = [{text: '小型车', value: "01"}, {text: '大型车', value: "02"},{text: '新能源小型车', value: "51"},{text: '新能源大型车', value: "52"}];
-	carPicker.setData(carPickerList);
-	mui('#car_text')[0].innerHTML = carPickerList[0].text;
-	car_value = carPickerList[0].value;
+	// $("#car_text").html("大型车");
 	
 	//离开 解除打印机
 	var mui_old_back = mui.back;
 	mui.back = function() {
-	    //plus.android.invoke(packname+".Tools", "disconnect", main);
+	    plus.android.invoke(packname+".Tools", "disconnect", main);
 		mui_old_back();
 	}
 	
@@ -274,42 +305,50 @@
 		plus.android.invoke(packname+".Tools", "print", "1234womenhao我们好", callBack);
 	}
 	
-	
+	var carTypeIndex = 0;
 	mui(".car_select").on('tap', 'div', function() {
 		document.activeElement.blur();
+		 carPicker.pickers[0].setSelectedIndex(carTypeIndex);
 		setTimeout(() => {
 			carPicker.show(function(SelectedItem) {
-			    console.log(SelectedItem[0].text);
+			    console.log(JSON.stringify(SelectedItem));
 			    mui('#car_text')[0].innerHTML = SelectedItem[0].text;
-			    car_value = SelectedItem[0].value;
+			    car_value = SelectedItem[0].text;
+				carTypeIndex = SelectedItem[0].index;
 			})
-		}, 500);
+		}, 50);
 		
 	})
 	
+	var carNameIndex = 0;
 	mui(".name_select").on('tap', 'div', function() {
 		document.activeElement.blur();
+		namePicker.pickers[0].setSelectedIndex(carNameIndex);
 		setTimeout(()=>{
 			namePicker.show(function(SelectedItem) {
 			    console.log(SelectedItem[0].text);
 			    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
 			    name_value = SelectedItem[0].value;
 				$(".take_photo_road").val(SelectedItem[0].text);
+				carNameIndex = SelectedItem[0].index;
 				getRoads(SelectedItem[0].value);
 			})
-		}, 500);
+		}, 50);
 		
 	})
 	
+	var carRoadIndex = 0;
 	mui(".road_select").on('tap', 'div', function() {
 		document.activeElement.blur();
+		roadPicker.pickers[0].setSelectedIndex(carRoadIndex);
 		setTimeout(() => {
 			roadPicker.show(function(SelectedItem) {
 			    console.log(SelectedItem[0].text);
 			    mui('#road_text')[0].innerHTML = SelectedItem[0].text;
 			    road_value = SelectedItem[0].value;
+				carRoadIndex = SelectedItem[0].index;
 			})
-		}, 500)
+		}, 50)
 	})
 	
 	mui(".time_refresh").on('tap', 'div', function() {
@@ -504,14 +543,14 @@
 					console.log(data);
 					namePickerList = [];
 					data.map(function(item, index){
-						namePickerList.push({text: item.level_name, value: item.level_id})
+						namePickerList.push({text: item.level_name, value: item.level_id, index: index})
 					});
 					namePicker.setData(namePickerList);
 					
-					mui('#name_text')[0].innerHTML = namePickerList[0].text;
-					name_value = namePickerList[0].value;
-					$(".take_photo_road").val(namePickerList[0].text);
-					getRoads(namePickerList[0].value);
+					mui('#name_text')[0].innerHTML = namePickerList[carNameIndex].text;
+					name_value = namePickerList[carNameIndex].value;
+					$(".take_photo_road").val(namePickerList[carNameIndex].text);
+					getRoads(namePickerList[carNameIndex].value);
 				},
 				function(err, code) {
 					mui.toast(err);
@@ -530,11 +569,11 @@
 					console.log(data);
 					roadPickerList = [];
 					data.map(function(item, index){
-						roadPickerList.push({text: item.road_name, value: item.road_id})
+						roadPickerList.push({text: item.road_name, value: item.road_id, index: index})
 					});
 					roadPicker.setData(roadPickerList);
-					mui('#road_text')[0].innerHTML = roadPickerList[0].text;
-					road_value = roadPickerList[0].value;
+					mui('#road_text')[0].innerHTML = roadPickerList[carRoadIndex].text;
+					road_value = roadPickerList[carRoadIndex].value;
 				},
 				function(err, code) {
 					mui.toast(err);

@@ -63,23 +63,6 @@
 <script type="text/javascript" charset="utf-8">
     mui.init();
     mui.ready(function() {
-		var userinfo= window.localStorage.getItem("userinfo");
-		var token= window.localStorage.getItem("token");
-		
-    	if(userinfo && token){
-    		
-    		mui.openWindow({
-    			id: 'personInfo.html',
-    			url: 'personInfo.html',
-    			waiting:{
-    				autoShow:false
-    			},
-    			extras: {
-    				isfirst: false
-    			}
-    		});
-    	}else{
-    	}
 
     });
 	

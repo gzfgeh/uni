@@ -48,7 +48,9 @@
 		.tag_wrap{display: flex;flex-direction: row; flex-flow: wrap;}	
 		.tag{border: 1px solid #E6E6E6; border-radius: 3px; color: #999; font-size: 15px; background: #FFF; 
 				padding: 10px 14px; margin-right: 10px; margin-bottom: 20px;}
-			
+		
+		.active{color: #EBA327; border: 1px solid #EBA327;}
+		.reason{color: #000;}
     </style>
 	
 </head>
@@ -67,15 +69,15 @@
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="title">撤回理由</div>
-			<textarea placeholder="请输入撤回理由"></textarea>
+			<textarea placeholder="请输入撤回理由" class="reason"></textarea>
 		</div>
 		
 		<div class="item_wrap" style="margin-top: 10px;">
 			<div class="tag_wrap">
-				<span class="tag">录入错误</span>
+				<!-- <span class="tag">录入错误</span>
 				<span class="tag">并非在此路段</span>
 				<span class="tag">车牌号错误</span>
-				<span class="tag">车牌异常</span>
+				<span class="tag">车牌异常</span> -->
 			</div>
 		</div>
 		
@@ -87,7 +89,7 @@
 			</div>
 		</div>
 		
-		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="getCode();">确定</button>
+		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="postAction();">确定</button>
 		
 		
     </div>
@@ -101,6 +103,171 @@
 <script src="../js/app.js"></script>
 <script src="../js/myStorage.js"></script>
 <script type='text/javascript'>
+	
+	var tagList = [];
+	var record_id;
+	mui.init();
+	mui.plusReady(function() {
+		var self = plus.webview.currentWebview();
+		record_id = self.record_id;
+		
+		tagList = myStorage.getItem("reasonList");
+		if(tagList){
+			tagList = JSON.parse(tagList);
+			if(tagList.length > 6){
+				tagList = tagList.slice(0, 6);
+			};
+			
+			var html = "";
+			for(var i=0; i<tagList.length; i++){
+				html += '<span class="tag">'+tagList[i]+'</span>';
+			};
+			$(".tag_wrap").append(html);
+		};
+		
+	});
+	
+	function postAction(){
+		if(!$(".reason").val()){
+			mui.toast("请填写理由");
+			return;
+		};
+		
+		if(!images || images.length ==0){
+			mui.toast("请上传图片");
+			return;
+		}
+		
+		var flag = false;
+		if(tagList){
+			tagList.map(function(item){
+				if(item == $(".reason").val()){
+					flag = true;
+				}
+			});
+			if(!flag){
+				tagList.unshift($(".reason").val());
+				myStorage.setItem("reasonList", JSON.stringify(tagList));
+			}
+		}else{
+			tagList = [];
+			tagList.push($(".reason").val());
+			myStorage.setItem("reasonList", JSON.stringify(tagList));
+		}
+		
+		
+		var imagesTemp = [];
+		images.map(function(item){
+			imagesTemp.push(item.split(Global.imgUrl)[1]);
+		})
+		
+		var params = {
+			'token': myStorage.getItem("token"),
+			'record_id': record_id,
+			reason: $(".reason").val(),
+			withdraw_img: imagesTemp
+		};
+		Global.commonAjax({
+				url: "index/withdraw",
+				method: 'POST',
+				data: params
+			},
+			function(data) {
+				console.log(data);
+				mui.toast("提交成功");
+				var h = plus.webview.getWebviewById("record_list.html");
+				mui.fire(h,'pageRefresh',{});
+				
+				mui.back();
+			},
+			function(err, code) {
+				mui.toast(err);
+			}
+		)
+		
+	}
+	
+	mui(".tag_wrap").on('tap', '.tag', function() {
+		console.log("000");
+		$(".tag_wrap .tag").removeClass("active");
+		$(this).addClass("active");
+		$(".reason").val($(this).html());
+	});
+	
+	var fileName = "temp.jpg";
+	mui(".img_wrap").on('tap', '.add_btn', function() {
+		document.activeElement.blur();
+		plus.nativeUI.actionSheet({
+		    cancel: "取消",
+		    buttons: [{
+		        title: "拍照"
+		    }, {
+		        title: "从相册中选择"
+		    }]
+		}, function(e) { //1 是拍照  2 从相册中选择
+		    switch (e.index) {
+		        case 1:
+		            appendByCamera();
+		            break;
+		        case 2:
+		            appendByGallery();
+		            break;
+		    }
+		});
+	});
+	// 拍照添加文件
+	function appendByCamera() {
+	    plus.camera.getCamera().captureImage(function(e) {
+	        console.log("e is" + e);
+	        plus.io.resolveLocalFileSystemURL(e, function(entry) {
+	            var path = entry.toLocalURL();
+	            var pathList = path.split("/");
+	            fileName = pathList[pathList.length-1];
+	            uploadFile(path);
+	
+	        }, function(e) {
+	            mui.toast("读取拍照文件错误：" + e.message);
+	        });
+	
+	    });
+	}
+	
+	function appendByGallery() {
+	    plus.gallery.pick(function(path) {
+			var pathList = path.split("/");
+			fileName = pathList[pathList.length-1];
+	        uploadFile(path);
+	
+	    });
+	}
+	
+	function uploadFile (path) {
+		Global.showLoading();
+	    var task = plus.uploader.createUpload(Global.baseUrl+"upfiles/upload",
+	        {method:"POST"},
+	        function(t,status){ //上传完成
+				Global.hideLoading();
+	            if(status==200){
+	            	console.log("上传成功："+t.responseText);
+	            	console.log("上传成功---："+JSON.parse(t.responseText).code);
+					if(JSON.parse(t.responseText).code == 200){
+						console.log(Global.imgUrl+JSON.parse(t.responseText).data.url)
+						images.push(Global.imgUrl+JSON.parse(t.responseText).data.url);
+						addImage();
+					}
+					
+	            }else{
+	                console.log("上传失败："+status);
+	            }
+	        }
+	    );
+	    //添加其他参数
+	    task.addData("token",myStorage.getItem("token"));
+	    // 页面中要上传的 图片路径
+	    task.addFile(path,{key:path});
+	    task.start();
+	}
+	
     
 	var images = [];
 	addImage();

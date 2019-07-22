@@ -305,3 +305,5 @@ header img{
 .mui-show-loading-mask-hidden{  
     display: none !important;  
 } 
+
+.empty_text{width: 100%; height: 4rem; line-height: 4rem; text-align: center;background: #ffffff; border: none; z-index: 10;}

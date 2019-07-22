@@ -39,7 +39,7 @@
 	</head>
 
 	<body>
-		<div class="mui-content">
+		<div class="mui-content hideClass">
 			
 			<div class="head_wrap">
 				<span class="title">登录</span>
@@ -70,6 +70,20 @@
 		
 		//window.location.href = "http://www.gzfgeh.xyz/appin/app.html";
 		
+		
+		// H5 plus事件处理
+		function plusReady(){
+			goToNext();
+		}
+		
+		
+		if(window.plus){
+			plusReady();
+		}else{
+			document.addEventListener('plusready', plusReady, false);
+		}
+		
+		
 		$(".account").val("18513212904");
 		$(".password").val("888888");
 		
@@ -85,13 +99,14 @@
 			}
 		})
 		
-		mui.init();
-		mui.ready(function() {
+		function goToNext(){
 			var userinfo= myStorage.getItem("userinfo");
 			var token= myStorage.getItem("token");
-			
+			console.log(userinfo);
+			console.log(token);
 			if(userinfo && token){
 				// 登陆过了
+				console.log("000000");
 				mui.openWindow({
 					id: 'personInfo.html',
 					url: 'html/personInfo.html',
@@ -104,8 +119,18 @@
 				});
 			}else{
 				//没有登陆
+				mui.openWindow({
+					id: 'login.html',
+					url: 'html/login.html',
+					waiting:{
+						autoShow:false
+					},
+					extras: {
+						isfirst: false
+					}
+				});
 			}
-		});
+		}
 		
 		mui(".mui-content").on('tap', '.btn_wrap', function() {
 			document.activeElement.blur();

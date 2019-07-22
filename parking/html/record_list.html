@@ -20,7 +20,7 @@
 		.item .title_wrap{display: flex; flex-direction: column;justify-content: space-between; height: 100%;}
 		.item .title{font-size: 20px; color: #000;}
 		.item .time{font-size: 15px; color: #666;}
-		.item .text{font-size: 15px; color: #666; margin: 0px 20px;}
+		.item .text{font-size: 15px; color: #666; margin: 0px 10px;}
 		.item .status{font-size: 15px; color: #EC9927;}
 		.item .btn{width: 60px; background: #0B2A47; color: #fff; font-size: 13px; border-radius: 2px; height: 33px;}
 
@@ -77,10 +77,10 @@
 	mui.plusReady(function () {
 	    getData();
 		
-		
+		window.addEventListener("pageRefresh", function (e) {
+				getData();
+		});
 	})
-	list = [{name: '111asd'}, {name: 'ssss'}, {name: 'asd'}, {name: 'ssss'},{name: 'asd'}, {name: 'ssss'}]
-	setData(list);
 	
 	var list = [];
 	function getData(){
@@ -92,7 +92,6 @@
 			function(data) {
 				console.log(data);
 				list = data?data:[];
-				list = [{name: '111asd'}, {name: 'ssss'}, {name: 'asd'}, {name: 'ssss'},{name: 'asd'}, {name: 'ssss'}]
 				setData(list);
 			},
 			function(err, code) {
@@ -103,29 +102,45 @@
 	
 	function setData(list){
 		var html = "";
+		$(".item_wrap").html("");
 		for(var i=0; i<list.length; i++){
-			html += '<div class="row_between item" data-id="">'+
-					'<div class="title_wrap">'+
-						'<span class="title">皖AH2026</span>'+
+			html += '<div class="row_between item" >'+
+					'<div class="title_wrap" data-id="'+list[i].record_id+'" >'+
+						'<span class="title">'+list[i].license_plate+'</span>'+
 						'<div class="row">'+
-							'<span class="time">2019-07-08   14:08:26</span>'+
-							'<span class="text">已打印</span>'+
-							'<span class="status">合格</span>'+
-						'</div></div>'+
-					'<button type="button" class="mui-btn mui-btn-link btn">撤回</button>'+
-				'</div>';
+							'<span class="time">'+list[i].photo_time+'</span>'+
+							'<span class="text">'+list[i].is_export+'</span>';
+							
+			if((list[i].state == '未审核') && (list[i].withdraw == '未申请') && (dateToTime(list[i].photo_time) > nowToTime())){
+				// 显示按钮
+				html += '<span class="status hideClass">'+list[i].state+'</span>'+
+					'</div></div>'+
+						'<button type="button" class="mui-btn mui-btn-link btn" data-id="'+list[i].record_id+'" >撤回</button>'+
+					'</div>';
+			}else{
+				html += '<span class="status">'+list[i].state+'</span>'+
+					'</div></div>'+
+						// '<button type="button" class="mui-btn mui-btn-link btn hideClass">撤回</button>'+
+					'</div>';
+			}				
+							
+						
 		};
 		$(".item_wrap").append(html);
 	}
 	
 	mui(".item_wrap").on('tap', '.title_wrap', function() {
 	
-		var id=$(this).attr("data-id");
+		var id=$(this).data("id");
+		console.log(id);
 		mui.openWindow({
-			url:"detail.html?id="+id,
+			url:"detail.html?record_id="+id,
 			id: "detail.html",
 			waiting: {
 				autoShow: false
+			},
+			extras:{
+				record_id: id
 			}
 		})
 	
@@ -133,16 +148,38 @@
 	
 	mui(".item_wrap").on('tap', '.btn', function() {
 	
-		var id=$(this).attr("data-id");
+		var id=$(this).data("id");
 		mui.openWindow({
 			url:"reason.html?id="+id,
 			id: "reason.html",
 			waiting: {
 				autoShow: false
+			},
+			extras:{
+				record_id: id
 			}
 		})
 	
-	})
+	});
+	
+	// 日期字符串转时间戳
+	function dateToTime(dateStr){
+		var date = dateStr + '.0';
+		date = date.substring(0,19);    
+		date = date.replace(/-/g,'/');
+		var time = parseInt(new Date(date).getTime()/1000) ;
+		
+		time = parseInt(time);
+		return time;
+	}
+	
+	// 两个小时前的时间戳
+	function nowToTime(){
+		var time = parseInt(new Date().getTime()/1000);
+		time -= 60*60*2;
+		time = parseInt(time);
+		return time;
+	}
 
 
 </script>

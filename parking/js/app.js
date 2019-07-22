@@ -135,6 +135,7 @@ var Global = {};
 						callback(data.info ? data.info : (data.data?data.data:''));
 					}else if(data.code == -200){
 						//plus.webview.open('login.html');
+						errorback(data.msg ? data.msg : "");
 					}
 					else{
 						errorback(data.msg ? data.msg : "");
@@ -156,14 +157,10 @@ var Global = {};
                 complete: function(xhr, status) {
                     console.log(status);
                     Global.hideLoading();
-                    // if (status == 'error') {
-                    //     Global.error404();
-                    // } else if (status == 'timeout') {
-                    //     Global.error500();
-                    // } else if (status != 'success') {
-                    //     Global.errorNet();
-                    // }
-
+                    if (status != 'success') {
+                        errorback("");
+                    } 
+					
 
                 }
             });
