@@ -187,6 +187,73 @@
 		            backcount = 0;
 		        }, 2000);
 		    }
+		};
+		
+		//检查APP更新
+		function checkUpdateApk() {
+		
+		    Global.commonAjax({
+		            url: "set/checkVersion",
+					method: "POST"
+		        },
+		        function(data) {
+		            plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
+		                if (wgtinfo && wgtinfo.version && data && data.version) {
+							
+							var btnArray = ['以后再说', '现在升级'];
+							mui.confirm(data.versionExplain, '提示', btnArray, function(e) {
+							    if (e.index == 1) {
+							        //现在升级
+							        if (mui.os.android) {
+							            if (data.osType == "android") {
+							                //android 手机
+							                if (data.urlType == "store") {
+							                    //商店地址
+							                    var mainAct = plus.android.runtimeMainActivity();
+							                    plus.android.invoke("org.qldc.xianghq.Tools", "goToMarket", mainAct);
+									
+							                } else if (data.urlType == "apk") {
+							                    //下载文件
+							                    downloadAPP(data.downloadUrl)
+							                } else {
+									
+							                }
+							            }
+							        }
+									
+							    } else {
+							        //否
+							        console.log("不升级");
+							    }
+									
+							});
+		                    
+		                }
+		            });
+		
+		
+		        }
+		    )
+		}
+		
+		
+		//小数点 version 比较 ver1 大 true
+		var versionfunegt = function(ver1, ver2) {
+		    var version1pre = parseFloat(ver1);
+		    var version2pre = parseFloat(ver2);
+		    var version1next = ver1.replace(version1pre + ".", "");
+		    var version2next = ver2.replace(version2pre + ".", "");
+		    if (version1pre > version2pre) {
+		        return true;
+		    } else if (version1pre < version2pre) {
+		        return false;
+		    } else {
+		        if (version1next >= version2next) {
+		            return true;
+		        } else {
+		            return false;
+		        }
+		    }
 		}
 
       
