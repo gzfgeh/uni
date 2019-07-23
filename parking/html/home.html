@@ -341,6 +341,10 @@
 	
 	// 打印东西
 	mui(".mui-content").on('tap', '.print_btn', function() {
+		if(!$(".car_num").val()){
+			mui.toast("请输入车牌号");
+			return;
+		}
 		
 		plus.android.invoke(packname+".Tools", "initPrint");
 		var btnArray = ['取消', '确定'];
@@ -368,7 +372,18 @@
 				}
 			}
 		});
-		var printStr = "2019#20191234567890#皖DS8888#2019年02月15日#09时44分在湖滨路#人民大道人民广场#赵先生#18513212904#18513212904#2019年02月15日";
+		
+		var dateStr = $(".time_value").html().split(" ")[0].split("-");
+		var printDate = dateStr[0]+"年"+dateStr[1]+"月"+dateStr[2]+"日";
+		
+		var timeStr = $(".time_value").html().split(" ")[1].split(":");
+		var printTime = timeStr[0]+"时"+timeStr[1]+"分";
+		
+		var roadName = $('#road_text').html();
+		var name = $(".take_photo_name").val();
+		var mobile = myStorage.getItem("userinfo").mobile;
+		
+		var printStr = $(".car_num").val()+"#"+printDate+"#"+printTime+"在"+roadName+"#"+name+"#"+mobile;
 		plus.android.invoke(packname+".Tools", "print", printStr, callBack);
 	}
 	
