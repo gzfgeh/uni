@@ -48,17 +48,20 @@
 		.btn_wrap button{height: 50px; line-height: 50px; text-align: center; color: #FFFFFF; background-color: transparent;}
 					
 		.print_btn{width: 90%;background: #EC9924;color: #FFF; height: 50px; margin: 80px 5% 0px;}
+		
+		.right{right: 10px; top: 13px; position: absolute; }
     </style>
 	
 </head>
 
 <body>
 
-    <header class="mui-bar mui-bar-nav">
-        <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+    <header class="mui-bar mui-bar-nav" style="position: fixed;">
+        <!-- <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a> -->
         
         <h1 class="mui-title">录入</h1>
         <!-- <img src="../images/splash.png"  class="head_icon"/> -->
+		<span class="right" onclick="goToMy();">我的</span>
     </header>
 
     <div class="mui-content">
@@ -134,6 +137,18 @@
 		<button type="button" class="mui-btn mui-btn-link print_btn">打印</button>
 		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="recordAdd();">上传</button>
 		
+		<!--强制更新弹窗-->
+		<div class="modal-mask global-modal row_center updateApp hideClass">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="col update_content_bg">
+		                <div class="flex_item row_center">提示</div>
+		                <div class="flex_item row_center update_msg">是否更新到最新版本？</div>
+		                <div class="flex_item row_center updateAction">现在升级</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
 		
     </div>
 
@@ -150,6 +165,9 @@
 	var intent;
 	var packname = "com.LiekeNet.DaTongCGJ";
 	mui.plusReady(function() {
+		window.addEventListener("loginRefresh", function (e) {
+				getTeams();
+		});
 		
 		main = plus.android.runtimeMainActivity();
 		Intent = plus.android.importClass("android.content.Intent");
@@ -172,10 +190,58 @@
 		mui('#car_text')[0].innerHTML = carPickerList[carTypeIndex].text;
 		car_value = carPickerList[carTypeIndex].text;
 		
+		fastQuit();
+		checkVersion();
+		checkPermission();
 	});
     $(".time_value").html(getDateTime());
 	// $(".car_num").val("豫A12345");
 	
+	mui('.img_wrap').on('tap', '.img_src', function() {
+	  var index = $(this).data("id");
+	  
+	  plus.nativeUI.previewImage(images, {
+	    current: index,
+	    loop: false,
+	    indicator: 'number'
+	  });
+	});
+	
+	var backcount = 0;
+	function fastQuit() {
+	    //双击退出登录
+	    mui.back = function() {
+	        if (mui.os.ios) return;
+	        if (backcount > 0) {
+	            if (window.plus) 
+					plus.runtime.quit();
+	            return;
+	        };
+	        mui.toast("再按一次退出应用");
+	        backcount++;
+	        setTimeout(function() {
+	            backcount = 0;
+	        }, 2000);
+	    }
+	};
+	
+	function goToMy(){
+		var flag = $(".updateApp").hasClass("hideClass");
+		console.log(flag);
+		if(flag){
+			mui.openWindow({
+				id: 'personInfo.html',
+				url: 'personInfo.html',
+				waiting:{
+					autoShow:false
+				},
+				extras: {
+					isfirst: false
+				}
+			});
+		}
+		
+	}
 	
 	// 上传
 	function recordAdd(){
@@ -302,7 +368,8 @@
 				}
 			}
 		});
-		plus.android.invoke(packname+".Tools", "print", "1234womenhao我们好", callBack);
+		var printStr = "2019#20191234567890#皖DS8888#2019年02月15日#09时44分在湖滨路#人民大道人民广场#赵先生#18513212904#18513212904#2019年02月15日";
+		plus.android.invoke(packname+".Tools", "print", printStr, callBack);
 	}
 	
 	var carTypeIndex = 0;
@@ -359,6 +426,7 @@
 		$(".time_value").html(getDateTime());
 		document.activeElement.blur();
 		checkPermissionPhoto(goToAndroid, null);
+		
 	});
 	//点击检查权限
 	function checkPermissionPhoto(callback, fail) {
@@ -508,7 +576,7 @@
 			if(images){
 				images.map(function(item, index){
 					html += '<div class="upload_img_wrap">'+
-								'<img src="'+item+'" class="img_btn">'+
+								'<img src="'+item+'" class="img_btn img_src" data-id="'+index+'">'+
 								'<img src="../images/upload_del_icon.jpg" class="del_btn" data-index="'+index+'">'+
 							'</div>';
 				});
@@ -579,6 +647,126 @@
 					mui.toast(err);
 				}
 			)
+		};
+		
+		function checkVersion(){
+			Global.commonAjax({
+			        url: "set/checkVersion",
+					method: "POST",
+					data: {"token": myStorage.getItem("token")}
+			    },
+			    function(data) {
+					console.log(data);
+			        plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
+						//mui.toast(JSON.stringify(wgtinfo));
+			            if (wgtinfo && wgtinfo.version && data && data.version) {
+							if(versionfunegt(data.version, wgtinfo.version)){
+								$(".updateApp").removeClass("hideClass");
+								newUrl = Global.imgUrl+data.apkurl;
+							}
+							// downloadAPP(data.downloadUrl)
+			            }
+			        });
+					
+					
+			    }
+			)
+		};
+		var newUrl = "";
+		$(".updateAction").click(function() {
+			//$(".updateApp").addClass("hideClass");
+			mui.back = function() {};
+			
+			if(newUrl){
+				if($(".updateAction").html() == "现在升级"){
+					downloadAPP();
+				}
+			}
+			
+		});
+		
+		//升级APP
+		function downloadAPP() {
+		    var w = plus.nativeUI.showWaiting("下载升级文件...");
+		    var dtask = plus.downloader.createDownload(newUrl, { filename: "_doc/update/" }, function(d, status) {
+		        if (status == 200) {
+		            plus.nativeUI.closeWaiting();
+		            //下载完成 
+					mui.alert("下载完成");
+		            plus.runtime.install(d.filename, {}, function() {
+		            		
+		            }, function() {
+		            		
+		            });
+		
+		        } else {
+		            alert("下载失败");
+		            plus.nativeUI.closeWaiting();
+		        }
+		
+		    });
+		    dtask.start();
+		    dtask.addEventListener("statechanged", function(task, status) {
+		        switch (task.state) {
+		            case 1: // 开始
+		                w.setTitle("　　 开始下载...　　 ");
+		                break;
+		            case 2: // 已连接到服务器
+		                w.setTitle("　　 开始下载...　　 ");
+		                break;
+		            case 3:
+		                var a = task.downloadedSize / task.totalSize * 100;
+		                w.setTitle("　　 已下载" + parseInt(a) + "%　　 ");
+						$(".updateAction").html("已下载" + parseInt(a) + "%")
+		                break;
+		            case 4: // 下载完成
+		                w.close();
+		                break;
+		        }
+		    })
+		}
+		
+		
+		//小数点 version 比较 ver1 大 true
+		var versionfunegt = function(ver1, ver2) {
+		    var version1pre = parseFloat(ver1);
+		    var version2pre = parseFloat(ver2);
+		    var version1next = ver1.replace(version1pre + ".", "");
+		    var version2next = ver2.replace(version2pre + ".", "");
+		    if (version1pre > version2pre) {
+		        return true;
+		    } else if (version1pre < version2pre) {
+		        return false;
+		    } else {
+		        if (version1next >= version2next) {
+		            return true;
+		        } else {
+		            return false;
+		        }
+		    }
+		}
+		
+		//检查权限
+		function checkPermission() {
+		    //return;
+		    if (mui.os.ios || (mui.os.android && parseFloat(mui.os.version) < 6.0)) {
+		        //...操作
+		        return;
+		    }
+		    var mainAct = plus.android.runtimeMainActivity();
+		    plus.android.invoke(packname+".Tools", "initUtils", mainAct);
+		    var callBack = plus.android.implements(packname+".Tools$CallBack", {
+		        "success": function() {
+		            //申请权限成功或已经获取到了权限都会执行到这里
+		        },
+		        "failure": function() {
+		            //plus.runtime.quit();
+		            checkPermission();
+		        }
+		    });
+		    plus.android.invoke(packname+".Tools", "permission", ["android.permission-group.STORAGE"], callBack);
+		    // plus.android.invoke("org.qldc.xianghq.Tools", "permission", ["android.permission-group.CAMERA","android.permission-group.STORAGE"], callBack);
+		
 		}
 		
 </script>

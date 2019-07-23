@@ -66,8 +66,8 @@
 
     });
 	
-	$(".account").val("18513212904");
-	$(".password").val("888888");
+	// $(".account").val("18513212904");
+	// $(".password").val("888888");
 	
 	var client_h = document.documentElement.clientHeight;
 	$(window).on("resize",function(){
@@ -107,9 +107,12 @@
 				myStorage.setItem("userinfo", data.userinfo);
 				myStorage.setItem("token", data.token);
 				
+				var h = plus.webview.getWebviewById("home.html");
+				mui.fire(h,'loginRefresh',{});
+				
 				mui.openWindow({
-					id: 'personInfo.html',
-					url: 'personInfo.html',
+					id: 'home.html',
+					url: 'home.html',
 					waiting:{
 						autoShow:false
 					},

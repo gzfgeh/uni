@@ -80,9 +80,13 @@
 							<div class="content_item row_between">
 								<span>违章图片</span>
 								<div class="img_wrap row">
-									<img src="../images/splash.png" class="photo_one">
-									<img src="../images/splash.png" class="photo_two">
+									<img src="../images/splash.png" class="photo_one" data-id="0">
+									<img src="../images/splash.png" class="photo_two" data-id="1">
 								</div>
+							</div>
+							
+							<div style="text-align: right;">
+								<button type="button" class="mui-btn mui-btn-link btn">上传</button>
 							</div>
 							
 						</div>
@@ -110,9 +114,18 @@
 	    getData();
 	});
 	
-	var carPickerList = [{text: '小型车', value: "01"}, {text: '大型车', value: "02"},{text: '新能源小型车', value: "51"},{text: '新能源大型车', value: "52"}];
+	mui('.img_wrap').on('tap', 'img', function() {
+	  var index = $(this).data("id");
+	  
+	  plus.nativeUI.previewImage(images, {
+	    current: index,
+	    loop: false,
+	    indicator: 'number'
+	  });
+	});
 	
-	
+	var detailItem;
+	var images = [];
 	function getData(){
 		Global.commonAjax({
 				url: "index/record_detail",
@@ -121,6 +134,7 @@
 			},
 			function(data) {
 				console.log(data);
+				detailItem = data;
 				$(".car_type").html(data.car_type);
 				$(".car_num").html(data.license_plate);
 				$(".status").html("("+data.state+")");
@@ -134,28 +148,9 @@
 				$(".name").html(data.username);
 				$(".photo_one").attr("src", Global.imgUrl+data.imgs[0]);
 				$(".photo_two").attr("src", Global.imgUrl+data.imgs[1]);
-			},
-			function(err, code) {
-				mui.toast(err);
-			}
-		)
-	};
-	
-	// 获取中队
-	function getTeams(team_id){
-		Global.commonAjax({
-				url: "index/team",
-				method: 'POST',
-				data: {"token":myStorage.getItem("token")}
-			},
-			function(data) {
-				console.log(data);
-				data.map(function(item, index){
-					if(item.level_id == team_id){
-						$(".car_name").html(item.level_name);
-					}
-				});
 				
+				images.push(Global.imgUrl+data.imgs[0]);
+				images.push(Global.imgUrl+data.imgs[1]);
 			},
 			function(err, code) {
 				mui.toast(err);
@@ -163,26 +158,40 @@
 		)
 	};
 	
-	// 获取路段
-	function getRoads(team_id, road_id){
+	mui(".mui-content").on('tap', '.btn', function() {
+		detailItem.token = myStorage.getItem("token");
+		var params = {
+			license_plate: detailItem.license_plate,
+			photo_time: detailItem.photo_time,
+			road_id: detailItem.road_id,
+			car_type: detailItem.car_type,
+			team_id: detailItem.team_id,
+			username: detailItem.username,
+			remark: detailItem.remark,
+			photos: detailItem.imgs,
+			token:myStorage.getItem("token")
+		};
+		
 		Global.commonAjax({
-				url: "index/roads",
+				url: "index/record_add",
 				method: 'POST',
-				data: {"token":myStorage.getItem("token"), "teamId": team_id}
+				data: params
 			},
 			function(data) {
 				console.log(data);
-				data.map(function(item, index){
-					if(item.road_id == road_id){
-						$(".car_road").html(item.road_name);
-					}
-				});
+				mui.toast("上传成功");
+				var h = plus.webview.getWebviewById("record_list.html");
+				mui.fire(h,'pageRefresh',{});
+				
+				mui.back();
 			},
 			function(err, code) {
 				mui.toast(err);
+				
 			}
 		)
-	}
+	
+	})
 	
 
 

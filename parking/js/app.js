@@ -136,8 +136,9 @@ var Global = {};
 					}else if(data.code == -200){
 						//plus.webview.open('login.html');
 						errorback(data.msg ? data.msg : "");
-					}
-					else{
+					}else if(data.code == -100){
+						plus.webview.open('login.html');
+					}else{
 						errorback(data.msg ? data.msg : "");
 					}
                     

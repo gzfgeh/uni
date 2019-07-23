@@ -157,7 +157,7 @@ header img{
   align-items: center;
 }
 
-.global-modal .modal-dialog {
+.modal-dialog {
   width: 80%;
   max-height: 60%;
   overflow: auto;
@@ -176,7 +176,6 @@ header img{
 }
 
 .global-modal .modal-content {
-  padding: 25px 27px;
   font-size: 12px;
   position: relative;
   z-index: 10000;
@@ -192,6 +191,34 @@ header img{
 	color: #333333;
 	margin-bottom: 20px;
 	text-align: center;
+}
+
+.update_content_bg {
+    background: #ffffff;
+    border-radius: 20px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    height: 150px;
+    color: #000000;
+    font-size: 16px;
+	justify-content: space-around;
+	padding: 5px 0px;
+}
+
+.update_msg {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    padding: 20px;
+}
+
+.update_content_bg div {
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+	margin: 5px 0px;
 }
 			
 
