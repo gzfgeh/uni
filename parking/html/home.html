@@ -164,6 +164,7 @@
 	var Intent;
 	var intent;
 	var packname = "com.LiekeNet.DaTongCGJ";
+	var card_number;
 	mui.plusReady(function() {
 		window.addEventListener("loginRefresh", function (e) {
 				getTeams();
@@ -193,6 +194,7 @@
 		fastQuit();
 		checkVersion();
 		checkPermission();
+		getRandom();
 	});
     $(".time_value").html(getDateTime());
 	// $(".car_num").val("豫A12345");
@@ -243,10 +245,16 @@
 		
 	}
 	
+	function getRandom(){
+		var dateStr = $(".time_value").html().split(" ")[0].split("-");
+		var printDate = dateStr[1]+""+dateStr[2];
+		card_number = printDate+generate()+parseInt(Math.random()*10);
+	}
+	
 	// 上传
 	function recordAdd(){
-		console.log("9999");
-		console.log($(".car_num").val());
+		
+		
 		if(!$(".car_num").val()){
 			mui.toast("请输入车牌号");
 			return;
@@ -263,7 +271,7 @@
 		if(images.length != 2){
 			mui.toast("请上传两种违章图片");
 			return;
-		}
+		};
 		
 		var imagesTemp = [];
 		images.map(function(item){
@@ -279,7 +287,8 @@
 			username: myStorage.getItem("userinfo").username,
 			remark: $(".remark").val(),
 			photos: imagesTemp,
-			token:myStorage.getItem("token")
+			token:myStorage.getItem("token"),
+			card_number: card_number
 		};
 		Global.commonAjax({
 				url: "index/record_add",
@@ -383,7 +392,7 @@
 		var name = $(".take_photo_name").val();
 		var mobile = myStorage.getItem("userinfo").mobile;
 		
-		var printStr = $(".car_num").val()+"#"+printDate+"#"+printTime+"在"+roadName+"#"+name+"#"+mobile;
+		var printStr = card_number+"#"+$(".car_num").val()+"#"+printDate+"#"+printTime+"在"+roadName+"#"+name+"#"+mobile;
 		plus.android.invoke(packname+".Tools", "print", printStr, callBack);
 	}
 	
@@ -782,6 +791,15 @@
 		    plus.android.invoke(packname+".Tools", "permission", ["android.permission-group.STORAGE"], callBack);
 		    // plus.android.invoke("org.qldc.xianghq.Tools", "permission", ["android.permission-group.CAMERA","android.permission-group.STORAGE"], callBack);
 		
+		}
+		
+		function generate(){
+			var randStr = "";
+			for (var i = 0; i < 7; i++) {//此处的12为生成12位数字，可随即更改
+				var randItem = Math.floor(Math.random() * 10);
+				randStr += randItem;
+			}
+			return randStr;
 		}
 		
 </script>
