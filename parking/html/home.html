@@ -712,15 +712,16 @@
 		//升级APP
 		function downloadAPP() {
 		    var w = plus.nativeUI.showWaiting("下载升级文件...");
-		    var dtask = plus.downloader.createDownload(newUrl, { filename: "_doc/update/" }, function(d, status) {
+		    var dtask = plus.downloader.createDownload(newUrl, { }, function(d, status) {
 		        if (status == 200) {
 		            plus.nativeUI.closeWaiting();
 		            //下载完成 
-					mui.alert("下载完成");
-		            plus.runtime.install(d.filename, {}, function() {
-		            		
-		            }, function() {
-		            		
+					//mui.alert("下载完成"+d.filename);
+		            plus.runtime.install(d.filename, {force:true}, function() {
+		            		//mui.alert("安装成功");
+		            		//plus.runtime.restart();
+		            }, function(err) {
+		            		//mui.alert("安装失败"+err);
 		            });
 		
 		        } else {
