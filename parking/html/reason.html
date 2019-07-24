@@ -256,6 +256,15 @@
 						addImage();
 					}
 					
+					plus.io.resolveLocalFileSystemURL(path, function (entry) {  
+					        entry.remove(function (s) {  
+					            console.log("删除成功"); 
+					        }, function (error) {  
+					            mui.toast("删除失败");  
+					        });  
+					    });
+						
+					
 	            }else{
 	                console.log("上传失败："+status);
 	            }
