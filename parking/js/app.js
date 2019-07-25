@@ -3,8 +3,8 @@ var Global = {};
 (function() {
 
     Global = {
-		baseUrl: "http://cs.yxgjhwt.net/index.php/user/",
-		imgUrl: "http://cs.yxgjhwt.net",
+		baseUrl: "http://dtwt.liekenet.com/index.php/user/",
+		imgUrl: "http://dtwt.liekenet.com",
         showLoading: function() {
             // if ($("#ShowLoading").length == 0) {
             //     $("body").append("<div id='ShowLoading' style='width:100%;height:100%;background:rgba(0,0,0,0.5);display:table;position: fixed;left:0;top:0;z-index:1000000;'><div style='width:100%;text-align:center;vertical-align:middle;display: table-cell;'><img src='../images/loading.gif' style='width: 98px; height: 44px;'/></div></div>");
@@ -92,7 +92,7 @@ var Global = {};
         },
         //网络请求
         commonAjax: function(params, callback, errorback) {
-           var baseUrl = "http://cs.yxgjhwt.net/index.php/user/";
+           var baseUrl = "http://dtwt.liekenet.com/index.php/user/";
             // var baseUrl = "https://app.xhq520.com/api/"; 
             //   var baseUrl = "http://192.168.1.26:8081/api/";
             //应用版本号
