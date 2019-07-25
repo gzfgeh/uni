@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "外卖列表",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 150,
-  "usingComponents": {
-    "uni-load-more": "/components/uni-load-more"
-  }
-}

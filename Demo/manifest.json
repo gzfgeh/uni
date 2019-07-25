@@ -1,6 +1,6 @@
 {
     "name" : "楼服宝",
-    "appid" : "__UNI__D6007C2",
+    "appid" : "__UNI__FC4199D",
     "description" : "",
     "versionName" : "1.1.7",
     "versionCode" : 117,
@@ -131,10 +131,10 @@
             }
         },
         "nativePlugins" : {
-            "DCloud-RichAlert" : {
+            "GZF-YunPay" : {
                 "__plugin_info__" : {
-                    "name" : "RichAlert",
-                    "description" : "uni-app测试",
+                    "name" : "YunPay",
+                    "description" : "uni-app调用云闪付APP",
                     "platforms" : "Android",
                     "url" : "",
                     "android_package_name" : "",

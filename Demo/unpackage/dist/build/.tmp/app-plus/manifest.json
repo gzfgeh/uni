@@ -4,7 +4,7 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__D6007C2",
+  "id": "__UNI__FC4199D",
   "name": "楼服宝",
   "version": {
     "name": "1.1.7",
@@ -167,10 +167,10 @@
       }
     },
     "nativePlugins": {
-      "DCloud-RichAlert": {
+      "GZF-YunPay": {
         "__plugin_info__": {
-          "name": "RichAlert",
-          "description": "uni-app测试",
+          "name": "YunPay",
+          "description": "uni-app调用云闪付APP",
           "platforms": "Android",
           "url": "",
           "android_package_name": "",
@@ -190,7 +190,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.1.1",
+      "compilerVersion": "2.1.3",
       "control": "v8",
       "nvueCompiler": "weex"
     },

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "运费计算",
-  "usingComponents": {
-    "mpvue-picker": "/components/mpvuePicker"
-  }
-}
