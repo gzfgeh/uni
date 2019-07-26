@@ -803,11 +803,8 @@
 		}
 		
 		function generate(){
-			var randStr = "";
-			for (var i = 0; i < 7; i++) {//此处的12为生成12位数字，可随即更改
-				var randItem = Math.floor(Math.random() * 10);
-				randStr += randItem;
-			}
+			var randStr = new Date().getTime() + "";
+			randStr = randStr.substring(6, randStr.length);
 			return randStr;
 		}
 		
