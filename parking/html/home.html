@@ -165,6 +165,8 @@
 	var intent;
 	var packname = "com.LiekeNet.DaTongCGJ";
 	var card_number;
+	var interval = null;//计时器
+	
 	mui.plusReady(function() {
 		window.addEventListener("loginRefresh", function (e) {
 				getTeams();
@@ -195,6 +197,11 @@
 		checkVersion();
 		checkPermission();
 		getRandom();
+		
+		interval = setInterval(function(){
+			plus.screen.lockOrientation("portrait-primary") // 把屏幕方向改变成横屏正方向
+		}, 1000);
+		
 	});
     $(".time_value").html(getDateTime());
 	// $(".car_num").val("豫A12345");
@@ -215,6 +222,7 @@
 	    mui.back = function() {
 	        if (mui.os.ios) return;
 	        if (backcount > 0) {
+				clearInterval(interval);
 	            if (window.plus) 
 					plus.runtime.quit();
 	            return;
@@ -298,7 +306,19 @@
 			function(data) {
 				console.log(data);
 				mui.toast("上传成功");
-				mui.back();
+				
+				var btnArray = ['取消','确定'];
+				mui.confirm('再点击一次退出应用', '提示', btnArray, function(e) {
+				    if(e.index == 1){
+						clearInterval(interval);
+						plus.runtime.quit();
+					}else{
+						images = [];
+						$(".car_num").val("");
+						$(".time_value").html(getDateTime());
+					}
+						
+				});
 			},
 			function(err, code) {
 				mui.toast(err);
@@ -614,7 +634,7 @@
 				});
 			}
 			
-			if(images==undefined || images.length < 2){
+			if(images==undefined || images.length < 3){
 				html += '<div class="upload_img_wrap add_btn">'+
 							'<img src="../images/upload_icon.jpg" class="img_btn">'+
 						'</div>';
