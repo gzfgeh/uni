@@ -288,11 +288,10 @@
 						  wx.uploadFile({
 							url:"https://api.kaikaibao.com.cn/3.1/ocr",
 							filePath: res.tempFilePaths[0],
+							sizeType: ['compressed'],
 							name: "file",
-							header: { 
-							  
-							  "Authorization": "Bearer "+uni.getStorageSync('token'),
-							  "x-lccx-did":2 },
+							header: {
+							  "Authorization": "Bearer "+uni.getStorageSync('token')},
 							formData: {"file":res.tempFilePaths[0]},
 							success: function(data) {
 							  console.log(JSON.parse(data.data));

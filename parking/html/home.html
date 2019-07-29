@@ -432,21 +432,21 @@
 	})
 	
 	var carNameIndex = 0;
-	mui(".name_select").on('tap', 'div', function() {
-		document.activeElement.blur();
-		namePicker.pickers[0].setSelectedIndex(carNameIndex);
-		setTimeout(()=>{
-			namePicker.show(function(SelectedItem) {
-			    console.log(SelectedItem[0].text);
-			    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
-			    name_value = SelectedItem[0].value;
-				$(".take_photo_road").val(SelectedItem[0].text);
-				carNameIndex = SelectedItem[0].index;
-				getRoads(SelectedItem[0].value);
-			})
-		}, 50);
-		
-	})
+	// mui(".name_select").on('tap', 'div', function() {
+	// 	document.activeElement.blur();
+	// 	namePicker.pickers[0].setSelectedIndex(carNameIndex);
+	// 	setTimeout(()=>{
+	// 		namePicker.show(function(SelectedItem) {
+	// 		    console.log(SelectedItem[0].text);
+	// 		    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
+	// 		    name_value = SelectedItem[0].value;
+	// 			$(".take_photo_road").val(SelectedItem[0].text);
+	// 			carNameIndex = SelectedItem[0].index;
+	// 			getRoads(SelectedItem[0].value);
+	// 		})
+	// 	}, 50);
+	// 	
+	// })
 	
 	var carRoadIndex = 0;
 	mui(".road_select").on('tap', 'div', function() {
@@ -663,7 +663,10 @@
 					console.log(data);
 					namePickerList = [];
 					data.map(function(item, index){
-						namePickerList.push({text: item.level_name, value: item.level_id, index: index})
+						namePickerList.push({text: item.level_name, value: item.level_id, index: index});
+						if(item.level_name == "大通城管局"){
+							carNameIndex = index;
+						}
 					});
 					namePicker.setData(namePickerList);
 					

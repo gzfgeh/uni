@@ -66,6 +66,7 @@
 		}
     },
 	"networkTimeout": {
-		"request": 100000
+		"request": 100000,
+		"uploadFile" : 20000
 	}
 }

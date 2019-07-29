@@ -82,6 +82,7 @@
 								<div class="img_wrap row">
 									<img src="../images/splash.png" class="photo_one" data-id="0">
 									<img src="../images/splash.png" class="photo_two" data-id="1">
+									<img src="../images/splash.png" class="photo_three" data-id="2">
 								</div>
 							</div>
 							
@@ -148,6 +149,7 @@
 				$(".name").html(data.username);
 				$(".photo_one").attr("src", Global.imgUrl+data.imgs[0]);
 				$(".photo_two").attr("src", Global.imgUrl+data.imgs[1]);
+				$(".photo_three").attr("src", Global.imgUrl+data.imgs[2]);
 				
 				images.push(Global.imgUrl+data.imgs[0]);
 				images.push(Global.imgUrl+data.imgs[1]);
