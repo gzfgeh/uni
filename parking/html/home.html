@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>首页</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!--标准mui.css-->
-    <link rel="stylesheet" href="../css/mui.min.css">
+	<meta charset="utf-8">
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="../css/mui.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
-    <link rel="stylesheet" href="../css/app.css">
-	
+	<link rel="stylesheet" href="../css/app.css">
+
 	<style type="text/css">
         html,
         body, .mui-content {
@@ -19,7 +19,7 @@
             height: 100%;
         }
 		.head_icon{width: 30px; height: 30px; border-radius: 50%; top: 6px; right: 10px;}
-		
+
 		.item_wrap{margin-left: 4%; width: 92%; font-size: 12px; color: #999;}
 		.item_wrap .title{margin-bottom: 10px;}
 		.item_wrap .item{position: relative;background: #F2F2F2;height: 40px;}
@@ -28,129 +28,129 @@
 		::-webkit-input-placeholder{color: #999999;font-size: 14px;}
 		::-webkit-textarea-placeholder{color: #999999;font-size: 14px;}
 		.item_wrap .item img{ width: 17px; height: 15px; position: absolute; right: 15px; top: 12px; }
-		
+
 		.item_wrap .item_select{border: 1px solid #E0E0E0; border-radius: 3px; height: 40px; padding: 0px 15px;}
 		.item_wrap .item_select img{width: 12px; height: 6px;}
 		.item_wrap .item_select .text{color: #000; font-size: 15px;}
-		
+
 		textarea{background: #F2F2F2; height: 85px; border:none;color: #000;}
-		
-		
+
+
 		.upload_img_wrap{width: 32%;position: relative;margin-right: 1%;
-				padding: 1%;box-sizing: border-box;} 
-			
+				padding: 1%;box-sizing: border-box;}
+
 		.upload_img_wrap .img_btn{width: 100%;max-height: 1rem;}
-			
+
 		.upload_img_wrap .del_btn{position: absolute;top: -0.05rem;
 				right: -0rem;width: 0.2rem;height: 0.2rem;z-index: 10;}
-				
+
 		.btn_wrap{width: 90%;background: #0B2A47;color: #FFF; height: 50px; margin: 20px 5% 50px;}
 		.btn_wrap button{height: 50px; line-height: 50px; text-align: center; color: #FFFFFF; background-color: transparent;}
-					
+
 		.print_btn{width: 90%;background: #EC9924;color: #FFF; height: 50px; margin: 80px 5% 0px;}
-		
+
 		.right{right: 10px; top: 13px; position: absolute; }
     </style>
-	
+
 </head>
 
 <body>
 
-    <header class="mui-bar mui-bar-nav" style="position: fixed;">
-        <!-- <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a> -->
-        
-        <h1 class="mui-title">录入</h1>
-        <!-- <img src="../images/splash.png"  class="head_icon"/> -->
-		<span class="right" onclick="goToMy();">我的</span>
-    </header>
+<header class="mui-bar mui-bar-nav" style="position: fixed;">
+	<!-- <a class=" mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a> -->
 
-    <div class="mui-content">
-		<div class="item_wrap" style="margin-top: 30px;">
-			<div class="title">车牌号</div>
-			<div class="item">
-				<input type="text" placeholder="请输入车牌号" class="car_num">
-				<div id="take_photo">
-					<img src="../images/camera.png" >
+	<h1 class="mui-title">录入</h1>
+	<!-- <img src="../images/splash.png"  class="head_icon"/> -->
+	<span class="right" onclick="goToMy();">我的</span>
+</header>
+
+<div class="mui-content">
+	<div class="item_wrap" style="margin-top: 30px;">
+		<div class="title">车牌号</div>
+		<div class="item">
+			<input type="text" placeholder="请输入车牌号" class="car_num">
+			<div id="take_photo">
+				<img src="../images/camera.png" >
+			</div>
+
+		</div>
+	</div>
+
+	<div class="item_wrap car_select" style="margin-top: 10px;">
+		<div class="title">违章车型</div>
+		<div class="item_select row_between">
+			<span class="text" id="car_text"></span>
+			<img src="../images/arraw_down.png">
+		</div>
+	</div>
+
+	<div class="item_wrap name_select" style="margin-top: 10px;">
+		<div class="title">路队中段</div>
+		<div class="item_select row_between">
+			<span class="text" id="name_text"></span>
+			<img src="../images/arraw_down.png">
+		</div>
+	</div>
+
+	<div class="item_wrap road_select" style="margin-top: 10px;">
+		<div class="title">拍照路段</div>
+		<div class="item_select row_between">
+			<span class="text" id="road_text"></span>
+			<img src="../images/arraw_down.png">
+		</div>
+	</div>
+
+	<div class="item_wrap time_refresh" style="margin-top: 10px;">
+		<div class="title">拍照时间</div>
+		<div class="item_select row_between">
+			<span class="text time_value"></span>
+			<img src="../images/refresh.png" style="width: 17px; height: 15px;">
+		</div>
+	</div>
+
+	<div class="item_wrap" style="margin-top: 10px;">
+		<div class="title">备注信息</div>
+		<textarea placeholder="请输入备注信息" class="remark"></textarea>
+	</div>
+
+	<div class="item_wrap" style="margin-top: 10px;">
+		<div class="title">拍照中队</div>
+		<div class="item">
+			<input class="take_photo_road" type="text" readonly style="color: #999;">
+		</div>
+	</div>
+
+	<div class="item_wrap" style="margin-top: 10px;">
+		<div class="title">拍照人员</div>
+		<div class="item">
+			<input class="take_photo_name" type="text" readonly style="color: #999;">
+		</div>
+	</div>
+
+	<div class="item_wrap" style="margin-top: 10px;">
+		<div class="title">违章图片</div>
+		<div class="row img_wrap">
+
+		</div>
+	</div>
+
+	<button type="button" class="mui-btn mui-btn-link print_btn">打印</button>
+	<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="recordAdd();">上传</button>
+
+	<!--强制更新弹窗-->
+	<div class="modal-mask global-modal row_center updateApp hideClass">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="col update_content_bg">
+					<div class="flex_item row_center">提示</div>
+					<div class="flex_item row_center update_msg">是否更新到最新版本？</div>
+					<div class="flex_item row_center updateAction">现在升级</div>
 				</div>
-				
 			</div>
 		</div>
-		
-		<div class="item_wrap car_select" style="margin-top: 10px;">
-			<div class="title">违章车型</div>
-			<div class="item_select row_between">
-				<span class="text" id="car_text"></span>
-				<img src="../images/arraw_down.png">
-			</div>
-		</div>
-		
-		<div class="item_wrap name_select" style="margin-top: 10px;">
-			<div class="title">路队中段</div>
-			<div class="item_select row_between">
-				<span class="text" id="name_text"></span>
-				<img src="../images/arraw_down.png">
-			</div>
-		</div>
-		
-		<div class="item_wrap road_select" style="margin-top: 10px;">
-			<div class="title">拍照路段</div>
-			<div class="item_select row_between">
-				<span class="text" id="road_text"></span>
-				<img src="../images/arraw_down.png">
-			</div>
-		</div>
-		
-		<div class="item_wrap time_refresh" style="margin-top: 10px;">
-			<div class="title">拍照时间</div>
-			<div class="item_select row_between">
-				<span class="text time_value"></span>
-				<img src="../images/refresh.png" style="width: 17px; height: 15px;">
-			</div>
-		</div>
-		
-		<div class="item_wrap" style="margin-top: 10px;">
-			<div class="title">备注信息</div>
-			<textarea placeholder="请输入备注信息" class="remark"></textarea>
-		</div>
-		
-		<div class="item_wrap" style="margin-top: 10px;">
-			<div class="title">拍照中队</div>
-			<div class="item">
-				<input class="take_photo_road" type="text" readonly style="color: #999;">
-			</div>
-		</div>
-		
-		<div class="item_wrap" style="margin-top: 10px;">
-			<div class="title">拍照人员</div>
-			<div class="item">
-				<input class="take_photo_name" type="text" readonly style="color: #999;">
-			</div>
-		</div>
-		
-		<div class="item_wrap" style="margin-top: 10px;">
-			<div class="title">违章图片</div>
-			<div class="row img_wrap">
-					
-			</div>
-		</div>
-		
-		<button type="button" class="mui-btn mui-btn-link print_btn">打印</button>
-		<button type="button" class="mui-btn mui-btn-link btn_wrap" onclick="recordAdd();">上传</button>
-		
-		<!--强制更新弹窗-->
-		<div class="modal-mask global-modal row_center updateApp hideClass">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="col update_content_bg">
-		                <div class="flex_item row_center">提示</div>
-		                <div class="flex_item row_center update_msg">是否更新到最新版本？</div>
-		                <div class="flex_item row_center updateAction">现在升级</div>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-		
-    </div>
+	</div>
+
+</div>
 
 </body>
 <script src="../js/mui.js"></script>
@@ -166,12 +166,12 @@
 	var packname = "com.LiekeNet.DaTongCGJ";
 	var card_number;
 	var interval = null;//计时器
-	
+
 	mui.plusReady(function() {
 		window.addEventListener("loginRefresh", function (e) {
 				getTeams();
 		});
-		
+
 		main = plus.android.runtimeMainActivity();
 		Intent = plus.android.importClass("android.content.Intent");
 		intent = new Intent(main.getIntent());
@@ -179,43 +179,46 @@
 		getTeams();
 		console.log(myStorage.getItem("userinfo").username);
 		$(".take_photo_name").val(myStorage.getItem("userinfo").username);
-		
+
 		carTypeIndex = myStorage.getItem("carTypeIndex");
 		carTypeIndex = carTypeIndex?carTypeIndex:0;
 		carNameIndex = myStorage.getItem("carNameIndex");
 		carNameIndex = carNameIndex?carNameIndex: 0;
 		carRoadIndex = myStorage.getItem("carRoadIndex");
 		carRoadIndex = carRoadIndex?carRoadIndex: 0;
-		
+
 		// 01 小型车，02 大型车，51 新能源小型车，52 新能源大型车
 		carPickerList = [{text: '小型车', value: "01", index: 0}, {text: '大型车', value: "02", index: 1},{text: '新能源小型车', value: "51", index: 2},{text: '新能源大型车', value: "52", index: 3}];
 		carPicker.setData(carPickerList);
 		mui('#car_text')[0].innerHTML = carPickerList[carTypeIndex].text;
 		car_value = carPickerList[carTypeIndex].text;
-		
+
 		fastQuit();
 		checkVersion();
 		checkPermission();
 		getRandom();
-		
+
+		﻿console.log(JSON.stringify(myStorage.getItem("userinfo")));
+		﻿$(".take_photo_road").val(myStorage.getItem("userinfo").levelName);
+
 		interval = setInterval(function(){
 			plus.screen.lockOrientation("portrait-primary") // 把屏幕方向改变成横屏正方向
 		}, 1000);
-		
+
 	});
     $(".time_value").html(getDateTime());
 	// $(".car_num").val("豫A12345");
-	
+
 	mui('.img_wrap').on('tap', '.img_src', function() {
 	  var index = $(this).data("id");
-	  
+
 	  plus.nativeUI.previewImage(images, {
 	    current: index,
 	    loop: false,
 	    indicator: 'number'
 	  });
 	});
-	
+
 	var backcount = 0;
 	function fastQuit() {
 	    //双击退出登录
@@ -223,7 +226,7 @@
 	        if (mui.os.ios) return;
 	        if (backcount > 0) {
 				clearInterval(interval);
-	            if (window.plus) 
+	            if (window.plus)
 					plus.runtime.quit();
 	            return;
 	        };
@@ -234,7 +237,7 @@
 	        }, 2000);
 	    }
 	};
-	
+
 	function goToMy(){
 		var flag = $(".updateApp").hasClass("hideClass");
 		console.log(flag);
@@ -250,19 +253,19 @@
 				}
 			});
 		}
-		
+
 	}
-	
+
 	function getRandom(){
 		var dateStr = $(".time_value").html().split(" ")[0].split("-");
 		var printDate = dateStr[1]+""+dateStr[2];
 		card_number = printDate+generate()+parseInt(Math.random()*10);
 	}
-	
+
 	// 上传
 	function recordAdd(){
-		
-		
+
+
 		if(!$(".car_num").val()){
 			mui.toast("请输入车牌号");
 			return;
@@ -271,11 +274,11 @@
 		// 	mui.toast("请输入备注信息");
 		// 	return;
 		// }
-		
+
 		myStorage.setItem("carTypeIndex", carTypeIndex);
 		myStorage.setItem("carNameIndex", carNameIndex);
 		myStorage.setItem("carRoadIndex", carRoadIndex);
-		
+
 		if(images.length != 3){
 			mui.toast("请上传三张违章图片");
 			return;
@@ -306,19 +309,10 @@
 			function(data) {
 				console.log(data);
 				mui.toast("上传成功");
-				
-				var btnArray = ['取消','确定'];
-				mui.confirm('再点击一次退出应用', '提示', btnArray, function(e) {
-				    if(e.index == 1){
-						clearInterval(interval);
-						plus.runtime.quit();
-					}else{
-						images = [];
-						$(".car_num").val("");
-						$(".time_value").html(getDateTime());
-					}
-						
-				});
+				images = [];
+				$(".car_num").val("");
+				$(".time_value").html(getDateTime());
+				﻿addImage();
 			},
 			function(err, code) {
 				mui.toast(err);
@@ -672,7 +666,6 @@
 					
 					mui('#name_text')[0].innerHTML = namePickerList[carNameIndex].text;
 					name_value = namePickerList[carNameIndex].value;
-					$(".take_photo_road").val(namePickerList[carNameIndex].text);
 					getRoads(namePickerList[carNameIndex].value);
 				},
 				function(err, code) {
