@@ -1,7 +1,7 @@
 <template>
 	<view >
 		
-		<div>12233444</div>
+		<div @click="callAndroid">callAndroid</div>
 	</view>
 	
 </template>
@@ -11,7 +11,7 @@
 	import { BASE_IMAGE_URL,getShareData } from '@/utils/api'
 	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
 	// #ifdef APP-PLUS
-		//const dcRichAlert = uni.requireNativePlugin('licence');
+		const dcRichAlert = uni.requireNativePlugin('dzt');
 	// #endif
 	
 	import weixin_sdk from '../../../utils/weixin-jsapi.js';
@@ -36,9 +36,30 @@
 	},
 	onLoad() {
 		
-		this.getShareData();
+		// this.getShareData();
 	},
 	methods: {
+		callAndroid: function(){
+			dcRichAlert.show({
+				title: rn
+			}, result => {
+				const msg = JSON.stringify(result);
+				let type = msg.type;
+				if(type == "-1"){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请安装云闪付APP',
+					  duration: 1000
+					});
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: type,
+					  duration: 1000
+					});
+				}
+			});
+		}
 		async getShareData(){
 			let res = await getShareData(window.location.href.split('#')[0]);
 			if(res.code == 1000){
