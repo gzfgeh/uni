@@ -15,7 +15,7 @@
 					<span class="item_info_text">{{item.g_name}}</span>
 					<div class="row_between">
 						<span class="price">￥{{item.g_price}}</span>
-						<span class="sell_num">库存{{item.g_kucun}}件</span>
+						<span class="sell_num" v-if="false" >库存{{item.g_kucun}}件</span>
 					</div>
 				</div>
 				

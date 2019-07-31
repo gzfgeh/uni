@@ -56,7 +56,6 @@
   background: #04be01;
   color: #fff;
   font-size: 24rpx;
-  -webkit-border-radius: 999rpx;
-          border-radius: 999rpx;
+  border-radius: 999rpx;
 }
 

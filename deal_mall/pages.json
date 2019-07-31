@@ -125,6 +125,12 @@
 		    "style" : {
 				"navigationBarTitleText": "销售记录"
 			}
+		},
+		{
+		    "path" : "pages/record_list/record_list",
+		    "style" : {
+				"navigationBarTitleText": "推荐记录"
+			}
 		}
     ],
 	"condition": { //编译模式配置，仅开发期间生效  

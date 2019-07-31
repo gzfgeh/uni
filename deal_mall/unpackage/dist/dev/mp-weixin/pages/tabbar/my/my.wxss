@@ -3,15 +3,15 @@
 .head_wrap .head_bg{position: absolute;top:0rpx; left: 0rpx; width: 100%; height: 100%;z-index: -1;}
 .info_wrap{height: 348rpx; width: 100%; color: #FFFFFF; font-size: 30rpx;}
 .user_wrap{margin-left: 10rpx;}
-.user_wrap ._img{width: 130rpx; height: 130rpx; margin-right: 20rpx; -webkit-border-radius: 50%; border-radius: 50%;border:5rpx solid #FFF;}
-.address_wrap{background: #FF4544; color: #FFF; padding-right: 30rpx; -webkit-border-radius: 999rpx 0rpx 0rpx 999rpx; border-radius: 999rpx 0rpx 0rpx 999rpx;font-size: 34rpx;}
+.user_wrap ._img{width: 130rpx; height: 130rpx; margin-right: 20rpx; border-radius: 50%;border:5rpx solid #FFF;}
+.address_wrap{background: #FF4544; color: #FFF; padding-right: 30rpx; border-radius: 999rpx 0rpx 0rpx 999rpx;font-size: 34rpx;}
 .address_wrap ._img{width: 44rpx; height: 44rpx; margin:16rpx;
 }
 .my_order_text{padding: 24rpx; border-bottom: 1rpx solid #E3E3E3;}
 .func_wrap{width: 100%; border-bottom: 20rpx solid #E3E3E3;}
 .func_wrap ._img{width: 60rpx;margin-bottom: 10rpx;}
 .func_item{color: #333333; font-size: 28rpx; height: 168rpx; -webkit-box-flex:1; -webkit-flex:1; -ms-flex:1; flex:1; position: relative;}
-.func_item .num{position: absolute;top: 20rpx; right: 40rpx; display: inline-block; width: 36rpx; height: 36rpx; -webkit-border-radius: 50%; border-radius: 50%; line-height: 36rpx; text-align: center;color: #fff; background: #FF334B;font-size: 24rpx;}
+.func_item .num{position: absolute;top: 20rpx; right: 40rpx; display: inline-block; width: 36rpx; height: 36rpx; border-radius: 50%; line-height: 36rpx; text-align: center;color: #fff; background: #FF334B;font-size: 24rpx;}
 .bottom_item_wrap{padding-left: 40rpx;width: 100%; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .bottom_item{color: #333333; font-size: 32rpx; height: 116rpx; border-bottom: 2rpx solid #E3E3E3; padding-right: 30rpx;}
 .bottom_item .icon{width: 50rpx; margin-right: 24rpx;}

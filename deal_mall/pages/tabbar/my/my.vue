@@ -44,15 +44,15 @@
 			</div> -->
 		</div>
 		
-		<!-- <div class=" bottom_item_wrap"  @click="goToAddress">
+		<div class=" bottom_item_wrap"  @click="goToRecordList">
 			<div class="row_between bottom_item">
 				<img src="https://bay.2donghua.com/web/statics/images/user-center/icon-about-us.png" class="icon" mode="widthFix">
-				<span>我的分销商</span>
+				<span>推荐记录</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 				
 			</div>
-		</div> -->
+		</div>
 		
 		<div class=" bottom_item_wrap" @click="goToOrderList(0)">
 			<div class="row_between bottom_item">
@@ -164,6 +164,19 @@
 					url: '/pages/fix_page/fix_page'
 				});
 			},
+			goToRecordList: function(){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(!userInfo){
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+					return;
+				}
+				uni.navigateTo({
+					url: '/pages/record_list/record_list'
+				});
+			},
+			
 			goToAddress: function(){
 				let userInfo = uni.getStorageSync("userInfo");
 				if(!userInfo){

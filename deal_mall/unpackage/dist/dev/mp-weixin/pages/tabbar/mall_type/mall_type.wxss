@@ -3,7 +3,7 @@ page{background: #FFFFFF;height: 100%;}
 .contain{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;height: 100%;}
 .head_wrap{height: 110rpx; position: fixed;border-bottom: 2rpx solid #E3E3E3; border-top: 2rpx solid #E3E3E3;width: 100%;top:0rpx;
 			background-color: #EFEFF4;}
-.search_wrap{width: 90%; height: 66rpx; border: 1rpx solid #E3E3E3;-webkit-border-radius: 10rpx;border-radius: 10rpx; background-color: #FFFFFF;color: #B2B2B2; font-size: 24rpx;}
+.search_wrap{width: 90%; height: 66rpx; border: 1rpx solid #E3E3E3;border-radius: 10rpx; background-color: #FFFFFF;color: #B2B2B2; font-size: 24rpx;}
 .search_wrap ._img{margin-right: 10rpx; width: 26rpx;}
 .content_wrap{margin-top: 114rpx; -webkit-box-flex:1; -webkit-flex:1; -ms-flex:1; flex:1; width: 100%;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row;}
 .scoll_wrap{width: 224rpx; height: 100%;background-color: #F7F7F7;}

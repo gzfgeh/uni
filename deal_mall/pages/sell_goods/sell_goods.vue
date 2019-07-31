@@ -32,7 +32,19 @@
 			  </div>
 			</div>
 			
+			<div class="row item_wrap">
+			  <div class="row_between item">
+				<span class="item_span">推荐人姓名</span>
+				<input type="text" v-model="tuijian_name" placeholder="请输入姓名">
+			  </div>
+			</div>
 			
+			<div class="row item_wrap">
+			  <div class="row_between item">
+				<span class="item_span">推荐人手机号</span>
+				<input type="number" maxlength="11" v-model="tuijian_phone" placeholder="请输入手机号">
+			  </div>
+			</div>
 			
 		</div>
 		
@@ -62,7 +74,9 @@
 				formid: '',
 				reportForm: true,
 				item: {},
-				go_g_no_list: []
+				go_g_no_list: [],
+				tuijian_name: '',
+				tuijian_phone: ''
 			}
 		},
 		onLoad(opt) {

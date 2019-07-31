@@ -19,7 +19,8 @@
     "pages/in_order_list/in_order_list",
     "pages/sell_order_list/sell_order_list",
     "pages/send_goods/send_goods",
-    "pages/sell_goods/sell_goods"
+    "pages/sell_goods/sell_goods",
+    "pages/record_list/record_list"
   ],
   "subPackages": [],
   "window": {

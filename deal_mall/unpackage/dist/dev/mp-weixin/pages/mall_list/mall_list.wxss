@@ -9,5 +9,5 @@
 .list_item image{width: 100%; height: 365rpx;}
 .list_item .item_info .price{color: #ff334b;}
 .list_item .item_info .sell_num{color: #999;}
-.quick_icon{position: fixed;right: 50rpx; bottom: 140rpx; z-index: 20;width: 100rpx; height: 100rpx; -webkit-border-radius: 50%; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24rpx;}
+.quick_icon{position: fixed;right: 50rpx; bottom: 140rpx; z-index: 20;width: 100rpx; height: 100rpx; border-radius: 50%; background-color: rgba(0,0,0,0.7); color: #FFF; font-size: 24rpx;}
 
