@@ -13,7 +13,7 @@
 	import { BASE_IMAGE_URL,getShareData } from '@/utils/api'
 	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
 	// #ifdef APP-PLUS
-		const dcRichAlert = uni.requireNativePlugin('dzt');
+		// const dcRichAlert = uni.requireNativePlugin('dzt');
 	// #endif
 	
 	import weixin_sdk from '../../../utils/weixin-jsapi.js';
