@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "卡券列表",
-  "usingComponents": {
-    "uni-load-more": "/components/uni-load-more"
-  }
-}

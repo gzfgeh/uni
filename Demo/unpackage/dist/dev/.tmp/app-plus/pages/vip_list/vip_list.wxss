@@ -1,9 +1,0 @@
-
-.vip_img{width: 92%; margin: 60rpx 4%; border-radius: 24rpx; z-index: 1;}
-.no_style{ position: absolute; top: 70rpx; right: 10%; border-radius: 24rpx; z-index: 2; font-size: 40rpx; color: #FFF;}
-.type_wrap{color: #333333; font-size: 32rpx; border-bottom: 1rpx solid #E3E3E3; padding-bottom: 20rpx;}
-.item_wrap{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; padding: 30rpx; border-bottom: 1rpx solid #E3E3E3;}
-.item_wrap .pic{width: 140rpx; height: 140rpx; margin-right: 30rpx;}
-.item_wrap .content_wrap{font-size: 28rpx; color: #666666;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;}
-.content_wrap .price{font-size: 32rpx; color: #FF5269; margin-right: 20rpx;}
-

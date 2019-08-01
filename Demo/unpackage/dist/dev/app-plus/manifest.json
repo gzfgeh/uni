@@ -4,7 +4,7 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__D6007C2",
+  "id": "__UNI__FC4199D",
   "name": "楼服宝",
   "version": {
     "name": "1.1.7",
@@ -166,7 +166,22 @@
         }
       }
     },
-    "nativePlugins": {},
+    "nativePlugins": {
+      "GZF-YunPay": {
+        "__plugin_info__": {
+          "name": "YunPay",
+          "description": "uni-app调用云闪付APP",
+          "platforms": "Android",
+          "url": "",
+          "android_package_name": "",
+          "ios_bundle_id": "",
+          "isCloud": false,
+          "bought": -1,
+          "pid": "",
+          "parameters": {}
+        }
+      }
+    },
     "arguments": "{\"name\":\"课程\",\"pathName\":\"pages/my/my\",\"query\":\"id=1\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
@@ -176,7 +191,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.1.1",
+      "compilerVersion": "2.1.3",
       "control": "v8",
       "nvueCompiler": "weex"
     },

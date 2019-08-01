@@ -1,1 +1,0 @@
-<view style="padding:20rpx;"><rich-text nodes="{{detail}}"></rich-text><block wx:if="{{false}}"><view data-event-opts="{{[['tap',[['setAgress',['$event']]]]]}}" class="agree_btn row_center _div" bindtap="__e"><label class="checkbox"><checkbox checked="{{isAgress}}"></checkbox>点击同意用户协议</label></view></block></view>

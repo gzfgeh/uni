@@ -1,73 +1,9 @@
 {
   "pages": [
     "pages/tabbar/home/home",
-    "pages/login/login",
-    "pages/personal/personal",
-    "pages/forget/forget",
-    "pages/register/register",
-    "pages/tabbar/service/service",
-    "pages/tabbar/mall/mall",
-    "pages/tabbar/fuli/fuli",
     "pages/tabbar/my/my",
-    "pages/home_webview/home_webview",
-    "pages/message/message",
-    "pages/build/build",
-    "pages/address_list/address_list",
-    "pages/add_address/add_address",
-    "pages/complain/complain",
-    "pages/express_info/express_info",
-    "pages/express_main/express_main",
-    "pages/recent_used/recent_used",
-    "pages/yun_fei/yun_fei",
-    "pages/forbid/forbid",
-    "pages/express_list_order/express_list_order",
-    "pages/express_list/express_list",
-    "pages/express_detail/express_detail",
-    "pages/service_form/service_form",
-    "pages/service_form_sure/service_form_sure",
-    "pages/service_pay/service_pay",
-    "pages/add_address_global/add_address_global",
-    "pages/join_us/join_us",
-    "pages/baobao_team/baobao_team",
-    "pages/build_suoyin/build_suoyin",
-    "pages/crop/crop",
-    "pages/vip_login/vip_login",
-    "pages/join_build/join_build",
-    "pages/join_gys/join_gys",
-    "pages/join_zp/join_zp",
-    "pages/custom_service/custom_service",
-    "pages/wai_mai_main/wai_mai_main",
-    "pages/wai_mai_list/wai_mai_list",
-    "pages/wai_mai_detail/wai_mai_detail",
-    "pages/vip_list/vip_list",
-    "pages/vip_list_detail/vip_list_detail",
-    "pages/order_list/order_list",
-    "pages/agressment/agressment",
-    "pages/service_order_list/service_order_list",
-    "pages/service_order_detail/service_order_detail",
-    "pages/mall_type/mall_type",
-    "pages/mall_search/mall_search",
-    "pages/print_page/print_page",
-    "pages/mall_list/mall_list",
-    "pages/mall_shop/mall_shop",
-    "pages/mall_detail/mall_detail",
-    "pages/mall_card/mall_card",
-    "pages/mall_post/mall_post",
-    "pages/mall_order/mall_order",
-    "pages/coupon_list/coupon_list",
-    "pages/mall_question/mall_question",
-    "pages/fuli_post/fuli_post",
-    "pages/express_hongxing/express_hongxing",
-    "pages/collect_list/collect_list",
-    "pages/mall_order_detail/mall_order_detail",
-    "pages/mall_goods_list/mall_goods_list",
-    "pages/mall_shop_text/mall_shop_text",
-    "pages/mall_shop_text_detail/mall_shop_text_detail",
-    "pages/hongxing_login/hongxing_login",
-    "pages/mall_goods_list_detail/mall_goods_list_detail",
-    "pages/about_us/about_us"
+    "pages/tabbar/service/service"
   ],
-  "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "楼服宝",
@@ -90,28 +26,16 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/tabbar/service/service",
-        "iconPath": "static/img/tabbar/guanzhu.png",
-        "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
-        "text": "服务"
-      },
-      {
-        "pagePath": "pages/tabbar/mall/mall",
-        "iconPath": "static/img/tabbar/add.png",
-        "selectedIconPath": "static/img/tabbar/addactive.png",
-        "text": "生活"
-      },
-      {
-        "pagePath": "pages/tabbar/fuli/fuli",
-        "iconPath": "static/img/tabbar/news.png",
-        "selectedIconPath": "static/img/tabbar/newsactive.png",
-        "text": "福利"
-      },
-      {
         "pagePath": "pages/tabbar/my/my",
         "iconPath": "static/img/tabbar/me.png",
         "selectedIconPath": "static/img/tabbar/meactive.png",
         "text": "会员"
+      },
+      {
+        "pagePath": "pages/tabbar/service/service",
+        "iconPath": "static/img/tabbar/me.png",
+        "selectedIconPath": "static/img/tabbar/meactive.png",
+        "text": "服务"
       }
     ]
   },
@@ -121,6 +45,6 @@
     "autoclose": false
   },
   "appname": "楼服宝",
-  "compilerVersion": "2.1.1",
+  "compilerVersion": "2.1.3",
   "usingComponents": {}
 }

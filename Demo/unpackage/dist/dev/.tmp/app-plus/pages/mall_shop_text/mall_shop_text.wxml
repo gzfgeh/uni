@@ -1,1 +1,0 @@
-<view><u-parse style="padding:20rpx;box-sizing:border-box;" vue-id="1" content="{{detail}}" bind:__l="__l"></u-parse><view data-event-opts="{{[['tap',[['postOrder',['$event']]]]]}}" class="button row_between _div" bindtap="__e"><button>提交需求</button></view></view>

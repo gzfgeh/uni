@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "饮水服务",
-  "usingComponents": {
-    "uni-popup": "/components/popup-pay"
-  }
-}
