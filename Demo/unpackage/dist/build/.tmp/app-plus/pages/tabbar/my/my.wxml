@@ -1,1 +1,1 @@
-<view><view data-event-opts="{{[['tap',[['callAndroid',['$event']]]]]}}" bindtap="__e" class="_div">验证手机号</view><view data-event-opts="{{[['tap',[['callAndroid',['$event']]]]]}}" bindtap="__e" class="_div">一键登录</view></view>
+<view class="data-v-47d39f44"></view>

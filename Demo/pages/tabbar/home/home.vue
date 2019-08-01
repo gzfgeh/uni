@@ -1,8 +1,8 @@
 <template>
-	<view >
+	<view style="padding-top: 200upx;">
 		
-		<div @click="callAndroid">验证手机号</div>
-		<div @click="callLogin">一键登录</div>
+		<button @click="callAndroid">验证手机号</button>
+		<button @click="callLogin" style="margin-top: 100upx;">一键登录</button>
 		
 	</view>
 	
@@ -27,26 +27,41 @@
 			dcRichAlert.show({
 				title: "456"
 			}, result => {
-				const msg = JSON.stringify(result);
-				let type = msg.type;
-				uni.showToast({
-				  icon: 'none',
-				  title: type,
-				  duration: 1000
-				});
+				let type = result.type;
+				if(parseInt(type) == 1){
+					uni.showToast({
+					  icon: 'none',
+					  title: "成功",
+					  duration: 1000
+					});
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: "失败",
+					  duration: 1000
+					});
+				}
+				
 			});
 		},
 		callLogin: function(){
 			dcRichAlert.eLogin({
 				title: "123"
 			}, result => {
-				const msg = JSON.stringify(result);
-				let type = msg.type;
-				uni.showToast({
-				  icon: 'none',
-				  title: type,
-				  duration: 1000
-				});
+				let type = result.type;
+				if(parseInt(type) == 1){
+					uni.showToast({
+					  icon: 'none',
+					  title: "成功",
+					  duration: 1000
+					});
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: "失败",
+					  duration: 1000
+					});
+				}
 			});
 		}
 		

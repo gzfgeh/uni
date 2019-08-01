@@ -170,7 +170,7 @@
       "GZF-YunPay": {
         "__plugin_info__": {
           "name": "YunPay",
-          "description": "uni-app调用云闪付APP",
+          "description": "一键登录",
           "platforms": "Android",
           "url": "",
           "android_package_name": "",
