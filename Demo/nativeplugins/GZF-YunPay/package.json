@@ -10,7 +10,7 @@
                 {  
                     "type": "module", 
                     "name": "GZF-YunPay",  
-                    "class": "android.baobaoloufu.com.yunpay.YunPayWXModule"  
+                    "class": "com.app.dzt.yunpay.YunPayWXModule"  
                 }  
             ],  
             "integrateType": "aar", 

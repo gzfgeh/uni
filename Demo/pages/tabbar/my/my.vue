@@ -1,290 +1,194 @@
 <template>
-	<view class="content">
+	<view >
 		
-		<div class="head_wrap" @click="goToVip" :style="[{'padding-top': (statusBarHeight)}, {'margin-bottom':(bottomValue)}]">
-			<img src="../../../static/img/my_bg.png" mode="aspectFill" class="vip_img" :style="{'top': (vipTop)}">
-			<div class="head_img_wrap">
-				<img :src="userImage" mode="aspectFill">
-				<span>{{userName}}</span>
-			</div>
-		</div>
+		<div @click="callAndroid">验证手机号</div>
+		<div @click="callAndroid">一键登录</div>
 		
-		<div class="row_between func_wrap">
-			<navigator class="col_center func_item" @click="goToExpressList">
-				<img src="../../../static/img/wode_order.png" mode="widthFix">
-				<span>订单</span>
-			</navigator>
-			
-			<navigator class="col_center func_item" @click="goToExpressOrderList">
-				<img src="../../../static/img/wode_kuaidi.png" mode="widthFix">
-				<span>快递</span>
-			</navigator>
-			
-			<navigator class="col_center func_item" @click="goToCouponList">
-				<img src="../../../static/img/wode_coupon.png" mode="widthFix">
-				<span>卡券</span>
-			</navigator>
-			
-			<navigator class="col_center func_item" @click="goToFavList">
-				<img src="../../../static/img/wode_gif.png" mode="widthFix">
-				<span>收藏</span>
-			</navigator>
-		</div>
-		
-		<navigator class=" bottom_item_wrap" style="margin-top: 30upx;" @click="goToSetting">
-			<div class="row_between bottom_item" style="border-top: 2upx solid #E3E3E3;">
-				<span>个人资料</span>
-				<span style="flex: 1;"></span>
-				<span class="arraw"></span>
-			</div>
-		</navigator>
-		
-		<navigator class=" bottom_item_wrap" @click="goToAddress">
-			<div class="row_between bottom_item">
-				<img src="../../../static/img/wode_location_icon.png" class="icon" mode="aspectFill" style="height: 44upx; width: 36upx;">
-				<span>我的地址</span>
-				<span style="flex: 1;"></span>
-				<span class="arraw"></span>
-			</div>
-		</navigator>
-		
-		<navigator class=" bottom_item_wrap" @click="callPhone">
-			<div class="row_between bottom_item">
-				<img src="../../../static/img/wode_kefu.png" class="icon" mode="aspectFill" style="height: 40upx; width: 40upx;">
-				<span>帮助</span>
-				<span style="flex: 1;"></span>
-				<span>400-888-8808</span>
-				<span class="arraw"></span>
-			</div>
-		</navigator>
-		
-		<navigator class=" bottom_item_wrap" @click="goToComplain">
-			<div class="row_between bottom_item uni-navigate-right">
-				<img src="../../../static/img/wode_fuli.png" class="icon" mode="aspectFill" style="height: 38upx; width: 38upx;">
-				<span>反馈</span>
-				<span style="flex: 1;"></span>
-				<span class="arraw"></span>
-			</div>
-		</navigator>
-		
-		<navigator class=" bottom_item_wrap" @click="goToAboutUs">
-			<div class="row_between bottom_item uni-navigate-right">
-				<img src="../../../static/img/wode_tousu.png" class="icon" mode="aspectFill" style="height: 42upx; width: 42upx;">
-				<span>关于</span>
-				<span style="flex: 1;"></span>
-				<span class="arraw"></span>
-			</div>
-		</navigator>
 	</view>
+	
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getuserInfobyuserID } from '@/utils/api'
+	
+	import { BASE_IMAGE_URL,getShareData } from '@/utils/api'
+	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
+	// #ifdef APP-PLUS
+		const dcRichAlert = uni.requireNativePlugin('dzt');
+	// #endif
+	
+	import weixin_sdk from '../../../utils/weixin-jsapi.js';
 	
 	export default {
-		data() {
-			return {
-				statusBarHeight: 0,
-				vipTop: 0,
-				userName: '未登录',
-				userImage: '../../../static/img/mtyou_icon.png',
-				bottomValue: "80upx"
+	data() {
+		return {
+			buildingName:"请选择楼宇",
+			itemList: [],
+			contentList:[],
+			msg : [],
+			t_url: '',
+			curIndex: 0,
+			contentCurIndex: 0,
+			statusBarHeight: 0,
+			msgCount: 0,
+			showBg: 0,
+			isAPP: false,
+			paddingValue: '',
+			shopList: []
+		};
+	},
+	onLoad() {
+		
+		// this.getShareData();
+	},
+	methods: {
+		callAndroid: function(){
+			dcRichAlert.show({
+				title: rn
+			}, result => {
+				const msg = JSON.stringify(result);
+				let type = msg.type;
+				if(type == "-1"){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请安装云闪付APP',
+					  duration: 1000
+					});
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: type,
+					  duration: 1000
+					});
+				}
+			});
+		},
+		async getShareData(){
+			let res = await getShareData(window.location.href.split('#')[0]);
+			if(res.code == 1000){
+				this.initWeiXin(res.data);
 			}
 		},
-		onLoad() {
-			// #ifdef APP-PLUS
-				this.statusBarHeight = '140upx';
-				this.vipTop = '128upx';
-				this.bottomValue = "160upx";
-			// #endif
+		initWeiXin(result){
+			weixin_sdk.config({
+					debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: 'wx619e8821f163f2cc', // 必填，企业号的唯一标识，此处填写企业号corpid
+					timestamp: result.timestamp, // 必填，生成签名的时间戳
+					nonceStr: result.noncestr, // 必填，生成签名的随机串
+					signature: result.signature,// 必填，签名，见附录1
+					jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
 			
-			// #ifdef H5
-				this.statusBarHeight = '88upx';
-				this.vipTop = '76upx';
-				this.bottomValue = "80upx";
-			// #endif
-			
-			
-			console.log(this.statusBarHeight);
-			uni.showLoading({ title: '加载中...' });
-			setTimeout( () => {
-				uni.hideLoading()
-			}, 500);
-		},
-		onShow(){
-			uni.setStorageSync("isShow", false);
-			this.getuserInfobyuserID();
-		},
-		methods: {
-			async getuserInfobyuserID(){
-				let res = await getuserInfobyuserID();
-				if(res.status == 1){
-					let userInfo = res.data.userInfo;
-					uni.setStorageSync("userInfo", userInfo);
-					if(userInfo){
-						if(userInfo.userImage){
-							this.userImage = userInfo.userImage;
-						}else{
-							this.userImage = '../../../static/img/mtyou_icon.png';
-						}
-						
-						this.userName = userInfo.userName;
-					}else{
-						this.userImage = '../../../static/img/mtyou_icon.png';
-						this.userName = '未登录';
+			weixin_sdk.ready(function(){
+					//分享给朋友
+				  weixin_sdk.onMenuShareAppMessage({
+					title: 'title', // 分享标题
+					desc: 'desc', // 分享描述
+					link: window.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+					imgUrl: 'https://www.baidu.com/img/bd_logo1.png', // 分享图标
+					success: function () {
+					  // 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+					  // 用户取消分享后执行的回调函数
 					}
-				}
-			},
-			goToCouponList(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/coupon_list/coupon_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-			},
-			goToFavList(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/collect_list/collect_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-			},
-			callPhone: function(){
-				uni.makePhoneCall({
-					phoneNumber:"4008888808",
-					success: () => {
-						console.log("成功拨打电话")
+				  })
+
+				  //分享到朋友圈
+				  weixin_sdk.onMenuShareTimeline({
+					title: 'title', // 分享标题
+					link: window.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+					imgUrl: 'https://www.baidu.com/img/bd_logo1.png', // 分享图标
+					success: function () {
+					  // 用户确认分享后执行的回调函数
+					},
+					cancel: function () {
+					  // 用户取消分享后执行的回调函数
 					}
-				})
-			},
-			goToSetting: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/personal/personal'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-				
-			},
-			goToVip: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/vip_list/vip_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-				
-			},
-			goToAboutUs: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/about_us/about_us'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-				
-			},
-			
-			goToExpressList: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/order_list/order_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-				
-			},
-			
-			goToExpressOrderList: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/express_list_order/express_list_order'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-				
-			},
-			goToAddress: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/address_list/address_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-			},
-			goToGlobalAddress: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/global_address_list/global_address_list'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-			},
-			goToComplain: function(){
-				uni.navigateTo({
-					url: '/pages/complain/complain'
-				});
-			}
-		}
+				  })
+			});
+		},
+		
+		
 	}
+};
 </script>
 
 <style>
-	page{background: #fff;}
-	
-	.head_wrap{width: 100%; box-sizing: border-box; background: #107EFF; height: 372upx;position: relative; margin-bottom: 80upx;padding-top: 88upx; }
-	.head_wrap .vip_img{width: 92%; margin: 0upx 4%; border-radius: 24upx;position: absolute; z-index: 1;height: 364upx;}
-	.head_wrap .head_img_wrap{display: flex; flex-direction: column;align-items: center;position: relative;z-index: 2; padding-top: 26upx;color: #fff;font-size: 32upx; top: -88upx;}
-	.head_wrap .head_img_wrap img{width: 44px; height: 44px; border-radius: 50%;border: 5upx solid #FFFFFF;}
-	
-	
-	.my_head_wrap{padding: 0upx 20upx; color: #333333; font-size: 28upx;}
-	.touxiang{width: 72upx;margin-right: 20upx; border-radius: 50%;}
-	.setting_img{width: 40upx;}
-	.func_wrap{flex-flow: wrap; width: 100%; padding: 0upx 30upx; box-sizing: border-box; margin-top: 40upx;}
-	.func_wrap img{width: 60upx;margin-bottom: 10upx;}
-	.func_item{color: #333333; font-size: 28upx; height: 168upx; flex:1;box-shadow: #ccc 0 2px 12px; margin: 10upx 10upx 0upx;border-radius: 8upx;}
-	.bottom_item_wrap{padding-left: 40upx;width: 100%; box-sizing: border-box;}
-	.bottom_item{color: #333333; font-size: 28upx; height: 116upx; border-bottom: 2upx solid #E3E3E3; padding-right: 30upx;}
-	.bottom_item .icon{ margin-right: 24upx;}
-	
-	
+	page{height: 100%; background: #F5F5F5; }
+.content {position: relative; color: #666666; font-size: 24upx; height: 100upx;}
+.head_bg{ width: 100%; height: 360upx;position: absolute;top: -124upx; left: 0upx;z-index: 1;}
+.head_bg img{height: 360upx; width: 100%;}
+
+.top_style{padding-top: 120upx!important;}
+
+.swiper_wrap{position: relative;width: 96%; height: 360upx;margin: 20upx auto 0 auto;z-index: 2;box-sizing: border-box;border-radius: 20upx;}
+.head_img{width: 100%;height: 360upx!important;border-radius: 10upx;box-shadow: 0 0 10px #999;}
+.head_img swiper-item{border-radius: 20upx;}
+
+.dots{display: flex;flex-direction: row;justify-content: center;align-items: center;position: absolute;bottom: 40upx;height: 20upx;width: 100%;z-index: 100;}
+.dot_normal{width: 10upx;height: 10upx;border-radius: 50%;background-color: #E0E5ED;margin: 0upx 6upx;position: relative;z-index: 100;}
+.active{width: 30upx;height: 10upx;border-radius: 30%;background-color: #107EFF;z-index: 100;}
+
+.home_head_wrap{width: 100%; color: #FFFFFF;font-size: 24upx; padding: 0upx 20upx 0upx 20upx; box-sizing: border-box; top: 80upx; position: fixed;z-index: 2000; }
+.home_head_left span{font-size: 36upx; overflow: hidden;max-width: 260upx;white-space: nowrap;text-overflow:ellipsis;}
+.home_head_left img{width: 30upx; height: 36upx; margin-right: 10upx;}
+.msg_wrap{position: relative; height: 100%;}
+.msg_wrap img{width: 30upx; height: 34upx;}
+.red_hot{width: 10upx; height: 10upx; position: absolute;right: 0upx; top: 0upx;background-color: red; z-index: 2;border-radius: 50%;}
+
+.gonggao_wrap{height: 90upx; background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin:0upx 3%; padding: 0upx 22upx;box-sizing: border-box;border-radius: 8upx; font-size: 28upx; color: #333;}
+.gonggao_wrap img{width: 128upx; margin-right: 20upx;}
+
+.scan_img{width: 28upx;height: 100%;}
+.search_icon{width: 30upx;margin: 0upx 50upx; height: 100%;}
+
+.content_wrap{width: 94%; margin-left: 3%; height:340upx;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx; flex-flow: wrap;}
+.content_wrap .flex_one{min-width: 160upx;font-size: 24upx; color: #666; height: 170upx;}
+.content_wrap img{width: 80upx; margin-bottom: 10upx;}
+
+.build_wrap{width: 94%; margin-left: 3%;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx;height: 120upx; font-size: 24upx;color: #666;}
+.build_wrap img{width: 56upx; margin-right: 14upx;}
+.build_wrap .line{width: 2upx; height: 56upx;background: #E7E7E7;}
+.build_wrap .flex_one{height: 100%;}
+
+.center_wrap{width: 100%; margin-left: 0%;box-sizing:border-box;margin-top: 30upx;}
+
+.bottom_wrap{padding: 5%; box-sizing: border-box; }
+.bottom_wrap img{width: 100%; margin-bottom: 60upx;}
+
+.recommand_one{background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin-left: 3%;margin-top: 30upx; display: flex; flex-direction: column;}
+.recommand_one .item{padding:30upx; color: #999999; font-size: 24upx; border-bottom: 2upx solid #F0F0F0;}
+.recommand_one .item img{width: 10upx; height: 18upx; margin-left: 10upx;}
+.recommand_one .item .title{color: #FF5E43; font-size: 44upx;}
+.recommand_one .recommand_item{display: flex; flex-direction: row;}
+.recommand_one .recommand_item img{width: 320upx; height: 360upx;}
+.recommand_one .recommand_item .right_wrap{flex: 1; display: flex;flex-direction: column;}
+.recommand_one .recommand_item .right{flex: 1; border-bottom: 2upx solid #F0F0F0; padding-right: 20upx; box-sizing: border-box;}
+.recommand_one .recommand_item .right img{width: 124upx; height: 124upx;}
+.recommand_one .recommand_item .right .right_item{padding: 20upx; display: flex;flex-direction: column;color: #666666; font-size: 24upx;}
+.recommand_one .recommand_item .right .right_item .name{color: #333333; font-size: 28upx;}
+.recommand_one .recommand_item .right .desc{text-overflow: ellipsis; overflow: hidden;display: -webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient: vertical;}
+
+.nav{display: flex; flex-direction: row;width: 100%;border-bottom: rgb(249,249,249) solid 15upx; box-sizing: border-box;}
+.nav-item{display: flex; flex-direction: column; padding-top: 30upx; flex: 1; display: inline-block; border-right: 2upx solid #F0F0F0;}
+.nav img{width: 160upx; height: 160upx; text-align: center;}
+.nav .scroll_content_wrap{display: flex; flex-direction: column; height: 150upx; justify-content: space-between; padding: 10upx 10upx 10upx 20upx; box-sizing: border-box;}
+.nav .scroll_content_wrap span{text-overflow: ellipsis; overflow: hidden;width: 210upx;white-space: normal; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
+.nav .scroll_content_wrap .desc{color: #666666; font-size: 24upx;}
+
+.recommand_two{background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin-left: 3%;margin-top: 30upx; display: flex; flex-direction: column;}
+.recommand_two .item{padding:30upx; color: #999999; font-size: 24upx; border-bottom: 2upx solid #F0F0F0;}
+.recommand_two .item img{width: 10upx; height: 18upx; margin-left: 10upx;}
+.recommand_two .item .title{color: #32BF3D; font-size: 44upx;}
+
+.list_item .item_wrap{width: 100%;box-sizing: border-box;padding-left: 30upx; background: #FFFFFF; }
+.list_item .item{display: flex;flex-direction: row;border-bottom: #E3E3E3 solid 2upx; padding: 35upx 0upx; font-size: 28upx; color: #666666;}
+.list_item .item img{width: 185upx; height: 185upx;border-radius: 8upx; margin-right: 32upx;}
+.list_item .item .content_item{display: flex; flex-direction: column; justify-content: space-between;flex: 1; padding-right: 30upx;}
+.list_item .item .content_item .title{color: #333333; font-size: 28upx;}
+.list_item .item .content_item .content{color: #666666; font-size: 24upx;}
+.list_item .item .content_item .tag_wrap span{color: #F88415; font-size: 24upx; background: #FFF2E9; border-radius:5upx; margin-right: 10upx; padding: 5upx;}
+
 </style>

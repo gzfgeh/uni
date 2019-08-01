@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/tabbar/home/home",
-    "pages/tabbar/my/my"
+    "pages/tabbar/my/my",
+    "pages/tabbar/service/service"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -29,6 +30,12 @@
         "iconPath": "static/img/tabbar/me.png",
         "selectedIconPath": "static/img/tabbar/meactive.png",
         "text": "会员"
+      },
+      {
+        "pagePath": "pages/tabbar/service/service",
+        "iconPath": "static/img/tabbar/me.png",
+        "selectedIconPath": "static/img/tabbar/meactive.png",
+        "text": "服务"
       }
     ]
   },

@@ -19,6 +19,15 @@
 					"titleNView":false
 				}
 		    }
+		},
+		{
+			"path": "pages/tabbar/service/service",
+			"style" : {
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
 		}
 	    
     ],
@@ -57,6 +66,12 @@
 				"iconPath": "static/img/tabbar/me.png",
 				"selectedIconPath": "static/img/tabbar/meactive.png",
 				"text": "会员"
+			},
+			{
+				"pagePath": "pages/tabbar/service/service",
+				"iconPath": "static/img/tabbar/me.png",
+				"selectedIconPath": "static/img/tabbar/meactive.png",
+				"text": "服务"
 			}
 		]
 	}
