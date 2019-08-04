@@ -53,19 +53,11 @@
 		
 		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="hidePop">
 			<div class="company-modal">
-				<div class="modal-title">设置销售记录</div>
+				<div class="modal-title">设置收货记录</div>
 				<div class="content_wrap">
 					<div class="company-code">
-						<span>姓名</span>
-						<input type="text" maxlength="5" v-model="o_name" placeholder="请输入姓名"  />
-					</div>
-					<div class="company-code">
-						<span>手机号</span>
-						<input type="number" maxlength="11" v-model="o_phone" placeholder="请输入手机号"  />
-					</div>
-					<div class="company-code">
-						<span>数量</span>
-						<input type="number" maxlength="5" v-model="o_num" placeholder="请输入数量"  />
+						<span>产品编号</span>
+						<input type="text" maxlength="5" v-model="o_number" placeholder="请输入产品编号"  />
 					</div>
 				</div>
 				
@@ -139,19 +131,35 @@
 			},
 			
 			async confirmReceipt(index){
-				let params = {
-					o_id: this.list[index].o_id
-				};
+				let item = this.list[index];
+				let flag = false;
+				item.good_list.map((ite) => {
+					if(parseInt(ite.go_is_kucun) == 0){
+						flag = true;
+					}
+				});
 				
-				let res = await confirmReceipt(params);
-				if(res.code == 1000){
-					uni.showToast({
-						icon: 'none',
-						duration: 1000,
-						title: "操作成功"
+				if(flag){
+					uni.setStorageSync("item", item);
+					uni.navigateTo({
+						url: '/pages/kucun_record/kucun_record'
 					});
-					this.getList();
+				}else{
+					let params = {
+						o_id: this.list[index].o_id
+					};
+					
+					let res = await confirmReceipt(params);
+					if(res.code == 1000){
+						uni.showToast({
+							icon: 'none',
+							duration: 1000,
+							title: "操作成功"
+						});
+						this.getList();
+					}
 				}
+				
 			}
 		},
 		onReachBottom() {
@@ -182,8 +190,11 @@
 				})
 			}
 			this.m_role = uni.getStorageSync("userInfo").m_role;
-			this.getList();
+			
 		
+		},
+		onShow() {
+			this.getList();
 		}
 		
 	}

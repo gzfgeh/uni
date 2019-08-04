@@ -13,7 +13,7 @@
                     "class": "com.app.dzt.yunpay.YunPayWXModule"  
                 }  
             ],  
-            "integrateType": "aar", 
+            "integrateType": "aar",
             "minSdkVersion": 16
         }  
     }  

@@ -24,18 +24,18 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.contain.data-v-47d39f44 {
+.contain.data-v-e6201d48 {
   background-color: #ffffff;
 }
-.content.data-v-47d39f44 {
+.content.data-v-e6201d48 {
   height: 400rpx;
   position: relative;
 }
-.head_img.data-v-47d39f44 {
+.head_img.data-v-e6201d48 {
   width: 100%;
   height: 400rpx !important;
 }
-.dots.data-v-47d39f44 {
+.dots.data-v-e6201d48 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +59,7 @@
   width: 100%;
   z-index: 100;
 }
-.dot_normal.data-v-47d39f44 {
+.dot_normal.data-v-e6201d48 {
   width: 10rpx;
   height: 10rpx;
   border-radius: 50%;
@@ -68,14 +68,14 @@
   position: relative;
   z-index: 100;
 }
-.active.data-v-47d39f44 {
+.active.data-v-e6201d48 {
   width: 24rpx;
   height: 10rpx;
   border-radius: 40%;
   background-color: #107EFF;
   z-index: 100;
 }
-.home_head_wrap.data-v-47d39f44 {
+.home_head_wrap.data-v-e6201d48 {
   position: absolute;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), transparent);
   width: 100%;
@@ -86,7 +86,7 @@
           box-sizing: border-box;
   top: 0rpx;
 }
-.home_head_left ._span.data-v-47d39f44 {
+.home_head_left ._span.data-v-e6201d48 {
   font-size: 24rpx;
   overflow: hidden;
   width: 130rpx;
@@ -94,19 +94,19 @@
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
-.home_head_left ._img.data-v-47d39f44 {
+.home_head_left ._img.data-v-e6201d48 {
   width: 24rpx;
   height: 24rpx;
   margin-left: 5rpx;
 }
-.msg_wrap.data-v-47d39f44 {
+.msg_wrap.data-v-e6201d48 {
   position: relative;
 }
-.msg_wrap ._img.data-v-47d39f44 {
+.msg_wrap ._img.data-v-e6201d48 {
   width: 50rpx;
   height: 40rpx;
 }
-.red_hot.data-v-47d39f44 {
+.red_hot.data-v-e6201d48 {
   width: 20rpx;
   height: 20rpx;
   position: absolute;
@@ -116,7 +116,7 @@
   z-index: 2;
   border-radius: 50%;
 }
-.search_wrap.data-v-47d39f44 {
+.search_wrap.data-v-e6201d48 {
   position: relative;
   border-radius: 36rpx;
   background-color: rgba(244, 244, 244, 0.75);
@@ -130,16 +130,16 @@
   color: #9B9B9B;
   font-size: 28rpx;
 }
-.search_wrap ._img.data-v-47d39f44 {
+.search_wrap ._img.data-v-e6201d48 {
   width: 28rpx;
   height: 28rpx;
   margin-right: 20rpx;
 }
-.nav_wrap.data-v-47d39f44 {
+.nav_wrap.data-v-e6201d48 {
   height: 114rpx;
   background-color: #FFFFFF;
 }
-.nav_item.data-v-47d39f44 {
+.nav_item.data-v-e6201d48 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -147,60 +147,60 @@
   color: #666666;
   font-size: 24rpx;
 }
-.nav_item ._img.data-v-47d39f44 {
+.nav_item ._img.data-v-e6201d48 {
   width: 32rpx;
   height: 32rpx;
   margin-bottom: 10rpx;
 }
-.left.data-v-47d39f44, .right.data-v-47d39f44 {
+.left.data-v-e6201d48, .right.data-v-e6201d48 {
   display: inline-block;
   vertical-align: top;
   width: 44%;
 }
-.left.data-v-47d39f44 {
+.left.data-v-e6201d48 {
   margin: 20rpx 2% 20rpx 4%;
 }
-.right.data-v-47d39f44 {
+.right.data-v-e6201d48 {
   margin: 20rpx 4% 20rpx 2%;
 }
-.card-img.data-v-47d39f44 {
+.card-img.data-v-e6201d48 {
   width: 100%;
 }
-.card-title.data-v-47d39f44 {
+.card-title.data-v-e6201d48 {
   font-size: 24rpx;
   color: #333333;
   display: inline-block;
   margin: 0rpx 16rpx 20rpx;
 }
-.card.data-v-47d39f44 {
+.card.data-v-e6201d48 {
   -webkit-box-shadow: 0px 4px 12px 0px rgba(126, 125, 125, 0.14);
           box-shadow: 0px 4px 12px 0px rgba(126, 125, 125, 0.14);
   width: 100%;
   margin: 20rpx 0rpx;
   border-radius: 20rpx;
 }
-.itemlist.data-v-47d39f44 {
+.itemlist.data-v-e6201d48 {
   background-color: #fff;
   margin: 1%;
   margin-bottom: 20rpx;
   display: inline-block;
 }
-.mall_wrap.data-v-47d39f44 {
+.mall_wrap.data-v-e6201d48 {
   background: #FFF;
   margin: 20rpx 30rpx;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.mall_wrap ._img.data-v-47d39f44 {
+.mall_wrap ._img.data-v-e6201d48 {
   width: 40%;
   height: 80rpx;
   -webkit-box-shadow: 0px 4px 12px 0px rgba(126, 125, 125, 0.14);
           box-shadow: 0px 4px 12px 0px rgba(126, 125, 125, 0.14);
 }
-.mall_wrap .mall.data-v-47d39f44 {
+.mall_wrap .mall.data-v-e6201d48 {
   margin-right: 20rpx;
 }
-.type_active.data-v-47d39f44 {
+.type_active.data-v-e6201d48 {
   color: #107EFF;
 }
 

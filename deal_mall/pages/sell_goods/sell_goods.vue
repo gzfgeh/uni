@@ -151,7 +151,9 @@
 					o_openid: uni.getStorageSync("openid"),
 					go_t_is_no: this.item.t_is_no,
 					formid: formId,
-					go_g_no_list: gn_no_list
+					go_g_no_list: gn_no_list,
+					o_js_name: this.tuijian_name,
+					o_js_phone: this.tuijian_phone,
 				};
 				// console.log(params);
 				// return;

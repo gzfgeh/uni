@@ -1,8 +1,8 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],[
 /* 0 */
-/*!**************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/main.js ***!
-  \**************************************************/
+/*!***********************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/main.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43,9 +43,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 
 /***/ }),
 /* 4 */
-/*!*****************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/pages.json ***!
-  \*****************************************************/
+/*!**************************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/pages.json ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -70,9 +70,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 /* 11 */
-/*!*********************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/store/index.js ***!
-  \*********************************************************/
+/*!******************************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/store/index.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -92,9 +92,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 /* 13 */
-/*!******************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fhome%2Fhome"} ***!
-  \******************************************************************************************/
+/*!***************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fhome%2Fhome"} ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108,9 +108,9 @@ eval("/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! 
 /* 17 */,
 /* 18 */,
 /* 19 */
-/*!**************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fmy%2Fmy"} ***!
-  \**************************************************************************************/
+/*!***********************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fmy%2Fmy"} ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -126,9 +126,9 @@ eval("/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! 
 /* 25 */,
 /* 26 */,
 /* 27 */
-/*!************************************************************************************************!*\
-  !*** /Users/guzhenfu/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fservice%2Fservice"} ***!
-  \************************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** /Users/tuyao/Documents/uni/Demo/main.js?{"page":"pages%2Ftabbar%2Fservice%2Fservice"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

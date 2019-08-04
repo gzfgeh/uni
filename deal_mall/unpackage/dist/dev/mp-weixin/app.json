@@ -20,7 +20,8 @@
     "pages/sell_order_list/sell_order_list",
     "pages/send_goods/send_goods",
     "pages/sell_goods/sell_goods",
-    "pages/record_list/record_list"
+    "pages/record_list/record_list",
+    "pages/kucun_record/kucun_record"
   ],
   "subPackages": [],
   "window": {
@@ -61,5 +62,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap62.json"
 }

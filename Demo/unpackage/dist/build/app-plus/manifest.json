@@ -5,12 +5,12 @@
     "iPad"
   ],
   "id": "__UNI__FC4199D",
-  "name": "楼服宝",
+  "name": "智点堂",
   "version": {
-    "name": "1.1.7",
-    "code": 117
+    "name": "1.0.0",
+    "code": 100
   },
-  "description": "",
+  "description": "一键登录和手机号验证",
   "launch_path": "__uniapptabbar.html",
   "developer": {
     "name": "",
@@ -172,6 +172,20 @@
           "name": "YunPay",
           "description": "一键登录",
           "platforms": "Android",
+          "url": "",
+          "android_package_name": "",
+          "ios_bundle_id": "",
+          "isCloud": false,
+          "bought": -1,
+          "pid": "",
+          "parameters": {}
+        }
+      },
+      "CLSDK-ShanYanSDKModule": {
+        "__plugin_info__": {
+          "name": "CLSDK-ShanYanSDKModule",
+          "description": "闪验SDKHbuilder插件",
+          "platforms": "Android,iOS",
           "url": "",
           "android_package_name": "",
           "ios_bundle_id": "",

@@ -13,7 +13,7 @@
 			<div class="row">
 				<span class="price_unit">￥</span>
 				<span class="price">{{item.g_price}}</span>
-				<span class="sell_num">库存:{{item.g_kucun}}件</span>
+				<span class="sell_num" v-if="false">库存:{{item.g_kucun}}件</span>
 			</div>
 		</div>
 		
@@ -27,7 +27,7 @@
 			<div class="row_between item_wrap">
 				<div class="price_wrap">
 					<span class="price">￥{{item.g_price}}</span>
-					<span>库存{{item.g_kucun}}件</span>
+					<span v-if="false">库存{{item.g_kucun}}件</span>
 				</div>
 				
 				<img src="../../static/img/kuaidi_close.png" mode="aspectFill" class="close" @click="closeModal"/>
@@ -166,9 +166,9 @@
 				this.ct_count--;
 			},
 			addAction(){
-				if(this.ct_count >= parseInt(this.item.g_kucun)){
-					return;
-				}
+				// if(this.ct_count >= parseInt(this.item.g_kucun)){
+				// 	return;
+				// }
 				this.ct_count++;
 			},
 			

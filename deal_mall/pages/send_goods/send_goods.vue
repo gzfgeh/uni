@@ -16,7 +16,12 @@
 			  </div>
 			</div>
 			
-			<div class="row item_wrap" v-for="(item, index) in list" :key="index">
+			<div style="background: #FFF; padding: 20upx;">
+				<checkbox :checked="isOther" @click="changeStatus">是否从其他地方配货</checkbox>
+			</div>
+			
+			
+			<div class="row item_wrap" v-for="(item, index) in list" :key="index" v-if="!isOther">
 			  <div class="bycode">
 				<span class="item_span">{{item.go_g_name}} 商品编码</span>
 				<input type="text" v-for="(ite, ind) in item.go_no_list" :key="ind"
@@ -52,7 +57,8 @@
 				o_id: '',
 				list: [1,2,3],
 				formid: '',
-				reportForm: true
+				reportForm: true,
+				isOther: true
 			}
 		},
 		onLoad(opt) {
@@ -60,6 +66,10 @@
 			this.list = uni.getStorageSync("good_list");
 		},
 		methods: {
+			changeStatus: function(e){
+				this.isOther = !this.isOther;
+				this.$forceUpdate();
+			},
 			formSubmit: function(e) {
 				console.log('form发生了submit事件，携带数据为：', e.detail.formId);
 				this.confirmShipping(e.detail.formId);
@@ -106,7 +116,8 @@
 					o_express_name: this.express_name,
 					o_express_no: this.express_no,
 					gn_no_list: gn_no_list,
-					formid: formId
+					formid: formId,
+					is_other: this.isOther
 				};
 				// console.log(params);
 				// return;

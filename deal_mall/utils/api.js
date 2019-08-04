@@ -219,3 +219,10 @@ export function addSaleOrder(params) {
 export function getSaleOrder(o_status, page) {
     return request.get('Api/Weixin/getSaleOrder?o_openid='+uni.getStorageSync("openid")+"&o_status="+o_status+"&page="+page);
 }
+
+/**
+ * 推荐记录
+ */
+export function getTuijianOrder(page) {
+    return request.get('Api/Weixin/getTuijianOrder?m_phone='+uni.getStorageSync("userInfo").m_phone+"&page="+page);
+}

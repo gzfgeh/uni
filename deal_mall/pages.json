@@ -129,9 +129,14 @@
 		{
 		    "path" : "pages/record_list/record_list",
 		    "style" : {
-				"navigationBarTitleText": "推荐记录"
+				"navigationBarTitleText": "推荐记录",
+				"enablePullDownRefresh": true
 			}
 		}
+        ,{
+            "path" : "pages/kucun_record/kucun_record",
+            "style" : {}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

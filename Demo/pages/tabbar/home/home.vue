@@ -12,6 +12,7 @@
 	
 	// #ifdef APP-PLUS
 		const dcRichAlert = uni.requireNativePlugin('GZF-YunPay');
+		const ShanYanSDKModule = uni.requireNativePlugin('CLSDK-ShanYanSDKModule');
 	// #endif
 	
 	
