@@ -131,24 +131,10 @@
             }
         },
         "nativePlugins" : {
-            "GZF-YunPay" : {
+            "DCloud-RichAlert" : {
                 "__plugin_info__" : {
-                    "name" : "YunPay",
-                    "description" : "一键登录",
-                    "platforms" : "Android",
-                    "url" : "",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : false,
-                    "bought" : -1,
-                    "pid" : "",
-                    "parameters" : {}
-                }
-            },
-            "CLSDK-ShanYanSDKModule" : {
-                "__plugin_info__" : {
-                    "name" : "CLSDK-ShanYanSDKModule",
-                    "description" : "闪验SDKHbuilder插件",
+                    "name" : "RichAlert",
+                    "description" : "示例插件",
                     "platforms" : "Android,iOS",
                     "url" : "",
                     "android_package_name" : "",
