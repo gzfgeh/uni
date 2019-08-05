@@ -1,1 +1,0 @@
-<view style="padding-top:200rpx;"><button data-event-opts="{{[['tap',[['callAndroid',['$event']]]]]}}" bindtap="__e">验证手机号</button><button data-event-opts="{{[['tap',[['callLogin',['$event']]]]]}}" style="margin-top:100rpx;" bindtap="__e">一键登录</button></view>
