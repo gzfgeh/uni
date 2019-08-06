@@ -163,7 +163,7 @@
 	var main;
 	var Intent;
 	var intent;
-	var packname = "com.LiekeNet.DaTongCGJ";
+	var packname = "cgj.liekenet.com";
 	var card_number;
 	var interval = null;//计时器
 
@@ -262,10 +262,13 @@
 		card_number = printDate+generate()+parseInt(Math.random()*10);
 	}
 
+	var flag = false;
 	// 上传
 	function recordAdd(){
-
-
+		if(flag){
+			return;
+		}
+		flag = true;
 		if(!$(".car_num").val()){
 			mui.toast("请输入车牌号");
 			return;
@@ -313,6 +316,7 @@
 				$(".car_num").val("");
 				$(".time_value").html(getDateTime());
 				﻿addImage();
+				flag = false;
 			},
 			function(err, code) {
 				mui.toast(err);
@@ -338,6 +342,7 @@
 					recordList.push(params);
 				};
 				myStorage.setItem("recordList", JSON.stringify(recordList));
+				flag = false;
 			}
 		)
 	}
@@ -426,21 +431,21 @@
 	})
 	
 	var carNameIndex = 0;
-	// mui(".name_select").on('tap', 'div', function() {
-	// 	document.activeElement.blur();
-	// 	namePicker.pickers[0].setSelectedIndex(carNameIndex);
-	// 	setTimeout(()=>{
-	// 		namePicker.show(function(SelectedItem) {
-	// 		    console.log(SelectedItem[0].text);
-	// 		    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
-	// 		    name_value = SelectedItem[0].value;
-	// 			$(".take_photo_road").val(SelectedItem[0].text);
-	// 			carNameIndex = SelectedItem[0].index;
-	// 			getRoads(SelectedItem[0].value);
-	// 		})
-	// 	}, 50);
-	// 	
-	// })
+	mui(".name_select").on('tap', 'div', function() {
+	 	document.activeElement.blur();
+	 	namePicker.pickers[0].setSelectedIndex(carNameIndex);
+	 	setTimeout(()=>{
+	 		namePicker.show(function(SelectedItem) {
+	 		    console.log(SelectedItem[0].text);
+	 		    mui('#name_text')[0].innerHTML = SelectedItem[0].text;
+	 		    name_value = SelectedItem[0].value;
+	 			$(".take_photo_road").val(SelectedItem[0].text);
+	 			carNameIndex = SelectedItem[0].index;
+	 			getRoads(SelectedItem[0].value);
+	 		})
+	 	}, 50);
+
+	})
 	
 	var carRoadIndex = 0;
 	mui(".road_select").on('tap', 'div', function() {
