@@ -4,7 +4,7 @@
 			<img src="http://case.youzewang.com/static/img/sidao_logo.png" mode="widthFix">
 		</block>
 		
-		<img src="../../../static/img/tabbar/guanzhu.png" mode="widthFix" @click="goToTest">
+		<img src="../../static/img/tabbar/guanzhu.png" mode="widthFix" @click="goToTest">
 		
 	</view>
 </template> 
@@ -19,7 +19,7 @@ export default {
 	methods: {
 		goToTest: function(){
 			uni.navigateTo({
-				url: '../../test/test'
+				url: '../test/test'
 			})
 		}
 	}
