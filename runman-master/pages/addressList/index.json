@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "地址管理",
-  "usingComponents": {
-    "van-notify": "../../dist/notify/index"
-  }
-}

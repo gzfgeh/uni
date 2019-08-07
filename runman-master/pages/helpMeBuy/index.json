@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "确认订单",
-  "usingComponents": {
-    "van-notify": "/dist/notify/index",
-    "often-use-address": "/component/oftenUseAddress/index",
-    "van-popup": "/dist/popup/index"
-  }
-}

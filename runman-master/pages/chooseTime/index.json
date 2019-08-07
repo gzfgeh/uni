@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "选择时间",
-  "usingComponents": {
-    "van-notify": "/dist/notify/index"
-  }
-}

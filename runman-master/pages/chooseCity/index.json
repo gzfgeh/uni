@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "选择城市",
-  "usingComponents": {
-    "van-notify": "../../dist/notify/index"
-  }
-}

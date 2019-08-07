@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "抢单详情",
-  "usingComponents": {
-    "van-notify": "/dist/notify/index"
-  }
-}

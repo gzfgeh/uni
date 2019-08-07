@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-      "van-notify": "../../dist/notify/index",
-      "van-popup": "/dist/popup/index"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我是骑士订单列表",
-  "usingComponents": {
-      "van-notify": "/dist/notify/index"
-  }
-}
