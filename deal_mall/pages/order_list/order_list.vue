@@ -17,7 +17,7 @@
 				</div>
 				
 				<div class="row_between" style="margin-top: 10upx;">
-					<span>昵称:{{item.m_name}}</span>
+					<span>下单人:{{item.m_name}}</span>
 					<span @click="callPhone(item.m_phone)">手机号:{{item.m_phone}}</span>
 				</div>
 				
