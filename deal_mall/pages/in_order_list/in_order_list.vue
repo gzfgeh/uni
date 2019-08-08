@@ -15,6 +15,12 @@
 					<span>订单号:{{item.o_out_trade_no}}</span>
 					<span>{{item.o_create_time}}</span>
 				</div>
+				
+				<div class="row_between" style="margin-top: 10upx;">
+					<span>昵称:{{item.m_name}}</span>
+					<span @click="callPhone(item.m_phone)">手机号:{{item.m_phone}}</span>
+				</div>
+				
 				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="ind">
 					<img :src="ite.go_g_img" mode="aspectFill">
 					<div class="item_tag flex_one item_content" >
@@ -100,6 +106,14 @@
 			}
 		},
 		methods: {
+			callPhone: function(phone){
+				uni.makePhoneCall({
+					phoneNumber:phone,
+					success: () => {
+						console.log("成功拨打电话")
+					}
+				})
+			},
 			changeType(index){
 				this.curType = index;
 				this.page = 1;
@@ -210,7 +224,7 @@
 .list_item{border-bottom: 1upx solid #E3E3E3;width: 100%; margin-bottom: 20upx;background-color: #FFF;padding: 32upx 24upx;box-sizing: border-box;font-size: 28upx;}
 .list_item .item_head{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-bottom: 12upx;font-size: 24upx;}
 
-.list_item .item_info{padding: 32upx 0upx; border-bottom: 1upx solid #E3E3E3;margin: 20upx 0upx;background: #fff;}
+.list_item .item_info{padding: 32upx 0upx; border-bottom: 1upx solid #E3E3E3;background: #fff;}
 .list_item .item_info .name{margin-bottom: 20upx; overflow: hidden;text-overflow: ellipsis;word-break: break-all;line-clamp: 2;}
 .list_item .item_info img{width: 156upx; height: 156upx; margin-right: 20upx;}
 .list_item .item_info .tag{color: #888; font-size: 24upx;}
