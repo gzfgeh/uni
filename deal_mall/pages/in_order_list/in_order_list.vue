@@ -16,10 +16,7 @@
 					<span>{{item.o_create_time}}</span>
 				</div>
 				
-				<div class="row_between" style="margin-top: 10upx;">
-					<span>昵称:{{item.m_name}}</span>
-					<span @click="callPhone(item.m_phone)">手机号:{{item.m_phone}}</span>
-				</div>
+				
 				
 				<div class="item_info row" v-for="(ite, ind) in item.good_list" :key="ind">
 					<img :src="ite.go_g_img" mode="aspectFill">
@@ -106,14 +103,6 @@
 			}
 		},
 		methods: {
-			callPhone: function(phone){
-				uni.makePhoneCall({
-					phoneNumber:phone,
-					success: () => {
-						console.log("成功拨打电话")
-					}
-				})
-			},
 			changeType(index){
 				this.curType = index;
 				this.page = 1;
