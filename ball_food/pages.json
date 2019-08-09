@@ -1,0 +1,116 @@
+{
+    "pages" : [
+		
+		{
+		    "path" : "pages/main/main",
+		    "style" : {
+		        "navigationBarTitleText" : "餐饮采购",
+				"navigationStyle": "custom"
+		    }
+		},
+		{
+		    "path" : "pages/aboutUs/aboutUs",
+		    "style" : {
+		        "navigationBarTitleText" : "关于我们",
+				"navigationStyle": "custom"
+		    }
+		},
+		{
+		    "path" : "pages/contactUs/contactUs",
+		    "style" : {
+		        "navigationBarTitleText" : "联系我们",
+				"navigationStyle": "custom"
+		    }
+		},
+        {
+            "path" : "pages/user/user",
+            "style" : {
+                "navigationBarTitleText" : "用户信息",
+				"navigationStyle": "custom"
+            }
+        },
+        {
+            "path" : "pages/mall_list/mall_list",
+			"style" : {
+				"enablePullDownRefresh": true ,
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
+        },
+		{
+		    "path" : "pages/list_detail/list_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "修改价格"
+		    }
+		},
+		{
+		    "path" : "pages/shopping_card/shopping_card",
+		    "style" : {
+		        "navigationBarTitleText" : "购物车"
+		    }
+		},
+		{
+		    "path" : "pages/bind_phone/bind_phone",
+		    "style" : {
+		        "navigationBarTitleText" : "登录"
+		    }
+		},
+		{
+		    "path" : "pages/reg/reg",
+		    "style" : {
+		        "navigationBarTitleText" : "审核资质"
+		    }
+		},
+		{
+		    "path" : "pages/order_list/order_list",
+		    "style" : {
+		        "navigationBarTitleText" : "订单列表",
+				"enablePullDownRefresh": true 
+		    }
+		},
+		{
+		    "path" : "pages/pay_address/pay_address",
+		    "style" : {
+		        "navigationBarTitleText" : "下单"
+		    }
+		}
+        
+        ,{
+            "path" : "pages/goods_list/goods_list",
+            "style" : {
+				"enablePullDownRefresh": true ,
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
+				}
+		    }
+        }
+    ],
+    "tabBar" : {
+        "color" : "#7a7e83",
+        "selectedColor" : "#35B583",
+        "backgroundColor" : "#ffffff",
+        "list" : [
+            			{
+                        "pagePath": "pages/main/main",
+                        "text": "首页",
+                        "iconPath": "static/img/home.png",
+                        "selectedIconPath": "static/img/homeHL.png"
+                    }, {
+                        "pagePath": "pages/user/user",
+                        "text": "我的",
+                        "iconPath": "static/img/user.png",
+                        "selectedIconPath": "static/img/userHL.png"
+                    }
+        ]
+    },
+	"globalStyle": { 
+		"navigationBarTextStyle": "black", 
+		"navigationBarBackgroundColor": "#fff", 
+		"backgroundColor": "#fbf9fe", 
+		"navigationStyle": "default", 
+		"enablePullDownRefresh": false 
+	} 
+}
