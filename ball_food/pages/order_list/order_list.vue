@@ -137,7 +137,7 @@
 			async orderList(){
 				let that = this;
 				uni.request({
-					url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=getOrder&o_openid='
+					url: 'https://food.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=getOrder&o_openid='
 						+uni.getStorageSync("openid")+'&page='+this.page,
 					method: 'GET',
 					dataType: 'json',

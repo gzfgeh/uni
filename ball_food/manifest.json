@@ -59,11 +59,11 @@
     "h5" : {
         "title" : "一情商城",
         "router" : {
-            "base" : "/food/"
+            "base" : "/h5/"
         },
         "devServer" : {
             "https" : false
         },
-        "domain" : "mall.xiuqiupaopaopao.com"
+        "domain" : "food.xiuqiupaopaopao.com"
     }
 }

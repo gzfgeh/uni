@@ -118,8 +118,8 @@
 				// this.address = "广东深圳市坪山区华鸿大厦"
 				// uni.setStorageSync("address", "广东省|深圳市|坪山区");
 				
-// 				this.address = "上海上海市虹口区华鸿大厦"
-// 				uni.setStorageSync("address", "上海|上海|虹口区");
+				// this.address = "上海上海市虹口区华鸿大厦"
+				// uni.setStorageSync("address", "上海|上海|虹口区");
 				// return;
 				
 				let res = await getUserInfo(uni.getStorageSync("openid"));

@@ -108,7 +108,7 @@ export default {
 			this.params.o_qu = ssq[2];
 			
 			uni.request({
-				url: 'https://mall.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=addOrder',
+				url: 'https://food.xiuqiupaopaopao.com/index.php?g=Api&m=Weixin&a=addOrder',
 				header: {'content-type':'application/x-www-form-urlencoded'},
 				method: 'POST',
 				dataType: 'json',
