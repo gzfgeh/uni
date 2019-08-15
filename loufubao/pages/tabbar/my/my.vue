@@ -80,7 +80,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getuserInfobyuserID } from '@/utils/api'
+	import { BASE_IMAGE_URL,getuserInfobyuserID,is_member } from '@/utils/api'
 	
 	export default {
 		data() {
@@ -116,6 +116,7 @@
 		onShow(){
 			uni.setStorageSync("isShow", false);
 			this.getuserInfobyuserID();
+			this.is_member();
 		},
 		methods: {
 			async getuserInfobyuserID(){
@@ -151,6 +152,12 @@
 					this.userBg = "../../../static/img/normal_bg.png";
 				}
 				
+			},
+			async is_member(){
+				let res = await is_member();
+				if(res.code == 1000){
+					
+				}
 			},
 			goToCouponList(){
 				let userInfo = uni.getStorageSync("userInfo");

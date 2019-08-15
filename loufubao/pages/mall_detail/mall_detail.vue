@@ -277,7 +277,7 @@
 				user_id: uni.getStorageSync("userInfo").userID,
 				goods_id: this.item.id,
 				store_id: this.item.store_id,
-				price: this.item.price,
+				price: uni.getStorageSync("userInfo").is_member == 1?this.item.member_price:this.item.price,
 				count: this.ct_count,
 				spec: spec.substring(0, spec.length-1)
 			};

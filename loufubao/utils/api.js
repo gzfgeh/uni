@@ -733,3 +733,10 @@ export function about_us(params) {
 export function member_store_info(id) {
     return request.get('mall/goods/member_store_info?id='+id)
 }
+
+/**
+ *  判断是否是 会员
+ */
+export function is_member() {
+    return request.post('mall/goods/is_member',qs.stringify({user_id: uni.getStorageSync("userInfo").userID}))
+}
