@@ -740,3 +740,17 @@ export function member_store_info(id) {
 export function is_member() {
     return request.post('mall/goods/is_member',qs.stringify({user_id: uni.getStorageSync("userInfo").userID}))
 }
+
+/**
+ *  会员类型
+ */
+export function member_list() {
+    return request.post('mall/goods/member_list')
+}
+
+/**
+ *  激活会员
+ */
+export function member_cdk(params) {
+    return request.post('mall/goods/member_cdk', qs.stringify(params))
+}

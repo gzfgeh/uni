@@ -832,7 +832,27 @@
 							"float": "right",
 							"width": "50px"
 						}]
-					}
+					},
+					"scrollIndicator": "none"
+				}
+			}
+        }
+        ,{
+            "path" : "pages/jihuo_vip/jihuo_vip",
+            "style" : {
+				"navigationBarTitleText": "会员卡激活",
+				"app-plus" : {
+					"titleNView" : {
+						"titleColor": "#fff",
+						"backgroundColor": "#107EFF",
+						"buttons":[{
+							"text": "客服",
+							"fontSize": "15px",
+							"float": "right",
+							"width": "50px"
+						}]
+					},
+					"scrollIndicator": "none"
 				}
 			}
         }

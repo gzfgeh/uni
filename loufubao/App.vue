@@ -240,5 +240,8 @@ ul, li{list-style:none;}
 .arraw_down_white{width: 14upx;height: 14upx;border-top: 2upx solid #FFF;border-right: 2upx solid #FFF;transform: rotate(135deg);margin-left: 10upx;display: inline-block;margin-bottom: 8upx;}
 
 .uni-page-head-search-input{padding-top: 6upx!important}
+scroll-view [style*="overflow"]::-webkit-scrollbar {  
+  display: none;  
+} 
 
 </style>
