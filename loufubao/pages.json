@@ -818,6 +818,24 @@
 				"navigationBarTitleText": "打折详情"
 			}
         }
+        ,{
+            "path" : "pages/open_vip/open_vip",
+            "style" : {
+				"navigationBarTitleText": "开通VIP会员",
+				"app-plus" : {
+					"titleNView" : {
+						"titleColor": "#fff",
+						"backgroundColor": "#107EFF",
+						"buttons":[{
+							"text": "客服",
+							"fontSize": "15px",
+							"float": "right",
+							"width": "50px"
+						}]
+					}
+				}
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  

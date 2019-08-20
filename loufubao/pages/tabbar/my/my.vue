@@ -208,7 +208,7 @@
 				let userInfo = uni.getStorageSync("userInfo");
 				if(userInfo){
 					uni.navigateTo({
-						url: '/pages/vip_list/vip_list'
+						url: '/pages/open_vip/open_vip'
 					});
 				}else{
 					uni.navigateTo({
