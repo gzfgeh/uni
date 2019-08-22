@@ -29,7 +29,7 @@ request.interceptors.request.use((request) => {
 
 request.interceptors.response.use(
     function(response, promise) { // 不要使用箭头函数，否则调用this.lock()时，this指向不对
-        // console.log('interceptors.response', response)
+        console.log('interceptors.response', response)
         uni.hideLoading()
 		uni.setStorageSync("isShow", true);
 		if(response.data.status == 999){
@@ -43,7 +43,7 @@ request.interceptors.response.use(
         return promise.resolve(response.data)
     },
     function(err, promise) {
-        console.log('error-interceptor')
+        console.log('error-interceptor'+err)
 		uni.setStorageSync("isShow", true);
 		uni.stopPullDownRefresh();
         uni.hideLoading()

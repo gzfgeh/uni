@@ -38,6 +38,18 @@
 						</div>
 					</li>
 					
+					<li  @click="goToExpressInfo(1,4)" v-if="orderType==0||orderType==1">
+						<div class="person-express-detail row_center">
+							<img src="../../static/img/geren_one_express.png" mode="widthFix">
+							<div class="text">
+								<div>个人大件物流</div>
+								<p>今天送，个人大件物流～！</p>
+							</div>
+							<span style="flex: 1;"></span>
+							<span class="arraw"></span>
+						</div>
+					</li>
+					
 					
 					<li @click="goToExpressInfo(2,1)" v-if="orderType==0||orderType==2">
 						<div class="person-express-detail row_center">
@@ -67,6 +79,18 @@
 							<div class="text">
 								<div>企业同城快递</div>
 								<p>今天送，今天达哦～！</p>
+							</div>
+							<span style="flex: 1;"></span>
+							<span class="arraw"></span>
+						</div>
+					</li>
+					
+					<li  @click="goToExpressInfo(2,4)" v-if="orderType==0||orderType==2">
+						<div class="person-express-detail row_center" >
+							<img src="../../static/img/geren_one_express.png" mode="widthFix">
+							<div class="text">
+								<div>企业大件物流</div>
+								<p>今天送，企业大件物流～！</p>
 							</div>
 							<span style="flex: 1;"></span>
 							<span class="arraw"></span>

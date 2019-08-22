@@ -7,8 +7,8 @@
 			<div class="content_wrap">
 				<view class="row_between name_wrap" >
 					<div>
-						<span class="name">王大池</span>
-						<span class="phone">(135****8690登录）</span>
+						<span class="name">{{userInfo.userName}}</span>
+						<span class="phone">({{phone}}登录）</span>
 					</div>
 					<span class="phone">切换账号</span>
 				</view>
@@ -59,7 +59,9 @@
 			return {
 				typeList: [1,2,3,4,5,6,7],
 				curIndex: 0,
-				cdk: ""
+				cdk: "",
+				userInfo: {},
+				phone: 0
 			}
 		},
 		methods: {
@@ -68,15 +70,48 @@
 				this.$forceUpdate();
 			},
 			async member_cdk(){
+				if(!this.cdk){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请输入激活码',
+					  duration: 1000
+					});
+					return;
+				}
 				let params = {
-					user_id: uni.getStorageSync("userInfo").userID,
+					user_id: this.userInfo.userID,
 					cdk: this.cdk
 				};
 				let res = await member_cdk(params);
 				if(res.status == 1){
+					uni.showToast({
+					  icon: 'none',
+					  title: '激活成功',
+					  duration: 1000
+					});
+					setTimeout(()=>{
+						uni.navigateBack();
+					}, 1000);
 					
 				}
-			}
+			},
+			callPhone: function(){
+				uni.makePhoneCall({
+					phoneNumber:"4008888808",
+					success: () => {
+						console.log("成功拨打电话")
+					}
+				})
+			},
+			
+		},
+		onLoad() {
+			this.userInfo = uni.getStorageSync("userInfo");
+			this.phone = this.userInfo.phone.substring(0,3)+"****"+this.userInfo.phone.substring(7,11);
+		},
+		
+		onNavigationBarButtonTap() {
+			this.callPhone();
 		}
 	}
 </script>
@@ -102,7 +137,7 @@
 .content_wrap .name_wrap .name{font-size: 30upx;}
 .content_wrap .name_wrap .phone{font-size: 22upx;}
 .content_wrap .text{text-align: center; margin-top: 58upx; font-size: 38upx;}
-.content_wrap .input_wrap{background:rgba(255,255,255,1);border-radius:40px; position: absolute;
+.content_wrap .input_wrap{background:rgba(255,255,255,1);border-radius:40px; position: absolute;color: #333333;
 		height: 80upx; width: 600upx; padding: 27upx 40upx; box-sizing: border-box; bottom: 40upx;}
 .phclass{color: #8C8C8C; font-size: 26upx;}
 

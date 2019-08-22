@@ -54,24 +54,38 @@
 		<div class="info_pay">付款：用户确认购买并付款后计入iTunes账户；</div>
 		<div class="auto_pay_info">取消续订：如需取消续订，请在当前订阅周期到期24小时以前，手动在iTunes/Apple ID设置管理中关闭自动续费功能，到期前24小时内取消，将会收取订阅费用；</div>
 		
-		<button type="primary" class="btn">立即续费</button>
+		<button type="primary" class="btn" @tap="create_member_order">立即续费</button>
+		
+		<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'5'" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
+		
 	</view>
 </template>
 
 <script>
 	import { BASE_IMAGE_URL,create_member_order,member_list } from '@/utils/api'
+	import uniPopup from '@/components/popup-pay.vue';
 	
 	export default {
+		components: {
+			uniPopup
+		},
 		data() {
 			return {
 				typeList: [1,2,3,4,5,6,7],
 				curIndex: 0,
 				userInfo: {},
 				phone: 0,
-				endTime: ''
+				endTime: '',
+				popupParam:'bottom',
+				orderID:'',
+				allMoney: '0'
 			}
 		},
 		methods: {
+			payPopup(popupParam) {
+				this.popupParam=popupParam;
+				this.$forceUpdate();
+			},
 			changeType(index){
 				this.curIndex = index;
 				this.$forceUpdate();
@@ -81,7 +95,27 @@
 				if(res.status == 1){
 					this.typeList = res.data;
 				}
-			}
+			},
+			async create_member_order(){
+				let params = {
+					user_id: this.userInfo.userID,
+					type_id: this.typeList[this.curIndex].type_id
+				};
+				let res = await create_member_order(params);
+				if(res.status == 1){
+					this.allMoney = res.data.price;
+					this.orderID = res.data.orderID;
+					this.payPopup('bottom');
+				}
+			},
+			callPhone: function(){
+				uni.makePhoneCall({
+					phoneNumber:"4008888808",
+					success: () => {
+						console.log("成功拨打电话")
+					}
+				})
+			},
 		},
 		onLoad() {
 			this.member_list();
@@ -91,6 +125,9 @@
 			let d = new Date(parseInt(this.userInfo.member_end_time)*1000);
 			console.log(d);
 			this.endTime = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+		},
+		onNavigationBarButtonTap() {
+			this.callPhone();
 		}
 	}
 </script>
@@ -100,9 +137,9 @@
 .head_bg{height: 240upx; background: #107EFF;}
 .head_wrap{height: 202upx; width: 100%; padding: 0upx 30upx;margin-top: -145upx; display: flex;flex-direction: row; align-items: center;
 	position: relative;box-sizing: border-box; color: #FFFFFF; font-size: 22upx; z-index: 1;}
-.head_wrap .bg{position: absolute;top: 0upx; left: 30upx; height: 100%;width: 91.5%; z-index: 0;}
+.head_wrap .bg{position: absolute;top: 0upx; left: 5%; height: 100%;width: 90%; z-index: 0;}
 .head_wrap .content{position: relative;z-index: 2; display: flex;flex-direction: column;}
-.head_wrap .head_icon{ width: 88upx; height: 88upx; margin-right: 20upx;margin-left: 30upx;border-radius: 50%;}
+.head_wrap .head_icon{ width: 88upx; height: 88upx; margin-right: 20upx;margin-left: 30upx;border-radius: 50%;position: relative;z-index: 10;}
 .head_wrap .head_item .name{font-size: 30upx;}
 .head_wrap .head_item {color: #FFFFFF;}
 .head_wrap .head_item image{width: 32upx; height: 27upx; margin: 0upx 10upx;}
@@ -111,7 +148,7 @@
 .type_item{flex: 1; color: #8C8C8C; font-size: 28upx;display: flex;flex-direction: column;align-items: center;justify-content: center;}
 .type_item image{width: 70upx; height: 70upx; margin-bottom: 20upx;}
 
-.uni-swiper-tab{padding-left: 30upx;border-bottom: none!important; height: 240upx;position: relative; margin-top: 50upx;}
+.uni-swiper-tab{padding-left: 30upx;border-bottom: none!important; height: 240upx;position: relative; margin-top: 50upx;box-sizing: border-box;}
 .swiper-tab-list{width: 190upx; height: 220upx; border: 2upx solid #107EFF; background:rgba(255,255,255,0.15);
 	border-radius:10upx; margin-right: 20upx; position: relative;margin-top: 10upx;}
 .swiper-tab-list div{ text-align: center;width: 190upx; line-height: 1.0;}
@@ -128,6 +165,6 @@
 .info_pay{color: #8C8C8C; font-size: 26upx;margin-top: 30upx;padding-left: 30upx;}
 .auto_pay_info{color: #8C8C8C; font-size: 26upx;margin-top: 10upx;padding-left: 30upx; margin-bottom: 100upx;}
 
-.btn{margin: 0upx 30upx 30upx; box-sizing: border-box;  width: 91%;}
+.btn{margin: 0upx 5% 30upx; box-sizing: border-box;  width: 90%;}
 
 </style>

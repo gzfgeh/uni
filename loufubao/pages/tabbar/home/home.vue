@@ -1,5 +1,6 @@
 <template>
-	<view class="col" style="height: 100%;padding-top:118upx;box-sizing: border-box;">
+	<view class="col" style="height: 100%;padding-top:118upx;box-sizing: border-box;"
+			:style="{'padding-top': (isAPP?'118upx':'20upx')}">
 		<view class="content col" style="width:100%;">
 			<div class="head_bg">
 				<img src="../../../static/img/home_head_bg.png" mode="widthFix">

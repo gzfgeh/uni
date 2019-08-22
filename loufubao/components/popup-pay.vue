@@ -161,9 +161,6 @@
 					// 	name: '云闪付'
 					// }
 				];
-			// #endif	
-			
-			// #ifdef APP-PLUS
             uni.getProvider({
                 service: "payment",
                 success: (e) => {

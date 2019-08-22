@@ -207,9 +207,16 @@
 			goToVip: function(){
 				let userInfo = uni.getStorageSync("userInfo");
 				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/open_vip/open_vip'
-					});
+					if(userInfo.is_member == 1){
+						uni.navigateTo({
+							url: '/pages/open_vip/open_vip'
+						});
+					}else{
+						uni.navigateTo({
+							url: '/pages/jihuo_vip/jihuo_vip'
+						});
+					}
+					
 				}else{
 					uni.navigateTo({
 						url: '/pages/login/login'
