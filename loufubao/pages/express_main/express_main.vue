@@ -40,10 +40,10 @@
 					
 					<li  @click="goToExpressInfo(1,4)" v-if="orderType==0||orderType==1">
 						<div class="person-express-detail row_center">
-							<img src="../../static/img/geren_one_express.png" mode="widthFix">
+							<img src="../../static/img/geren_big_express.png" mode="widthFix">
 							<div class="text">
 								<div>个人大件物流</div>
-								<p>今天送，个人大件物流～！</p>
+								<p>价格实惠、速度快，江浙沪次日达</p>
 							</div>
 							<span style="flex: 1;"></span>
 							<span class="arraw"></span>
@@ -64,7 +64,7 @@
 					</li>
 					 <li @click="goToExpressInfo(2,2)" v-if="orderType==0||orderType==2">
 						<div class="person-express-detail row_center">
-							<img src="../../static/img/geren_out_express.png" mode="widthFix">
+							<img src="../../static/img/qiye_out_express.png" mode="widthFix">
 							<div class="text">
 								<div>企业国际快递</div>
 								<p>优秀的服务，更便捷的选择</p>
@@ -75,7 +75,7 @@
 					</li>
 					<li  @click="goToExpressInfo(2,3)" v-if="orderType==0||orderType==2">
 						<div class="person-express-detail row_center" >
-							<img src="../../static/img/geren_one_express.png" mode="widthFix">
+							<img src="../../static/img/qiye_one_express.png" mode="widthFix">
 							<div class="text">
 								<div>企业同城快递</div>
 								<p>今天送，今天达哦～！</p>
@@ -87,10 +87,10 @@
 					
 					<li  @click="goToExpressInfo(2,4)" v-if="orderType==0||orderType==2">
 						<div class="person-express-detail row_center" >
-							<img src="../../static/img/geren_one_express.png" mode="widthFix">
+							<img src="../../static/img/qiye_big_express.png" mode="widthFix">
 							<div class="text">
 								<div>企业大件物流</div>
-								<p>今天送，企业大件物流～！</p>
+								<p>价格实惠、速度快，江浙沪次日达</p>
 							</div>
 							<span style="flex: 1;"></span>
 							<span class="arraw"></span>

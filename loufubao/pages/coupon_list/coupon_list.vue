@@ -148,7 +148,7 @@
 .item_wrap .item .content_wrap{display: flex; flex-direction: column; margin-left: 60upx;}
 .content_wrap .title{color: #333333; font-size: 28upx; font-weight: bold;}
 .content_wrap .time{color: #CCCCCC; font-size: 22upx; }
-.content_wrap .money{color: #FF5269; font-size: 38upx; }
+.content_wrap .money{color: #FF5269; font-size: 30upx; }
 
 .head_wrap{width: 100%; display: flex; flex-direction: row;position: fixed;margin-top:-120upx;left: 0upx;background-color: #FFF;border-bottom: 2upx solid #E3E3E3; height: 100upx;z-index: 101;}
 .head_item{flex: 1; padding: 0upx 24upx;}

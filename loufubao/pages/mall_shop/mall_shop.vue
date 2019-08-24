@@ -36,7 +36,11 @@
 						
 						<div class="row_between item">
 							<text class="card-title">{{item.name}}</text>
-							<span class="price">￥{{item.price}}</span>
+							<div class="col">
+								<span class="price">售价:￥{{item.price}}</span>
+								<span class="price">会员价:￥{{item.member_price}}</span>
+							</div>
+							
 						</div>
 					</view>  
 				</block>  
@@ -155,8 +159,8 @@ export default {
 .card-title{font-size: 24upx; color: #333333; display: inline-block;}
 .card{box-shadow:0px 8upx 24upx 0px rgba(126,125,125,0.14); width: 100%; margin: 20upx 0upx; border-radius: 16upx;}
 .itemlist{ background-color: #fff;  margin: 1%;   margin-bottom: 20upx;  display: inline-block;  } 
-.card .item{padding: 0upx 20upx;}
-.card .item .price{color: #FF4544;}
+.card .item{padding: 0upx 10upx;}
+.card .item .price{color: #FF4544;font-size: 20upx;}
 
 .mall_wrap{background: #FFF; box-shadow:0px 4px 12px 0px rgba(126,125,125,0.14);height: 100upx; margin:20upx 30upx; padding: 0upx 40upx;}
 .mall_wrap img{width: 30upx; height: 30upx; margin-right: 20upx;}

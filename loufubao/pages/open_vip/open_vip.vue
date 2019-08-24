@@ -55,6 +55,7 @@
 		<div class="auto_pay_info">取消续订：如需取消续订，请在当前订阅周期到期24小时以前，手动在iTunes/Apple ID设置管理中关闭自动续费功能，到期前24小时内取消，将会收取订阅费用；</div>
 		
 		<button type="primary" class="btn" @tap="create_member_order">立即续费</button>
+		<button type="primary" class="btn" @tap="goToVip">激活码激活</button>
 		
 		<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'5'" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
 		
@@ -76,7 +77,7 @@
 				userInfo: {},
 				phone: 0,
 				endTime: '',
-				popupParam:'bottom',
+				popupParam:'',
 				orderID:'',
 				allMoney: '0'
 			}
@@ -107,6 +108,11 @@
 					this.orderID = res.data.orderID;
 					this.payPopup('bottom');
 				}
+			},
+			goToVip(){
+				uni.navigateTo({
+					url:'../jihuo_vip/jihuo_vip'
+				})
 			},
 			callPhone: function(){
 				uni.makePhoneCall({

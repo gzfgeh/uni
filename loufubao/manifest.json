@@ -125,9 +125,9 @@
                     }
                 },
                 "android" : {
-                    "hdpi" : "static/splash/logo.9.png",
-                    "xhdpi" : "static/splash/logo.9.png",
-                    "xxhdpi" : "static/splash/logo.9.png"
+                    "hdpi" : "static/splash/splash.png",
+                    "xhdpi" : "static/splash/splash.png",
+                    "xxhdpi" : "static/splash/splash.png"
                 }
             }
         },

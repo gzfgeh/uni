@@ -19,7 +19,10 @@
 		
 		<div class="name_wrap">
 			<div>{{item.intro}}</div>
-			<div class="price" v-if="item.price">￥{{item.price}}</div>
+			<div class="price" v-if="item.price">
+				<span style="margin-right: 20upx;">售价:￥{{item.price}}</span>
+				<span>会员价:￥{{item.member_price}}</span>
+			</div>
 		</div>
 		
 		<navigator class="shop_wrap" v-if="item.store" :url="'../mall_shop/mall_shop?storeID='+item.store[0].id">
@@ -86,7 +89,8 @@
 			<div style="background: #FFFFFF;padding: 20upx;">
 				<div class="row_between item_wrap">
 					<div class="price_wrap">
-						<span class="price">￥{{item.price}}</span>
+						<span class="price">售价:￥{{item.price}}</span>
+						<span class="price">会员价: ￥{{item.member_price}}</span>
 					</div>
 					
 					<img src="../../static/img/kuaidi_close.png" mode="aspectFill" class="close" @click="closeModal"/>

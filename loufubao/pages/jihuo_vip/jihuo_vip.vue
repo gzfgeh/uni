@@ -10,7 +10,7 @@
 						<span class="name">{{userInfo.userName}}</span>
 						<span class="phone">({{phone}}登录）</span>
 					</div>
-					<span class="phone">切换账号</span>
+					<span class="phone" @tap="changeCode">切换账号</span>
 				</view>
 				<view class="text">激活码</view>
 				<input type="text" class="input_wrap" placeholder-class="phclass"
@@ -90,7 +90,9 @@
 					  duration: 1000
 					});
 					setTimeout(()=>{
-						uni.navigateBack();
+						uni.navigateBack({
+							delta:2
+						});
 					}, 1000);
 					
 				}
@@ -103,6 +105,11 @@
 					}
 				})
 			},
+			changeCode(){
+				uni.navigateTo({
+					url:'/pages/login/login'
+				})
+			}
 			
 		},
 		onLoad() {

@@ -12,7 +12,7 @@ import com.taobao.weex.bridge.JSCallback;
 import com.unionpay.UPPayAssistEx;
 
 public class YunPayWXModule extends WXSDKEngine.DestroyableModule {
-    private static String mMode = "01";
+    private static String mMode = "00";
     private JSCallback jsCallback;
 
     @JSMethod(uiThread = true)

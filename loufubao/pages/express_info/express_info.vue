@@ -101,7 +101,7 @@
 					</div>
 				</li>
 				
-				<li id="wupinSelect" @click="showGoodsType">
+				<li id="wupinSelect" @click="showGoodsType" v-if="createOrderType != 4">
 					<div>
 						<span class="left">物品类型</span>
 						<span class="right">
@@ -154,28 +154,15 @@
 						</span>
 					</div>
 				</li>
-
-				<!-- <li id="baoguoDetailCol">
-
-				</li> -->
-					
-				<!-- <li v-if="createOrderType!=2 && (expressCompanyName == 'EMS')" class="guoji-col hide">
-					<div>
-						<span class="left">是否保价</span>
-						<span class="right">
-							<switch @change="BaoJiaChange" />
-						</span>
-					</div>
-				</li> -->
 			
-				<li id="baojiaCol" @click="showBaoJia">
+				<li id="baojiaCol" @click="showBaoJia" >
 					<div class="row_between">
 						<span class="left">保价金额</span>
 						<!-- <span class="middle">
 							<input type="number" v-model="insuredValue" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange"/>
 						</span> -->
 						
-						<input type="number" v-model="insuredValue" :disabled=" (expressCompanyName != 'EMS')"
+						<input type="number" v-model="insuredValue" :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
 							onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange" style="margin-left: 200upx;"/>
 						
 						<span class="right" v-if="createOrderType!=3">
@@ -192,7 +179,20 @@
 						</span>
 					</div>
 				</li>
-				<li id="beizhuWenzi" @click="showBeiZhuFlag">
+				
+				<li @tap="showGoodsInfoFlag" v-if="createOrderType == 4">
+					<div>
+						<span class="left">物品信息</span>
+						<span class="middle">
+							<span class="beizhu">{{goodsInfo}}</span>
+						</span>
+						<span class="right">
+							<span class="arraw"></span>
+						</span>
+					</div>
+				</li>
+				
+				<li @click="showBeiZhuFlag">
 					<div>
 						<span class="left">备注</span>
 						<span class="middle">
@@ -203,6 +203,16 @@
 						</span>
 					</div>
 				</li>
+				
+				<div  v-if="createOrderType == 4" class="goods_warning_wrap">
+					<div class="row">
+						<image src="../../static/logo.png" mode="aspectFill"></image>
+						<span>提示</span>
+					</div>
+					<p>1、请详细描述要寄出的物品信息，以便工作人员对您的物品做出正确的评估；</p>
+					<p>2、由于大件物品的运费计算涉及到重量、体积、打包方式、运输方式等，工作人员在取货时当面与您确认。</p>
+				</div>
+				
 			</div>
 
 			<div class="select-company" v-if="createOrderType!=3">
@@ -245,7 +255,7 @@
 
 			<div class="bottom-space"></div>
 
-			<div class="yunfei-bottom">
+			<div class="yunfei-bottom row">
 
 				<div class="left has-tip">
 					<div class="price-cell">
@@ -255,14 +265,21 @@
 						
 						<span id="priceText" v-if="pay_index==1&&(start_province == '上海')" style="font-size:30upx;">到付件无需支付</span>
 						
-						<span id="priceText" v-if="parseInt(allMoney)==0&&pay_index==0&&(start_province == '上海')" style="font-size:30upx;">请与工作人员联系</span>
+						<span id="priceText" v-if="parseInt(allMoney)==0 &&pay_index==0&&(start_province == '上海')" style="font-size:30upx;">请与工作人员联系</span>
 						
 						<span id="priceText" v-if="start_province != '上海'" style="font-size:24upx;">提示按照合同价格结算</span>
 					
 					</span>
 
-					<div class="tip" v-if="insuredValue&&pay_index==0&&createOrderType!=3&&(expressCompanyName == 'EMS')">（含保费)<label class="baofei">{{insuredPrice}}</label>元</div>
+					<div class="tip" >
+						 <span v-if="insuredValue&&pay_index==0&&createOrderType!=3&&(expressCompanyName == 'EMS')">（含保费)<label class="baofei">{{insuredPrice}}</label>元</span>
+						 <!-- <span v-if="coupon_price">优惠:{{coupon_price}}元</span> -->
 					</div>
+					<div class="tip" v-if="coupon_price">（优惠价格)<label class="baofei">{{coupon_price}}</label>元</div>
+					
+					
+				</div>
+					
 				</div>
 
 					
@@ -274,7 +291,7 @@
 
 		</div>
 		
-		<div class="beizhu-col" v-if="goodsTypeFlag|| payStyleFlag || packageFlag || faPiaoFlag || beiZhuFlag">
+		<div class="beizhu-col" v-if="goodsTypeFlag|| payStyleFlag || packageFlag || faPiaoFlag || beiZhuFlag || goodsInfoFlag">
 
 			<div class="shadow-col" @tap="hideModal"></div>
 			
@@ -388,6 +405,16 @@
 				<textarea placeholder="请填写备注信息" v-model="comment"></textarea>
 
 			</div>
+			
+			<div class="beizhu-text" v-if="goodsInfoFlag">
+				<div class="clearfix row_between">
+					<span class="fl">填写物品信息</span>
+					<span class="fr" id="confirmBtn" @click="hideModal">确定</span>
+				</div>
+			
+				<textarea placeholder="请填写物品信息信息" v-model="goodsInfo"></textarea>
+			
+			</div>
 
 		</div>
 		
@@ -397,7 +424,7 @@
 
 <script>
 	import { BASE_IMAGE_URL,calculateExpressPrice,addressManage,createOrder,
-		createOrderTongCheng,calculateExpressPriceTongCheng,department} from '@/utils/api'
+		createOrderTongCheng,calculateExpressPriceTongCheng,department,user_express_coupon} from '@/utils/api'
 	import uniPopup from '@/components/popup-pay.vue'
 	import {mapState,mapMutations, mapActions, mapGetters} from 'vuex';
 	
@@ -472,7 +499,11 @@
 				isHongxing: 0,
 				hongxingName: '',
 				departmentName: '请选择部门',
-				itemList: []
+				itemList: [],
+				goodsInfo: "",
+				goodsInfoFlag: false,
+				coupon_price: 0,
+				c_id: 0
 			}
 		},
 		computed:{
@@ -482,6 +513,17 @@
 		},
 		
 		methods: {
+			async user_express_coupon(){
+				let res = await user_express_coupon();
+				if(res.status == 1){
+					this.c_id = res.data.c_id;
+					this.coupon_price = res.data.price?res.data.price:0;
+					this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
+					if(this.allMoney < 0){
+						this.allMoney = 0;
+					}
+				}
+			},
 			async getDepartment(){
 				let res = await department();
 				if(res.status == 1){
@@ -502,13 +544,16 @@
 				});
 			},
 			showBaoJia(){
-				if(this.expressCompanyName != 'EMS'){
-					uni.showToast({
-						title:"只有EMS可以保价",
-						icon: 'none',
-						duration:1000
-					})
+				if(this.createOrderType != 4){
+					if(this.expressCompanyName != 'EMS'){
+						uni.showToast({
+							title:"只有EMS可以保价",
+							icon: 'none',
+							duration:1000
+						})
+					}
 				}
+				
 			},
 			liancheng(data)
 			{
@@ -581,6 +626,13 @@
 				this.insuredPrice = parseFloat(this.companyList[index].insuredPrice).toFixed(2);
 				this.expressCompanyID = this.companyList[index].expressCompanyID;
 				this.expressCompanyName = this.companyList[index].expressCompanyName;
+				if(this.expressCompanyName != 'EMS'){
+					this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.insuredPrice)).toFixed(2) ;
+					
+				}
+				this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
+				
+				// this.calAllPrice();
 			},
 			payPopup(popupParam) {
 				this.popupParam=popupParam;
@@ -600,12 +652,16 @@
 			showBeiZhuFlag(){
 				this.beiZhuFlag = true;
 			},
+			showGoodsInfoFlag(){
+				this.goodsInfoFlag = true;
+			},
 			hideModal(){
 				this.goodsTypeFlag = false;
 				this.payStyleFlag = false;
 				this.packageFlag = false;
 				this.faPiaoFlag = false;
 				this.beiZhuFlag = false;
+				this.goodsInfoFlag = false;
 			},
 			BaoJiaChange(e){
 				console.log(e);
@@ -639,7 +695,7 @@
 			},
 			
 			selectAddress(index){
-				if((this.createOrderType == 1) || (this.createOrderType == 3)){
+				if(this.createOrderType != 2){
 					//国内
 					if(index == 0){
 						//始发地
@@ -791,7 +847,7 @@
 				
 				console.log("888888"+this.createOrderType)
 				//创建订单的类型 1 国内件 默认 2 国际件3 全程件4 物流件
-				if(this.createOrderType==1 || (this.createOrderType == 2))
+				if(this.createOrderType==1 || (this.createOrderType == 2) || (this.createOrderType == 4))
 				{
 					let params = {
 						userID: userInfo.userID,
@@ -814,7 +870,9 @@
 						expressPackageDetail: this.expressPackageDetail,
 						isQrCode:this.isQrCode,
 						QrCodeOrderSN:this.QrCodeOrderSN,
-						isPrintEs: this.isPrintEs?1:0
+						isPrintEs: this.isPrintEs?1:0,
+						expressPackageDetail: this.goodsInfo,
+						c_id: this.coupon_price?this.c_id:''
 					};
 					
 					if(this.isHongxing == 1){
@@ -827,7 +885,7 @@
 						this.orderID=res.data.orderID;
 						this.orderSN=res.data.orderSN;
 						
-						if(this.createOrderType==1){
+						if(this.createOrderType==1 || this.createOrderType==4){
 							//国内件
 							console.log("企业编码："+userInfo.qyCompanyID);
 							
@@ -1076,7 +1134,8 @@
 					weight: this.weight,
 					expressProductType: this.expressProductType,
 					insuredValue: this.insuredValue,
-					orderType: this.orderType
+					orderType: this.orderType,
+					createOrderType: this.createOrderType
 				};
 				console.log(params);
 				let res = await calculateExpressPrice(params);
@@ -1105,6 +1164,12 @@
 						this.allMoney = parseFloat(this.companyList[this.company_index].price_total).toFixed(2);
 						this.insuredPrice = parseFloat(this.companyList[this.company_index].insuredPrice).toFixed(2);
 					}
+					if(this.orderType == 1){
+						if(this.createOrderType == 1||this.createOrderType==4){
+							this.user_express_coupon();
+						}
+					}
+					
 				}
 				else{
 					uni.showToast({
@@ -1155,6 +1220,12 @@
 					title: '个人同城快递'
 				});
 			}
+			else if(this.orderType==1&&this.createOrderType==4)
+			{
+				uni.setNavigationBarTitle({
+					title: '个人大件物流'
+				});
+			}
 			else if(this.orderType==2&&this.createOrderType==1)
 			{
 				uni.setNavigationBarTitle({
@@ -1171,6 +1242,12 @@
 			{
 				uni.setNavigationBarTitle({
 					title: '企业同城快递'
+				});
+			}
+			else if(this.orderType==2&&this.createOrderType==4)
+			{
+				uni.setNavigationBarTitle({
+					title: '企业大件物流'
 				});
 			}
 			
@@ -1286,11 +1363,11 @@
 .yunfei-img-list .swiper-slide.active{border:2upx solid #107EFF;}
 /* .yunfei-img-list .swiper-slide.active:after{width:32upx;height:32upx;position: absolute;right:-4upx;top:-2upx;content:" ";background: url("../images/yunfei/yunfei_21.png");background-size:100% 100%;} */
 
-.yunfei-bottom{height:144upx;position: fixed;bottom:0;width:100%;left:0;width:100%;box-shadow:-2upx -14upx 22upx 0px rgba(126,125,125,0.08);box-sizing: border-box;padding-top:26upx;background: #fff;z-index:900;}
+.yunfei-bottom{height:144upx;position: fixed;bottom:0;width:100%;left:0;width:100%;box-shadow:-2upx -14upx 22upx 0px rgba(126,125,125,0.08);box-sizing: border-box;padding-top:0upx;background: #fff;z-index:900;}
 .yunfei-bottom button{background: #107EFF;line-height: 88upx;font-size:26upx;color:#fff;padding:0;width:364upx;text-align: center;float:right;margin-right:30upx;}
 .yunfei-bottom .left{font-size:30upx;display: inline-block;margin-left:30upx;color:#666;text-align: center;}
 .yunfei-bottom .left .tip{font-size:24upx;color:#999999;}
-.yunfei-bottom .left span{font-size:44upx;color:#FF5269;}
+.yunfei-bottom .left #priceText{font-size:44upx;color:#FF5269;}
 .yunfei-bottom .left span.small{font-size:24upx;color:#FF5269;}
 .yunfei-bottom .left.has-tip{position: relative;}
 .yunfei-bottom .left.has-tip .price-cell{display: table-cell;vertical-align: middle;line-height:normal;height:100upx;}
@@ -1349,4 +1426,7 @@
 
 .name{margin-top: 28upx; text-align: right; display: inline-block;}
 
+.goods_warning_wrap{background-color: #fffbe6;border: 1px solid #ffe58f;padding: 16upx 30upx;font-size: 32upx;color: brown;margin: 20upx 2%; width: 96%;box-sizing: border-box;}
+.goods_warning_wrap image{width: 40upx; height: 40upx;margin-right: 20upx;}
+.goods_warning_wrap p{font-size: 28upx;color: rgba(0, 0, 0, 0.65);}
 </style>

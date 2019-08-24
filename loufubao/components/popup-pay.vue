@@ -827,12 +827,12 @@
 					});
 				}else if(payWayValue == 5){
 					//vip  订单
-					uni.navigateBack({
-						delta:1
-					});
-					uni.redirectTo({
-						url: '/pages/tabbar/my/my'
-					});
+					// uni.navigateBack({
+					// 	delta:1
+					// });
+					// uni.redirectTo({
+					// 	url: '/pages/tabbar/my/my'
+					// });
 				}
 				
 			},

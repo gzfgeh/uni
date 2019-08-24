@@ -608,6 +608,13 @@ export function user_coupon(params) {
 }
 
 /**
+ *  我的快递优惠券
+ */
+export function user_express_coupon() {
+    return request.post('Order/index/user_coupon',qs.stringify({userID: uni.getStorageSync("userInfo").userID}))
+}
+
+/**
  *  问卷调查
  */
 export function question(params) {

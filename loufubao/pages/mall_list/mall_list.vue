@@ -14,9 +14,10 @@
 						<img  :src="curType==1?item.goods_list_img:item.logo" mode="aspectFill">
 						<div class="content_item">
 							<span>{{curType==1?item.intro:item.desc}}</span>
-							<div class="row" v-if="curType == 1">
-								<span class="price" v-if="item.price" :style="{'text-decoration':(item.member_price?'line-through':'')}">￥{{item.price}} </span>
-								<span v-if="item.member_price">会员价：￥{{item.member_price}}</span>
+							<div class="row_between" v-if="curType == 1">
+								<!-- :style="{'text-decoration':(item.member_price?'line-through':'')}" -->
+								<span class="price" v-if="item.price" >售价:￥{{item.price}} </span>
+								<span v-if="item.member_price">会员价:￥{{item.member_price}}</span>
 							</div>
 						</div>
 					</div>
