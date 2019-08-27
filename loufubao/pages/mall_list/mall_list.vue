@@ -13,7 +13,7 @@
 					<div class="item">
 						<img  :src="curType==1?item.goods_list_img:item.logo" mode="aspectFill">
 						<div class="content_item">
-							<span>{{curType==1?item.intro:item.desc}}</span>
+							<span>{{curType==1?item.intro:item.name}}</span>
 							<div class="row" v-if="curType == 1">
 								<!-- :style="{'text-decoration':(item.member_price?'line-through':'')}" -->
 								<span class="price" v-if="item.price" >￥{{item.price}} </span>

@@ -154,12 +154,12 @@
 						img:'/static/img/payWay_06.jpg',
 						name: '支付宝'
 					}
-					// ,
-					// {
-					// 	value: 'yinlian',
-					// 	img:'../../static/img/payWay_07.jpg',
-					// 	name: '云闪付'
-					// }
+					,
+					{
+						value: 'yinlian',
+						img:'../../static/img/payWay_07.jpg',
+						name: '云闪付'
+					}
 				];
             uni.getProvider({
                 service: "payment",

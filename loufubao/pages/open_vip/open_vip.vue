@@ -11,7 +11,8 @@
 					<span>({{phone}}登录)</span>
 				</view>
 				
-				<span>{{endTime}}到期，购买后有效期将顺延</span>
+				<span v-if="endTime">{{endTime}}到期，购买后有效期将顺延</span>
+				<span v-else>您不是会员，购买后将享有会员vip权益</span>
 				
 			</view>
 		</view>
@@ -128,9 +129,14 @@
 			this.userInfo = uni.getStorageSync("userInfo");
 			this.phone = this.userInfo.phone.substring(0,3)+"****"+this.userInfo.phone.substring(7,11);
 			console.log(this.userInfo.member_end_time);
-			let d = new Date(parseInt(this.userInfo.member_end_time)*1000);
-			console.log(d);
-			this.endTime = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			if(this.userInfo.is_member == 0){
+				
+			}else{
+				let d = new Date(parseInt(this.userInfo.member_end_time)*1000);
+				console.log(d);
+				this.endTime = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			}
+			
 		},
 		onNavigationBarButtonTap() {
 			this.callPhone();

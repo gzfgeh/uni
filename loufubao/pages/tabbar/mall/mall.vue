@@ -55,7 +55,7 @@
 				<block v-for="(item, index) in list" :key="index" class="itemlist">  
 					<navigator class="card" @click="goToShop(item)" v-if="index%2==0">  
 						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
-						<text class="card-title">{{item.intro}}</text>  
+						<text class="card-title">{{item.name}}</text>  
 						<view class="price_wrap">
 							<span>¥{{item.price}}</span>
 							<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
@@ -68,7 +68,7 @@
 				<block v-for="(item, index) in list" :key="index" class="itemlist">  
 					<navigator class="card" @click="goToShop(item)" v-if="index%2==1">  
 						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
-						<text class="card-title">{{item.intro}}</text> 
+						<text class="card-title">{{item.name}}</text> 
 						 <view class="price_wrap">
 						 	<span>¥{{item.price}}</span>
 						 	<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
