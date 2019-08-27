@@ -527,9 +527,7 @@
 					success: function (res)
 					{
 						console.log('success:' + JSON.stringify(res));
-						uni.navigateBack({
-							delta:1
-						});
+						
 						if(payWayValue=="0")
 						{
 							uni.redirectTo({
@@ -537,6 +535,9 @@
 							});
 						}else if(payWayValue == 1){
 							//外卖
+							uni.navigateBack({
+								delta:1
+							});
 							uni.navigateTo({
 								url: '/pages/wai_mai_detail/wai_mai_detail?orderID='+orderID
 							});
@@ -566,10 +567,10 @@
 							});
 						}else if(payWayValue == 5){
 							//vip  订单
-							uni.navigateBack({
-								delta:1
-							});
-							uni.redirectTo({
+							// uni.navigateBack({
+							// 	delta:1
+							// });
+							uni.switchTab({
 								url: '/pages/tabbar/my/my'
 							});
 						}

@@ -14,10 +14,10 @@
 						<img  :src="curType==1?item.goods_list_img:item.logo" mode="aspectFill">
 						<div class="content_item">
 							<span>{{curType==1?item.intro:item.desc}}</span>
-							<div class="row_between" v-if="curType == 1">
+							<div class="row" v-if="curType == 1">
 								<!-- :style="{'text-decoration':(item.member_price?'line-through':'')}" -->
-								<span class="price" v-if="item.price" >售价:￥{{item.price}} </span>
-								<span v-if="item.member_price">会员价:￥{{item.member_price}}</span>
+								<span class="price" v-if="item.price" >￥{{item.price}} </span>
+								<span  style="font-size: 20upx; color: #333333;" v-if="item.member_price">会员价:￥{{item.member_price}}</span>
 							</div>
 						</div>
 					</div>
@@ -27,8 +27,9 @@
 		</div>
 		
 		
-		<div v-if="list.length == 0&loadingType==2" class="uni-center-item no_data_wrap">
-			<span>暂无信息</span>
+		<div v-if="list.length == 0" class="uni-center-item no_data_wrap">
+			<image src="../../static/img/goods_list_empty.png" mode="aspectFill"></image>
+			<span>没有更多商品，换个词试试～</span>
 		</div>
 		
 		<view class="uni-tab-bar-loading" v-if="list.length != 0">
@@ -224,7 +225,7 @@
 .item{display: flex;flex-direction: row;border-bottom: #E3E3E3 solid 2upx; padding: 35upx 0upx; font-size: 28upx; color: #666666;}
 .item img{width: 140upx; height: 140upx;border-radius: 8upx; margin-right: 32upx;}
 .item .content_item{display: flex; flex-direction: column; justify-content: space-between;flex: 1; padding-right: 30upx;}
-.item .content_item .price{color: #FF6262; font-size: 30upx;}
+.item .content_item .price{color: #FF6262; font-size: 30upx; margin-right: 20upx;}
 
 .head_wrap{width: 100%; display: flex; flex-direction: row;position: fixed;left: 0upx;background-color: #FFF;border-bottom: 2upx solid #E3E3E3; height: 100upx;z-index: 101;}
 .head_item{flex: 1; padding: 0upx 24upx;}

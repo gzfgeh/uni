@@ -28,7 +28,7 @@
 			</div>
 		</view>
 		
-		<div class="row mall_wrap">
+		<div class="row mall_wrap" v-if="false">
 			<img src="../../../static/img/mall_enter.png" mode="aspectFill" class="mall flex_one" @click="goToMallType">
 			<img src="../../../static/img/card_enter.png" mode="aspectFill" class="flex_one" @click="goToCard">
 		</div>
@@ -42,7 +42,7 @@
 			<span class="arraw"></span>
 		</navigator> -->
 		
-		<div class="row_around nav_wrap">
+		<div class="row_around nav_wrap" v-if="false">
 			<div class="col_center nav_item" v-for="(item, index) in typeList" :key="index"
 				@click="changeType(index)">
 				<img :src="typeIndex == index? item.active_icon : item.icon" mode="aspectFill">
@@ -54,8 +54,12 @@
 			<view class="left">  
 				<block v-for="(item, index) in list" :key="index" class="itemlist">  
 					<navigator class="card" @click="goToShop(item)" v-if="index%2==0">  
-						<image class="card-img" :src="item.list_img" mode="widthFix"></image>  
-						<text class="card-title">{{item.desc}}</text>  
+						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
+						<text class="card-title">{{item.intro}}</text>  
+						<view class="price_wrap">
+							<span>¥{{item.price}}</span>
+							<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
+						</view>
 					</navigator>  
 				</block>  
 			</view>  
@@ -63,8 +67,12 @@
 			<view class="right">  
 				<block v-for="(item, index) in list" :key="index" class="itemlist">  
 					<navigator class="card" @click="goToShop(item)" v-if="index%2==1">  
-						<image class="card-img" :src="item.list_img" mode="widthFix"></image>  
-						<text class="card-title">{{item.desc}}</text>  
+						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
+						<text class="card-title">{{item.intro}}</text> 
+						 <view class="price_wrap">
+						 	<span>¥{{item.price}}</span>
+						 	<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
+						 </view>
 					</navigator>  
 				</block>  
 			</view>  
@@ -74,15 +82,27 @@
 			<span>暂无数据</span>
 		</div>
 		
+		<view class="uni-tab-bar-loading" v-if="list.length != 0">
+			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
+		</view>
+		
 	</view>
 </template> 
 
 <script>
-	import { BASE_IMAGE_URL,search,getBanners,getStoreTag} from '@/utils/api'
-	
+	import { BASE_IMAGE_URL,search,getBanners,getStoreTag,goods_list} from '@/utils/api'
+	import uniLoadMore from '@/components/uni-load-more.vue';
 export default {
+	components: {
+		uniLoadMore,
+	},
 	data() {
 		return {
+			loadingText: {
+				contentdown: "上拉显示更多",
+				contentrefresh: "正在加载...",
+				contentnomore: "没有更多数据了"
+			},
 			isAPP: false,
 			buildingName:"请选择楼宇",
 			itemList: [],
@@ -92,7 +112,9 @@ export default {
 			statusBarHeight: 0,
 			typeList: [],
 			typeIndex: 0,
-			list: []
+			list: [],
+			loadingType: 0,
+			page: 1
 		};
 	},
 	onLoad() {
@@ -100,7 +122,13 @@ export default {
 				this.isAPP = true;
 			// #endif
 		
-		this.getStoreTag();
+		// this.getStoreTag();
+		this.getList();
+	},
+	onReachBottom() {
+		this.loadingType = 1;
+		this.page++;
+		this.getList();
 	},
 	onShow() {
 		this.getBanners();
@@ -115,16 +143,20 @@ export default {
 			if(!this.isLogin()){
 				return;
 			};
-			if(item.store_show_type == 2){
-				// 图文店铺
-				uni.navigateTo({
-					url: '/pages/mall_shop_text/mall_shop_text?storeID='+item.id
-				});
-			}else{
-				uni.navigateTo({
-					url: '/pages/mall_shop/mall_shop?storeID='+item.id
-				});
-			}
+			// if(item.store_show_type == 2){
+			// 	// 图文店铺
+			// 	uni.navigateTo({
+			// 		url: '/pages/mall_shop_text/mall_shop_text?storeID='+item.id
+			// 	});
+			// }else{
+			// 	uni.navigateTo({
+			// 		url: '/pages/mall_shop/mall_shop?storeID='+item.id
+			// 	});
+			// }
+			
+			uni.navigateTo({
+				url: '/pages/mall_detail/mall_detail?goodsID='+item.id
+			});
 			
 		},
 		goToSearch(){
@@ -168,6 +200,29 @@ export default {
 			let res = await search({storeTag: tag, searchType:2,page:1,limit:10});
 			if(res.status == 1){
 				this.list = res.data;
+			}
+		},
+		async getList(){
+			let res = await goods_list(this.page);
+			if(res.status == 1){
+				res.data.map((item)=>{
+					if(item.intro.length > 16){
+						item.intro = item.intro.substring(0, 16)+"..."
+					}
+				})
+				if(this.page==1)
+				{
+					this.list=res.data;
+				}
+				else{
+					this.list=this.list.concat(res.data);
+				}
+				
+				if(this.list.length < 10){
+					this.loadingType = 2;
+				}else{
+					this.loadingType = 0;
+				}
 			}
 		},
 		async getBanners(){
@@ -222,6 +277,9 @@ export default {
 .mall_wrap img{width:40%; height: 80upx; box-shadow:0px 4px 12px 0px rgba(126,125,125,0.14);}
 .mall_wrap .mall{margin-right: 20upx;}
 .type_active{color: #107EFF}
+
+.price_wrap{color: #FF5269; font-size: 24upx; font-weight: bold; padding-left: 16upx;}
+.member_price{color: #333333; font-size: 20upx; font-weight: normal; margin-left: 20upx;}
 
 
 </style>

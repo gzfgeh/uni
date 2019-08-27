@@ -34,14 +34,11 @@
 					<view class="card" v-if="index%2==0" @click="goToDetail(index)">  
 						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
 						
-						<div class="row_between item">
-							<text class="card-title">{{item.name}}</text>
-							<div class="col">
-								<span class="price">售价:￥{{item.price}}</span>
-								<span class="price">会员价:￥{{item.member_price}}</span>
-							</div>
-							
-						</div>
+						<text class="card-title">{{item.intro}}</text>
+						<view class="price_wrap">
+							<span>¥{{item.price}}</span>
+							<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
+						</view>
 					</view>  
 				</block>  
 			</view>  
@@ -50,17 +47,19 @@
 				<block v-for="(item, index) in detail.goodsInfo" :key="index" class="itemlist" >  
 					<view class="card" v-if="index%2==1" @click="goToDetail(index)">  
 						<image class="card-img" :src="item.goods_list_img" mode="widthFix"></image>  
-						<div class="row_between item">
-							<text class="card-title">{{item.name}}</text>
-							<span class="price">￥{{item.price}}</span>
-						</div> 
+						<text class="card-title">{{item.intro}}</text>
+						<view class="price_wrap">
+							<span>¥{{item.price}}</span>
+							<span v-if="item.member_price" class="member_price">会员价:{{item.member_price}}</span>
+						</view>
 					</view>  
 				</block>  
 			</view>  
 		</view>
 	
 		<div v-if="detail.goodsInfo.length == 0" class="uni-center-item no_data_wrap">
-			<span>暂无商品信息</span>
+			<image src="../../static/img/goods_list_empty.png" mode="aspectFill"></image>
+			<span>没有更多商品，换个词试试～</span>
 		</div>
 		
 	</view>
@@ -156,7 +155,7 @@ export default {
 .left{margin: 0upx 2% 20upx 4%}
 .right{margin: 0upx 4% 20upx 2%}
 .card-img{width: 100%;}
-.card-title{font-size: 24upx; color: #333333; display: inline-block;}
+.card-title{font-size: 24upx; color: #333333; display: inline-block; padding-left: 16upx;}
 .card{box-shadow:0px 8upx 24upx 0px rgba(126,125,125,0.14); width: 100%; margin: 20upx 0upx; border-radius: 16upx;}
 .itemlist{ background-color: #fff;  margin: 1%;   margin-bottom: 20upx;  display: inline-block;  } 
 .card .item{padding: 0upx 10upx;}
@@ -164,4 +163,9 @@ export default {
 
 .mall_wrap{background: #FFF; box-shadow:0px 4px 12px 0px rgba(126,125,125,0.14);height: 100upx; margin:20upx 30upx; padding: 0upx 40upx;}
 .mall_wrap img{width: 30upx; height: 30upx; margin-right: 20upx;}
+
+.price_wrap{color: #FF5269; font-size: 24upx; font-weight: bold; padding-left: 16upx;}
+.member_price{color: #333333; font-size: 20upx; font-weight: normal; margin-left: 20upx;}
+
+
 </style>

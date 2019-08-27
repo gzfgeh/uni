@@ -435,8 +435,8 @@ export function goods_type() {
 /**
  *  商品列表
  */
-export function goods_list(params) {
-    return request.post('Mall/Goods/goods_list',qs.stringify(params))
+export function goods_list(page) {
+    return request.get('mall/goods/goods_list?limit=10&page='+page)
 }
 
 /**

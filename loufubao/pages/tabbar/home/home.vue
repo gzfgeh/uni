@@ -3,25 +3,25 @@
 			:style="{'padding-top': (isAPP?'118upx':'20upx')}">
 		<view class="content col" style="width:100%;">
 			<div class="head_bg">
-				<img src="../../../static/img/home_head_bg.png" mode="widthFix">
+				<image src="../../../static/img/home_head_bg.png" mode="widthFix" />
 			</div>
 			
 			<div class="row_between home_head_wrap" :style="{'top': (isAPP?'80upx':'30upx')}">
 				<div class="row_center home_head_left" @tap="selectBuild()">
-					<img src="../../../static/img/home_location.png" mode="widthFix">
+					<image src="../../../static/img/home_location.png" mode="widthFix" />
 					<span>{{buildingName}}</span>
 					<!-- <img src="../../../static/img/lou_select.png" mode="widthFix"> -->
 					<span class="arraw_down_white"></span>
 				</div>
 				
 				<div class="row">
-					<img src="../../../static/img/home_search.png" @click="goToSearch"
-						mode="widthFix" class="search_icon">
-					<img src="../../../static/img/home_scan.png" @click="goToScan" style="margin-left: 0upx;"
-						mode="widthFix" class="search_icon" v-if="isAPP">
+					<image src="../../../static/img/home_search.png" @click="goToSearch"
+						mode="widthFix" class="search_icon" />
+					<image src="../../../static/img/home_scan.png" @click="goToScan" style="margin-left: 0upx;"
+						mode="widthFix" class="search_icon" v-if="isAPP" />
 					
 					<div class="msg_wrap row_center" @tap="goToMsg">
-						<img src="../../../static/img/home_msg.png" mode="widthFix">
+						<image src="../../../static/img/home_msg.png" mode="widthFix" />
 						<div class="red_hot" v-if="msgCount > 0"></div>
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 			<div style="background: #F5F5F5;padding-top:30upx;">
 			
 				<div class="gonggao_wrap row">
-					<img src="../../../static/img/home_gonggao.png" mode="widthFix">
+					<image src="../../../static/img/home_gonggao.png" mode="widthFix" />
 					<view class="uni-swiper-msg">
 						<swiper vertical="true" autoplay="true" circular="true" interval="3000">
 							<swiper-item v-for="(item, index) in msg" :key="index">
@@ -61,33 +61,33 @@
 				
 				<div class="content_wrap row_center">
 					<navigator class="col_center flex_one" v-for="(item, index) in contentList" :key="index" @tap="goToContent(index)">
-						<img :src="item.configNameImg1" mode="widthFix">
+						<image :src="item.configNameImg1" mode="widthFix" />
 						<span>{{item.configName}}</span>
 					</navigator>
 				</div>
 				
 				<div class="build_wrap row">
 					<navigator class="row_center flex_one" @click="goToBuildSuoYin">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
+						<image src="../../../static/img/home_lou_ceng.png" mode="widthFix" />
 						<span>楼层索引</span>
 					</navigator>
 					
 					<div class="line"></div>
 					
 					<navigator class="row_center flex_one" @click="goToTeam">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
+						<image src="../../../static/img/home_lou_ceng.png" mode="widthFix" />
 						<span>服务团队</span>
 					</navigator>
 					
 					<div class="line"></div>
 					
 					<navigator class="row_center flex_one" @click="joinUs">
-						<img src="../../../static/img/home_lou_ceng.png" mode="widthFix">
+						<image src="../../../static/img/home_lou_ceng.png" mode="widthFix" />
 						<span>加入我们</span>
 					</navigator>
 				</div>
 				
-				<img src="../../../static/img/home_center_img.png" mode="widthFix" class="center_wrap" @click="goToWebView">
+				<image src="../../../static/img/home_center_img.png" mode="widthFix" class="center_wrap" @click="goToWebView" />
 				
 				<div class="recommand_one">
 					<div class="item">
@@ -95,7 +95,7 @@
 							<span class="title">品质生活</span>
 							<div class="row" style="padding:0upx 20upx;" @click="goToShop">
 								<span>更多</span>
-								<img src="../../../static/img/right_icon.png" mode="aspectFill">
+								<image src="../../../static/img/right_icon.png" mode="aspectFill" />
 							</div>
 						</div>
 						<div>这里有你想不到的优惠</div>
@@ -103,14 +103,14 @@
 					
 					
 					<div class="recommand_item" v-if="shopList[0]">
-						<img :src="shopList[0].list_img" mode="aspectFill" @click="goToMainShopDetail(shopList[0])">
+						<image :src="shopList[0].list_img" mode="aspectFill" @click="goToMainShopDetail(shopList[0])" />
 						<div class="right_wrap">
 							<navigator class="row_center right" @click="goToMainShopDetail(shopList[1])">
 								<div class="right_item" >
 									<span class="name">{{shopList[1].store_name}}</span>
 									<span class="desc">{{shopList[1].desc}}</span>
 								</div>
-								<img :src="shopList[1].list_img" mode="aspectFill">
+								<image :src="shopList[1].list_img" mode="aspectFill" />
 							</navigator>
 							
 							<navigator class="row_center right" @click="goToMainShopDetail(shopList[2])">
@@ -118,7 +118,7 @@
 									<span class="name">{{shopList[2].store_name}}</span>
 									<span class="desc">{{shopList[2].desc}}</span>
 								</div>
-								<img :src="shopList[2].list_img" mode="aspectFill">
+								<image :src="shopList[2].list_img" mode="aspectFill" />
 							</navigator>
 							
 						</div>
@@ -128,7 +128,7 @@
 					<div class="nav" v-if="shopList[3]">
 						<navigator class="nav-item" @click="goToMainShopDetail(shopList[3])">
 							<div class="row_center">
-								<img :src="shopList[3].list_img" />
+								<image :src="shopList[3].list_img" />
 							</div>
 							
 							<div class="scroll_content_wrap">
@@ -139,7 +139,7 @@
 						
 						<navigator class="nav-item" @click="goToMainShopDetail(shopList[4])">
 							<div class="row_center">
-								<img :src="shopList[4].list_img" />
+								<image :src="shopList[4].list_img" />
 							</div>
 							
 							<div class="scroll_content_wrap">
@@ -150,7 +150,7 @@
 						
 						<navigator class="nav-item" @click="goToMainShopDetail(shopList[5])">
 							<div class="row_center">
-								<img :src="shopList[5].list_img" />
+								<image :src="shopList[5].list_img" />
 							</div>
 							
 							<div class="scroll_content_wrap">
@@ -170,7 +170,7 @@
 							<span class="title">健康餐饮</span>
 							<div class="row" style="padding:0upx 20upx;" @click="goToShop">
 								<span>更多</span>
-								<img src="../../../static/img/right_icon.png" mode="aspectFill">
+								<image src="../../../static/img/right_icon.png" mode="aspectFill" />
 							</div>
 						</div>
 						<div>健康生活从这里开始</div>
@@ -179,7 +179,7 @@
 					<div class="list_item" v-if="shopList[6]">
 						<navigator class="item_wrap" @click="goToMainShopDetail(shopList[6])">
 							<div class="item">
-								<img  :src="shopList[6].list_img" mode="aspectFill">
+								<image  :src="shopList[6].list_img" mode="aspectFill" />
 								<div class="content_item">
 									<span class="title">{{shopList[6].store_name}}</span>
 									<span class="content">{{shopList[6].desc}}</span>
@@ -192,7 +192,7 @@
 						
 						<navigator class="item_wrap" @click="goToMainShopDetail(shopList[7])">
 							<div class="item">
-								<img  :src="shopList[7].list_img" mode="aspectFill">
+								<image  :src="shopList[7].list_img" mode="aspectFill" />
 								<div class="content_item">
 									<span class="title">{{shopList[7].store_name}}</span>
 									<span class="content">{{shopList[7].desc}}</span>
@@ -205,7 +205,7 @@
 						
 						<navigator class="item_wrap" @click="goToMainShopDetail(shopList[8])">
 							<div class="item" style="border-bottom: none;">
-								<img  :src="shopList[8].list_img" mode="aspectFill">
+								<image  :src="shopList[8].list_img" mode="aspectFill" />
 								<div class="content_item">
 									<span class="title">{{shopList[8].store_name}}</span>
 									<span class="content">{{shopList[8].desc}}</span>
@@ -544,7 +544,7 @@
 	page{height: 100%; background: #F5F5F5; }
 .content {position: relative; color: #666666; font-size: 24upx; height: 100upx;}
 .head_bg{ width: 100%; height: 360upx;position: absolute;top: -124upx; left: 0upx;z-index: 1;}
-.head_bg img{height: 360upx; width: 100%;}
+.head_bg image{height: 360upx; width: 100%;}
 
 .top_style{padding-top: 120upx!important;}
 
@@ -558,40 +558,40 @@
 
 .home_head_wrap{width: 100%; color: #FFFFFF;font-size: 24upx; padding: 0upx 20upx 0upx 20upx; box-sizing: border-box; top: 80upx; position: fixed;z-index: 2000; }
 .home_head_left span{font-size: 36upx; overflow: hidden;max-width: 260upx;white-space: nowrap;text-overflow:ellipsis;}
-.home_head_left img{width: 30upx; height: 36upx; margin-right: 10upx;}
+.home_head_left image{width: 30upx; height: 36upx; margin-right: 10upx;}
 .msg_wrap{position: relative; height: 100%;}
-.msg_wrap img{width: 30upx; height: 34upx;}
+.msg_wrap image{width: 30upx; height: 34upx;}
 .red_hot{width: 10upx; height: 10upx; position: absolute;right: 0upx; top: 0upx;background-color: red; z-index: 2;border-radius: 50%;}
 
 .gonggao_wrap{height: 90upx; background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin:0upx 3%; padding: 0upx 22upx;box-sizing: border-box;border-radius: 8upx; font-size: 28upx; color: #333;}
-.gonggao_wrap img{width: 128upx; margin-right: 20upx;}
+.gonggao_wrap image{width: 128upx; margin-right: 20upx;}
 
 .scan_img{width: 28upx;height: 100%;}
 .search_icon{width: 30upx;margin: 0upx 50upx; height: 100%;}
 
 .content_wrap{width: 94%; margin-left: 3%; height:340upx;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx; flex-flow: wrap;}
 .content_wrap .flex_one{min-width: 160upx;font-size: 24upx; color: #666; height: 170upx;}
-.content_wrap img{width: 80upx; margin-bottom: 10upx;}
+.content_wrap image{width: 80upx; margin-bottom: 10upx;}
 
 .build_wrap{width: 94%; margin-left: 3%;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx;height: 120upx; font-size: 24upx;color: #666;}
-.build_wrap img{width: 56upx; margin-right: 14upx;}
+.build_wrap image{width: 56upx; margin-right: 14upx;}
 .build_wrap .line{width: 2upx; height: 56upx;background: #E7E7E7;}
 .build_wrap .flex_one{height: 100%;}
 
 .center_wrap{width: 100%; margin-left: 0%;box-sizing:border-box;margin-top: 30upx;}
 
 .bottom_wrap{padding: 5%; box-sizing: border-box; }
-.bottom_wrap img{width: 100%; margin-bottom: 60upx;}
+.bottom_wrap image{width: 100%; margin-bottom: 60upx;}
 
 .recommand_one{background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin-left: 3%;margin-top: 30upx; display: flex; flex-direction: column;}
 .recommand_one .item{padding:30upx; color: #999999; font-size: 24upx; border-bottom: 2upx solid #F0F0F0;}
-.recommand_one .item img{width: 10upx; height: 18upx; margin-left: 10upx;}
+.recommand_one .item image{width: 10upx; height: 18upx; margin-left: 10upx;}
 .recommand_one .item .title{color: #FF5E43; font-size: 44upx;}
 .recommand_one .recommand_item{display: flex; flex-direction: row;}
-.recommand_one .recommand_item img{width: 320upx; height: 360upx;}
+.recommand_one .recommand_item image{width: 320upx; height: 360upx;}
 .recommand_one .recommand_item .right_wrap{flex: 1; display: flex;flex-direction: column;}
 .recommand_one .recommand_item .right{flex: 1; border-bottom: 2upx solid #F0F0F0; padding-right: 20upx; box-sizing: border-box;}
-.recommand_one .recommand_item .right img{width: 124upx; height: 124upx;}
+.recommand_one .recommand_item .right image{width: 124upx; height: 124upx;}
 .recommand_one .recommand_item .right .right_item{padding: 20upx; display: flex;flex-direction: column;color: #666666; font-size: 24upx;}
 .recommand_one .recommand_item .right .right_item .name{color: #333333; font-size: 28upx;}
 .recommand_one .recommand_item .right .desc{text-overflow: ellipsis; overflow: hidden;display: -webkit-box;
@@ -600,19 +600,19 @@
 
 .nav{display: flex; flex-direction: row;width: 100%;border-bottom: rgb(249,249,249) solid 15upx; box-sizing: border-box;}
 .nav-item{display: flex; flex-direction: column; padding-top: 30upx; flex: 1; display: inline-block; border-right: 2upx solid #F0F0F0;}
-.nav img{width: 160upx; height: 160upx; text-align: center;}
+.nav image{width: 160upx; height: 160upx; text-align: center;}
 .nav .scroll_content_wrap{display: flex; flex-direction: column; height: 150upx; justify-content: space-between; padding: 10upx 10upx 10upx 20upx; box-sizing: border-box;}
 .nav .scroll_content_wrap span{text-overflow: ellipsis; overflow: hidden;width: 210upx;white-space: normal; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
 .nav .scroll_content_wrap .desc{color: #666666; font-size: 24upx;}
 
 .recommand_two{background: #fff;box-shadow:  0px 0px 10px #fff;width: 94%; margin-left: 3%;margin-top: 30upx; display: flex; flex-direction: column;}
 .recommand_two .item{padding:30upx; color: #999999; font-size: 24upx; border-bottom: 2upx solid #F0F0F0;}
-.recommand_two .item img{width: 10upx; height: 18upx; margin-left: 10upx;}
+.recommand_two .item image{width: 10upx; height: 18upx; margin-left: 10upx;}
 .recommand_two .item .title{color: #32BF3D; font-size: 44upx;}
 
 .list_item .item_wrap{width: 100%;box-sizing: border-box;padding-left: 30upx; background: #FFFFFF; }
 .list_item .item{display: flex;flex-direction: row;border-bottom: #E3E3E3 solid 2upx; padding: 35upx 0upx; font-size: 28upx; color: #666666;}
-.list_item .item img{width: 185upx; height: 185upx;border-radius: 8upx; margin-right: 32upx;}
+.list_item .item image{width: 185upx; height: 185upx;border-radius: 8upx; margin-right: 32upx;}
 .list_item .item .content_item{display: flex; flex-direction: column; justify-content: space-between;flex: 1; padding-right: 30upx;}
 .list_item .item .content_item .title{color: #333333; font-size: 28upx;}
 .list_item .item .content_item .content{color: #666666; font-size: 24upx;}

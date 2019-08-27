@@ -232,8 +232,8 @@ ul, li{list-style:none;}
 .flex_one{flex: 1;}
 
 .hover_class{opacity: 0.9; background-color: #F7F7F7;}
-.no_data_wrap{text-align: center; margin-top: 200upx;}
-.no_data_wrap img{width: 400upx; }
+.no_data_wrap{text-align: center; margin-top: 200upx; display: flex;flex-direction: column; align-items: center;}
+.no_data_wrap image{width: 200upx; height: 154upx; margin-bottom: 58upx;}
 .place-holder{font-size: 28upx; color: #999999;}
 .arraw{width: 20upx;height: 20upx;border-top: 4upx solid #999999;border-right: 4upx solid #999999;transform: rotate(45deg);margin-left: 4upx;display: inline-block;}
 .arraw_down{width: 14upx;height: 14upx;border-top: 2upx solid #999999;border-right: 2upx solid #999999;transform: rotate(135deg);margin-left: 10upx;display: inline-block;margin-bottom: 8upx;}

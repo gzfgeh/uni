@@ -9,7 +9,7 @@
 				</view>
 			</scroll-view>
 			<scroll-view class="nav-right" scroll-y :scroll-top="scrollTop" @scroll="scroll" :style="'height:'+height+'px'" scroll-with-animation>
-				<navigator :id="index===0?'first':''" class="nav-right-item" :url="'../mall_list/mall_list?type=1&id='+item.id+'&keyword='+item.name"
+				<navigator :id="index===0?'first':''" class="nav-right-item" :url="'../mall_list/mall_list?type=1&id='+item.id"
 				v-for="(item,index) in subCategoryList" :key="index">
 					<image :src="item.img" />
 					<view>{{item.name}}</view>
@@ -66,7 +66,7 @@
 				
 		},
 		onNavigationBarSearchInputClicked (e) {
-            console.log(e.text)
+            
 			uni.navigateTo({
 				url: '../mall_search/mall_search?searchType=1'
 			})
