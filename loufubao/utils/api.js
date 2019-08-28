@@ -249,8 +249,8 @@ export function MessageRead(params) {
 /**
  * 云闪付
  */
-export function yunshanfu_app(orderID) {
-    return request.get('pay/index/yunshanfu_app?orderID='+orderID)
+export function yunshanfu_app(orderID,orderType) {
+    return request.get('pay/index/yunshanfu_app?orderID='+orderID+"&orderType="+orderType)
 }
 
 

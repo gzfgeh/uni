@@ -119,6 +119,7 @@
 				orderStatusList: ['已取消','待付款','已付款','待收货','已收货','已退款','已完成'],
 				typeList: ['全部','待付款', '待发货', '待收货', '已完成'],
 				curType: 0,
+				payType: ''
 			}
 		},
 		methods: {
@@ -266,8 +267,8 @@
 			this.page = 1;
 			this.getList();
 		},
-		onLoad() {
-			
+		onLoad(opt) {
+			this.payType = opt.type;
 			//this.$store.commit('changeOrderItem', "");
 		},
 		onShow(){
@@ -306,6 +307,9 @@
 				}
 			});
 
+		},
+		onBackPress() {
+			console.log(this.payType);
 		}
 		
 	}

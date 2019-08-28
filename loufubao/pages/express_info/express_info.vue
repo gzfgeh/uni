@@ -206,7 +206,7 @@
 				
 				<div  v-if="createOrderType == 4" class="goods_warning_wrap">
 					<div class="row">
-						<image src="../../static/logo.png" mode="aspectFill"></image>
+						<image src="../../static/img/big_warning.jpg" mode="aspectFill"></image>
 						<span>提示</span>
 					</div>
 					<p>1、请详细描述要寄出的物品信息，以便工作人员对您的物品做出正确的评估；</p>

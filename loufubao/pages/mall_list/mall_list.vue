@@ -13,7 +13,7 @@
 					<div class="item">
 						<img  :src="curType==1?item.goods_list_img:item.logo" mode="aspectFill">
 						<div class="content_item">
-							<span>{{curType==1?item.intro:item.name}}</span>
+							<span>{{curType==1?item.intro:item.desc}}</span>
 							<div class="row" v-if="curType == 1">
 								<!-- :style="{'text-decoration':(item.member_price?'line-through':'')}" -->
 								<span class="price" v-if="item.price" >￥{{item.price}} </span>
@@ -27,7 +27,12 @@
 		</div>
 		
 		
-		<div v-if="list.length == 0" class="uni-center-item no_data_wrap">
+		<div v-if="list.length == 0 && curType==0" class="uni-center-item no_data_wrap">
+			<image src="../../static/img/goods_list_empty.png" mode="aspectFill"></image>
+			<span>没有找到对应店铺，请换个词试试~</span>
+		</div>
+		
+		<div v-if="list.length == 0 && curType==1" class="uni-center-item no_data_wrap">
 			<image src="../../static/img/goods_list_empty.png" mode="aspectFill"></image>
 			<span>没有更多商品，换个词试试～</span>
 		</div>
@@ -162,7 +167,9 @@
 			}, 500)
 			
 			// #endif
-						
+			if(opt.tab_type){
+				this.curType = 1;
+			}
 			this.getList();
 			
 			

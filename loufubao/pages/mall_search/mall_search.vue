@@ -127,17 +127,22 @@
 		},
 		methods: {
 			goToDetail(index){
-				if(!this.list[index].price){
-					//店铺
-					uni.navigateTo({
-						url: '../mall_shop/mall_shop?storeID='+this.list[index].id
-					})
-				}else{
-					// 商品
-					uni.navigateTo({
-						url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
-					})
-				}
+				// if(!this.list[index].price){
+				// 	//店铺
+				// 	uni.navigateTo({
+				// 		url: '../mall_shop/mall_shop?storeID='+this.list[index].id
+				// 	})
+				// }else{
+				// 	// 商品
+				// 	uni.navigateTo({
+				// 		url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
+				// 	})
+				// }
+				
+				// 商品
+				uni.navigateTo({
+					url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
+				})
 				
 			},
 			init() {
@@ -249,7 +254,7 @@
 				this.keyword = key;
 				//this.saveKeyword(key); //保存为历史 
 				uni.navigateTo({
-					url: '../mall_list/mall_list?keyword='+key
+					url: '../mall_list/mall_list?keyword='+key+"&tab_type=1"
 				})
 			},
 			//保存关键字到历史记录

@@ -13,13 +13,13 @@
 					<span class="phone" @tap="changeCode">切换账号</span>
 				</view>
 				<view class="text">激活码</view>
-				<input type="text" class="input_wrap" placeholder-class="phclass"
+				<input type="text" class="input_wrap uni-input" placeholder-class="phclass"
 					placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" v-model="cdk"/>
 			</div>
 			
 		</view>
 		
-		<button type="primary" class="btn" @click="member_cdk">立即续费</button>
+		<button type="primary" class="btn" @click="member_cdk">立即激活</button>
 	
 		
 		<div class="info_title">会员卡激活说明</div>
@@ -145,8 +145,8 @@
 .content_wrap .name_wrap .phone{font-size: 22upx;}
 .content_wrap .text{text-align: center; margin-top: 58upx; font-size: 38upx;}
 .content_wrap .input_wrap{background:rgba(255,255,255,1);border-radius:40px; position: absolute;color: #333333;
-		height: 80upx; width: 600upx; padding: 27upx 40upx; box-sizing: border-box; bottom: 40upx;}
-.phclass{color: #8C8C8C; font-size: 26upx;}
+		 width: 600upx;  box-sizing: border-box; bottom: 40upx; }
+.phclass{color: #8C8C8C; font-size: 28upx;}
 
 .info_title{color: #424242; font-size: 30upx;margin-top: 50upx; padding-left: 30upx;margin-bottom: 10upx;}
 .info_pay{color: #8C8C8C; font-size: 26upx;padding-left: 30upx;}

@@ -16,7 +16,7 @@
 						<span>{{item.goodsInfo.name}}</span>
 					</div>
 					
-					<span>{{item.time}}</span>
+					<span v-if="false">{{item.time}}</span>
 				</div>
 			</block>
 

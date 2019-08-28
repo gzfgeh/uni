@@ -376,7 +376,28 @@
 				}else if(this.payType=="yinlian"){
 					let res = {};
 					var payWayValue=this.payWay;
-					res = await yunshanfu_app(this.orderID);
+					let orderType = 1;
+					let orderID = this.orderID;
+					if(this.payWay=="0"||this.payWay=="-1"){
+						//快递
+						orderType = 1;
+					}else if(this.payWay=="1"){
+						//外卖
+						orderType = 2;
+					}else if(this.payWay == "2"){
+						//个人饮水服务
+						orderType = 3;
+					}else if(this.payWay == '3'){
+						//商城支付
+						orderType = 5;
+					}else if(this.payWay == '4'){
+						//商城小商品支付
+						orderType = 5;
+					}else if(this.payWay == '5'){
+						//vip支付
+						orderType = 4;
+					}
+					res = await yunshanfu_app(this.orderID, orderType);
 					console.log(res);
 					if(res.status == 1){
 						
@@ -390,6 +411,7 @@
 							// });
 							let type = result.type;
 							console.log(type);
+							console.log(payWayValue);
 							if(parseInt(type) == -1){
 								// 未安装
 								uni.showToast({
@@ -399,9 +421,7 @@
 								});
 							}else if(parseInt(type) == 0){
 								// 支付成功
-								uni.navigateBack({
-									delta:1
-								});
+								
 								if(payWayValue=="0")
 								{
 									uni.redirectTo({
@@ -409,7 +429,7 @@
 									});
 								}else if(payWayValue == 1){
 									//外卖
-									uni.navigateTo({
+									uni.redirectTo({
 										url: '/pages/wai_mai_detail/wai_mai_detail?orderID='+orderID
 									});
 								}else if(payWayValue == 2){
@@ -446,11 +466,11 @@
 									});
 								}
 							}else{
-								uni.showToast({
-								  icon: 'none',
-								  title: type,
-								  duration: 1000
-								});
+								// uni.showToast({
+								//   icon: 'none',
+								//   title: type,
+								//   duration: 1000
+								// });
 								if(payWayValue=="0")
 								{
 									uni.redirectTo({
@@ -535,10 +555,7 @@
 							});
 						}else if(payWayValue == 1){
 							//外卖
-							uni.navigateBack({
-								delta:1
-							});
-							uni.navigateTo({
+							uni.redirectTo({
 								url: '/pages/wai_mai_detail/wai_mai_detail?orderID='+orderID
 							});
 						}else if(payWayValue == 2){
