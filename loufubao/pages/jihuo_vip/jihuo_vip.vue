@@ -13,8 +13,12 @@
 					<span class="phone" @tap="changeCode">切换账号</span>
 				</view>
 				<view class="text">激活码</view>
-				<input type="text" class="input_wrap uni-input" placeholder-class="phclass"
-					placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" v-model="cdk"/>
+				<view class="uni-form-item uni-column input_wrap">
+					<input class="uni-input" placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" style="border-radius: 40upx;"/>
+				</view>
+				
+				<!-- <input type="text" class="input_wrap uni-input" placeholder-class="phclass"
+					placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" v-model="cdk"/> -->
 			</div>
 			
 		</view>
@@ -144,7 +148,7 @@
 .content_wrap .name_wrap .name{font-size: 30upx;}
 .content_wrap .name_wrap .phone{font-size: 22upx;}
 .content_wrap .text{text-align: center; margin-top: 58upx; font-size: 38upx;}
-.content_wrap .input_wrap{background:rgba(255,255,255,1);border-radius:40px; position: absolute;color: #333333;
+.content_wrap .input_wrap{border-radius:40px; position: absolute;color: #333333;
 		 width: 600upx;  box-sizing: border-box; bottom: 40upx; }
 .phclass{color: #8C8C8C; font-size: 28upx;}
 
