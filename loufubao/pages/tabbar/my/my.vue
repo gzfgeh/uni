@@ -33,8 +33,17 @@
 		
 		<navigator class=" bottom_item_wrap" style="margin-top: 30upx;" @click="goToSetting">
 			<div class="row_between bottom_item" style="border-top: 2upx solid #F3F3F3;">
-				<img src="../../../static/img/my_geren_icon.png" class="icon" mode="aspectFill" style="height: 30upx;width: 45upx;">
+				<image src="../../../static/img/my_geren_icon.png" class="icon" mode="aspectFill" style="height: 30upx;width: 45upx;" />
 				<span>个人资料</span>
+				<span style="flex: 1;"></span>
+				<span class="arraw"></span>
+			</div>
+		</navigator>
+		
+		<navigator class=" bottom_item_wrap" @click="goToYouHui">
+			<div class="row_between bottom_item">
+				<image src="../../../static/img/zbyh.jpg" class="icon" mode="aspectFill" style="height: 44upx; width: 44upx;" />
+				<span>周边优惠</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
 			</div>
@@ -42,7 +51,7 @@
 		
 		<navigator class=" bottom_item_wrap" @click="goToAddress">
 			<div class="row_between bottom_item">
-				<img src="../../../static/img/wode_location_icon.png" class="icon" mode="aspectFill" style="height: 44upx; width: 36upx;">
+				<image src="../../../static/img/wode_location_icon.png" class="icon" mode="aspectFill" style="height: 44upx; width: 36upx;" />
 				<span>我的地址</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
@@ -51,7 +60,7 @@
 		
 		<navigator class=" bottom_item_wrap" @click="callPhone">
 			<div class="row_between bottom_item">
-				<img src="../../../static/img/wode_kefu.png" class="icon" mode="aspectFill" style="height: 40upx; width: 40upx;">
+				<image src="../../../static/img/wode_kefu.png" class="icon" mode="aspectFill" style="height: 40upx; width: 40upx;" />
 				<span>帮助</span>
 				<span style="flex: 1;"></span>
 				<span>400-888-8808</span>
@@ -61,7 +70,7 @@
 		
 		<navigator class=" bottom_item_wrap" @click="goToComplain">
 			<div class="row_between bottom_item uni-navigate-right">
-				<img src="../../../static/img/wode_fuli.png" class="icon" mode="aspectFill" style="height: 38upx; width: 38upx;">
+				<image src="../../../static/img/wode_fuli.png" class="icon" mode="aspectFill" style="height: 38upx; width: 38upx;" />
 				<span>反馈</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
@@ -70,7 +79,7 @@
 		
 		<navigator class=" bottom_item_wrap" @click="goToAboutUs">
 			<div class="row_between bottom_item uni-navigate-right">
-				<img src="../../../static/img/wode_tousu.png" class="icon" mode="aspectFill" style="height: 42upx; width: 42upx;">
+				<image src="../../../static/img/wode_tousu.png" class="icon" mode="aspectFill" style="height: 42upx; width: 42upx;" />
 				<span>关于</span>
 				<span style="flex: 1;"></span>
 				<span class="arraw"></span>
@@ -264,6 +273,19 @@
 				if(userInfo){
 					uni.navigateTo({
 						url: '/pages/address_list/address_list'
+					});
+				}else{
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+				}
+			},
+			
+			goToYouHui: function(){
+				let userInfo = uni.getStorageSync("userInfo");
+				if(userInfo){
+					uni.navigateTo({
+						url: '/pages/vip_list/vip_list'
 					});
 				}else{
 					uni.navigateTo({
