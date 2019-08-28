@@ -4,29 +4,29 @@
 		<div class="head_wrap" @click="goToVip" :style="[{'padding-top': (statusBarHeight)}, {'margin-bottom':(bottomValue)}]">
 			<img :src="userBg" mode="aspectFill" class="vip_img" :style="{'top': (vipTop)}">
 			<div class="head_img_wrap">
-				<img :src="userImage" mode="aspectFill">
+				<image :src="userImage" mode="aspectFill" />
 				<span>{{userName}}</span>
 			</div>
 		</div>
 		
 		<div class="row_between func_wrap">
 			<navigator class="col_center func_item" @click="goToExpressList">
-				<img src="../../../static/img/wode_order.png" mode="widthFix">
+				<image src="../../../static/img/wode_order.png" mode="widthFix" />
 				<span>订单</span>
 			</navigator>
 			
 			<navigator class="col_center func_item" @click="goToExpressOrderList">
-				<img src="../../../static/img/wode_kuaidi.png" mode="widthFix">
+				<image src="../../../static/img/wode_kuaidi.png" mode="widthFix" />
 				<span>快递</span>
 			</navigator>
 			
 			<navigator class="col_center func_item" @click="goToCouponList">
-				<img src="../../../static/img/wode_coupon.png" mode="widthFix">
+				<image src="../../../static/img/wode_coupon.png" mode="widthFix" />
 				<span>卡券</span>
 			</navigator>
 			
 			<navigator class="col_center func_item" @click="goToFavList">
-				<img src="../../../static/img/wode_gif.png" mode="widthFix">
+				<image src="../../../static/img/wode_gif.png" mode="widthFix" />
 				<span>收藏</span>
 			</navigator>
 		</div>
@@ -320,14 +320,14 @@
 	.head_wrap{width: 100%; box-sizing: border-box; background: #107EFF; height: 372upx;position: relative; margin-bottom: 80upx;padding-top: 88upx; }
 	.head_wrap .vip_img{width: 92%; margin: 0upx 4%; border-radius: 24upx;position: absolute; z-index: 1;height: 364upx;}
 	.head_wrap .head_img_wrap{display: flex; flex-direction: column;align-items: center;position: relative;z-index: 2; padding-top: 26upx;color: #fff;font-size: 32upx; top: -88upx;}
-	.head_wrap .head_img_wrap img{width: 44px; height: 44px; border-radius: 50%;border: 5upx solid #FFFFFF;}
+	.head_wrap .head_img_wrap image{width: 44px; height: 44px; border-radius: 50%;border: 5upx solid #FFFFFF;}
 	
 	
 	.my_head_wrap{padding: 0upx 20upx; color: #333333; font-size: 28upx;}
 	.touxiang{width: 72upx;margin-right: 20upx; border-radius: 50%;}
 	.setting_img{width: 40upx;}
 	.func_wrap{flex-flow: wrap; width: 100%; padding: 0upx 30upx; box-sizing: border-box; margin-top: 40upx;}
-	.func_wrap img{width: 60upx;margin-bottom: 10upx;}
+	.func_wrap image{width: 60upx;margin-bottom: 10upx;}
 	.func_item{color: #333333; font-size: 28upx; height: 168upx; flex:1;border: 2upx solid #F3F3F3; margin: 10upx 10upx 0upx;border-radius: 8upx;}
 	.bottom_item_wrap{padding-left: 40upx;width: 100%; box-sizing: border-box;}
 	.bottom_item{color: #333333; font-size: 28upx; height: 116upx; border-bottom: 2upx solid #F3F3F3; padding-right: 30upx;}
