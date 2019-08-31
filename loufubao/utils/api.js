@@ -761,3 +761,10 @@ export function member_list() {
 export function member_cdk(params) {
     return request.post('mall/goods/member_cdk', qs.stringify(params))
 }
+
+/**
+ *  特殊地址获取
+ */
+export function specAddress(type) {
+    return request.get('user/user/specAddress?type='+type)
+}

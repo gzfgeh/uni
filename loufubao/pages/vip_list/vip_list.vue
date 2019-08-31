@@ -10,7 +10,7 @@
 				<div class="content_wrap">
 					<span style="color: #000000; font-size: 30upx;">{{item.desc}}</span>
 					<span>{{item.store_name}}</span>
-					<span>{{item.address}}</span>
+					<span>{{item.address}} 距您 <span style="color: #107EFF; font-weight: bold;">{{item.distance}}</span> </span>
 				</div>
 			</navigator>
 		</block>
@@ -75,16 +75,17 @@
 				}
 			},
 			expandImg(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo.is_member == '1'){
-					this.isExpand = !this.isExpand;
-					this.imgSrc = this.isExpand?this.imgList[0]:this.imgList[1];
-					
-				}else{
-					//不是vip 点击购买
-					this.create_member_order();
-				}
-				
+				// let userInfo = uni.getStorageSync("userInfo");
+				// if(userInfo.is_member == '1'){
+				// 	this.isExpand = !this.isExpand;
+				// 	this.imgSrc = this.isExpand?this.imgList[0]:this.imgList[1];
+				// 	
+				// }else{
+				// 	this.create_member_order();
+				// }
+				uni.navigateTo({
+					url:'/pages/open_vip/open_vip'
+				})
 			}
 		},
 		

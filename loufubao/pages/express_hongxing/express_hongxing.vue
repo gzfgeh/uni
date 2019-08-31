@@ -29,6 +29,18 @@
 						</div>
 					</li>
 					
+					<li  @click="goToExpressInfo(2,4)">
+						<div class="person-express-detail row_center" >
+							<img src="../../static/img/qiye_big_express.png" mode="widthFix">
+							<div class="text">
+								<div>企业大件物流</div>
+								<p>价格实惠、速度快，江浙沪次日达</p>
+							</div>
+							<span style="flex: 1;"></span>
+							<span class="arraw"></span>
+						</div>
+					</li>
+					
 					
 					<li @click="goToExpressList">
 						<div class="person-express-detail row_center" style="border: none;">

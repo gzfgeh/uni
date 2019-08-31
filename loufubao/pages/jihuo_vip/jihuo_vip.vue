@@ -99,6 +99,12 @@
 						});
 					}, 1000);
 					
+				}else{
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
 				}
 			},
 			callPhone: function(){

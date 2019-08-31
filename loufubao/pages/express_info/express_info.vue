@@ -423,7 +423,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,calculateExpressPrice,addressManage,createOrder,
+	import { BASE_IMAGE_URL,calculateExpressPrice,addressManage,createOrder,specAddress,
 		createOrderTongCheng,calculateExpressPriceTongCheng,department,user_express_coupon} from '@/utils/api'
 	import uniPopup from '@/components/popup-pay.vue'
 	import {mapState,mapMutations, mapActions, mapGetters} from 'vuex';
@@ -503,7 +503,8 @@
 				goodsInfo: "",
 				goodsInfoFlag: false,
 				coupon_price: 0,
-				c_id: 0
+				c_id: 0,
+				specAddr: {}
 			}
 		},
 		computed:{
@@ -513,6 +514,18 @@
 		},
 		
 		methods: {
+			async specAddress(){
+				let res = await specAddress(1);
+				if(res.status == 1){
+					this.specAddr = res.data;
+					this.start_name = res.data.name;
+					this.start_phone = res.data.fixedphone;
+					this.start_province = res.data.province;
+					this.start_city = res.data.city;
+					this.start_area = res.data.area;
+					this.sendAddressID = res.data.addressID;
+				}
+			},
 			async user_express_coupon(){
 				let res = await user_express_coupon();
 				if(res.status == 1){
@@ -699,10 +712,15 @@
 					//国内
 					if(index == 0){
 						//始发地
-						this.addressType = 0;
-						uni.navigateTo({
-							url: '/pages/address_list/address_list?typeIndex=0'
-						});
+						if(this.isHongxing == 1){
+							// 红星美凯龙
+						}else{
+							this.addressType = 0;
+							uni.navigateTo({
+								url: '/pages/address_list/address_list?typeIndex=0'
+							});
+						}
+						
 					}else if(index == 1){
 						//收件地址
 						this.addressType = 1;
@@ -1190,6 +1208,7 @@
 			this.isHongxing = options.hongxing;
 			if(this.isHongxing == 1){
 				this.getDepartment();
+				this.specAddress();
 			}
 			//this.popupParam="bottom";
 			
