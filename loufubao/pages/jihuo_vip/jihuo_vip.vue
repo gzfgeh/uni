@@ -14,7 +14,7 @@
 				</view>
 				<view class="text">激活码</view>
 				<view class="uni-form-item uni-column input_wrap">
-					<input class="uni-input" placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" style="border-radius: 40upx;"/>
+					<input class="uni-input" placeholder="请输入XXXX-XXXX-XXXX-XXXX格式激活码" style="border-radius: 40upx;" v-model="cdk"/>
 				</view>
 				
 				<!-- <input type="text" class="input_wrap uni-input" placeholder-class="phclass"
