@@ -16,7 +16,7 @@
 				</block>
 			</view>
 			
-			<div class="row_between home_head_wrap" :style="{'padding-top': (isAPP?'70upx':'20upx')}">
+			<div class="row_between home_head_wrap" :style="{['padding-top': (isAPP?'70upx':'20upx'), 'background': (headBg?'#107EFF')]}">
 				<div class="row_center home_head_left" @tap="selectBuild()">
 					<span>{{buildingName}}</span>
 					<img src="../../../static/img/lou_select.png" mode="widthFix">
@@ -114,11 +114,17 @@ export default {
 			typeIndex: 0,
 			list: [],
 			loadingType: 0,
-			page: 1
+			page: 1,
+			headBg: false
 		};
 	},
 	onPageScroll(e) {
-		console.log(e.scrollTop);
+		// console.log(e.scrollTop);
+		if(e.scrollTop > 100){
+			this.headBg = true;
+		}else{
+			this.headBg = false;
+		}
 	},
 	onLoad() {
 		// #ifdef APP-PLUS
