@@ -135,14 +135,14 @@
             "GZF-YunPay" : {
                 "__plugin_info__" : {
                     "name" : "YunPay",
-                    "description" : "uni-app调用云闪付APP",
+                    "description" : "uni-app唤起云闪付APP",
                     "platforms" : "Android,iOS",
-                    "url" : "",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : false,
-                    "bought" : -1,
-                    "pid" : "",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=650",
+                    "android_package_name" : "com.baobaoloufu.android",
+                    "ios_bundle_id" : "com.baobaoloufu",
+                    "isCloud" : true,
+                    "bought" : 1,
+                    "pid" : "650",
                     "parameters" : {}
                 }
             }
