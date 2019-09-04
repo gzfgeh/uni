@@ -16,7 +16,7 @@
 				</block>
 			</view>
 			
-			<div class="row_between home_head_wrap" :style="{['padding-top': (isAPP?'70upx':'20upx'), 'background': (headBg?'#107EFF')]}">
+			<div class="row_between home_head_wrap" :style="{'padding-top': (isAPP?'70upx':'20upx'), 'background': (headBg?'#107EFF':''), 'opacity': (opacityValue)}">
 				<div class="row_center home_head_left" @tap="selectBuild()">
 					<span>{{buildingName}}</span>
 					<img src="../../../static/img/lou_select.png" mode="widthFix">
@@ -115,15 +115,18 @@ export default {
 			list: [],
 			loadingType: 0,
 			page: 1,
-			headBg: false
+			headBg: false,
+			opacityValue: 1
 		};
 	},
 	onPageScroll(e) {
 		// console.log(e.scrollTop);
 		if(e.scrollTop > 100){
 			this.headBg = true;
+			this.opacityValue = 1
 		}else{
 			this.headBg = false;
+			// this.opacityValue = parseFloat(e.scrollTop/100).toFixed(2);
 		}
 	},
 	onLoad() {
@@ -257,10 +260,10 @@ export default {
 .content {height: 400upx;position: relative;}
 .head_img{width: 100%;height: 400upx!important;}
 
-.dots{display: flex;flex-direction: row;justify-content: center;align-items: center;position: absolute;bottom: 20upx;height: 20upx;width: 100%;z-index: 100;}
+.dots{display: flex;flex-direction: row;justify-content: center;align-items: center;position: absolute;bottom: 20upx;height: 20upx;width: 100%;z-index: 1;}
 .dot_normal{width: 10upx;height: 10upx;border-radius: 50%;background-color: #E0E5ED;margin: 0upx 6upx;position: relative;z-index: 1;}
 .active{width: 24upx;height: 10upx;border-radius: 40%;background-color: #107EFF;z-index: 1;}
-.home_head_wrap{position: fixed;background: -webkit-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)); width: 100%; color: #FFFFFF; font-size: 24upx; padding: 0upx 20upx 20px; box-sizing: border-box;top:0upx;z-index: 10;}
+.home_head_wrap{position: fixed;background: -webkit-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)); width: 100%; color: #FFFFFF; font-size: 24upx; padding: 0upx 20upx 20upx; box-sizing: border-box;top:0upx;z-index: 10;}
 .home_head_left span{font-size: 24upx; overflow: hidden;width: 130upx;white-space: nowrap;text-overflow:ellipsis;}
 .home_head_left img{width: 24upx; height: 24upx; margin-left: 5upx;}
 .msg_wrap{position: relative;}
