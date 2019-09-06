@@ -65,7 +65,7 @@
 						<div class="btn_wrap">
 							<!-- <span class="cancle" v-if="item.orderStatus == 0" @click="actionOrder(2, index)">删除订单</span> -->
 							<span class="cancle" v-if="item.orderStatus== 1 || item.orderStatus== 11" @click="actionOrder(1, index)">取消订单</span>
-							<span class="pay" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseInt(item.price) > 0" @tap="moneyPay(item.orderSN,item.orderID,item.price)">支付</span>
+							<span class="pay" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) > 0" @tap="moneyPay(item.orderSN,item.orderID,item.price)">支付</span>
 							<span class="pay" v-if="item.orderStatus==8" @click="tuikuan(index)">退款</span>
 						</div>
 					</div>

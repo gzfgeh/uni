@@ -57,10 +57,10 @@
 			</view>  
 		</view>
 	
-		<div v-if="detail.goodsInfo.length == 0" class="uni-center-item no_data_wrap">
+		<!-- <div v-if="detail.goodsInfo.length == 0" class="uni-center-item no_data_wrap">
 			<image src="../../static/img/goods_list_empty.png" mode="aspectFill"></image>
 			<span>没有更多商品，换个词试试～</span>
-		</div>
+		</div> -->
 		
 	</view>
 </template> 

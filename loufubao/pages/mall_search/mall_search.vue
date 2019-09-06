@@ -127,22 +127,22 @@
 		},
 		methods: {
 			goToDetail(index){
-				// if(!this.list[index].price){
-				// 	//店铺
-				// 	uni.navigateTo({
-				// 		url: '../mall_shop/mall_shop?storeID='+this.list[index].id
-				// 	})
-				// }else{
-				// 	// 商品
-				// 	uni.navigateTo({
-				// 		url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
-				// 	})
-				// }
+				if(!this.list[index].price){
+					//店铺
+					uni.navigateTo({
+						url: '../mall_shop/mall_shop?storeID='+this.list[index].id
+					})
+				}else{
+					// 商品
+					uni.navigateTo({
+						url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
+					})
+				}
 				
 				// 商品
-				uni.navigateTo({
-					url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
-				})
+				// uni.navigateTo({
+				// 	url: '../mall_detail/mall_detail?goodsID='+this.list[index].id
+				// })
 				
 			},
 			init() {

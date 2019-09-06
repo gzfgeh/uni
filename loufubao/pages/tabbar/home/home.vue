@@ -444,7 +444,7 @@
 					return;
 				}
 				uni.navigateTo({
-					url: '/pages/wai_mai_main/wai_mai_main'
+					url: '/pages/wai_mai_address/wai_mai_address'
 				});
 			}else if(index == 2){
 				uni.switchTab({  

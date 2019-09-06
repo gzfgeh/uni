@@ -621,26 +621,26 @@
 							});
 						}else if(payWayValue == 3){
 							//商城
-							uni.navigateBack({
-								delta:1
-							});
+							// uni.navigateBack({
+							// 	delta:1
+							// });
 							uni.redirectTo({
 								url: '/pages/mall_order/mall_order'
 							});
 						}else if(payWayValue == 4){
 							//商城 小商品
-							uni.navigateBack({
-								delta:2
-							});
+							// uni.navigateBack({
+							// 	delta:2
+							// });
 							uni.redirectTo({
 								url: '/pages/mall_goods_list/mall_goods_list'
 							});
 						}else if(payWayValue == 5){
 							//vip  订单
-							uni.navigateBack({
-								delta:1
-							});
-							uni.redirectTo({
+							// uni.navigateBack({
+							// 	delta:1
+							// });
+							uni.switchTab({
 								url: '/pages/tabbar/my/my'
 							});
 						}
@@ -701,26 +701,26 @@
 													});
 												}else if(payWayValue == 3){
 													//商城
-													uni.navigateBack({
-														delta:1
-													});
+													// uni.navigateBack({
+													// 	delta:1
+													// });
 													uni.redirectTo({
 														url: '/pages/mall_order/mall_order'
 													});
 												}else if(payWayValue == 4){
 													//商城 小商品
-													uni.navigateBack({
-														delta:2
-													});
+													// uni.navigateBack({
+													// 	delta:2
+													// });
 													uni.redirectTo({
 														url: '/pages/mall_goods_list/mall_goods_list'
 													});
 												}else if(payWayValue == 5){
 													//vip  订单
-													uni.navigateBack({
-														delta:1
-													});
-													uni.redirectTo({
+													// uni.navigateBack({
+													// 	delta:1
+													// });
+													uni.switchTab({
 														url: '/pages/tabbar/my/my'
 													});
 												}
@@ -751,26 +751,26 @@
 												});
 											}else if(payWayValue == 3){
 												//商城
-												uni.navigateBack({
-													delta:1
-												});
+												// uni.navigateBack({
+												// 	delta:1
+												// });
 												uni.redirectTo({
 													url: '/pages/mall_order/mall_order'
 												});
 											}else if(payWayValue == 4){
 												//商城 小商品
-												uni.navigateBack({
-													delta:2
-												});
+												// uni.navigateBack({
+												// 	delta:2
+												// });
 												uni.redirectTo({
 													url: '/pages/mall_goods_list/mall_goods_list'
 												});
 											}else if(payWayValue == 5){
 												//vip  订单
-												uni.navigateBack({
-													delta:1
-												});
-												uni.redirectTo({
+												// uni.navigateBack({
+												// 	delta:1
+												// });
+												uni.switchTab({
 													url: '/pages/tabbar/my/my'
 												});
 											}
@@ -829,17 +829,17 @@
 					});
 				}else if(payWayValue == 3){
 					//商城
-					uni.navigateBack({
-						delta:1
-					});
+					// uni.navigateBack({
+					// 	delta:1
+					// });
 					uni.redirectTo({
 						url: '/pages/mall_order/mall_order'
 					});
 				}else if(payWayValue == 4){
 					//商城 小商品
-					uni.navigateBack({
-						delta:2
-					});
+					// uni.navigateBack({
+					// 	delta:2
+					// });
 					uni.redirectTo({
 						url: '/pages/mall_goods_list/mall_goods_list'
 					});
@@ -848,9 +848,9 @@
 					// uni.navigateBack({
 					// 	delta:1
 					// });
-					// uni.redirectTo({
-					// 	url: '/pages/tabbar/my/my'
-					// });
+					uni.switchTab({
+						url: '/pages/tabbar/my/my'
+					});
 				}
 				
 			},

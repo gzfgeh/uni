@@ -768,3 +768,10 @@ export function member_cdk(params) {
 export function specAddress(type) {
     return request.get('user/user/specAddress?type='+type)
 }
+
+/**
+ *  取餐地址
+ */
+export function takeawayForBuilding(buildingID) {
+    return request.get('User/User/takeawayForBuilding?buildingID='+buildingID)
+}
