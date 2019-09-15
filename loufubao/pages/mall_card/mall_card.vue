@@ -5,7 +5,7 @@
 				<radio  :checked="item.checked" />
 				<div class="item_wrap" >
 					<div class="item">
-						<img  :src="item.goods_list_img" mode="aspectFill" class="goods_item">
+						<img  :src="item.goods_list_img" mode="aspectFill" class="goods_item" @click.stop="goToGoodsDetail(item)">
 						<div class="content_item">
 							<span>{{item.name}}  {{item.spec_name}}</span>
 							<div class="row_between">
@@ -263,6 +263,12 @@
 			goToDetail(index){
 				this.list[index].checked = !this.list[index].checked;
 				this.calcStatus();
+			},
+			goToGoodsDetail(item){
+				console.log(JSON.stringify(item));
+				uni.navigateTo({
+					url: '/pages/mall_detail/mall_detail?goodsID='+item.goods_id
+				})
 			},
 			calcStatus: function(){
 			  let that = this;

@@ -84,7 +84,7 @@
 					<button type="button" class="yellow-bg xiadan " v-if="(item.order_status == 1) " @click="quxiao()">取消订单</button>
 					<button type="button" class="blue-bg xiadan" v-if="item.order_status == 1&&parseFloat(item.price) != 0" @click="moneyPay(item.price)"> 立即支付</button>
 					
-					<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'3'" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
+					<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'-1'" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
 					
 						
 				</div>

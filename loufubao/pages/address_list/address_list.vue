@@ -20,7 +20,7 @@
 						<span class="sex">{{item.name[0]}}</span>
 						<div class="content_wrap" @click="selectItem(index)">
 							<span class="name">{{item.name}} 
-								<span class="tel">{{item.phone}}</span>
+								<span class="tel">{{item.phone?item.phone:item.fixedphone}}</span>
 							</span>
 							<span class="address">{{item.province}}{{item.city}}{{item.area}}{{item.detail}}</span>
 						</div>

@@ -83,7 +83,7 @@
 					<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 1 && (parseInt(item.isCompany) == 0)" @click="moneyPay(item.orderSN,item.orderID,item.price)"> 立即支付</button>
 					<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 2 && (parseInt(item.isCompany) == 0)" @click="tuikuan()"> 退款</button>
 					
-					<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'2'" :orderSN="orderSN" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
+					<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'-1'" :orderSN="orderSN" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
 				</div>
 			
 

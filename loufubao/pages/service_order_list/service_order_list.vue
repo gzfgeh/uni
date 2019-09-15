@@ -63,7 +63,7 @@
 			<uni-load-more :loadingType="loadingType" :contentText="loadingText"  ></uni-load-more>
 		</view>
 		
-		<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'2'" :orderSN="orderSN" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
+		<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'-1'" :orderSN="orderSN" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
 		
 		
 	</view>

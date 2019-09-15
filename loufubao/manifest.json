@@ -1,6 +1,6 @@
 {
     "name" : "楼服宝",
-    "appid" : "__UNI__D6007C2",
+    "appid" : "__UNI__854E0D7",
     "description" : "",
     "versionName" : "1.1.7",
     "versionCode" : 117,
@@ -138,8 +138,8 @@
                     "description" : "uni-app唤起云闪付APP",
                     "platforms" : "Android,iOS",
                     "url" : "https://ext.dcloud.net.cn/plugin?id=650",
-                    "android_package_name" : "com.baobaoloufu.android",
-                    "ios_bundle_id" : "com.baobaoloufu",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
                     "isCloud" : true,
                     "bought" : 1,
                     "pid" : "650",
