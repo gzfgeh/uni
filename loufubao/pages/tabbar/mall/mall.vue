@@ -28,21 +28,13 @@
 			</div>
 		</view>
 		
-		<div class="row mall_wrap" v-if="false">
+		<div class="row mall_wrap" >
 			<img src="../../../static/img/mall_enter.png" mode="aspectFill" class="mall flex_one" @click="goToMallType">
 			<img src="../../../static/img/card_enter.png" mode="aspectFill" class="flex_one" @click="goToCard">
 		</div>
 		
-		<!-- <navigator class="row mall_wrap" url="../../mall_type/mall_type">
-			<div class="row flex_one">
-				<img src="../../../static/img/icon_tj_active.png" mode="widthFix">
-				<span>商城</span>
-			</div>
-			
-			<span class="arraw"></span>
-		</navigator> -->
 		
-		<div class="row_around nav_wrap" v-if="false">
+		<div class="row_around nav_wrap" >
 			<div class="col_center nav_item" v-for="(item, index) in typeList" :key="index"
 				@click="changeType(index)">
 				<img :src="typeIndex == index? item.active_icon : item.icon" mode="aspectFill">
@@ -51,6 +43,27 @@
 		</div>
 		
 		<view class="index">  
+					<view class="left">  
+						<block v-for="(item, index) in list" :key="index" class="itemlist">  
+							<navigator class="card" @click="goToShop(item)" v-if="index%2==0">  
+								<image class="card-img" :src="item.list_img" mode="widthFix"></image>  
+								<text class="card-title">{{item.desc}}</text>  
+							</navigator>  
+						</block>  
+					</view>  
+		
+					<view class="right">  
+						<block v-for="(item, index) in list" :key="index" class="itemlist">  
+							<navigator class="card" @click="goToShop(item)" v-if="index%2==1">  
+								<image class="card-img" :src="item.list_img" mode="widthFix"></image>  
+								<text class="card-title">{{item.desc}}</text>  
+							</navigator>  
+						</block>  
+					</view>  
+				</view>
+				
+		
+		<view class="index" v-if="false">  
 			<view class="left">  
 				<block v-for="(item, index) in list" :key="index" class="itemlist">  
 					<navigator class="card" @click="goToShop(item)" v-if="index%2==0">  
@@ -134,13 +147,13 @@ export default {
 				this.isAPP = true;
 			// #endif
 		
-		// this.getStoreTag();
-		this.getList();
+		this.getStoreTag();
+		// this.getList();
 	},
 	onReachBottom() {
-		this.loadingType = 1;
-		this.page++;
-		this.getList();
+		// this.loadingType = 1;
+		// this.page++;
+		// this.getList();
 	},
 	onShow() {
 		this.getBanners();
@@ -155,20 +168,20 @@ export default {
 			if(!this.isLogin()){
 				return;
 			};
-			// if(item.store_show_type == 2){
-			// 	// 图文店铺
-			// 	uni.navigateTo({
-			// 		url: '/pages/mall_shop_text/mall_shop_text?storeID='+item.id
-			// 	});
-			// }else{
-			// 	uni.navigateTo({
-			// 		url: '/pages/mall_shop/mall_shop?storeID='+item.id
-			// 	});
-			// }
+			if(item.store_show_type == 2){
+				// 图文店铺
+				uni.navigateTo({
+					url: '/pages/mall_shop_text/mall_shop_text?storeID='+item.id
+				});
+			}else{
+				uni.navigateTo({
+					url: '/pages/mall_shop/mall_shop?storeID='+item.id
+				});
+			}
 			
-			uni.navigateTo({
-				url: '/pages/mall_detail/mall_detail?goodsID='+item.id
-			});
+			// uni.navigateTo({
+			// 	url: '/pages/mall_detail/mall_detail?goodsID='+item.id
+			// });
 			
 		},
 		goToSearch(){
