@@ -38,7 +38,7 @@
 			</view>
 		</view>
 		
-		<scroll-view class="uni-swiper-tab" scroll-x >
+		<scroll-view class="uni-swiper-tab" scroll-x  >
 			<view v-for="(item,index) in typeList" :key="index" class="swiper-tab-list"
 					@click="changeType(index)" :class="{'active': (index == curIndex)}">
 				<div class="title">{{item.text}}</div>
@@ -55,7 +55,7 @@
 		<div class="info_pay">付款：用户确认购买并付款后计入iTunes账户；</div>
 		<div class="auto_pay_info">取消续订：如需取消续订，请在当前订阅周期到期24小时以前，手动在iTunes/Apple ID设置管理中关闭自动续费功能，到期前24小时内取消，将会收取订阅费用；</div>
 		
-		<button type="primary" class="btn" @tap="create_member_order">立即续费</button>
+		<button type="primary" class="btn" @tap="create_member_order" >立即续费</button>
 		<button type="primary" class="btn" @tap="goToVip">激活码激活</button>
 		
 		<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'5'" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />

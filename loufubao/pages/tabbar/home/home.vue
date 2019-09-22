@@ -89,7 +89,7 @@
 				
 				<image src="../../../static/img/home_center_img.png" mode="widthFix" class="center_wrap" @click="goToWebView" />
 				
-				<div class="recommand_one">
+				<div class="recommand_one" v-if="false">
 					<div class="item">
 						<div class="row_between head">
 							<span class="title">品质生活</span>
@@ -164,7 +164,7 @@
 				</div>
 			
 			
-				<div class="recommand_two" >
+				<div class="recommand_two" v-if="false">
 					<div class="item">
 						<div class="row_between head">
 							<span class="title">健康餐饮</span>

@@ -1,95 +1,102 @@
 <template>
 	<view >
-		<div class="fuli-top row_center" :style="{'padding-top': (isAPP?'30px':'0upx')}">
-			<div class="left-col louyu-xuanze">
-				<div  id="louyuText" class="louyu" @tap="selectBuild()">
-					<span class="lou_text">{{buildingName}}</span>
+		<view class="row_center" style="width: 100vw; height: 100vh;">
+			敬请期待
+		</view>
+		<view v-if="false">
+			<div class="fuli-top row_center" :style="{'padding-top': (isAPP?'30px':'0upx')}">
+				<div class="left-col louyu-xuanze">
+					<div  id="louyuText" class="louyu" @tap="selectBuild()">
+						<span class="lou_text">{{buildingName}}</span>
+					</div>
+					<img src="../../../static/img/fuli_arraw.jpg" mode="widthFix"/>
 				</div>
-				<img src="../../../static/img/fuli_arraw.jpg" mode="widthFix"/>
+				
+				<div class="row_center head_wrap">
+					<div class="col" @click="changeType(0)" style="margin-left: 50upx;">
+						<span>会员福利</span>
+						<span :class="{'active': (curTypeIndex == 0)}"></span>
+					</div>
+					<div class="col" @click="changeType(1)" style="margin-left: 80upx;">
+						<span>线上特卖会</span>
+						<span :class="{'active': (curTypeIndex == 1)}"></span>
+					</div>
+				</div>
+				<div class="right-col" id="sosuo"  @click="goToOrderList">
+					<img src="../../../static/img/kuaidi_search.png" mode="widthFix"/>
+					<div>搜索</div>
+				</div>
 			</div>
 			
-			<div class="row_center head_wrap">
-				<div class="col" @click="changeType(0)" style="margin-left: 50upx;">
-					<span>会员福利</span>
-					<span :class="{'active': (curTypeIndex == 0)}"></span>
-				</div>
-				<div class="col" @click="changeType(1)" style="margin-left: 80upx;">
-					<span>线上特卖会</span>
-					<span :class="{'active': (curTypeIndex == 1)}"></span>
-				</div>
-			</div>
-			<div class="right-col" id="sosuo"  @click="goToOrderList">
-				<img src="../../../static/img/kuaidi_search.png" mode="widthFix"/>
-				<div>搜索</div>
-			</div>
-		</div>
-		
-		<view class="content" v-if="curTypeIndex == 0" :style="{'margin-top': (isAPP?'180upx':'120upx')}">
-			<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
-						:interval="5000" :duration="1000" class="head_img">            
-					<swiper-item v-for="(item, index) in imageList" :key="index" class="head_img" @tap="goToH5(index)">  
-						<image :src="item.bannerImageUrl" mode="widthFix" class="head_img"  />           
-					</swiper-item>        
-			</swiper> 
-			
-			<view class="dots">
-				<block v-for="(item, index) in itemList" :key="index">
-					<view class="dot_normal" :class="{'active': (index==curIndex)}"></view>
-				</block>
+			<view class="content" v-if="curTypeIndex == 0" :style="{'margin-top': (isAPP?'180upx':'120upx')}">
+				<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
+							:interval="5000" :duration="1000" class="head_img">            
+						<swiper-item v-for="(item, index) in imageList" :key="index" class="head_img" @tap="goToH5(index)">  
+							<image :src="item.bannerImageUrl" mode="widthFix" class="head_img"  />           
+						</swiper-item>        
+				</swiper> 
+				
+				<view class="dots">
+					<block v-for="(item, index) in itemList" :key="index">
+						<view class="dot_normal" :class="{'active': (index==curIndex)}"></view>
+					</block>
+				</view>
 			</view>
+			
+			<div class="row_center" style="box-shadow:0px 4px 12px 0px rgba(126,125,125,0.16);" v-if="curTypeIndex == 0">
+				<div v-for="(item, index) in timeList" :key="index" class="col_center time_item" @click="changeTimeType(index)">
+					<img src="../../../static/img/fuli_bg.png" mode="aspectFill" v-if="index == curTimeIndex">
+					<span class="time" :class="{'active': (index==curTimeIndex)}">{{item.start}}~{{item.end}}</span>
+					<!-- <span class="text" :class="{'active': (index==curTimeIndex)}">活动开始</span> -->
+				</div>
+				
+			</div>
+			
+			<div :style="{'margin-top': (isAPP?(curTypeIndex==0?'0upx':'200upx!important'):(curTypeIndex==0?'0upx':'140upx'))}">
+				<navigator v-for="(item,index) in couponList" :key="index" @click="goToQuestion(item)"
+					class="fuli_wrap" v-if="curTypeIndex == 0" :class="{'fuli_active':(item.is_used == 0)}">
+					<img class="item_bg" src="../../../static/img/fuli_item_bg.jpg" />
+					<div class="row content_wrap">
+						<img  class="coupon_image" :src="item.img" />
+						<div class="content_item" >
+							<span class="name">{{item.title}}</span>
+							<div class="address" v-if="false">
+								<img src="../../../static/img/weizhi.jpg" mode="widthFix" class="weizhi">
+								<span>上海歌斐中心</span>
+							</div>
+							<span class="flex_one"></span>
+							<span class="time ">{{item.start_time}} 至 {{item.end_time}}</span>
+						</div>
+					</div>
+					<div class="lingqu" >
+						<div>立即</div>
+						<div>领取</div>
+					</div>
+				</navigator>
+				
+				<div v-if="couponList.length == 0" class="uni-center-item no_data_wrap">
+					<span>暂无信息</span>
+				</div>
+				
+				<navigator v-for="(item,index) in teMaiList" :key="index" :url="'../../mall_shop/mall_shop?storeID='+item.id"
+				class="temai_wrap" v-if="curTypeIndex == 1">
+					<img class="item_bg" :src="item.special_img" mode="aspectFill"/>
+					<div class="row content_wrap">
+						<div class="price_wrap flex_one">
+							<div class="name_wrap row">
+								<img :src="item.logo" mode="aspectFill">
+								<span class="name">{{item.store_name}}</span>
+							</div>
+							
+							<span class="">{{item.desc}}</span>
+						</div>
+						<span class="btn">立即抢购</span>
+					</div>
+				</navigator>
+			</div>
+			
 		</view>
 		
-		<div class="row_center" style="box-shadow:0px 4px 12px 0px rgba(126,125,125,0.16);" v-if="curTypeIndex == 0">
-			<div v-for="(item, index) in timeList" :key="index" class="col_center time_item" @click="changeTimeType(index)">
-				<img src="../../../static/img/fuli_bg.png" mode="aspectFill" v-if="index == curTimeIndex">
-				<span class="time" :class="{'active': (index==curTimeIndex)}">{{item.start}}~{{item.end}}</span>
-				<!-- <span class="text" :class="{'active': (index==curTimeIndex)}">活动开始</span> -->
-			</div>
-			
-		</div>
-		
-		<div :style="{'margin-top': (isAPP?(curTypeIndex==0?'0upx':'200upx!important'):(curTypeIndex==0?'0upx':'140upx'))}">
-			<navigator v-for="(item,index) in couponList" :key="index" @click="goToQuestion(item)"
-				class="fuli_wrap" v-if="curTypeIndex == 0" :class="{'fuli_active':(item.is_used == 0)}">
-				<img class="item_bg" src="../../../static/img/fuli_item_bg.jpg" />
-				<div class="row content_wrap">
-					<img  class="coupon_image" :src="item.img" />
-					<div class="content_item" >
-						<span class="name">{{item.title}}</span>
-						<div class="address" v-if="false">
-							<img src="../../../static/img/weizhi.jpg" mode="widthFix" class="weizhi">
-							<span>上海歌斐中心</span>
-						</div>
-						<span class="flex_one"></span>
-						<span class="time ">{{item.start_time}} 至 {{item.end_time}}</span>
-					</div>
-				</div>
-				<div class="lingqu" >
-					<div>立即</div>
-					<div>领取</div>
-				</div>
-			</navigator>
-			
-			<div v-if="couponList.length == 0" class="uni-center-item no_data_wrap">
-				<span>暂无信息</span>
-			</div>
-			
-			<navigator v-for="(item,index) in teMaiList" :key="index" :url="'../../mall_shop/mall_shop?storeID='+item.id"
-			class="temai_wrap" v-if="curTypeIndex == 1">
-				<img class="item_bg" :src="item.special_img" mode="aspectFill"/>
-				<div class="row content_wrap">
-					<div class="price_wrap flex_one">
-						<div class="name_wrap row">
-							<img :src="item.logo" mode="aspectFill">
-							<span class="name">{{item.store_name}}</span>
-						</div>
-						
-						<span class="">{{item.desc}}</span>
-					</div>
-					<span class="btn">立即抢购</span>
-				</div>
-			</navigator>
-		</div>
 		
 	</view>
 </template>
