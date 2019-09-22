@@ -21,9 +21,9 @@
 							<p>{{item.sendProvince}}{{item.sendCity}}{{item.sendArea}}{{item.sendDetail}}</p>
 						</div>
 						
-						<div class="detail-col" v-if="item.qcOrderType==3">
+						<div class="detail-col" v-if="item.qcOrderType==3 && item.sendorder_address_data[0]">
 							<img src="../../static/img/express_shou_icon.png" class="icon-col">
-							<div class="name" id="from_name">{{item.sendorder_address_data[0].receiveName}}</div>
+							<div class="name" v-if="item.sendorder_address_data[0]">{{item.sendorder_address_data[0].receiveName}}</div>
 							<p id="from_address">
 							{{item.sendorder_address_data[0].receiveProvince}}
 							{{item.sendorder_address_data[0].receiveCity}}
@@ -46,7 +46,8 @@
 						<span class="first row_between" >
 							<!-- <span>{{orderStatusList[parseInt(item.orderStatus)+1]}}</span> -->
 							<span>下单时间：{{item.createTime}}</span>
-							<span class="price" v-if="parseFloat(item.price) > 0&&item.isDaoFu==0">价格: {{item.price}}</span>
+							<span class="price" v-if="parseFloat(item.price) > 0&&item.isDaoFu==0 && !item.buchajiaflag">价格: {{item.price}}</span>
+							<span class="price" v-if="parseFloat(item.price) > 0&&item.isDaoFu==0 && item.buchajiaflag">补差价价格: {{item.buchajiaflag}}</span>
 							<span class="price" v-if="item.orderType == 1&&parseFloat(item.price) == 0&&item.isDaoFu==0">联系工作人员改价</span>
 							
 							<span class="price" v-if="item.isDaoFu==1">到付件无需支付</span>
@@ -65,7 +66,7 @@
 						<div class="btn_wrap">
 							<!-- <span class="cancle" v-if="item.orderStatus == 0" @click="actionOrder(2, index)">删除订单</span> -->
 							<span class="cancle" v-if="item.orderStatus== 1 || item.orderStatus== 11" @click="actionOrder(1, index)">取消订单</span>
-							<span class="pay" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) > 0" @tap="moneyPay(item.orderSN,item.orderID,item.price)">支付</span>
+							<span class="pay" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) > 0" @tap="moneyPay(item.orderSN,item.orderID,item.buchajiaflag?item.buchajiaflag:item.price)">支付</span>
 							<span class="pay" v-if="item.orderStatus==8" @click="tuikuan(index)">退款</span>
 						</div>
 					</div>

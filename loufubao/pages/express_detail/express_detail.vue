@@ -63,8 +63,8 @@
 								<span class="first">
 									<span class="yuandian"></span>
 									<span class="status_text">{{orderStatusList[parseInt(item.orderStatus)+1]}}</span>
-									
-									<span class="price" v-if="parseInt(item.price)&&item.isDaoFu==0">价格: {{item.price}}</span>
+									<span class="price" v-if="parseInt(item.price)&&item.isDaoFu==0 && !item.buchajiaflag">价格: {{item.price}}</span>
+									<span class="price" v-if="parseInt(item.price)&&item.isDaoFu==0 && item.buchajiaflag">补差价价格: {{item.buchajiaflag}}</span>
 									
 									<span class="price" v-if="item.isDaoFu==1">到付件无需支付</span>
 									
@@ -123,7 +123,7 @@
 						
 						<button type="button" class="blue-bg xiadan " v-if="item.orderStatus == 8" @click="tuikuan()">退款</button>
 						<button type="button" class="yellow-bg xiadan " v-if="(item.orderStatus == 1) " @click="quxiao()">取消订单</button>
-						<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) != 0" @click="moneyPay(item.orderSN,item.orderID,item.price)"> 立即支付</button>
+						<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) != 0" @click="moneyPay(item.orderSN,item.orderID,item.buchajiaflag?item.buchajiaflag:item.price)"> 立即支付</button>
 						
 						<uni-popup :show="popupParam === 'bottom'" position="bottom" mode="fixed" :payWay="'-1'" :orderSN="orderSN" :orderID="orderID" :money="allMoney" @hidePopup="payPopup('')" />
 						

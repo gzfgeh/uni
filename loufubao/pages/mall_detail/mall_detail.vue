@@ -84,9 +84,9 @@
 		
 		<div class="modal-mask" v-if="showModal" @tap="closeModal"></div>
 		<div class="modal-dialog" v-if="showModal">
-			<div style="height: 80upx; background-color: rgba(0,0,0,0);"></div>
+			<div style="height: 80upx; background-color: rgba(0,0,0,0); position: relative;z-index: 1000;"></div>
 			<img :src="item.goods_list_img" mode="aspectFill" class="goods_img"/>
-			<div style="background: #FFFFFF;padding: 20upx;">
+			<div style="background: #FFFFFF;padding: 20upx;position: relative;z-index: 1000;">
 				<div class="row_between item_wrap">
 					<div class="price_wrap">
 						<span class="price">售价:￥{{item.price}}</span>
@@ -429,12 +429,12 @@
 .btn_wrap .buy{background: #107EFF;height: 100upx; color: #FFFFFF; text-align: center; line-height: 100upx;}
 
 
-.modal-mask {width: 100%;height: 80%;position: fixed;top: 0;left: 0;background: #000;opacity: 0.5;overflow: hidden;z-index: 99;color: #fff;}
-.modal-dialog {width: 100%;overflow: hidden;position: fixed;bottom: 100upx;left: 0;z-index: 100;box-sizing: border-box;}
+.modal-mask {width: 100%;height: 90%;position: fixed;top: 0;left: 0;background: #000;opacity: 0.5;overflow: hidden;z-index: 99;color: #fff;}
+.modal-dialog {width: 100%;overflow: hidden;position: fixed;bottom: 100upx;left: 0;z-index: 1000;box-sizing: border-box;}
 
 .modal-dialog .goods_img{width: 160upx; height: 160upx; position: absolute; top: 0upx; left: 30upx; z-index: 999999;border: 1upx solid #E3E3E3; padding: 5upx;background: #FFF;box-shadow:0px 6upx 54upx 0px rgba(221,221,221,0.41);}
 .modal-dialog .close{width: 40upx; height: 40upx; padding: 20upx; position: absolute; top: 80upx;right: 10upx;}
-.modal-dialog .item_wrap{min-height: 100upx;}
+.modal-dialog .item_wrap{min-height: 100upx; position: relative;z-index: 100;}
 .price_wrap{display: flex;flex-direction: column;padding-left: 200upx; font-size: 28upx; color:#666666; }
 .price_wrap .price{color: #FF4544; font-size: 32upx;}
 .actionWrap{display: flex;flex-direction: row;justify-content: space-around;align-items: center;padding: 10upx 0upx;min-width: 200upx;}
