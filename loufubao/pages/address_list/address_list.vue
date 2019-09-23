@@ -23,6 +23,7 @@
 								<span class="tel">{{item.phone?item.phone:item.fixedphone}}</span>
 							</span>
 							<span class="address">{{item.province}}{{item.city}}{{item.area}}{{item.detail}}</span>
+							<span v-if="item.companyName" >{{item.companyName}}</span>
 						</div>
 						<img  src="../../static/img/edit_address_icon.png" mode="widthFix" @click="goToChange(index)">
 					</div>
@@ -256,14 +257,17 @@
 		.wrap{
 			padding-right: 30upx;
 			border-bottom: 2upx solid #E3E3E3;
-			height: 200upx;
 			width: 100%;
 			box-sizing: border-box;
+			padding-top: 10upx;
+			padding-bottom: 10upx;
 		}
 		
 		.wrap .sex{
 			width: 72upx;
 			height: 72upx;
+			min-width: 72upx;
+			min-height: 72upx;
 			text-align: center;
 			line-height: 72upx;
 			background-color: #DCE8FF;
@@ -274,6 +278,7 @@
 		
 		.wrap img{
 			width: 40upx;
+			min-width: 40upx;
 			padding: 20upx 0upx 20upx 20upx;
 		}
 		
@@ -283,6 +288,7 @@
 			display: flex;
 			flex-direction: column;
 			padding:0px 60upx 0px 20upx;
+			max-width: 500upx;
 		}
 		
 		.content_wrap .name{
@@ -300,6 +306,10 @@
 			color: #333333;
 			font-size: 28upx;
 			margin-top: 10upx;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			display: inline;
 		}
 		
 </style>

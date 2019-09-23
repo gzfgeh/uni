@@ -741,7 +741,7 @@
 						//始发地
 						this.addressType = 0;
 						uni.navigateTo({
-							url: '/pages/address_list/address_list?typeIndex=0'
+							url: '/pages/address_list/address_list?typeIndex=1'
 						});
 					}else if(index == 1){
 						//收件地址

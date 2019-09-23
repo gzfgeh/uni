@@ -34,6 +34,13 @@
 					<input type="text" placeholder="手机固话二填一" :value="fixedphoneValue" placeholder-class="place-holder" @input="fixedphoneChange">
 				  </div>
 				</div>
+				
+				<div class="row item_wrap">
+				  <div class="row_between item">
+					<span class="item_span">公司名称</span>
+					<input type="text" placeholder="请输入公司名称" v-model="companyName" placeholder-class="place-holder" >
+				  </div>
+				</div>
 
 			<div class="head_wrap">
 			  <span>收货地址</span>
@@ -114,7 +121,8 @@
 				item: '',
 				ifDefault: false,
 				is_vip: 0,
-				shou: 0
+				shou: 0,
+				companyName: ''
 			}
 		},
 		methods: {
@@ -225,7 +233,8 @@
 					detail: this.detail,
 					isInternationalAddress: 0,
 					fixedphone: this.fixedphone,
-					ifDefault: this.ifDefault?1:0
+					ifDefault: this.ifDefault?1:0,
+					companyName: this.companyName
 				};
 				
 				if(this.item){
