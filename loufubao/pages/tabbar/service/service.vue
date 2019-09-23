@@ -87,17 +87,42 @@
                 </div>
             </div>
 		</div>
+		
+		<uni-popup :show="type === 'middle'" position="middle" mode="fixed"  @hidePopup="bindCompany('')">
+			
+			<div class="company-modal">
+			
+			<div class="modal-title">绑定企业</div>
+			<div class="company-code">
+				<input type="text" v-model="companyCode"  placeholder="输入企业号"  />
+			</div>
+			
+			<button  type="primary" @tap="bindCompanyCode()">提交</button>
+			
+			</div>
+			
+			
+		</uni-popup>
 
 	</view>
 </template>
 
 <script>
+	import { BASE_IMAGE_URL,addQycompany} from '@/utils/api'
+	
+	import uniPopup from '@/components/uni-popup.vue'
+	
 	export default {
+		components: {
+			uniPopup
+		},
 		data() {
 			return {
 				buildingName:"请选择楼宇",
 				title: 'Hello',
-				isAPP: true
+				isAPP: true,
+				type: '',
+				companyCode:''
 			}
 		},
 		onLoad() {
@@ -121,6 +146,51 @@
 			}
 		},
 		methods: {
+			bindCompany(type)
+			{
+				this.type=type;
+			},
+			async bindCompanyCode()
+			{
+				if(!this.isLogin()){
+					return;
+				}
+				
+				if(!this.companyCode){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请输入企业号',
+					  duration: 1000
+					});
+					return;
+				}
+				console.log(this.companyCode);
+				let userInfo = uni.getStorageSync("userInfo");
+				
+				let res = await addQycompany({userID:userInfo.userID,companyCode:this.companyCode});
+				
+				console.log(res);
+				
+				if(res.status == 1){
+					
+					this.type="";
+					uni.setStorageSync("userInfo",res.data.userInfo);
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
+					
+					
+				}
+				else{
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
+				}
+			},
 			goToSearch: function(){
 				if(!this.isLogin()){
 					return;
@@ -180,11 +250,17 @@
 			goToServiceOrder(index){
 				let userInfo = uni.getStorageSync("userInfo");
 				if(userInfo){
+					
 					if(index == 0){
 						uni.navigateTo({
 							url: '/pages/service_form/service_form?type=0'
 						});
 					}else if(index == 1){
+						if(this.companyCode=="")
+						{
+							this.type = "middle";
+							return;
+						}
 						uni.navigateTo({
 							url: '/pages/service_form/service_form?type=1'
 						});
@@ -212,6 +288,11 @@
 </script>
 
 <style>
+	
+	.company-modal{width:500upx;text-align:center;}
+	.company-code{padding:30upx 0 30upx 0;}
+	.company-code input{border:1px solid #eee;text-align:left;padding:20upx;}
+	
 	.content {
 		text-align: center;
 		display: flex;
