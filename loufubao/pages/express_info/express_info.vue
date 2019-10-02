@@ -239,10 +239,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="pd guoji-col hide" v-if="false">
+				<div class="pd guoji-col hide">
 					<div class="miandan clearfix">
 
-						<div class="left">是否打印电子面单</div>
+						<div class="left">是否打印小标签</div>
 						<span class="right">
 							<switch @change="PrintChange" />
 						</span>
@@ -1250,24 +1250,28 @@
 				uni.setNavigationBarTitle({
 					title: '企业国内快递'
 				});
+				this.payList[0] = "月结"
 			}
 			else if(this.orderType==2&&this.createOrderType == 2){
 				uni.setNavigationBarTitle({
 					title: '企业国际快递'
 				});
 				this.isInternational = 1;
+				this.payList[0] = "月结"
 			}
 			else if(this.orderType==2&&this.createOrderType==3)
 			{
 				uni.setNavigationBarTitle({
 					title: '企业同城快递'
 				});
+				this.payList[0] = "月结"
 			}
 			else if(this.orderType==2&&this.createOrderType==4)
 			{
 				uni.setNavigationBarTitle({
 					title: '企业大件物流'
 				});
+				this.payList[0] = "月结"
 			}
 			
 			

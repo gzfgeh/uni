@@ -45,8 +45,8 @@
 			</view>
 			
 			<view class="col_center item_wrap" hover-class="uni-list-cell-hover" @tap="goDetail(5)">
-				<img src="../../static/img/tiao_liao.png" >
-				<span>调料干货</span>
+				<img src="../../static/img/sgls.png" >
+				<span>水果零食</span>
 			</view>
 
         </div>
