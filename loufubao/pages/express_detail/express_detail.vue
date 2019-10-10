@@ -233,6 +233,11 @@
 				};
 				let res = await RefundOrder(params);
 				if(res.status == 1){
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
 					this.getOrderDetail();
 				}else{
 					uni.showToast({

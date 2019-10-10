@@ -158,12 +158,11 @@
 				<li id="baojiaCol" @click="showBaoJia" >
 					<div class="row_between">
 						<span class="left">保价金额</span>
-						<!-- <span class="middle">
+						<!-- <span class="middle"> :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
 							<input type="number" v-model="insuredValue" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange"/>
 						</span> -->
 						
-						<input type="number" v-model="insuredValue" :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
-							onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange" style="margin-left: 200upx;"/>
+						<input type="number" v-model="insuredValue" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange" @blur="baoJiaBlur" style="margin-left: 200upx;"/>
 						
 						<span class="right" v-if="createOrderType!=3">
 							<span>保费:<span class="baofei">{{insuredPrice}}</span>元</span>
@@ -591,6 +590,10 @@
 				this.qcOrderType=data;
 			},
 			calAllPrice(){
+				console.log("calAllPrice");
+				if(!this.weight){
+					this.weight = 1
+				}
 				if(this.createOrderType==3)
 				{
 					this.calculateExpressPriceTongCheng();
@@ -603,6 +606,16 @@
 				console.log(e);
 				this.insuredValue = e.detail.value;
 				this.calAllPrice();
+			},
+			baoJiaBlur(e){
+				console.log(e);
+				let s = this.insuredValue.substring(this.insuredValue.length-1, this.insuredValue.length)
+				console.log(s);
+				if(s == "."){
+					this.insuredValue = this.insuredValue.substring(0, this.insuredValue.length-1)
+				}
+				console.log(this.insuredValue);
+				this.$forceUpdate()
 			},
 			addWeight(){
 				this.weight = parseFloat(this.weight);

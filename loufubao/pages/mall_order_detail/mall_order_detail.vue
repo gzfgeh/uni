@@ -191,6 +191,11 @@
 				let res = await Refund_mallOrder(params);
 				if(res.status == 1){
 					this.page = 1;
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
 					this.order_detail();
 				}else{
 					uni.showToast({

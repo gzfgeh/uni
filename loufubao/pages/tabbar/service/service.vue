@@ -144,6 +144,7 @@
 			if(!this.buildingName){
 				this.buildingName = "请选择楼宇";
 			}
+			this.companyCode = uni.getStorageSync("userInfo").companyCode
 		},
 		methods: {
 			bindCompany(type)
@@ -175,6 +176,7 @@
 					
 					this.type="";
 					uni.setStorageSync("userInfo",res.data.userInfo);
+					
 					uni.showToast({
 					  icon: 'none',
 					  title: res.message,

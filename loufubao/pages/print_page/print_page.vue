@@ -111,7 +111,14 @@
 				orderStatusList: ['删除','已取消','已下单','已揽收','已寄出','已签收','已打印','打印中','已评价','已支付','已退款','已推送给快递公司','待确认','退款中'],
 				typeList: ['全部','待揽件', '已揽件', '已寄出'],
 				curType: 0,
+				allChecked: false
 			}
+		},
+		onNavigationBarButtonTap (e) {
+			this.allChecked = !this.allChecked;
+			this.list.map((item) => {
+				item.checked = this.allChecked
+			});
 		},
 		methods: {
 			payPopup(popupParam) {
@@ -170,7 +177,7 @@
 				uni.stopPullDownRefresh();
 				if(res.status == 1){
 					res.data.map((item) => {
-						item.checked = false;
+						item.checked = this.allChecked;
 					})
 					
 					if(this.page==1)

@@ -79,7 +79,7 @@
 
 				<div class="bottom-btn bottom-btn-list clearfix">
 					
-					<button type="button" class="yellow-bg xiadan " v-if="(item.orderStatus == 1) " @click="quxiao()">取消订单</button>
+					<button type="button" class="yellow-bg xiadan " v-if="(item.orderStatus == 1) || (item.isCompany == '1' && item.orderStatus == '2') " @click="quxiao()">取消订单</button>
 					<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 1 && (parseInt(item.isCompany) == 0)" @click="moneyPay(item.orderSN,item.orderID,item.price)"> 立即支付</button>
 					<button type="button" class="blue-bg xiadan" v-if="item.orderStatus == 2 && (parseInt(item.isCompany) == 0)" @click="tuikuan()"> 退款</button>
 					
@@ -163,6 +163,11 @@
 				};
 				let res = await waterRefund(params);
 				if(res.status == 1){
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
 					this.water_order_detail();
 				}else{
 					uni.showToast({

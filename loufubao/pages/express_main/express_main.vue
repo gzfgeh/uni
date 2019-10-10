@@ -247,6 +247,7 @@
 					});
 					return;
 				}
+				this.type="";
 				console.log(this.companyCode);
 				let userInfo = uni.getStorageSync("userInfo");
 				
@@ -256,7 +257,7 @@
 				
 				if(res.status == 1){
 					
-					this.type="";
+					
 					uni.setStorageSync("userInfo",res.data.userInfo);
 					uni.showToast({
 					  icon: 'none',

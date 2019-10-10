@@ -45,8 +45,8 @@
 							
 						</div>
 						
-						<div class="row item_down" v-if="(item.orderStatus <= 2) && (parseInt(item.isCompany) == 0)">
-							<span class="cancle" v-if="item.orderStatus == 1" @click.stop="actionOrder(1, index)">取消订单</span>
+						<div class="row item_down" v-if="(item.orderStatus <= 2) ">
+							<span class="cancle" v-if="(item.orderStatus == 1) || (item.isCompany == '1' && item.orderStatus == '2')" @click.stop="actionOrder(1, index)">取消订单</span>
 							<span class="pay" v-if="item.orderStatus == 1 &&orderStatus<=1 && (parseInt(item.isCompany) == 0)" @tap.stop="moneyPay(item.orderSN,item.orderID,item.price)">&nbsp;&nbsp;支付&nbsp;&nbsp;</span>
 							<span class="pay" v-if="item.orderStatus == 2 && (parseInt(item.isCompany) == 0)" @click.stop="tuikuan(index)">退款</span>
 							
@@ -145,6 +145,11 @@
 				let res = await waterRefund(params);
 				if(res.status == 1){
 					this.page = 1;
+					uni.showToast({
+					  icon: 'none',
+					  title: res.message,
+					  duration: 1000
+					});
 					this.getList();
 				}else{
 					uni.showToast({
