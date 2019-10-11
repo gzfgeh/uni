@@ -1,8 +1,10 @@
 <template>
 	
 	<view class="contain">
-		
-		<view class="content" >
+		<view class="row_center" style="width: 100vw; height: 100vh;">
+			敬请期待
+		</view>
+		<view class="content" v-if="false">
 			<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
 						:interval="5000" :duration="1000" class="head_img">            
 					<swiper-item v-for="(item, index) in itemList" :key="index" class="head_img" @tap="goToH5(index)">  

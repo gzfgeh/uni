@@ -181,7 +181,11 @@
 					  title: res.message,
 					  duration: 1000
 					});
-					this.getList();
+					
+					setTimeout( () => {
+						this.getList();
+					}, 1000)
+					
 				}else{
 					uni.showToast({
 					  icon: 'none',

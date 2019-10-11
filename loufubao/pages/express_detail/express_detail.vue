@@ -238,7 +238,11 @@
 					  title: res.message,
 					  duration: 1000
 					});
-					this.getOrderDetail();
+					
+					setTimeout( () => {
+						this.getOrderDetail();
+					}, 1000)
+					
 				}else{
 					uni.showToast({
 					  icon: 'none',

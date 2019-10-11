@@ -168,7 +168,12 @@
 					  title: res.message,
 					  duration: 1000
 					});
-					this.water_order_detail();
+					
+					setTimeout( () => {
+						this.water_order_detail();
+					}, 1000)
+					
+					
 				}else{
 					uni.showToast({
 					  icon: 'none',
