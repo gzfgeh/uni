@@ -117,7 +117,7 @@
 						<div class="middle weight_wrap">
 							<img class="sub-value" src="../../static/img/reduce_icon.png" mode="widthFix" @click="reduceWeight"/>
 							<!-- <span class="weight-value active">{{weight}}</span> -->
-							<input type="number" maxlength="4" v-model="weight" class="input_weight" @blur="calAllPrice"/>
+							<input type="number" oninput="value=value.replace(/[^\d]/g,'')" maxlength="8" v-model="weight" class="input_weight" @blur="calAllPrice" @input="weightChange"/>
 							<img class="add-value" src="../../static/img/add_icon.png" mode="widthFix" @click="addWeight"/>
 						</div>
 
@@ -155,14 +155,29 @@
 					</div>
 				</li>
 			
+				<li id="baojiaCol" v-if="goodsValueFlag">
+					<div class="row_between">
+						<span class="left">申报价值</span>
+						<!-- <span class="middle"> :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
+							<input type="number" v-model="insuredValue" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange"/>
+						</span> --> 
+						
+						<input type="number" oninput="value=value.replace(/[^\d]/g,'')"
+						v-model="goodsValueInput" placeholder="请输入申报价值" maxlength="5"  @blur="goodsValueBlur" style="margin-left: 200upx;"/>
+						
+						
+					</div>
+				</li>
+				
 				<li id="baojiaCol" @click="showBaoJia" >
 					<div class="row_between">
 						<span class="left">保价金额</span>
 						<!-- <span class="middle"> :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
 							<input type="number" v-model="insuredValue" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange"/>
-						</span> -->
+						</span> --> 
 						
-						<input type="number" v-model="insuredValue" placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange" @blur="baoJiaBlur" style="margin-left: 200upx;"/>
+						<input type="number" v-model="insuredValue" :disabled=" (expressCompanyName != 'EMS' && createOrderType != 4)"
+							placeholder="请输入保价金额" maxlength="5" @input="baoJiaChange" @blur="baoJiaBlur" style="margin-left: 200upx;"/>
 						
 						<span class="right" v-if="createOrderType!=3">
 							<span>保费:<span class="baofei">{{insuredPrice}}</span>元</span>
@@ -401,7 +416,7 @@
 					<span class="fr" id="confirmBtn" @click="hideModal">确定</span>
 				</div>
 
-				<textarea placeholder="请填写备注信息" v-model="comment"></textarea>
+				<textarea :placeholder="commentPlaceHolder" v-model="comment"></textarea>
 
 			</div>
 			
@@ -503,7 +518,10 @@
 				goodsInfoFlag: false,
 				coupon_price: 0,
 				c_id: 0,
-				specAddr: {}
+				specAddr: {},
+				goodsValueFlag: false,
+				goodsValueInput: '',
+				commentPlaceHolder: '请填写备注信息'
 			}
 		},
 		computed:{
@@ -513,6 +531,20 @@
 		},
 		
 		methods: {
+			goodsValueBlur(e){
+				if(!this.goodsValueInput || parseFloat(this.goodsValueInput)==0){
+					this.goodsValueInput = 0
+					this.$forceUpdate();
+				}
+				
+				if(e.detail.value.substring(0, 1) == "."){
+					this.goodsValueInput = 1
+				}
+				
+				if(this.goodsValueInput%1 === 0){
+					this.goodsValueInput = parseFloat(this.goodsValueInput).toFixed(1)
+				}
+			},
 			async specAddress(){
 				let res = await specAddress(1);
 				if(res.status == 1){
@@ -589,11 +621,35 @@
 				}
 				this.qcOrderType=data;
 			},
-			calAllPrice(){
+			weightChange(e){
+				console.log(e.detail.value);
+				// if(e.detail.value%1 === 0){
+				// 	this.weight = parseFloat(this.weight).toFixed(1)
+				// }
+				
+				// console.log(this.weight);
+			},
+			calAllPrice(e){
 				console.log("calAllPrice");
-				if(!this.weight){
+				console.log("calAllPrice"+e.detail.value);
+				if(e.detail.value.substring(e.detail.value.length-1, e.detail.value.length) == "."){
+					this.weight = e.detail.value.substring(0, e.detail.value.length-1)
+					console.log(this.weight);
+				}
+				if(e.detail.value.substring(0, 1) == "."){
 					this.weight = 1
 				}
+				console.log(this.weight);
+				
+				if(!this.weight || parseFloat(this.weight)==0){
+					this.weight = 1
+				}
+				if(this.weight%1 === 0){
+					this.weight = parseFloat(this.weight).toFixed(1)
+				}
+				// this.weight = parseFloat(this.weight).toFixed(1)
+				console.log(this.weight);
+				this.$forceUpdate()
 				if(this.createOrderType==3)
 				{
 					this.calculateExpressPriceTongCheng();
@@ -609,12 +665,9 @@
 			},
 			baoJiaBlur(e){
 				console.log(e);
-				let s = this.insuredValue.substring(this.insuredValue.length-1, this.insuredValue.length)
-				console.log(s);
-				if(s == "."){
-					this.insuredValue = this.insuredValue.substring(0, this.insuredValue.length-1)
+				if(this.insuredValue%1 === 0){
+					this.insuredValue = parseFloat(this.insuredValue).toFixed(1)
 				}
-				console.log(this.insuredValue);
 				this.$forceUpdate()
 			},
 			addWeight(){
@@ -635,7 +688,10 @@
 			},
 			changeTag(index){
 				this.tag_index = index;
-				this.goodsTypeFlag = false;
+				// this.goodsTypeFlag = false;
+				// if(this.tagList[index] == '包裹'){
+				// 	this.goodsValueFlag = true
+				// }
 			},
 			changePay(index){
 				this.pay_index = index;
@@ -825,7 +881,7 @@
 				});
 
 			},
-			async createOrder(){
+			async createOrderNext(){
 				if(!this.sendAddressID){
 					uni.showToast({
 					  icon: 'none',
@@ -872,6 +928,53 @@
 					}
 				}
 				
+				if(this.tagList[this.tag_index]=='包裹' && (!this.comment)){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请填写备注',
+					  duration: 1000
+					});
+					return;
+				}
+				if(this.tagList[this.tag_index]=='包裹' && (!this.goodsValueInput || parseFloat(this.goodsValueInput)==0)){
+					uni.showToast({
+					  icon: 'none',
+					  title: '请填写申报价值',
+					  duration: 1000
+					});
+					return;
+				}
+				
+				if((this.createOrderType == 4) && (parseFloat(this.allMoney).toFixed(2) ==0) && (this.orderType==1)){
+					uni.showToast({
+					  icon: 'none',
+					  title: '价格计算错误',
+					  duration: 1000
+					});
+					return;
+				}
+				
+				if((this.createOrderType==3) && (this.qcOrderType == 1 || this.qcOrderType==2)){
+					if(this.start_province != this.end_province){
+						uni.showToast({
+						  icon: 'none',
+						  title: '请选择同城地址',
+						  duration: 1000
+						});
+						return;
+					}
+				}
+				
+				if((this.createOrderType==3) && (this.qcOrderType == 3)){
+					if(this.start_province != this.end_province || this.start_province != this.end_province1){
+						uni.showToast({
+						  icon: 'none',
+						  title: '请选择同城地址',
+						  duration: 1000
+						});
+						return;
+					}
+				}
 				
 				console.log("999999")
 				let userInfo = uni.getStorageSync("userInfo");
@@ -903,7 +1006,9 @@
 						QrCodeOrderSN:this.QrCodeOrderSN,
 						isPrintEs: this.isPrintEs?1:0,
 						expressPackageDetail: this.goodsInfo,
-						c_id: this.coupon_price?this.c_id:''
+						c_id: this.coupon_price?this.c_id:'',
+						valueOfPackage: this.goodsValueInput,
+						internationalGoodsStr: this.tagList[this.tag_index]
 					};
 					
 					if(this.isHongxing == 1){
@@ -935,7 +1040,7 @@
 								}else{
 									// 寄付
 									console.log(this.allMoney);
-									if((parseInt(this.allMoney) == 0) && (this.start_province == "上海")){
+									if((parseInt(this.allMoney) == 0) && (this.start_province == "上海") && (this.createOrderType!=4)){
 										uni.showToast({
 										  icon: 'none',
 										  title: '输入地址错误',
@@ -1075,6 +1180,30 @@
 					
 					
 				}
+			},
+			async createOrder(){
+				let that = this;
+				if(parseFloat(this.weight) > 99 && (this.createOrderType==1)){
+					uni.showModal({
+						title: "提示",
+						content: "物品已超过99kg用大件物流性价比更高，是否继续使用快递发货?",
+						success: function (result) {
+							if (result.confirm) {
+								that.createOrderNext();
+								
+							} else if (result.cancel) {
+								console.log('用户点击取消');
+								
+								uni.redirectTo({
+									url: '/pages/express_info/express_info?createOrderType=4'+"&orderType="+that.orderType
+								});
+							}
+						}
+					});
+				}else{
+					that.createOrderNext();
+				}
+				
 				
 				
 			},
@@ -1245,6 +1374,9 @@
 					title: '个人国际快递'
 				});
 				this.isInternational = 1;
+				this.tagList = ['文件', '包裹']
+				this.commentPlaceHolder = "提供内容和数量"
+				this.goodsValueFlag = true;
 			}
 			else if(this.orderType==1&&this.createOrderType==3)
 			{
@@ -1271,6 +1403,9 @@
 				});
 				this.isInternational = 1;
 				this.payList[0] = "月结"
+				this.tagList = ['文件', '包裹']
+				this.commentPlaceHolder = "提供内容和数量"
+				this.goodsValueFlag = true;
 			}
 			else if(this.orderType==2&&this.createOrderType==3)
 			{

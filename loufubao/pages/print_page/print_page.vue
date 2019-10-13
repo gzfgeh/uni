@@ -150,11 +150,11 @@
 					  duration: 1000
 					});
 					
-					setTimeout(()=>{
-						uni.navigateBack({
-							delta:1
-						})
-					}, 1000)
+					// setTimeout(()=>{
+					// 	uni.navigateBack({
+					// 		delta:1
+					// 	})
+					// }, 1000)
 				}else{
 					uni.showToast({
 					  icon: 'none',

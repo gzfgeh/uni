@@ -2,7 +2,7 @@
 	<view>
 		<block  v-for="(item,index) in list" :key="index" >
 			<div class="row item_wrap" @click="contactUs(index)" >
-				<img class="logo" :src="(item.courierImg?item.courierImg:'../../static/img/mtyou_icon.png')" mode="aspectFill">
+				<image class="logo" :src="(item.courierImg?item.courierImg:'../../static/img/mtyou_icon.png')" mode="aspectFill" />
 				<div class="content_wrap">
 					<div class="row">
 						<span>{{item.nickName}}</span>
@@ -10,7 +10,7 @@
 					<span>昵称：{{item.nickName}}</span>
 					<span>工号：{{item.employee_number}}</span>
 				</div>
-				<img class="phone_icon" src="../../static/img/call_phone_icon.png" mode="aspectFill" >
+				<image class="phone_icon" src="../../static/img/call_phone_icon.png" mode="aspectFill" />
 			</div>
 		</block>	
 		<div v-if="list.length == 0&&loadingType==2" class="uni-center-item no_data_wrap">
@@ -93,5 +93,5 @@
 .item_wrap{padding: 20upx 40upx; border-bottom: 1upx solid #E3E3E3;}
 .item_wrap .logo{width: 160upx; margin-right: 20upx; border-radius: 50%; height: 160upx;}
 .content_wrap{display: flex;flex-direction: column; flex: 1;}
-.item_wrap .phone_icon{width: 50upx; padding: 20upx;}
+.item_wrap .phone_icon{width: 50upx; padding: 20upx; height: 50upx;}
 </style>

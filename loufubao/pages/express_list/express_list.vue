@@ -56,6 +56,16 @@
 						<!-- <span class="second" v-if="parseInt(item.orderStatus)>=10" >{{item.newDetail}}</span> -->
 						
 					</div>
+					
+					<div class="middle" style="padding-top: 0upx;" v-if="item.orderStatus == 1&&item.orderType==1&&item.isDaoFu==0&&parseFloat(item.price) > 0" >
+						<span class="first row_between" >
+							<!-- <span>{{orderStatusList[parseInt(item.orderStatus)+1]}}</span> -->
+							<span>请在30分钟内支付</span>
+							
+						</span>
+						<!-- <span class="second" v-if="parseInt(item.orderStatus)>=10" >{{item.newDetail}}</span> -->
+						
+					</div>
 					<div class="bottom">
 						<img :src="item.logoURL" mode="widthFix"/>
 						<div class="first">{{item.enName}}  </div>

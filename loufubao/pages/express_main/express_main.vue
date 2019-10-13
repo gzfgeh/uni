@@ -273,6 +273,7 @@
 					  title: res.message,
 					  duration: 1000
 					});
+					this.companyCode = ""
 				}
 				
 				

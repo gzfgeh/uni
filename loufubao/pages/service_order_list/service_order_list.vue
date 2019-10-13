@@ -14,6 +14,7 @@
 				<navigator class=" item_wrap col_between" 
 					:url="'../service_order_detail/service_order_detail?orderID='+item.orderID">
 						<div class="title_order">订单编号: {{item.orderSN}}</div>
+						<div class="title_order" style="padding-top: 0upx;" v-if="item.orderStatus == 1 &&orderStatus<=1 && (parseInt(item.isCompany) == 0) " >请在30分钟内支付</div>
 						<div class="row_between title_wrap">
 							<span>下单时间: {{item.createTime.split(" ")[0]}}</span>
 							<div class="row_center item_status"> 
@@ -21,7 +22,6 @@
 								<span>&nbsp;{{orderStatusList[parseInt(item.orderStatus)+1]}}</span>
 							</div>
 						</div>
-						
 						
 						<div class=" content_wrap">
 							<div class="col_between border">

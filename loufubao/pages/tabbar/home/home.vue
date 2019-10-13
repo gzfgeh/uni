@@ -1,12 +1,12 @@
 <template>
-	<view class="col" style="height: 100%;padding-top:118upx;box-sizing: border-box;"
-			:style="{'padding-top': (isAPP?'118upx':'20upx')}">
+	<view class="col" style="padding-top:118upx;box-sizing: border-box;"
+			:style="{'padding-top': (isAPP?'0upx':'0upx')}">
 		<view class="content col" style="width:100%;">
 			<div class="head_bg">
 				<image src="../../../static/img/home_head_bg.png" mode="widthFix" />
 			</div>
 			
-			<div class="row_between home_head_wrap" :style="{'top': (isAPP?'80upx':'30upx')}">
+			<div class="row_between home_head_wrap" :style="[{'background': (scrollValue? 'rgba(106, 183, 240)': 'rgba(106, 183, 240, 0)' )}, {'padding-top': (isAPP?'60upx':'0upx')}, {'height': (isAPP?'140upx':'100upx')}]">
 				<div class="row_center home_head_left" @tap="selectBuild()">
 					<image src="../../../static/img/home_location.png" mode="widthFix" />
 					<span>{{buildingName}}</span>
@@ -28,8 +28,8 @@
 			</div>
 		</view>
 			
-		<scroll-view scroll-y style="height:100%;position:relative;z-index:10;top:0upx; box-sizing: border-box;"
-				:style="{'padding-top': (isAPP?'44upx':'4upx')}">
+		<div  style="position:relative;z-index:10; box-sizing: border-box; width: 100%;"
+				:style="[{'padding-top': (isAPP?'40upx':'0upx')}, {'padding-bottom': (isAPP?'20upx':'100upx')}]">
 			<!-- item.bannerImageUrl -->
 			<div class="swiper_wrap" >
 				<swiper :indicator-dots="false" :autoplay="true" @change="slideChange"
@@ -59,8 +59,8 @@
 					</view>
 				</div>
 				
-				<div class="content_wrap row_center">
-					<navigator class="col_center flex_one" v-for="(item, index) in contentList" :key="index" @tap="goToContent(index)">
+				<div class="content_wrap">
+					<navigator class="col_center " style="min-width: 21%;" v-for="(item, index) in contentList" :key="index" @tap="goToContent(index)">
 						<image :src="item.configNameImg1" mode="widthFix" />
 						<span>{{item.configName}}</span>
 					</navigator>
@@ -223,7 +223,7 @@
 			
 			</div>
 			
-		</scroll-view>
+		</div>
 			
 			
 	</view>
@@ -254,8 +254,18 @@
 			showBg: 0,
 			isAPP: false,
 			paddingValue: '',
-			shopList: []
+			shopList: [],
+			scrollValue: false
 		};
+	},
+	onPageScroll(e) {
+		console.log(e);
+		if(e.scrollTop > 18){
+			this.scrollValue = true
+		}else{
+			this.scrollValue = false
+		}
+		
 	},
 	onShow(){
 		let buildName =uni.getStorageSync("userInfo").buildingName;
@@ -556,7 +566,7 @@
 .dot_normal{width: 10upx;height: 10upx;border-radius: 50%;background-color: #E0E5ED;margin: 0upx 6upx;position: relative;z-index: 100;}
 .active{width: 30upx;height: 10upx;border-radius: 30%;background-color: #107EFF;z-index: 100;}
 
-.home_head_wrap{width: 100%; color: #FFFFFF;font-size: 24upx; padding: 0upx 20upx 0upx 20upx; box-sizing: border-box; top: 80upx; position: fixed;z-index: 2000; }
+.home_head_wrap{width: 100%; color: #FFFFFF;font-size: 24upx; padding: 0upx 20upx 0upx 20upx; box-sizing: border-box; position: fixed;z-index: 2000; }
 .home_head_left span{font-size: 36upx; overflow: hidden;max-width: 260upx;white-space: nowrap;text-overflow:ellipsis;}
 .home_head_left image{width: 30upx; height: 36upx; margin-right: 10upx;}
 .msg_wrap{position: relative; height: 100%;}
@@ -569,7 +579,7 @@
 .scan_img{width: 28upx;height: 100%;}
 .search_icon{width: 30upx;margin: 0upx 50upx; height: 100%;}
 
-.content_wrap{width: 94%; margin-left: 3%; height:340upx;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx; flex-flow: wrap;}
+.content_wrap{width: 94%; margin-left: 3%; height:340upx;box-sizing:border-box;background: #fff;box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx; flex-flow: wrap; display: flex;flex-direction: row; justify-content: space-between;}
 .content_wrap .flex_one{min-width: 160upx;font-size: 24upx; color: #666; height: 170upx;}
 .content_wrap image{width: 80upx; margin-bottom: 10upx;}
 

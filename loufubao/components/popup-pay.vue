@@ -466,11 +466,7 @@
 									});
 								}
 							}else{
-								// uni.showToast({
-								//   icon: 'none',
-								//   title: type,
-								//   duration: 1000
-								// });
+								
 								if(payWayValue=="0")
 								{
 									uni.redirectTo({
@@ -514,6 +510,7 @@
 										url: '/pages/tabbar/my/my'
 									});
 								}
+								
 								
 							}
 						});
@@ -595,12 +592,7 @@
 					},
 					fail: function (err)
 					{
-						wx.showToast({
-							title: '支付失败',
-							icon: 'none',
-							duration: 1000
-						});
-						console.log('fail:' + JSON.stringify(err));
+						
 						if(payWayValue=="0")
 						{
 							uni.redirectTo({
@@ -644,6 +636,8 @@
 								url: '/pages/tabbar/my/my'
 							});
 						}
+						
+						
 					}
 				});
 				// #endif
@@ -725,10 +719,11 @@
 													});
 												}
 									 }else{
-										 wx.showToast({
-												title: '支付失败',
-												icon: 'none',
-												duration: 1000
+										
+										uni.showToast({
+											title: '支付失败',
+											icon: 'none',
+											duration: 1000
 										});
 										
 										if(payWayValue=="0")
@@ -774,6 +769,8 @@
 													url: '/pages/tabbar/my/my'
 												});
 											}
+										
+										
 											
 									 }
 							 }
@@ -809,6 +806,7 @@
 				if (this.mode === 'insert' && this.position === 'middle') return
 				this.$emit('hidePopup');
 				var payWayValue=this.payWay;
+				
 				if(payWayValue=="0")
 				{
 					uni.redirectTo({
@@ -852,6 +850,7 @@
 						url: '/pages/tabbar/my/my'
 					});
 				}
+				
 				
 			},
 			closeMask() {
@@ -910,7 +909,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		top: 50%;
+		top: 40%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}

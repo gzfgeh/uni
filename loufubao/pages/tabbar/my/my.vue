@@ -40,7 +40,7 @@
 			</div>
 		</navigator>
 		
-		<navigator class=" bottom_item_wrap" @click="goToYouHui">
+		<navigator class=" bottom_item_wrap" @click="goToYouHui" v-if="false">
 			<div class="row_between bottom_item">
 				<image src="../../../static/img/zbyh.jpg" class="icon" mode="aspectFill" style="height: 44upx; width: 44upx;" />
 				<span>周边优惠</span>
