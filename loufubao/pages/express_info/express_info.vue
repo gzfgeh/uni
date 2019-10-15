@@ -631,14 +631,17 @@
 			},
 			calAllPrice(e){
 				console.log("calAllPrice");
-				console.log("calAllPrice"+e.detail.value);
-				if(e.detail.value.substring(e.detail.value.length-1, e.detail.value.length) == "."){
-					this.weight = e.detail.value.substring(0, e.detail.value.length-1)
-					console.log(this.weight);
+				if(e && e.detail && e.detail.value){
+					console.log("calAllPrice"+e.detail.value);
+					if(e.detail.value.substring(e.detail.value.length-1, e.detail.value.length) == "."){
+						this.weight = e.detail.value.substring(0, e.detail.value.length-1)
+						console.log(this.weight);
+					}
+					if(e.detail.value.substring(0, 1) == "."){
+						this.weight = 1
+					}
 				}
-				if(e.detail.value.substring(0, 1) == "."){
-					this.weight = 1
-				}
+				
 				console.log(this.weight);
 				
 				if(!this.weight || parseFloat(this.weight)==0){
