@@ -228,16 +228,9 @@
 				
 			},
 			goToAboutUs: function(){
-				let userInfo = uni.getStorageSync("userInfo");
-				if(userInfo){
-					uni.navigateTo({
-						url: '/pages/about_us/about_us'
-					});
-				}else{
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
+				uni.navigateTo({
+					url: '/pages/about_us/about_us'
+				});
 				
 			},
 			

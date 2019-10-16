@@ -1,9 +1,9 @@
 <template>
-	<view>
-		<!-- <rich-text :nodes="detail"></rich-text> -->
+	<view style="padding: 20upx;">
+		<rich-text :nodes="detail"></rich-text>
 		<!-- <web-view  src="https://mall.baobaoloufu.com/Home/Join/joinUs"></web-view> -->
 		
-		<uParse :content="detail" style="padding: 20upx; box-sizing: border-box;" v-if="detail"/>
+		<!-- <uParse :content="detail" style="padding: 20upx; box-sizing: border-box;" v-if="detail"/> -->
 		
 	</view>
 </template>
@@ -27,6 +27,11 @@
 				let res = await about_us();
 				if(res.status == 1){
 					this.detail = res.data;
+					var richtext=  this.detail;
+					const regex = new RegExp('<img', 'gi');
+					richtext= richtext.replace(regex, `<img style="max-width: 100%;"`);
+				 
+					this.detail = richtext;
 				}
 			}
 		},

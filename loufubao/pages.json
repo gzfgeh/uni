@@ -823,7 +823,7 @@
         ,{
             "path" : "pages/about_us/about_us",
             "style" : {
-				"navigationBarTitleText": "关于我们"
+				"navigationBarTitleText": "用户协议"
 			}
         }
         ,{
