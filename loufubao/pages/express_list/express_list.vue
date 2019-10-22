@@ -317,14 +317,11 @@
 			this.getList();
 		},
 		onLoad() {
-			
+			this.page = 1;
 			//this.$store.commit('changeOrderItem', "");
 		},
 		onShow(){
-			
 			this.popupParam='';
-			
-			this.page = 1;
 			this.getList();
 			
 			this.companyCode=uni.getStorageSync("userInfo").companyCode;

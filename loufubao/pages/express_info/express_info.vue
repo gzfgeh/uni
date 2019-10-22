@@ -242,8 +242,8 @@
 								:class="{'active': (company_index == index)}" @click="changeCompany(index)">
 									<div><img :src="item.logoURL" mode="widthFix"/></div>
 									<p>{{item.expressCompanyName}}</p>
-									<div class="express-jiage" v-if="createOrderType != 2">
-										￥<span class="bottom">{{item.price}}</span>
+									<div class="express-jiage" v-if="createOrderType != 2 && (item.price)">
+										<span class="bottom">{{orderType==1?'￥'+item.price:'按照合同价'}}</span>
 									</div>
 									<img src="../../static/img/yunfei_select.png" mode="widthFix" class="company_select" v-if="(company_index == index)">
 								</div>
@@ -437,7 +437,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,calculateExpressPrice,addressManage,createOrder,specAddress,
+	import { BASE_IMAGE_URL,calculateExpressPrice,addressManage,createOrder,specAddress,getDefaultAddress,getExpressCompany,
 		createOrderTongCheng,calculateExpressPriceTongCheng,department,user_express_coupon} from '@/utils/api'
 	import uniPopup from '@/components/popup-pay.vue'
 	import {mapState,mapMutations, mapActions, mapGetters} from 'vuex';
@@ -1343,6 +1343,35 @@
 				}
 				
 			},
+			
+			async getDefaultAddress(){
+				let res = await getDefaultAddress();
+				if(res.status == 1){
+					this.start_name = res.data.name;
+					this.start_phone = res.data.phone;
+					this.start_province = res.data.province;
+					this.start_city = res.data.city;
+					this.start_area = res.data.area;
+					this.start_detail = res.data.detail;
+					this.sendAddressID = res.data.addressID;
+				}
+			},
+			
+			async getExpressCompany(){
+				let params = {
+					userID: uni.getStorageSync("userInfo").userID,
+					yzID: uni.getStorageSync("userInfo").yzID,
+					orderType: this.orderType,
+					isInternational: this.isInternational
+				};
+				let res = await getExpressCompany(params);
+				if(res.status == 1){
+					this.companyList = res.data;
+					this.company_index = 0;
+				}
+				
+			}
+			
 		},
 		onLoad(options) {
 			uni.showLoading({ title: '加载中...' });
@@ -1441,6 +1470,9 @@
 			if(this.orderType == 2){
 				this.platform = 4;
 			}
+			
+			this.getDefaultAddress();
+			this.getExpressCompany();
 		},
 		onShow(){
 			

@@ -775,3 +775,26 @@ export function specAddress(type) {
 export function takeawayForBuilding(buildingID) {
     return request.get('User/User/takeawayForBuilding?buildingID='+buildingID)
 }
+
+
+/**
+ *  默认地址
+ */
+export function getDefaultAddress() {
+    return request.get('Address/Index/getDefaultAddress?userID='+uni.getStorageSync("userInfo").userID)
+}
+
+
+/**
+ * 智能识别地址
+ */
+export function fenci(params) {
+    return request.post('Address/Index/fenci', qs.stringify(params))
+}
+
+/**
+ * 可以使用的快递公司
+ */
+export function getExpressCompany(params) {
+    return request.post('order/index/getExpressCompany', qs.stringify(params))
+}

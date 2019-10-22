@@ -76,6 +76,18 @@
 				<switch @change="defaultChange" :checked="ifDefault"/>
 			  </div>
 			</div>
+			
+			<div class="row item_wrap" v-if="!item">
+			  <div class="col_between " style="width: 96%; padding-top: 20upx; padding-bottom: 20upx;">
+				<span class="item_span">粘贴整段地址，智能识别姓名、电话和地址。</span>
+				<textarea placeholder="例如：顺小哥，13122299900，上海市闵行区浦江镇101" v-model="fencitext"
+					style="margin-top: 0upx; margin-left: 0upx; width: 94%; font-size: 30upx;"></textarea>
+				<button type="button" class=" button" @click="fenciClick">智能识别</button>
+				
+			  </div>
+			</div>
+			
+			
 
 			<button type="button" class=" button" @click="saveAddress">保存</button>
 			<button type="button" class=" button" @click="delAddress" v-if="item">删除</button>
@@ -91,7 +103,7 @@
 
 <script>
 	
-	import { BASE_IMAGE_URL,saveAddress,region,addressManage } from '@/utils/api'
+	import { BASE_IMAGE_URL,saveAddress,region,addressManage,fenci } from '@/utils/api'
 	import mpvuePicker from '../../components/mpvuePicker.vue';
 	
 	export default {
@@ -122,7 +134,8 @@
 				ifDefault: false,
 				is_vip: 0,
 				shou: 0,
-				companyName: ''
+				companyName: '',
+				fencitext: ''
 			}
 		},
 		methods: {
@@ -149,6 +162,30 @@
 				this.address = e.label;
 			},
 			onCancel(e){},
+			async fenciClick(){
+				if(!this.fencitext){
+					uni.showToast({
+						title: "请输入地址",
+						icon: 'none',
+						duration: 2000
+					});
+					return
+				};
+				let params = {
+					str: this.fencitext
+				};
+				let res = await fenci(params);
+				if(res.status == 1){
+					this.name = res.data.name;
+					this.phoneValue = res.data.phone;
+					this.phone = this.phoneValue;
+					this.fixedphone = res.data.fixedphone;
+					this.fixedphoneValue = res.data.fixedphone;
+					this.address = res.data.provinceName+"-"+res.data.cityName+"-"+res.data.areaName;
+					this.detailValue = res.data.luduan;
+					this.detail = res.data.luduan;
+				}
+			},
 			async delAddress(){
 				let params = {
 					userID: uni.getStorageSync("userInfo").userID,
@@ -455,5 +492,6 @@
 	
 	.contain {
       background-color: #F3F3F3;
+	  padding-bottom: 20upx;
     }
 </style>
