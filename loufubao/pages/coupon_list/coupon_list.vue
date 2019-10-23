@@ -82,7 +82,7 @@
 			goToMallDetail: function(item){
 				if(parseInt(item.type) == 1){
 					uni.navigateTo({
-						url: '/pages/mall_detail/mall_detail?goodsID='+item.goods_id
+						url: '/pages/coupon_detail/coupon_detail?goodsID='+item.goods_id
 					});
 				}
 				

@@ -2,7 +2,7 @@
 	<view class="contain" :style="{'padding-top': statusBarHeight}">
 		<img src="../../static/img/loginBg.png" class="login_bg">
 		
-		<div class="row_between head_wrap" @click="closeLogin">
+		<div class="row_between head_wrap" @click="closeLogin" v-if="false">
 			<img src="../../static/img/login_close.png" >
 		</div>
 		
@@ -14,7 +14,7 @@
 			<div class="row_wrap">
 				<div class="row">
 					<img src="../../static/img/login_phone.png">
-					<input type="number" placeholder="请输入手机号码" placeholder-class="place-holder"
+					<input type="text" placeholder="请输入员工号" placeholder-class="place-holder"
 						maxlength="11" class="mobile" v-model="account">
 				</div>
 			</div>
@@ -29,14 +29,14 @@
 			
 		</div>
 		
-		<div class="forget_wrap row_between" >
+		<div class="forget_wrap row_between" v-if="false">
 			<span @click="goToVipLogin">VIP登陆</span>
 			<span @click="goToForget">忘记密码</span>
 		</div>
 		
 		<button type="button" class="button" @click="loginAction">登录</button>
 		
-		<div class="regist_wrap">
+		<div class="regist_wrap" v-if="false">
 			<span>还没账号，<span class="regist_txt" @click="goToRegister">立即注册</span></span>
 		</div>
 		
@@ -108,8 +108,8 @@
 					  duration: 1000
 					});
 					uni.setStorageSync("userInfo", res.data.userInfo);
-					uni.navigateBack({
-						delta: 10
+					uni.redirectTo({
+						url: '/pages/home/home'
 					});
 				}else{
 					uni.showToast({

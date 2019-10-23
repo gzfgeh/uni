@@ -798,3 +798,11 @@ export function fenci(params) {
 export function getExpressCompany(params) {
     return request.post('order/index/getExpressCompany', qs.stringify(params))
 }
+
+
+/**
+ * 优惠券详情
+ */
+export function couponView(params) {
+    return request.post('mall/goods/couponView', qs.stringify(params))
+}

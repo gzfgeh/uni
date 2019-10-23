@@ -877,6 +877,12 @@
 				"navigationBarTitleText": "取餐地址"
 			}
         }
+        ,{
+            "path" : "pages/coupon_detail/coupon_detail",
+            "style" : {
+				"navigationBarTitleText": "优惠详情"
+			}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
         "current": 0, //当前激活的编译模式（list 的索引项）  
