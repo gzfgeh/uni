@@ -65,3 +65,17 @@ export function writeOff_record(params) {
 export function getJSSDKConfig() {
     return request.get('Home/Index/getJSSDKConfig')
 }
+
+/**
+ * 优惠券详情
+ */
+export function couponView(params) {
+    return request.post('mall/goods/couponView', qs.stringify(params))
+}
+
+/**
+ * 确认核销
+ */
+export function writeOff(params) {
+    return request.post('mall/goods/writeOff', qs.stringify(params))
+}

@@ -9,7 +9,8 @@
 			
 			<span class="name">{{title}}</span>
 			<span class="info">{{sku}}</span>
-			<img :src="src" mode="widthFix" class="img"> 
+			<span class="name">{{place}}</span>
+			<img :src="src" mode="widthFix" class="img">
 			<span class="text">展示此二维码给楼宇负责人，即可兑换相应礼品</span>
 			
 			<span class="time" >使用有效期：{{start_time}} 至 {{end_time}}</span>
@@ -20,7 +21,12 @@
 			</div>
 		</view>		
 		
-		<view @longpress="saveQrcode" style="visibility: hidden; margin-top: -440upx;">
+		<view class="row_around" style="margin-top: 100upx; background: #398FEE;">
+			<button @tap="goToBack">取消核销</button>
+			<button @tap="writeOff">确认核销</button>
+		</view>
+		
+		<!-- <view @longpress="saveQrcode" style="visibility: hidden; margin-top: -440upx;">
 			<tki-qrcode
 			ref="qrcode"
 			:val="src"
@@ -35,7 +41,7 @@
 			:onval="onval"
 			:loadMake="loadMake"
 			@result="qrR" />
-		</view>
+		</view> -->
 		
 	
     </view>
@@ -44,7 +50,7 @@
 <script>
 	
 	import tkiQrcode from "@/components/tki-qrcode/tki-qrcode.vue"
-	import { BASE_IMAGE_URL,couponView } from "@/utils/api";
+	import { BASE_IMAGE_URL,couponView,writeOff } from "@/utils/api";
 
     export default {
 		data(){
@@ -58,6 +64,7 @@
 				end_time: '',
 				sku:'',
 				type:'',
+				place:'',
 				
 				val: '二维码', // 要生成的二维码值
 				size: 440, // 二维码大小
@@ -80,12 +87,39 @@
 			
 			let goodsID = this.$root.$mp.query.goodsID;
 			
-			this.goodsID = opt.goodsID;
+			this.goodsID = opt.goodsID?opt.goodsID:603;
 			this.couponView();
 		 },
         methods: {
+			goToBack: function(){
+				uni.navigateBack();
+			},
+			async writeOff(){
+				let userInfo = uni.getStorageSync("userInfo");
+				let params = {
+					id: this.goodsID,
+					courier_id: userInfo.courier_id
+				};
+				let res = await writeOff(params);
+				if(res.status == 1){
+					uni.showToast({
+						icon:'none',
+						duration:1000,
+						title:"核销成功"
+					});
+					
+					setTimeout(()=>{
+						uni.navigateBack()
+					}, 1000);
+				}else{
+					uni.showToast({
+						icon:'none',
+						duration:1000,
+						title:res.message
+					});
+				}
+			},
 			async couponView(){
-				let flag = 1;
 				let res = await couponView({id: this.goodsID});
 				if(res.status == 1){
 					this.src = res.data.qyCodeUrl;
@@ -95,16 +129,11 @@
 					this.title = res.data.title;
 					this.sku = res.data.sku;
 					this.type = res.data.type;
+					this.place = res.data.place;
 					
-					
-					setTimeout(() => {
-						if(flag == 1){
-							this.$refs.qrcode._makeCode();
-						}else{
-							flag = 2;
-						}
-						
-					}, 1000);
+					// setTimeout(() => {
+					// 	this.$refs.qrcode._makeCode();
+					// }, 1000);
 				}
 			},
 			qrR(res) {
@@ -137,8 +166,8 @@
 	.name{color:rgba(0,0,0,0.8); font-size: 28upx; margin-top: 18upx; margin-bottom: 20upx; line-height: 1.0;}
 	.info{color: #FF5269; font-size: 40upx; line-height: 1.0;}
 	.text{color:rgba(0,0,0,0.8); font-size: 24upx;line-height: 1.0;}
-	.time{color:rgba(0,0,0,0.8); font-size: 24upx; margin-top: 110upx;}
-	.img{
+	.time{color:rgba(0,0,0,0.8); font-size: 24upx; margin-top: 50upx;}
+	.img{ visibility: hidden;
 		width: 364upx;
 		height: 364upx;
 		margin-bottom: 26upx;
