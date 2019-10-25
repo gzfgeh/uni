@@ -80,9 +80,9 @@
 				this.getList();
 			},
 			goToMallDetail: function(item){
-				if(parseInt(item.type) == 1){
+				if(parseInt(item.is_online) == 0){
 					uni.navigateTo({
-						url: '/pages/coupon_detail/coupon_detail?goodsID='+item.goods_id
+						url: '/pages/coupon_detail/coupon_detail?goodsID='+item.id
 					});
 				}
 				

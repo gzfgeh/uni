@@ -163,7 +163,7 @@
         "router" : {
             "base" : ""
         },
-        "title" : "楼服宝",
-        "domain" : "http://malltest.baobaoloufu.com"
+        "title" : "楼服宝员工端",
+        "domain" : "http://wxcms.loufubao.com"
     }
 }

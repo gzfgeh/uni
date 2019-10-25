@@ -20,8 +20,8 @@ export function register(phone, smsVercode,password,clientID) {
 /**
  * 登陆
  */
-export function login(phone,pwd,clientID) {
-    return request.get('User/User/login?phone='+phone+"&type=1&pwd="+pwd+"&clientID="+clientID+"&deviceID=&userCode=&platform="+uni.getSystemInfoSync().platform)
+export function login(params) {
+    return request.post('user/user/courierLogin', qs.stringify(params))
 }
 
 /**
@@ -57,4 +57,11 @@ export function getYzByRegionId(params) {
  */
 export function writeOff_record(params) {
     return request.post('mall/goods/writeOff_record', qs.stringify(params))
+}
+
+/**
+ * js-sdk
+ */
+export function getJSSDKConfig() {
+    return request.get('Home/Index/getJSSDKConfig')
 }

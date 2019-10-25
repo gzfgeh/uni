@@ -72,16 +72,16 @@
 				});
 			},
 			async loginAction(){
-				if((!this.account) || (this.account.length != 11)){
+				if((!this.account)){
 					uni.showToast({
 					  icon: 'none',
-					  title: '手机号输入错误',
+					  title: '员工号输入错误',
 					  duration: 1000
 					});
 					return;
 				};
 				
-				if((!this.password) || (this.password.length < 6)){
+				if((!this.password) ){
 					uni.showToast({
 					  icon: 'none',
 					  title: '密码输入错误',
@@ -89,25 +89,19 @@
 					});
 					return;
 				};
+				let params = {
+					courierNumber: this.account,
+					pwd: this.password
+				};
 				
-				let clientID = 0;
-				
-				
-				// #ifdef APP-PLUS
-					let info = plus.push.getClientInfo();
-					clientID = info.clientid;
-				// #endif
-				console.log('clientID')
-				console.log(clientID)
-				
-				let res = await login(this.account, this.password, clientID);
+				let res = await login(params);
 				if(res.status == 1){
 					uni.showToast({
 					  icon: 'none',
 					  title: '登陆成功',
 					  duration: 1000
 					});
-					uni.setStorageSync("userInfo", res.data.userInfo);
+					uni.setStorageSync("userInfo", res.data);
 					uni.redirectTo({
 						url: '/pages/home/home'
 					});

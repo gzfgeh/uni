@@ -880,7 +880,8 @@
         ,{
             "path" : "pages/coupon_detail/coupon_detail",
             "style" : {
-				"navigationBarTitleText": "优惠详情"
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor":"#398FEE"
 			}
         }
     ],
