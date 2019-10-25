@@ -98,7 +98,7 @@
 				let userInfo = uni.getStorageSync("userInfo");
 				let params = {
 					id: this.goodsID,
-					courier_id: userInfo.courier_id
+					courier_id: userInfo.courierID
 				};
 				let res = await writeOff(params);
 				if(res.status == 1){
