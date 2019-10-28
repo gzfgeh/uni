@@ -44,7 +44,7 @@
 							success: function (res) {
 							var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
 								console.log(res);
-								alert(res.resultStr);
+								// alert(res.resultStr);
 								uni.navigateTo({
 									url:'/pages/records_detail/records_detail?goodsID='+res.resultStr
 								})
