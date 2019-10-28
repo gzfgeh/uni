@@ -13,13 +13,9 @@
 		{
 			"path": "pages/home/home",
 			"style" : {
-				"navigationBarTitleText": "首页",
-				"app-plus": {
-					"titleNView": {
-						"splitLine": {
-							"color": "#111111"
-						}
-					}
+				"navigationStyle": "custom",
+				"app-plus":{
+					"titleNView":false
 				}
 		    }
 		}

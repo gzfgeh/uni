@@ -23,7 +23,7 @@
 		<view @longpress="saveQrcode" style="visibility: hidden; margin-top: -440upx;">
 			<tki-qrcode
 			ref="qrcode"
-			:val="src"
+			:val="val"
 			:size="size"
 			:unit="unit"
 			:background="background"
@@ -89,6 +89,7 @@
 				let res = await couponView({id: this.goodsID});
 				if(res.status == 1){
 					this.src = res.data.qyCodeUrl;
+					this.val = this.src;
 					this.logo = res.data.img;
 					this.start_time = res.data.start_time;
 					this.end_time = res.data.end_time;
@@ -97,18 +98,26 @@
 					this.type = res.data.type;
 					
 					
-					setTimeout(() => {
-						if(flag == 1){
-							this.$refs.qrcode._makeCode();
-						}else{
-							flag = 2;
-						}
+					if(flag == 1){
+						this.$refs.qrcode._makeCode();
+						setTimeout(()=>{
+							uni.showLoading({
+								icon: 'none',
+								duration: 1000,
+								title:'加载中...'
+							});
+						}, 30);
 						
-					}, 1000);
+					}else{
+						flag = 2;
+					}
 				}
 			},
 			qrR(res) {
 				this.src = res;
+				setTimeout(() => {
+					uni.hideLoading();
+				}, 2000)
 				// this.src = this.base64ToBlob(this.src);
 			},
 	

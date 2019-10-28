@@ -46,7 +46,7 @@
 								console.log(res);
 								alert(res.resultStr);
 								uni.navigateTo({
-									url:'/pages/records_detail/records_detail'
+									url:'/pages/records_detail/records_detail?goodsID='+res.resultStr
 								})
 								//其它网页调用二维码扫描结果： 
 								//var result=sessionStorage.getItem('saomiao_result');

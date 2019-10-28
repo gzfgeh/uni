@@ -121,6 +121,11 @@
 		},
 		onLoad() {
 			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px';
+			if(uni.getStorageSync("userInfo")){
+				uni.redirectTo({
+					url: '/pages/home/home'
+				});
+			}
 		}
 	}
 </script>

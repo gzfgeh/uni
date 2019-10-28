@@ -84,10 +84,9 @@
 			// #ifdef APP-PLUS
 				this.isApp = true;
 			// #endif
+		
 			
-			let goodsID = this.$root.$mp.query.goodsID;
-			
-			this.goodsID = opt.goodsID?opt.goodsID:603;
+			this.goodsID = opt.goodsID;
 			this.couponView();
 		 },
         methods: {
