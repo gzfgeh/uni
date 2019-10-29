@@ -927,12 +927,12 @@
 			// 	"selectedIconPath": "static/img/tabbar/addactive.png",
 			// 	"text": "生活"
 			// },
-			// {
-			// 	"pagePath": "pages/tabbar/fuli/fuli",
-			// 	"iconPath": "static/img/tabbar/news.png",
-			// 	"selectedIconPath": "static/img/tabbar/newsactive.png",
-			// 	"text": "福利"
-			// },
+			{
+				"pagePath": "pages/tabbar/fuli/fuli",
+				"iconPath": "static/img/tabbar/news.png",
+				"selectedIconPath": "static/img/tabbar/newsactive.png",
+				"text": "福利"
+			},
 			{
 				"pagePath": "pages/tabbar/my/my",
 				"iconPath": "static/img/tabbar/me.png",

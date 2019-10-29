@@ -1,9 +1,9 @@
 <template>
 	<view >
-		<view class="row_center" style="width: 100vw; height: 100vh;">
+		<!-- <view class="row_center" style="width: 100vw; height: 100vh;">
 			敬请期待
-		</view>
-		<view v-if="false">
+		</view> -->
+		<view >
 			<div class="fuli-top row_center" :style="{'padding-top': (isAPP?'30px':'0upx')}">
 				<div class="left-col louyu-xuanze">
 					<div  id="louyuText" class="louyu" @tap="selectBuild()">
@@ -195,8 +195,8 @@
 				this.curIndex = e.mp.detail.current;
 			},
 			changeType(index){
-				this.curTypeIndex = index;
-				this.$forceUpdate();
+				// this.curTypeIndex = index;
+				// this.$forceUpdate();
 			},
 			async welfare_coupon_time(){
 				let res = await welfare_coupon_time();

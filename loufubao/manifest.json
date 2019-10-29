@@ -54,7 +54,8 @@
                 "payment" : {
                     "alipay" : {},
                     "weixin" : {
-                        "appid" : "wxe8ac481b75871f3d"
+                        "appid" : "wxe8ac481b75871f3d",
+                        "UniversalLinks" : "https://applinks:domains.loufubao.com"
                     }
                 },
                 "oauth" : {},

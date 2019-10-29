@@ -4,7 +4,7 @@
 		<image src="../../static/img/coupon_detail_bg.png" mode="aspectFill" :style="{'top': (isApp?'100upx':'200upx')}"
 				class="detail_bg"></image>
 				
-		<view class="col item" :style="{'margin-top': (isApp?'20upx':'112upx')}" >
+		<view class="col item" :style="{'margin-top': (isApp?'100upx':'112upx')}" >
 			<image :src="logo" mode="aspectFill" class="detail_logo"></image>	
 			
 			<span class="name">{{title}}</span>
