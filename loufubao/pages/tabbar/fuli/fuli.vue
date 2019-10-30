@@ -43,7 +43,7 @@
 				</view>
 			</view>
 			
-			<div class="row_center" style="box-shadow:0px 4px 12px 0px rgba(126,125,125,0.16);" v-if="curTypeIndex == 0">
+			<div class="row_center" style="box-shadow:0px 4px 12px 0px rgba(126,125,125,0.16);" v-if="curTypeIndex == 1">
 				<div v-for="(item, index) in timeList" :key="index" class="col_center time_item" @click="changeTimeType(index)">
 					<img src="../../../static/img/fuli_bg.png" mode="aspectFill" v-if="index == curTimeIndex">
 					<span class="time" :class="{'active': (index==curTimeIndex)}">{{item.start}}~{{item.end}}</span>
@@ -195,6 +195,13 @@
 				this.curIndex = e.mp.detail.current;
 			},
 			changeType(index){
+				if(index == 1){
+					uni.showToast({
+						title:"敬请期待",
+						icon: 'none',
+						duration:1000
+					})
+				}
 				// this.curTypeIndex = index;
 				// this.$forceUpdate();
 			},
