@@ -14,7 +14,7 @@
 			<div class="row_wrap">
 				<div class="row">
 					<img src="../../static/img/login_phone.png">
-					<input type="number" placeholder="请输入手机号码" placeholder-class="place-holder"
+					<input type="text" placeholder="请输入手机号码" placeholder-class="place-holder"
 						maxlength="11" class="mobile" v-model="account">
 				</div>
 			</div>

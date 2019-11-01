@@ -552,6 +552,7 @@
 
 <style>
 	page{height: 100%; background: #F5F5F5; }
+	image{will-change: transform}
 .content {position: relative; color: #666666; font-size: 24upx; height: 100upx;}
 .head_bg{ width: 100%; height: 360upx;position: absolute;top: -124upx; left: 0upx;z-index: 1;}
 .head_bg image{height: 360upx; width: 100%;}

@@ -453,7 +453,7 @@
 									uni.navigateBack({
 										delta:2
 									});
-									uni.redirectTo({
+									uni.navigateTo({
 										url: '/pages/mall_goods_list/mall_goods_list'
 									});
 								}else if(payWayValue == 5){
@@ -498,7 +498,7 @@
 									uni.navigateBack({
 										delta:2
 									});
-									uni.redirectTo({
+									uni.navigateTo({
 										url: '/pages/mall_goods_list/mall_goods_list'
 									});
 								}else if(payWayValue == 5){
@@ -576,7 +576,7 @@
 							uni.navigateBack({
 								delta:2
 							});
-							uni.redirectTo({
+							uni.navigateTo({
 								url: '/pages/mall_goods_list/mall_goods_list'
 							});
 						}else if(payWayValue == 5){
@@ -621,10 +621,10 @@
 							});
 						}else if(payWayValue == 4){
 							//商城 小商品
-							// uni.navigateBack({
-							// 	delta:2
-							// });
-							uni.redirectTo({
+							uni.navigateBack({
+								delta:2
+							});
+							uni.navigateTo({
 								url: '/pages/mall_goods_list/mall_goods_list'
 							});
 						}else if(payWayValue == 5){
@@ -703,10 +703,10 @@
 													});
 												}else if(payWayValue == 4){
 													//商城 小商品
-													// uni.navigateBack({
-													// 	delta:2
-													// });
-													uni.redirectTo({
+													uni.navigateBack({
+														delta:2
+													});
+													uni.navigateTo({
 														url: '/pages/mall_goods_list/mall_goods_list'
 													});
 												}else if(payWayValue == 5){
@@ -754,10 +754,10 @@
 												});
 											}else if(payWayValue == 4){
 												//商城 小商品
-												// uni.navigateBack({
-												// 	delta:2
-												// });
-												uni.redirectTo({
+												uni.navigateBack({
+													delta:2
+												});
+												uni.navigateTo({
 													url: '/pages/mall_goods_list/mall_goods_list'
 												});
 											}else if(payWayValue == 5){
@@ -835,10 +835,10 @@
 					});
 				}else if(payWayValue == 4){
 					//商城 小商品
-					// uni.navigateBack({
-					// 	delta:2
-					// });
-					uni.redirectTo({
+					uni.navigateBack({
+						delta:2
+					});
+					uni.navigateTo({
 						url: '/pages/mall_goods_list/mall_goods_list'
 					});
 				}else if(payWayValue == 5){

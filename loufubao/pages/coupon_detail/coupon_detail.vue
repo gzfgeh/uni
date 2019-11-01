@@ -126,7 +126,7 @@
 </script>
 
 <style>
-	page{background-color: #398FEE;height: 100%;}
+	page{background-color: #398FEE;height: 100%;overflow: hidden;}
 	.content{
 		background-color: #398FEE;
 		color: rgba(0,0,0,0.6);
@@ -140,7 +140,7 @@
 	
 	.uni-btn-icon{color: #FFFFFF!important;}
 	
-	.detail_bg{position: fixed;top: 200upx; width: 96%; left: 2%; height: 790upx;}
+	.detail_bg{position: absolute;top: 200upx; width: 96%; left: 2%; height: 790upx;}
 	.item{position: relative;z-index: 2;}
 	.detail_logo{width: 132upx; height: 132upx; border-radius: 50%; margin-top: -66upx;}
 	.name{color:rgba(0,0,0,0.8); font-size: 28upx; margin-top: 18upx; margin-bottom: 20upx; line-height: 1.0;}

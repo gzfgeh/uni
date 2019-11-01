@@ -881,7 +881,10 @@
             "path" : "pages/coupon_detail/coupon_detail",
             "style" : {
 				"navigationBarTitleText": "",
-				"navigationBarBackgroundColor":"#398FEE"
+				"navigationBarBackgroundColor":"#398FEE",
+				"app-plus":{
+					"scrollIndicator": "none"
+				}
 			}
         }
     ],
