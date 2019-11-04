@@ -243,7 +243,7 @@
 									<div><img :src="item.logoURL" mode="widthFix"/></div>
 									<p>{{item.expressCompanyName}}</p>
 									<div class="express-jiage" v-if="createOrderType != 2 && (item.price)">
-										<span class="bottom">{{orderType==1?'￥'+item.price:'按照合同价'}}</span>
+										<span class="bottom">{{orderType==1?'￥'+item.price:'按照合同价格'}}</span>
 									</div>
 									<img src="../../static/img/yunfei_select.png" mode="widthFix" class="company_select" v-if="(company_index == index)">
 								</div>
@@ -279,9 +279,9 @@
 						
 						<span id="priceText" v-if="pay_index==1&&(start_province == '上海')" style="font-size:30upx;">到付件无需支付</span>
 						
-						<span id="priceText" v-if="parseInt(allMoney)==0 &&pay_index==0&&(start_province == '上海')" style="font-size:30upx;">请与工作人员联系</span>
+						<span id="priceText" v-if="parseInt(allMoney)==0 &&pay_index==0&&(start_province == '上海')&&orderType==1" style="font-size:30upx;">请与工作人员联系</span>
 						
-						<span id="priceText" v-if="start_province != '上海'" style="font-size:24upx;">提示按照合同价格结算</span>
+						<span id="priceText" v-if="orderType==2" style="font-size:24upx;"> 按照合同价格</span>
 					
 					</span>
 
@@ -707,15 +707,18 @@
 			},
 			changeCompany(index){
 				this.company_index = index;
-				this.allMoney = parseFloat(this.companyList[index].price_total).toFixed(2);
-				this.insuredPrice = parseFloat(this.companyList[index].insuredPrice).toFixed(2);
-				this.expressCompanyID = this.companyList[index].expressCompanyID;
-				this.expressCompanyName = this.companyList[index].expressCompanyName;
-				if(this.expressCompanyName != 'EMS'){
-					this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.insuredPrice)).toFixed(2) ;
+				if(this.orderType == 1){
+					this.allMoney = parseFloat(this.companyList[index].price_total).toFixed(2);
+					this.insuredPrice = parseFloat(this.companyList[index].insuredPrice).toFixed(2);
+					this.expressCompanyID = this.companyList[index].expressCompanyID;
+					this.expressCompanyName = this.companyList[index].expressCompanyName;
+					if(this.expressCompanyName != 'EMS'){
+						this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.insuredPrice)).toFixed(2) ;
+						
+					}
+					this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
 					
 				}
-				this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
 				
 				// this.calAllPrice();
 			},

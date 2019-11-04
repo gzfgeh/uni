@@ -72,7 +72,7 @@
 				});
 			},
 			async loginAction(){
-				if((!this.account) || (this.account.length != 11)){
+				if((!this.account)){
 					uni.showToast({
 					  icon: 'none',
 					  title: '手机号输入错误',
@@ -81,7 +81,7 @@
 					return;
 				};
 				
-				if((!this.password) || (this.password.length < 6)){
+				if((!this.password)){
 					uni.showToast({
 					  icon: 'none',
 					  title: '密码输入错误',
