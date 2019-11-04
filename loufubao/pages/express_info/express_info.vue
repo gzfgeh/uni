@@ -560,12 +560,16 @@
 			async user_express_coupon(){
 				let res = await user_express_coupon();
 				if(res.status == 1){
-					this.c_id = res.data.c_id;
-					this.coupon_price = res.data.price?res.data.price:0;
-					this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
-					if(this.allMoney < 0){
-						this.allMoney = 0;
+					if(res.data){
+						this.c_id = res.data.c_id;
+						this.coupon_price = res.data.price?res.data.price:0;
+						this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.coupon_price)).toFixed(2) ;
+						if(this.allMoney < 0){
+							this.allMoney = 0;
+						}
 					}
+					
+					
 				}
 			},
 			async getDepartment(){
@@ -707,11 +711,13 @@
 			},
 			changeCompany(index){
 				this.company_index = index;
+				console.log(this.orderType);
+				this.expressCompanyID = this.companyList[index].expressCompanyID;
+				this.expressCompanyName = this.companyList[index].expressCompanyName;
 				if(this.orderType == 1){
 					this.allMoney = parseFloat(this.companyList[index].price_total).toFixed(2);
 					this.insuredPrice = parseFloat(this.companyList[index].insuredPrice).toFixed(2);
-					this.expressCompanyID = this.companyList[index].expressCompanyID;
-					this.expressCompanyName = this.companyList[index].expressCompanyName;
+					
 					if(this.expressCompanyName != 'EMS'){
 						this.allMoney = parseFloat(parseFloat(this.allMoney) - parseFloat(this.insuredPrice)).toFixed(2) ;
 						
