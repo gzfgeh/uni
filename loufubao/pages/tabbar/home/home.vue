@@ -22,7 +22,7 @@
 					
 					<div class="msg_wrap row_center" @tap="goToMsg">
 						<image src="../../../static/img/home_msg.png" mode="widthFix" />
-						<div class="red_hot" v-if="msgCount > 0"></div>
+						<div class="red_hot" v-if="msgCount == 1"></div>
 					</div>
 				</div>
 			</div>
@@ -363,7 +363,14 @@
 			let res = await getMessageListByType(params);
 			uni.stopPullDownRefresh();
 			if(res.status == 1){
-				this.msgCount = res.data.length;
+				this.msgCount = 0;
+				res.data.map((item) => {
+					if(parseInt(item.weixinMessageStatus) == 0){
+						//未读
+						this.msgCount = 1;
+					}
+				})
+				
 			}
 			
 		},
