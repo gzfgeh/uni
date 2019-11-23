@@ -1,6 +1,6 @@
 {
-    "name" : "Nick小程序",
-    "appid" : "__UNI__91F60D2",
+    "name" : "生活小工具",
+    "appid" : "__UNI__1EA8900",
     "description" : "",
     "versionName" : "1.1.0",
     "versionCode" : 110,
@@ -160,7 +160,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxbcaaaacac092366f",
+        "appid" : "wxea718f8387040d54",
         "setting" : {
             "urlCheck" : true,
             "minified" : true,
