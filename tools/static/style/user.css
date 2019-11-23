@@ -1,0 +1,65 @@
+page {
+  height: 100%;
+  border-top: 2upx solid #E3E3E3;
+  font-weight: 400;
+}
+
+.page-outer-wrapper {
+  height: 100%;
+}
+
+.page-footer {
+  width: 100%;
+}
+
+.btn-save[type=primary] {
+  margin: 40upx 30upx;
+  line-height: 88upx;
+  border-radius: 0;
+  background: #AD85FC;
+  font-size: 34upx;
+}
+
+.btn-save[disabled][type=primary] {
+  background-color: #F4F4F4;
+  color: #666;
+}
+
+.btn-save:after {
+  display: none;
+}
+
+/* message */
+.message {
+  width: 416upx;
+  background: #fff;
+  border-radius: 10upx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  padding: 50upx 0;
+  display: flex;
+  font-size: 30upx;
+}
+
+.message-icon {
+  width: 50upx;
+  height: 50upx;
+  margin-bottom: 30upx;
+}
+
+  /* 底部分享 */
+  .uni-uploader {
+    background: #fff;
+    padding-bottom: 50upx;
+  }
+
+  .uni-uploader-btn {
+    height: 100upx;
+    line-height: 100upx;
+    border-top: 1upx #F4F4F4 solid;
+    text-align: center;
+    color: #333;
+    font-size: 30upx;
+  }

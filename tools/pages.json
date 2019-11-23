@@ -1,0 +1,140 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/splash/splash",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		}
+		
+        ,{
+            "path" : "pages/main/main",
+            "style" : {
+				"navigationBarTitleText": ""
+			}
+        }
+        ,{
+            "path" : "pages/myteam/myteam",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/schedule/schedule",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/moment/moment",
+            "style" : {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 300,
+				"app-plus": {
+					"pullToRefresh": {
+					    "support": true,
+					    "color": "#107EFF",
+					    "style": "circle"
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/message/message",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/hotel/hotel",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/dress/dress",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/weather/weather",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/contacts/contacts",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/token/token",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/bus/bus",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/bindPage/bindPage",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/codePage/codePage",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/erweima/erweima",
+            "style" : {
+				"navigationBarTitleText": "加入团队"
+			}
+        }
+        ,{
+            "path" : "pages/daily/daily",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+        ,{
+            "path" : "pages/my_daily/my_daily",
+            "style" : {
+				"navigationStyle": "custom"
+			}
+        }
+    ],
+	"condition": { //编译模式配置，仅开发期间生效  
+		"current": 0, //当前激活的编译模式（list 的索引项）  
+		"list": [
+			{
+			"name": "nick", //模式名称  
+			"pathName": "pages/my_daily/my_daily", //启动页面，必选  
+			"query": "id=1" //启动参数, QueryString 格式  FFCA0A
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Nick小程序",
+		"navigationBarBackgroundColor": "#fff",
+		"app-plus": {
+			"compatible": {
+				"ignoreVersion": true
+			}
+		}
+	}
+}
