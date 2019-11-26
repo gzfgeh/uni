@@ -1,25 +1,24 @@
 {
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// {
+		// 	"path": "pages/splash/splash",
+		// 	"style": {
+		// 		"navigationStyle": "custom",
+		// 		"enablePullDownRefresh": false,
+		// 		"app-plus": {
+		// 			"bounce": "none"
+		// 		}
+		// 	}
+		// },
 		{
-			"path": "pages/splash/splash",
-			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false,
-				"app-plus": {
-					"bounce": "none"
-				}
-			}
-		}
-		
-        ,{
             "path" : "pages/main/main",
             "style" : {
-				"navigationBarTitleText": ""
+				"navigationStyle": "custom"
 			}
         }
         ,{
-            "path" : "pages/myteam/myteam",
+            "path" : "pages/video/video",
             "style" : {
 				"navigationStyle": "custom"
 			}
@@ -117,24 +116,47 @@
 				"navigationStyle": "custom"
 			}
         }
+        ,{
+            "path" : "pages/my/my",
+            "style" : {}
+        }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
 		"current": 0, //当前激活的编译模式（list 的索引项）  
 		"list": [
 			{
-			"name": "nick", //模式名称  
-			"pathName": "pages/my_daily/my_daily", //启动页面，必选  
+			"name": "生活助手", //模式名称  
+			"pathName": "pages/video/video", //启动页面，必选  
 			"query": "id=1" //启动参数, QueryString 格式  FFCA0A
 		}]
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "Nick小程序",
+		"navigationBarTitleText": "生活助手",
 		"navigationBarBackgroundColor": "#fff",
 		"app-plus": {
 			"compatible": {
 				"ignoreVersion": true
 			}
 		}
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"color": "#2C2C2C",
+		"selectedColor": "#1BB851",
+		"list": [{
+				"pagePath": "pages/main/main",
+				"iconPath": "static/img/tools.png",
+				"selectedIconPath": "static/img/tools_active.png",
+				"text": "工具"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/img/my.png",
+				"selectedIconPath": "static/img/my_active.png",
+				"text": "我的"
+			}
+		]
 	}
 }

@@ -1,13 +1,5 @@
 <template>
 	<view>
-		<!-- <view class="title_wrap">
-			<view class="status-bar" :style="{'height': statusBarHeight+'px'}"></view>
-			<view class="head_wrap row_between" :style="{'height': titleHeight+'px'}">
-				<image :src="white_back_icon" mode="aspectFill" class="back_icon" @tap="backAction"></image>
-			</view>
-		</view>
-		
-		<view :style="{'height': tempHeight+'px'}"></view> -->
 		
 		<uni-status-bar @finishPage="backAction"></uni-status-bar>
 		

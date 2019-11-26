@@ -1,50 +1,49 @@
 <template>
 	<view>
-		<view class="title_wrap">
-			<view class="status-bar" :style="{'height': statusBarHeight+'px'}"></view>
-			<view class="head_wrap row_between" :style="{'height': titleHeight+'px'}">
-				<image :src="white_back_icon" mode="aspectFill" class="back_icon" @tap="backAction"></image>
-			</view>
-		</view>
 		
-		<view :style="{'height': tempHeight+'px'}"></view>
+		<uni-status-bar @finishPage="backAction"></uni-status-bar>
 		
-		<image :src="team_title" mode="aspectFill"  :style="{'top': tempHeight+'px'}"
+		<image :src="message_title" mode="aspectFill"  :style="{'top': tempHeight+'px'}"
 			class="team_title" :animation="upDown"></image>
 			
-		<image :src="team_bg" mode="aspectFill" class="team_bg"></image>
+		<image :src="message_bg" mode="aspectFill" class="team_bg"></image>
 		
-		<scroll-view class="content" scroll-y="true" @scroll="scroll" :style="{'height' : scrollHeightVal+'px'}">
-			<view class="temp_view"></view>
+		
+		<scroll-view class="content" scroll-y="true" @scroll="scroll" 
+			scroll-with-animation="true" :style="{'height' : scrollHeightVal+'px'}"  >
+			<view class="temp_view"  ></view>
 			<view class="content_wrap" :style="{'height' : scrollHeightVal+'px'}" >
-				<view class="content_title">STORES BRAND</view>
-				<view v-for="(item,index) in list" :key="index" class="row item" @tap="goToItem(index)">
-					<image :src="team_first_icon" mode="aspectFill" v-if="index==0" class="head_index"></image>
-					<image :src="item.m_avatar" mode="aspectFill" ></image>
-					<span>{{item.m_truename}}</span>
+				<view v-for="(item,index) in list" :key="index" class="item" @click="clickItem(index)">
+					<view class="time">{{item.c_title}}</view>
+					<image :src="message_notice_icon" mode="aspectFill"></image>
+					
+					<rich-text :nodes="item.c_detail"></rich-text>
 				</view>
 			</view>
 		</scroll-view>
-		
 		
 		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getMyTeam } from "@/utils/api";
+	import { BASE_IMAGE_URL,getContentList } from "@/utils/api";
+	import uniStatusBar from '@/components/mini_status_bar.vue';
 	
 	export default {
+		components: {
+			uniStatusBar
+		},
 		data() {
 			return {
 				head_logo: BASE_IMAGE_URL+"head_logo.png",
-				team_bg: BASE_IMAGE_URL+"team_bg.png",
+				message_bg: BASE_IMAGE_URL+"message_bg.png",
 				white_back_icon: BASE_IMAGE_URL+"white_back_icon.png",
-				team_title: BASE_IMAGE_URL+"team_title.png",
-				team_first_icon: BASE_IMAGE_URL+"team_first_icon.png",
+				message_title: BASE_IMAGE_URL+"message_title.png",
+				message_notice_icon: BASE_IMAGE_URL+"message_notice_icon.png",
 				animation: {},
 				upDown: {},
-				list: [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9],
+				list: [],
 				oldScroll: 0,
 				topScroll: 340,
 				bottomScroll: 270,
@@ -54,10 +53,11 @@
 				titleHeight: 0,
 				tempHeight: 0,
 				scrollHeightVal: 0,
-				
 			}
 		},
 		methods: {
+			clickItem: function(index){
+			},
 			backAction: function(){
 				uni.navigateBack();
 			},
@@ -103,35 +103,30 @@
 				
 			},
 			enterShow(){
-				setTimeout(() => {
-					this.animation = uni.createAnimation({
-						  duration: 1,
-						  timingFunction: "ease",
-						  delay: 0
-					});
-					 
-				}, 0);
+				this.animation = uni.createAnimation({
+					  duration: 1,
+					  timingFunction: "ease",
+					  delay: 0
+				});
 			},
-			async getMyTeam(){
-				let res = await getMyTeam();
+			async getContentList(){
+				let res = await getContentList(1);
 				if(res.code == 1000){
 					this.list = res.data;
-				}
-			},
-			goToItem(index){
-				if(index==0){
-					uni.navigateTo({
-						url:'/pages/erweima/erweima?avatar='+this.list[0].m_avatar+
-								"&name="+this.list[0].m_name+"&m_z_id="+this.list[0].m_z_id
+					this.list.map((item) => {
+						var richtext=  item.c_detail;
+						const regex = new RegExp('<img', 'gi');
+						item.c_detail= richtext.replace(regex, `<img style="max-width: 100%;"`);
+										 
 					})
 				}
 			}
 		},
 		onLoad() {
+			this.getContentList();
 			this.enterShow();
 			let screenWidth =  uni.getSystemInfoSync().screenWidth;
 			let screenHeight =  uni.getSystemInfoSync().screenHeight;
-			
 			this.statusBarHeight = wx.getSystemInfoSync().statusBarHeight;
 			if(uni.getSystemInfoSync().platform == "android"){
 				this.titleHeight = 48;
@@ -146,8 +141,6 @@
 			console.log(screenWidth + "-----" + screenHeight);
 			this.scrollHeight = 27+this.titleHeight/2;
 			this.topScroll = this.bottomScroll + this.scrollHeight;
-			this.getMyTeam();
-			
 		}
 	}
 </script>
@@ -161,17 +154,18 @@
 	.team_bg{width: 100vw; position: fixed; top: 0upx; left: 0upx; z-index: 0; height: 946upx;}
 	.content{background: transparent; width: 100vw;position: relative;z-index: 2; height: calc(100vh - 93px); display: flex;flex-direction: column; }
 	
+	.head_wrap{padding:0upx 34upx;}
+	.back_icon{width: 17upx; height: 30upx; margin-right: 17upx;}
+	
 	.temp_view{width: 100vw; height: 670upx; background: transparent;}
-	.team_title{ left: 34upx; position: absolute;z-index: 2; height: 108upx; width: 210upx;}
+	.team_title{ left: 34upx; position: absolute;z-index: 2; height: 108upx; width: 220upx;}
 	.content_title{font-size: 40upx; color: #000000; padding: 34upx;}
 	
 	.content_wrap{width: 100vw; background: #FFFFFF; position: relative; box-sizing: border-box;}
-	.content_wrap .item{padding: 20upx 34upx; background: #FFFFFF; position: relative;}
-	.content_wrap .item .head_index{width: 105upx; height: 105upx; position: absolute; top:16upx; left: 30upx;}
-	.content_wrap .item image{width: 96upx; height: 96upx; margin-right: 45upx; border-radius: 50%;}
-	.content_wrap .item span{color: #000000; font-size: 32upx;}
 	
-	
-	
-	
+	.content_wrap .item{ background: #FFFFFF; padding: 20upx 100upx 20upx 160upx; color: #000000; display: flex;flex-direction: column; overflow: hidden; box-sizing: border-box; position: relative;}
+	.content_wrap .item .time{text-align: center; margin-bottom: 40upx;}
+	.content_wrap .item .text{font-size: 30upx; margin-bottom: 60upx; line-height: 1.3; display: inline-block;overflow-wrap:break-word; padding-left: 60upx;}
+	.content_wrap .item image{width: 50upx; height: 50upx; position: absolute; top: 100upx; left: 35upx;}
+
 </style>

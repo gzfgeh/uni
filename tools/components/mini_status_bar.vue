@@ -2,8 +2,11 @@
 	<view>
 		<view class="title_wrap">
 			<view class="status-bar" :style="{'height': statusBarHeight+'px'}"></view>
-			<view class="head_wrap row_between" :style="{'height': titleHeight+'px'}">
-				<image :src="white_back_icon" mode="aspectFill" class="back_icon" @tap="backAction"></image>
+			<view class="head_wrap row_between" :style="{'height': titleHeight+'px'}"  >
+				<image :src="white_back_icon" mode="aspectFill" class="back_icon" @tap="backAction" :style="{'visibility': (showBack?'visible':'hidden')}"></image>
+				<text>{{titleStr}}</text>
+				<image :src="white_back_icon" mode="aspectFill" class="back_icon" @tap="backAction" :style="{'visibility': 'hidden'}"></image>
+				
 			</view>
 		</view>
 		
@@ -17,6 +20,16 @@
 	
 	export default {
 		name: "UniStatusBar",
+		props: {
+			showBack: {
+				type: Boolean,
+				default: false
+			},
+			titleStr: {
+				type: String,
+				default: '生活小助手'
+			}
+		},
 		data() {
 			return {
 				white_back_icon: BASE_IMAGE_URL+"white_back_icon.png",
@@ -45,7 +58,7 @@
 </script>
 
 <style>
-	.title_wrap{position: fixed; top: 0px; left: 0px; width: 100vw; z-index: 2;}
+	.title_wrap{position: fixed; top: 0px; left: 0px; width: 100vw; z-index: 2; background: #1BB851;}
 	.status-bar{}
 	
 </style>

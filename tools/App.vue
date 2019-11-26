@@ -1,19 +1,9 @@
 <script>
-	// const Config = require("./config.js");
-	// const Service = require("./pages/services.js")(Config);
-	// const RongIMLib = require("./utils/RongIMLib-2.3.0.js");
-	// require("./utils/RongEmoji-2.2.7.min.js");
-	// import RongIMLib from './utils/RongIMLib-2.3.0.js';
-	
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
 		// 一直加loading
 		uni.setStorageSync("isShow", false);
-		
-		// RongIMLib.RongIMClient.init('0vnjpoad03wzz');
-		// RongIMLib.RongIMEmoji.init();
-		
 		
 	},
 	onShow: function() {
@@ -96,6 +86,6 @@ scroll-view [style*="overflow"]::-webkit-scrollbar {
 .rong-icon {width: 64rpx;height: 64rpx;border-radius: 50%;background-size: cover;}
 
 .back_icon{width: 17upx; height: 30upx; margin-right: 17upx; padding: 25upx!important;}
-.head_wrap{padding:0upx 10upx!important;}
+.head_wrap{padding:0upx 10upx!important; color: #FFFFFF}
 
 </style>

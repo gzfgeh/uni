@@ -8,7 +8,7 @@ var tokenFly = new Fly()
 // 网络超时时间
 request.config.timeout = 5 * 1000
 // request.config.baseURL = 'http://192.168.1.166:8085/mobile_api/'
-request.config.baseURL = 'https://nk.pro.youzewang.com/'
+request.config.baseURL = 'https://gzf.liangyicloud.xyz/'
 
 tokenFly.config = request.config
 
