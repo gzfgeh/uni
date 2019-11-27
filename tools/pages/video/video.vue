@@ -12,7 +12,7 @@
 			<view class="content_wrap">
 				<view class="row btn_wrap">
 					<view class="input_wrap row">
-						<input type="text" v-model="videoUrl" placeholder="请粘贴视频地址" />
+						<input type="text" v-model="videoUrl" placeholder="请粘贴视频地址" style="width: 100%;"/>
 						<image :src="clear" mode="aspectFill" v-if="videoUrl" @tap="clearUrl"></image>
 					</view>
 					
@@ -63,23 +63,19 @@
 				this.videoUrl = "";
 			},
 			getVideoUrl(){
+				let that = this;
 				let params = {
-					type: 2,
-					params: {
-						"url": "http://v.douyin.com/k8xeV4/",
-						"uid": "",
-						"isFormat":true,
-						"max_cursor": 0
-					}
+					"url": this.videoUrl?this.videoUrl:"http://v.douyin.com/aWcudQ/",
 				};
 				uni.showLoading();
 				uni.request({
-					url: 'http://api.lyfzn.top/douyinApi/LimitApi/?s=PT1RYXhrV1pxQWtNeEFqS0ExVFBCOTBiSlJrU3FGRU1qSmpWcHBFYmpSMFR6a2thYXBuVkVwa0tBSlRNd29DUTkwVFVXdG1Xd2tGZUtGalZYaEdXV05uVldaVllXWmtWdlprYU5wbVdxVkZlSkZEWmhabFJXZGtXVlpsYTFzV1ZYWmtWT2RrUlVWMU1zUmxWVjVFU2toa1ZIZDFhYUJUVzJBSE1XZEZhWVZWV2FaMVZUcEVSV1JsVVhaVlZraFZWWEZETWhkRVpXZEZOR1YwVlhSR2JWTm5UR1YxU2t4bVY2cGtSU2RsVkdOMmRSWlVZREpGYlVwVU5yWlZhQ3BtVTBwVk1TUkRac1JWV29OalVoUjNhUmRsV3NGMVJvWmtWV3BWVld4bVNzUmxST0pEVmhoWGJWZGxRSU4xVks1MlV6UkdiVWRsVnNSMVZ3eG1VWGxUVk9abFdXWjFRU0ZEVg==',
+					url: 'https://v.ataobao.vip/api/',
 					method: 'POST',
-					data: JSON.stringify(params),
+					data: params,
 					success(res) {
 						uni.hideLoading();
 						console.log(res);
+						that.trueVideoUrl = res.data.msg.url;
 					}
 				})
 			}
