@@ -24,6 +24,12 @@
 				
 				<video :src="trueVideoUrl" 
 					controls  v-if="trueVideoUrl" class="video_style"></video>
+					
+				<view class="row_around" v-if="trueVideoUrl" style="margin-top: 30upx;">
+					<button type="primary" @tap="saveVideo">保存到相册</button>
+					<button type="primary" @tap="copyUrl">复制视频链接</button>
+				</view>
+					
 			</view>
 			
 			
@@ -35,8 +41,10 @@
 
 <script>
 	import { BASE_IMAGE_URL,getImgList } from "@/utils/api";
+	import DownloadSaveFile  from "@/utils/downloadSaveFile";
 	import uniStatusBar from '@/components/mini_status_bar.vue';
 	
+
 	export default {
 		components: {
 			uniStatusBar
@@ -56,6 +64,19 @@
 			}
 		},
 		methods: {
+			copyUrl(){
+				uni.setClipboardData({
+					data: this.trueVideoUrl
+				});
+				uni.showToast({
+					title: '复制视频链接成功',
+					duration: 1000,
+					icon: 'none'
+				})
+			},
+			saveVideo(){
+				DownloadSaveFile.downloadFile('video', this.trueVideoUrl); //video或image
+			},
 			backAction: function(){
 				uni.navigateBack();
 			},
@@ -63,11 +84,21 @@
 				this.videoUrl = "";
 			},
 			getVideoUrl(){
+				if(!this.videoUrl){
+					uni.showToast({
+						title: '请输入视频地址',
+						duration: 1000,
+						icon: 'none'
+					})
+					return;
+				};
 				let that = this;
 				let params = {
 					"url": this.videoUrl?this.videoUrl:"http://v.douyin.com/aWcudQ/",
 				};
-				uni.showLoading();
+				uni.showLoading({
+					title: '视频提取中...'
+				});
 				uni.request({
 					url: 'https://v.ataobao.vip/api/',
 					method: 'POST',
@@ -124,7 +155,7 @@
 	.pingtai{width: 100%; height: 400upx; margin: 20upx 0upx;}
 	.btn_wrap{background: #FFFFFF;  box-sizing: border-box; }
 	.input_wrap{flex: 1; border-radius: 20upx; border: #1BB851 solid 2upx; height: 90%; padding: 10upx 20upx; box-sizing: border-box; margin-left: 20upx; position: relative;}
-	.input_wrap image{width: 40upx; height: 40upx; position: absolute; right: 20upx; top: 50%; margin-top: -20upx;}
+	.input_wrap image{width: 40upx; height: 40upx; position: absolute; right: 20upx; top: 50%; margin-top: -20upx; z-index: 10;}
 	.input_wrap input{height: 70upx;}
 	.btn_wrap button{margin: auto  20upx;}
 	
