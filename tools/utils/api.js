@@ -10,6 +10,10 @@ export function getImgList() {
     return request.get('Api/Project/getImgList')
 }
 
+export function getConfig() {
+    return request.get('Api/Project/getConfig')
+}
+
 /**
  *  多图上传
  */

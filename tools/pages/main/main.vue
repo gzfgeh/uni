@@ -1,30 +1,25 @@
 <template>
 	<view>
 		<uni-status-bar></uni-status-bar>
-		<scroll-view class="content" scroll-y="true"
-			scroll-with-animation="true" :style="{'height' : scrollHeightVal+'px'}"  >
-			
-			<swiper :indicator-dots="true" :autoplay="true"  :interval="3000" :duration="500" class="head_img">
-				<swiper-item v-for="(item, index) in bannerInfoList" :key="index" class="head_img" @tap="goToH5(item.t_jump)">
-					<image :src="item.t_url" mode="widthFix" class="head_img"></image>
-				</swiper-item>
-			</swiper>
-			
-			<view class="menu_wrap" >
-				<view class="col_center " style="min-width: 21%; margin: 30upx auto;" v-for="(item, index) in contentList" :key="index" @tap="goToContent(item.url)">
-					<image :src="item.b_icon" mode="aspectFill" ></image>
-					<span>{{item.b_name}}</span>
-				</view>
+		<swiper :indicator-dots="true" :autoplay="true"  :interval="3000" :duration="500" class="head_img">
+			<swiper-item v-for="(item, index) in bannerInfoList" :key="index" class="head_img" @tap="goToH5(item.t_jump)">
+				<image :src="item.t_url" mode="widthFix" class="head_img"></image>
+			</swiper-item>
+		</swiper>
+		
+		<view class="menu_wrap" >
+			<view class="col_center " style="min-width: 21%; margin: 30upx auto;" v-for="(item, index) in contentList" :key="index" @tap="goToContent(item.url)">
+				<image :src="item.b_icon" mode="aspectFill" ></image>
+				<span>{{item.b_name}}</span>
 			</view>
-			
-		</scroll-view>
+		</view>
 		
 		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getImgList } from "@/utils/api";
+	import { BASE_IMAGE_URL,getImgList,getConfig } from "@/utils/api";
 	import uniStatusBar from '@/components/mini_status_bar.vue';
 	
 	export default {
@@ -34,7 +29,12 @@
 		data() {
 			return {
 				contentList: [
-					{b_icon: BASE_IMAGE_URL+'video.png', b_name: '视频去水印', url: '/pages/video/video'}
+					{b_icon: BASE_IMAGE_URL+'video.png', b_name: '视频去水印', url: '/pages/video/video'},
+					{b_icon: BASE_IMAGE_URL+'phone_icon.png', b_name: '常用电话', url: '/pages/phone/phone'},
+					{b_icon: BASE_IMAGE_URL+'er_wei_ma.png', b_name: '生成二维码', url: '/pages/erweima/erweima'},
+					{b_icon: BASE_IMAGE_URL+'jie_ma.png', b_name: '解码', url: '/pages/jiema/jiema'},
+					{b_icon: BASE_IMAGE_URL+'ip.png', b_name: 'ip查询', url: '/pages/ip/ip'},
+					{b_icon: BASE_IMAGE_URL+'yuming.png', b_name: '域名查询', url: '/pages/yuming/yuming'},
 				],
 				scrollHeightVal: 0,
 				bannerInfoList: []
@@ -46,7 +46,7 @@
 			},
 			goToContent(url){
 				uni.navigateTo({
-					url: '/pages/video/video'
+					url: url
 				})
 			},
 			async getImgList(){
@@ -54,11 +54,22 @@
 				if(res.code == 1000){
 					this.bannerInfoList = res.data;
 				}
+			},
+			async getConfig(){
+				let res = await getConfig();
+				if(res.code == 1000){
+					res.data.map((item) => {
+						if(item.c_key == '视频广告'){
+							uni.setStorageSync("guanggao", parseInt(item.c_detail) == 1);
+						}
+					})
+				}
 			}
 		},
 		onLoad() {
 			this.scrollHeightVal = this.initStatus();
 			this.getImgList();
+			this.getConfig();
 		}
 	}
 </script>

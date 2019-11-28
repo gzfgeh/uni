@@ -88,4 +88,6 @@ scroll-view [style*="overflow"]::-webkit-scrollbar {
 .back_icon{width: 17upx; height: 30upx; margin-right: 17upx; padding: 25upx!important;}
 .head_wrap{padding:0upx 10upx!important; color: #FFFFFF}
 
+.content{background: transparent; width: 100vw;position: relative;z-index: 2; display: flex;flex-direction: column; }
+
 </style>

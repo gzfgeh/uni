@@ -30,18 +30,9 @@
 			}
         }
         ,{
-            "path" : "pages/moment/moment",
+            "path" : "pages/phone/phone",
             "style" : {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": true,
-				"onReachBottomDistance": 300,
-				"app-plus": {
-					"pullToRefresh": {
-					    "support": true,
-					    "color": "#107EFF",
-					    "style": "circle"
-					}
-				}
+				"navigationStyle": "custom"
 			}
         }
         ,{
@@ -57,7 +48,7 @@
 			}
         }
         ,{
-            "path" : "pages/dress/dress",
+            "path" : "pages/yuming/yuming",
             "style" : {
 				"navigationStyle": "custom"
 			}
@@ -69,7 +60,7 @@
 			}
         }
         ,{
-            "path" : "pages/contacts/contacts",
+            "path" : "pages/ip/ip",
             "style" : {
 				"navigationStyle": "custom"
 			}
@@ -81,7 +72,7 @@
 			}
         }
         ,{
-            "path" : "pages/bus/bus",
+            "path" : "pages/jiema/jiema",
             "style" : {
 				"navigationStyle": "custom"
 			}
@@ -101,11 +92,11 @@
         ,{
             "path" : "pages/erweima/erweima",
             "style" : {
-				"navigationBarTitleText": "加入团队"
+				"navigationStyle": "custom"
 			}
         }
         ,{
-            "path" : "pages/daily/daily",
+            "path" : "pages/about/about",
             "style" : {
 				"navigationStyle": "custom"
 			}
@@ -118,7 +109,9 @@
         }
         ,{
             "path" : "pages/my/my",
-            "style" : {}
+            "style" : {
+				"navigationStyle": "custom"
+			}
         }
     ],
 	"condition": { //编译模式配置，仅开发期间生效  
