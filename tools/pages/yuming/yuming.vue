@@ -4,24 +4,21 @@
 		:showBack="true" 
 		@finishPage="backAction"
 		:titleStr="titleStr"></uni-status-bar>
-		<scroll-view class="content" scroll-y="true"
-			scroll-with-animation="true" :style="{'height' : scrollHeightVal+'px'}"  >
+		
+		<view class="item">
+			<input type="text" v-model="address" placeholder="请输入域名地址" />
 			
-			<image :src="name" mode="widthFix" class="pingtai"></image>
-			<view style="padding: 20upx;">
-				生活小助手是一款很实用的工具集合，如果遇到任何问题，欢迎反馈：邮箱：305475422@qq.com
-			</view>
-			<button type="primary" open-type="share" class="share">分享给好友</button>
+			<button type="primary" @tap="getHostByName">查询</button>
 			
-			
-		</scroll-view>
+			<view v-if="ip">您的IP是：{{ip}}</view>
+		</view>
 		
 		
 	</view>
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getImgList } from "@/utils/api";
+	import { BASE_IMAGE_URL,getHostByName } from "@/utils/api";
 	import DownloadSaveFile  from "@/utils/downloadSaveFile";
 	import uniStatusBar from '@/components/mini_status_bar.vue';
 	
@@ -37,32 +34,64 @@
 				titleStr: '关于我们',
 				name: BASE_IMAGE_URL+'name.png',
 				clear: BASE_IMAGE_URL+'clear.png',
-				videoUrl: '',
-				trueVideoUrl: ''
+				address: '',
+				ip: ''
 			}
 		},
 		methods: {
 			backAction: function(){
 				uni.navigateBack();
 			},
-			
+			async getHostByName(){
+				if(!this.address){
+					uni.showToast({
+						title: '请输入域名地址'
+					});
+					return;
+				}
+				let res = await getHostByName(this.address);
+				if(res.code == 1000){
+					this.ip = res.data;
+					// this.addr = res.data.country + res.data.city + res.data.region + res.data.isp
+				}
+			}
 		},
 		onLoad() {
 			this.scrollHeightVal = this.initStatus();
 		},
-		onShareAppMessage(res) {
-			return {
-				title: '与你分享，一起使用',
-				path: '/pages/main/main'
-			}
+		onShow() {
+			let that = this;
+			uni.getClipboardData({
+				success: function(res) {
+					if(res.data){
+						uni.showModal({
+							title: '是否复制粘贴板内容',
+							content: res.data,
+							success(result) {
+								if(result.confirm){
+									that.address = res.data;
+								};
+								uni.setClipboardData({
+									data: '',
+									complete() {
+										uni.hideToast();
+									}
+								})
+							}
+						})
+					}
+					
+				}
+			});
 		}
 	}
 </script>
 
 <style>
 	page{background: #F5F5F5;}
-	.pingtai{width: 300upx; margin: 20upx calc(50vw - 75px);}
-	
-	.share{margin: 30upx 10%; width: 80%; }
+	.item{padding: 40upx; }
+	input{height: 80upx; line-height: 80upx; border-radius: 20upx; padding:0upx 20upx;
+		border: 2upx solid #EDEDED; margin: 20upx auto;}
+	button{margin: 20upx auto;}	
 	
 </style>

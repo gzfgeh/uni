@@ -18,6 +18,10 @@ export function getIpAddressInfo(ip) {
     return request.get('Api/DouYin/getIpAddressInfo?ip='+ip)
 }
 
+export function getHostByName(host) {
+    return request.get('Api/DouYin/getHostByName?host='+host)
+}
+
 /**
  *  多图上传
  */

@@ -33,8 +33,8 @@
 					{b_icon: BASE_IMAGE_URL+'phone_icon.png', b_name: '常用电话', url: '/pages/phone/phone'},
 					{b_icon: BASE_IMAGE_URL+'er_wei_ma.png', b_name: '生成二维码', url: '/pages/erweima/erweima'},
 					{b_icon: BASE_IMAGE_URL+'jie_ma.png', b_name: '解码', url: '/pages/jiema/jiema'},
-					{b_icon: BASE_IMAGE_URL+'ip.png', b_name: 'ip查询', url: '/pages/ip/ip'},
-					{b_icon: BASE_IMAGE_URL+'yuming.png', b_name: '域名查询', url: '/pages/yuming/yuming'},
+					{b_icon: BASE_IMAGE_URL+'ip.png', b_name: 'IP查地址', url: '/pages/ip/ip'},
+					{b_icon: BASE_IMAGE_URL+'yuming.png', b_name: '域名查IP', url: '/pages/yuming/yuming'},
 				],
 				scrollHeightVal: 0,
 				bannerInfoList: []

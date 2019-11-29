@@ -132,10 +132,13 @@
 							success(result) {
 								if(result.confirm){
 									that.videoUrl = res.data;
-									uni.setClipboardData({
-										data: ''
-									})
-								}
+								};
+								uni.setClipboardData({
+									data: '',
+									complete() {
+										uni.hideToast();
+									}
+								})
 							}
 						})
 					}
