@@ -40,7 +40,7 @@
 </template>
 
 <script>
-	import { BASE_IMAGE_URL,getImgList } from "@/utils/api";
+	import { BASE_IMAGE_URL,getNoShuiYin } from "@/utils/api";
 	import DownloadSaveFile  from "@/utils/downloadSaveFile";
 	import uniStatusBar from '@/components/mini_status_bar.vue';
 	
@@ -83,7 +83,7 @@
 			clearUrl(){
 				this.videoUrl = "";
 			},
-			getVideoUrl(){
+			async getVideoUrl(){
 				if(!this.videoUrl){
 					uni.showToast({
 						title: '请输入视频地址',
@@ -92,23 +92,15 @@
 					})
 					return;
 				};
-				let that = this;
-				let params = {
-					"url": this.videoUrl?this.videoUrl:"http://v.douyin.com/aWcudQ/",
-				};
+				
 				uni.showLoading({
 					title: '视频提取中...'
 				});
-				uni.request({
-					url: 'https://v.ataobao.vip/api/',
-					method: 'POST',
-					data: params,
-					success(res) {
-						uni.hideLoading();
-						console.log(res);
-						that.trueVideoUrl = res.data.msg.url;
-					}
-				})
+				let res = await getNoShuiYin(this.videoUrl);
+				if(res.code == 200){
+					this.trueVideoUrl = res.msg.url;
+					uni.hideLoading();
+				}
 			}
 			
 		},

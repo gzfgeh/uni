@@ -38,13 +38,17 @@
         ,{
             "path" : "pages/message/message",
             "style" : {
-				"navigationStyle": "custom"
+				"navigationBarTitleText":"图片合成",
+				"navigationBarBackgroundColor":"#1BB851",
+				"navigationBarTextStyle":"white"
 			}
         }
         ,{
-            "path" : "pages/hotel/hotel",
+            "path" : "pages/image/image",
             "style" : {
-				"navigationStyle": "custom"
+				"navigationBarTitleText":"图片合成",
+				"navigationBarBackgroundColor":"#1BB851",
+				"navigationBarTextStyle":"white"
 			}
         }
         ,{
@@ -119,7 +123,7 @@
 		"list": [
 			{
 			"name": "生活助手", //模式名称  
-			"pathName": "pages/main/main", //启动页面，必选  
+			"pathName": "pages/image/image", //启动页面，必选  
 			"query": "id=1" //启动参数, QueryString 格式  FFCA0A
 		}]
 	},

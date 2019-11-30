@@ -22,6 +22,10 @@ export function getHostByName(host) {
     return request.get('Api/DouYin/getHostByName?host='+host)
 }
 
+export function getNoShuiYin(url) {
+    return request.get('Api/DouYin/getNoShuiYin?url='+url)
+}
+
 /**
  *  多图上传
  */

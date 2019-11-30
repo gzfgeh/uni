@@ -35,6 +35,7 @@
 					{b_icon: BASE_IMAGE_URL+'jie_ma.png', b_name: '解码', url: '/pages/jiema/jiema'},
 					{b_icon: BASE_IMAGE_URL+'ip.png', b_name: 'IP查地址', url: '/pages/ip/ip'},
 					{b_icon: BASE_IMAGE_URL+'yuming.png', b_name: '域名查IP', url: '/pages/yuming/yuming'},
+					{b_icon: BASE_IMAGE_URL+'image.png', b_name: '图片合成', url: '/pages/image/image'},
 				],
 				scrollHeightVal: 0,
 				bannerInfoList: []
