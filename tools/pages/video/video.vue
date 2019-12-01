@@ -26,7 +26,7 @@
 					controls  v-if="trueVideoUrl" class="video_style"></video>
 					
 				<view class="row_around" v-if="trueVideoUrl" style="margin-top: 30upx;">
-					<button type="primary" @tap="saveVideo">保存到相册</button>
+					<button type="primary" @tap="saveVideo" v-if="false">保存到相册</button>
 					<button type="primary" @tap="copyUrl">复制视频链接</button>
 				</view>
 					

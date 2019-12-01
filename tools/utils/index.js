@@ -1,17 +1,17 @@
-// export function formatLocation(longitude, latitude) {
-// 	if (typeof longitude === 'string' && typeof latitude === 'string') {
-// 		longitude = parseFloat(longitude)
-// 		latitude = parseFloat(latitude)
-// 	}
+export function formatLocation(longitude, latitude) {
+	if (typeof longitude === 'string' && typeof latitude === 'string') {
+		longitude = parseFloat(longitude)
+		latitude = parseFloat(latitude)
+	}
 
-// 	longitude = longitude.toFixed(2)
-// 	latitude = latitude.toFixed(2)
+	longitude = longitude.toFixed(2)
+	latitude = latitude.toFixed(2)
 
-// 	return {
-// 		longitude: longitude.toString().split('.'),
-// 		latitude: latitude.toString().split('.')
-// 	}
-// }
+	return {
+		longitude: longitude.toString().split('.'),
+		latitude: latitude.toString().split('.')
+	}
+}
 
 export function getPosition () {
   return new Promise((resolve, reject) => {
@@ -54,34 +54,33 @@ export function canvasImage(imgList, type=0, titleObject, canvasIds, callback){
 	        
 			if(type == 0){
 				// 横向
+				let width = item.width*300/item.height;
 				ctx.drawImage(
 				    item.path,
 				    imgWidth,
 				    0,
-				    item.width,
-				    item.height
+				    width,
+				    300
 				);
-				if(item.height > imgHeight){
-					imgHeight = item.height;
-				};
-				imgWidth += item.width;
-				
+				imgHeight = 300;
+				imgWidth += width;
+				console.log(index);
 			}else{
 				//竖向
-				
+				let height = item.height*300/item.width;
 				ctx.drawImage(
 				    item.path,
 				    0,
 				    imgHeight,
-				    item.width,
-				    item.height
+				    300,
+				    height
 				);
-				imgHeight += item.height;
-				if(item.width > imgWidth){
-					imgWidth = item.width;
-				};
+				imgHeight += height;
+				imgWidth = 300;
 			}
+			console.log(imgWidth + "-----" + imgHeight);
 	    })
+		console.log(imgWidth + "-----" + imgHeight);
 	    // 写文字水印
 		if(titleObject){
 			ctx.setFontSize(titleObject.fontSize)
@@ -89,20 +88,30 @@ export function canvasImage(imgList, type=0, titleObject, canvasIds, callback){
 		}
 	    
 	    // 画出canvas上面的图片
-	    ctx.draw(true, function () {
+	    ctx.draw(false, setTimeout(function () {
 	        // wx.canvasToTempFilePath这个一定要写在ctx.draw里面的回调里面，是坑勿跳
-	        wx.canvasToTempFilePath({
-	            canvasId: canvasIds,
-	            destWidth: imgWidth,
-	            destHeight: imgHeight,
-	            quality: 1,
-	            success: function (res) {
-	                console.log(res.tempFilePath)
-	                callback(res.tempFilePath)
-	            },
-	            fail: function (res) {
-	                console.log(res)
-	            }
-	        })
-	    })
+			wx.getSystemInfo({
+				success: function(data){
+					let pixelRatio = data.pixelRatio;
+					wx.canvasToTempFilePath({
+					    canvasId: canvasIds,
+					    destWidth: imgWidth*pixelRatio,
+					    destHeight: imgHeight*pixelRatio,
+						width: imgWidth,
+						height: imgHeight,
+					    quality: 1,
+					    success: function (res) {
+					        console.log(res.tempFilePath)
+					        callback(res.tempFilePath)
+					    },
+					    fail: function (res) {
+					        console.log(res)
+					    }
+					})
+					
+				}
+			});
+			
+	        
+	    }, 200))
 }

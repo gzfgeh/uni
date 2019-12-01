@@ -20,13 +20,13 @@
 		</view>
 		
 		<view class="canvasBox">
-		  <canvas canvas-id="shareCanvas" style="width:375px;height:300px"></canvas>
+		  <canvas canvas-id="shareCanvas" :style="[{width: imgWidth+'px'}, {height: imgHeight+'px'}]"></canvas>
 		</view>
 		
 		<view class="bottom">
 			<radio-group @change="radioChange" class="row_around">
-				<label ><radio value="0" />横向拼接</label>
-				<label ><radio value="1" />竖向拼接</label>
+				<label ><radio value="0" :checked="checked == 0"/>横向拼接</label>
+				<label ><radio value="1" :checked="checked == 1"/>竖向拼接</label>
 			</radio-group>
 		</view>
 		
@@ -35,34 +35,39 @@
 
 <script>
 	import { BASE_IMAGE_URL } from "@/utils/api";
-	import { canvasImage } from "@/utils/index";
+	// import { canvasImage } from "@/utils/index";
 	
 	export default {
 		data() {
 			return {
 				upload: BASE_IMAGE_URL+"upload.png",
 				imageList: [],
-				srcList: []
+				srcList: [],
+				checked: -1,
+				imgWidth: 0,
+				imgHeight: 0
 			}
 		},
 		methods: {
 			radioChange(e){
 				console.log(e.detail.value);
+				this.checked = e.detail.value;
 				if(this.srcList.length < 1){
 					uni.showToast({
 						title: '请选择照片',
 						icon: 'none'
-					})
+					});
+					this.checked = -1;
 					return;
 				}
-				canvasImage(this.srcList, e.detail.value, null, "shareCanvas", (data) => {
+				this.canvasImage(this.srcList, e.detail.value, null, "shareCanvas", (data) => {
 					console.log(data);
 					// uni.previewImage({
 					//     urls: [data],
 					// 	current:0
 					// });
 					uni.navigateTo({
-						url: '/pages/image_show/image_show?url='+data
+						url: '/pages/image_show/image_show?url='+data+"&type="+e.detail.value
 					})
 				})
 			},
@@ -97,8 +102,89 @@
 			    })
 			},
 			
+			canvasImage(imgList, type=0, titleObject, canvasIds, callback){
+				// 初始化画布，小程序里面一定要有canvasid，它是以这个为标识来识别的
+				    const ctx = wx.createCanvasContext(canvasIds)
+				    // 合成多张图片的时候，放到一个数组里面，进行遍历
+					let imgWidth = this.imgWidth;
+					let imgHeight = this.imgHeight;
+				    imgList.forEach((item, index) => {
+				        
+						if(type == 0){
+							// 横向
+							let width = item.width*300/item.height;
+							ctx.drawImage(
+							    item.path,
+							    imgWidth,
+							    0,
+							    width,
+							    300
+							);
+							imgHeight = 300;
+							imgWidth += width;
+							console.log(index);
+						}else{
+							//竖向
+							let height = item.height*300/item.width;
+							ctx.drawImage(
+							    item.path,
+							    0,
+							    imgHeight,
+							    300,
+							    height
+							);
+							imgHeight += height;
+							imgWidth = 300;
+						}
+						console.log(imgWidth + "-----" + imgHeight);
+				    })
+					console.log(imgWidth + "-----" + imgHeight);
+					this.imgWidth = imgWidth;
+					this.imgHeight = imgHeight;
+				    // 写文字水印
+					if(titleObject){
+						ctx.setFontSize(titleObject.fontSize)
+						ctx.fillText(titleObject.content, titleObject.x, titleObject.y)
+					}
+				    
+				    // 画出canvas上面的图片
+				    ctx.draw(false, setTimeout(function () {
+				        // wx.canvasToTempFilePath这个一定要写在ctx.draw里面的回调里面，是坑勿跳
+						wx.getSystemInfo({
+							success: function(data){
+								let pixelRatio = data.pixelRatio;
+								wx.canvasToTempFilePath({
+								    canvasId: canvasIds,
+								    destWidth: imgWidth*pixelRatio,
+								    destHeight: imgHeight*pixelRatio,
+									width: imgWidth,
+									height: imgHeight,
+								    quality: 1,
+								    success: function (res) {
+								        console.log(res.tempFilePath)
+								        callback(res.tempFilePath)
+								    },
+								    fail: function (res) {
+								        console.log(res)
+								    }
+								})
+								
+							}
+						});
+						
+				        
+				    }, 200))
+			}
+			
 		},
 		onLoad() {
+			
+		},
+		onShow() {
+			this.checked = -1;
+			this.imgWidth = 0;
+			this.imgHeight = 0;
+			this.$forceUpdate();
 		}
 	}
 </script>
@@ -112,5 +198,5 @@
 	
 	.bottom{position: absolute; bottom: 30upx; left: 0upx; width: 100%;}
 
-	.canvasBox{visibility: hidden;}
+	.canvasBox{visibility: hidden;} 
 </style>

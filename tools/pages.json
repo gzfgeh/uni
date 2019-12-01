@@ -1,16 +1,16 @@
 {
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// {
-		// 	"path": "pages/splash/splash",
-		// 	"style": {
-		// 		"navigationStyle": "custom",
-		// 		"enablePullDownRefresh": false,
-		// 		"app-plus": {
-		// 			"bounce": "none"
-		// 		}
-		// 	}
-		// },
+		{
+			"path": "pages/splash/splash",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		},
 		{
             "path" : "pages/main/main",
             "style" : {
@@ -36,7 +36,7 @@
 			}
         }
         ,{
-            "path" : "pages/message/message",
+            "path" : "pages/image_show/image_show",
             "style" : {
 				"navigationBarTitleText":"图片合成",
 				"navigationBarBackgroundColor":"#1BB851",
@@ -123,7 +123,7 @@
 		"list": [
 			{
 			"name": "生活助手", //模式名称  
-			"pathName": "pages/image/image", //启动页面，必选  
+			"pathName": "pages/splash/splash", //启动页面，必选  
 			"query": "id=1" //启动参数, QueryString 格式  FFCA0A
 		}]
 	},

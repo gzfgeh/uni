@@ -26,6 +26,30 @@ export function getNoShuiYin(url) {
     return request.get('Api/DouYin/getNoShuiYin?url='+url)
 }
 
+export function uploadFile(file) {
+    return request.upload('Api/CommonApi/uploadFile', {file: qs.createReadStream(file)})
+}
+
+export function getOpenid(code) {
+    return request.get('Api/Weixin/getOpenid?code='+code)
+}
+
+/**
+ * 保存用户信息
+ */
+export function userInfoSave(params) {
+    return request.post('Api/Weixin/updateUserInfo', qs.stringify(params))
+}
+
+/**
+ *获取用户信息
+ */
+export function getUserInfo(openid) {
+    return request.get('Api/Weixin/getUserInfo?openid='+openid)
+}
+
+
+
 /**
  *  多图上传
  */

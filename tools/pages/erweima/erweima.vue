@@ -103,7 +103,24 @@
 				}, 1000);
 			},
 			saveImg(){
-				DownloadSaveFile.downloadFile('image', this.src); //video或image
+				let that = this;
+				uni.uploadFile({
+					url: 'https://gzf.liangyicloud.xyz/Api/CommonApi/uploadFile',
+					filePath: this.src,
+					name: 'file',
+					header: {"Content-Type":"multipart/form-data"},
+					formData: {},
+					success: function(data){
+						if(JSON.parse(data.data).data){
+							console.log(JSON.parse(data.data).data.url);
+							let image = JSON.parse(data.data).data.url;
+							DownloadSaveFile.downloadFile('image', image); //video或image
+						}
+					  
+					}
+				})
+				
+				
 			},
 			selectImg(){
 				let that = this;
