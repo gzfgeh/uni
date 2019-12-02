@@ -93,14 +93,21 @@
 		},
 		onLoad() {
 			setTimeout(() => {
-				let userInfo =  uni.getStorageSync('userInfo');
-				if(userInfo){
-					uni.switchTab({
-						url:'/pages/main/main'
-					})
+				let openid = uni.getStorageSync('openid');
+				if(openid){
+					let userInfo =  uni.getStorageSync('userInfo');
+					if(userInfo){
+						uni.switchTab({
+							url:'/pages/main/main'
+						})
+					}else{
+						this.getUserInfo(openid);
+					}
 				}else{
 					this.login();
 				}
+				
+				
 			}, 3000);
 		}
 	}

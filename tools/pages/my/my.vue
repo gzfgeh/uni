@@ -96,11 +96,6 @@
 				this.avatar = userInfo.avatarUrl;
 				this.nickname = userInfo.nickName;
 				this.gender = userInfo.gender;
-				// this.city = userInfo.city;
-				// this.country = userInfo.country;
-				// this.language = userInfo.language;
-				// this.province = userInfo.province;
-				
 				this.head = this.avatar;
 					
 				let params = {
@@ -110,7 +105,7 @@
 				  m_gender: this.gender,
 				  m_sheng: userInfo.province,
 				  m_shi: userInfo.city,
-				  m_qu: userInfo.province
+				  m_qu: userInfo.country
 				};
 				this.userInfoSave(params);
 			  }
