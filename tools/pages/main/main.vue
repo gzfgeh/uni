@@ -8,7 +8,7 @@
 		</swiper>
 		
 		<view class="menu_wrap" >
-			<view class="col_center " style="min-width: 21%; margin: 30upx auto;" v-for="(item, index) in contentList" :key="index" @tap="goToContent(item.url)">
+			<view class="col_center " style="width: 21%; margin: 30upx 0upx;" v-for="(item, index) in contentList" :key="index" @tap="goToContent(item.url)">
 				<image :src="item.b_icon" mode="aspectFill" ></image>
 				<span>{{item.b_name}}</span>
 			</view>
@@ -81,9 +81,9 @@
 	.content{background: transparent; width: 100vw;position: relative;z-index: 2; display: flex;flex-direction: column; }
 	.head_img {width: 100%;height: 360upx !important;border-radius: 8upx;}
 	
-	.menu_wrap{ width: 94%; margin-left: 3%; height:340upx;box-sizing:border-box;background: #fff;
+	.menu_wrap{ width: 94%; margin-left: 3%;box-sizing:border-box;background: #fff;
 	box-shadow:  0px 0px 10px #fff;margin-top: 30upx;border-radius: 8upx; color: #1BB851;
-		flex-flow: wrap; display: flex;flex-direction: row; justify-content: space-between;}
+		flex-flow: wrap; display: flex;flex-direction: row; }
 	.menu_wrap .flex_one{min-width: 160upx;font-size: 24upx; color: #666; height: 170upx;}
 	.menu_wrap image{width: 62upx; height: 62upx;margin-bottom: 10upx;}
 	
