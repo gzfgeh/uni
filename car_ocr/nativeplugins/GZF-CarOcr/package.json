@@ -1,0 +1,20 @@
+{  
+    "name": "CarOcr",  
+    "id": "GZF-CarOcr",  
+    "version": "0.0.1",  
+    "description": "uni-app车牌识别",  
+    "_dp_type":"nativeplugin",  
+    "_dp_nativeplugin":{
+       "android": {  
+            "plugins": [  
+                {  
+                    "type": "module", 
+                    "name": "CarOcr",  
+                    "class": "com.gzfgeh.car.CarOcrWXModule"  
+                }  
+            ],  
+            "integrateType": "aar",
+            "minSdkVersion": 16
+        }
+    }  
+}  

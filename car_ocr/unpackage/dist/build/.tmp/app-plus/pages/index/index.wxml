@@ -1,0 +1,1 @@
+<view class="content"><button type="primary" data-event-opts="{{[['tap',[['takePhoto',['$event']]]]]}}" bindtap="__e">车牌识别</button></view>
