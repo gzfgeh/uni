@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "購物車",
-  "usingComponents": {
-    "uni-number-box": "/components/uni-number-box"
-  }
-}
