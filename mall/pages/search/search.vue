@@ -1,21 +1,19 @@
 <template>
 	<view class="wrapper">
 		<view v-if="dataLists.length > 0" class="history-list-box">
-			<view class="history-list-item row" v-for="(item, index) in dataLists" :key="index" @click="detailTap(item)">
-				<view class="uni-list-item__ioc"><image :src="item.avatar" mode="aspectFill"></image></view>
-				<view class="uni-list-item__content">{{ item.name }}</view>
+			<view class="history-list-item col" v-for="(item, index) in dataLists" :key="index" @click="detailTap(item)">
+				<view class="uni-list-item__ioc">
+					<image :src="item.storeIcon" mode="aspectFill"></image>
+				</view>
+				<view class="uni-list-item__content">{{ item.storeName }}</view>
 			</view>
 		</view>
-		<view v-else class="no-data">暂无该好友！</view>
+		<view v-else class="no-data">暂无数据！</view>
 	</view>
 </template>
 
 <script>
-import { BASE_URL, consumers,getSingleChatStatus } from '@/utils/api';
-
-// #ifdef APP-PLUS
-		const rongIm = uni.requireNativePlugin('GZF-RongIM');
-	// #endif
+import { BASE_URL, searchStoreList,searchProductList } from '@/utils/api';
 	
 export default {
 	data() {
@@ -24,36 +22,20 @@ export default {
 			name: ''
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		
+	},
 	methods: {
 		detailTap(e) {
 			console.log(JSON.stringify(e));
-			this.getSingleChatStatus(e);
 		},
-		async getSingleChatStatus(item){
-			let res = await getSingleChatStatus(item.id);
-			if(res.status == 0){
-				item.expiryDate = res.data.expiryDate+"";
-				item.status = res.data.status;
-				item.targetId = item.id;
-				console.log(item);
-				rongIm.startTalk(JSON.stringify(item));
-			}
-		},
-		async getConsumers(name) {
-			// name = encodeURI(name);
-			console.log(name);
-			let that = this;
-			let res = await consumers(name);
-			if (res.status == 0) {
+		async searchProductList(name) {
+			let res = await searchProductList(name);
+			if (res.rCode == "0000") {
 				console.log(res);
-				that.dataLists = res.data;
+				this.dataLists = res.Data;
 			} else {
-				uni.showToast({
-					icon: 'none',
-					title: res.message,
-					duration: 1000
-				});
+				this.$api.msg(res.msg);
 			}
 		}
 	},
@@ -73,7 +55,7 @@ export default {
 	onNavigationBarSearchInputConfirmed(e) {
 		let text = e.text;
 		if (text) {
-			this.getConsumers(text);
+			this.searchProductList(text);
 		};
 		// #ifdef APP-PLUS
 		plus.key.hideSoftKeybord();
@@ -91,6 +73,9 @@ export default {
 	margin-left: 30upx;
 	border-bottom: 1px #eeeeee solid;
 	font-size: 28upx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .no-data {

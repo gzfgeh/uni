@@ -7,43 +7,30 @@ export const BASE_URL = request.config.baseURL;
 /**
  * 密码登陆
  */
-export function login(params) {
-    return request.post('login.php',qs.stringify(params))
+export function toLogin(params) {
+    return request.post('login.php',JSON.stringify(params))
 }
 
 /**
  * 获取用户简单信息
  */
-export function member(id) {
-    return request.post('member.php',qs.stringify(params))
-}
-/**
- * 发送验证码
- */
-export function sendCode(userPhone, flag) {
-	if(flag){
-		return request.get('api/sms?phone='+userPhone+"&from=hcpLogin")
-	}else{
-		return request.get('api/sms?phone='+userPhone)
-	}
-    
+export function member(access_token) {
+    return request.post('member.php',JSON.stringify({"access_token": access_token}))
 }
 
 
-/**
- * 验证码登陆
- */
-export function smsLogin(params) {
-    return request.post('api/auth/smsLogin',qs.stringify(params))
+export function searchStoreList(key) {
+    return request.get('searchStoreList.php?key='+key)
 }
 
 
+export function storeInfo(storeID) {
+    return request.get('storeInfo.php?storeID='+storeID)
+}
 
-/**
- * 注册
- */
-export function register(params) {
-    return request.post('api/account',qs.stringify(params))
+
+export function searchProductList(storeID, key) {
+    return request.get('searchStoreList.php?storeID='+storeID+"&key="+key)
 }
 
 

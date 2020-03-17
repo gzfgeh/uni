@@ -16,16 +16,14 @@
 						type="text" 
 						:value="mobile" 
 						placeholder="請輸入帳號"
-						maxlength="11"
-						data-key="mobile"
 						@input="inputChange"
 					/>
 				</view>
 				<view class="input-item">
 					<text class="tit">密碼</text>
 					<input 
-						type="mobile" 
-						value="" 
+						type="password" 
+						:value="password" 
 						placeholder="請輸入密碼"
 						placeholder-class="input-empty"
 						maxlength="20"
@@ -49,6 +47,8 @@
 </template>
 
 <script>
+	import { toLogin, member} from '@/utils/api';
+	
 	import {  
         mapMutations  
     } from 'vuex';
@@ -56,7 +56,7 @@
 	export default{
 		data(){
 			return {
-				mobile: '',
+				mobile: 'larry610881@gmail.com',
 				password: '',
 				logining: false
 			}
@@ -77,30 +77,38 @@
 				this.$api.msg('去註冊');
 			},
 			async toLogin(){
-				this.logining = true;
-				const {mobile, password} = this;
-				/* 数据验证模块
-				if(!this.$api.match({
-					mobile,
-					password
-				})){
+				if(!this.mobile || !this.password){
 					this.logining = false;
 					return;
 				}
-				*/
-				const sendData = {
-					mobile,
-					password
+				let sendData = {
+					account: this.mobile,
+					password: this.password
 				};
-				const result = await this.$api.json('userInfo');
-				if(result.status === 1){
-					this.login(result.data);
-                    uni.navigateBack();  
+				const result = await toLogin(sendData);
+				if(result.rCode === "0000"){
+					
+					this.member(result.Data.access_token);
+					 
+				}else{
+					this.$api.msg(result.msg);
+					this.logining = false;
+				}
+			},
+			
+			async member(token){
+				let res = await member(token);
+				if(res.rCode === "0000"){
+					uni.setStorageSync("access_token", token);
+					this.login(res.Data);
+					this.logining = true;
+					uni.navigateBack(); 
 				}else{
 					this.$api.msg(result.msg);
 					this.logining = false;
 				}
 			}
+			
 		},
 
 	}
