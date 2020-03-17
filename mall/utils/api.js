@@ -31,9 +31,9 @@ export function storeInfo(storeID) {
 
 export function searchProductList(key, storeID) {
 	if(storeID){
-		return request.get('searchStoreList.php?storeID='+storeID+"&key="+key)
+		return request.get('searchProductList.php?storeID='+storeID+"&key="+key)
 	}else{
-		return request.get("searchStoreList.php?key="+key)
+		return request.get("searchProductList.php?key="+key)
 	}
     
 }

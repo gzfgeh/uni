@@ -27,7 +27,7 @@ export default {
 		return {
 			dataLists: [],
 			name: '',
-			typeList: ['店铺','商品'],
+			typeList: ['商品','店铺'],
 			curType: 0,
 			showType: 0,
 			isAPP: false
@@ -44,10 +44,23 @@ export default {
 		},
 		changeType(index){
 			this.curType = index;
-			this.getList();
+			if(this.type == 0){
+				this.searchProductList();
+			}else{
+				this.searchStoreList();
+			}
 		},
-		async searchProductList(name) {
-			let res = await searchProductList(name);
+		async searchStoreList() {
+			let res = await searchStoreList(this.name);
+			if (res.rCode == "0000") {
+				console.log(res);
+				this.dataLists = res.Data;
+			} else {
+				this.$api.msg(res.msg);
+			}
+		},
+		async searchProductList() {
+			let res = await searchProductList(this.name);
 			if (res.rCode == "0000") {
 				console.log(res);
 				this.dataLists = res.Data;
@@ -71,8 +84,14 @@ export default {
 	 */
 	onNavigationBarSearchInputConfirmed(e) {
 		let text = e.text;
+		this.name = text;
 		if (text) {
-			this.searchProductList(text);
+			if(this.curType == 0){
+				this.searchProductList(text);
+			}else{
+				this.searchStoreList(text);
+			}
+			
 		};
 		// #ifdef APP-PLUS
 		plus.key.hideSoftKeybord();
