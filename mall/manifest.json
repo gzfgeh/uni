@@ -48,15 +48,15 @@
             "ios" : {},
             /* ios打包配置 */
             "sdkConfigs" : {
-                "ad" : null,
+                "ad" : {},
                 "push" : {}
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "static/icons/72x72.png",
-                    "xhdpi" : "static/icons/96x96.png",
-                    "xxhdpi" : "static/icons/144x144.png",
-                    "xxxhdpi" : "static/icons/192x192.png"
+                    "hdpi" : "static/icons/icon.png",
+                    "xhdpi" : "static/icons/icon.png",
+                    "xxhdpi" : "static/icons/icon.png",
+                    "xxxhdpi" : "static/icons/icon.png"
                 },
                 "ios" : {
                     "iphone" : {

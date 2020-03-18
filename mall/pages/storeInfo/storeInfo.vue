@@ -23,6 +23,9 @@
 					<view v-if="index1 == 0 && marketList" class="market_item">
 						<image :src="item.marketImg" mode="widthFix" v-for="(item,ind) in marketList" :key="ind" @tap="goToWebView(item)"></image>
 					</view>
+					<view v-else>
+						正常情況應該顯示店鋪內的商品列表但是API沒有返回這部分數據，所以不知道顯示什麼
+					</view>
 				</scroll-view>
 		    </swiper-item>
 		</swiper>
@@ -42,7 +45,7 @@
 				storeInfoData: {},
 				tabBars: [],
 				tabIndex: 0,
-				newsList: [1,2,3],
+				newsList: [],
 				scrollInto: '',
 				marketList:[]
 			}
@@ -80,6 +83,7 @@
 					this.storeIcon = res.Data.storeIconUrl;
 					this.storeInfoData = res.storeInfo;
 					this.tabBars = res.TopList;
+					this.newsList = this.tabBars;
 					this.marketList = res.storeHome.marketList;
 				} else {
 					this.$api.msg(res.msg);

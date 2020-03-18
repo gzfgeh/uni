@@ -187,7 +187,7 @@
 						"searchInput": {
 							"backgroundColor": "rgba(244,244,244,1)",
 							"borderRadius": "6px",
-							"placeholder": "请输入...",
+							"placeholder": "請輸入商品或店鋪關鍵字",
 							"autoFocus": true,
 							"align": "left"
 						}
@@ -199,7 +199,8 @@
             "path" : "pages/storeInfo/storeInfo",
             "style" : {
 				"navigationBarBackgroundColor": "#37ada6",
-				"navigationBarTextStyle":"white"
+				"navigationBarTextStyle":"white",
+				"navigationBarTitleText":""
 			}
         }
         ,{

@@ -15,7 +15,7 @@
 				<view class="uni-list-item__content">{{item.productName?item.productName:item.storeName }}</view>
 			</view>
 		</view>
-		<view v-else class="no-data">暂无数据！</view>
+		<view v-else class="no-data">暫無數據！</view>
 	</view>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 		return {
 			dataLists: [],
 			name: '',
-			typeList: ['商品','店铺'],
+			typeList: ['商品','店鋪'],
 			curType: 0,
 			showType: 0,
 			isAPP: false
@@ -40,17 +40,28 @@ export default {
 	},
 	methods: {
 		detailTap(e) {
-			uni.navigateTo({
-				url: '/pages/storeInfo/storeInfo?storeID='+e.storeID
-			})
+			if(this.curType == 0){
+				uni.navigateTo({
+					url: '/pages/product/product'
+				})
+			}else{
+				uni.navigateTo({
+					url: '/pages/storeInfo/storeInfo?storeID='+e.storeID
+				})
+			}
+			
 		},
 		changeType(index){
-			this.curType = index;
-			if(this.curType == 0){
-				this.searchProductList();
-			}else{
-				this.searchStoreList();
+			if(this.curType != index){
+				this.dataLists = [];
+				this.curType = index;
+				if(this.curType == 0){
+					this.searchProductList();
+				}else{
+					this.searchStoreList();
+				}
 			}
+			
 		},
 		async searchStoreList() {
 			let res = await searchStoreList(this.name);
