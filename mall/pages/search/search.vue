@@ -8,11 +8,11 @@
 		</div>
 		
 		<view v-if="dataLists.length > 0" class="history-list-box" :style="{'margin-top': (isAPP?'100rpx': '100rpx')}">
-			<view class="history-list-item col" v-for="(item, index) in dataLists" :key="index" @click="detailTap(item)">
+			<view class="history-list-item col" v-for="(item, index) in dataLists" :key="index" @tap="detailTap(item)">
 				<view class="uni-list-item__ioc">
-					<image :src="item.storeIcon" mode="aspectFill"></image>
+					<image :src="item.productImg?item.productImg:item.storeIcon" mode="aspectFill"></image>
 				</view>
-				<view class="uni-list-item__content">{{ item.storeName }}</view>
+				<view class="uni-list-item__content">{{item.productName?item.productName:item.storeName }}</view>
 			</view>
 		</view>
 		<view v-else class="no-data">暂无数据！</view>
@@ -40,11 +40,13 @@ export default {
 	},
 	methods: {
 		detailTap(e) {
-			console.log(JSON.stringify(e));
+			uni.navigateTo({
+				url: '/pages/storeInfo/storeInfo?storeID='+e.storeID
+			})
 		},
 		changeType(index){
 			this.curType = index;
-			if(this.type == 0){
+			if(this.curType == 0){
 				this.searchProductList();
 			}else{
 				this.searchStoreList();

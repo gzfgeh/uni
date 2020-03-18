@@ -195,6 +195,17 @@
 				}
 			}
 		}
+        ,{
+            "path" : "pages/storeInfo/storeInfo",
+            "style" : {
+				"navigationBarBackgroundColor": "#37ada6",
+				"navigationBarTextStyle":"white"
+			}
+        }
+        ,{
+            "path" : "pages/webview/webview",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
