@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "商品搜索",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "uni-load-more": "/components/uni-load-more"
-  }
-}
