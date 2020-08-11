@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tuyao/Documents/uni/UniPluginAS/yun_pay/build/intermediates/res/merged/release/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/tuyao/Documents/uni/UniPluginAS/yun_pay/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "68",
+                        "endOffsets": "80"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "68",
+                        "endOffsets": "119"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/tuyao/Documents/uni/UniPluginAS/yun_pay/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/tuyao/Documents/uni/UniPluginAS/yun_pay/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "68",
+                        "endOffsets": "80"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "68",
+                        "endOffsets": "119"
+                    }
+                }
+            ]
+        }
+    ]
+}

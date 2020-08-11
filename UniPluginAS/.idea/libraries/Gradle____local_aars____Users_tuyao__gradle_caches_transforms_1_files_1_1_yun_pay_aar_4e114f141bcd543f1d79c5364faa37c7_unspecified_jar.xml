@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tuyao/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/jars/libs/UPPayPluginExPro.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/jars/libs/UPPayAssistEx.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,2 @@
+android.baobaoloufu.com.yunpay
+string app_name

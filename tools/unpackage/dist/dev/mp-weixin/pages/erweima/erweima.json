@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode",
+    "uni-status-bar": "/components/mini_status_bar"
+  }
+}

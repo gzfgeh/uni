@@ -1,0 +1,4 @@
+# Referenced at /Users/tuyao/Documents/uni/UniPluginAS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:88
+-keep class io.dcloud.application.DCloudApplication { <init>(...); }
+# Referenced at /Users/tuyao/Documents/uni/UniPluginAS/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:331
+-keep class io.dcloud.multiprocess.activity.WebAppActivity1 { <init>(...); }

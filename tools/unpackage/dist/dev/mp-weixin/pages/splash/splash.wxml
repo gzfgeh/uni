@@ -1,0 +1,1 @@
+<view class="content row_center"><image class="bg" src="{{splash}}" mode="aspectFill"></image></view>

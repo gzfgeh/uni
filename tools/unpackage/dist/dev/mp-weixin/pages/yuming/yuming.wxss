@@ -1,0 +1,9 @@
+
+page{background: #F5F5F5;}
+.item{padding: 40rpx;
+}
+input{height: 80rpx; line-height: 80rpx; border-radius: 20rpx; padding:0rpx 20rpx;
+	border: 2rpx solid #EDEDED; margin: 20rpx auto;}
+button{margin: 20rpx auto;}	
+
+

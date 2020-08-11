@@ -1,0 +1,39 @@
+uni.dcloud.io.uniplugin_richalert
+attr actualImageScaleType
+attr actualImageUri
+attr backgroundImage
+attr fadeDuration
+attr failureImage
+attr failureImageScaleType
+attr overlayImage
+attr placeholderImage
+attr placeholderImageScaleType
+attr pressedStateOverlayImage
+attr progressBarAutoRotateInterval
+attr progressBarImage
+attr progressBarImageScaleType
+attr retryImage
+attr retryImageScaleType
+attr roundAsCircle
+attr roundBottomLeft
+attr roundBottomRight
+attr roundTopLeft
+attr roundTopRight
+attr roundWithOverlayColor
+attr roundedCornerRadius
+attr roundingBorderColor
+attr roundingBorderPadding
+attr roundingBorderWidth
+attr viewAspectRatio
+id center
+id centerCrop
+id centerInside
+id fitCenter
+id fitEnd
+id fitStart
+id fitXY
+id focusCrop
+id none
+string app_name
+styleable GenericDraweeHierarchy actualImageScaleType backgroundImage fadeDuration failureImage failureImageScaleType overlayImage placeholderImage placeholderImageScaleType pressedStateOverlayImage progressBarAutoRotateInterval progressBarImage progressBarImageScaleType retryImage retryImageScaleType roundAsCircle roundBottomLeft roundBottomRight roundTopLeft roundTopRight roundWithOverlayColor roundedCornerRadius roundingBorderColor roundingBorderPadding roundingBorderWidth viewAspectRatio
+styleable SimpleDraweeView actualImageUri

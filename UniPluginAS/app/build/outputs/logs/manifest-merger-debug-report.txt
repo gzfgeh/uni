@@ -1,0 +1,905 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+MERGED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:2:1-15:12
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:2:1-237:12
+MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:20:1-37:12
+MERGED from [yun_pay.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/AndroidManifest.xml:2:1-11:12
+MERGED from [payment-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-weixin-release.aar/0bfd1d11065d84570325fa06dba8483f/AndroidManifest.xml:2:1-11:12
+MERGED from [aps-igexin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-igexin-release.aar/722eee2b77c6dbf5d83a950350f8b0fd/AndroidManifest.xml:2:1-11:12
+MERGED from [oauth-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/oauth-weixin-release.aar/418f1eefba2f6d3e89ec7070d87ed0e7/AndroidManifest.xml:2:1-11:12
+MERGED from [payment-alipay-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-alipay-release.aar/d968fb68d003893da123de1a95926e80/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/7ddfe21dcec0d47c62b92af70dfeca6a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:17:1-26:12
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:17:1-31:12
+MERGED from [com.facebook.fresco:fresco:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fresco-0.12.0.aar/64198e8c7b3c7248d8be9a318297021d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/drawee-0.12.0.aar/86c5a9453120e4e17c6c7d0ffe3f4b13/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-0.12.0.aar/4f44983b7f3326f440e4af87fbe7edce/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-0.12.0.aar/00d7dfe7cd0456bff41ee7bc50b396c2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:17:1-31:12
+MERGED from [com.alibaba.android:bindingx-core:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx-core-1.0.3.aar/de6089dac7819d4634cc1127c1193066/AndroidManifest.xml:2:1-11:12
+MERGED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:2:1-21:12
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/glide-4.9.0.aar/ddd2c719adac3b9f9c0cb092800b6b40/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.9.0.aar/e79efe7168efddaea09a7402b23fc759/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/08553159ef9816ac2febcff6169783e7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/79652063072116b62450e1439c7275fb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/41e6019c745b5a579e75243c3a2c11b4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0bd7952bf30e8c5b256ba35b327d334e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/e0de6947dd28767269e831ab6111074e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4dadb4de5fc6125141c98c49a69d1fea/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fbcore-0.12.0.aar/634256f9093cd0102d66910d87da7fb2/AndroidManifest.xml:2:1-9:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e87a0c103e535c930797d13c99b761a8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0fbac85c0d5f80a6cd9a20e2c1dd2718/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f1edf5067abfa7b6aba6f1f3d55a3462/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc837c56cc5667d00d024cb45626b016/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+	package
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:3:5-38
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:11-69
+supports-screens
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:5:5-10:39
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:9:5-14:39
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:9:5-14:39
+	android:largeScreens
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:7:9-36
+	android:smallScreens
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:10:9-36
+	android:normalScreens
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:8:9-37
+	android:resizeable
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:9:9-34
+	android:anyDensity
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:6:9-34
+uses-permission#android.permission.CAMERA
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:13:5-65
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:13:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:14:5-81
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:16:5-81
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:16:5-81
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:14:22-78
+uses-feature#android.hardware.camera
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:16:5-60
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:16:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:17:5-70
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:17:19-67
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:19:5-66
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:19:22-63
+uses-permission#android.permission.FLASHLIGHT
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:20:5-69
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:20:22-66
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:23:22-77
+uses-permission#android.permission.INTERNET
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:25:5-66
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:17:5-67
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:17:5-67
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:25:22-64
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:26:5-74
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:26:22-72
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:27:5-78
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:18:5-79
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:18:5-79
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:27:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:28:5-67
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:28:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:29:5-80
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:29:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:32:5-75
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:32:22-73
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:33:5-68
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:33:22-66
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:34:5-77
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:34:22-75
+uses-permission#getui.permission.GetuiService.android.baobaoloufu.com
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:35:5-92
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:35:22-90
+permission#getui.permission.GetuiService.android.baobaoloufu.com
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:36:5-120
+	android:protectionLevel
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:36:86-118
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:36:17-85
+application
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:38:5-158:19
+MERGED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:9:5-13:19
+MERGED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:9:5-13:19
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:58:5-235:19
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:58:5-235:19
+MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:29:5-35:19
+MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:29:5-35:19
+MERGED from [payment-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-weixin-release.aar/0bfd1d11065d84570325fa06dba8483f/AndroidManifest.xml:9:5-20
+MERGED from [payment-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-weixin-release.aar/0bfd1d11065d84570325fa06dba8483f/AndroidManifest.xml:9:5-20
+MERGED from [aps-igexin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-igexin-release.aar/722eee2b77c6dbf5d83a950350f8b0fd/AndroidManifest.xml:9:5-20
+MERGED from [aps-igexin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-igexin-release.aar/722eee2b77c6dbf5d83a950350f8b0fd/AndroidManifest.xml:9:5-20
+MERGED from [oauth-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/oauth-weixin-release.aar/418f1eefba2f6d3e89ec7070d87ed0e7/AndroidManifest.xml:9:5-20
+MERGED from [oauth-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/oauth-weixin-release.aar/418f1eefba2f6d3e89ec7070d87ed0e7/AndroidManifest.xml:9:5-20
+MERGED from [payment-alipay-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-alipay-release.aar/d968fb68d003893da123de1a95926e80/AndroidManifest.xml:9:5-20
+MERGED from [payment-alipay-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-alipay-release.aar/d968fb68d003893da123de1a95926e80/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:29:5-20
+MERGED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:9:5-19:19
+MERGED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:9:5-19:19
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/glide-4.9.0.aar/ddd2c719adac3b9f9c0cb092800b6b40/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/glide-4.9.0.aar/ddd2c719adac3b9f9c0cb092800b6b40/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.9.0.aar/e79efe7168efddaea09a7402b23fc759/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.9.0.aar/e79efe7168efddaea09a7402b23fc759/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:29:5-20
+	android:supportsRtl
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:46:9-35
+	android:label
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:43:9-41
+	android:allowClearUserData
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:41:9-42
+	android:debuggable
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:45:9-34
+	android:largeHeap
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:44:9-33
+	android:icon
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:42:9-38
+	android:allowBackup
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:40:9-35
+	android:usesCleartextTraffic
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:61:9-44
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:39:9-63
+activity#io.dcloud.PandoraEntry
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:49:9-71:20
+	android:hardwareAccelerated
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:53:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:54:13-55
+	android:configChanges
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:52:13-92
+	android:theme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:51:13-52
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:50:13-50
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:hbuilder
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:55:13-61:29
+data
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:56:17-50
+	android:scheme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:56:23-48
+	android:mimeType
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:63:23-49
+action#android.intent.action.VIEW
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:57:17-68
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:57:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:59:17-75
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:59:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:60:17-77
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:60:27-75
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:image/*
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:62:13-66:29
+action#android.intent.action.SEND
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:64:17-68
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:64:25-66
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:67:13-70:29
+action#android.intent.action.MAIN
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:68:17-68
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:68:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:69:17-76
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:69:27-74
+meta-data#dcloud_uninview_background
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:72:9-73:35
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:73:13-33
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:72:20-61
+meta-data#PUSH_APPID
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:76:9-86
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:76:46-84
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:76:20-45
+meta-data#PUSH_APPKEY
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:77:9-86
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:77:47-84
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:77:20-46
+meta-data#PUSH_APPSECRET
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:78:9-90
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:78:50-88
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:78:20-49
+service#com.igexin.sdk.PushService
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:79:9-87:19
+	android:process
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:83:13-43
+	android:label
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:82:13-47
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:81:13-36
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:80:13-54
+intent-filter#action:name:com.igexin.sdk.action.service.message
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:84:13-86:29
+action#com.igexin.sdk.action.service.message
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:85:17-79
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:85:25-77
+receiver#com.igexin.sdk.PushReceiver
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:88:9-98:20
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:88:19-61
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MEDIA_MOUNTED+action:name:android.intent.action.USER_PRESENT+action:name:android.net.conn.CONNECTIVITY_CHANGE+action:name:com.igexin.sdk.action.refreshls
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:89:13-97:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:90:17-78
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:90:25-76
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:91:17-78
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:91:25-76
+action#android.intent.action.USER_PRESENT
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:92:17-76
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:92:25-74
+action#com.igexin.sdk.action.refreshls
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:93:17-73
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:93:25-71
+action#android.intent.action.MEDIA_MOUNTED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:94:17-77
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:94:25-75
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:95:17-86
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:95:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:96:17-89
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:96:25-87
+activity#com.igexin.sdk.PushActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:99:9-105:74
+	android:process
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:103:13-43
+	android:excludeFromRecents
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:101:13-46
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:102:13-37
+	android:theme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:105:13-72
+	android:taskAffinity
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:104:13-67
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:100:13-55
+activity#com.igexin.sdk.GActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:106:9-112:74
+	android:process
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:110:13-43
+	android:excludeFromRecents
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:108:13-46
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:109:13-36
+	android:theme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:112:13-72
+	android:taskAffinity
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:111:13-67
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:107:13-52
+receiver#io.dcloud.feature.apsGt.GTNotificationReceiver
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:113:9-121:20
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:113:19-80
+intent-filter#action:name:android.baobaoloufu.com.__CLEAR_NOTIFICATION+action:name:android.baobaoloufu.com.__CLILK_NOTIFICATION+action:name:android.baobaoloufu.com.__CREATE_NOTIFICATION+action:name:android.baobaoloufu.com.__REMOVE_NOTIFICATION+action:name:android.intent.action.BOOT_COMPLETED
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:114:13-120:29
+action#android.baobaoloufu.com.__CREATE_NOTIFICATION
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:116:17-87
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:116:25-85
+action#android.baobaoloufu.com.__REMOVE_NOTIFICATION
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:117:17-87
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:117:25-85
+action#android.baobaoloufu.com.__CLEAR_NOTIFICATION
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:118:17-86
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:118:25-84
+action#android.baobaoloufu.com.__CLILK_NOTIFICATION
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:119:17-86
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:119:25-84
+service#io.dcloud.feature.apsGt.GTNormalIntentService
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:122:9-123:75
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:123:13-73
+activity#com.alipay.sdk.app.H5PayActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:127:9-132:20
+	android:screenOrientation
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:130:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:131:13-67
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:129:13-37
+	android:configChanges
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:128:13-74
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:127:19-66
+activity#com.alipay.sdk.auth.AuthActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:133:9-137:20
+	android:screenOrientation
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:136:13-47
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:135:13-37
+	android:configChanges
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:134:13-74
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:133:19-66
+meta-data#WX_APPID
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:142:9-83
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:142:46-80
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:142:21-44
+meta-data#WX_SECRET
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:143:9-95
+	android:value
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:143:45-93
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:143:20-44
+activity#android.baobaoloufu.com.wxapi.WXPayEntryActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:144:9-148:46
+	android:launchMode
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:148:13-43
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:146:13-36
+	android:theme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:147:13-72
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:145:13-76
+activity#android.baobaoloufu.com.wxapi.WXEntryActivity
+ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:149:9-153:46
+	android:launchMode
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:153:13-43
+	android:exported
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:151:13-36
+	android:theme
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:152:13-72
+	android:name
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:150:13-73
+uses-sdk
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+MERGED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:7:5-44
+MERGED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:7:5-44
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:7:5-44
+MERGED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:7:5-44
+MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:25:5-27:41
+MERGED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:25:5-27:41
+MERGED from [yun_pay.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/AndroidManifest.xml:7:5-9:41
+MERGED from [yun_pay.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/yun_pay.aar/4e114f141bcd543f1d79c5364faa37c7/AndroidManifest.xml:7:5-9:41
+MERGED from [payment-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-weixin-release.aar/0bfd1d11065d84570325fa06dba8483f/AndroidManifest.xml:7:5-44
+MERGED from [payment-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-weixin-release.aar/0bfd1d11065d84570325fa06dba8483f/AndroidManifest.xml:7:5-44
+MERGED from [aps-igexin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-igexin-release.aar/722eee2b77c6dbf5d83a950350f8b0fd/AndroidManifest.xml:7:5-44
+MERGED from [aps-igexin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-igexin-release.aar/722eee2b77c6dbf5d83a950350f8b0fd/AndroidManifest.xml:7:5-44
+MERGED from [oauth-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/oauth-weixin-release.aar/418f1eefba2f6d3e89ec7070d87ed0e7/AndroidManifest.xml:7:5-44
+MERGED from [oauth-weixin-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/oauth-weixin-release.aar/418f1eefba2f6d3e89ec7070d87ed0e7/AndroidManifest.xml:7:5-44
+MERGED from [payment-alipay-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-alipay-release.aar/d968fb68d003893da123de1a95926e80/AndroidManifest.xml:7:5-44
+MERGED from [payment-alipay-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/payment-alipay-release.aar/d968fb68d003893da123de1a95926e80/AndroidManifest.xml:7:5-44
+MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/7ddfe21dcec0d47c62b92af70dfeca6a/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/7ddfe21dcec0d47c62b92af70dfeca6a/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.facebook.fresco:fresco:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fresco-0.12.0.aar/64198e8c7b3c7248d8be9a318297021d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fresco-0.12.0.aar/64198e8c7b3c7248d8be9a318297021d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/drawee-0.12.0.aar/86c5a9453120e4e17c6c7d0ffe3f4b13/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/drawee-0.12.0.aar/86c5a9453120e4e17c6c7d0ffe3f4b13/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-0.12.0.aar/4f44983b7f3326f440e4af87fbe7edce/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-0.12.0.aar/4f44983b7f3326f440e4af87fbe7edce/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-0.12.0.aar/00d7dfe7cd0456bff41ee7bc50b396c2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-0.12.0.aar/00d7dfe7cd0456bff41ee7bc50b396c2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:21:5-23:54
+MERGED from [com.alibaba.android:bindingx-core:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx-core-1.0.3.aar/de6089dac7819d4634cc1127c1193066/AndroidManifest.xml:7:5-9:41
+MERGED from [com.alibaba.android:bindingx-core:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx-core-1.0.3.aar/de6089dac7819d4634cc1127c1193066/AndroidManifest.xml:7:5-9:41
+MERGED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/glide-4.9.0.aar/ddd2c719adac3b9f9c0cb092800b6b40/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/glide-4.9.0.aar/ddd2c719adac3b9f9c0cb092800b6b40/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.9.0.aar/e79efe7168efddaea09a7402b23fc759/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.9.0.aar/e79efe7168efddaea09a7402b23fc759/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/08553159ef9816ac2febcff6169783e7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/08553159ef9816ac2febcff6169783e7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/79652063072116b62450e1439c7275fb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/79652063072116b62450e1439c7275fb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/41e6019c745b5a579e75243c3a2c11b4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/41e6019c745b5a579e75243c3a2c11b4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0bd7952bf30e8c5b256ba35b327d334e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/0bd7952bf30e8c5b256ba35b327d334e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/e0de6947dd28767269e831ab6111074e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/e0de6947dd28767269e831ab6111074e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4dadb4de5fc6125141c98c49a69d1fea/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4dadb4de5fc6125141c98c49a69d1fea/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fbcore-0.12.0.aar/634256f9093cd0102d66910d87da7fb2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:0.12.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/fbcore-0.12.0.aar/634256f9093cd0102d66910d87da7fb2/AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e87a0c103e535c930797d13c99b761a8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/e87a0c103e535c930797d13c99b761a8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0fbac85c0d5f80a6cd9a20e2c1dd2718/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0fbac85c0d5f80a6cd9a20e2c1dd2718/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f1edf5067abfa7b6aba6f1f3d55a3462/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f1edf5067abfa7b6aba6f1f3d55a3462/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc837c56cc5667d00d024cb45626b016/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc837c56cc5667d00d024cb45626b016/AndroidManifest.xml:20:5-44
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		ADDED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml
+service#io.dcloud.feature.aps.ApsActionService
+ADDED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:10:9-12:39
+	android:exported
+		ADDED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:12:13-36
+	android:name
+		ADDED from [aps-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/aps-release.aar/046c0b0eb51348bfe5c35e7882f8e897/AndroidManifest.xml:11:13-66
+uses-permission#com.android.launcher.permission.UNINSTALL_SHORTCUT
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:19:5-90
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:19:22-87
+uses-permission#com.huawei.android.launcher.permission.CHANGE_BADGE
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:21:5-91
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:21:22-88
+uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:22:5-88
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:22:22-85
+uses-permission#com.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:23:5-85
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:23:22-82
+uses-permission#com.android.launcher2.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:24:5-86
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:24:22-83
+uses-permission#com.android.launcher3.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:25:5-86
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:25:22-83
+uses-permission#com.yulong.android.launcherL.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:26:5-93
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:26:22-90
+uses-permission#com.meizu.flyme.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:27:5-89
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:27:22-86
+uses-permission#com.bbk.launcher2.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:28:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:28:22-79
+uses-permission#com.oppo.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:29:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:29:22-79
+uses-permission#com.htc.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:30:5-81
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:30:22-78
+uses-permission#com.qiku.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:31:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:31:22-79
+uses-permission#com.huawei.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:32:5-92
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:32:22-89
+uses-permission#com.zte.mifavor.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:33:5-89
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:33:22-86
+uses-permission#com.lenovo.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:34:5-84
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:34:22-81
+uses-permission#com.google.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:35:5-92
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:35:22-89
+uses-permission#com.yulong.android.launcher3.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:36:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:36:22-79
+uses-permission#org.adw.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:37:5-81
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:37:22-78
+uses-permission#com.qihoo360.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:38:5-86
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:38:22-83
+uses-permission#com.lge.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:39:5-81
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:39:22-78
+uses-permission#net.qihoo.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:40:5-83
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:40:22-80
+uses-permission#org.adwfreak.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:41:5-86
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:41:22-83
+uses-permission#org.adw.launcher_donut.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:42:5-87
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:42:22-84
+uses-permission#com.huawei.launcher3.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:43:5-85
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:43:22-82
+uses-permission#com.fede.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:44:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:44:22-79
+uses-permission#com.sec.android.app.twlauncher.settings.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:45:5-93
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:45:22-90
+uses-permission#com.tencent.qqlauncher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:46:5-87
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:46:22-84
+uses-permission#com.huawei.launcher2.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:47:5-85
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:47:22-82
+uses-permission#com.ebproductions.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:48:5-99
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:48:22-96
+uses-permission#com.nd.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:49:5-88
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:49:22-85
+uses-permission#com.yulong.android.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:50:5-92
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:50:22-89
+uses-permission#com.android.mylauncher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:51:5-87
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:51:22-84
+uses-permission#com.ztemt.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:52:5-83
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:52:22-80
+uses-permission#cn.nubia.launcher.permission.READ_SETTINGS
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:53:5-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:53:22-79
+uses-permission#com.gionee.amisystem.permission.READ_SHORTCUT
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:54:5-85
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:54:22-82
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:56:5-83
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:56:22-80
+activity#io.dcloud.PandoraEntryActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:62:9-79:20
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:68:13-45
+	android:launchMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:66:13-44
+	android:hardwareAccelerated
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:65:13-47
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:70:13-55
+	android:permission
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:67:13-89
+	android:configChanges
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:64:13-92
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:69:13-47
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:63:13-58
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:h56131bcf
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:71:13-78:29
+service#io.dcloud.common.adapter.io.MiniServerService
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:81:9-83:40
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:83:13-37
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:82:13-73
+receiver#io.dcloud.common.adapter.io.PushReceiver
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:85:9-89:20
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:85:19-74
+intent-filter#action:name:dcloud.push.broswer
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:86:13-88:29
+action#dcloud.push.broswer
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:87:17-62
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:87:25-59
+activity#io.dcloud.imagepick.CustomGalleryActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:91:9-94:40
+	android:noHistory
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:94:13-37
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:93:13-37
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:92:13-69
+activity#io.dcloud.feature.nativeObj.photoview.PhotoActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:95:9-98:58
+	android:noHistory
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:97:13-38
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:98:13-55
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:96:13-79
+activity#io.dcloud.appstream.StreamAppMainActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:99:9-120:20
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:104:13-49
+	android:launchMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:103:13-44
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:107:13-73
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:102:13-36
+	android:configChanges
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:101:13-82
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:106:13-70
+	android:taskAffinity
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:105:13-41
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:100:13-69
+intent-filter#action:name:android.intent.action.MAIN
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:108:13-110:29
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:streamapp+data:scheme:streamappmain
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:111:13-119:29
+activity#io.dcloud.WebAppActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:121:9-131:58
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:128:13-49
+	android:label
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:126:13-46
+	android:launchMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:127:13-44
+	android:hardwareAccelerated
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:124:13-47
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:131:13-55
+	android:configChanges
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:123:13-92
+	android:icon
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:125:13-51
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:130:13-47
+	android:taskAffinity
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:129:13-43
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:122:13-52
+service#io.dcloud.streamdownload.DownloadService
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:133:9-137:19
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:133:18-73
+intent-filter#action:name:com.qihoo.life.plugin.streamapp.ACTION_PUSH_TO_PLUGIN
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:134:13-136:29
+action#com.qihoo.life.plugin.streamapp.ACTION_PUSH_TO_PLUGIN
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:135:17-96
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:135:25-93
+service#io.dcloud.appstream.service.DaemonService
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:138:9-141:41
+	android:process
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:141:13-38
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:140:13-37
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:139:13-69
+service#io.dcloud.appstream.service.ProtectService
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:142:9-144:40
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:144:13-37
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:143:13-70
+service#io.dcloud.multiprocess.service.MultiProcessService
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:167:9-86
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:167:18-83
+activity#io.dcloud.multiprocess.activity.WebAppActivity1
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:169:9-180:58
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:177:13-49
+	android:process
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:176:13-61
+	android:label
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:174:13-46
+	android:launchMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:175:13-44
+	android:hardwareAccelerated
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:172:13-47
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:180:13-55
+	android:configChanges
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:171:13-82
+	android:icon
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:173:13-51
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:179:13-47
+	android:taskAffinity
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:178:13-44
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:170:13-75
+activity#io.dcloud.appstream.OpenStreamAppTransferActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:181:9-187:20
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:184:13-49
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:186:13-73
+	android:configChanges
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:183:13-82
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:185:13-70
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:182:13-77
+meta-data#MultiProcessCount
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:189:9-191:33
+	android:value
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:191:13-30
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:190:13-45
+activity#io.dcloud.ProcessMediator
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:193:9-199:75
+	android:label
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:197:13-45
+	android:excludeFromRecents
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:195:13-46
+	android:launchMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:198:13-43
+	android:exported
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:196:13-36
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:199:13-72
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:194:13-53
+activity#io.dcloud.WebviewActivity
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:200:9-205:20
+	android:screenOrientation
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:202:13-49
+	android:windowSoftInputMode
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:204:13-52
+	android:theme
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:203:13-51
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:201:13-53
+receiver#io.dcloud.common.adapter.io.DownloadReceiver
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:207:9-216:20
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:207:19-78
+intent-filter#action:name:android.intent.action.DOWNLOAD_COMPLETE
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:208:13-210:29
+action#android.intent.action.DOWNLOAD_COMPLETE
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:209:17-82
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:209:25-79
+intent-filter#action:name:android.intent.action.PACKAGE_ADDED+data:scheme:package
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:211:13-215:29
+action#android.intent.action.PACKAGE_ADDED
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:212:17-78
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:212:25-75
+meta-data#android.max_aspect
+ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:232:9-234:35
+	android:value
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:234:13-32
+	android:name
+		ADDED from [lib.5plus.base-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/lib.5plus.base-release.aar/a575a914bf3d2f92a6129d88689c50f8/AndroidManifest.xml:233:13-46
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from /Users/tuyao/Documents/uni/UniPluginAS/app/src/main/AndroidManifest.xml:2:1-160:12 reason: io.dcloud.base requested WRITE_EXTERNAL_STORAGE
+receiver#com.taobao.weex.WXGlobalEventReceiver
+ADDED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:30:9-34:20
+	android:enabled
+		ADDED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:32:13-35
+	android:exported
+		ADDED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:33:13-37
+	android:name
+		ADDED from [uniapp-release.aar] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/AndroidManifest.xml:31:13-65
+meta-data#android.support.VERSION
+ADDED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/c79a8eeece86eaeed46d32fde21c72d1/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-v4-25.3.1.aar/94797053277d1b840a115b1232d2c753/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/support-media-compat-25.3.1.aar/1142186c416f8c93e5daae5bb1ef31c9/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:24:9-31
+	android:name
+		ADDED from [com.android.support:recyclerview-v7:25.3.1] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-25.3.1.aar/8152a41c46c290733ba36e7007e2b659/AndroidManifest.xml:23:9-47
+service#com.alibaba.android.bindingx.plugin.weex.WXBindingXModuleService
+ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:10:9-18:19
+	android:exported
+		ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:11:13-92
+intent-filter#action:name:binding+action:name:bindingx+action:name:expressionBinding
+ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:13:13-17:29
+action#bindingx
+ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:14:17-51
+	android:name
+		ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:14:25-48
+action#binding
+ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:15:17-50
+	android:name
+		ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:15:25-47
+action#expressionBinding
+ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:16:17-60
+	android:name
+		ADDED from [com.alibaba.android:bindingx_weex_plugin:1.0.3] /Users/tuyao/.gradle/caches/transforms-1/files-1.1/bindingx_weex_plugin-1.0.3.aar/6d6baf506e172d78f1b4b7d07461904a/AndroidManifest.xml:16:25-57

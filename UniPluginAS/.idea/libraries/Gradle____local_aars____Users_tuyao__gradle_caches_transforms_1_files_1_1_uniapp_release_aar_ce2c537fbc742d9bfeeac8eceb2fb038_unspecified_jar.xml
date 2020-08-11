@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:/Users/tuyao/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038:unspecified@jar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/uniapp-release.aar/ce2c537fbc742d9bfeeac8eceb2fb038/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

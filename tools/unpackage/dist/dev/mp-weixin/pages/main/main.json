@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "uni-status-bar": "/components/mini_status_bar"
+  }
+}

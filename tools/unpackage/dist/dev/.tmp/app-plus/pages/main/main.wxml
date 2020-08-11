@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['touchstart',[['touchStart',['$event']]]],['touchmove',[['touchMove',['$event']]]],['touchend',[['touchEnd',['$event']]]]]}}" class="contain" bindtouchstart="__e" bindtouchmove="__e" bindtouchend="__e"><image class="home_bg" src="{{home_bg}}" mode="widthFix"></image><view class="content" style="{{(isTranform)}}"></view></view>

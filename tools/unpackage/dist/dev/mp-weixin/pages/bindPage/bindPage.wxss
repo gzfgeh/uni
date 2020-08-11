@@ -1,0 +1,13 @@
+
+.home_bg{width: 100vw; position: fixed;top: 0rpx; left: 0rpx;z-index: 1;}
+.contain{width: 100vw; height: 100vh; overflow: hidden;-webkit-box-sizing: border-box;box-sizing: border-box;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; position: relative;z-index: 2;}
+.empty{width: 100vw; height: 411rpx; background: transparent;}
+.content{width: 100vw; -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; background: rgb(245, 245, 245);}
+.content .item{height: 104rpx; margin-left: 4%; width: 92%;position: relative; margin-bottom: 40rpx;}
+.content .item image{position: absolute; left: 0rpx; top: 0rpx; width: 100%; height: 100%;}
+.content .item input{width: 100%; height: 100%; padding-left: 40%;}
+.content .item button{width: 170rpx; height: 73rpx; top: 15%; right: 5%; position: absolute; color: #fff;
+		 padding: 5rpx;font-size: 26rpx; background: rgb(56,166,60); border-radius: 20rpx; text-align: center;}
+.bottom{position: absolute; bottom: 40rpx; width: 100vw; padding: 0rpx 100rpx; -webkit-box-sizing: border-box; box-sizing: border-box;}
+.bottom image{width: 100%;}
+

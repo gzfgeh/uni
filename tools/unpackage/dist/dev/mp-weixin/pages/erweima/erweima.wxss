@@ -1,0 +1,19 @@
+
+.contain{width: 100vw; height: 100vh; overflow: hidden; background: #FFFFFF;}
+.head{width: 100vw;  position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-sizing: border-box; box-sizing: border-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between;  padding: 40rpx;}
+.head .bg{width: 70%; position: absolute; top:10%; left: 15%; height: 80%; z-index: 1;}
+.head_logo{width: 135rpx; height: 135rpx; border-radius: 50%; position: relative; z-index: 2;}
+.name{font-size: 32rpx; color: #FFFFFF; margin-top: 33rpx; position: relative; z-index: 2;}
+.erweima{width: 240rpx; height: 240rpx; margin-left: calc(50vw - 85px); margin-bottom: 20rpx;
+	position: relative; z-index: 2; border: 10rpx solid #FFFFFF; border-radius: 20rpx; margin-top: 100rpx;}
+.upload{width: 80rpx; height: 80rpx;}
+input{border-radius: 10rpx; border: 2rpx solid #E3E3E3; height: 80rpx; padding: 0rpx 20rpx;}
+.item{margin: 10rpx;}
+.item ._span{width: 180rpx;}
+
+
