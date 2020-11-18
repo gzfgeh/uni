@@ -646,7 +646,7 @@
 				// #ifdef H5
 				weixin_sdk.config({
 						debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-						appId: 'wx1ba1d76a9ed0cdc8', // 必填，企业号的唯一标识，此处填写企业号corpid
+						appId: 'wx2b2b0d853a3a028b', // 必填，企业号的唯一标识，此处填写企业号corpid wx1ba1d76a9ed0cdc8
 						timestamp: result.timeStamp, // 必填，生成签名的时间戳
 						nonceStr: result.nonceStr, // 必填，生成签名的随机串
 						signature: result.sign,// 必填，签名，见附录1
@@ -660,7 +660,7 @@
 							
 							weixin_sdk.invoke(
 							 'getBrandWCPayRequest', {
-									 "appId" : 'wx1ba1d76a9ed0cdc8',       //公众号名称，由商户传入
+									 "appId" : 'wx2b2b0d853a3a028b',       //公众号名称，由商户传入
 									 "timeStamp":result.timeStamp, //时间戳，自1970年以来的秒数     
 									 "nonceStr" : result.nonceStr, //随机串     
 									 "package" : result.package,     
